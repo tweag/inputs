@@ -4,6 +4,7 @@ name: Checkbox
 
 import { Playground, Props } from "docz";
 import { Checkbox } from "../src";
+import { Field } from "./Field";
 
 # Checkbox
 
@@ -12,18 +13,9 @@ Renders a `checkbox` input that will emit boolean values.
 ## Basic usage
 
 <Playground>
-  {() => {
-    const [value, setValue] = React.useState(true);
-
-    return (
-      <div>
-        <Checkbox value={value} onChange={setValue} />{" "}
-        <pre><code>VALUE: {JSON.stringify(value)}</code></pre>
-      </div>
-    );
-
-}}
-
+  <Field initialValue={true}>
+    {(value, onChange) => <Checkbox value={value} onChange={onChange} />}
+  </Field>
 </Playground>
 
 ## Props

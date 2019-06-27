@@ -4,6 +4,7 @@ name: Select
 
 import { Playground, Props } from "docz";
 import { Select } from "../src";
+import { Field } from "./Field";
 
 # Select
 
@@ -12,36 +13,29 @@ Renders a select input that will accept a list of options and emit values.
 ## Basic usage
 
 <Playground>
-  {() => {
-    const [value, setValue] = React.useState('Pizza');
+  <Field initialValue={null}>
+    {(value, onChange) => (
+      <Select
+        value={value}
+        onChange={onChange}
+        options={['Pizza', 'Spaghetti']}
+        placeholder="Choose a food"
+      />
+    )}
+  </Field>
 
-    return (
-      <div>
-        <p>
-          <Select
-            value={value}
-            onChange={setValue}
-            options={['Pizza', 'Spaghetti']}
-          />
-        </p>
-
-        <p>
-          <Select
-            value={value}
-            onChange={setValue}
-            options={[
-              { label: 'Pizza', value: 'Pizza' },
-              { label: 'Spaghetti', value: 'Spaghetti' }
-            ]}
-          />
-        </p>
-
-        <pre><code>VALUE: {JSON.stringify(value)}</code></pre>
-      </div>
-    );
-
-}}
-
+  <Field initialValue='Pizza'>
+    {(value, onChange) => (
+      <Select
+        value={value}
+        onChange={onChange}
+        options={[
+          { label: 'Pizza', value: 'Pizza' },
+          { label: 'Spaghetti', value: 'Spaghetti' }
+        ]}
+      />
+    )}
+  </Field>
 </Playground>
 
 ## Props

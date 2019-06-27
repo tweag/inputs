@@ -4,6 +4,7 @@ name: FileInput
 
 import { Playground, Props } from "docz";
 import { FileInput } from "../src";
+import { Field } from "./Field";
 
 # FileInput
 
@@ -12,26 +13,17 @@ Renders a `FileInput` FileInput that will values.
 ## Basic usage
 
 <Playground>
-  {() => {
-    const [file, setFile] = React.useState(null);
-    const [files, setFiles] = React.useState([]);
+  <Field initialValue={null}>
+    {(_, onChange) => (
+      <FileInput onChange={onChange} />
+    )}
+  </Field>
 
-    return (
-      <div>
-        <div>
-          <FileInput onChange={setFile} />{" "}
-          <pre><code>VALUE: {JSON.stringify(file ? file.name : null)}</code></pre>
-        </div>
-
-        <div>
-          <FileInput multiple onChange={setFiles} />{" "}
-          <pre><code>VALUE: {JSON.stringify(Array.from(files).map(f => f.name))}</code></pre>
-        </div>
-      </div>
-    );
-
-}}
-
+  <Field initialValue={[]}>
+    {(_, onChange) => (
+      <FileInput multiple onChange={onChange} />
+    )}
+  </Field>
 </Playground>
 
 ## Props
