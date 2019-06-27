@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 export type CheckboxProps = React.HTMLProps<HTMLInputElement> & {
   value: boolean;
@@ -9,7 +9,7 @@ export const Checkbox = ({ onChange, value, ...props }: CheckboxProps) => (
   <input
     {...props}
     type="checkbox"
-    value={value}
+    checked={value}
     onChange={() => onChange(!value)}
   />
 );

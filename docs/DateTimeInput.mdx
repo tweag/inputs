@@ -1,0 +1,29 @@
+---
+name: DateTimeInput
+---
+
+import { Playground, Props } from "docz"
+import { DateTimeInput } from "../src"
+
+# DateTimeInput
+
+Renders an `datetime-local` input that will emit ISO-formatted datetime values in UTC.
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState(new Date().toISOString());
+
+    return (
+      <div>
+        <DateTimeInput value={value} onChange={setValue} />
+        <pre><code>VALUE: {JSON.stringify(value)}</code></pre>
+      </div>
+    );
+  }}
+</Playground>
+
+## Props
+
+<Props of={DateTimeInput} />

@@ -1,17 +1,28 @@
 import React from "react";
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
 export type SelectProps = React.HTMLProps<HTMLSelectElement> & {
   placeholder?: string;
-  options: Array<string | { value: string; label: string }>;
+  options: Array<SelectOption | string>;
+  onChange: (value: string) => void;
 };
 
 export const Select = ({
+  onChange,
   options,
   placeholder,
   value,
   ...props
 }: SelectProps) => (
-  <select {...props} value={value === null ? "" : value}>
+  <select
+    {...props}
+    value={value === null ? "" : value}
+    onChange={event => onChange(event.target.value)}
+  >
     {placeholder && (
       <option disabled value="" key="placeholder">
         {placeholder}

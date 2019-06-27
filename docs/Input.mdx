@@ -1,0 +1,29 @@
+---
+name: Input
+---
+
+import { Playground, Props } from "docz"
+import { Input } from "../src"
+
+# Input
+
+Renders a `Input` input that will values.
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState("");
+
+    return (
+      <div>
+        <Input value={value} onChange={setValue} />{" "}
+        <pre><code>VALUE: {JSON.stringify(value)}</code></pre>
+      </div>
+    );
+  }}
+</Playground>
+
+## Props
+
+<Props of={Input} />
