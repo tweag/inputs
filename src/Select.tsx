@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 export interface SelectOption {
   value: string;
@@ -17,28 +17,34 @@ export const Select = ({
   placeholder,
   value,
   ...props
-}: SelectProps) => (
-  <select
-    {...props}
-    value={value === null ? "" : value}
-    onChange={event => onChange(event.target.value)}
-  >
-    {placeholder && (
-      <option disabled value="" key="placeholder">
-        {placeholder}
-      </option>
-    )}
+}: SelectProps) => {
+  const handleChange = useCallback(event => onChange(event.target.value), [
+    onChange
+  ]);
 
-    {options.map(option =>
-      typeof option === "string" ? (
-        <option value={option} key={option}>
-          {option}
+  return (
+    <select
+      {...props}
+      value={value === null ? "" : value}
+      onChange={handleChange}
+    >
+      {placeholder && (
+        <option disabled value="" key="placeholder">
+          {placeholder}
         </option>
-      ) : (
-        <option value={option.value} key={option.value}>
-          {option.label}
-        </option>
-      )
-    )}
-  </select>
-);
+      )}
+
+      {options.map(option =>
+        typeof option === "string" ? (
+          <option value={option} key={option}>
+            {option}
+          </option>
+        ) : (
+          <option value={option.value} key={option.value}>
+            {option.label}
+          </option>
+        )
+      )}
+    </select>
+  );
+};

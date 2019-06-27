@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 
@@ -11,11 +11,23 @@ export const DateTimeInput = ({
   value,
   onChange,
   ...props
-}: DateTimeInputProps) => (
-  <input
-    {...props}
-    type="datetime-local"
-    value={value ? format(value, "YYYY-MM-DDTHH:mm:ss") : value}
-    onChange={e => onChange(parse(e.target.value).toISOString())}
-  />
-);
+}: DateTimeInputProps) => {
+  const formattedValue = useMemo(
+    () => (value ? format(value, "YYYY-MM-DDTHH:mm:ss") : value),
+    [value]
+  );
+
+  const handleChange = useCallback(
+    event => onChange(parse(event.target.value).toISOString()),
+    [onChange]
+  );
+
+  return (
+    <input
+      {...props}
+      type="datetime-local"
+      value={formattedValue}
+      onChange={handleChange}
+    />
+  );
+};
