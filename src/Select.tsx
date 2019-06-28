@@ -1,16 +1,28 @@
-import React, { useCallback } from "react";
+import React, { useCallback, HTMLProps } from "react";
 import { CustomInputProps } from "./types";
 
-export interface SelectOption {
+export interface SelectOption extends HTMLProps<HTMLOptionElement> {
   value: string;
   label: string;
+  key?: any;
 }
 
 export interface SelectProps
-  extends CustomInputProps<HTMLSelectElement, string> {
+  extends CustomInputProps<HTMLSelectElement, string | null> {
   placeholder?: string;
   options: Array<SelectOption | string>;
 }
+
+const getOptionProps = ({
+  label: _label,
+  value,
+  key = value,
+  ...option
+}: SelectOption) => ({
+  key,
+  value,
+  ...option
+});
 
 export const Select = ({
   onChange,
@@ -41,9 +53,7 @@ export const Select = ({
             {option}
           </option>
         ) : (
-          <option value={option.value} key={option.value}>
-            {option.label}
-          </option>
+          <option {...getOptionProps(option)}>{option.label}</option>
         )
       )}
     </select>
