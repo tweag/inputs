@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import * as React from "react";
 import { CustomInputProps } from "./types";
 
 export type IntegerInputProps = CustomInputProps<
@@ -6,12 +6,12 @@ export type IntegerInputProps = CustomInputProps<
   number | null
 >;
 
-export const IntegerInput = ({
+export const IntegerInput: React.FC<IntegerInputProps> = ({
   value,
   onChange,
   ...props
-}: IntegerInputProps) => {
-  const handleChange = useCallback(
+}) => {
+  const handleChange = React.useCallback(
     event => {
       const value = parseInt(event.target.value, 10);
       isNaN(value) ? onChange(null) : onChange(value);

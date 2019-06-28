@@ -1,7 +1,7 @@
-import React, { useCallback, HTMLProps } from "react";
+import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export interface SelectOption extends HTMLProps<HTMLOptionElement> {
+export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;
   label: string;
   key?: any;
@@ -24,16 +24,17 @@ const getOptionProps = ({
   ...option
 });
 
-export const Select = ({
+export const Select: React.FC<SelectProps> = ({
   onChange,
   options,
   placeholder,
   value,
   ...props
-}: SelectProps) => {
-  const handleChange = useCallback(event => onChange(event.target.value), [
-    onChange
-  ]);
+}) => {
+  const handleChange = React.useCallback(
+    event => onChange(event.target.value),
+    [onChange]
+  );
 
   return (
     <select

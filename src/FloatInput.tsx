@@ -1,17 +1,14 @@
-import React, { useCallback } from "react";
+import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export type FloatInputProps = CustomInputProps<
-  HTMLInputElement,
-  number | null
->;
+export type FloatInputProps = CustomInputProps<HTMLInputElement, number | null>;
 
-export const FloatInput = ({
+export const FloatInput: React.FC<FloatInputProps> = ({
   value,
   onChange,
   ...props
-}: FloatInputProps) => {
-  const handleChange = useCallback(
+}) => {
+  const handleChange = React.useCallback(
     event => {
       const value = parseFloat(event.target.value);
       isNaN(value) ? onChange(null) : onChange(value);
