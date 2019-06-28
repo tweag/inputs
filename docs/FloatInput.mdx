@@ -1,0 +1,23 @@
+---
+name: FloatInput
+---
+
+import { Playground, Props } from "docz";
+import { FloatInput } from "../src";
+import { Field } from "./Field";
+
+# Input
+
+Renders an `input[type=number]` input that will emit float values on change. If the value cannot be parsed as a float, `null` will be emitted.
+
+## Basic usage
+
+<Playground>
+  <Field initialValue={2.5}>
+    {(value, onChange) => <FloatInput value={value} onChange={onChange} />}
+  </Field>
+</Playground>
+
+## Props
+
+<Props of={FloatInput} />

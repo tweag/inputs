@@ -1,0 +1,23 @@
+---
+name: IntegerInput
+---
+
+import { Playground, Props } from "docz";
+import { IntegerInput } from "../src";
+import { Field } from "./Field";
+
+# Input
+
+Renders an `input[type=number]` input that will emit integer values on change. If the value cannot be parsed as an integer, `null` will be emitted.
+
+## Basic usage
+
+<Playground>
+  <Field initialValue={5}>
+    {(value, onChange) => <IntegerInput value={value} onChange={onChange} />}
+  </Field>
+</Playground>
+
+## Props
+
+<Props of={IntegerInput} />
