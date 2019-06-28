@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
+import { asFormik } from "./asFormik";
 
 export type IntegerInputProps = CustomInputProps<
   HTMLInputElement,
@@ -28,3 +29,5 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
     />
   );
 };
+
+export const FormikIntegerInput = asFormik(IntegerInput);
