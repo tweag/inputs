@@ -5,6 +5,8 @@ test('exports', () => {
     "asFormik",
     "Checkbox",
     "FormikCheckbox",
+    "DateInput",
+    "FormikDateInput",
     "DateTimeInput",
     "FormikDateTimeInput",
     "FileInput",

@@ -1,5 +1,6 @@
 export * from "./asFormik";
 export * from "./Checkbox";
+export * from "./DateInput";
 export * from "./DateTimeInput";
 export * from "./FileInput";
 export * from "./FloatInput";
