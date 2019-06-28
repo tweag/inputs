@@ -2,7 +2,7 @@ import * as React from "react";
 import { CustomInputProps } from "./types";
 import { asFormik } from "./asFormik";
 
-export type CheckboxProps = CustomInputProps<HTMLInputElement, boolean>;
+export type CheckboxProps = CustomInputProps<HTMLInputElement, boolean | null>;
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
@@ -15,7 +15,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   ]);
 
   return (
-    <input {...props} type="checkbox" checked={value} onChange={handleChange} />
+    <input {...props} type="checkbox" checked={Boolean(value)} onChange={handleChange} />
   );
 };
 

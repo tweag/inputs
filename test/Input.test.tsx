@@ -26,4 +26,15 @@ describe("<Input />", () => {
 
     expect(onChange).toHaveBeenCalledWith("hi");
   });
+
+  test("emits `null` when the value is blank", () => {
+    const onChange = jest.fn();
+    const input = shallow(<Input type="text" value="" onChange={onChange} />);
+
+    input.simulate("change", {
+      target: { value: "" }
+    });
+
+    expect(onChange).toHaveBeenCalledWith(null);
+  });
 });
