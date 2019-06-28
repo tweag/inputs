@@ -1,9 +1,7 @@
 import React, { useCallback } from "react";
+import { CustomInputProps } from "./types";
 
-export type CheckboxProps = React.HTMLProps<HTMLInputElement> & {
-  value: boolean;
-  onChange: (value: boolean) => void;
-};
+export type CheckboxProps = CustomInputProps<HTMLInputElement, boolean>;
 
 export const Checkbox = ({ onChange, value, ...props }: CheckboxProps) => {
   const handleChange = useCallback(() => onChange(!value), [value, onChange]);

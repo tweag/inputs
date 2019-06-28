@@ -1,11 +1,9 @@
 import React, { useCallback, useMemo } from "react";
+import { CustomInputProps } from "./types";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 
-export type DateTimeInputProps = React.HTMLProps<HTMLInputElement> & {
-  value: string;
-  onChange: (value: string) => void;
-};
+export type DateTimeInputProps = CustomInputProps<HTMLInputElement, string>;
 
 export const DateTimeInput = ({
   value,

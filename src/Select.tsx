@@ -1,15 +1,16 @@
 import React, { useCallback } from "react";
+import { CustomInputProps } from "./types";
 
 export interface SelectOption {
   value: string;
   label: string;
 }
 
-export type SelectProps = React.HTMLProps<HTMLSelectElement> & {
+export interface SelectProps
+  extends CustomInputProps<HTMLSelectElement, string> {
   placeholder?: string;
   options: Array<SelectOption | string>;
-  onChange: (value: string) => void;
-};
+}
 
 export const Select = ({
   onChange,

@@ -1,9 +1,7 @@
 import React, { useCallback } from "react";
+import { CustomInputProps } from "./types";
 
-export type InputProps = React.HTMLProps<HTMLInputElement> & {
-  value: any;
-  onChange: (value: any) => void;
-};
+export type InputProps = CustomInputProps<HTMLInputElement, any>;
 
 export const Input = ({ onChange, ...props }: InputProps) => {
   const handleChange = useCallback(event => onChange(event.target.value), [

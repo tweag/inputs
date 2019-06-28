@@ -1,17 +1,17 @@
 import React, { useCallback } from "react";
+import { ExtraInputProps } from "./types";
 
-interface MultipleFileProps {
+interface MultipleFileProps extends ExtraInputProps<HTMLInputElement> {
   multiple: true;
   onChange: (value: File[]) => void;
 }
 
-interface SingleFileProps {
+interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
   multple?: false | null | undefined;
   onChange: (value: File) => void;
 }
 
-export type FileInputProps = React.HTMLProps<HTMLInputElement> &
-  (MultipleFileProps | SingleFileProps);
+export type FileInputProps = SingleFileProps | MultipleFileProps;
 
 export const FileInput = ({ onChange, ...props }: FileInputProps) => {
   const handleChange = useCallback(
