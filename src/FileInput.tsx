@@ -7,7 +7,7 @@ interface MultipleFileProps extends ExtraInputProps<HTMLInputElement> {
 }
 
 interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
-  multple?: false | null | undefined;
+  multiple?: false | undefined;
   onChange: (value: File) => void;
 }
 
