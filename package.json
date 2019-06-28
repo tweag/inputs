@@ -11,7 +11,7 @@
   "scripts": {
     "start": "docz dev",
     "build": "tsdx build",
-    "test": "tsdx test --env=jsdom",
+    "test": "TZ=America/New_York tsdx test --env=jsdom",
     "docs": "docz build",
     "format": "prettier --write '{src,docs}/**/*.{ts,tsx,mdx}'",
     "prepublishOnly": "tsdx test && tsdx build"
