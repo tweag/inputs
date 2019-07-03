@@ -3,13 +3,13 @@ import { ExtraInputProps } from "./types";
 import { asFormik } from "./asFormik";
 
 interface MultipleFileProps extends ExtraInputProps<HTMLInputElement> {
-  value: any;
+  value?: any;
   multiple: true;
   onChange: (value: File[]) => void;
 }
 
 interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
-  value: any;
+  value?: any;
   multiple?: false | undefined;
   onChange: (value: File) => void;
 }
