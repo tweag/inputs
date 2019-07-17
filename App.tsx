@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Input from "./src/Input";
 import IntegerInput from "./src/IntegerInput";
+import FloatInput from "./src/FloatInput";
 
 interface Values {
   string: string;
   integer: number;
+  float: number;
 }
 
 export default function App() {
   const [values, setValues] = useState<Values>({
     string: null,
-    integer: null
+    integer: null,
+    float: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
@@ -34,6 +37,13 @@ export default function App() {
         onChange={set("integer")}
         style={styles.input}
         placeholder="IntegerInput"
+      />
+
+      <FloatInput
+        value={values.float}
+        onChange={set("float")}
+        style={styles.input}
+        placeholder="FloatInput"
       />
 
       <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>
