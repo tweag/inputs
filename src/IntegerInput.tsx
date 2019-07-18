@@ -7,12 +7,12 @@ interface Props {
   [key: string]: any;
 }
 
-const clean = (rawValue: string): string => {
-  return rawValue.replace(/[^0-9]/g, "");
+const clean = (input: string): string => {
+  return input.replace(/[^0-9]/g, "");
 };
 
-const parse = (rawValue: string): number | null => {
-  const value = parseInt(clean(rawValue), 10);
+const parse = (input: string): number | null => {
+  const value = parseInt(input, 10);
   return isNaN(value) ? null : value;
 };
 
@@ -23,7 +23,7 @@ export const IntegerInput: React.FC<Props> = ({
 }) => (
   <TextInput
     value={value === null ? "" : value.toString()}
-    onChangeText={value => onChange(parse(value))}
+    onChangeText={value => onChange(parse(clean(value)))}
     {...props}
   />
 );

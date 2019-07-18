@@ -7,30 +7,27 @@ interface Props {
   [key: string]: any;
 }
 
-const RE_NUMBER = /^-?\d*\.?\d*/;
+const clean = (input: string) => {
+  return input.match(/^-?\d*\.?\d*/)[0];
+};
+
+const parse = (input: string) => {
+  return ["", "-"].includes(input) ? null : input.replace(/\.$/, "");
+};
 
 export class DecimalInput extends Component<Props> {
   private inputRef = React.createRef<TextInput>();
 
-  private emitChange(value: string | null) {
-    if (value !== this.props.value) {
-      this.props.onChange(value);
-    }
-  }
-
   private handleChange = (rawInput: string) => {
-    const [input] = rawInput.match(RE_NUMBER);
+    const input = clean(rawInput);
+    const value = parse(input);
 
     if (input !== rawInput) {
       this.inputRef.current.setNativeProps({ text: input });
     }
 
-    if (["", "-"].includes(input)) {
-      return this.emitChange(null);
-    }
-
-    if (input.charAt(input.length - 1) !== ".") {
-      return this.emitChange(input);
+    if (value !== this.props.value) {
+      this.props.onChange(value);
     }
   };
 

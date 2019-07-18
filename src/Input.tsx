@@ -7,14 +7,14 @@ interface Props {
   [key: string]: any;
 }
 
-const isBlank = (value: any) => {
-  return typeof value === "string" && /^\s*$/.test(value);
+const parse = (value: string) => {
+  return /^\s*$/.test(value) ? null : value;
 };
 
 export const Input: React.FC<Props> = ({ value, onChange, ...props }) => (
   <TextInput
     value={value === null ? "" : value}
-    onChangeText={value => onChange(isBlank(value) ? null : value)}
+    onChangeText={value => onChange(parse(value))}
     {...props}
   />
 );
