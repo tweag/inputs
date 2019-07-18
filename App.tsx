@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Input from "./src/Input";
 import IntegerInput from "./src/IntegerInput";
-import FloatInput from "./src/FloatInput";
+import DecimalInput from "./src/DecimalInput";
 
 interface Values {
-  string: string;
-  integer: number;
-  float: number;
+  string: string | null;
+  integer: number | null;
+  decimal: string | null;
 }
 
 export default function App() {
   const [values, setValues] = useState<Values>({
     string: null,
     integer: null,
-    float: null
+    decimal: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
@@ -39,11 +39,11 @@ export default function App() {
         placeholder="IntegerInput"
       />
 
-      <FloatInput
-        value={values.float}
-        onChange={set("float")}
+      <DecimalInput
+        value={values.decimal}
+        onChange={set("decimal")}
         style={styles.input}
-        placeholder="FloatInput"
+        placeholder="DecimalInput"
       />
 
       <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginBottom: 20,
     borderColor: "#ddd",
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
   values: {
     padding: 10,
