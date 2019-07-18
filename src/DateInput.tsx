@@ -20,7 +20,7 @@ export const DateInput: React.FC<Props> = ({ value, onChange, ...props }) => {
     <>
       <TextInput
         value={value ? format(value, PRETTY) : ""}
-        onTouchStart={() => setVisible(true)}
+        onFocus={() => setVisible(true)}
         {...props}
       />
 
