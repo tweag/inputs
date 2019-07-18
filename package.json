@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc -p .",
     "prepublishOnly": "tsc -p .",
-    "typecheck": "tsc -p . --noEmit"
+    "typecheck": "tsc -p . --noEmit",
+    "test": "jest"
   },
   "peerDependencies": {
     "react": ">=16",
@@ -21,10 +22,13 @@
     "react-native-modal-datetime-picker": "^7.5.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
     "@types/react": "^16.8.19",
     "@types/react-native": "^0.57.60",
+    "jest": "^24.8.0",
     "react": "16.8.3",
     "react-native": "0.59.9",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   }
 }
