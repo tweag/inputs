@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Input from "./src/Input";
-import IntegerInput from "./src/IntegerInput";
-import DecimalInput from "./src/DecimalInput";
+import { Input, IntegerInput, DecimalInput } from "./src";
 
 interface Values {
   string: string | null;

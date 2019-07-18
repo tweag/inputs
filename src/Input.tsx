@@ -11,12 +11,10 @@ const isBlank = (value: any) => {
   return typeof value === "string" && /^\s*$/.test(value);
 };
 
-const Input: React.FC<Props> = ({ value, onChange, ...props }) => (
+export const Input: React.FC<Props> = ({ value, onChange, ...props }) => (
   <TextInput
     value={value === null ? "" : value}
     onChangeText={value => onChange(isBlank(value) ? null : value)}
     {...props}
   />
 );
-
-export default Input;

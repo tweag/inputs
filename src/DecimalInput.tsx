@@ -9,21 +9,21 @@ interface Props {
 
 const RE_NUMBER = /^-?\d*\.?\d*/;
 
-class DecimalInput extends Component<Props> {
-  inputRef: React.RefObject<TextInput>;
+export class DecimalInput extends Component<Props> {
+  private inputRef: React.RefObject<TextInput>;
 
-  constructor(props) {
+  public constructor(props) {
     super(props);
     this.inputRef = React.createRef();
   }
 
-  emitChange(value: string | null) {
+  private emitChange(value: string | null) {
     if (value !== this.props.value) {
       this.props.onChange(value);
     }
   }
 
-  handleChange = (rawInput: string) => {
+  private handleChange = (rawInput: string) => {
     const [input] = rawInput.match(RE_NUMBER);
 
     if (input !== rawInput) {
@@ -39,7 +39,7 @@ class DecimalInput extends Component<Props> {
     }
   };
 
-  render() {
+  public render() {
     const { value, onChange, ...props } = this.props;
 
     return (
@@ -51,5 +51,3 @@ class DecimalInput extends Component<Props> {
     );
   }
 }
-
-export default DecimalInput;
