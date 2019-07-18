@@ -1,8 +1,11 @@
 import React from "react";
-import { Switch } from "react-native";
-import { CustomInputProps } from "./types";
+import { Switch, SwitchProps } from "react-native";
 
-export type BooleanInputProps = CustomInputProps<boolean | null>;
+export interface BooleanInputProps
+  extends Omit<Omit<SwitchProps, "value">, "onChangeValue"> {
+  value: boolean | null;
+  onChange: (value: boolean | null) => void;
+}
 
 export const BooleanInput: React.FC<BooleanInputProps> = ({
   value,
