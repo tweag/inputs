@@ -6,7 +6,8 @@ import {
   DecimalInput,
   FloatInput,
   DateInput,
-  DateTimeInput
+  DateTimeInput,
+  BooleanInput
 } from "./src";
 
 interface Values {
@@ -16,6 +17,7 @@ interface Values {
   float: number | null;
   date: string | null;
   datetime: string | null;
+  boolean: boolean | null;
 }
 
 export default function App() {
@@ -25,7 +27,8 @@ export default function App() {
     decimal: null,
     float: null,
     date: null,
-    datetime: null
+    datetime: null,
+    boolean: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
@@ -78,6 +81,12 @@ export default function App() {
         placeholder="DateTimeInput"
       />
 
+      <BooleanInput
+        value={values.boolean}
+        onChange={set("boolean")}
+        style={styles.switch}
+      />
+
       <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>
     </View>
   );
@@ -101,6 +110,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderColor: "#ddd",
     borderBottomWidth: 1
+  },
+  switch: {
+    marginBottom: 20
   },
   values: {
     padding: 10,
