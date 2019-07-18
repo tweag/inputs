@@ -5,7 +5,8 @@ import {
   IntegerInput,
   DecimalInput,
   FloatInput,
-  DateInput
+  DateInput,
+  DateTimeInput
 } from "./src";
 
 interface Values {
@@ -14,6 +15,7 @@ interface Values {
   decimal: string | null;
   float: number | null;
   date: string | null;
+  datetime: string | null;
 }
 
 export default function App() {
@@ -22,7 +24,8 @@ export default function App() {
     integer: null,
     decimal: null,
     float: null,
-    date: null
+    date: null,
+    datetime: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
@@ -66,6 +69,13 @@ export default function App() {
         onChange={set("date")}
         style={styles.input}
         placeholder="DateInput"
+      />
+
+      <DateTimeInput
+        value={values.datetime}
+        onChange={set("datetime")}
+        style={styles.input}
+        placeholder="DateTimeInput"
       />
 
       <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>

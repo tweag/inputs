@@ -4,8 +4,7 @@ import parse from "date-fns/parse";
 import { TextInput } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 
-const PRETTY = "M/D/YYYY";
-const ISO = "YYYY-MM-DD";
+const PRETTY = "M/D/YYYY h:mmA";
 
 interface Props {
   value: string | null;
@@ -13,7 +12,11 @@ interface Props {
   [key: string]: any;
 }
 
-export const DateInput: React.FC<Props> = ({ value, onChange, ...props }) => {
+export const DateTimeInput: React.FC<Props> = ({
+  value,
+  onChange,
+  ...props
+}) => {
   const [isVisible, setVisible] = useState(false);
 
   return (
@@ -25,11 +28,12 @@ export const DateInput: React.FC<Props> = ({ value, onChange, ...props }) => {
       />
 
       <DateTimePicker
+        mode="datetime"
         date={value === null ? undefined : parse(value)}
         isVisible={isVisible}
         onCancel={() => setVisible(false)}
         onConfirm={value => {
-          onChange(format(value, ISO));
+          onChange(value.toISOString());
           setVisible(false);
         }}
       />
