@@ -10,12 +10,7 @@ interface Props {
 const RE_NUMBER = /^-?\d*\.?\d*/;
 
 export class DecimalInput extends Component<Props> {
-  private inputRef: React.RefObject<TextInput>;
-
-  public constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
+  private inputRef = React.createRef<TextInput>();
 
   private emitChange(value: string | null) {
     if (value !== this.props.value) {
