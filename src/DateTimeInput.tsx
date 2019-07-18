@@ -3,20 +3,17 @@ import format from "date-fns/format";
 import parse from "date-fns/parse";
 import { TextInput } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import { CustomInputProps } from "./types";
 
 const PRETTY = "M/D/YYYY h:mmA";
-
-interface Props {
-  value: string | null;
-  onChange: (value: string) => void;
-  [key: string]: any;
-}
 
 interface State {
   isVisible: boolean;
 }
 
-export class DateTimeInput extends Component<Props, State> {
+export type DateTimeInputProps = CustomInputProps<string | null>;
+
+export class DateTimeInput extends Component<DateTimeInputProps, State> {
   public state = {
     isVisible: false
   };

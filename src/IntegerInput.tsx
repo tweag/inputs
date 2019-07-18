@@ -1,11 +1,6 @@
 import React from "react";
 import { TextInput } from "react-native";
-
-interface Props {
-  value: number | null;
-  onChange: (value: number | null) => void;
-  [key: string]: any;
-}
+import { CustomInputProps } from "./types";
 
 const clean = (input: string): string => {
   return input.replace(/[^0-9]/g, "");
@@ -16,7 +11,9 @@ const parse = (input: string): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export const IntegerInput: React.FC<Props> = ({
+export type IntegerInputProps = CustomInputProps<number | null>;
+
+export const IntegerInput: React.FC<IntegerInputProps> = ({
   value,
   onChange,
   ...props

@@ -1,17 +1,14 @@
 import React from "react";
 import { TextInput } from "react-native";
-
-interface Props {
-  value: string | null;
-  onChange: (value: string | null) => void;
-  [key: string]: any;
-}
+import { CustomInputProps } from "./types";
 
 const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
 };
 
-export const Input: React.FC<Props> = ({ value, onChange, ...props }) => (
+export type InputProps = CustomInputProps<string | null>;
+
+export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => (
   <TextInput
     value={value === null ? "" : value}
     onChangeText={value => onChange(parse(value))}
