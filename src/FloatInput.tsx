@@ -20,6 +20,7 @@ export const FloatInput: React.FC<Props> = ({ value, onChange, ...props }) => (
   <DecimalInput
     value={value === null ? "" : value.toString()}
     onChange={value => onChange(parse(value))}
+    keyboardType="numeric"
     {...props}
   />
 );

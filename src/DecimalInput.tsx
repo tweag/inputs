@@ -22,8 +22,8 @@ export class DecimalInput extends Component<Props> {
     const input = clean(rawInput);
     const value = parse(input);
 
-    if (input !== rawInput) {
-      this.inputRef.current!.setNativeProps({ text: input });
+    if (this.inputRef.current && input !== rawInput) {
+      this.inputRef.current.setNativeProps({ text: input });
     }
 
     if (value !== this.props.value) {
@@ -38,6 +38,7 @@ export class DecimalInput extends Component<Props> {
       <TextInput
         ref={this.inputRef}
         onChangeText={this.handleChange}
+        keyboardType="numeric"
         {...props}
       />
     );

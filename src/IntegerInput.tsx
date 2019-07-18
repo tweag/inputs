@@ -24,6 +24,7 @@ export const IntegerInput: React.FC<Props> = ({
   <TextInput
     value={value === null ? "" : value.toString()}
     onChangeText={value => onChange(parse(clean(value)))}
+    keyboardType="numeric"
     {...props}
   />
 );
