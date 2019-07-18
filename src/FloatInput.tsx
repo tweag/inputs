@@ -8,6 +8,10 @@ interface Props {
 }
 
 const parse = (input: string | null): number | null => {
+  if (input === null) {
+    return null;
+  }
+
   const value = parseFloat(input);
   return isNaN(value) ? null : value;
 };

@@ -11,4 +11,6 @@ export const BooleanInput: React.FC<Props> = ({
   value,
   onChange,
   ...props
-}) => <Switch value={value} onValueChange={onChange} {...props} />;
+}) => (
+  <Switch value={value ? true : false} onValueChange={onChange} {...props} />
+);

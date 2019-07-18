@@ -8,7 +8,7 @@ interface Props {
 }
 
 const clean = (input: string) => {
-  return input.match(/^-?\d*\.?\d*/)[0];
+  return input.match(/^-?\d*\.?\d*/)![0];
 };
 
 const parse = (input: string) => {
@@ -23,7 +23,7 @@ export class DecimalInput extends Component<Props> {
     const value = parse(input);
 
     if (input !== rawInput) {
-      this.inputRef.current.setNativeProps({ text: input });
+      this.inputRef.current!.setNativeProps({ text: input });
     }
 
     if (value !== this.props.value) {
