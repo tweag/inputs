@@ -7,6 +7,8 @@ interface Props {
   [key: string]: any;
 }
 
-export const BooleanInput = ({ value, onChange, ...props }) => (
-  <Switch value={value} onValueChange={onChange} {...props} />
-);
+export const BooleanInput: React.FC<Props> = ({
+  value,
+  onChange,
+  ...props
+}) => <Switch value={value} onValueChange={onChange} {...props} />;
