@@ -7,7 +7,11 @@
   "files": [
     "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "tsc -p .",
+    "prepublishOnly": "tsc -p .",
+    "typecheck": "tsc -p . --noEmit"
+  },
   "peerDependencies": {
     "react": ">=16",
     "react-native": ">=0.59"
