@@ -8,7 +8,7 @@ import {
   DateInput,
   DateTimeInput,
   BooleanInput
-} from "react-native-baseline-inputs";
+} from "../src/index";
 
 interface Values {
   string: string | null;

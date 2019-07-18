@@ -6,10 +6,6 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "react-native-baseline-inputs": ["../src/index"]
-    }
+    "skipLibCheck": true
   }
 }
