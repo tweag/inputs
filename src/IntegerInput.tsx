@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput } from "react-native";
-import { CustomInputProps } from "./types";
+import { CustomInputProps, InputComponent } from "./helpers";
 
 const clean = (input: string): string => {
   return input.replace(/[^0-9]/g, "");
@@ -13,15 +13,21 @@ const parse = (input: string): number | null => {
 
 export type IntegerInputProps = CustomInputProps<number | null>;
 
-export const IntegerInput: React.FC<IntegerInputProps> = ({
-  value,
-  onChange,
-  ...props
-}) => (
-  <TextInput
-    value={value === null ? "" : value.toString()}
-    onChangeText={value => onChange(parse(clean(value)))}
-    keyboardType="numeric"
-    {...props}
-  />
-);
+export class IntegerInput extends InputComponent<IntegerInputProps> {
+  private handleChange = (value: string) => {
+    this.props.onChange(parse(clean(value)));
+  }
+
+  public render() {
+    const { value, onChange, ...props } = this.props;
+
+    return (
+      <TextInput
+        value={value === null ? "" : value.toString()}
+        onChangeText={this.handleChange}
+        keyboardType="numeric"
+        {...props}
+      />
+    );
+  }
+}

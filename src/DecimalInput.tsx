@@ -1,6 +1,6 @@
-import React, { Component, createRef } from "react";
+import React from "react";
 import { TextInput } from "react-native";
-import { CustomInputProps } from "./types";
+import { InputComponent, CustomInputProps } from "./helpers";
 
 const clean = (input: string) => {
   return input.match(/^-?\d*\.?\d*/)![0];
@@ -12,15 +12,13 @@ const parse = (input: string) => {
 
 export type DecimalInputProps = CustomInputProps<string | null>;
 
-export class DecimalInput extends Component<DecimalInputProps> {
-  private inputRef = createRef<TextInput>();
-
+export class DecimalInput extends InputComponent<DecimalInputProps> {
   private handleChange = (rawInput: string) => {
     const input = clean(rawInput);
     const value = parse(input);
 
-    if (this.inputRef.current && input !== rawInput) {
-      this.inputRef.current.setNativeProps({ text: input });
+    if (input !== rawInput) {
+      this.setNativeProps({ text: input });
     }
 
     if (value !== this.props.value) {

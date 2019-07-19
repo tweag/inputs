@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import { TextInput } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { CustomInputProps } from "./types";
+import { CustomInputProps, InputComponent } from "./helpers";
 
 const PRETTY = "M/D/YYYY h:mmA";
 
@@ -13,16 +13,18 @@ interface State {
 
 export type DateTimeInputProps = CustomInputProps<string | null>;
 
-export class DateTimeInput extends Component<DateTimeInputProps, State> {
+export class DateTimeInput extends InputComponent<DateTimeInputProps, State> {
   public state = {
     isVisible: false
   };
 
   public focus = () => {
+    super.focus();
     this.setState({ isVisible: true });
   };
 
   public blur = () => {
+    super.blur();
     this.setState({ isVisible: false });
   };
 
@@ -38,6 +40,7 @@ export class DateTimeInput extends Component<DateTimeInputProps, State> {
     return (
       <>
         <TextInput
+          ref={this.inputRef}
           editable={false}
           onTouchStart={this.focus}
           value={value ? format(value, PRETTY) : ""}
