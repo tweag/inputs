@@ -1,4 +1,3 @@
-export * from "./BooleanInput";
 export * from "./DateInput";
 export * from "./DateTimeInput";
 export * from "./DecimalInput";
