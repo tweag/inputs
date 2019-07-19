@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FloatInput /> renders 1`] = `
+<DecimalInput
+  keyboardType="numeric"
+  onChange={[Function]}
+  value="5"
+/>
+`;
