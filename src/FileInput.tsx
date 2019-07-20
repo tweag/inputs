@@ -5,7 +5,7 @@ import { asFormik } from "./asFormik";
 interface MultipleFileProps extends ExtraInputProps<HTMLInputElement> {
   value?: any;
   multiple: true;
-  onChange: (value: File[]) => void;
+  onChange: (value: FileList) => void;
 }
 
 interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
@@ -16,7 +16,11 @@ interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
 
 export type FileInputProps = SingleFileProps | MultipleFileProps;
 
-export const FileInput: React.FC<FileInputProps> = ({ onChange, value: _value, ...props }) => {
+export const FileInput: React.FC<FileInputProps> = ({
+  onChange,
+  value: _value,
+  ...props
+}) => {
   const handleChange = React.useCallback(
     event => {
       if (props.multiple) {
