@@ -4,25 +4,19 @@ import { asFormik } from "./asFormik";
 
 export type InputProps = CustomInputProps<HTMLInputElement, string | null>;
 
-const isBlank = (value: any) => {
-  return typeof value === 'string' && /^\s*$/.test(value);
-};
-
 export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
   const handleChange = React.useCallback(
-    event => {
-      const value = event.target.value;
-
-      if (isBlank(value)) {
-        onChange(null);
-      } else {
-        onChange(value);
-      }
-    },
+    event => onChange(event.target.value || null),
     [onChange]
   );
 
-  return <input {...props} value={value === null ? "" : value} onChange={handleChange} />;
+  return (
+    <input
+      {...props}
+      value={value === null ? "" : value}
+      onChange={handleChange}
+    />
+  );
 };
 
 export const FormikInput = asFormik(Input);
