@@ -49,8 +49,5 @@
     "tsdx": "^0.7.2",
     "tslib": "^1.10.0",
     "typescript": "^3.5.3"
-  },
-  "resolutions": {
-    "@types/react": "^16.8.6"
   }
 }
