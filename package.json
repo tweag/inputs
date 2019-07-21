@@ -1,0 +1,39 @@
+{
+  "name": "formik-native-inputs",
+  "license": "MIT",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "prepublishOnly": "tsc -p .",
+    "typecheck": "tsc -p . --noEmit",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-native": ">=0.59"
+  },
+  "dependencies": {
+    "react-native-baseline-inputs": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.19",
+    "@types/react-native": "^0.57.60",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.8.0",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "0.59.9",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+example/.expo/*
+npm-debug.*
+yarn-error.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
