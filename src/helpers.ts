@@ -1,8 +1,12 @@
 import { Component, createRef } from "react";
 import { TextInput, TextInputProps } from "react-native";
 
-export interface CustomInputProps<T>
-  extends Omit<Omit<TextInputProps, "value">, "onChange"> {
+export type BaseTextInputProps = Omit<
+  TextInputProps,
+  "value" | "onChange" | "onChangeText"
+>;
+
+export interface CustomInputProps<T> extends BaseTextInputProps {
   value: T;
   onChange: (value: T) => void;
 }
