@@ -24,6 +24,7 @@ export class FloatInput extends InputComponent<FloatInputProps> {
 
     return (
       <DecimalInput
+        ref={this.inputRef}
         value={value === null ? "" : value.toString()}
         onChange={this.handleChange}
         keyboardType="numeric"

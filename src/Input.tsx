@@ -18,6 +18,7 @@ export class Input extends InputComponent<InputProps> {
 
     return (
       <TextInput
+        ref={this.inputRef}
         value={value === null ? "" : value.toString()}
         onChangeText={this.handleChange}
         {...props}

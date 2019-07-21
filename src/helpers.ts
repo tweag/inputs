@@ -9,11 +9,10 @@ export type InputAttributes<T> = Omit<
 export type CustomInputProps<T, V> = InputAttributes<T> & {
   value: V;
   onChange: (value: V) => void;
-  innerRef?: any;
 };
 
 export class InputComponent<P = {}, S = {}> extends Component<P, S> {
-  protected inputRef = createRef<TextInput>();
+  public inputRef = createRef<any>();
 
   public focus() {
     if (this.inputRef.current) {

@@ -19,11 +19,11 @@ export class IntegerInput extends InputComponent<IntegerInputProps> {
   };
 
   public render() {
-    const { innerRef, value, onChange, ...props } = this.props;
+    const { value, onChange, ...props } = this.props;
 
     return (
       <TextInput
-        ref={innerRef}
+        ref={this.inputRef}
         value={value === null ? "" : value.toString()}
         onChangeText={this.handleChange}
         keyboardType="numeric"
