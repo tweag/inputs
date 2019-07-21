@@ -13,6 +13,7 @@
     "build": "tsdx build",
     "test": "TZ=America/New_York tsdx test --env=jsdom",
     "format": "prettier --write '{src,docs}/**/*.{ts,tsx}'",
+    "typecheck": "tsc -p . --noEmit",
     "prepublishOnly": "tsdx test && tsdx build"
   },
   "jest": {

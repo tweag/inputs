@@ -3,5 +3,6 @@ node_js:
   - node
   - lts/*
 script:
+  - yarn typecheck
   - yarn test --ci
   - yarn build
