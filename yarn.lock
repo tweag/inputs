@@ -2638,7 +2638,7 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-date-fns@^1.30.1:
+date-fns@^1.30:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
@@ -6521,10 +6521,12 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-baseline-inputs@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-baseline-inputs/-/react-baseline-inputs-0.4.1.tgz#40f798e4b64242b64c8bcf7bcafa8eed40447c07"
-  integrity sha512-4tke8jnVlBYLNr95H4HLDRLVypLQMUakfeTq2kA7poXoEh9d+OCBMhoHpzpKEBDC7+tEGQDl2QNQSAEuiGSEDA==
+react-baseline-inputs@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-baseline-inputs/-/react-baseline-inputs-0.5.0.tgz#1432d9deaadbd3ac23f38de0a380055ce3ce6e35"
+  integrity sha512-lkVdd8dlkqNt8J9p5Ih+VNeGaVSoz3rai3NGnvHiV675m5ijaZUjRxrwqdy8FByYvvSHYRKDo05rywa7oktBFA==
+  dependencies:
+    date-fns "^1.30"
 
 react-dom@^16.8.6:
   version "16.8.6"

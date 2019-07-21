@@ -3,7 +3,17 @@ import "./App.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Formik, Form } from "formik";
-import { Input } from "../src/";
+
+import {
+  Input,
+  Select,
+  Checkbox,
+  IntegerInput,
+  FloatInput,
+  DateInput,
+  DateTimeInput,
+  FileInput
+} from "../src/";
 
 interface Values {
   string: string | null;
@@ -36,14 +46,64 @@ const onSubmit = (values: Values) => {
 const App = () => {
   return (
     <div className="App">
-      <h1>Formik Inputs</h1>
+      <header>
+        <h1>Baseline Inputs</h1>
+      </header>
 
-      <Formik onSubmit={onSubmit} initialValues={initialValues}>
-        <Form>
-          <Input name="string" />
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
+      <main>
+        <section>
+          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            <Form>
+              <label>
+                Input
+                <Input name="string" />
+              </label>
+
+              <label>
+                Select
+                <Select name="select" options={["One", "Two", "Three"]} />
+              </label>
+
+              <label>
+                Integer
+                <IntegerInput name="integer" />
+              </label>
+
+              <label>
+                Float
+                <FloatInput name="float" />
+              </label>
+
+              <label>
+                Date
+                <DateInput name="date" />
+              </label>
+
+              <label>
+                DateTime
+                <DateTimeInput name="datetime" />
+              </label>
+
+              <label>
+                File
+                <FileInput name="file" />
+              </label>
+
+              <label>
+                Files
+                <FileInput name="file" multiple />
+              </label>
+
+              <label>
+                Checkbox
+                <Checkbox name="boolean" />
+              </label>
+
+              <button type="submit">Submit</button>
+            </Form>
+          </Formik>
+        </section>
+      </main>
     </div>
   );
 };
