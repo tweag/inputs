@@ -7,8 +7,7 @@ export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   key?: any;
 }
 
-export interface SelectProps
-  extends CustomInputProps<HTMLSelectElement, string | null> {
+export interface SelectProps extends CustomInputProps<"select", string | null> {
   placeholder?: string;
   options: Array<SelectOption | string>;
 }

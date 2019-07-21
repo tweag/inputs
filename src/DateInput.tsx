@@ -4,7 +4,7 @@ import format from "date-fns/format";
 import parse from "date-fns/parse";
 import isValid from "date-fns/is_valid";
 
-export type DateInputProps = CustomInputProps<HTMLInputElement, string | null>;
+export type DateInputProps = CustomInputProps<"input", string | null>;
 
 export const DateInput: React.FC<DateInputProps> = ({
   value,

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export type CheckboxProps = CustomInputProps<HTMLInputElement, boolean | null>;
+export type CheckboxProps = CustomInputProps<"input", boolean | null>;
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,

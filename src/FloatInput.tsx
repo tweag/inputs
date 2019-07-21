@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export type FloatInputProps = CustomInputProps<HTMLInputElement, number | null>;
+export type FloatInputProps = CustomInputProps<"input", number | null>;
 
 export const FloatInput: React.FC<FloatInputProps> = ({
   value,

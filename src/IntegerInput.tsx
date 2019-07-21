@@ -1,10 +1,7 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export type IntegerInputProps = CustomInputProps<
-  HTMLInputElement,
-  number | null
->;
+export type IntegerInputProps = CustomInputProps<"input", number | null>;
 
 export const IntegerInput: React.FC<IntegerInputProps> = ({
   value,

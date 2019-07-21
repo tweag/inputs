@@ -1,13 +1,13 @@
 import * as React from "react";
 import { ExtraInputProps } from "./types";
 
-interface MultipleFileProps extends ExtraInputProps<HTMLInputElement> {
+interface MultipleFileProps extends ExtraInputProps<"input"> {
   value?: any;
   multiple: true;
   onChange: (value: FileList) => void;
 }
 
-interface SingleFileProps extends ExtraInputProps<HTMLInputElement> {
+interface SingleFileProps extends ExtraInputProps<"input"> {
   value?: any;
   multiple?: false | undefined;
   onChange: (value: File) => void;
