@@ -1,8 +1,8 @@
 import "./App.css";
-import "babel-polyfill";
+import "react-app-polyfill/stable";
 
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { ObjectInspector, chromeLight } from "react-inspector";
 
 import {
@@ -29,7 +29,7 @@ interface Values {
 }
 
 const App = () => {
-  const [values, setValues] = useState<Values>({
+  const [values, setValues] = React.useState<Values>({
     string: null,
     select: null,
     integer: null,
