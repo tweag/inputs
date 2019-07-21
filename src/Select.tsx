@@ -1,6 +1,5 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
-import { asFormik } from "./asFormik";
 
 export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;
@@ -61,5 +60,3 @@ export const Select: React.FC<SelectProps> = ({
     </select>
   );
 };
-
-export const FormikSelect = asFormik(Select);

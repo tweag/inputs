@@ -1,6 +1,5 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
-import { asFormik } from "./asFormik";
 
 export type FloatInputProps = CustomInputProps<HTMLInputElement, number | null>;
 
@@ -26,5 +25,3 @@ export const FloatInput: React.FC<FloatInputProps> = ({
     />
   );
 };
-
-export const FormikFloatInput = asFormik(FloatInput);

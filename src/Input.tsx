@@ -1,6 +1,5 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
-import { asFormik } from "./asFormik";
 
 export type InputProps = CustomInputProps<HTMLInputElement, string | null>;
 
@@ -18,5 +17,3 @@ export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
     />
   );
 };
-
-export const FormikInput = asFormik(Input);

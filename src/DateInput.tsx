@@ -3,12 +3,8 @@ import { CustomInputProps } from "./types";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import isValid from "date-fns/is_valid";
-import { asFormik } from "./asFormik";
 
-export type DateInputProps = CustomInputProps<
-  HTMLInputElement,
-  string | null
->;
+export type DateInputProps = CustomInputProps<HTMLInputElement, string | null>;
 
 export const DateInput: React.FC<DateInputProps> = ({
   value,
@@ -42,5 +38,3 @@ export const DateInput: React.FC<DateInputProps> = ({
     />
   );
 };
-
-export const FormikDateInput = asFormik(DateInput);
