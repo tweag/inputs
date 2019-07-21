@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 
 import {
   Input,
@@ -37,6 +37,12 @@ const initialValues: Values = {
   files: null
 };
 
+const notBlank = (value: any) => {
+  if (!value) {
+    return "The value cannot be blank.";
+  }
+};
+
 const onSubmit = (values: Values) => {
   console.log(values);
 };
@@ -54,7 +60,8 @@ const App = () => {
             <Form>
               <label>
                 Input
-                <Input name="input" />
+                <Input name="input" validate={notBlank} />
+                <ErrorMessage name="input" />
               </label>
 
               <label>
