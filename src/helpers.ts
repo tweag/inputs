@@ -1,5 +1,4 @@
 import { Component, createRef } from "react";
-import { TextInput } from "react-native";
 
 export type InputAttributes<T> = Omit<
   T,
