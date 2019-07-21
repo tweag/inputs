@@ -27,7 +27,7 @@ export function createCustomField<T extends AnyComponent>(
     innerRef,
     ...inputProps
   }) => (
-    <Field name={name} validate={validate} innerRef={innerRef}>
+    <Field name={name} validate={validate}>
       {({ form, field }: FieldProps) => {
         const onChange = React.useCallback(
           value => form.setFieldValue(field.name, value),
@@ -40,7 +40,7 @@ export function createCustomField<T extends AnyComponent>(
           onChange
         };
 
-        return <InputComponent {...props} />;
+        return <InputComponent ref={innerRef} {...props} />;
       }}
     </Field>
   );
