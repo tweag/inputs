@@ -1,5 +1,3 @@
-import "./App.css";
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { Formik, Form } from "formik";
@@ -16,25 +14,25 @@ import {
 } from "../src/";
 
 interface Values {
-  string: string | null;
+  input: string | null;
   select: string | null;
   integer: number | null;
   float: number | null;
   date: string | null;
   datetime: string | null;
-  boolean: boolean | null;
+  checkbox: boolean | null;
   file: File | null;
   files: FileList | null;
 }
 
 const initialValues: Values = {
-  string: null,
+  input: null,
   select: null,
   integer: null,
   float: null,
   date: null,
   datetime: null,
-  boolean: null,
+  checkbox: null,
   file: null,
   files: null
 };
@@ -56,7 +54,7 @@ const App = () => {
             <Form>
               <label>
                 Input
-                <Input name="string" />
+                <Input name="input" />
               </label>
 
               <label>
@@ -80,7 +78,7 @@ const App = () => {
               </label>
 
               <label>
-                DateTime
+                Date Time
                 <DateTimeInput name="datetime" />
               </label>
 
@@ -96,7 +94,7 @@ const App = () => {
 
               <label>
                 Checkbox
-                <Checkbox name="boolean" />
+                <Checkbox name="checkbox" />
               </label>
 
               <button type="submit">Submit</button>
