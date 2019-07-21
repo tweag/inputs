@@ -1,7 +1,7 @@
 import React from "react";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { CustomInputProps, InputComponent } from "./helpers";
 
@@ -11,7 +11,10 @@ interface State {
   isVisible: boolean;
 }
 
-export type DateTimeInputProps = CustomInputProps<string | null>;
+export type DateTimeInputProps = CustomInputProps<
+  TextInputProps,
+  string | null
+>;
 
 export class DateTimeInput extends InputComponent<DateTimeInputProps, State> {
   public state = {

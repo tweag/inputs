@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import { CustomInputProps, InputComponent } from "./helpers";
 
 const clean = (input: string): string => {
@@ -11,18 +11,19 @@ const parse = (input: string): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export type IntegerInputProps = CustomInputProps<number | null>;
+export type IntegerInputProps = CustomInputProps<TextInputProps, number | null>;
 
 export class IntegerInput extends InputComponent<IntegerInputProps> {
   private handleChange = (value: string) => {
     this.props.onChange(parse(clean(value)));
-  }
+  };
 
   public render() {
-    const { value, onChange, ...props } = this.props;
+    const { innerRef, value, onChange, ...props } = this.props;
 
     return (
       <TextInput
+        ref={innerRef}
         value={value === null ? "" : value.toString()}
         onChangeText={this.handleChange}
         keyboardType="numeric"

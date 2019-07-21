@@ -1,12 +1,12 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import { CustomInputProps, InputComponent } from "./helpers";
 
 const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
 };
 
-export type InputProps = CustomInputProps<string | null>;
+export type InputProps = CustomInputProps<TextInputProps, string | null>;
 
 export class Input extends InputComponent<InputProps> {
   private handleChange = (value: string) => {

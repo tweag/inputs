@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import { InputComponent, CustomInputProps } from "./helpers";
 
 const clean = (input: string) => {
@@ -10,7 +10,7 @@ const parse = (input: string) => {
   return ["", "-"].includes(input) ? null : input.replace(/\.$/, "");
 };
 
-export type DecimalInputProps = CustomInputProps<string | null>;
+export type DecimalInputProps = CustomInputProps<TextInputProps, string | null>;
 
 export class DecimalInput extends InputComponent<DecimalInputProps> {
   private handleChange = (rawInput: string) => {

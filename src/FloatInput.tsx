@@ -1,6 +1,7 @@
 import React from "react";
 import { DecimalInput } from "./DecimalInput";
 import { CustomInputProps, InputComponent } from "./helpers";
+import { TextInputProps } from "react-native";
 
 const parse = (input: string | null): number | null => {
   if (input === null) {
@@ -11,12 +12,12 @@ const parse = (input: string | null): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export type FloatInputProps = CustomInputProps<number | null>;
+export type FloatInputProps = CustomInputProps<TextInputProps, number | null>;
 
 export class FloatInput extends InputComponent<FloatInputProps> {
   private handleChange = (value: string | null) => {
-    this.props.onChange(parse(value))
-  }
+    this.props.onChange(parse(value));
+  };
 
   public render() {
     const { value, onChange, ...props } = this.props;

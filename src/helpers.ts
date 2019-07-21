@@ -1,15 +1,16 @@
 import { Component, createRef } from "react";
-import { TextInput, TextInputProps } from "react-native";
+import { TextInput } from "react-native";
 
-export type BaseTextInputProps = Omit<
-  TextInputProps,
-  "value" | "onChange" | "onChangeText"
+export type InputAttributes<T> = Omit<
+  T,
+  "value" | "onChange" | "onChangeText" | "onChangeValue"
 >;
 
-export interface CustomInputProps<T> extends BaseTextInputProps {
-  value: T;
-  onChange: (value: T) => void;
-}
+export type CustomInputProps<T, V> = InputAttributes<T> & {
+  value: V;
+  onChange: (value: V) => void;
+  innerRef?: any;
+};
 
 export class InputComponent<P = {}, S = {}> extends Component<P, S> {
   protected inputRef = createRef<TextInput>();
