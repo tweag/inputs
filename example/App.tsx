@@ -6,8 +6,7 @@ import {
   DecimalInput,
   FloatInput,
   DateInput,
-  DateTimeInput,
-  BooleanInput
+  DateTimeInput
 } from "../src/index";
 
 interface Values {
@@ -17,7 +16,6 @@ interface Values {
   float: number | null;
   date: string | null;
   datetime: string | null;
-  boolean: boolean | null;
 }
 
 export default function App() {
@@ -28,7 +26,6 @@ export default function App() {
     float: null,
     date: null,
     datetime: null,
-    boolean: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
@@ -79,12 +76,6 @@ export default function App() {
         onChange={set("datetime")}
         style={styles.input}
         placeholder="DateTimeInput"
-      />
-
-      <BooleanInput
-        value={values.boolean}
-        onChange={set("boolean")}
-        style={styles.switch}
       />
 
       <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>

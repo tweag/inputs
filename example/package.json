@@ -9,11 +9,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "date-fns": "^1.30",
     "expo": "^33.0.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-baseline-inputs": "file:../"
+    "react-native-modal-datetime-picker": "^7.5.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.19",
