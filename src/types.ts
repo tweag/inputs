@@ -1,6 +1,6 @@
 export type InputAttributes<P> = Omit<
   P,
-  "value" | "onChange" | "onChangeText" | "onChangeValue"
+  "value" | "onChange" | "onChangeText" | "onValueChange"
 >;
 
 export type CustomInputProps<C, P, V> = InputAttributes<P> & {

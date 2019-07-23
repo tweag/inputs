@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { TextInputProps, TextInput } from "react-native";
 import { DecimalInput } from "./DecimalInput";
 import { CustomInputProps } from "./types";
+import { styles } from "./styles";
 
 const parse = (input: string | null): number | null => {
   if (input === null) {
@@ -24,11 +25,12 @@ export class FloatInput extends Component<FloatInputProps> {
   };
 
   public render() {
-    const { value, onChange, innerRef, ...props } = this.props;
+    const { value, onChange, innerRef, style, ...props } = this.props;
 
     return (
       <DecimalInput
         innerRef={innerRef}
+        style={[styles.input, style]}
         value={value === null ? "" : value.toString()}
         onChange={this.handleChange}
         keyboardType="numeric"

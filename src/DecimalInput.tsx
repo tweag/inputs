@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TextInput, TextInputProps } from "react-native";
 import { CustomInputProps } from "./types";
+import { styles } from "./styles";
 
 const clean = (input: string) => {
   return input.match(/^-?\d*\.?\d*/)![0];
@@ -41,11 +42,12 @@ export class DecimalInput extends Component<DecimalInputProps> {
   };
 
   public render() {
-    const { value, onChange, innerRef, ...props } = this.props;
+    const { value, onChange, innerRef, style, ...props } = this.props;
 
     return (
       <TextInput
         ref={this.handleRef}
+        style={[styles.input, style]}
         onChangeText={this.handleChange}
         keyboardType="numeric"
         {...props}
