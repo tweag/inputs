@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { TextInput, TextInputProps } from "react-native";
-import { CustomInputProps, InputComponent } from "./helpers";
+import { CustomInputProps } from "./types";
 
 const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
@@ -8,17 +8,17 @@ const parse = (value: string) => {
 
 export type InputProps = CustomInputProps<TextInputProps, string | null>;
 
-export class Input extends InputComponent<InputProps> {
+export class Input extends Component<InputProps> {
   private handleChange = (value: string) => {
     this.props.onChange(parse(value));
   };
 
   public render() {
-    const { value, onChange, ...props } = this.props;
+    const { value, onChange, innerRef, ...props } = this.props;
 
     return (
       <TextInput
-        ref={this.inputRef}
+        ref={innerRef}
         value={value === null ? "" : value.toString()}
         onChangeText={this.handleChange}
         {...props}
