@@ -12,8 +12,8 @@
     "start": "parcel example/index.html",
     "build": "tsdx build",
     "test": "TZ=America/New_York tsdx test --env=jsdom",
-    "format": "prettier --write '{src,example}/**/*.{ts,tsx}'",
-    "format:check": "prettier --check '{src,example}/**/*.{ts,tsx}'",
+    "format": "prettier --write '{src,test,example}/**/*.{ts,tsx}'",
+    "format:check": "prettier --check '{src,test,example}/**/*.{ts,tsx}'",
     "typecheck": "tsc -p . --noEmit",
     "prepublishOnly": "tsdx test && tsdx build"
   },

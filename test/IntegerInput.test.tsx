@@ -5,9 +5,7 @@ import { IntegerInput } from "../src";
 describe("<IntegerInput />", () => {
   it("renders", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <IntegerInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<IntegerInput value={null} onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
       <input
@@ -20,9 +18,7 @@ describe("<IntegerInput />", () => {
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <IntegerInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<IntegerInput value={null} onChange={onChange} />);
 
     input.simulate("change", {
       target: { value: "5" }
@@ -33,9 +29,7 @@ describe("<IntegerInput />", () => {
 
   it("emits `null` if the value is not an integer", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <IntegerInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<IntegerInput value={null} onChange={onChange} />);
 
     input.simulate("change", {
       target: { value: "" }

@@ -4,7 +4,7 @@ import { FileInput } from "../src";
 
 describe("<FileInput />", () => {
   describe("single", () => {
-    const file = Symbol('File');
+    const file = Symbol("File");
 
     it("renders", () => {
       const onChange = jest.fn();
@@ -42,7 +42,7 @@ describe("<FileInput />", () => {
   });
 
   describe("multiple", () => {
-    const fileList = Symbol('FileList');
+    const fileList = Symbol("FileList");
 
     it("renders", () => {
       const onChange = jest.fn();

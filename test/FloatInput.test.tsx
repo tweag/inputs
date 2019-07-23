@@ -5,9 +5,7 @@ import { FloatInput } from "../src";
 describe("<FloatInput />", () => {
   it("renders", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <FloatInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<FloatInput value={null} onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
       <input
@@ -20,9 +18,7 @@ describe("<FloatInput />", () => {
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <FloatInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<FloatInput value={null} onChange={onChange} />);
 
     input.simulate("change", {
       target: { value: "5.5" }
@@ -33,9 +29,7 @@ describe("<FloatInput />", () => {
 
   it("emits `null` if the value is not a float", () => {
     const onChange = jest.fn();
-    const input = shallow(
-      <FloatInput value={null} onChange={onChange} />
-    );
+    const input = shallow(<FloatInput value={null} onChange={onChange} />);
 
     input.simulate("change", {
       target: { value: "" }
