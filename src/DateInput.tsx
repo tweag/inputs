@@ -12,7 +12,11 @@ interface State {
   isVisible: boolean;
 }
 
-export type DateInputProps = CustomInputProps<TextInputProps, string | null>;
+export type DateInputProps = CustomInputProps<
+  TextInput,
+  TextInputProps,
+  string | null
+>;
 
 export class DateInput extends Component<DateInputProps, State> {
   public state = {

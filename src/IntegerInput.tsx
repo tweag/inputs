@@ -11,7 +11,11 @@ const parse = (input: string): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export type IntegerInputProps = CustomInputProps<TextInputProps, number | null>;
+export type IntegerInputProps = CustomInputProps<
+  TextInput,
+  TextInputProps,
+  number | null
+>;
 
 export class IntegerInput extends Component<IntegerInputProps> {
   private handleChange = (value: string) => {

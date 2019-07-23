@@ -10,7 +10,11 @@ const parse = (input: string) => {
   return ["", "-"].includes(input) ? null : input.replace(/\.$/, "");
 };
 
-export type DecimalInputProps = CustomInputProps<TextInputProps, string | null>;
+export type DecimalInputProps = CustomInputProps<
+  TextInput,
+  TextInputProps,
+  string | null
+>;
 
 export class DecimalInput extends Component<DecimalInputProps> {
   private inputRef: TextInput | null = null;
@@ -34,7 +38,7 @@ export class DecimalInput extends Component<DecimalInputProps> {
     if (this.props.innerRef) {
       this.props.innerRef(input);
     }
-  }
+  };
 
   public render() {
     const { value, onChange, innerRef, ...props } = this.props;

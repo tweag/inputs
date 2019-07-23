@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TextInputProps } from "react-native";
+import { TextInputProps, TextInput } from "react-native";
 import { DecimalInput } from "./DecimalInput";
 import { CustomInputProps } from "./types";
 
@@ -12,7 +12,11 @@ const parse = (input: string | null): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export type FloatInputProps = CustomInputProps<TextInputProps, number | null>;
+export type FloatInputProps = CustomInputProps<
+  TextInput,
+  TextInputProps,
+  number | null
+>;
 
 export class FloatInput extends Component<FloatInputProps> {
   private handleChange = (value: string | null) => {

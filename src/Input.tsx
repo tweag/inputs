@@ -6,7 +6,11 @@ const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
 };
 
-export type InputProps = CustomInputProps<TextInputProps, string | null>;
+export type InputProps = CustomInputProps<
+  TextInput,
+  TextInputProps,
+  string | null
+>;
 
 export class Input extends Component<InputProps> {
   private handleChange = (value: string) => {

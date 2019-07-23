@@ -12,6 +12,7 @@ interface State {
 }
 
 export type DateTimeInputProps = CustomInputProps<
+  TextInput,
   TextInputProps,
   string | null
 >;
