@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { styles } from "./styles";
 import {
   Picker as RNPicker,
   Platform,
   TextInput,
   StyleProp,
   ViewStyle,
-  ActionSheetIOS,
-  View
+  ActionSheetIOS
 } from "react-native";
 
 export interface PickerOption {
@@ -40,7 +38,7 @@ const PickerAndroid: React.FC<PickerProps> = ({
   options,
   style
 }) => (
-  <RNPicker ref={innerRef} selectedValue={value} onValueChange={onChange} itemStyle={[styles.picker, style]}>
+  <RNPicker ref={innerRef} selectedValue={value} onValueChange={onChange}>
     {options.map(option => (
       <RNPicker.Item {...getProps(option)} />
     ))}
@@ -60,12 +58,11 @@ class PickerIOS extends Component<PickerProps> {
   };
 
   public render() {
-    const { value, style } = this.props;
+    const { value } = this.props;
 
     return (
       <TextInput
         editable={false}
-        style={[styles.input, style]}
         onTouchStart={this.focus}
         value={value === null ? "" : value}
       />

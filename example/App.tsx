@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import {
   Input,
   IntegerInput,
@@ -8,7 +8,7 @@ import {
   DateInput,
   DateTimeInput,
   Switch,
-  Picker,
+  Picker
 } from "../src/index";
 
 interface Values {
@@ -21,6 +21,13 @@ interface Values {
   switch: boolean | null;
   picker: string | null;
 }
+
+const Item: React.FC<{ label: string }> = ({ label, children }) => (
+  <View style={styles.item}>
+    <Text style={styles.label}>{label}</Text>
+    {children}
+  </View>
+);
 
 export default function App() {
   const [values, setValues] = useState<Values>({
@@ -43,66 +50,47 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Baseline Inputs</Text>
 
-      <Input
-        value={values.input}
-        onChange={set("input")}
-        style={styles.input}
-        placeholder="Input"
-      />
+      <Item label="Input">
+        <Input value={values.input} onChange={set("input")} />
+      </Item>
 
-      <IntegerInput
-        value={values.integer}
-        onChange={set("integer")}
-        style={styles.input}
-        placeholder="Integer"
-      />
+      <Item label="Integer">
+        <IntegerInput value={values.integer} onChange={set("integer")} />
+      </Item>
 
-      <DecimalInput
-        value={values.decimal}
-        onChange={set("decimal")}
-        style={styles.input}
-        placeholder="Decimal"
-      />
+      <Item label="Decimal">
+        <DecimalInput value={values.decimal} onChange={set("decimal")} />
+      </Item>
 
-      <FloatInput
-        value={values.float}
-        onChange={set("float")}
-        style={styles.input}
-        placeholder="Float"
-      />
+      <Item label="Float">
+        <FloatInput value={values.float} onChange={set("float")} />
+      </Item>
 
-      <DateInput
-        value={values.date}
-        onChange={set("date")}
-        style={styles.input}
-        placeholder="Date"
-      />
+      <Item label="Date">
+        <DateInput value={values.date} onChange={set("date")} />
+      </Item>
 
-      <DateTimeInput
-        value={values.datetime}
-        onChange={set("datetime")}
-        style={styles.input}
-        placeholder="Date Time"
-      />
+      <Item label="Date Time">
+        <DateTimeInput value={values.datetime} onChange={set("datetime")} />
+      </Item>
 
-      <Picker
-        style
-        value={values.picker}
-        onChange={set("picker")}
-        options={['Foo', 'Bar']}
-      />
+      <Item label="Picker">
+        <Picker
+          value={values.picker}
+          onChange={set("picker")}
+          options={["Foo", "Bar"]}
+        />
+      </Item>
 
-      <Switch
-        value={values.switch}
-        onChange={set("switch")}
-        style={styles.input}
-      />
+      <Item label="Switch">
+        <Switch value={values.switch} onChange={set("switch")} />
+      </Item>
 
       <Button title="Submit" onPress={onSubmit} />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -118,12 +106,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20
   },
-  input: {
-    height: 40,
-    paddingLeft: 5,
-    paddingRight: 5,
-    marginBottom: 10,
+  item: {
+    marginBottom: 20,
     borderColor: "#ddd",
     borderBottomWidth: 1
+  },
+  label: {
+    fontWeight: "bold"
   }
 });

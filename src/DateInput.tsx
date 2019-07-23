@@ -4,7 +4,6 @@ import parse from "date-fns/parse";
 import { TextInput, TextInputProps } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { CustomInputProps } from "./types";
-import { styles } from "./styles";
 
 const PRETTY = "M/D/YYYY";
 const ISO = "YYYY-MM-DD";
@@ -39,7 +38,7 @@ export class DateInput extends Component<DateInputProps, State> {
 
   public render() {
     const { isVisible } = this.state;
-    const { value, onChange, innerRef, style, ...props } = this.props;
+    const { value, onChange, innerRef, ...props } = this.props;
 
     return (
       <>
@@ -47,7 +46,6 @@ export class DateInput extends Component<DateInputProps, State> {
           ref={innerRef}
           editable={false}
           onTouchStart={this.focus}
-          style={[styles.input, style]}
           value={value ? format(value, PRETTY) : ""}
           {...props}
         />

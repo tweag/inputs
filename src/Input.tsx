@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { TextInput, TextInputProps } from "react-native";
 import { CustomInputProps } from "./types";
-import { styles } from "./styles";
 
 const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
@@ -19,12 +18,11 @@ export class Input extends Component<InputProps> {
   };
 
   public render() {
-    const { value, onChange, innerRef, style, ...props } = this.props;
+    const { value, onChange, innerRef, ...props } = this.props;
 
     return (
       <TextInput
         ref={innerRef}
-        style={[styles.input, style]}
         value={value === null ? "" : value.toString()}
         onChangeText={this.handleChange}
         {...props}
