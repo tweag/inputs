@@ -25,7 +25,7 @@ export default function App() {
     decimal: null,
     float: null,
     date: null,
-    datetime: null,
+    datetime: null
   });
 
   const set = (name: keyof Values) => (value: any) => {

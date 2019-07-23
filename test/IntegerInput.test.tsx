@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { IntegerInput } from "../src";
 
-describe('<IntegerInput />', () => {
+describe("<IntegerInput />", () => {
   it("renders", () => {
     const onChange = jest.fn();
     const input = shallow(<IntegerInput value={5} onChange={onChange} />);

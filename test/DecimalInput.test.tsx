@@ -14,7 +14,7 @@ describe("<DecimalInput />", () => {
   beforeEach(() => {
     onChange = jest.fn();
     input = shallow(<DecimalInput value="99" onChange={onChange} />);
-    setNativeProps = jest.spyOn(input.instance(), 'setNativeProps');
+    setNativeProps = jest.spyOn(input.instance(), "setNativeProps");
   });
 
   it("renders", () => {

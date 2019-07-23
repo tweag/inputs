@@ -11,6 +11,8 @@
     "build": "tsc -p .",
     "prepublishOnly": "tsc -p .",
     "typecheck": "tsc -p . --noEmit",
+    "format": "prettier --write '{src,test,example}/**/*.{ts,tsx}'",
+    "format:check": "prettier --check '{src,test,example}/**/*.{ts,tsx}'",
     "test": "jest"
   },
   "peerDependencies": {
@@ -31,6 +33,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "0.59.9",
