@@ -54,34 +54,60 @@ export default function App() {
       <Text style={styles.title}>Baseline Inputs</Text>
 
       <Item label="Input">
-        <Input value={values.input} onChange={set("input")} />
+        <Input
+          value={values.input}
+          onChange={set("input")}
+          style={styles.input}
+        />
       </Item>
 
       <Item label="Integer">
-        <IntegerInput value={values.integer} onChange={set("integer")} />
+        <IntegerInput
+          value={values.integer}
+          onChange={set("integer")}
+          style={styles.input}
+          placeholder="Hello"
+        />
       </Item>
 
       <Item label="Decimal">
-        <DecimalInput value={values.decimal} onChange={set("decimal")} />
+        <DecimalInput
+          value={values.decimal}
+          onChange={set("decimal")}
+          style={styles.input}
+        />
       </Item>
 
       <Item label="Float">
-        <FloatInput value={values.float} onChange={set("float")} />
+        <FloatInput
+          value={values.float}
+          onChange={set("float")}
+          style={styles.input}
+        />
       </Item>
 
       <Item label="Date">
-        <DateInput value={values.date} onChange={set("date")} />
+        <DateInput
+          value={values.date}
+          onChange={set("date")}
+          style={styles.input}
+        />
       </Item>
 
       <Item label="Date Time">
-        <DateTimeInput value={values.datetime} onChange={set("datetime")} />
+        <DateTimeInput
+          value={values.datetime}
+          onChange={set("datetime")}
+          style={styles.input}
+        />
       </Item>
 
       <Item label="Picker">
         <Picker
           value={values.picker}
           onChange={set("picker")}
-          options={["Foo", "Bar"]}
+          items={[{ value: "Foo", label: "Foo" }, "Bar"]}
+          style={styles.input}
         />
       </Item>
 
@@ -107,11 +133,17 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   item: {
-    marginBottom: 20,
-    borderColor: "#ddd",
-    borderBottomWidth: 1
+    marginBottom: 15
   },
   label: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginBottom: 4
+  },
+  input: {
+    minHeight: 36,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: "#ddd",
+    paddingHorizontal: 8
   }
 });

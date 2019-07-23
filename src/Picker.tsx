@@ -1,79 +1,50 @@
-import React, { Component } from "react";
-import {
-  Picker as RNPicker,
-  Platform,
-  TextInput,
-  StyleProp,
-  ViewStyle,
-  ActionSheetIOS
-} from "react-native";
+import React from "react";
+import { CustomInputProps } from "./types";
+import { ViewStyle, StyleProp, Platform } from "react-native";
+import PickerDefault, {
+  Item,
+  PickerProps as PickerPropsDefault
+} from "react-native-picker-select";
 
-export interface PickerOption {
-  key?: any;
-  label: string;
-  value: string;
-}
+export type PickerItem<T> = T extends string | number
+  ? Item & { value: T } | T
+  : Item & { value: T };
 
-export interface PickerProps {
-  value: string | null;
-  onChange: (value: string | null) => void;
-  options: Array<PickerOption | string>;
-  innerRef?: (instance: any) => void;
+export type PickerProps<T> = CustomInputProps<
+  PickerDefault,
+  Omit<PickerPropsDefault, "items">,
+  T | null
+> & {
+  items: Array<PickerItem<T>>;
   style?: StyleProp<ViewStyle>;
-}
-
-const getProps = (option: PickerOption | string) => {
-  if (typeof option === "string") {
-    return { key: option, value: option, label: option };
-  }
-
-  const { value, label, key = value } = option;
-  return { value, label, key };
+  styles?: object;
 };
 
-const PickerAndroid: React.FC<PickerProps> = ({
+const buildItem = (item: any) =>
+  ["string", "number"].includes(typeof item)
+    ? { key: item, value: item, label: item.toString() }
+    : item;
+
+export function Picker<T>({
   value,
   onChange,
   innerRef,
-  options,
-  style
-}) => (
-  <RNPicker ref={innerRef} selectedValue={value} onValueChange={onChange}>
-    {options.map(option => (
-      <RNPicker.Item {...getProps(option)} />
-    ))}
-  </RNPicker>
-);
-
-class PickerIOS extends Component<PickerProps> {
-  private focus = () => {
-    const options = this.props.options.map(getProps);
-
-    ActionSheetIOS.showActionSheetWithOptions(
-      { options: options.map(o => o.value) },
-      index => {
-        this.props.onChange(options[index] ? options[index].value : null);
-      }
-    );
-  };
-
-  public render() {
-    const { value } = this.props;
-
-    return (
-      <TextInput
-        editable={false}
-        onTouchStart={this.focus}
-        value={value === null ? "" : value}
-      />
-    );
-  }
+  items,
+  style,
+  styles,
+  ...props
+}: PickerProps<T>) {
+  return (
+    <PickerDefault
+      ref={innerRef}
+      value={value}
+      items={items.map(buildItem)}
+      onValueChange={value => onChange(value)}
+      style={Platform.select<any>({
+        ios: { inputIOS: style, ...styles },
+        android: { inputAndroid: style, ...styles }
+      })}
+      {...props}
+    />
+  );
 }
-
-export const Picker = (props: PickerProps) => {
-  if (Platform.OS === "ios") {
-    return <PickerIOS {...props} />;
-  }
-
-  return <PickerAndroid {...props} />;
-};
