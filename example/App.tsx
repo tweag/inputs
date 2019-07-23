@@ -1,35 +1,45 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import {
   Input,
   IntegerInput,
   DecimalInput,
   FloatInput,
   DateInput,
-  DateTimeInput
+  DateTimeInput,
+  Switch,
+  Picker,
 } from "../src/index";
 
 interface Values {
-  string: string | null;
+  input: string | null;
   integer: number | null;
   decimal: string | null;
   float: number | null;
   date: string | null;
   datetime: string | null;
+  switch: boolean | null;
+  picker: string | null;
 }
 
 export default function App() {
   const [values, setValues] = useState<Values>({
-    string: null,
+    input: null,
     integer: null,
     decimal: null,
     float: null,
     date: null,
-    datetime: null
+    datetime: null,
+    switch: null,
+    picker: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
     setValues({ ...values, [name]: value });
+  };
+
+  const onSubmit = () => {
+    console.log(values);
   };
 
   return (
@@ -37,8 +47,8 @@ export default function App() {
       <Text style={styles.title}>Baseline Inputs</Text>
 
       <Input
-        value={values.string}
-        onChange={set("string")}
+        value={values.input}
+        onChange={set("input")}
         style={styles.input}
         placeholder="Input"
       />
@@ -47,38 +57,51 @@ export default function App() {
         value={values.integer}
         onChange={set("integer")}
         style={styles.input}
-        placeholder="IntegerInput"
+        placeholder="Integer"
       />
 
       <DecimalInput
         value={values.decimal}
         onChange={set("decimal")}
         style={styles.input}
-        placeholder="DecimalInput"
+        placeholder="Decimal"
       />
 
       <FloatInput
         value={values.float}
         onChange={set("float")}
         style={styles.input}
-        placeholder="FloatInput"
+        placeholder="Float"
       />
 
       <DateInput
         value={values.date}
         onChange={set("date")}
         style={styles.input}
-        placeholder="DateInput"
+        placeholder="Date"
       />
 
       <DateTimeInput
         value={values.datetime}
         onChange={set("datetime")}
         style={styles.input}
-        placeholder="DateTimeInput"
+        placeholder="Date Time"
       />
 
-      <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>
+      <Picker
+        style
+        value={values.picker}
+        onChange={set("picker")}
+        options={['Foo', 'Bar']}
+      />
+
+      <Switch
+        value={values.switch}
+        onChange={set("switch")}
+        style={styles.input}
+      />
+
+      <Button title="Submit" onPress={onSubmit} />
     </View>
   );
 }
@@ -86,9 +109,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     marginTop: 60,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    backgroundColor: "#fff"
   },
   title: {
     fontSize: 20,
@@ -97,19 +120,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    padding: 5,
-    marginBottom: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
+    marginBottom: 10,
     borderColor: "#ddd",
     borderBottomWidth: 1
-  },
-  switch: {
-    marginBottom: 20
-  },
-  values: {
-    padding: 10,
-    fontSize: 18,
-    backgroundColor: "#eee",
-    borderWidth: 1,
-    borderColor: "#ddd"
   }
 });
