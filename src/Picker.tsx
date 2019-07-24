@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Picker as RNPicker, Platform } from "react-native";
+import isEqual from "fast-deep-equal";
 import { Modal } from "./Modal";
 import { StaticInput } from "./StaticInput";
 import { PickerProps, PickerItemObject, PickerItem } from "./types";
@@ -17,7 +18,7 @@ const normalizePickerItem = (item: PickerItem): PickerItemObject => {
 }
 
 function getSelectedLabel(items: PickerItemObject[], value: any) {
-  const selectedItem = items.find(item => item.value === value);
+  const selectedItem = items.find(item => isEqual(item.value, value));
   return selectedItem ? selectedItem.label : "";
 }
 
