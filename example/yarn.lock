@@ -4502,10 +4502,10 @@ react-native-animatable@^1.3.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-baseline-inputs@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-baseline-inputs/-/react-native-baseline-inputs-0.3.0.tgz#05267e96172ffb4733a6d5c5d4ac12886f1a33d9"
-  integrity sha512-evkA8X/UPyyNcXS8ND0zVf3t2QYo5pogx/Ne5ZqQj8oY3DAHHtQytNlMN8dMSqPQu6eCVgZRTx67cMSvd5wX8Q==
+react-native-baseline-inputs@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-baseline-inputs/-/react-native-baseline-inputs-0.3.1.tgz#ea8e056f558e2d1bfe085f7c2cb65c31827c1f1f"
+  integrity sha512-Pivf2yNgqzHSLs+CcAVpGjzwmKNca5kzC6onPpCtX0yrRhSNfBo/SGUqTO5JnBTZi604qCyziNxQca4SKXc6Nw==
   dependencies:
     date-fns "^1.30.1"
     react-native-modal-datetime-picker "^7.5.0"
