@@ -19,7 +19,7 @@
     "react-native": ">=0.59"
   },
   "dependencies": {
-    "react-native-baseline-inputs": "^0.2.0"
+    "react-native-baseline-inputs": "^0.3.0"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
