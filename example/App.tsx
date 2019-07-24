@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import {
   Input,
@@ -12,7 +12,6 @@ import {
   Switch,
   Picker
 } from "../src/index";
-import { ErrorMessage } from "formik";
 
 interface Values {
   input: string | null;
