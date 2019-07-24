@@ -1,50 +1,45 @@
 import React from "react";
-import { CustomInputProps } from "./types";
-import { ViewStyle, StyleProp, Platform } from "react-native";
-import PickerDefault, {
-  Item,
-  PickerProps as PickerPropsDefault
-} from "react-native-picker-select";
+import { Platform } from "react-native";
+import PickerDefault from "react-native-picker-select";
+import { InputComponent } from "./utils";
+import { PickerProps } from "./types";
 
-export type PickerItem<T> = T extends string | number
-  ? Item & { value: T } | T
-  : Item & { value: T };
+const buildItem = (item: any) => {
+  if (typeof item === "string" || typeof item === "number") {
+    return { key: item, value: item, label: item.toString() };
+  }
 
-export type PickerProps<T> = CustomInputProps<
-  PickerDefault,
-  Omit<PickerPropsDefault, "items">,
-  T | null
-> & {
-  items: Array<PickerItem<T>>;
-  style?: StyleProp<ViewStyle>;
-  styles?: object;
+  return item;
 };
 
-const buildItem = (item: any) =>
-  ["string", "number"].includes(typeof item)
-    ? { key: item, value: item, label: item.toString() }
-    : item;
+export class Picker<T> extends InputComponent<PickerProps<T>> {
+  private handleChange = (value: T) => {
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
+  };
 
-export function Picker<T>({
-  value,
-  onChange,
-  innerRef,
-  items,
-  style,
-  styles,
-  ...props
-}: PickerProps<T>) {
-  return (
-    <PickerDefault
-      ref={innerRef}
-      value={value}
-      items={items.map(buildItem)}
-      onValueChange={value => onChange(value)}
-      style={Platform.select<any>({
-        ios: { inputIOS: style, ...styles },
-        android: { inputAndroid: style, ...styles }
-      })}
-      {...props}
-    />
-  );
+  public render() {
+    const {
+      value,
+      style,
+      items = [],
+      onChange: _onChange,
+      ...props
+    } = this.props;
+
+    return (
+      <PickerDefault
+        ref={this.inputRef}
+        value={value}
+        items={items!.map(buildItem)}
+        onValueChange={this.handleChange}
+        style={Platform.select<any>({
+          ios: { inputIOS: style },
+          android: { inputAndroid: style }
+        })}
+        {...props}
+      />
+    );
+  }
 }

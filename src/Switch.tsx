@@ -1,23 +1,19 @@
 import React from "react";
-import { Switch as RNSwitch, SwitchProps as RNSwitchProps } from "react-native";
-import { CustomInputProps } from "./types";
+import { Switch as RNSwitch } from "react-native";
+import { SwitchProps } from "./types";
+import { InputComponent } from "./utils";
 
-export type SwitchProps = CustomInputProps<
-  RNSwitch,
-  RNSwitchProps,
-  boolean | null
->;
+export class Switch extends InputComponent<SwitchProps> {
+  public render() {
+    const { value, onChange, ...props } = this.props;
 
-export const Switch: React.FC<SwitchProps> = ({
-  value,
-  onChange,
-  innerRef,
-  ...props
-}) => (
-  <RNSwitch
-    ref={innerRef}
-    value={Boolean(value)}
-    onValueChange={onChange}
-    {...props}
-  />
-);
+    return (
+      <RNSwitch
+        ref={this.inputRef}
+        value={Boolean(value)}
+        onValueChange={onChange}
+        {...props}
+      />
+    );
+  }
+}

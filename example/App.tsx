@@ -3,9 +3,10 @@ import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 import {
   Input,
   IntegerInput,
-  DecimalInput,
+  NumericInput,
   FloatInput,
   DateInput,
+  TimeInput,
   DateTimeInput,
   Switch,
   Picker
@@ -14,9 +15,10 @@ import {
 interface Values {
   input: string | null;
   integer: number | null;
-  decimal: string | null;
+  numeric: string | null;
   float: number | null;
   date: string | null;
+  time: string | null;
   datetime: string | null;
   switch: boolean | null;
   picker: string | null;
@@ -33,16 +35,19 @@ export default function App() {
   const [values, setValues] = useState<Values>({
     input: null,
     integer: null,
-    decimal: null,
+    numeric: null,
     float: null,
     date: null,
+    time: null,
     datetime: null,
     switch: null,
     picker: null
   });
 
   const set = (name: keyof Values) => (value: any) => {
-    setValues({ ...values, [name]: value });
+    const nextValues = { ...values, [name]: value };
+    setValues(nextValues);
+    console.log(nextValues);
   };
 
   const onSubmit = () => {
@@ -70,10 +75,10 @@ export default function App() {
         />
       </Item>
 
-      <Item label="Decimal">
-        <DecimalInput
-          value={values.decimal}
-          onChange={set("decimal")}
+      <Item label="Numeric">
+        <NumericInput
+          value={values.numeric}
+          onChange={set("numeric")}
           style={styles.input}
         />
       </Item>
@@ -94,6 +99,14 @@ export default function App() {
         />
       </Item>
 
+      <Item label="Time">
+        <TimeInput
+          value={values.time}
+          onChange={set("time")}
+          style={styles.input}
+        />
+      </Item>
+
       <Item label="Date Time">
         <DateTimeInput
           value={values.datetime}
@@ -106,7 +119,7 @@ export default function App() {
         <Picker
           value={values.picker}
           onChange={set("picker")}
-          items={[{ value: "Foo", label: "Foo" }, "Bar"]}
+          items={["Foo", "Bar"]}
           style={styles.input}
         />
       </Item>

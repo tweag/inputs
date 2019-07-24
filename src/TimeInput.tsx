@@ -1,13 +1,13 @@
 import React from "react";
-import { DateInputProps } from "./types";
+import { TimeInputProps } from "./types";
 import { InputComponent } from "./utils";
 import { DateTimeInput } from "./DateTimeInput";
 
-export class DateInput extends InputComponent<DateInputProps> {
+export class TimeInput extends InputComponent<TimeInputProps> {
   public static defaultProps = {
-    mode: "date",
-    labelFormat: "M/D/YYYY",
-    valueFormat: "YYYY-MM-DD"
+    mode: "time",
+    labelFormat: "h:mmA",
+    valueFormat: "HH:mm:ss.SSSZ"
   };
 
   public render() {

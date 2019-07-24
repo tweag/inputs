@@ -1,30 +1,27 @@
-import React, { Component } from "react";
-import { TextInput, TextInputProps } from "react-native";
-import { CustomInputProps } from "./types";
+import React from "react";
+import { TextInput } from "react-native";
+import { InputProps } from "./types";
+import { InputComponent, isNil } from "./utils";
 
 const parse = (value: string) => {
   return /^\s*$/.test(value) ? null : value;
 };
 
-export type InputProps = CustomInputProps<
-  TextInput,
-  TextInputProps,
-  string | null
->;
-
-export class Input extends Component<InputProps> {
+export class Input extends InputComponent<InputProps> {
   private handleChange = (value: string) => {
-    this.props.onChange(parse(value));
+    if (this.props.onChange) {
+      this.props.onChange(parse(value));
+    }
   };
 
   public render() {
-    const { value, onChange, innerRef, ...props } = this.props;
+    const { value, onChange: _onChange, ...props } = this.props;
 
     return (
       <TextInput
-        ref={innerRef}
-        value={value === null ? "" : value.toString()}
+        ref={this.inputRef}
         onChangeText={this.handleChange}
+        value={isNil(value) ? "" : value.toString()}
         {...props}
       />
     );

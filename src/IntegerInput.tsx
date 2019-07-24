@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { TextInput, TextInputProps } from "react-native";
-import { CustomInputProps } from "./types";
+import React from "react";
+import { TextInput } from "react-native";
+import { IntegerInputProps } from "./types";
+import { InputComponent, isNil } from "./utils";
 
 const clean = (input: string): string => {
   return input.replace(/[^0-9]/g, "");
@@ -11,26 +12,22 @@ const parse = (input: string): number | null => {
   return isNaN(value) ? null : value;
 };
 
-export type IntegerInputProps = CustomInputProps<
-  TextInput,
-  TextInputProps,
-  number | null
->;
-
-export class IntegerInput extends Component<IntegerInputProps> {
+export class IntegerInput extends InputComponent<IntegerInputProps> {
   private handleChange = (value: string) => {
-    this.props.onChange(parse(clean(value)));
+    if (this.props.onChange) {
+      this.props.onChange(parse(clean(value)));
+    }
   };
 
   public render() {
-    const { value, onChange, innerRef, ...props } = this.props;
+    const { value, onChange: _onChange, ...props } = this.props;
 
     return (
       <TextInput
-        ref={innerRef}
-        value={value === null ? "" : value.toString()}
-        onChangeText={this.handleChange}
+        ref={this.inputRef}
         keyboardType="numeric"
+        onChangeText={this.handleChange}
+        value={isNil(value) ? "" : value.toString()}
         {...props}
       />
     );
