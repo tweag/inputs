@@ -49,10 +49,8 @@ const initialValues = {
 };
 
 const notEq = (rejectValue: any) => (value: any): any => {
-  console.log("VALIDATE")
   if (value === rejectValue) {
-    console.log("ERROR", value);
-    return "must not be blank";
+    return "invalid";
   }
 };
 

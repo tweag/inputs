@@ -2,17 +2,11 @@ import { FieldProps } from "formik";
 import * as Baseline from "react-native-baseline-inputs";
 import { createField } from "./createField";
 import { CustomFieldProps } from "./types";
+import { Platform } from "react-native";
 
 const getInputProps = ({ form, field }: FieldProps) => ({
   onChange: (value: any) => form.setFieldValue(field.name, value),
   onBlur: () => form.setFieldTouched(field.name, true)
-});
-
-const getFallbackProps = ({ form, field }: FieldProps) => ({
-  onChange: (value: any) => {
-    form.setFieldValue(field.name, value);
-    form.setFieldTouched(field.name, true);
-  }
 });
 
 /**
@@ -32,7 +26,12 @@ export type SwitchProps = CustomFieldProps<typeof Baseline.Switch>;
 export const Switch = createField<typeof Baseline.Switch>({
   displayName: "FormikSwitch",
   component: Baseline.Switch,
-  getProps: getFallbackProps
+  getProps: ({ form, field }) => ({
+    onChange: value => {
+      form.setFieldValue(field.name, value);
+      form.setFieldTouched(field.name, true);
+    }
+  })
 });
 
 /**
@@ -42,7 +41,18 @@ export type PickerProps = CustomFieldProps<typeof Baseline.Picker>;
 export const Picker = createField<typeof Baseline.Picker>({
   displayName: "FormikPicker",
   component: Baseline.Picker,
-  getProps: getFallbackProps
+  getProps: Platform.select({
+    android: ({ form, field }) => ({
+      onChange: value => {
+        form.setFieldValue(field.name, value);
+        form.setFieldTouched(field.name, true);
+      }
+    }),
+    ios: ({ form, field }) => ({
+      onChange: value => form.setFieldValue(field.name, value),
+      onModalClose: () => form.setFieldTouched(field.name, true)
+    })
+  })
 });
 
 /**
@@ -82,7 +92,7 @@ export type DatePickerProps = CustomFieldProps<typeof Baseline.DatePicker>;
 export const DatePicker = createField<typeof Baseline.DatePicker>({
   displayName: "FormikDatePicker",
   component: Baseline.DatePicker,
-  getProps: getFallbackProps
+  getProps: getInputProps
 });
 
 /**
@@ -92,7 +102,7 @@ export type TimePickerProps = CustomFieldProps<typeof Baseline.TimePicker>;
 export const TimePicker = createField<typeof Baseline.TimePicker>({
   displayName: "FormikTimePicker",
   component: Baseline.TimePicker,
-  getProps: getFallbackProps
+  getProps: getInputProps
 });
 
 /**
@@ -104,5 +114,5 @@ export type DateTimePickerProps = CustomFieldProps<
 export const DateTimePicker = createField<typeof Baseline.DateTimePicker>({
   displayName: "FormikDateTimePicker",
   component: Baseline.DateTimePicker,
-  getProps: getFallbackProps
+  getProps: getInputProps
 });
