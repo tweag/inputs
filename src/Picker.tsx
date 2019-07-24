@@ -47,7 +47,9 @@ export class Picker<T> extends Component<PickerProps<T>> {
       value,
       items,
       children,
+      inputStyle,
       inputProps = {},
+      modalStyle,
       modalProps = {},
       onChange: _onChange,
       ...props
@@ -69,12 +71,18 @@ export class Picker<T> extends Component<PickerProps<T>> {
     return Platform.OS === "android" ? (
       picker
     ) : (
-      <Modal ref={this.modalRef} render={() => picker} {...modalProps}>
+      <Modal
+        ref={this.modalRef}
+        render={() => picker}
+        style={modalStyle}
+        {...modalProps}
+      >
         {modal => (
           <StaticInput
             value={getDisplayValue(pickerItems, value)}
             onPress={modal.open}
             children={children}
+            style={inputStyle}
             {...inputProps}
           />
         )}

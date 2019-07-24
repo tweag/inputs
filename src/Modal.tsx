@@ -80,8 +80,8 @@ export class Modal extends React.Component<ModalProps, State> {
     const {
       children,
       render,
+      style,
       headerStyle,
-      bodyStyle,
       backdropStyle,
       ...modalProps
     } = this.props;
@@ -122,7 +122,7 @@ export class Modal extends React.Component<ModalProps, State> {
             </TouchableWithoutFeedback>
           </View>
 
-          <View style={[styles.body, { height }, bodyStyle]}>
+          <View style={[styles.body, { height }, style]}>
             {render(context)}
           </View>
         </RNModal>

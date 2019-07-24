@@ -5,9 +5,9 @@ import {
   IntegerInput,
   NumericInput,
   FloatInput,
-  DateInput,
-  TimeInput,
-  DateTimeInput,
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
   Switch,
   Picker
 } from "../src/index";
@@ -92,26 +92,26 @@ export default function App() {
       </Item>
 
       <Item label="Date">
-        <DateInput
+        <DatePicker
           value={values.date}
           onChange={set("date")}
-          style={styles.input}
+          inputStyle={styles.input}
         />
       </Item>
 
       <Item label="Time">
-        <TimeInput
+        <TimePicker
           value={values.time}
           onChange={set("time")}
-          style={styles.input}
+          inputStyle={styles.input}
         />
       </Item>
 
       <Item label="Date Time">
-        <DateTimeInput
+        <DateTimePicker
           value={values.datetime}
           onChange={set("datetime")}
-          style={styles.input}
+          inputStyle={styles.input}
         />
       </Item>
 
@@ -120,7 +120,7 @@ export default function App() {
           value={values.picker}
           onChange={set("picker")}
           items={["Foo", "Bar"]}
-          style={styles.input}
+          inputStyle={styles.input}
         />
       </Item>
 
