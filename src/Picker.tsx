@@ -4,24 +4,24 @@ import { Modal } from "./Modal";
 import { StaticInput } from "./StaticInput";
 import { PickerProps, PickerItemObject, PickerItem } from "./types";
 
-function normalizePickerItem<T>(item: PickerItem<T>): PickerItemObject<T> {
+const normalizePickerItem = (item: PickerItem): PickerItemObject => {
   if (typeof item === "string" || typeof item === "number") {
     return {
       key: item,
       value: item,
       label: item.toString()
-    } as PickerItemObject<T>;
+    }
   }
 
-  return item as PickerItemObject<T>;
+  return item;
 }
 
-function getDisplayValue<T>(items: Array<PickerItemObject<T>>, value: T) {
+function getSelectedLabel(items: PickerItemObject[], value: any) {
   const selectedItem = items.find(item => item.value === value);
   return selectedItem ? selectedItem.label : "";
 }
 
-export class Picker<T> extends Component<PickerProps<T>> {
+export class Picker extends Component<PickerProps> {
   public state = {
     isVisible: false
   };
@@ -42,7 +42,7 @@ export class Picker<T> extends Component<PickerProps<T>> {
     }
   };
 
-  private handleChange = (value: T) => {
+  private handleChange = (value: any) => {
     if (this.props.onChange) {
       this.props.onChange(value);
     }
@@ -101,7 +101,7 @@ export class Picker<T> extends Component<PickerProps<T>> {
           style={style}
           onPress={this.handlePress}
           children={children}
-          value={getDisplayValue(pickerItems, value)}
+          value={getSelectedLabel(pickerItems, value)}
           {...inputProps}
         />
       </Modal>

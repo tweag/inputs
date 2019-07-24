@@ -95,23 +95,21 @@ type BasePickerProps = Omit<
   "value" | "onChange" | "onValueChange"
 >;
 
-export interface PickerItemObject<T> {
-  value: T;
+export interface PickerItemObject {
+  value: any;
   label: string;
   color?: string;
   key?: string | number;
 }
 
-export type PickerItem<T> = T extends string | number
-  ? PickerItemObject<T> | T
-  : PickerItemObject<T>;
+export type PickerItem = PickerItemObject | string | number;
 
-export interface PickerProps<T> extends BasePickerProps {
-  value: T | null;
-  items: Array<PickerItem<T>>;
+export interface PickerProps extends BasePickerProps {
+  value: any;
+  items: Array<PickerItem>;
   onModalClose?: () => void;
   onModalOpen?: () => void;
-  onChange?: (value: T) => void;
+  onChange?: (value: any) => void;
   style?: StyleProp<ViewStyle>;
   pickerStyle?: StyleProp<ViewStyle>;
   modalStyle?: StyleProp<ViewStyle>;
