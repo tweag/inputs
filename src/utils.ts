@@ -1,10 +1,4 @@
-import React, { createRef, Component } from "react";
-import {
-  TouchableWithoutFeedback,
-  View,
-  TextInput,
-  TextInputProps
-} from "react-native";
+import { createRef, Component } from "react";
 
 /**
  * Is the value `null` or `undefined`?
@@ -37,22 +31,3 @@ export class InputComponent<P = {}, S = {}> extends Component<P, S> {
     }
   }
 }
-
-/**
- * Render a fake input that fires an event when pressed.
- */
-export interface StaticInputProps extends TextInputProps {
-  onPress: () => void;
-}
-
-export const StaticInput: React.FC<StaticInputProps> = ({
-  onPress,
-  children,
-  ...props
-}) => (
-  <TouchableWithoutFeedback onPress={onPress}>
-    <View pointerEvents="box-only">
-      {children ? children : <TextInput editable={false} {...props} />}
-    </View>
-  </TouchableWithoutFeedback>
-);

@@ -1,18 +1,41 @@
-import React from "react";
-import { Platform } from "react-native";
-import PickerDefault from "react-native-picker-select";
-import { InputComponent } from "./utils";
-import { PickerProps } from "./types";
+import React, { createRef, Component } from "react";
+import { Picker as RNPicker, Platform } from "react-native";
+import { Modal } from "./Modal";
+import { StaticInput } from "./StaticInput";
+import { PickerProps, PickerItemObject, PickerItem } from "./types";
 
-const buildItem = (item: any) => {
+function normalizePickerItem<T>(item: PickerItem<T>): PickerItemObject<T> {
   if (typeof item === "string" || typeof item === "number") {
-    return { key: item, value: item, label: item.toString() };
+    return {
+      key: item,
+      value: item,
+      label: item.toString()
+    } as PickerItemObject<T>;
   }
 
-  return item;
-};
+  return item as PickerItemObject<T>;
+}
 
-export class Picker<T> extends InputComponent<PickerProps<T>> {
+function getDisplayValue<T>(items: Array<PickerItemObject<T>>, value: T) {
+  const selectedItem = items.find(item => item.value === value);
+  return selectedItem ? selectedItem.label : "";
+}
+
+export class Picker<T> extends Component<PickerProps<T>> {
+  private modalRef = createRef<Modal>();
+
+  public focus() {
+    if (this.modalRef.current) {
+      this.modalRef.current.open();
+    }
+  }
+
+  public blur() {
+    if (this.modalRef.current) {
+      this.modalRef.current.close();
+    }
+  }
+
   private handleChange = (value: T) => {
     if (this.props.onChange) {
       this.props.onChange(value);
@@ -22,24 +45,40 @@ export class Picker<T> extends InputComponent<PickerProps<T>> {
   public render() {
     const {
       value,
-      style,
-      items = [],
+      items,
+      children,
+      inputProps = {},
+      modalProps = {},
       onChange: _onChange,
       ...props
     } = this.props;
 
-    return (
-      <PickerDefault
-        ref={this.inputRef}
-        value={value}
-        items={items!.map(buildItem)}
+    const pickerItems = items.map(normalizePickerItem);
+    const picker = (
+      <RNPicker
+        selectedValue={value}
         onValueChange={this.handleChange}
-        style={Platform.select<any>({
-          ios: { inputIOS: style },
-          android: { inputAndroid: style }
-        })}
         {...props}
-      />
+      >
+        {pickerItems.map(props => (
+          <RNPicker.Item {...props} />
+        ))}
+      </RNPicker>
+    );
+
+    return Platform.OS === "android" ? (
+      picker
+    ) : (
+      <Modal ref={this.modalRef} render={() => picker} {...modalProps}>
+        {modal => (
+          <StaticInput
+            value={getDisplayValue(pickerItems, value)}
+            onPress={modal.open}
+            children={children}
+            {...inputProps}
+          />
+        )}
+      </Modal>
     );
   }
 }

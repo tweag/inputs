@@ -1,13 +1,16 @@
 import { DateTimePickerProps as RNDateTimePickerProps } from "react-native-modal-datetime-picker";
 import {
+  ModalProps as RNModalProps,
+  PickerProps as RNPickerProps,
   StyleProp,
   SwitchProps as RNSwitchProps,
   TextInputProps as RNTextInputProps,
-  TextStyle
+  TextStyle,
+  ViewStyle
 } from "react-native";
 
 /**
- * Base Props
+ * Switch
  */
 
 type BaseSwitchProps = Omit<
@@ -15,33 +18,29 @@ type BaseSwitchProps = Omit<
   "value" | "onChange" | "onValueChange"
 >;
 
-type BaseInputProps = Omit<
-  RNTextInputProps,
-  "value" | "onChange" | "onChangeText"
->;
-
-type BaseDateTimePickerProps = Omit<
-  RNDateTimePickerProps,
-  "date" | "isVisible" | "onCancel" | "onConfirm"
->;
-
-/**
- * Custom inputs
- */
-
 export interface SwitchProps extends BaseSwitchProps {
   value: boolean | null;
   onChange?: (value: boolean) => void;
 }
+
+/**
+ * Input
+ */
+
+type BaseInputProps = Omit<
+  RNTextInputProps,
+  "value" | "onChange" | "onChangeText"
+>;
 
 export interface InputProps extends BaseInputProps {
   value: string | null;
   onChange?: (value: string | null) => void;
 }
 
-/**
- * Numeric inputs
- */
+export interface StaticInputProps extends BaseInputProps {
+  value: string;
+  onPress?: () => void;
+}
 
 export interface IntegerInputProps extends BaseInputProps {
   value: number | null;
@@ -52,26 +51,55 @@ export type NumericInputProps = InputProps;
 export type FloatInputProps = IntegerInputProps;
 
 /**
- * Date inputs
+ * Date picker
  */
 
-export interface DateTimeInputProps extends BaseDateTimePickerProps {
-  autoFocus?: boolean;
+type BaseDateTimePickerProps = Omit<
+  RNDateTimePickerProps,
+  "date" | "isVisible" | "onCancel" | "onConfirm"
+>;
+
+export interface DateTimePickerProps extends BaseDateTimePickerProps {
   labelFormat?: string;
   valueFormat?: string;
   value: Date | string | null;
   style?: StyleProp<TextStyle>;
   onChange?: (value: string) => void;
   onChangeDate?: (value: Date) => void;
-  onSubmitEditing?: () => void;
+  inputProps?: Partial<StaticInputProps>;
 }
 
-export type DateInputProps = DateTimeInputProps;
-export type TimeInputProps = DateTimeInputProps;
+export type DatePickerProps = DateTimePickerProps;
+export type TimePickerProps = DateTimePickerProps;
+
+/**
+ * Modal
+ */
+
+export interface ModalContext {
+  isVisible: boolean;
+  orientation: string;
+  open: () => void;
+  close: () => void;
+}
+
+export interface ModalProps extends RNModalProps {
+  render: (context: ModalContext) => React.ReactNode;
+  children: (context: ModalContext) => React.ReactNode;
+  onClose?: () => void;
+  headerStyle?: StyleProp<ViewStyle>;
+  bodyStyle?: StyleProp<ViewStyle>;
+  backdropStyle?: StyleProp<ViewStyle>;
+}
 
 /**
  * Picker
  */
+
+type BasePickerProps = Omit<
+  RNPickerProps,
+  "value" | "onChange" | "onValueChange"
+>;
 
 export interface PickerItemObject<T> {
   value: T;
@@ -84,10 +112,10 @@ export type PickerItem<T> = T extends string | number
   ? PickerItemObject<T> | T
   : PickerItemObject<T>;
 
-export interface PickerProps<T> {
+export interface PickerProps<T> extends BasePickerProps {
   value: T | null;
   items: Array<PickerItem<T>>;
-  style?: StyleProp<TextStyle>;
   onChange?: (value: T) => void;
-  onSubmitEditing?: () => void;
+  modalProps?: Partial<ModalProps>;
+  inputProps?: Partial<StaticInputProps>;
 }

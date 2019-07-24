@@ -26,7 +26,7 @@ export class NumericInput extends InputComponent<NumericInputProps> {
   };
 
   public render() {
-    // TODO: Do we need to pass in the value?
+    // NOTE: Is this supposed to be uncontrolled?
     const { value: _value, onChange: _onChange, ...props } = this.props;
 
     return (

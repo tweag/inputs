@@ -1,13 +1,15 @@
 export * from "./types";
 
 export * from "./Input";
-export * from "./Switch";
-export * from "./Picker";
-
 export * from "./NumericInput";
 export * from "./IntegerInput";
 export * from "./FloatInput";
 
-export * from "./DateInput";
-export * from "./TimeInput";
-export * from "./DateTimeInput";
+export * from "./Picker";
+export * from "./DatePicker";
+export * from "./TimePicker";
+export * from "./DateTimePicker";
+
+export * from "./Modal";
+export * from "./Switch";
+export * from "./StaticInput";

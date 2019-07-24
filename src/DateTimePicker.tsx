@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { format, parse, isValid } from "date-fns";
-import { TouchableWithoutFeedback, Text } from "react-native";
-import DateTimePicker from "react-native-modal-datetime-picker";
-import { DateTimeInputProps } from "./types";
-import { isNil, StaticInput } from "./utils";
-
-interface State {
-  isVisible: boolean;
-}
+import { default as RNDateTimePicker } from "react-native-modal-datetime-picker";
+import { DateTimePickerProps } from "./types";
+import { isNil } from "./utils";
+import { StaticInput } from "./StaticInput";
 
 const parseDateTime = (value: string): Date | null => {
   const parsed = parse(value);
@@ -27,7 +23,11 @@ const parseDateTimeLoose = (value: Date | string | null): Date | null => {
   return value;
 };
 
-export class DateTimeInput extends Component<DateTimeInputProps, State> {
+interface State {
+  isVisible: boolean;
+}
+
+export class DateTimePicker extends Component<DateTimePickerProps, State> {
   public static defaultProps = {
     mode: "datetime",
     labelFormat: "M/D/YYYY h:mmA",
@@ -64,21 +64,17 @@ export class DateTimeInput extends Component<DateTimeInputProps, State> {
 
   private handleCancel = () => {
     this.blur();
-
-    if (this.props.onSubmitEditing) {
-      this.props.onSubmitEditing();
-    }
   };
 
   public render() {
     const { isVisible } = this.state;
     const {
       value,
-      style,
-      mode,
       labelFormat,
+      inputProps,
       onChange: _onChange,
-      onChangeDate: _onChangeDate
+      onChangeDate: _onChangeDate,
+      ...props
     } = this.props;
 
     const date = parseDateTimeLoose(value);
@@ -86,17 +82,17 @@ export class DateTimeInput extends Component<DateTimeInputProps, State> {
     return (
       <>
         <StaticInput
-          style={style}
           onPress={this.handlePress}
           value={isNil(date) ? "" : format(date, labelFormat)}
+          {...inputProps}
         />
 
-        <DateTimePicker
-          mode={mode}
+        <RNDateTimePicker
           date={date || undefined}
           isVisible={isVisible}
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
+          {...props}
         />
       </>
     );
