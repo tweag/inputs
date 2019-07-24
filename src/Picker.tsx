@@ -46,8 +46,9 @@ export class Picker<T> extends Component<PickerProps<T>> {
     const {
       value,
       items,
+      style,
       children,
-      inputStyle,
+      pickerStyle,
       inputProps = {},
       modalStyle,
       modalProps = {},
@@ -58,6 +59,7 @@ export class Picker<T> extends Component<PickerProps<T>> {
     const pickerItems = items.map(normalizePickerItem);
     const picker = (
       <RNPicker
+        style={pickerStyle}
         selectedValue={value}
         onValueChange={this.handleChange}
         {...props}
@@ -79,10 +81,10 @@ export class Picker<T> extends Component<PickerProps<T>> {
       >
         {modal => (
           <StaticInput
-            value={getDisplayValue(pickerItems, value)}
+            style={style}
             onPress={modal.open}
             children={children}
-            style={inputStyle}
+            value={getDisplayValue(pickerItems, value)}
             {...inputProps}
           />
         )}

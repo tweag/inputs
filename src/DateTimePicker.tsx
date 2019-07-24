@@ -70,8 +70,8 @@ export class DateTimePicker extends Component<DateTimePickerProps, State> {
     const { isVisible } = this.state;
     const {
       value,
+      style,
       labelFormat,
-      inputStyle,
       inputProps,
       onChange: _onChange,
       onChangeDate: _onChangeDate,
@@ -85,7 +85,7 @@ export class DateTimePicker extends Component<DateTimePickerProps, State> {
         <StaticInput
           onPress={this.handlePress}
           value={isNil(date) ? "" : format(date, labelFormat)}
-          style={inputStyle}
+          style={style}
           {...inputProps}
         />
 

@@ -95,7 +95,7 @@ export default function App() {
         <DatePicker
           value={values.date}
           onChange={set("date")}
-          inputStyle={styles.input}
+          style={styles.input}
         />
       </Item>
 
@@ -103,7 +103,7 @@ export default function App() {
         <TimePicker
           value={values.time}
           onChange={set("time")}
-          inputStyle={styles.input}
+          style={styles.input}
         />
       </Item>
 
@@ -111,7 +111,7 @@ export default function App() {
         <DateTimePicker
           value={values.datetime}
           onChange={set("datetime")}
-          inputStyle={styles.input}
+          style={styles.input}
         />
       </Item>
 
@@ -120,7 +120,7 @@ export default function App() {
           value={values.picker}
           onChange={set("picker")}
           items={["Foo", "Bar"]}
-          inputStyle={styles.input}
+          style={styles.input}
         />
       </Item>
 

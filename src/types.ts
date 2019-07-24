@@ -5,7 +5,6 @@ import {
   StyleProp,
   SwitchProps as RNSwitchProps,
   TextInputProps as RNTextInputProps,
-  TextStyle,
   ViewStyle
 } from "react-native";
 
@@ -63,10 +62,9 @@ export interface DateTimePickerProps extends BaseDateTimePickerProps {
   labelFormat?: string;
   valueFormat?: string;
   value: Date | string | null;
-  style?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
   onChange?: (value: string) => void;
   onChangeDate?: (value: Date) => void;
-  inputStyle?: StyleProp<ViewStyle>;
   inputProps?: Partial<StaticInputProps>;
 }
 
@@ -117,8 +115,9 @@ export interface PickerProps<T> extends BasePickerProps {
   value: T | null;
   items: Array<PickerItem<T>>;
   onChange?: (value: T) => void;
+  style?: StyleProp<ViewStyle>;
+  pickerStyle?: StyleProp<ViewStyle>;
   modalStyle?: StyleProp<ViewStyle>;
   modalProps?: Partial<ModalProps>;
-  inputStyle?: StyleProp<ViewStyle>;
   inputProps?: Partial<StaticInputProps>;
 }
