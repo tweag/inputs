@@ -14,11 +14,12 @@
     "test": "jest"
   },
   "peerDependencies": {
+    "formik": "^1.5.8",
     "react": ">=16",
     "react-native": ">=0.59"
   },
   "dependencies": {
-    "react-native-baseline-inputs": "^0.1.1"
+    "react-native-baseline-inputs": "^0.2.0"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
@@ -29,6 +30,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
+    "formik": "^1.5.8",
     "jest": "^24.8.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

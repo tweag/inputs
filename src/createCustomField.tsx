@@ -1,16 +1,16 @@
 import * as React from "react";
-import { FieldValidator, FieldProps, Field } from "formik";
+import { FieldProps, Field } from "formik";
 
 type AnyComponent = React.ComponentType<any>;
 
 type CustomFieldAttributes<T extends AnyComponent> = Omit<
-  Omit<React.ComponentProps<T>, "value">,
-  "onChange"
+  React.ComponentProps<T>,
+  "value" | "onChange"
 >;
 
 interface CustomFieldConfig<T extends AnyComponent> {
   name: string;
-  validate?: FieldValidator;
+  validate?: (value: any) => string | void | Promise<string | void>;
   innerRef?: (instance: T | null) => void;
 }
 
@@ -21,29 +21,27 @@ export function createCustomField<T extends AnyComponent>(
   InputComponent: T,
   displayName: string
 ): React.FC<CustomFieldProps<T>> {
-  const Component: React.FC<CustomFieldProps<T>> = ({
-    name,
-    validate,
-    innerRef,
-    ...inputProps
-  }) => (
-    <Field name={name} validate={validate}>
-      {({ form, field }: FieldProps) => {
-        const onChange = React.useCallback(
-          value => form.setFieldValue(field.name, value),
-          [form.setFieldValue, field.name]
-        );
+  function FormikComponent(props: CustomFieldProps<T>) {
+    const { name, validate, innerRef, ...inputProps } = props;
 
-        const props: any = {
-          ...field,
-          ...inputProps,
-          onChange
-        };
+    return (
+      <Field name={name} validate={validate}>
+        {({ form, field }: FieldProps) => {
+          const onChange = (value: any) =>
+            form.setFieldValue(field.name, value);
+          const props: any = {
+            ...field,
+            ...inputProps,
+            onChange
+          };
 
-        return <InputComponent ref={innerRef} {...props} />;
-      }}
-    </Field>
-  );
+          return (
+            <InputComponent ref={innerRef} onChange={onChange} {...props} />
+          );
+        }}
+      </Field>
+    );
+  }
 
-  return Object.assign(Component, { displayName });
+  return Object.assign(FormikComponent, { displayName });
 }

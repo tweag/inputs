@@ -1,124 +1,133 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import {
   Input,
   IntegerInput,
-  DecimalInput,
+  NumericInput,
   FloatInput,
-  DateInput,
-  DateTimeInput,
-  BooleanInput
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
+  Switch,
+  Picker
 } from "../src/index";
+import { Formik } from "formik";
 
 interface Values {
-  string: string | null;
+  input: string | null;
   integer: number | null;
-  decimal: string | null;
+  numeric: string | null;
   float: number | null;
   date: string | null;
+  time: string | null;
   datetime: string | null;
-  boolean: boolean | null;
+  switch: boolean | null;
+  picker: string | null;
 }
 
+const Item: React.FC<{ label: string }> = ({ label, children }) => (
+  <View style={styles.item}>
+    <Text style={styles.label}>{label}</Text>
+    {children}
+  </View>
+);
+
 export default function App() {
-  const [values, setValues] = useState<Values>({
-    string: null,
+  const initialValues = {
+    input: null,
     integer: null,
-    decimal: null,
+    numeric: "5.3",
     float: null,
     date: null,
+    time: null,
     datetime: null,
-    boolean: null
-  });
+    switch: null,
+    picker: null
+  };
 
-  const set = (name: keyof Values) => (value: any) => {
-    setValues({ ...values, [name]: value });
+  const onSubmit = (values: Values) => {
+    console.log(values);
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Baseline Inputs</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Formik Inputs</Text>
 
-      <Input
-        value={values.string}
-        onChange={set("string")}
-        style={styles.input}
-        placeholder="Input"
-      />
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <View>
+          <Item label="Input">
+            <Input name="input" style={styles.input} />
+          </Item>
 
-      <IntegerInput
-        value={values.integer}
-        onChange={set("integer")}
-        style={styles.input}
-        placeholder="IntegerInput"
-      />
+          <Item label="Integer">
+            <IntegerInput
+              name="integer"
+              style={styles.input}
+              placeholder="Hello"
+            />
+          </Item>
 
-      <DecimalInput
-        value={values.decimal}
-        onChange={set("decimal")}
-        style={styles.input}
-        placeholder="DecimalInput"
-      />
+          <Item label="Numeric">
+            <NumericInput name="numeric" style={styles.input} />
+          </Item>
 
-      <FloatInput
-        value={values.float}
-        onChange={set("float")}
-        style={styles.input}
-        placeholder="FloatInput"
-      />
+          <Item label="Float">
+            <FloatInput name="float" style={styles.input} />
+          </Item>
 
-      <DateInput
-        value={values.date}
-        onChange={set("date")}
-        style={styles.input}
-        placeholder="DateInput"
-      />
+          <Item label="Date">
+            <DatePicker name="date" inputStyle={styles.input} />
+          </Item>
 
-      <DateTimeInput
-        value={values.datetime}
-        onChange={set("datetime")}
-        style={styles.input}
-        placeholder="DateTimeInput"
-      />
+          <Item label="Time">
+            <TimePicker name="time" inputStyle={styles.input} />
+          </Item>
 
-      <BooleanInput
-        value={values.boolean}
-        onChange={set("boolean")}
-        style={styles.switch}
-      />
+          <Item label="Date Time">
+            <DateTimePicker name="datetime" inputStyle={styles.input} />
+          </Item>
 
-      <Text style={styles.values}>{JSON.stringify(values, null, 2)}</Text>
-    </View>
+          <Item label="Picker">
+            <Picker
+              name="picker"
+              items={["Foo", "Bar"] as any}
+              inputStyle={styles.input}
+            />
+          </Item>
+
+          <Item label="Switch">
+            <Switch name="switch" />
+          </Item>
+        </View>
+      </Formik>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     marginTop: 60,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    backgroundColor: "#fff"
   },
   title: {
     fontSize: 20,
     textAlign: "center",
     marginBottom: 20
   },
+  item: {
+    marginBottom: 15
+  },
+  label: {
+    fontWeight: "bold",
+    marginBottom: 4
+  },
   input: {
-    height: 40,
-    padding: 5,
-    marginBottom: 20,
-    borderColor: "#ddd",
-    borderBottomWidth: 1
-  },
-  switch: {
-    marginBottom: 20
-  },
-  values: {
-    padding: 10,
-    fontSize: 18,
-    backgroundColor: "#eee",
+    minHeight: 36,
     borderWidth: 1,
-    borderColor: "#ddd"
+    borderRadius: 4,
+    borderColor: "#ddd",
+    paddingHorizontal: 8
   }
 });

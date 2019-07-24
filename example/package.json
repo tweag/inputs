@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "expo": "^33.0.0",
+    "formik": "^1.5.8",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "formik-native-inputs": "file:../"
+    "react-native-baseline-inputs": "^0.2.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.19",
