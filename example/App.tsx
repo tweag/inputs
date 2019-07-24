@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import {
   Input,
@@ -12,6 +12,7 @@ import {
   Switch,
   Picker
 } from "../src/index";
+import { ErrorMessage } from "formik";
 
 interface Values {
   input: string | null;
@@ -25,10 +26,13 @@ interface Values {
   picker: string | null;
 }
 
-const Item: React.FC<{ label: string }> = ({ label, children }) => (
+const Item: React.FC<{ name: string, label: string }> = ({ name, label, children }) => (
   <View style={styles.item}>
     <Text style={styles.label}>{label}</Text>
     {children}
+    <ErrorMessage name={name}>
+      {msg => <Text>{msg}</Text>}
+    </ErrorMessage>
   </View>
 );
 
@@ -44,14 +48,15 @@ const initialValues = {
   picker: null
 };
 
-const notBlank = (value: any) => {
-  console.log("VALIDATE", value);
-
-  if (!value) {
+const notEq = (rejectValue: any) => (value: any): any => {
+  console.log("VALIDATE")
+  if (value === rejectValue) {
     console.log("ERROR", value);
     return "must not be blank";
   }
 };
+
+const notBlank = notEq(null);
 
 export default function App() {
   const onSubmit = (values: Values) => {
@@ -74,51 +79,52 @@ export default function App() {
               <Text>{JSON.stringify(form.values, null, 2)}</Text>
             </View>
 
-            <Item label="Input">
+            <Item name="input" label="Input">
               <Input name="input" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Integer">
+            <Item name="integer" label="Integer">
               <IntegerInput
                 name="integer"
                 style={styles.input}
                 placeholder="Hello"
+                validate={notEq(2)}
               />
             </Item>
 
-            <Item label="Numeric">
-              <NumericInput name="numeric" style={styles.input} />
+            <Item name="numeric" label="Numeric">
+              <NumericInput name="numeric" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Float">
-              <FloatInput name="float" style={styles.input} />
+            <Item name="float" label="Float">
+              <FloatInput name="float" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Date">
-              <DatePicker name="date" style={styles.input} />
+            <Item name="date" label="Date">
+              <DatePicker name="date" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Time">
-              <TimePicker name="time" style={styles.input} />
+            <Item name="time" label="Time">
+              <TimePicker name="time" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Date Time">
-              <DateTimePicker name="datetime" style={styles.input} />
+            <Item name="datetime" label="Date Time">
+              <DateTimePicker name="datetime" style={styles.input} validate={notBlank} />
             </Item>
 
-            <Item label="Picker">
+            <Item name="picker" label="Picker">
               <Picker
                 name="picker"
-                items={["Foo", "Bar"] as any}
+                items={["Foo", "Bar"]}
                 style={styles.input}
+                validate={notEq("Foo")}
               />
             </Item>
 
-            <Item label="Switch">
-              <Switch name="switch" />
+            <Item name="switch" label="Switch">
+              <Switch name="switch" validate={notEq(false)} />
             </Item>
           </View>
-
         )}
       </Formik>
     </ScrollView>

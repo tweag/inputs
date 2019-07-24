@@ -1,49 +1,119 @@
+import { createInput, CreateInputProps } from "./createInput";
 import * as Baseline from "react-native-baseline-inputs";
-import { CustomFieldProps, createCustomField } from "./createCustomField";
 
-export type InputProps = CustomFieldProps<typeof Baseline.Input>;
-export const Input = createCustomField(Baseline.Input, "FormikInput");
-
-export type SwitchProps = CustomFieldProps<typeof Baseline.Switch>;
-export const Switch = createCustomField(Baseline.Switch, "FormikSwitch");
-
-export type PickerProps = CustomFieldProps<typeof Baseline.Picker>;
-export const Picker = createCustomField(Baseline.Picker, "FormikPicker");
-
-export type NumericInputProps = CustomFieldProps<typeof Baseline.NumericInput>;
-export const NumericInput = createCustomField(
-  Baseline.NumericInput,
-  "FormikNumericInput"
-);
-
-export type IntegerInputProps = CustomFieldProps<typeof Baseline.IntegerInput>;
-export const IntegerInput = createCustomField(
-  Baseline.IntegerInput,
-  "FormikIntegerInput"
-);
-
-export type FloatInputProps = CustomFieldProps<typeof Baseline.FloatInput>;
-export const FloatInput = createCustomField(
-  Baseline.FloatInput,
-  "FormikFloatInput"
-);
-
-export type DatePickerProps = CustomFieldProps<typeof Baseline.DatePicker>;
-export const DatePicker = createCustomField(
-  Baseline.DatePicker,
-  "FormikDatePicker"
-);
-
-export type TimePickerProps = CustomFieldProps<typeof Baseline.DateTimePicker>;
-export const TimePicker = createCustomField(
-  Baseline.TimePicker,
-  "FormikTimePicker"
-);
-
-export type DateTimePickerProps = CustomFieldProps<
-  typeof Baseline.DateTimePicker
+/**
+ * Input
+ */
+export type InputProps = CreateInputProps<
+  typeof Baseline.Input,
+  Baseline.InputProps
 >;
-export const DateTimePicker = createCustomField(
-  Baseline.DateTimePicker,
-  "FormikDateTimePicker"
-);
+export const Input = createInput<InputProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikInput",
+  component: Baseline.Input,
+});
+
+/**
+ * Switch
+ */
+export type SwitchProps = CreateInputProps<
+  typeof Baseline.Switch,
+  Baseline.SwitchProps
+>;
+export const Switch = createInput<SwitchProps>({
+  touchEvent: "onChange",
+  displayName: "FormikSwitch",
+  component: Baseline.Switch
+});
+
+/**
+ * Picker
+ */
+export type PickerProps<T> = CreateInputProps<
+  typeof Baseline.Picker,
+  Baseline.PickerProps<T>
+>;
+export const Picker = createInput<PickerProps<any>>({
+  touchEvent: "onChange",
+  displayName: "FormikPicker",
+  component: Baseline.Picker,
+});
+
+/**
+ * Numeric input
+ */
+export type NumericInputProps = CreateInputProps<
+  typeof Baseline.NumericInput,
+  Baseline.NumericInputProps
+>;
+export const NumericInput = createInput<NumericInputProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikNumericInput",
+  component: Baseline.NumericInput,
+});
+
+/**
+ * Integer input
+ */
+export type IntegerInputProps = CreateInputProps<
+  typeof Baseline.IntegerInput,
+  Baseline.IntegerInputProps
+>;
+export const IntegerInput = createInput<IntegerInputProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikIntegerInput",
+  component: Baseline.IntegerInput,
+});
+
+/**
+ * Float input
+ */
+export type FloatInputProps = CreateInputProps<
+  typeof Baseline.FloatInput,
+  Baseline.FloatInputProps
+>;
+export const FloatInput = createInput<FloatInputProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikFloatInput",
+  component: Baseline.FloatInput,
+});
+
+/**
+ * Date picker
+ */
+export type DatePickerProps = CreateInputProps<
+  typeof Baseline.DatePicker,
+  Baseline.DatePickerProps
+>;
+export const DatePicker = createInput<DatePickerProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikDatePicker",
+  component: Baseline.DatePicker,
+});
+
+/**
+ * Time picker
+ */
+export type TimePickerProps = CreateInputProps<
+  typeof Baseline.TimePicker,
+  Baseline.TimePickerProps
+>;
+export const TimePicker = createInput<TimePickerProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikTimePicker",
+  component: Baseline.TimePicker,
+});
+
+/**
+ * DateTime picker
+ */
+export type DateTimePickerProps = CreateInputProps<
+  typeof Baseline.DateTimePicker,
+  Baseline.DateTimePickerProps
+>;
+export const DateTimePicker = createInput<DateTimePickerProps>({
+  touchEvent: "onBlur",
+  displayName: "FormikDateTimePicker",
+  component: Baseline.DateTimePicker,
+});
