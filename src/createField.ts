@@ -24,13 +24,10 @@ export const createField = <T extends AnyComponent>({
 
     // FIXME: This will happen automatically when this PR is released:
     // https://github.com/jaredpalmer/formik/pull/1699
-    React.useEffect(
-      () => {
-        formik.registerField(name, { validate });
-        return () => formik.unregisterField(name);
-      },
-      [formik.registerField, formik.unregisterField, name, validate]
-    );
+    React.useEffect(() => {
+      formik.registerField(name, { validate });
+      return () => formik.unregisterField(name);
+    }, [formik.registerField, formik.unregisterField, name, validate]);
 
     const inputProps = useMemo(() => getProps({ form: formik, field, meta }), [
       formik,

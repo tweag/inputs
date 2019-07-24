@@ -1,7 +1,7 @@
 {
   "name": "formik-native-inputs",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -10,11 +10,13 @@
   "scripts": {
     "build": "tsc -p .",
     "prepublishOnly": "tsc -p .",
+    "format": "prettier --write '{src,test,example}/**/*.{ts,tsx}'",
+    "format:check": "prettier --check '{src,test,example}/**/*.{ts,tsx}'",
     "typecheck": "tsc -p . --noEmit",
     "test": "jest"
   },
   "peerDependencies": {
-    "formik": "^1.5.8",
+    "formik": "2.0.1-rc.12",
     "react": ">=16",
     "react-native": ">=0.59"
   },
@@ -32,6 +34,7 @@
     "enzyme-to-json": "^3.3.5",
     "formik": "^2.0.1-rc.12",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "0.59.9",
