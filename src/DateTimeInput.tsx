@@ -3,7 +3,7 @@ import { format, parse, isValid } from "date-fns";
 import { TouchableWithoutFeedback, Text } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { DateTimeInputProps } from "./types";
-import { isNil } from "./utils";
+import { isNil, StaticInput } from "./utils";
 
 interface State {
   isVisible: boolean;
@@ -85,11 +85,11 @@ export class DateTimeInput extends Component<DateTimeInputProps, State> {
 
     return (
       <>
-        <TouchableWithoutFeedback onPress={this.handlePress}>
-          <Text style={style}>
-            {isNil(date) ? "" : format(date, labelFormat)}
-          </Text>
-        </TouchableWithoutFeedback>
+        <StaticInput
+          style={style}
+          onPress={this.handlePress}
+          value={isNil(date) ? "" : format(date, labelFormat)}
+        />
 
         <DateTimePicker
           mode={mode}
