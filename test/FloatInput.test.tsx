@@ -12,21 +12,21 @@ describe("<FloatInput />", () => {
   it("emits an integer value on change", () => {
     const onChange = jest.fn();
     const input = shallow(<FloatInput value={null} onChange={onChange} />);
-    input.find("DecimalInput").simulate("change", "1");
+    input.find("NumericInput").simulate("change", "1");
     expect(onChange).toHaveBeenCalledWith(1);
   });
 
   it("emits an float value on change", () => {
     const onChange = jest.fn();
     const input = shallow(<FloatInput value={null} onChange={onChange} />);
-    input.find("DecimalInput").simulate("change", "1.5");
+    input.find("NumericInput").simulate("change", "1.5");
     expect(onChange).toHaveBeenCalledWith(1.5);
   });
 
   it("emits a `null` for `null` values", () => {
     const onChange = jest.fn();
     const input = shallow(<FloatInput value={null} onChange={onChange} />);
-    input.find("DecimalInput").simulate("change", null);
+    input.find("NumericInput").simulate("change", null);
     expect(onChange).toHaveBeenCalledWith(null);
   });
 });

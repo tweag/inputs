@@ -1,9 +1,9 @@
 import React from "react";
-import { DecimalInput } from "../src";
+import { NumericInput } from "../src";
 import { shallow, ShallowWrapper } from "enzyme";
 
-describe("<DecimalInput />", () => {
-  let input!: ShallowWrapper<{}, {}, DecimalInput>;
+describe("<NumericInput />", () => {
+  let input!: ShallowWrapper<{}, {}, NumericInput>;
   let onChange!: jest.Mock<any, any>;
   let setNativeProps!: jest.SpyInstance<any, any>;
 
@@ -13,7 +13,7 @@ describe("<DecimalInput />", () => {
 
   beforeEach(() => {
     onChange = jest.fn();
-    input = shallow(<DecimalInput value="99" onChange={onChange} />);
+    input = shallow(<NumericInput value="99" onChange={onChange} />);
     setNativeProps = jest.spyOn(input.instance(), "setNativeProps");
   });
 

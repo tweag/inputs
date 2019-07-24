@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DecimalInput /> renders 1`] = `
+exports[`<NumericInput /> renders 1`] = `
 <TextInput
   allowFontScaling={true}
   keyboardType="numeric"

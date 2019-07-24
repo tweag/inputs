@@ -15,12 +15,14 @@
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    // A leading `_` does not appear to be working?
+    "noUnusedLocals": false
   },
   "include": ["src"]
 }
