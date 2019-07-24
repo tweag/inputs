@@ -40,7 +40,7 @@ export class Picker<T> extends Component<PickerProps<T>> {
     if (this.props.onModalOpen) {
       this.props.onModalOpen();
     }
-  }
+  };
 
   private handleChange = (value: T) => {
     if (this.props.onChange) {

@@ -100,9 +100,7 @@ export class Modal extends React.Component<ModalProps, State> {
             </TouchableWithoutFeedback>
           </View>
 
-          <View style={[styles.body, { height }, style]}>
-            {body}
-          </View>
+          <View style={[styles.body, { height }, style]}>{body}</View>
         </RNModal>
       </>
     );
