@@ -35,7 +35,7 @@ export default function App() {
   const [values, setValues] = useState<Values>({
     input: null,
     integer: null,
-    numeric: null,
+    numeric: "5.3",
     float: null,
     date: null,
     time: null,

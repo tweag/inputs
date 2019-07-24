@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native";
 import { NumericInputProps } from "./types";
-import { InputComponent } from "./utils";
+import { InputComponent, isNil } from "./utils";
 
 const clean = (input: string) => {
   return input.match(/^-?\d*\.?\d*/)![0];
@@ -12,6 +12,12 @@ const parse = (input: string) => {
 };
 
 export class NumericInput extends InputComponent<NumericInputProps> {
+  public componentDidMount() {
+    if (!isNil(this.props.value)) {
+      this.setNativeProps({ text: clean(this.props.value) });
+    }
+  }
+
   private handleChange = (rawInput: string) => {
     const input = clean(rawInput);
     const value = parse(input);
@@ -26,14 +32,13 @@ export class NumericInput extends InputComponent<NumericInputProps> {
   };
 
   public render() {
-    // NOTE: Is this supposed to be uncontrolled?
     const { value: _value, onChange: _onChange, ...props } = this.props;
 
     return (
       <TextInput
         ref={this.inputRef}
-        onChangeText={this.handleChange}
         keyboardType="numeric"
+        onChangeText={this.handleChange}
         {...props}
       />
     );
