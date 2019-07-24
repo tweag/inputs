@@ -45,30 +45,12 @@ const styles = StyleSheet.create({
 });
 
 interface State {
-  isVisible: boolean;
   orientation: string;
 }
 
 export class Modal extends React.Component<ModalProps, State> {
   public state = {
-    isVisible: false,
     orientation: "portrait"
-  };
-
-  public open = () => {
-    this.setState({ isVisible: true });
-  };
-
-  public close = () => {
-    this.setState({ isVisible: false });
-  };
-
-  private handleClose = () => {
-    this.close();
-
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
   };
 
   private handleOrientationChange = (e: NativeSyntheticEvent<any>) => {
@@ -76,45 +58,41 @@ export class Modal extends React.Component<ModalProps, State> {
   };
 
   public render() {
-    const { isVisible, orientation } = this.state;
     const {
+      body,
       children,
-      render,
       style,
+      isVisible,
       headerStyle,
       backdropStyle,
+      onRequestClose,
       ...modalProps
     } = this.props;
 
-    const height = orientation === "portrait" ? 215 : 162;
-    const context = {
-      isVisible,
-      orientation,
-      open: this.open,
-      close: this.close
-    };
+    const height = this.state.orientation === "portrait" ? 215 : 162;
 
     return (
       <>
-        {children(context)}
+        {children}
 
         <RNModal
           visible={isVisible}
           transparent
           animationType="slide"
           supportedOrientations={["portrait", "landscape"]}
+          onRequestClose={onRequestClose}
           onOrientationChange={this.handleOrientationChange}
           {...modalProps}
         >
           <TouchableOpacity
             style={[styles.backdrop, backdropStyle]}
-            onPress={this.handleClose}
+            onPress={onRequestClose}
           />
 
           <View style={[styles.header, headerStyle]}>
             <TouchableWithoutFeedback
-              onPress={this.handleClose}
               hitSlop={hitSlop}
+              onPress={onRequestClose}
             >
               <View>
                 <Text style={styles.done}>Done</Text>
@@ -123,7 +101,7 @@ export class Modal extends React.Component<ModalProps, State> {
           </View>
 
           <View style={[styles.body, { height }, style]}>
-            {render(context)}
+            {body}
           </View>
         </RNModal>
       </>

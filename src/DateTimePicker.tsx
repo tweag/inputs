@@ -48,6 +48,10 @@ export class DateTimePicker extends Component<DateTimePickerProps, State> {
 
   private handlePress = () => {
     this.focus();
+
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
   };
 
   private handleConfirm = (value: Date) => {
@@ -60,10 +64,18 @@ export class DateTimePicker extends Component<DateTimePickerProps, State> {
     }
 
     this.blur();
+
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   };
 
   private handleCancel = () => {
     this.blur();
+
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   };
 
   public render() {
@@ -73,6 +85,8 @@ export class DateTimePicker extends Component<DateTimePickerProps, State> {
       style,
       labelFormat,
       inputProps,
+      onFocus: _onFocus,
+      onBlur: _onBlur,
       onChange: _onChange,
       onChangeDate: _onChangeDate,
       ...props

@@ -1,4 +1,4 @@
-import React, { createRef, Component } from "react";
+import React, { Component } from "react";
 import { Picker as RNPicker, Platform } from "react-native";
 import { Modal } from "./Modal";
 import { StaticInput } from "./StaticInput";
@@ -22,17 +22,23 @@ function getDisplayValue<T>(items: Array<PickerItemObject<T>>, value: T) {
 }
 
 export class Picker<T> extends Component<PickerProps<T>> {
-  private modalRef = createRef<Modal>();
+  public state = {
+    isVisible: false
+  };
 
   public focus() {
-    if (this.modalRef.current) {
-      this.modalRef.current.open();
-    }
+    this.setState({ isVisible: true });
   }
 
   public blur() {
-    if (this.modalRef.current) {
-      this.modalRef.current.close();
+    this.setState({ isVisible: false });
+  }
+
+  private handlePress = () => {
+    this.focus();
+
+    if (this.props.onModalOpen) {
+      this.props.onModalOpen();
     }
   }
 
@@ -42,7 +48,16 @@ export class Picker<T> extends Component<PickerProps<T>> {
     }
   };
 
+  private handleClose = () => {
+    this.blur();
+
+    if (this.props.onModalClose) {
+      this.props.onModalClose();
+    }
+  };
+
   public render() {
+    const { isVisible } = this.state;
     const {
       value,
       items,
@@ -53,6 +68,8 @@ export class Picker<T> extends Component<PickerProps<T>> {
       modalStyle,
       modalProps = {},
       onChange: _onChange,
+      onModalClose: _onModalOpen,
+      onModalOpen: _onModalClose,
       ...props
     } = this.props;
 
@@ -74,20 +91,19 @@ export class Picker<T> extends Component<PickerProps<T>> {
       picker
     ) : (
       <Modal
-        ref={this.modalRef}
-        render={() => picker}
+        body={picker}
         style={modalStyle}
+        isVisible={isVisible}
+        onRequestClose={this.handleClose}
         {...modalProps}
       >
-        {modal => (
-          <StaticInput
-            style={style}
-            onPress={modal.open}
-            children={children}
-            value={getDisplayValue(pickerItems, value)}
-            {...inputProps}
-          />
-        )}
+        <StaticInput
+          style={style}
+          onPress={this.handlePress}
+          children={children}
+          value={getDisplayValue(pickerItems, value)}
+          {...inputProps}
+        />
       </Modal>
     );
   }
