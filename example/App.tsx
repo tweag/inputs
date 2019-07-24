@@ -25,13 +25,15 @@ interface Values {
   picker: string | null;
 }
 
-const Item: React.FC<{ name: string, label: string }> = ({ name, label, children }) => (
+const Item: React.FC<{ name: string; label: string }> = ({
+  name,
+  label,
+  children
+}) => (
   <View style={styles.item}>
     <Text style={styles.label}>{label}</Text>
     {children}
-    <ErrorMessage name={name}>
-      {msg => <Text>{msg}</Text>}
-    </ErrorMessage>
+    <ErrorMessage name={name}>{msg => <Text>{msg}</Text>}</ErrorMessage>
   </View>
 );
 
@@ -90,23 +92,43 @@ export default function App() {
             </Item>
 
             <Item name="numeric" label="Numeric">
-              <NumericInput name="numeric" style={styles.input} validate={notBlank} />
+              <NumericInput
+                name="numeric"
+                style={styles.input}
+                validate={notBlank}
+              />
             </Item>
 
             <Item name="float" label="Float">
-              <FloatInput name="float" style={styles.input} validate={notBlank} />
+              <FloatInput
+                name="float"
+                style={styles.input}
+                validate={notBlank}
+              />
             </Item>
 
             <Item name="date" label="Date">
-              <DatePicker name="date" style={styles.input} validate={notBlank} />
+              <DatePicker
+                name="date"
+                style={styles.input}
+                validate={notBlank}
+              />
             </Item>
 
             <Item name="time" label="Time">
-              <TimePicker name="time" style={styles.input} validate={notBlank} />
+              <TimePicker
+                name="time"
+                style={styles.input}
+                validate={notBlank}
+              />
             </Item>
 
             <Item name="datetime" label="Date Time">
-              <DateTimePicker name="datetime" style={styles.input} validate={notBlank} />
+              <DateTimePicker
+                name="datetime"
+                style={styles.input}
+                validate={notBlank}
+              />
             </Item>
 
             <Item name="picker" label="Picker">
