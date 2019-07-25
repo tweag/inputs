@@ -25,9 +25,8 @@ export class FloatInput extends InputComponent<FloatInputProps> {
     return (
       <NumericInput
         ref={this.inputRef}
-        value={isNil(value) ? "" : value.toString()}
         onChange={this.handleChange}
-        keyboardType="numeric"
+        value={isNil(value) ? "" : value.toString()}
         {...props}
       />
     );

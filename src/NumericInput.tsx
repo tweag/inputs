@@ -12,12 +12,6 @@ const parse = (input: string) => {
 };
 
 export class NumericInput extends InputComponent<NumericInputProps> {
-  public componentDidMount() {
-    if (!isNil(this.props.value)) {
-      this.setNativeProps({ text: clean(this.props.value) });
-    }
-  }
-
   private handleChange = (rawInput: string) => {
     const input = clean(rawInput);
     const value = parse(input);
@@ -32,12 +26,16 @@ export class NumericInput extends InputComponent<NumericInputProps> {
   };
 
   public render() {
-    const { value: _value, onChange: _onChange, ...props } = this.props;
+    const { value, onChange: _onChange, ...props } = this.props;
 
     return (
       <TextInput
         ref={this.inputRef}
         keyboardType="numeric"
+        autoCompleteType="off"
+        autoCapitalize="none"
+        autoCorrect={false}
+        defaultValue={isNil(value) ? "" : value}
         onChangeText={this.handleChange}
         {...props}
       />

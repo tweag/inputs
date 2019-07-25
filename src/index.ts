@@ -10,6 +10,4 @@ export * from "./DatePicker";
 export * from "./TimePicker";
 export * from "./DateTimePicker";
 
-export * from "./Modal";
 export * from "./Switch";
-export * from "./StaticInput";
