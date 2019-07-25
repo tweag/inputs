@@ -12,6 +12,7 @@
     "test": "TZ=America/New_York jest",
     "prebuild": "rm -rf packages/*/lib/",
     "build": "tsc -b packages/{create,react,formik}-*",
+    "prepublishOnly": "yarn build",
     "format": "prettier --write '**/*.{js,ts,tsx,json,md}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx,json,md}'"
   },
@@ -26,6 +27,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "jest": "^24.8.0",
+    "lerna": "^3.16.4",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,0 +1,15 @@
+{
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "ignoreChanges": ["!packages/**"],
+      "message": "Release %s 🚀 [skip ci]"
+    }
+  }
+}
