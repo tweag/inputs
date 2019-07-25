@@ -1,6 +1,7 @@
 node_modules
 dist
-example/.expo/*
+packages/*/lib
+apps/*/.expo
 npm-debug.*
 yarn-error.*
 *.jks

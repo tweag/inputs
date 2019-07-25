@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["dom", "esnext"],
+    "lib": ["esnext"],
     "declaration": true,
     "sourceMap": true,
     "jsx": "react-native",
