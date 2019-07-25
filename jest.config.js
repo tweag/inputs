@@ -5,9 +5,9 @@ module.exports = {
   preset: "react-native",
   snapshotSerializers: ["enzyme-to-json/serializer"],
   setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
-  testMatch: ["<rootDir>/test/**/*.test.{ts,tsx}"],
-  modulePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/example/"],
-  collectCoverageFrom: ["<rootDir>/src/**/*.{ts,tsx}"],
+  collectCoverageFrom: ["<rootDir>/packages/**/*.{ts,tsx}"],
+  testMatch: ["<rootDir>/packages/**/*.test.{ts,tsx}"],
+  modulePathIgnorePatterns: ["<rootDir>/apps/"],
   transform: {
     ...preset.transform,
     "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"

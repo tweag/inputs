@@ -1,0 +1,35 @@
+{
+  "name": "react-native-forms",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "jest",
+    "prebuild": "rm -rf packages/*/lib/",
+    "build": "tsc -b packages/react-native-baseline-inputs",
+    "format": "prettier --write 'packages/**/*.{ts,tsx}'",
+    "format:check": "prettier --check 'packages/**/*.{ts,tsx}'"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-native": "^0.57.60",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-native": "^0.59.9",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  }
+}

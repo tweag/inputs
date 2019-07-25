@@ -2,7 +2,6 @@
 
 exports[`<FloatInput /> renders 1`] = `
 <NumericInput
-  keyboardType="numeric"
   onChange={[Function]}
   value="5"
 />
