@@ -14,13 +14,17 @@ interface FieldConfig<T extends AnyComponent> {
   innerRef?: (instance: T | null) => void;
 }
 
+export type PropGetter<T extends AnyComponent> = (
+  config: FieldProps
+) => Partial<React.ComponentProps<T>>;
+
 export type CustomFieldProps<T extends AnyComponent> = BaseInputProps<T> &
   FieldConfig<T>;
 
 export interface CreateField<T extends AnyComponent> {
   component: T;
   displayName: string;
-  getProps: (config: FieldProps) => Partial<React.ComponentProps<T>>;
+  getProps: PropGetter<T>;
 }
 
 export const createField = <T extends AnyComponent>({
