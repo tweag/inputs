@@ -1,7 +1,7 @@
 {
   "name": "formik-native-inputs",
   "license": "MIT",
-  "version": "0.1.0-beta.0",
+  "version": "0.6.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -15,8 +15,8 @@
     "react-native": ">=0.59"
   },
   "dependencies": {
-    "create-formik-field": "^0.1.0",
-    "react-native-baseline-inputs": "^0.3.5"
+    "create-formik-field": "^0.6.0",
+    "react-native-baseline-inputs": "^0.6.0"
   },
   "devDependencies": {
     "react-native": "^0.59.9"
