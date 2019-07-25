@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "prebuild": "rm -rf packages/*/lib/",
-    "build": "tsc -b packages/react-native-baseline-inputs",
+    "build": "tsc -b packages/react-native-baseline-inputs packages/formik-native-inputs",
     "format": "prettier --write 'packages/**/*.{ts,tsx}'",
     "format:check": "prettier --check 'packages/**/*.{ts,tsx}'"
   },
