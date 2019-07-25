@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "name": "formik-inputs",
+  "version": "0.5.0",
+  "name": "react-baseline-inputs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,15 +12,13 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "formik": "2.0.1-rc.12",
-    "react": ">=16"
+    "react": ">=16.8"
   },
   "dependencies": {
-    "react-baseline-inputs": "^0.5.0"
+    "date-fns": "^1.30"
   },
   "devDependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "formik": "2.0.1-rc.12"
+    "react-dom": "^16.8.6"
   }
 }
