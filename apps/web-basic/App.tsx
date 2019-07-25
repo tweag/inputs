@@ -51,7 +51,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>Baseline Inputs</h1>
+        <h1>React Baseline Inputs</h1>
       </header>
 
       <main>

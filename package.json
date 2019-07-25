@@ -4,7 +4,9 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/web-basic/",
+    "apps/web-formik/"
   ],
   "scripts": {
     "test": "TZ=America/New_York jest",
