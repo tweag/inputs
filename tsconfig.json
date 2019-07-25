@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "sourceMap": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["es2017", "es7", "es6", "dom"],
-    "module": "commonjs",
     "strict": true,
-    "target": "es5"
+    "jsx": "react",
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "**/lib", "**/test"]
 }

@@ -1,11 +1,15 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": [],
     "outDir": "./lib",
     "target": "esnext",
     "lib": ["esnext"],
-    "jsx": "react-native"
+    "declaration": true,
+    "sourceMap": true,
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "esModuleInterop": true,
   },
-  "include": ["./src"]
+  "include": ["src"]
 }
