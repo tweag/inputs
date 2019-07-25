@@ -2,6 +2,7 @@ import React from "react";
 import { TextInput } from "react-native";
 import { NumericInputProps } from "./types";
 import { InputComponent, isNil } from "./utils";
+import { styles } from "./styles";
 
 const clean = (input: string) => {
   return input.match(/^-?\d*\.?\d*/)![0];
@@ -26,7 +27,7 @@ export class NumericInput extends InputComponent<NumericInputProps> {
   };
 
   public render() {
-    const { value, onChange: _onChange, ...props } = this.props;
+    const { value, onChange: _onChange, style, ...props } = this.props;
 
     return (
       <TextInput
@@ -35,6 +36,7 @@ export class NumericInput extends InputComponent<NumericInputProps> {
         autoCompleteType="off"
         autoCapitalize="none"
         autoCorrect={false}
+        style={[styles.input, style]}
         defaultValue={isNil(value) ? "" : value}
         onChangeText={this.handleChange}
         {...props}
