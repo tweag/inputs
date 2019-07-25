@@ -7,7 +7,8 @@
     "lib": ["es2017", "es7", "es6", "dom"],
     "module": "commonjs",
     "strict": true,
-    "target": "es5"
+    "target": "es5",
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "**/lib", "**/test"]
 }

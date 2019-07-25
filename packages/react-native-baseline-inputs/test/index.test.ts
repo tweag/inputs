@@ -1,7 +1,7 @@
-import * as input from "../src";
+import * as inputs from "../src";
 
 it("exports all inputs", () => {
-  expect(Object.keys(input)).toEqual([
+  expect(Object.keys(inputs)).toEqual([
     "Input",
     "NumericInput",
     "IntegerInput",

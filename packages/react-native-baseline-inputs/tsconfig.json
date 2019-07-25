@@ -5,10 +5,7 @@
     "outDir": "./lib",
     "target": "esnext",
     "lib": ["esnext"],
-    "jsx": "react-native",
-
-    // TODO: Add to shared?
-    "allowSyntheticDefaultImports": true
+    "jsx": "react-native"
   },
   "include": ["./src"]
 }
