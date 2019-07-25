@@ -153,11 +153,10 @@ const styles = StyleSheet.create({
     marginBottom: 4
   },
   input: {
-    height: 36,
+    minHeight: 36,
     borderWidth: 1,
     borderRadius: 4,
     borderColor: "#ddd",
-    paddingLeft: 8,
-    paddingRight: 8
+    paddingHorizontal: 8
   }
 });
