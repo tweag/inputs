@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { CustomInputProps } from "./types";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
