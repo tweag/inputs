@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { NumericInput } from "../src";
 import { shallow, ShallowWrapper } from "enzyme";
 

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { NumericInput } from "./NumericInput";
 import { FloatInputProps } from "./types";
 import { InputComponent, isNil } from "./utils";

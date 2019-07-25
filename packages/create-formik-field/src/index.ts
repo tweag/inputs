@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useFormikContext, useField, FieldProps, FieldValidator } from "formik";
 
 type AnyComponent = React.ComponentType<any>;

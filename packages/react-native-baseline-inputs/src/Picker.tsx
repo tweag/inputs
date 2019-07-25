@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { Picker as RNPicker, Platform } from "react-native";
 import isEqual from "fast-deep-equal";
 import { Modal } from "./Modal";
@@ -22,7 +22,7 @@ function getSelectedLabel(items: PickerItemObject[], value: any) {
   return selectedItem ? selectedItem.label : "";
 }
 
-export class Picker extends Component<PickerProps> {
+export class Picker extends React.Component<PickerProps> {
   public state = {
     isVisible: false
   };

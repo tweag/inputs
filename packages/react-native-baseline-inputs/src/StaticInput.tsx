@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { TouchableWithoutFeedback, View, TextInput } from "react-native";
 import { StaticInputProps } from "./types";
 import { styles } from "./styles";

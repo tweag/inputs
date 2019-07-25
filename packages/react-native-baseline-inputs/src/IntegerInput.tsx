@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { TextInput } from "react-native";
 import { IntegerInputProps } from "./types";
 import { InputComponent, isNil } from "./utils";

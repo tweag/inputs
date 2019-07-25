@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Switch as RNSwitch } from "react-native";
 import { SwitchProps } from "./types";
 import { InputComponent } from "./utils";

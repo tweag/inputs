@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { CustomInputProps } from "./types";
 
 export type InputProps = CustomInputProps<"input", string | null>;

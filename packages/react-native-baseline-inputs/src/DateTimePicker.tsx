@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { format, parse, isValid } from "date-fns";
 import { default as RNDateTimePicker } from "react-native-modal-datetime-picker";
 import { DateTimePickerProps } from "./types";
@@ -27,7 +27,7 @@ interface State {
   isVisible: boolean;
 }
 
-export class DateTimePicker extends Component<DateTimePickerProps, State> {
+export class DateTimePicker extends React.Component<DateTimePickerProps, State> {
   public static defaultProps = {
     mode: "datetime",
     labelFormat: "M/D/YYYY h:mmA",

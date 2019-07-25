@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { TimePickerProps } from "./types";
 import { InputComponent } from "./utils";
 import { DateTimePicker } from "./DateTimePicker";
