@@ -11,7 +11,7 @@ module.exports = {
   transform: {
     ...preset.transform,
     "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
-  },
+  }
   // globals: {
   //   "ts-jest": {
   //     tsConfig: "tsconfig.jest.json"
