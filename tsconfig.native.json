@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
     "strict": true,
-    "jsx": "react",
-    "lib": ["dom", "esnext"],
+    "jsx": "react-native",
+    "lib": ["esnext"],
 
     "sourceMap": true,
     "declaration": true,
