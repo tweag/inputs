@@ -1,43 +1,52 @@
 import * as Baseline from "react-baseline-inputs";
-import { CustomFieldProps, createCustomField } from "./createCustomField";
+import { createField, CustomFieldProps } from "create-formik-field";
 
 export type InputProps = CustomFieldProps<typeof Baseline.Input>;
-export const Input = createCustomField(Baseline.Input, "FormikInput");
+export const Input = createField<typeof Baseline.Input>({
+  component: Baseline.Input,
+  displayName: "FormikInput"
+});
 
 export type CheckboxProps = CustomFieldProps<typeof Baseline.Checkbox>;
-export const Checkbox = createCustomField(Baseline.Checkbox, "FormikCheckbox");
+export const Checkbox = createField({
+  component: Baseline.Checkbox,
+  displayName: "FormikCheckbox"
+});
 
 export type SelectProps = CustomFieldProps<typeof Baseline.Select>;
-export const Select = createCustomField(Baseline.Select, "FormikSelect");
+export const Select = createField({
+  component: Baseline.Select,
+  displayName: "FormikSelect"
+});
 
 export type IntegerInputProps = CustomFieldProps<typeof Baseline.IntegerInput>;
-export const IntegerInput = createCustomField(
-  Baseline.IntegerInput,
-  "FormikIntegerInput"
-);
+export const IntegerInput = createField({
+  component: Baseline.IntegerInput,
+  displayName: "FormikIntegerInput"
+});
 
 export type FloatInputProps = CustomFieldProps<typeof Baseline.FloatInput>;
-export const FloatInput = createCustomField(
-  Baseline.FloatInput,
-  "FormikFloatInput"
-);
+export const FloatInput = createField({
+  component: Baseline.FloatInput,
+  displayName: "FormikFloatInput"
+});
 
 export type FileInputProps = CustomFieldProps<typeof Baseline.FileInput>;
-export const FileInput = createCustomField(
-  Baseline.FileInput,
-  "FormikFileInput"
-);
+export const FileInput = createField({
+  component: Baseline.FileInput,
+  displayName: "FormikFileInput"
+});
 
 export type DateInputProps = CustomFieldProps<typeof Baseline.DateInput>;
-export const DateInput = createCustomField(
-  Baseline.DateInput,
-  "FormikDateInput"
-);
+export const DateInput = createField({
+  component: Baseline.DateInput,
+  displayName: "FormikDateInput"
+});
 
 export type DateTimeInputProps = CustomFieldProps<
   typeof Baseline.DateTimeInput
 >;
-export const DateTimeInput = createCustomField(
-  Baseline.DateTimeInput,
-  "FormikDateTimeInput"
-);
+export const DateTimeInput = createField({
+  component: Baseline.DateTimeInput,
+  displayName: "FormikDateTimeInput"
+});

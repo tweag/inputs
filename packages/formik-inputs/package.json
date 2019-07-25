@@ -11,15 +11,8 @@
     "prebuild": "rm -rf ./lib",
     "build": "tsc"
   },
-  "peerDependencies": {
-    "formik": "2.0.1-rc.12",
-    "react": ">=16"
-  },
   "dependencies": {
+    "create-formik-field": "^0.1.0",
     "react-baseline-inputs": "^0.5.0"
-  },
-  "devDependencies": {
-    "react": "^16.8.6",
-    "formik": "2.0.1-rc.12"
   }
 }

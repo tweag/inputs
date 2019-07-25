@@ -24,12 +24,17 @@ export type CustomFieldProps<T extends AnyComponent> = BaseInputProps<T> &
 export interface CreateField<T extends AnyComponent> {
   component: T;
   displayName: string;
-  getProps: PropGetter<T>;
+  getProps?: PropGetter<T>;
 }
 
+const getDefaultProps: PropGetter<any> = ({ form, field }) => ({
+  onChange: (value: any) => form.setFieldValue(field.name, value),
+  onBlur: () => form.setFieldTouched(field.name, true)
+});
+
 export const createField = <T extends AnyComponent>({
-  getProps,
   displayName,
+  getProps = getDefaultProps,
   component: WrappedComponent
 }: CreateField<T>) => {
   const FormikField: React.FC<CustomFieldProps<T>> = ({
