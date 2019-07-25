@@ -11,11 +11,11 @@ const normalizePickerItem = (item: PickerItem): PickerItemObject => {
       key: item,
       value: item,
       label: item.toString()
-    }
+    };
   }
 
   return item;
-}
+};
 
 function getSelectedLabel(items: PickerItemObject[], value: any) {
   const selectedItem = items.find(item => isEqual(item.value, value));
