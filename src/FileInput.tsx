@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { ExtraInputProps } from "./types";
 
 interface MultipleFileProps extends ExtraInputProps<"input"> {
