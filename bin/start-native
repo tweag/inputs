@@ -1,0 +1,6 @@
+#!/bin/bash
+
+node_modules/.bin/concurrently \
+  "bin/build --watch" \
+  "bin/sync apps/native-$1" \
+  "yarn --cwd apps/native-$1 start"

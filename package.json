@@ -10,15 +10,15 @@
   ],
   "scripts": {
     "test": "TZ=America/New_York jest",
-    "prebuild": "rm -rf packages/*/lib/",
-    "build": "tsc -b packages/{create,react,formik}-*",
-    "prepublishOnly": "yarn build",
+    "prebuild": "bin/clean",
+    "build": "bin/build",
+    "prepublishOnly": "bin/build",
     "format": "prettier --write '**/*.{js,ts,tsx,json,md}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx,json,md}'",
-    "start:web:basic": "concurrently 'yarn build --watch' 'yarn --cwd apps/web-basic start'",
-    "start:web:formik": "concurrently 'yarn build --watch' 'yarn --cwd apps/web-formik start'",
-    "start:native:basic": "concurrently 'yarn build --watch' 'bin/sync-modules apps/native-basic' 'yarn --cwd apps/native-basic start'",
-    "start:native:formik": "concurrently 'yarn build --watch' 'bin/sync-modules apps/native-formik' 'yarn --cwd apps/native-formik start'"
+    "start:web:basic": "bin/start-web basic",
+    "start:web:formik": "bin/start-web formik",
+    "start:native:basic": "bin/start-native basic",
+    "start:native:formik": "bin/start-native formik"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",

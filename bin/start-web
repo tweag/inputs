@@ -1,0 +1,5 @@
+#!/bin/bash
+
+node_modules/.bin/concurrently \
+  "bin/build --watch" \
+  "yarn --cwd apps/web-$1 start"
