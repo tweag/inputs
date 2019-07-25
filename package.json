@@ -1,35 +1,24 @@
 {
-  "name": "react-baseline-inputs",
-  "version": "0.5.0",
+  "name": "react-forms",
+  "version": "0.0.0",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/react-baseline-inputs.esm.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "start": "parcel example/index.html",
-    "build": "tsdx build",
-    "test": "TZ=America/New_York tsdx test --env=jsdom",
-    "format": "prettier --write '{src,test,example}/**/*.{ts,tsx}'",
-    "format:check": "prettier --check '{src,test,example}/**/*.{ts,tsx}'",
-    "typecheck": "tsc -p . --noEmit",
-    "prepublishOnly": "tsdx test && tsdx build"
+    "test": "jest",
+    "format": "prettier --write 'packages/**/*.{ts,tsx}'",
+    "format:check": "prettier --check 'packages/**/*.{ts,tsx}'"
   },
   "jest": {
+    "preset": "ts-jest",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/test/setup.ts"
     ]
-  },
-  "peerDependencies": {
-    "react": ">=16"
-  },
-  "dependencies": {
-    "date-fns": "^1.30"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
@@ -40,14 +29,9 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
-    "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
-    "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.8.6",
-    "react-inspector": "^3.0.2",
-    "tsdx": "^0.7.2",
-    "tslib": "^1.10.0",
     "typescript": "^3.5.3"
   }
 }
