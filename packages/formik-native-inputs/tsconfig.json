@@ -4,6 +4,7 @@
     "target": "esnext",
     "lib": ["esnext"],
     "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
     "jsx": "react-native",
     "moduleResolution": "node",
