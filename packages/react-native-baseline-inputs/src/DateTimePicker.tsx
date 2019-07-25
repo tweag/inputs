@@ -27,7 +27,10 @@ interface State {
   isVisible: boolean;
 }
 
-export class DateTimePicker extends React.Component<DateTimePickerProps, State> {
+export class DateTimePicker extends React.Component<
+  DateTimePickerProps,
+  State
+> {
   public static defaultProps = {
     mode: "datetime",
     labelFormat: "M/D/YYYY h:mmA",
