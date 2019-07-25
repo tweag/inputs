@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0",
+  "version": "0.6.1",
   "name": "formik-inputs",
   "license": "MIT",
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "create-formik-field": "^0.6.0",
-    "react-baseline-inputs": "^0.6.0"
+    "create-formik-field": "^0.6.1",
+    "react-baseline-inputs": "^0.6.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "web-basic",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "parcel": "^1.12.3",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
-    "react-baseline-inputs": "^0.6.0",
+    "react-baseline-inputs": "^0.6.1",
     "react-dom": "^16.8.6"
   }
 }
