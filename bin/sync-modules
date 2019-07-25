@@ -2,7 +2,6 @@
 
 const path = require('path');
 const fs = require('fs-jetpack');
-const { spawn } = require('child_process');
 
 const [project] = process.argv.slice(2);
 const modulesRoot = path.join(project, 'node_modules');
@@ -28,11 +27,6 @@ const copy = () => {
     }
   }
 };
-
-/**
- * Start the typescript compiler
- */
-spawn("yarn", ["build", "--watch"], { stdio: "inherit" });
 
 /**
  * Attempt to copy few seconds

@@ -14,7 +14,11 @@
     "build": "tsc -b packages/{create,react,formik}-*",
     "prepublishOnly": "yarn build",
     "format": "prettier --write '**/*.{js,ts,tsx,json,md}'",
-    "format:check": "prettier --check '**/*.{js,ts,tsx,json,md}'"
+    "format:check": "prettier --check '**/*.{js,ts,tsx,json,md}'",
+    "start:web:basic": "concurrently 'yarn build --watch' 'yarn --cwd apps/web-basic start'",
+    "start:web:formik": "concurrently 'yarn build --watch' 'yarn --cwd apps/web-formik start'",
+    "start:native:basic": "concurrently 'yarn build --watch' 'bin/sync-modules apps/native-basic' 'yarn --cwd apps/native-basic start'",
+    "start:native:formik": "concurrently 'yarn build --watch' 'bin/sync-modules apps/native-formik' 'yarn --cwd apps/native-formik start'"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
@@ -23,6 +27,7 @@
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-native": "^0.57.60",
+    "concurrently": "^4.1.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
