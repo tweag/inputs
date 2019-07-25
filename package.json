@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "TZ=America/New_York jest",
     "prebuild": "rm -rf packages/*/lib/",
     "build": "tsc -b packages/react-baseline-inputs packages/formik-inputs",
     "format": "prettier --write 'packages/**/*.{ts,tsx}'",
