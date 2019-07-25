@@ -1,6 +1,21 @@
-import React, { useMemo } from "react";
-import { useFormikContext, useField, FieldProps } from "formik";
-import { AnyComponent, CustomFieldProps } from "./types";
+import React from "react";
+import { useFormikContext, useField, FieldProps, FieldValidator } from "formik";
+
+type AnyComponent = React.ComponentType<any>;
+
+type BaseInputProps<T extends AnyComponent> = Omit<
+  React.ComponentProps<T>,
+  "value" | "onChange"
+>;
+
+interface FieldConfig<T extends AnyComponent> {
+  name: string;
+  validate?: FieldValidator;
+  innerRef?: (instance: T | null) => void;
+}
+
+export type CustomFieldProps<T extends AnyComponent> = BaseInputProps<T> &
+  FieldConfig<T>;
 
 export interface CreateField<T extends AnyComponent> {
   component: T;
@@ -29,11 +44,10 @@ export const createField = <T extends AnyComponent>({
       return () => formik.unregisterField(name);
     }, [formik.registerField, formik.unregisterField, name, validate]);
 
-    const inputProps = useMemo(() => getProps({ form: formik, field, meta }), [
-      formik,
-      field,
-      meta
-    ]);
+    const inputProps = React.useMemo(
+      () => getProps({ form: formik, field, meta }),
+      [formik, field, meta]
+    );
 
     return React.createElement(WrappedComponent, {
       ref: innerRef,

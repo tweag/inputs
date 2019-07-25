@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "name": "create-formik-field",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "formik": "2.0.1-rc.12",
+    "react": ">=16"
+  },
+  "devDependencies": {
+    "formik": "2.0.1-rc.12",
+    "react": "^16.8.6"
+  }
+}

@@ -11,7 +11,7 @@
   "scripts": {
     "test": "TZ=America/New_York jest",
     "prebuild": "rm -rf packages/*/lib/",
-    "build": "tsc -b packages/react-baseline-inputs packages/react-native-baseline-inputs packages/formik-inputs packages/formik-native-inputs",
+    "build": "tsc -b packages/create-formik-field packages/react-baseline-inputs packages/react-native-baseline-inputs packages/formik-inputs packages/formik-native-inputs",
     "format": "prettier --write '{packages,apps}/**/*.{ts,tsx}'",
     "format:check": "prettier --check '{packages,apps}/**/*.{ts,tsx}'"
   },
