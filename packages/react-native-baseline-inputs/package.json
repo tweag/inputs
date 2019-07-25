@@ -1,0 +1,27 @@
+{
+  "name": "react-native-baseline-inputs",
+  "version": "0.3.5",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-native": ">=0.59"
+  },
+  "dependencies": {
+    "date-fns": "^1.30",
+    "fast-deep-equal": "^2.0.1",
+    "react-native-modal-datetime-picker": "^7.5.0"
+  },
+  "devDependencies": {
+    "react": "^16.8.3",
+    "react-native": "^0.59.9"
+  }
+}

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FloatInput /> renders 1`] = `
+<NumericInput
+  onChange={[Function]}
+  value="5"
+/>
+`;

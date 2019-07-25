@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> renders 1`] = `
+<TextInput
+  allowFontScaling={true}
+  autoCapitalize="none"
+  onChangeText={[Function]}
+  rejectResponderTermination={true}
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "fontSize": 18,
+        "minHeight": 40,
+      },
+      undefined,
+    ]
+  }
+  underlineColorAndroid="transparent"
+  value="hello"
+/>
+`;
