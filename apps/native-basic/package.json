@@ -2,20 +2,14 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "prestart": "yarn --cwd ../.. build && yarn add ../../packages/react-baseline-inputs",
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "expo start"
   },
   "dependencies": {
     "expo": "^33.0.0",
     "react": "16.8.3",
-    "react-baseline-inputs": "../../packages/react-baseline-inputs",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
-    "react-native-baseline-inputs": "file:../../packages/react-native-baseline-inputs"
+    "react-native-baseline-inputs": "../../packages/react-native-baseline-inputs"
   },
   "devDependencies": {
     "@types/react": "^16.8.19",
