@@ -9,6 +9,7 @@
     "apps/web-formik/"
   ],
   "scripts": {
+    "postinstall": "bin/build",
     "test": "TZ=America/New_York jest",
     "prebuild": "bin/clean",
     "build": "bin/build",
