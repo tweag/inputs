@@ -88,6 +88,7 @@ export class DateTimePicker extends React.Component<
       style,
       labelFormat,
       inputProps,
+      containerStyle,
       onFocus: _onFocus,
       onBlur: _onBlur,
       onChange: _onChange,
@@ -103,6 +104,7 @@ export class DateTimePicker extends React.Component<
           onPress={this.handlePress}
           value={isNil(date) ? "" : format(date, labelFormat)}
           style={style}
+          containerStyle={containerStyle}
           {...inputProps}
         />
 

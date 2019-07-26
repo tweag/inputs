@@ -7,10 +7,14 @@ export const StaticInput: React.FC<StaticInputProps> = ({
   style,
   onPress,
   children,
+  containerStyle,
   ...props
 }) => (
   <TouchableWithoutFeedback onPress={onPress}>
-    <View pointerEvents="box-only" style={styles.staticInputContainer}>
+    <View
+      pointerEvents="box-only"
+      style={[styles.staticInputContainer, containerStyle]}
+    >
       {children ? (
         children
       ) : (

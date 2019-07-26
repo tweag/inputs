@@ -38,6 +38,7 @@ export interface InputProps extends BaseInputProps {
 
 export interface StaticInputProps extends BaseInputProps {
   value: string;
+  containerStyle?: StyleProp<ViewStyle>;
   onPress?: () => void;
 }
 
@@ -59,15 +60,16 @@ type BaseDateTimePickerProps = Omit<
 >;
 
 export interface DateTimePickerProps extends BaseDateTimePickerProps {
+  value: Date | string | null;
   labelFormat?: string;
   valueFormat?: string;
-  value: Date | string | null;
   style?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  inputProps?: Partial<StaticInputProps>;
   onFocus?: () => void;
   onBlur?: () => void;
   onChange?: (value: string) => void;
   onChangeDate?: (value: Date) => void;
-  inputProps?: Partial<StaticInputProps>;
 }
 
 export type DatePickerProps = DateTimePickerProps;
@@ -79,11 +81,11 @@ export type TimePickerProps = DateTimePickerProps;
 
 export interface ModalProps extends RNModalProps {
   isVisible: boolean;
+  body: React.ReactNode;
+  children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   headerStyle?: StyleProp<ViewStyle>;
   backdropStyle?: StyleProp<ViewStyle>;
-  body: React.ReactNode;
-  children: React.ReactNode;
 }
 
 /**
@@ -107,12 +109,12 @@ export type PickerItem = PickerItemObject | string | number;
 export interface PickerProps extends BasePickerProps {
   value: any;
   items: Array<PickerItem>;
-  onModalClose?: () => void;
-  onModalOpen?: () => void;
-  onChange?: (value: any) => void;
   style?: StyleProp<ViewStyle>;
   pickerStyle?: StyleProp<ViewStyle>;
   modalStyle?: StyleProp<ViewStyle>;
   modalProps?: Partial<ModalProps>;
   inputProps?: Partial<StaticInputProps>;
+  onModalClose?: () => void;
+  onModalOpen?: () => void;
+  onChange?: (value: any) => void;
 }
