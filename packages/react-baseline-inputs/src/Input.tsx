@@ -11,9 +11,10 @@ export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
 
   return (
     <input
-      {...props}
+      type="text"
       value={value === null ? "" : value}
       onChange={handleChange}
+      {...props}
     />
   );
 };
