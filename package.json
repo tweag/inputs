@@ -10,10 +10,10 @@
   ],
   "scripts": {
     "postinstall": "bin/build",
-    "test": "TZ=America/New_York jest",
-    "prebuild": "bin/clean",
+    "prepublishOnly": "bin/clean && bin/build",
     "build": "bin/build",
-    "prepublishOnly": "bin/build",
+    "clean": "bin/clean",
+    "test": "TZ=America/New_York jest",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'",
     "start:web:basic": "bin/start-web basic",
