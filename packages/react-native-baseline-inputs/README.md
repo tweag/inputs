@@ -3,13 +3,13 @@
 ## API
 
 - [`Input`](#input)
-- [`NumericInput`](#numeric-input)
-- [`IntegerInput`](#integer-input)
-- [`FloatInput`](#float-input)
+- [`NumericInput`](#numericinput)
+- [`IntegerInput`](#integerinput)
+- [`FloatInput`](#floatinput)
 - [`Picker`](#picker)
-- [`DatePicker`](#date-picker)
-- [`TimePicker`](#time-picker)
-- [`DateTimePicker`](#date-time-picker)
+- [`DatePicker`](#datepicker)
+- [`TimePicker`](#timepicker)
+- [`DateTimePicker`](#datetimepicker)
 - [`Switch`](#switch)
 
 ### `Input`

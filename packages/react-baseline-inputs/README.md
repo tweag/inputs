@@ -3,12 +3,12 @@
 ## API
 
 - [`Checkbox`](#checkbox)
-- [`DateInput`](#date-input)
-- [`DateTimeInput`](#date-time-input)
-- [`FileInput`](#file-input)
-- [`FloatInput`](#float-input)
+- [`DateInput`](#dateinput)
+- [`DateTimeInput`](#datetimeinput)
+- [`FileInput`](#fileinput)
+- [`FloatInput`](#floatinput)
 - [`Input`](#input)
-- [`IntegerInput`](#integer-input)
+- [`IntegerInput`](#integerinput)
 - [`Select`](#select)
 
 ### `Checkbox`

@@ -5,12 +5,12 @@
 - [`Input`](#input)
 - [`Switch`](#switch)
 - [`Picker`](#picker)
-- [`NumericInput`](#numeric-input)
-- [`IntegerInput`](#integer-input)
-- [`FloatInput`](#float-input)
-- [`DatePicker`](#date-picker)
-- [`TimePicker`](#time-picker)
-- [`DateTimePicker`](#date-time-picker)
+- [`NumericInput`](#numericinput)
+- [`IntegerInput`](#integerinput)
+- [`FloatInput`](#floatinput)
+- [`DatePicker`](#datepicker)
+- [`TimePicker`](#timepicker)
+- [`DateTimePicker`](#datetimepicker)
 
 ### `Input`
 

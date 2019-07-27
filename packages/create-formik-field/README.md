@@ -2,7 +2,7 @@
 
 ## API
 
-- [`createField`](#create-field)
+- [`createField`](#createfield)
 
 ### `createField`
 

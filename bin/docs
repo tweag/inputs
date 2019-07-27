@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require("fs-jetpack");
 const path = require("path");
-const handlebars = require("handlebars");
+const fs = require("fs-jetpack");
 const prettier = require("prettier");
+const { sortBy } = require("lodash");
+const handlebars = require("handlebars");
 const docgen = require("react-docgen-typescript");
-const { sortBy, kebabCase } = require("lodash");
 
 /**
  * Define helper methods.
@@ -15,7 +15,7 @@ handlebars.registerHelper({
     return value.replace(/\|/g, "\\|").replace(/\n/g, "<br>");
   },
   anchor(value) {
-    return `#${kebabCase(value)}`;
+    return `#${value.toLowerCase()}`;
   }
 });
 

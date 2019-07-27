@@ -5,11 +5,11 @@
 - [`Input`](#input)
 - [`Checkbox`](#checkbox)
 - [`Select`](#select)
-- [`IntegerInput`](#integer-input)
-- [`FloatInput`](#float-input)
-- [`FileInput`](#file-input)
-- [`DateInput`](#date-input)
-- [`DateTimeInput`](#date-time-input)
+- [`IntegerInput`](#integerinput)
+- [`FloatInput`](#floatinput)
+- [`FileInput`](#fileinput)
+- [`DateInput`](#dateinput)
+- [`DateTimeInput`](#datetimeinput)
 
 ### `Input`
 
