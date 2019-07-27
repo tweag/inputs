@@ -62,4 +62,8 @@ const generate = file => {
   });
 };
 
-fs.find("packages", { matching: "*/src/**/*.{ts,tsx}" }).forEach(generate);
+const docFiles = fs.find("packages", { matching: "*/docs/*.md" });
+const sourceFiles = fs.find("packages", { matching: "*/src/index.{ts,tsx}" });
+
+docFiles.forEach(file => fs.remove(file));
+sourceFiles.forEach(generate);
