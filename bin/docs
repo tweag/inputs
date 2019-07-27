@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+const fs = require("fs-jetpack");
+const path = require("path");
+const { sortBy } = require("lodash");
+const handlebars = require("handlebars");
+const docgen = require("react-docgen-typescript");
+
+/**
+ * Define helper methods
+ */
+handlebars.registerHelper({
+  markdown(value) {
+    return value.replace(/\|/g, "\\|").replace(/\n/g, "<br>");
+  }
+});
+
+/**
+ * Load the template
+ */
+const source = fs.read("docs.hbs", "utf8");
+const template = handlebars.compile(source);
+
+/**
+ * Render a template
+ */
+const render = (file, component) => {
+  const props = sortBy(component.props, [
+    prop => !prop.required,
+    prop => prop.name
+  ]);
+
+  return template({ ...component, file, props });
+};
+
+/**
+ * Get the appropriate docs directory for a file
+ */
+const getDocsDir = file => {
+  const segments = file.split(path.sep);
+  const srcIndex = segments.indexOf("src");
+
+  segments[srcIndex] = "docs";
+  segments.splice(srcIndex + 1);
+
+  return segments.join(path.sep);
+};
+
+/**
+ * Generate documentation for a file
+ */
+const generate = file => {
+  const docsDir = getDocsDir(file);
+
+  for (const component of docgen.parse(file)) {
+    const filename = `${component.displayName}.md`;
+    const outfile = path.join(docsDir, filename);
+    fs.file(outfile, { content: render(file, component) });
+  }
+};
+
+fs.find("packages", { matching: "*/src/**/*.{ts,tsx}" }).forEach(generate);
