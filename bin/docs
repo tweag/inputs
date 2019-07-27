@@ -19,7 +19,9 @@ handlebars.registerHelper({
  * Load the template
  */
 const source = fs.read("docs.hbs", "utf8");
-const template = handlebars.compile(source);
+const template = handlebars.compile(source, {
+  noEscape: true
+});
 
 /**
  * Render a template
@@ -52,11 +54,12 @@ const getDocsDir = file => {
 const generate = file => {
   const docsDir = getDocsDir(file);
 
-  for (const component of docgen.parse(file)) {
-    const filename = `${component.displayName}.md`;
-    const outfile = path.join(docsDir, filename);
-    fs.file(outfile, { content: render(file, component) });
-  }
+  docgen.parse(file).forEach(component => {
+    const basename = `${component.displayName}.md`;
+    const filename = path.join(docsDir, basename);
+    const content = render(file, component);
+    fs.file(filename, { content });
+  });
 };
 
 fs.find("packages", { matching: "*/src/**/*.{ts,tsx}" }).forEach(generate);

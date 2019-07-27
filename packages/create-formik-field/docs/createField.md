@@ -8,4 +8,4 @@
 |------|------|-------------|
 | <strong>component</strong> <sup><em>required</em></sup> | `T` |  |
 | <strong>displayName</strong> <sup><em>required</em></sup> | `string` |  |
-| <strong>getProps</strong> | `PropGetter&lt;T&gt;` |  |
+| <strong>getProps</strong> | `PropGetter<T>` |  |
