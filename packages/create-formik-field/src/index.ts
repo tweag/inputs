@@ -32,6 +32,9 @@ const getDefaultProps: PropGetter<any> = ({ form, field }) => ({
   onBlur: () => form.setFieldTouched(field.name, true)
 });
 
+/**
+ * A higher-order component that will return a Formik-compatible form field.
+ */
 export const createField = <T extends AnyComponent>({
   displayName,
   getProps = getDefaultProps,

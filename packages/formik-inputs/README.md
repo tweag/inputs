@@ -1,19 +1,15 @@
 # formik-inputs
 
-## API
+## Input
 
-- [`Input`](#input)
-- [`Checkbox`](#checkbox)
-- [`Select`](#select)
-- [`IntegerInput`](#integerinput)
-- [`FloatInput`](#floatinput)
-- [`FileInput`](#fileinput)
-- [`DateInput`](#dateinput)
-- [`DateTimeInput`](#datetimeinput)
+An HTML input, but with the following benefits:
 
-## `Input`
+- It coerces a `null` value prop to an empty string.
+- It casts empty input to `null` when changed.
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -303,9 +299,19 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", string>>) => void`            |                                                                                                                                                                                                                                           |
 
-## `Checkbox`
+</details>
+
+## Checkbox
+
+An HTML checkbox input, but with the following benefits:
+
+- It accepts boolean values.
+- It treats `null` values as unchecked.
+- It always emits a boolean value when changed.
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -595,9 +601,19 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", boolean>>) => void`           |                                                                                                                                                                                                                                           |
 
-## `Select`
+</details>
+
+## Select
+
+An HTML select, but with the following benefits:
+
+- It coerces a `null` value prop to an empty string.
+- It accepts a `placeholder`.
+- It allows you to pass in an array of options.
 
 ### Props
+
+<details>
 
 | Name                                                  | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -866,9 +882,13 @@
 | <strong>validate</strong>                             | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                             | `(instance: FunctionComponent<SelectProps>) => void`                                  |                                                                                                                                                                                                                                           |
 
-## `IntegerInput`
+</details>
+
+## IntegerInput
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1158,9 +1178,13 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", number>>) => void`            |                                                                                                                                                                                                                                           |
 
-## `FloatInput`
+</details>
+
+## FloatInput
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1450,9 +1474,13 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", number>>) => void`            |                                                                                                                                                                                                                                           |
 
-## `FileInput`
+</details>
+
+## FileInput
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1742,9 +1770,13 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<FileInputProps>) => void`                               |                                                                                                                                                                                                                                           |
 
-## `DateInput`
+</details>
+
+## DateInput
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2034,9 +2066,13 @@
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", string>>) => void`            |                                                                                                                                                                                                                                           |
 
-## `DateTimeInput`
+</details>
+
+## DateTimeInput
 
 ### Props
+
+<details>
 
 | Name                                               | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2325,3 +2361,5 @@
 | <strong>onTransitionEndCapture</strong>            | `(event: TransitionEvent<HTMLInputElement>) => void`                                  |                                                                                                                                                                                                                                           |
 | <strong>validate</strong>                          | `FieldValidator`                                                                      |                                                                                                                                                                                                                                           |
 | <strong>innerRef</strong>                          | `(instance: FunctionComponent<CustomInputProps<"input", string>>) => void`            |                                                                                                                                                                                                                                           |
+
+</details>

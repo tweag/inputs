@@ -4,14 +4,8 @@
 {{package.description}}
 {{/if}}
 
-## API
-
 {{#each components}}
-- [`{{displayName}}`]({{anchor displayName}})
-{{/each}}
-
-{{#each components}}
-## `{{displayName}}`
+## {{displayName}}
 {{#if description}}
 
 {{description}}
@@ -19,9 +13,14 @@
 
 ### Props
 
+<details>
+
 | Name | Type | Description |
 |------|------|-------------|
 {{#each props}}
 | <strong>{{name}}</strong>{{#if required}} <sup><em>required</em></sup>{{/if}} | `{{markdown type.name}}` | {{markdown description}} |
 {{/each}}
+
+</details>
+
 {{/each}}
