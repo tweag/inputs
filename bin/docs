@@ -32,7 +32,7 @@ const render = (file, component) => {
     prop => prop.name
   ]);
 
-  return template({ ...component, file, props });
+  return template({ ...component, props });
 };
 
 /**
@@ -58,6 +58,7 @@ const generate = file => {
     const basename = `${component.displayName}.md`;
     const filename = path.join(docsDir, basename);
     const content = render(file, component);
+
     fs.file(filename, { content });
   });
 };

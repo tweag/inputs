@@ -1,7 +1,5 @@
 # createField
 
-*See: packages/create-formik-field/src/index.ts*
-
 ## Props
 
 | Name | Type | Description |

@@ -1,7 +1,5 @@
 # Picker
 
-*See: packages/react-native-baseline-inputs/src/index.ts*
-
 ## Props
 
 | Name | Type | Description |

@@ -1,7 +1,5 @@
 # Checkbox
 
-*See: packages/formik-inputs/src/index.ts*
-
 ## Props
 
 | Name | Type | Description |

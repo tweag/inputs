@@ -1,7 +1,5 @@
 # DatePicker
 
-*See: packages/formik-native-inputs/src/index.ts*
-
 ## Props
 
 | Name | Type | Description |
