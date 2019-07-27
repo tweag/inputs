@@ -1,5 +1,7 @@
 # create-formik-field
 
+A higher-order component that will return a Formik-compatible form field.
+
 ## createField
 
 A higher-order component that will return a Formik-compatible form field.

@@ -1,6 +1,7 @@
 {
   "version": "0.6.3",
   "name": "formik-inputs",
+  "description": "React components for creating data-driven forms using Formik.",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

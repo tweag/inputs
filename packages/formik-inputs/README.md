@@ -1,5 +1,7 @@
 # formik-inputs
 
+React components for creating data-driven forms using Formik.
+
 ## Input
 
 An HTML input, but with the following benefits:
