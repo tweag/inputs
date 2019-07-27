@@ -10,9 +10,10 @@
   ],
   "scripts": {
     "postinstall": "bin/build",
-    "prepublishOnly": "bin/clean && bin/build",
+    "prepublishOnly": "bin/clean && bin/build && bin/docs",
     "build": "bin/build",
     "clean": "bin/clean",
+    "docs": "bin/docs",
     "test": "TZ=America/New_York jest",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'",
