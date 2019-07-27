@@ -2,21 +2,25 @@
 
 const fs = require("fs-jetpack");
 const path = require("path");
-const { sortBy } = require("lodash");
 const handlebars = require("handlebars");
+const prettier = require("prettier");
 const docgen = require("react-docgen-typescript");
+const { sortBy, kebabCase } = require("lodash");
 
 /**
- * Define helper methods
+ * Define helper methods.
  */
 handlebars.registerHelper({
   markdown(value) {
     return value.replace(/\|/g, "\\|").replace(/\n/g, "<br>");
+  },
+  anchor(value) {
+    return `#${kebabCase(value)}`;
   }
 });
 
 /**
- * Load the template
+ * Load the template.
  */
 const source = fs.read("docs.hbs", "utf8");
 const template = handlebars.compile(source, {
@@ -24,47 +28,48 @@ const template = handlebars.compile(source, {
 });
 
 /**
- * Render a template
+ * Render the template.
  */
-const render = (file, component) => {
+const render = component => {
   const props = sortBy(component.props, [
     prop => !prop.required,
     prop => prop.name
   ]);
 
-  return template({ ...component, props });
+  const output = template({ ...component, props });
+  return prettier.format(output, { parser: "markdown" });
 };
 
 /**
- * Get the appropriate docs directory for a file
+ * Get the project root for a given file.
  */
-const getDocsDir = file => {
+const getProjectRoot = file => {
   const segments = file.split(path.sep);
   const srcIndex = segments.indexOf("src");
-
-  segments[srcIndex] = "docs";
-  segments.splice(srcIndex + 1);
-
-  return segments.join(path.sep);
+  return segments.slice(0, srcIndex).join(path.sep);
 };
 
 /**
- * Generate documentation for a file
+ * Generate documentation for a file.
  */
 const generate = file => {
-  const docsDir = getDocsDir(file);
+  const root = getProjectRoot(file);
+  const package = path.join(root, "package.json");
+  const readme = path.join(root, "README.md");
 
-  docgen.parse(file).forEach(component => {
-    const basename = `${component.displayName}.md`;
-    const filename = path.join(docsDir, basename);
-    const content = render(file, component);
-
-    fs.file(filename, { content });
+  const markdown = render({
+    components: docgen.parse(file),
+    package: fs.read(package, "json")
   });
+
+  fs.write(readme, markdown);
 };
 
-const docFiles = fs.find("packages", { matching: "*/docs/*.md" });
-const sourceFiles = fs.find("packages", { matching: "*/src/index.{ts,tsx}" });
+/**
+ * Find sources and output documentation.
+ */
+const sources = fs.find("packages", {
+  matching: "*/src/index.{ts,tsx}"
+});
 
-docFiles.forEach(file => fs.remove(file));
-sourceFiles.forEach(generate);
+sources.forEach(generate);

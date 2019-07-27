@@ -1,13 +1,27 @@
-# {{displayName}}
+# {{package.name}}
+{{#if package.description}}
+
+{{package.description}}
+{{/if}}
+
+## API
+
+{{#each components}}
+- [`{{displayName}}`]({{anchor displayName}})
+{{/each}}
+
+{{#each components}}
+### `{{displayName}}`
 {{#if description}}
 
 {{description}}
 {{/if}}
 
-## Props
+#### Props
 
 | Name | Type | Description |
 |------|------|-------------|
 {{#each props}}
 | <strong>{{name}}</strong>{{#if required}} <sup><em>required</em></sup>{{/if}} | `{{markdown type.name}}` | {{markdown description}} |
+{{/each}}
 {{/each}}
