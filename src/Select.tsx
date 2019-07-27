@@ -23,6 +23,13 @@ const getOptionProps = ({
   ...option
 });
 
+/**
+ * An HTML select, but with the following benefits:
+ *
+ *   * It coerces a `null` value prop to an empty string.
+ *   * It accepts a `placeholder`.
+ *   * It allows you to pass in an array of options.
+ */
 export const Select: React.FC<SelectProps> = ({
   onChange,
   options,

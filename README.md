@@ -1,19 +1,16 @@
 # react-baseline-inputs
 
-## API
+## Checkbox
 
-- [`Checkbox`](#checkbox)
-- [`DateInput`](#dateinput)
-- [`DateTimeInput`](#datetimeinput)
-- [`FileInput`](#fileinput)
-- [`FloatInput`](#floatinput)
-- [`Input`](#input)
-- [`IntegerInput`](#integerinput)
-- [`Select`](#select)
+An HTML checkbox input, but with the following benefits:
 
-## `Checkbox`
+- It accepts boolean values.
+- It treats `null` values as unchecked.
+- It always emits a boolean value when changed.
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -303,9 +300,13 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `boolean`                                                                             |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: boolean) => void`                                                            |                                                                                                                                                                                                                                           |
 
-## `DateInput`
+</details>
+
+## DateInput
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -595,9 +596,13 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `string`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: string) => void`                                                             |                                                                                                                                                                                                                                           |
 
-## `DateTimeInput`
+</details>
+
+## DateTimeInput
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -887,9 +892,13 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `string`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: string) => void`                                                             |                                                                                                                                                                                                                                           |
 
-## `FileInput`
+</details>
+
+## FileInput
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1179,9 +1188,13 @@
 | <strong>onTransitionEnd</strong>                       | `(event: TransitionEvent<HTMLInputElement>) => void`                                  |                                                                                                                                                                                                                                           |
 | <strong>onTransitionEndCapture</strong>                | `(event: TransitionEvent<HTMLInputElement>) => void`                                  |                                                                                                                                                                                                                                           |
 
-## `FloatInput`
+</details>
+
+## FloatInput
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1471,9 +1484,19 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `number`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: number) => void`                                                             |                                                                                                                                                                                                                                           |
 
-## `Input`
+</details>
+
+## Input
+
+An HTML checkbox input, but with the following benefits:
+
+- It accepts boolean values.
+- It treats `null` values as unchecked.
+- It always emits a boolean value when changed.
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1763,9 +1786,13 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `string`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: string) => void`                                                             |                                                                                                                                                                                                                                           |
 
-## `IntegerInput`
+</details>
+
+## IntegerInput
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2055,9 +2082,19 @@
 | <strong>value</strong> <sup><em>required</em></sup>    | `number`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: number) => void`                                                             |                                                                                                                                                                                                                                           |
 
-## `Select`
+</details>
+
+## Select
+
+An HTML select, but with the following benefits:
+
+- It coerces a `null` value prop to an empty string.
+- It accepts a `placeholder`.
+- It allows you to pass in an array of options.
 
 ### Props
+
+<details>
 
 | Name                                                   | Type                                                                                  | Description                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2325,3 +2362,5 @@
 | <strong>onTransitionEndCapture</strong>                | `(event: TransitionEvent<HTMLSelectElement>) => void`                                 |                                                                                                                                                                                                                                           |
 | <strong>value</strong> <sup><em>required</em></sup>    | `string`                                                                              |                                                                                                                                                                                                                                           |
 | <strong>onChange</strong> <sup><em>required</em></sup> | `(value: string) => void`                                                             |                                                                                                                                                                                                                                           |
+
+</details>
