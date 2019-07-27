@@ -1,5 +1,7 @@
 # react-native-baseline-inputs
 
+React components for creating data-driven forms React Native.
+
 ## Input
 
 ### Props

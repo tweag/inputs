@@ -1,5 +1,7 @@
 # formik-native-inputs
 
+React components for creating data-driven forms using Formik in React Native.
+
 ## Input
 
 ### Props
