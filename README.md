@@ -1,5 +1,7 @@
 # react-baseline-inputs
 
+React components for creating data-driven forms.
+
 ## Checkbox
 
 An HTML checkbox input, but with the following benefits:
