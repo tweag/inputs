@@ -1,7 +1,5 @@
 # FloatInput
 
-*See: packages/react-baseline-inputs/src/index.tsx*
-
 ## Props
 
 | Name | Type | Description |
