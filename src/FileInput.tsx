@@ -15,6 +15,13 @@ interface SingleFileProps extends ExtraInputProps<"input"> {
 
 export type FileInputProps = SingleFileProps | MultipleFileProps;
 
+/**
+ * An HTML `<input type="file" />`, but with the following benefits:
+ *
+ *   * It emits a `File | null` when changed.
+ *   * When `multiple`, it will emit a `FileList` when changed.
+ *   * It ignores any `value` prop that you give it.
+ */
 export const FileInput: React.FC<FileInputProps> = ({
   onChange,
   value: _value,

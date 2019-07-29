@@ -24,9 +24,9 @@ const getOptionProps = ({
 });
 
 /**
- * An HTML select, but with the following benefits:
+ * An HTML `<select />`, but with the following benefits:
  *
- *   * It coerces a `null` value prop to an empty string.
+ *   * It accepts `null` as a value.
  *   * It accepts a `placeholder`.
  *   * It allows you to pass in an array of options.
  */

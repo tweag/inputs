@@ -6,6 +6,12 @@ import isValid from "date-fns/is_valid";
 
 export type DateTimeInputProps = CustomInputProps<"input", string | null>;
 
+/**
+ * An HTML `<input type="datetime-local" />`, but with the following benefits:
+ *
+ *   * It accepts `null` as a value.
+ *   * It emits an ISO-formatted datetime string when changed.
+ */
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,
   onChange,
