@@ -13,8 +13,10 @@ export type DateTimeInputProps = CustomFieldProps<
   typeof Baseline.DateTimeInput
 >;
 
-const getInputProps: PropGetter<any> = ({ field }) => ({
-  name: field.name
+const getInputProps: PropGetter<any> = ({ form, field }) => ({
+  name: field.name,
+  onChange: (value: any) => form.setFieldValue(field.name, value),
+  onBlur: () => form.setFieldTouched(field.name, true)
 });
 
 /**
