@@ -4,11 +4,10 @@ React components for creating data-driven forms.
 
 ## Checkbox
 
-An HTML checkbox input, but with the following benefits:
+An HTML `<input />`, but with the following benefits:
 
-- It accepts boolean values.
-- It treats `null` values as unchecked.
-- It always emits a boolean value when changed.
+- It accepts `null` as a value.
+- It emits a `null` value to the `onChange` handler when the input is empty.
 
 ### Props
 
@@ -306,6 +305,11 @@ An HTML checkbox input, but with the following benefits:
 
 ## DateInput
 
+An HTML `<input type="date" />`, but with the following benefits:
+
+- It accepts `null` as a value.
+- It emits an ISO-formatted date string when changed.
+
 ### Props
 
 <details>
@@ -601,6 +605,11 @@ An HTML checkbox input, but with the following benefits:
 </details>
 
 ## DateTimeInput
+
+An HTML `<input type="datetime-local" />`, but with the following benefits:
+
+- It accepts `null` as a value.
+- It emits an ISO-formatted datetime string when changed.
 
 ### Props
 
@@ -898,6 +907,12 @@ An HTML checkbox input, but with the following benefits:
 
 ## FileInput
 
+An HTML `<input type="file" />`, but with the following benefits:
+
+- It emits a `File | null` when changed.
+- When `multiple`, it will emit a `FileList` when changed.
+- It ignores any `value` prop that you give it.
+
 ### Props
 
 <details>
@@ -1193,6 +1208,11 @@ An HTML checkbox input, but with the following benefits:
 </details>
 
 ## FloatInput
+
+An HTML `<input type="number" />`, but with the following benefits:
+
+- It accepts `null` as a value.
+- It always emits a number when changed.
 
 ### Props
 
@@ -1490,11 +1510,11 @@ An HTML checkbox input, but with the following benefits:
 
 ## Input
 
-An HTML checkbox input, but with the following benefits:
+An HTML `<input />`, but with the following benefits:
 
-- It accepts boolean values.
-- It treats `null` values as unchecked.
-- It always emits a boolean value when changed.
+- It accepts `null` as a value.
+- It defaults to `type="text"`.
+- It emits a `null` value to the `onChange` handler when the input is empty.
 
 ### Props
 
@@ -1792,6 +1812,11 @@ An HTML checkbox input, but with the following benefits:
 
 ## IntegerInput
 
+An HTML `<input type="number" />`, but with the following benefits:
+
+- It accepts `null` as a value.
+- It always emits an integer when changed.
+
 ### Props
 
 <details>
@@ -2088,9 +2113,9 @@ An HTML checkbox input, but with the following benefits:
 
 ## Select
 
-An HTML select, but with the following benefits:
+An HTML `<select />`, but with the following benefits:
 
-- It coerces a `null` value prop to an empty string.
+- It accepts `null` as a value.
 - It accepts a `placeholder`.
 - It allows you to pass in an array of options.
 
