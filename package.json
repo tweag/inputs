@@ -9,8 +9,9 @@
     "apps/web-formik/"
   ],
   "scripts": {
+    "prerelease": "bin/clean && bin/build && bin/docs",
+    "release": "lerna publish",
     "postinstall": "bin/build",
-    "prepublishOnly": "bin/clean && bin/build && bin/docs",
     "build": "bin/build",
     "clean": "bin/clean",
     "docs": "bin/docs",
