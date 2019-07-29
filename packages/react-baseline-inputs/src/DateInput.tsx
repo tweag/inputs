@@ -6,6 +6,12 @@ import isValid from "date-fns/is_valid";
 
 export type DateInputProps = CustomInputProps<"input", string | null>;
 
+/**
+ * An HTML `<input type="date" />`, but with the following benefits:
+ *
+ *   * It accepts `null` as a value.
+ *   * It emits an ISO-formatted date string when changed.
+ */
 export const DateInput: React.FC<DateInputProps> = ({
   value,
   onChange,
