@@ -6,6 +6,7 @@ React components for data-driven forms.
 
 - [react-baseline-inputs](packages/react-baseline-inputs)
 - [react-native-baseline-inputs](packages/react-native-baseline-inputs)
+- [formik-apollo](packages/formik-apollo)
 - [formik-inputs](packages/formik-inputs)
 - [formik-native-inputs](packages/formik-native-inputs)
 - [create-formik-field](packages/create-formik-field)
