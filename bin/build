@@ -6,4 +6,5 @@ node_modules/.bin/tsc -b \
   packages/react-native-baseline-inputs \
   packages/formik-inputs \
   packages/formik-native-inputs \
+  packages/formik-apollo \
   "$@"
