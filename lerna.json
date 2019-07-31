@@ -8,10 +8,11 @@
   "command": {
     "publish": {
       "allowBranch": "master",
+      "conventionalCommits": true,
       "ignoreChanges": [
         "!packages/**"
       ],
-      "message": "Release %s 🚀 [skip ci]"
+      "message": "chore(release): release %s 🚀 [skip ci]"
     }
   }
 }
