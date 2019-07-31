@@ -2,7 +2,7 @@
   "name": "formik-native-inputs",
   "description": "React components for creating data-driven forms using Formik in React Native.",
   "license": "MIT",
-  "version": "0.6.6",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -17,8 +17,8 @@
     "react-native": ">=0.59"
   },
   "dependencies": {
-    "create-formik-field": "^0.6.6",
-    "react-native-baseline-inputs": "^0.6.6"
+    "create-formik-field": "^1.0.0",
+    "react-native-baseline-inputs": "^1.0.0"
   },
   "devDependencies": {
     "react-native": "^0.59.9"

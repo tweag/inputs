@@ -1,5 +1,5 @@
 {
-  "version": "0.6.6",
+  "version": "1.0.0",
   "name": "create-formik-field",
   "description": "A higher-order component that will return a Formik-compatible form field.",
   "license": "MIT",
