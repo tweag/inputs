@@ -36,7 +36,8 @@ export interface CreateField<T extends AnyComponent> {
 /**
  * Are we currently running in React Native?
  */
-const isNative = navigator ? navigator.product === "ReactNative" : false;
+const isNative =
+  typeof navigator !== "undefined" && navigator.product === "ReactNative";
 
 /**
  * These are the default set of props that an input will receive.
