@@ -59,7 +59,11 @@ const App = () => {
           <Form>
             <label>
               Input
-              <Input name="input" validate={notBlank} />
+              <Input
+                name="input"
+                validate={notBlank}
+                invalidClassName="is-invalid"
+              />
               <ErrorMessage name="input" />
             </label>
 
@@ -75,7 +79,11 @@ const App = () => {
 
             <label>
               Float
-              <FloatInput name="float" />
+              <FloatInput
+                name="float"
+                validate={notBlank}
+                invalidStyle={{ border: "1px solid red" }}
+              />
             </label>
 
             <label>

@@ -79,7 +79,12 @@ export default function App() {
             </View>
 
             <Item name="input" label="Input">
-              <Input name="input" style={styles.input} validate={notBlank} />
+              <Input
+                name="input"
+                style={styles.input}
+                validate={notBlank}
+                invalidStyle={styles.invalid}
+              />
             </Item>
 
             <Item name="integer" label="Integer">
@@ -175,6 +180,9 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     paddingLeft: 8,
     paddingRight: 8
+  },
+  invalid: {
+    borderColor: "red"
   },
   debug: {
     padding: 5,

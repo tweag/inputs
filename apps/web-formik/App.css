@@ -22,3 +22,7 @@ select {
   padding: 0.2em;
   box-sizing: border-box;
 }
+
+.is-invalid {
+  border: 1px solid red;
+}

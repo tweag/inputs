@@ -12,6 +12,12 @@ interface FieldConfig<T extends AnyComponent> {
   name: string;
   validate?: FieldValidator;
   innerRef?: (instance: T | null) => void;
+  validStyle?: any;
+  validClassName?: string;
+  validProps?: BaseInputProps<T>;
+  invalidStyle?: any;
+  invalidClassName?: string;
+  invalidProps?: BaseInputProps<T>;
 }
 
 export type PropGetter<T extends AnyComponent> = (
@@ -27,10 +33,44 @@ export interface CreateField<T extends AnyComponent> {
   getProps?: PropGetter<T>;
 }
 
+/**
+ * Are we currently running in React Native?
+ */
+const isNative = navigator ? navigator.product === "ReactNative" : false;
+
+/**
+ * These are the default set of props that an input will receive.
+ */
 const getDefaultProps: PropGetter<any> = ({ form, field }) => ({
   onChange: (value: any) => form.setFieldValue(field.name, value),
   onBlur: () => form.setFieldTouched(field.name, true)
 });
+
+/**
+ * Merge style props. On React native, we'll just return an array.
+ */
+const mergeStyles = (...styles: any[]) => {
+  if (!styles.length) {
+    return undefined;
+  }
+
+  if (isNative) {
+    return styles.filter(Boolean);
+  }
+
+  return styles.reduce((a, b) => (b ? Object.assign(a, b) : a), {});
+};
+
+/**
+ * Merge class names. On React Native, we'll always return undefined.
+ */
+const mergeClassNames = (...classNames: any[]) => {
+  if (isNative) {
+    return undefined;
+  }
+
+  return classNames.filter(Boolean).join(" ") || undefined;
+};
 
 /**
  * A higher-order component that will return a Formik-compatible form field.
@@ -44,6 +84,14 @@ export const createField = <T extends AnyComponent>({
     name,
     validate,
     innerRef,
+    style,
+    className = "",
+    validClassName,
+    validStyle,
+    validProps,
+    invalidClassName,
+    invalidStyle,
+    invalidProps,
     ...props
   }) => {
     const formik = useFormikContext<any>();
@@ -56,6 +104,9 @@ export const createField = <T extends AnyComponent>({
       return () => formik.unregisterField(name);
     }, [formik.registerField, formik.unregisterField, name, validate]);
 
+    const isValid = meta.touched && !meta.error;
+    const isInvalid = meta.touched && meta.error;
+
     const inputProps = React.useMemo(
       () => getProps({ form: formik, field, meta }),
       [formik, field, meta]
@@ -64,8 +115,20 @@ export const createField = <T extends AnyComponent>({
     return React.createElement(WrappedComponent, {
       ref: innerRef,
       value: field.value,
+      style: mergeStyles(
+        style,
+        isValid && validStyle,
+        isInvalid && invalidStyle
+      ),
+      className: mergeClassNames(
+        className,
+        isValid && validClassName,
+        isInvalid && invalidClassName
+      ),
       ...inputProps,
-      ...props
+      ...props,
+      ...(isValid ? validProps : {}),
+      ...(isInvalid ? invalidProps : {})
     });
   };
 
