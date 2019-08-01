@@ -20,7 +20,10 @@ describe("<Checkbox />", () => {
     const onChange = jest.fn();
     const checkbox = shallow(<Checkbox value={true} onChange={onChange} />);
 
-    checkbox.simulate("change");
+    checkbox.simulate("change", {
+      target: { checked: false }
+    });
+
     expect(onChange).toHaveBeenCalledWith(false);
   });
 
@@ -28,7 +31,10 @@ describe("<Checkbox />", () => {
     const onChange = jest.fn();
     const checkbox = shallow(<Checkbox value={false} onChange={onChange} />);
 
-    checkbox.simulate("change");
+    checkbox.simulate("change", {
+      target: { checked: true }
+    });
+
     expect(onChange).toHaveBeenCalledWith(true);
   });
 });

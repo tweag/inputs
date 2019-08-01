@@ -14,10 +14,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   value,
   ...props
 }) => {
-  const handleChange = React.useCallback(() => onChange(!value), [
-    value,
-    onChange
-  ]);
+  const handleChange = React.useCallback(
+    event => onChange(event.target.checked),
+    [onChange]
+  );
 
   return (
     <input
