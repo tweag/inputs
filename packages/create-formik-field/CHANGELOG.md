@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/rzane/react-baseline-inputs/compare/v1.2.0...v1.2.1) (2019-08-01)
+
+
+### Bug Fixes
+
+* check if navigator is defined ([6fd6704](https://github.com/rzane/react-baseline-inputs/commit/6fd6704))
+
+
+
+
+
 # [1.2.0](https://github.com/rzane/react-baseline-inputs/compare/v1.1.0...v1.2.0) (2019-08-01)
 
 

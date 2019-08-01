@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "name": "formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "create-formik-field": "^1.2.0",
-    "react-baseline-inputs": "^1.0.0"
+    "create-formik-field": "^1.2.1",
+    "react-baseline-inputs": "^1.2.1"
   }
 }
