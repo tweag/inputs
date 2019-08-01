@@ -59,11 +59,7 @@ const App = () => {
           <Form>
             <label>
               Input
-              <Input
-                name="input"
-                validate={notBlank}
-                invalidClassName="is-invalid"
-              />
+              <Input name="input" validate={notBlank} />
               <ErrorMessage name="input" />
             </label>
 

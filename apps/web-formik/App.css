@@ -23,6 +23,10 @@ select {
   box-sizing: border-box;
 }
 
+.is-valid {
+  border: 1px solid green;
+}
+
 .is-invalid {
   border: 1px solid red;
 }
