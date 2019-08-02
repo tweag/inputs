@@ -1,7 +1,7 @@
 {
   "name": "react-native-baseline-inputs",
   "description": "React components for creating data-driven forms React Native.",
-  "version": "1.0.0",
+  "version": "1.2.2-alpha.0",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
