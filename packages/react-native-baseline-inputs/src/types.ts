@@ -60,6 +60,7 @@ type BaseDateTimePickerProps = Omit<
 >;
 
 export interface DateTimePickerProps extends BaseDateTimePickerProps {
+  testID?: string;
   value: Date | string | null;
   labelFormat?: string;
   valueFormat?: string;
