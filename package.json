@@ -14,7 +14,9 @@
     }
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "scripts": {
     "prerelease": "bin/clean && bin/build && bin/docs",
@@ -34,6 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@testing-library/react-hooks": "^1.1.0",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/graphql": "^14.2.3",
@@ -55,7 +58,6 @@
     "react": "^16.8.6",
     "react-docgen-typescript": "^1.12.5",
     "react-dom": "^16.8.6",
-    "react-hooks-testing-library": "^0.6.0",
     "react-native": "^0.59.9",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
