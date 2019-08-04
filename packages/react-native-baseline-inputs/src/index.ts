@@ -11,3 +11,4 @@ export * from "./TimePicker";
 export * from "./DateTimePicker";
 
 export * from "./Switch";
+export * from "./StaticInput";
