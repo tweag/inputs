@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-alpha.0](https://github.com/rzane/react-baseline-inputs/compare/v1.2.2-alpha.0...v1.3.0-alpha.0) (2019-08-04)
+
+
+### Features
+
+* expose the static input ([143d486](https://github.com/rzane/react-baseline-inputs/commit/143d486))
+
+
+
+
+
 ## [1.2.2-alpha.0](https://github.com/rzane/react-baseline-inputs/compare/v1.2.1...v1.2.2-alpha.0) (2019-08-02)
 
 
