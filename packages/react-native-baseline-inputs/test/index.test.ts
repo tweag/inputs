@@ -10,6 +10,7 @@ it("exports all inputs", () => {
     "DatePicker",
     "TimePicker",
     "DateTimePicker",
-    "Switch"
+    "Switch",
+    "StaticInput"
   ]);
 });
