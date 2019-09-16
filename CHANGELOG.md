@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/rzane/react-baseline-inputs/compare/v1.3.0-alpha.0...v1.3.0) (2019-09-16)
+
+
+### Bug Fixes
+
+* **react-native-baseline-inputs:** failing test ([3e3d477](https://github.com/rzane/react-baseline-inputs/commit/3e3d477))
+
+
+
+
+
 # [1.3.0-alpha.0](https://github.com/rzane/react-baseline-inputs/compare/v1.2.2-alpha.0...v1.3.0-alpha.0) (2019-08-04)
 
 
