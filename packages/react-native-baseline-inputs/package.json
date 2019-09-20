@@ -2,7 +2,7 @@
   "name": "react-native-baseline-inputs",
   "homepage": "https://github.com/rzane/react-forms/tree/master/packages/react-native-baseline-inputs",
   "description": "React components for creating data-driven forms React Native.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
