@@ -1,5 +1,5 @@
 {
-  "version": "1.4.1",
+  "version": "1.5.0",
   "name": "formik-inputs",
   "homepage": "https://github.com/rzane/react-forms/tree/master/packages/formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "create-formik-field": "^1.4.0",
-    "react-baseline-inputs": "^1.4.1"
+    "react-baseline-inputs": "^1.5.0"
   }
 }
