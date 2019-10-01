@@ -5,39 +5,42 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import {
-  Input,
-  FloatInput,
-  IntegerInput,
+  Checkbox,
   DateInput,
   DateTimeInput,
-  Checkbox,
+  FileInput,
+  FloatInput,
+  Input,
+  IntegerInput,
   Select,
-  FileInput
+  TextArea
 } from "react-baseline-inputs";
 
 interface Values {
-  string: string | null;
-  select: string | null;
-  integer: number | null;
-  float: number | null;
+  boolean: boolean | null;
   date: string | null;
   datetime: string | null;
-  boolean: boolean | null;
   file: File | null;
   files: FileList | null;
+  float: number | null;
+  integer: number | null;
+  select: string | null;
+  string: string | null;
+  text: string | null;
 }
 
 const App = () => {
   const [values, setValues] = React.useState<Values>({
-    string: null,
-    select: null,
-    integer: null,
-    float: null,
+    boolean: null,
     date: null,
     datetime: null,
-    boolean: null,
     file: null,
-    files: null
+    files: null,
+    float: null,
+    integer: null,
+    select: null,
+    string: null,
+    text: null
   });
 
   function handleChange<K extends keyof Values>(key: K) {
@@ -126,6 +129,15 @@ const App = () => {
             value={values.files}
             onChange={handleChange("files")}
             multiple
+          />
+        </label>
+
+        <label>
+          TextArea
+          <TextArea
+            name="text"
+            value={values.text}
+            onChange={handleChange("text")}
           />
         </label>
 

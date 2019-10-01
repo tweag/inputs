@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as Baseline from "react-baseline-inputs";
 import { createField, CustomFieldProps, PropGetter } from "create-formik-field";
 
@@ -29,6 +28,18 @@ const getInputProps: PropGetter<any> = ({ form, field }) => ({
 export const Input = createField<typeof Baseline.Input>({
   component: Baseline.Input,
   displayName: "FormikInput",
+  getProps: getInputProps
+});
+
+/**
+ * An HTML `<textarea />`, but with the following benefits:
+ *
+ *   * It accepts `null` as a value.
+ *   * It emits a `null` value to the `onChange` handler when the input is empty.
+ */
+export const TextArea = createField<typeof Baseline.TextArea>({
+  component: Baseline.TextArea,
+  displayName: "FormikTextArea",
   getProps: getInputProps
 });
 

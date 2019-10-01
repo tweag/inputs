@@ -3,38 +3,41 @@ import * as ReactDOM from "react-dom";
 import { Formik, Form, ErrorMessage } from "formik";
 
 import {
-  Input,
-  Select,
   Checkbox,
-  IntegerInput,
-  FloatInput,
   DateInput,
   DateTimeInput,
-  FileInput
+  FileInput,
+  FloatInput,
+  Input,
+  IntegerInput,
+  Select,
+  TextArea
 } from "formik-inputs";
 
 interface Values {
-  input: string | null;
-  select: string | null;
-  integer: number | null;
-  float: number | null;
+  checkbox: boolean | null;
   date: string | null;
   datetime: string | null;
-  checkbox: boolean | null;
   file: File | null;
   files: FileList | null;
+  float: number | null;
+  input: string | null;
+  integer: number | null;
+  select: string | null;
+  text: string | null;
 }
 
 const initialValues: Values = {
-  input: null,
-  select: null,
-  integer: null,
-  float: null,
+  checkbox: null,
   date: null,
   datetime: null,
-  checkbox: null,
   file: null,
-  files: null
+  files: null,
+  float: null,
+  input: null,
+  integer: null,
+  select: null,
+  text: null
 };
 
 const notBlank = (value: any) => {
@@ -100,6 +103,12 @@ const App = () => {
             <label>
               Files
               <FileInput name="file" multiple />
+            </label>
+
+            <label>
+              TextArea
+              <TextArea name="text" />
+              <ErrorMessage name="text" />
             </label>
 
             <label>
