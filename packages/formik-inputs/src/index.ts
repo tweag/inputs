@@ -2,6 +2,7 @@ import * as Baseline from "react-baseline-inputs";
 import { createField, CustomFieldProps, PropGetter } from "create-formik-field";
 
 export type InputProps = CustomFieldProps<typeof Baseline.Input>;
+export type TextAreaProps = CustomFieldProps<typeof Baseline.TextArea>;
 export type CheckboxProps = CustomFieldProps<typeof Baseline.Checkbox>;
 export type SelectProps = CustomFieldProps<typeof Baseline.Select>;
 export type IntegerInputProps = CustomFieldProps<typeof Baseline.IntegerInput>;
