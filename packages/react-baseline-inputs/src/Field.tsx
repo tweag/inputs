@@ -43,7 +43,7 @@ const generateUniqueId = (() => {
   let previousId = 0;
   return (name: string) => {
     const id = ++previousId;
-    return `${name}_${id}`;
+    return id === 1 ? name : `${name}_${id}`;
   };
 })();
 
