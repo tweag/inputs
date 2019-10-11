@@ -1,7 +1,7 @@
 import * as inputs from "../src";
 
 test("exports", () => {
-  expect(Object.keys(inputs)).toEqual([
+  expect(Object.keys(inputs).sort()).toEqual([
     "Checkbox",
     "DateInput",
     "DateTimeInput",
@@ -9,6 +9,7 @@ test("exports", () => {
     "FloatInput",
     "Input",
     "IntegerInput",
-    "Select"
+    "Select",
+    "TextArea"
   ]);
 });
