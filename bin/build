@@ -3,8 +3,6 @@
 node_modules/.bin/tsc -b \
   packages/create-formik-field \
   packages/react-baseline-inputs \
-  packages/react-native-baseline-inputs \
   packages/formik-inputs \
-  packages/formik-native-inputs \
   packages/formik-apollo \
   "$@"

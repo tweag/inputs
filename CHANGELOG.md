@@ -38,15 +38,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.3.0](https://github.com/promptworks/react-baseline-inputs/compare/v1.3.0-alpha.0...v1.3.0) (2019-09-16)
 
-
-### Bug Fixes
-
-* **react-native-baseline-inputs:** failing test ([3e3d477](https://github.com/promptworks/react-baseline-inputs/commit/3e3d477))
-
-
-
-
-
 # [1.3.0-alpha.0](https://github.com/promptworks/react-baseline-inputs/compare/v1.2.2-alpha.0...v1.3.0-alpha.0) (2019-08-04)
 
 
