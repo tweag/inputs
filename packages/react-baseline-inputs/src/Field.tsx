@@ -7,6 +7,8 @@ export interface FieldProps {
 
   id?: string;
   inline?: boolean;
+  large?: boolean;
+  small?: boolean;
   touched?: boolean;
   success?: boolean;
   error?: React.ReactNode;
@@ -17,15 +19,21 @@ export interface FieldProps {
   fieldValidClassName?: string;
   fieldInvalidClassName?: string;
   fieldTouchedClassName?: string;
+  fieldLargeClassName?: string;
+  fieldSmallClassName?: string;
 
   inputClassName?: string;
   inputValidClassName?: string;
   inputInvalidClassName?: string;
   inputTouchedClassName?: string;
   inputInlineClassName?: string;
+  inputLargeClassName?: string;
+  inputSmallClassName?: string;
 
   labelClassName?: string;
   labelInlineClassName?: string;
+  labelLargeClassName?: string;
+  labelSmallClassName?: string;
 
   helpClassName?: string;
   errorClassName?: string;
@@ -50,21 +58,29 @@ export const Field: React.FC<FieldProps> = ({
   touched,
   error,
   success = touched && !error,
+  large,
+  small,
 
   fieldClassName = "field",
   fieldInlineClassName = "field--inline",
   fieldInvalidClassName = "field--erroneous",
   fieldTouchedClassName = "field--touched",
   fieldValidClassName = "field--success",
+  fieldLargeClassName = "field--large",
+  fieldSmallClassName = "field--small",
 
   inputClassName = "field__input",
   inputInlineClassName = "field__input--inline",
   inputInvalidClassName = "field__input--erroneous",
   inputTouchedClassName = "field__input--touched",
   inputValidClassName = "field__input--success",
+  inputLargeClassName = "field__input--large",
+  inputSmallClassName = "field__input--small",
 
   labelClassName = "field__label",
   labelInlineClassName = "field__label--inline",
+  labelLargeClassName = "field__label--large",
+  labelSmallClassName = "field__label--small",
 
   helpClassName = "field__help",
   errorClassName = "message message--problem"
@@ -94,6 +110,18 @@ export const Field: React.FC<FieldProps> = ({
     inputClassNames.push(inputValidClassName);
   }
 
+  if (large) {
+    fieldClassNames.push(fieldLargeClassName);
+    inputClassNames.push(inputLargeClassName);
+    labelClassNames.push(labelLargeClassName);
+  }
+
+  if (small) {
+    fieldClassNames.push(fieldSmallClassName);
+    inputClassNames.push(inputSmallClassName);
+    labelClassNames.push(labelSmallClassName);
+  }
+
   const inputProps = {
     id,
     name,
@@ -104,10 +132,12 @@ export const Field: React.FC<FieldProps> = ({
     <div className={fieldClassNames.join(" ")}>
       {inline && render(inputProps)}
 
-      <label className={labelClassNames.join(" ")} htmlFor={id}>
-        {label}
-        {help && <span className={helpClassName}>{help}</span>}
-      </label>
+      {label && (
+        <label className={labelClassNames.join(" ")} htmlFor={id}>
+          {label}
+          {help && <span className={helpClassName}>{help}</span>}
+        </label>
+      )}
 
       {!inline && render(inputProps)}
 
