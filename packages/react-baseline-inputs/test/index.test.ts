@@ -7,9 +7,9 @@ test("exports", () => {
     "DateTimeInput",
     "FileInput",
     "FloatInput",
-    "Input",
     "IntegerInput",
     "Select",
-    "TextArea"
+    "TextArea",
+    "TextInput"
   ]);
 });
