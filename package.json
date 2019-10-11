@@ -1,7 +1,7 @@
 {
   "version": "1.5.0",
   "name": "react-baseline-inputs",
-  "homepage": "https://github.com/rzane/react-forms/tree/master/packages/react-baseline-inputs",
+  "repository": "https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs",
   "description": "React components for creating data-driven forms.",
   "license": "MIT",
   "main": "lib/index.js",
