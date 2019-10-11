@@ -4,5 +4,3 @@ node_modules
 packages/*/lib/
 apps/*/.cache/
 apps/*/dist/
-apps/*/.expo
-
