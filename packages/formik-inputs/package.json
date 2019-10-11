@@ -1,7 +1,7 @@
 {
   "version": "1.5.0",
   "name": "formik-inputs",
-  "homepage": "https://github.com/rzane/react-forms/tree/master/packages/formik-inputs",
+  "repository": "https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",
   "license": "MIT",
   "main": "lib/index.js",

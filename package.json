@@ -5,8 +5,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/web-basic/",
-    "apps/web-formik/"
+    "apps/basic/",
+    "apps/formik/"
   ],
   "husky": {
     "hooks": {
@@ -18,20 +18,35 @@
       "@commitlint/config-conventional"
     ]
   },
+  "jest": {
+    "preset": "ts-jest",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/packages/**/*.{ts,tsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/packages/**/*.test.{ts,tsx}"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/apps/"
+    ]
+  },
   "scripts": {
-    "prerelease": "bin/clean && bin/build && bin/docs",
+    "prerelease": "bin/clean && bin/build",
     "release": "lerna publish",
     "postinstall": "bin/build",
     "build": "bin/build",
     "clean": "bin/clean",
-    "docs": "bin/docs",
     "test": "TZ=America/New_York jest",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'",
-    "start:web:basic": "bin/start-web basic",
-    "start:web:formik": "bin/start-web formik",
-    "start:native:basic": "bin/start-native basic",
-    "start:native:formik": "bin/start-native formik"
+    "start:basic": "bin/start basic",
+    "start:formik": "bin/start formik"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
@@ -43,22 +58,16 @@
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
-    "@types/react-native": "^0.57.60",
     "concurrently": "^4.1.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
-    "fs-jetpack": "^2.2.2",
-    "handlebars": "^4.1.2",
     "husky": "^3.0.2",
     "jest": "^24.8.0",
     "lerna": "^3.16.4",
-    "lodash": "^4.17.15",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
-    "react-docgen-typescript": "^1.12.5",
     "react-dom": "^16.8.6",
-    "react-native": "^0.59.9",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }

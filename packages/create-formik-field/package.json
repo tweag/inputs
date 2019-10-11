@@ -1,7 +1,7 @@
 {
   "version": "1.4.0",
   "name": "create-formik-field",
-  "homepage": "https://github.com/rzane/react-forms/tree/master/packages/create-formik-field",
+  "repository": "https://github.com/promptworks/react-forms/tree/master/packages/create-formik-field",
   "description": "A higher-order component that will return a Formik-compatible form field.",
   "license": "MIT",
   "main": "lib/index.js",
