@@ -1,11 +1,13 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import { Input } from "../src";
+import { TextInput } from "../src";
 
-describe("<Input />", () => {
+describe("<TextInput />", () => {
   it("renders", () => {
     const onChange = jest.fn();
-    const input = shallow(<Input type="text" value="" onChange={onChange} />);
+    const input = shallow(
+      <TextInput type="text" value="" onChange={onChange} />
+    );
 
     expect(input).toMatchInlineSnapshot(`
       <input
@@ -18,7 +20,9 @@ describe("<Input />", () => {
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const input = shallow(<Input type="text" value="" onChange={onChange} />);
+    const input = shallow(
+      <TextInput type="text" value="" onChange={onChange} />
+    );
 
     input.simulate("change", {
       target: { value: "hi" }
@@ -29,7 +33,9 @@ describe("<Input />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const input = shallow(<Input type="text" value="" onChange={onChange} />);
+    const input = shallow(
+      <TextInput type="text" value="" onChange={onChange} />
+    );
 
     input.simulate("change", {
       target: { value: "" }

@@ -1,7 +1,7 @@
 import * as Baseline from "react-baseline-inputs";
 import { createField, CustomFieldProps, PropGetter } from "create-formik-field";
 
-export type InputProps = CustomFieldProps<typeof Baseline.Input>;
+export type TextInputProps = CustomFieldProps<typeof Baseline.TextInput>;
 export type TextAreaProps = CustomFieldProps<typeof Baseline.TextArea>;
 export type CheckboxProps = CustomFieldProps<typeof Baseline.Checkbox>;
 export type SelectProps = CustomFieldProps<typeof Baseline.Select>;
@@ -26,9 +26,9 @@ const getInputProps: PropGetter<any> = ({ form, field }) => ({
  *   * It defaults to `type="text"`.
  *   * It emits a `null` value to the `onChange` handler when the input is empty.
  */
-export const Input = createField<typeof Baseline.Input>({
-  component: Baseline.Input,
-  displayName: "FormikInput",
+export const TextInput = createField<typeof Baseline.TextInput>({
+  component: Baseline.TextInput,
+  displayName: "FormikTextInput",
   getProps: getInputProps
 });
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
 
-export type InputProps = CustomInputProps<"input", string | null>;
+export type TextInputProps = CustomInputProps<"input", string | null>;
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -10,7 +10,11 @@ export type InputProps = CustomInputProps<"input", string | null>;
  *   * It defaults to `type="text"`.
  *   * It emits a `null` value to the `onChange` handler when the input is empty.
  */
-export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
+export const TextInput: React.FC<TextInputProps> = ({
+  value,
+  onChange,
+  ...props
+}) => {
   const handleChange = React.useCallback(
     event => onChange(event.target.value || null),
     [onChange]
