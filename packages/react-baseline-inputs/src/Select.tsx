@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
+import { Field } from "./Field";
 
 export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;
@@ -35,6 +36,8 @@ export const Select: React.FC<SelectProps> = ({
   options,
   placeholder,
   value,
+  label = false,
+  wrap = true,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -43,26 +46,32 @@ export const Select: React.FC<SelectProps> = ({
   );
 
   return (
-    <select
-      {...props}
-      value={value === null ? "" : value}
-      onChange={handleChange}
-    >
-      {placeholder && (
-        <option disabled value="" key="placeholder">
-          {placeholder}
-        </option>
-      )}
+    <Field
+      label={label}
+      render={inputProps => (
+        <select
+          {...inputProps}
+          value={value === null ? "" : value}
+          onChange={handleChange}
+        >
+          {placeholder && (
+            <option disabled value="" key="placeholder">
+              {placeholder}
+            </option>
+          )}
 
-      {options.map(option =>
-        typeof option === "string" ? (
-          <option value={option} key={option}>
-            {option}
-          </option>
-        ) : (
-          <option {...getOptionProps(option)}>{option.label}</option>
-        )
+          {options.map(option =>
+            typeof option === "string" ? (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ) : (
+              <option {...getOptionProps(option)}>{option.label}</option>
+            )
+          )}
+        </select>
       )}
-    </select>
+      {...props}
+    />
   );
 };
