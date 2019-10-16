@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
+import { Field } from "./Field";
 
 export type TextInputProps = CustomInputProps<"input", string | null>;
 
@@ -13,6 +14,8 @@ export type TextInputProps = CustomInputProps<"input", string | null>;
 export const TextInput: React.FC<TextInputProps> = ({
   value,
   onChange,
+  label = false,
+  wrap = true,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -21,6 +24,17 @@ export const TextInput: React.FC<TextInputProps> = ({
   );
 
   return (
-    <input type="text" value={value || ""} onChange={handleChange} {...props} />
+    <Field
+      label={label}
+      render={inputProps => (
+        <input
+          {...inputProps}
+          type="text"
+          value={value || ""}
+          onChange={handleChange}
+        />
+      )}
+      {...props}
+    />
   );
 };
