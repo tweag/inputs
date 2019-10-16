@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ExtraInputProps } from "./types";
+import { Field } from "./Field";
 
 interface MultipleFileProps extends ExtraInputProps<"input"> {
   value?: any;
@@ -25,6 +26,8 @@ export type FileInputProps = SingleFileProps | MultipleFileProps;
 export const FileInput: React.FC<FileInputProps> = ({
   onChange,
   value: _value,
+  label = false,
+  wrap = true,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -38,5 +41,13 @@ export const FileInput: React.FC<FileInputProps> = ({
     [onChange]
   );
 
-  return <input type="file" {...props} onChange={handleChange} />;
+  return (
+    <Field
+      label={label}
+      render={inputProps => (
+        <input type="file" {...inputProps} onChange={handleChange} />
+      )}
+      {...props}
+    />
+  );
 };

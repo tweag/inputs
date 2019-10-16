@@ -1,5 +1,6 @@
 import * as React from "react";
 import { CustomInputProps } from "./types";
+import { Field } from "./Field";
 
 export type DateInputProps = CustomInputProps<"input", string | null>;
 
@@ -12,6 +13,8 @@ export type DateInputProps = CustomInputProps<"input", string | null>;
 export const DateInput: React.FC<DateInputProps> = ({
   value,
   onChange,
+  label = false,
+  wrap = true,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -25,6 +28,17 @@ export const DateInput: React.FC<DateInputProps> = ({
   );
 
   return (
-    <input {...props} type="date" value={value || ""} onChange={handleChange} />
+    <Field
+      label={label}
+      render={inputProps => (
+        <input
+          {...inputProps}
+          type="date"
+          value={value || ""}
+          onChange={handleChange}
+        />
+      )}
+      {...props}
+    />
   );
 };

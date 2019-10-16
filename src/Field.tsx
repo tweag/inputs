@@ -1,9 +1,10 @@
 import * as React from "react";
 
 export interface FieldProps {
-  name: string;
-  label: React.ReactNode;
+  label?: React.ReactNode;
   render: (props: object) => React.ReactNode;
+
+  wrap?: boolean;
 
   id?: string;
   inline?: boolean;
@@ -41,17 +42,17 @@ export interface FieldProps {
 
 const generateUniqueId = (() => {
   let previousId = 0;
-  return (name: string) => {
+  return () => {
     const id = ++previousId;
-    return id === 1 ? name : `${name}_${id}`;
+    return `field_${id}`;
   };
 })();
 
 export const Field: React.FC<FieldProps> = ({
-  name,
-  label,
+  label = false,
   render,
-  id = React.useMemo(() => generateUniqueId(name), []),
+  id = React.useMemo(() => generateUniqueId(), []),
+  wrap = true,
 
   help,
   inline,
@@ -83,7 +84,8 @@ export const Field: React.FC<FieldProps> = ({
   labelSmallClassName = "field__label--small",
 
   helpClassName = "field__help",
-  errorClassName = "message message--problem"
+  errorClassName = "message message--problem",
+  ...props
 }) => {
   const fieldClassNames = [fieldClassName];
   const inputClassNames = [inputClassName];
@@ -124,12 +126,14 @@ export const Field: React.FC<FieldProps> = ({
 
   const inputProps = {
     id,
-    name,
-    className: inputClassNames.join(" ")
+    className: inputClassNames.join(" "),
+    ...props
   };
 
+  const Element = wrap ? "div" : React.Fragment;
+
   return (
-    <div className={fieldClassNames.join(" ")}>
+    <Element className={fieldClassNames.join(" ")}>
       {inline && render(inputProps)}
 
       {label && (
@@ -146,6 +150,6 @@ export const Field: React.FC<FieldProps> = ({
           {error}
         </span>
       )}
-    </div>
+    </Element>
   );
 };
