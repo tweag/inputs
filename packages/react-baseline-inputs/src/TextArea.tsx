@@ -1,8 +1,6 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
 import { Field } from "./Field";
-
-export type TextAreaProps = CustomInputProps<"textarea", string | null>;
+import { TextAreaProps } from "./types";
 
 /**
  * An HTML `<textarea />`, but with the following benefits:
@@ -12,7 +10,6 @@ export type TextAreaProps = CustomInputProps<"textarea", string | null>;
  */
 export const TextArea: React.FC<TextAreaProps> = ({
   value,
-  label,
   onChange,
   ...props
 }) => {
@@ -23,7 +20,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
   return (
     <Field
-      label={label}
       render={inputProps => (
         <textarea {...inputProps} value={value || ""} onChange={handleChange} />
       )}

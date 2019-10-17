@@ -1,8 +1,6 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
 import { Field } from "./Field";
-
-export type FloatInputProps = CustomInputProps<"input", number | null>;
+import { FloatInputProps } from "./types";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -13,8 +11,6 @@ export type FloatInputProps = CustomInputProps<"input", number | null>;
 export const FloatInput: React.FC<FloatInputProps> = ({
   value,
   onChange,
-  label = false,
-  wrap = true,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -27,7 +23,6 @@ export const FloatInput: React.FC<FloatInputProps> = ({
 
   return (
     <Field
-      label={label}
       render={inputProps => (
         <input
           {...inputProps}
