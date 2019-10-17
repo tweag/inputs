@@ -1,10 +1,8 @@
 import * as React from "react";
 
 export interface FieldProps {
-  label?: React.ReactNode;
+  label: React.ReactNode;
   render: (props: object) => React.ReactNode;
-
-  wrap?: boolean;
 
   id?: string;
   inline?: boolean;
@@ -14,6 +12,7 @@ export interface FieldProps {
   success?: boolean;
   error?: React.ReactNode;
   help?: React.ReactNode;
+  wrapper?: boolean;
 
   fieldClassName?: string;
   fieldInlineClassName?: string;
@@ -49,10 +48,9 @@ const generateUniqueId = (() => {
 })();
 
 export const Field: React.FC<FieldProps> = ({
-  label = false,
+  label,
   render,
-  id = React.useMemo(() => generateUniqueId(), []),
-  wrap = true,
+  id = React.useMemo(generateUniqueId, []),
 
   help,
   inline,
@@ -61,6 +59,7 @@ export const Field: React.FC<FieldProps> = ({
   success = touched && !error,
   large,
   small,
+  wrapper = true,
 
   fieldClassName = "field",
   fieldInlineClassName = "field--inline",
@@ -87,6 +86,7 @@ export const Field: React.FC<FieldProps> = ({
   errorClassName = "message message--problem",
   ...props
 }) => {
+  const Wrapper = wrapper ? "div" : React.Fragment;
   const fieldClassNames = [fieldClassName];
   const inputClassNames = [inputClassName];
   const labelClassNames = [labelClassName];
@@ -130,10 +130,8 @@ export const Field: React.FC<FieldProps> = ({
     ...props
   };
 
-  const Element = wrap ? "div" : React.Fragment;
-
   return (
-    <Element className={fieldClassNames.join(" ")}>
+    <Wrapper className={fieldClassNames.join(" ")}>
       {inline && render(inputProps)}
 
       {label && (
@@ -150,6 +148,6 @@ export const Field: React.FC<FieldProps> = ({
           {error}
         </span>
       )}
-    </Element>
+    </Wrapper>
   );
 };
