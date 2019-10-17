@@ -1,11 +1,9 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import isValid from "date-fns/is_valid";
 import { Field } from "./Field";
-
-export type DateTimeInputProps = CustomInputProps<"input", string | null>;
+import { DateTimeInputProps } from "./types";
 
 /**
  * An HTML `<input type="datetime-local" />`, but with the following benefits:
@@ -16,8 +14,6 @@ export type DateTimeInputProps = CustomInputProps<"input", string | null>;
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,
   onChange,
-  label = false,
-  wrap = true,
   ...props
 }) => {
   const formattedValue = React.useMemo(
@@ -40,7 +36,6 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
 
   return (
     <Field
-      label={label}
       render={inputProps => (
         <input
           {...inputProps}
