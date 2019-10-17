@@ -43,6 +43,7 @@
     "build": "bin/build",
     "clean": "bin/clean",
     "test": "TZ=America/New_York jest",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'",
     "start:basic": "bin/start basic",
