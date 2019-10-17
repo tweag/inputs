@@ -10,7 +10,7 @@ import {
   DateTimeInput,
   FileInput,
   FloatInput,
-  Input,
+  TextInput,
   IntegerInput,
   Select,
   TextArea
@@ -25,8 +25,8 @@ interface Values {
   float: number | null;
   integer: number | null;
   select: string | null;
-  string: string | null;
   text: string | null;
+  textarea: string | null;
 }
 
 const App = () => {
@@ -39,8 +39,8 @@ const App = () => {
     float: null,
     integer: null,
     select: null,
-    string: null,
-    text: null
+    text: null,
+    textarea: null
   });
 
   function handleChange<K extends keyof Values>(key: K) {
@@ -59,18 +59,18 @@ const App = () => {
 
       <main>
         <label>
-          Input
-          <Input
-            name="string"
-            value={values.string}
-            onChange={handleChange("string")}
+          Text
+          <TextInput
+            name="text"
+            value={values.text}
+            onChange={handleChange("text")}
           />
         </label>
 
         <label>
           Select
           <Select
-            name="string"
+            name="select"
             value={values.select}
             onChange={handleChange("select")}
             options={["One", "Two", "Three"]}
@@ -78,7 +78,7 @@ const App = () => {
         </label>
 
         <label>
-          IntegerInput
+          Integer
           <IntegerInput
             name="Integer"
             value={values.integer}
@@ -87,7 +87,7 @@ const App = () => {
         </label>
 
         <label>
-          FloatInput
+          Float
           <FloatInput
             name="float"
             value={values.float}
@@ -96,7 +96,7 @@ const App = () => {
         </label>
 
         <label>
-          DateInput
+          Date
           <DateInput
             name="date"
             value={values.date}
@@ -105,7 +105,7 @@ const App = () => {
         </label>
 
         <label>
-          DateTimeInput
+          Date Time
           <DateTimeInput
             name="datetime"
             value={values.datetime}
@@ -114,7 +114,7 @@ const App = () => {
         </label>
 
         <label>
-          FileInput
+          File
           <FileInput
             name="file"
             value={values.file}
@@ -125,7 +125,7 @@ const App = () => {
         <label>
           Files
           <FileInput
-            name="file"
+            name="files"
             value={values.files}
             onChange={handleChange("files")}
             multiple
@@ -133,11 +133,11 @@ const App = () => {
         </label>
 
         <label>
-          TextArea
+          Text Area
           <TextArea
-            name="text"
-            value={values.text}
-            onChange={handleChange("text")}
+            name="textarea"
+            value={values.textarea}
+            onChange={handleChange("textarea")}
           />
         </label>
 

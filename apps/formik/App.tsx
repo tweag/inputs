@@ -8,10 +8,10 @@ import {
   DateTimeInput,
   FileInput,
   FloatInput,
-  Input,
   IntegerInput,
   Select,
-  TextArea
+  TextArea,
+  TextInput
 } from "formik-inputs";
 
 interface Values {
@@ -21,10 +21,10 @@ interface Values {
   file: File | null;
   files: FileList | null;
   float: number | null;
-  input: string | null;
   integer: number | null;
   select: string | null;
   text: string | null;
+  textarea: string | null;
 }
 
 const initialValues: Values = {
@@ -34,10 +34,10 @@ const initialValues: Values = {
   file: null,
   files: null,
   float: null,
-  input: null,
   integer: null,
   select: null,
-  text: null
+  text: null,
+  textarea: null
 };
 
 const notBlank = (value: any) => {
@@ -61,9 +61,9 @@ const App = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form>
             <label>
-              Input
-              <Input name="input" validate={notBlank} />
-              <ErrorMessage name="input" />
+              Text
+              <TextInput name="text" validate={notBlank} />
+              <ErrorMessage name="text" />
             </label>
 
             <label>
@@ -102,13 +102,13 @@ const App = () => {
 
             <label>
               Files
-              <FileInput name="file" multiple />
+              <FileInput name="files" multiple />
             </label>
 
             <label>
-              TextArea
-              <TextArea name="text" />
-              <ErrorMessage name="text" />
+              Text Area
+              <TextArea name="textarea" />
+              <ErrorMessage name="textarea" />
             </label>
 
             <label>
