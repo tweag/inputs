@@ -15,11 +15,11 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "formik": "2.0.1-rc.12",
+    "formik": "2.0.1-rc.13",
     "react": ">=16"
   },
   "devDependencies": {
-    "formik": "2.0.1-rc.12",
+    "formik": "2.0.1-rc.13",
     "react": "^16.8.6"
   }
 }
