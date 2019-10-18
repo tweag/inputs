@@ -108,7 +108,6 @@ const App = () => {
           label="Files"
           name="files"
           onChange={handleChange("files")}
-          multiple
         />
 
         <TextArea
