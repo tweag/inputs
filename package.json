@@ -52,6 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@testing-library/react-hooks": "^3.1.0",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.15",
@@ -68,8 +69,9 @@
     "jest": "^24.8.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.9.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }
