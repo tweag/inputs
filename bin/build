@@ -1,7 +1,6 @@
 #!/bin/bash
 
 node_modules/.bin/tsc -b \
-  packages/create-formik-field \
   packages/react-baseline-inputs \
   packages/formik-inputs \
   packages/formik-apollo \
