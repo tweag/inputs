@@ -1,12 +1,12 @@
 import * as React from "react";
-import { FileInput, FileInputProps } from "../src";
+import { FileListInput, FileListInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 
-const setup = (props: Partial<FileInputProps> = {}) =>
-  render(<FileInput label="Jawn" onChange={jest.fn()} {...props} />);
+const setup = (props: Partial<FileListInputProps> = {}) =>
+  render(<FileListInput label="Jawn" onChange={jest.fn()} {...props} />);
 
-describe("<FileInput />", () => {
-  const file = Symbol("File");
+describe("<FileListInput />", () => {
+  const files = Symbol("FileList");
 
   it("renders", () => {
     const { container } = setup();
@@ -28,25 +28,14 @@ describe("<FileInput />", () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("emits an instance of File", () => {
+  it("emits an instance of FileList", () => {
     const onChange = jest.fn();
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { files: [file] }
+      target: { files }
     });
 
-    expect(onChange).toHaveBeenCalledWith(file);
-  });
-
-  it("emits `null` when the list of files is empty", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
-
-    fireEvent.change(getByLabelText("Jawn"), {
-      target: { files: [] }
-    });
-
-    expect(onChange).toHaveBeenCalledWith(null);
+    expect(onChange).toHaveBeenCalledWith(files);
   });
 });

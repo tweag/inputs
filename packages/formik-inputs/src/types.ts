@@ -5,6 +5,7 @@ import {
   DateTimeInputProps as BDateTimeInputProps,
   FieldProps as BFieldProps,
   FileInputProps as BFileInputProps,
+  FileListInputProps as BFileListInputProps,
   FloatInputProps as BFloatInputProps,
   IntegerInputProps as BIntegerInputProps,
   SelectProps as BSelectProps,
@@ -24,6 +25,7 @@ export type CheckboxProps = InputProps<BCheckboxProps>;
 export type DateInputProps = InputProps<BDateInputProps>;
 export type DateTimeInputProps = InputProps<BDateTimeInputProps>;
 export type FileInputProps = InputProps<BFileInputProps>;
+export type FileListInputProps = InputProps<BFileListInputProps>;
 export type FieldProps = InputProps<BFieldProps>;
 export type FloatInputProps = InputProps<BFloatInputProps>;
 export type IntegerInputProps = InputProps<BIntegerInputProps>;

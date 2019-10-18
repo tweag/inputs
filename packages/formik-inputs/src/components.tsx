@@ -6,6 +6,7 @@ import {
   DateTimeInput as BDateTimeInput,
   Field as BField,
   FileInput as BFileInput,
+  FileListInput as BFileListInput,
   FloatInput as BFloatInput,
   IntegerInput as BIntegerInput,
   Select as BSelect,
@@ -18,6 +19,7 @@ import {
   DateTimeInputProps,
   FieldProps,
   FileInputProps,
+  FileListInputProps,
   FloatInputProps,
   IntegerInputProps,
   SelectProps,
@@ -43,6 +45,10 @@ export const Field: React.FC<FieldProps> = props => (
 
 export const FileInput: React.FC<FileInputProps> = props => (
   <BFileInput {...useField<any>(props)} />
+);
+
+export const FileListInput: React.FC<FileListInputProps> = props => (
+  <BFileListInput {...useField<any>(props)} />
 );
 
 export const FloatInput: React.FC<FloatInputProps> = props => (

@@ -7,6 +7,7 @@ import {
   DateInput,
   DateTimeInput,
   FileInput,
+  FileListInput,
   FloatInput,
   IntegerInput,
   Select,
@@ -69,7 +70,7 @@ const App = () => {
             <DateInput label="Date" name="date" />
             <DateTimeInput label="DateTime" name="datetime" />
             <FileInput label="File" name="file" />
-            <FileInput label="Files" name="files" multiple />
+            <FileListInput label="Files" name="files" />
             <TextArea label="TextArea" name="textarea" />
             <Checkbox label="Checkbox" name="boolean" />
             <button type="submit">Submit</button>
