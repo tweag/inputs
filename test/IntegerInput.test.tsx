@@ -1,104 +1,65 @@
 import * as React from "react";
-import { mount } from "enzyme";
+import { mount, render } from "enzyme";
 import { IntegerInput } from "../src";
 
 describe("<IntegerInput />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = mount(<IntegerInput value={null} onChange={onChange} />);
+    const input = render(<IntegerInput value={null} onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value={null}
+      <div
+        class="field"
       >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_1"
-              onChange={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+        <input
+          class="field__input"
+          id="field_1"
+          type="number"
+          value=""
+        />
+      </div>
     `);
   });
 
   it("renders with a label", () => {
     const onChange = jest.fn();
-    const input = mount(
+    const input = render(
       <IntegerInput label="Integer Input" value={null} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        label="Integer Input"
-        onChange={[MockFunction]}
-        value={null}
+      <div
+        class="field"
       >
-        <Component
-          label="Integer Input"
-          render={[Function]}
+        <label
+          class="field__label"
+          for="field_2"
         >
-          <div
-            className="field"
-          >
-            <label
-              className="field__label"
-              htmlFor="field_2"
-            >
-              Integer Input
-            </label>
-            <input
-              className="field__input"
-              id="field_2"
-              onChange={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+          Integer Input
+        </label>
+        <input
+          class="field__input"
+          id="field_2"
+          type="number"
+          value=""
+        />
+      </div>
     `);
   });
 
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
-    const input = mount(
-      <IntegerInput wrap={false} value={null} onChange={onChange} />
+    const input = render(
+      <IntegerInput inputOnly={true} value={null} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value={null}
-        wrap={false}
-      >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_3"
-              onChange={[Function]}
-              type="number"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+      <input
+        class="field__input"
+        id="field_3"
+        type="number"
+        value=""
+      />
     `);
   });
 

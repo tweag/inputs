@@ -1,104 +1,63 @@
 import * as React from "react";
-import { mount } from "enzyme";
+import { mount, render } from "enzyme";
 import { TextInput } from "../src";
 
 describe("<TextInput />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = mount(<TextInput value="" onChange={onChange} />);
+    const input = render(<TextInput value="" onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value=""
+      <div
+        class="field"
       >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_1"
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+        <input
+          class="field__input"
+          id="field_1"
+          type="text"
+          value=""
+        />
+      </div>
     `);
   });
 
   it("renders with a label", () => {
     const onChange = jest.fn();
-    const input = mount(
+    const input = render(
       <TextInput label="Text Input" value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        label="Text Input"
-        onChange={[MockFunction]}
-        value=""
+      <div
+        class="field"
       >
-        <Component
-          label="Text Input"
-          render={[Function]}
+        <label
+          class="field__label"
+          for="field_2"
         >
-          <div
-            className="field"
-          >
-            <label
-              className="field__label"
-              htmlFor="field_2"
-            >
-              Text Input
-            </label>
-            <input
-              className="field__input"
-              id="field_2"
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+          Text Input
+        </label>
+        <input
+          class="field__input"
+          id="field_2"
+          type="text"
+          value=""
+        />
+      </div>
     `);
   });
 
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
-    const input = mount(
-      <TextInput wrap={false} value="" onChange={onChange} />
-    );
+    const input = render(<TextInput inputOnly value="" onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
+      <input
+        class="field__input"
+        id="field_3"
+        type="text"
         value=""
-        wrap={false}
-      >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_3"
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </div>
-        </Component>
-      </Component>
+      />
     `);
   });
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { mount } from "enzyme";
+import { mount, render } from "enzyme";
 import { DateTimeInput } from "../src";
 
 describe("<DateTimeInput />", () => {
@@ -9,100 +9,61 @@ describe("<DateTimeInput />", () => {
 
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = mount(<DateTimeInput value={value} onChange={onChange} />);
+    const input = render(<DateTimeInput value={value} onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value="2001-01-01T05:00:00.000Z"
+      <div
+        class="field"
       >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_1"
-              onChange={[Function]}
-              type="datetime-local"
-              value="2001-01-01T00:00:00"
-            />
-          </div>
-        </Component>
-      </Component>
+        <input
+          class="field__input"
+          id="field_1"
+          type="datetime-local"
+          value="2001-01-01T00:00:00"
+        />
+      </div>
     `);
   });
 
   it("renders with a label", () => {
     const onChange = jest.fn();
-    const input = mount(
+    const input = render(
       <DateTimeInput label="DateTime Input" value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        label="DateTime Input"
-        onChange={[MockFunction]}
-        value="2001-01-01T05:00:00.000Z"
+      <div
+        class="field"
       >
-        <Component
-          label="DateTime Input"
-          render={[Function]}
+        <label
+          class="field__label"
+          for="field_2"
         >
-          <div
-            className="field"
-          >
-            <label
-              className="field__label"
-              htmlFor="field_2"
-            >
-              DateTime Input
-            </label>
-            <input
-              className="field__input"
-              id="field_2"
-              onChange={[Function]}
-              type="datetime-local"
-              value="2001-01-01T00:00:00"
-            />
-          </div>
-        </Component>
-      </Component>
+          DateTime Input
+        </label>
+        <input
+          class="field__input"
+          id="field_2"
+          type="datetime-local"
+          value="2001-01-01T00:00:00"
+        />
+      </div>
     `);
   });
 
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
-    const input = mount(
-      <DateTimeInput wrap={false} value={value} onChange={onChange} />
+    const input = render(
+      <DateTimeInput inputOnly={true} value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value="2001-01-01T05:00:00.000Z"
-        wrap={false}
-      >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_3"
-              onChange={[Function]}
-              type="datetime-local"
-              value="2001-01-01T00:00:00"
-            />
-          </div>
-        </Component>
-      </Component>
+      <input
+        class="field__input"
+        id="field_3"
+        type="datetime-local"
+        value="2001-01-01T00:00:00"
+      />
     `);
   });
 

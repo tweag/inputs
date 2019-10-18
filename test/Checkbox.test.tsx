@@ -1,16 +1,60 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+import { mount, render } from "enzyme";
 import { Checkbox } from "../src";
 
 describe("<Checkbox />", () => {
-  it("renders", () => {
+  it("renders with default values", () => {
     const onChange = jest.fn();
-    const checkbox = shallow(<Checkbox value={true} onChange={onChange} />);
+    const input = render(<Checkbox value={false} onChange={onChange} />);
 
-    expect(checkbox).toMatchInlineSnapshot(`
+    expect(input).toMatchInlineSnapshot(`
+      <div
+        class="field"
+      >
+        <input
+          class="field__input"
+          id="field_1"
+          type="checkbox"
+        />
+      </div>
+    `);
+  });
+
+  it("renders with a label", () => {
+    const onChange = jest.fn();
+    const input = render(
+      <Checkbox label="Checkbox Input" value={false} onChange={onChange} />
+    );
+
+    expect(input).toMatchInlineSnapshot(`
+      <div
+        class="field"
+      >
+        <label
+          class="field__label"
+          for="field_2"
+        >
+          Checkbox Input
+        </label>
+        <input
+          class="field__input"
+          id="field_2"
+          type="checkbox"
+        />
+      </div>
+    `);
+  });
+
+  it("renders unwrapped input", () => {
+    const onChange = jest.fn();
+    const input = render(
+      <Checkbox inputOnly={true} value={false} onChange={onChange} />
+    );
+
+    expect(input).toMatchInlineSnapshot(`
       <input
-        checked={true}
-        onChange={[Function]}
+        class="field__input"
+        id="field_3"
         type="checkbox"
       />
     `);
@@ -18,9 +62,9 @@ describe("<Checkbox />", () => {
 
   it("emits `false` when then value is `true`", () => {
     const onChange = jest.fn();
-    const checkbox = shallow(<Checkbox value={true} onChange={onChange} />);
+    const field = mount(<Checkbox value={true} onChange={onChange} />);
 
-    checkbox.simulate("change", {
+    field.find("input").simulate("change", {
       target: { checked: false }
     });
 
@@ -29,9 +73,9 @@ describe("<Checkbox />", () => {
 
   it("emits `true` when then value is `false`", () => {
     const onChange = jest.fn();
-    const checkbox = shallow(<Checkbox value={false} onChange={onChange} />);
+    const field = mount(<Checkbox value={false} onChange={onChange} />);
 
-    checkbox.simulate("change", {
+    field.find("input").simulate("change", {
       target: { checked: true }
     });
 
