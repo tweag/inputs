@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FileInput /> multiple renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_4"
+    multiple=""
+    type="file"
+  />
+</div>
+`;
+
+exports[`<FileInput /> single renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_1"
+    type="file"
+  />
+</div>
+`;
