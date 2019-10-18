@@ -1,18 +1,61 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+import { mount, render } from "enzyme";
 import { FileInput } from "../src";
 
 describe("<FileInput />", () => {
   describe("single", () => {
     const file = Symbol("File");
 
-    it("renders", () => {
+    it("renders with default values", () => {
       const onChange = jest.fn();
-      const input = shallow(<FileInput onChange={onChange} />);
+      const input = render(<FileInput onChange={onChange} />);
+
+      expect(input).toMatchInlineSnapshot(`
+        <div
+          class="field"
+        >
+          <input
+            class="field__input"
+            id="field_1"
+            type="file"
+          />
+        </div>
+      `);
+    });
+
+    it("renders with a label", () => {
+      const onChange = jest.fn();
+      const input = render(
+        <FileInput label="File Input" onChange={onChange} />
+      );
+
+      expect(input).toMatchInlineSnapshot(`
+        <div
+          class="field"
+        >
+          <label
+            class="field__label"
+            for="field_2"
+          >
+            File Input
+          </label>
+          <input
+            class="field__input"
+            id="field_2"
+            type="file"
+          />
+        </div>
+      `);
+    });
+
+    it("renders unwrapped input", () => {
+      const onChange = jest.fn();
+      const input = render(<FileInput inputOnly={true} onChange={onChange} />);
 
       expect(input).toMatchInlineSnapshot(`
         <input
-          onChange={[Function]}
+          class="field__input"
+          id="field_3"
           type="file"
         />
       `);
@@ -20,9 +63,9 @@ describe("<FileInput />", () => {
 
     it("emits an instance of File", () => {
       const onChange = jest.fn();
-      const input = shallow(<FileInput onChange={onChange} />);
+      const field = mount(<FileInput onChange={onChange} />);
 
-      input.simulate("change", {
+      field.find("input").simulate("change", {
         target: { files: [file] }
       });
 
@@ -31,9 +74,9 @@ describe("<FileInput />", () => {
 
     it("emits `null` when the list of files is empty", () => {
       const onChange = jest.fn();
-      const input = shallow(<FileInput onChange={onChange} />);
+      const field = mount(<FileInput onChange={onChange} />);
 
-      input.simulate("change", {
+      field.find("input").simulate("change", {
         target: { files: [] }
       });
 
@@ -46,22 +89,27 @@ describe("<FileInput />", () => {
 
     it("renders", () => {
       const onChange = jest.fn();
-      const input = shallow(<FileInput multiple onChange={onChange} />);
+      const input = render(<FileInput multiple onChange={onChange} />);
 
       expect(input).toMatchInlineSnapshot(`
-        <input
-          multiple={true}
-          onChange={[Function]}
-          type="file"
-        />
+        <div
+          class="field"
+        >
+          <input
+            class="field__input"
+            id="field_6"
+            multiple=""
+            type="file"
+          />
+        </div>
       `);
     });
 
     it("emits an instance of FileList", () => {
       const onChange = jest.fn();
-      const input = shallow(<FileInput multiple onChange={onChange} />);
+      const field = mount(<FileInput multiple onChange={onChange} />);
 
-      input.simulate("change", {
+      field.find("input").simulate("change", {
         target: { files: fileList }
       });
 

@@ -49,7 +49,6 @@ export function Field<T extends FieldProps>({
 
   ...props
 }: T) {
-  const Wrapper = wrapper ? "div" : React.Fragment;
   const fieldClassNames = [fieldClassName];
   const inputClassNames = [inputClassName];
   const labelClassNames = [labelClassName];
@@ -87,6 +86,10 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(labelSmallClassName);
   }
 
+  const [Wrapper, wrapperProps] = wrapper
+    ? ["div", { className: fieldClassNames.join(" ") }]
+    : [React.Fragment, {}];
+
   const inputProps = {
     id,
     className: inputClassNames.join(" "),
@@ -94,7 +97,7 @@ export function Field<T extends FieldProps>({
   };
 
   return (
-    <Wrapper className={fieldClassNames.join(" ")}>
+    <Wrapper {...wrapperProps}>
       {inline && render(inputProps)}
 
       {label && (

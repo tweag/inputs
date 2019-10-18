@@ -1,22 +1,19 @@
 import * as React from "react";
 import { mount, render } from "enzyme";
-import { FloatInput } from "../src";
-import { ninvoke } from "q";
+import { TextArea } from "../src";
 
-describe("<FloatInput />", () => {
+describe("<TextArea />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = render(<FloatInput value={null} onChange={onChange} />);
+    const input = render(<TextArea value="" onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
       <div
         class="field"
       >
-        <input
+        <textarea
           class="field__input"
           id="field_1"
-          type="number"
-          value=""
         />
       </div>
     `);
@@ -25,7 +22,7 @@ describe("<FloatInput />", () => {
   it("renders with a label", () => {
     const onChange = jest.fn();
     const input = render(
-      <FloatInput label="Float Input" value={null} onChange={onChange} />
+      <TextArea label="TextArea Input" value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
@@ -36,13 +33,11 @@ describe("<FloatInput />", () => {
           class="field__label"
           for="field_2"
         >
-          Float Input
+          TextArea Input
         </label>
-        <input
+        <textarea
           class="field__input"
           id="field_2"
-          type="number"
-          value=""
         />
       </div>
     `);
@@ -51,35 +46,33 @@ describe("<FloatInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <FloatInput inputOnly={true} value={null} onChange={onChange} />
+      <TextArea inputOnly={true} value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <input
+      <textarea
         class="field__input"
         id="field_3"
-        type="number"
-        value=""
       />
     `);
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<FloatInput value={null} onChange={onChange} />);
+    const field = mount(<TextArea value="" onChange={onChange} />);
 
-    field.find("input").simulate("change", {
-      target: { value: "5.5" }
+    field.find("textarea").simulate("change", {
+      target: { value: "hi" }
     });
 
-    expect(onChange).toHaveBeenCalledWith(5.5);
+    expect(onChange).toHaveBeenCalledWith("hi");
   });
 
-  it("emits `null` if the value is not a float", () => {
+  test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const field = mount(<FloatInput value={null} onChange={onChange} />);
+    const field = mount(<TextArea value="" onChange={onChange} />);
 
-    field.find("input").simulate("change", {
+    field.find("textarea").simulate("change", {
       target: { value: "" }
     });
 

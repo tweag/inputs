@@ -1,5 +1,5 @@
 import * as React from "react";
-import { mount } from "enzyme";
+import { mount, render } from "enzyme";
 import { DateInput } from "../src";
 
 describe("<DateInput />", () => {
@@ -8,100 +8,61 @@ describe("<DateInput />", () => {
 
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = mount(<DateInput value={value} onChange={onChange} />);
+    const input = render(<DateInput value={value} onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
-        value="2001-01-01"
+      <div
+        class="field"
       >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_1"
-              onChange={[Function]}
-              type="date"
-              value="2001-01-01"
-            />
-          </div>
-        </Component>
-      </Component>
+        <input
+          class="field__input"
+          id="field_1"
+          type="date"
+          value="2001-01-01"
+        />
+      </div>
     `);
   });
 
   it("renders with a label", () => {
     const onChange = jest.fn();
-    const input = mount(
+    const input = render(
       <DateInput label="Date Input" value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        label="Date Input"
-        onChange={[MockFunction]}
-        value="2001-01-01"
+      <div
+        class="field"
       >
-        <Component
-          label="Date Input"
-          render={[Function]}
+        <label
+          class="field__label"
+          for="field_2"
         >
-          <div
-            className="field"
-          >
-            <label
-              className="field__label"
-              htmlFor="field_2"
-            >
-              Date Input
-            </label>
-            <input
-              className="field__input"
-              id="field_2"
-              onChange={[Function]}
-              type="date"
-              value="2001-01-01"
-            />
-          </div>
-        </Component>
-      </Component>
+          Date Input
+        </label>
+        <input
+          class="field__input"
+          id="field_2"
+          type="date"
+          value="2001-01-01"
+        />
+      </div>
     `);
   });
 
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
-    const input = mount(
-      <DateInput wrap={false} value={value} onChange={onChange} />
+    const input = render(
+      <DateInput inputOnly={true} value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <Component
-        onChange={[MockFunction]}
+      <input
+        class="field__input"
+        id="field_3"
+        type="date"
         value="2001-01-01"
-        wrap={false}
-      >
-        <Component
-          label={false}
-          render={[Function]}
-        >
-          <div
-            className="field"
-          >
-            <input
-              className="field__input"
-              id="field_3"
-              onChange={[Function]}
-              type="date"
-              value="2001-01-01"
-            />
-          </div>
-        </Component>
-      </Component>
+      />
     `);
   });
 
