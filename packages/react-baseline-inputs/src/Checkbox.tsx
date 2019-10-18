@@ -1,7 +1,6 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
-
-export type CheckboxProps = CustomInputProps<"input", boolean | null>;
+import { Field } from "./Field";
+import { CheckboxProps } from "./types";
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -20,11 +19,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 
   return (
-    <input
+    <Field
+      inline
+      render={inputProps => (
+        <input
+          {...inputProps}
+          type="checkbox"
+          checked={Boolean(value)}
+          onChange={handleChange}
+        />
+      )}
       {...props}
-      type="checkbox"
-      checked={Boolean(value)}
-      onChange={handleChange}
     />
   );
 };

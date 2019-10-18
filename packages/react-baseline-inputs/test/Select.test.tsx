@@ -1,36 +1,120 @@
 import * as React from "react";
-import { shallow } from "enzyme";
+import { mount, render } from "enzyme";
 import { Select } from "../src";
 
 describe("<Select />", () => {
   describe("an array of strings as options", () => {
     const options = ["foo", "bar", "buzz"];
 
-    it("accepts an array of strings as options", () => {
+    it("renders with default values", () => {
       const onChange = jest.fn();
-      const select = shallow(
+      const select = render(
         <Select value="foo" options={options} onChange={onChange} />
       );
 
       expect(select).toMatchInlineSnapshot(`
-        <select
-          onChange={[Function]}
+        <div
+          class="field"
+        >
+          <select
+            class="field__input"
+            id="field_1"
+          >
+            <option
+              selected=""
+              value="foo"
+            >
+              foo
+            </option>
+            <option
+              value="bar"
+            >
+              bar
+            </option>
+            <option
+              value="buzz"
+            >
+              buzz
+            </option>
+          </select>
+        </div>
+      `);
+    });
+
+    it("renders with a label", () => {
+      const onChange = jest.fn();
+      const select = render(
+        <Select
           value="foo"
+          label="Select Input"
+          options={options}
+          onChange={onChange}
+        />
+      );
+
+      expect(select).toMatchInlineSnapshot(`
+        <div
+          class="field"
+        >
+          <label
+            class="field__label"
+            for="field_2"
+          >
+            Select Input
+          </label>
+          <select
+            class="field__input"
+            id="field_2"
+          >
+            <option
+              selected=""
+              value="foo"
+            >
+              foo
+            </option>
+            <option
+              value="bar"
+            >
+              bar
+            </option>
+            <option
+              value="buzz"
+            >
+              buzz
+            </option>
+          </select>
+        </div>
+      `);
+    });
+
+    it("renders unwrapped input", () => {
+      const onChange = jest.fn();
+      const select = render(
+        <Select
+          value="foo"
+          wrapper={false}
+          options={options}
+          onChange={onChange}
+        />
+      );
+
+      expect(select).toMatchInlineSnapshot(`
+        <select
+          class="field__input"
+          id="field_3"
         >
           <option
-            key="foo"
+            selected=""
             value="foo"
           >
             foo
           </option>
           <option
-            key="bar"
             value="bar"
           >
             bar
           </option>
           <option
-            key="buzz"
             value="buzz"
           >
             buzz
@@ -41,7 +125,7 @@ describe("<Select />", () => {
 
     it("accepts a placeholder", () => {
       const onChange = jest.fn();
-      const select = shallow(
+      const select = render(
         <Select
           value={null}
           options={options}
@@ -51,46 +135,47 @@ describe("<Select />", () => {
       );
 
       expect(select).toMatchInlineSnapshot(`
-        <select
-          onChange={[Function]}
-          value=""
+        <div
+          class="field"
         >
-          <option
-            disabled={true}
-            key="placeholder"
-            value=""
+          <select
+            class="field__input"
+            id="field_4"
           >
-            Choose an option
-          </option>
-          <option
-            key="foo"
-            value="foo"
-          >
-            foo
-          </option>
-          <option
-            key="bar"
-            value="bar"
-          >
-            bar
-          </option>
-          <option
-            key="buzz"
-            value="buzz"
-          >
-            buzz
-          </option>
-        </select>
+            <option
+              disabled=""
+              selected=""
+              value=""
+            >
+              Choose an option
+            </option>
+            <option
+              value="foo"
+            >
+              foo
+            </option>
+            <option
+              value="bar"
+            >
+              bar
+            </option>
+            <option
+              value="buzz"
+            >
+              buzz
+            </option>
+          </select>
+        </div>
       `);
     });
 
     it("emits a value", () => {
       const onChange = jest.fn();
-      const select = shallow(
+      const field = mount(
         <Select value="foo" options={options} onChange={onChange} />
       );
 
-      select.simulate("change", {
+      field.find("select").simulate("change", {
         target: { value: "bar" }
       });
 
@@ -107,45 +192,47 @@ describe("<Select />", () => {
 
     it("renders", () => {
       const onChange = jest.fn();
-      const select = shallow(
+      const select = render(
         <Select value="foo" onChange={onChange} options={options} />
       );
 
       expect(select).toMatchInlineSnapshot(`
-        <select
-          onChange={[Function]}
-          value="foo"
+        <div
+          class="field"
         >
-          <option
-            key="foo"
-            value="foo"
+          <select
+            class="field__input"
+            id="field_6"
           >
-            Foo
-          </option>
-          <option
-            disabled={true}
-            key="bar"
-            value="bar"
-          >
-            Bar
-          </option>
-          <option
-            key="buzz"
-            value="buzz"
-          >
-            Buzz
-          </option>
-        </select>
+            <option
+              selected=""
+              value="foo"
+            >
+              Foo
+            </option>
+            <option
+              disabled=""
+              value="bar"
+            >
+              Bar
+            </option>
+            <option
+              value="buzz"
+            >
+              Buzz
+            </option>
+          </select>
+        </div>
       `);
     });
 
     it("emits the `value` property", () => {
       const onChange = jest.fn();
-      const select = shallow(
+      const field = mount(
         <Select value="foo" onChange={onChange} options={options} />
       );
 
-      select.simulate("change", {
+      field.find("select").simulate("change", {
         target: { value: "buzz" }
       });
 

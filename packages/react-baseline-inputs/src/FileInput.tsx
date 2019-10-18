@@ -1,19 +1,6 @@
 import * as React from "react";
-import { ExtraInputProps } from "./types";
-
-interface MultipleFileProps extends ExtraInputProps<"input"> {
-  value?: any;
-  multiple: true;
-  onChange: (value: FileList) => void;
-}
-
-interface SingleFileProps extends ExtraInputProps<"input"> {
-  value?: any;
-  multiple?: false | undefined;
-  onChange: (value: File) => void;
-}
-
-export type FileInputProps = SingleFileProps | MultipleFileProps;
+import { Field } from "./Field";
+import { FileInputProps } from "./types";
 
 /**
  * An HTML `<input type="file" />`, but with the following benefits:
@@ -38,5 +25,12 @@ export const FileInput: React.FC<FileInputProps> = ({
     [onChange]
   );
 
-  return <input type="file" {...props} onChange={handleChange} />;
+  return (
+    <Field
+      render={inputProps => (
+        <input type="file" {...inputProps} onChange={handleChange} />
+      )}
+      {...props}
+    />
+  );
 };

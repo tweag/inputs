@@ -58,97 +58,77 @@ const App = () => {
       </header>
 
       <main>
-        <label>
-          Text
-          <TextInput
-            name="text"
-            value={values.text}
-            onChange={handleChange("text")}
-          />
-        </label>
+        <TextInput
+          label="Text"
+          name="text"
+          value={values.text}
+          onChange={handleChange("text")}
+        />
 
-        <label>
-          Select
-          <Select
-            name="select"
-            value={values.select}
-            onChange={handleChange("select")}
-            options={["One", "Two", "Three"]}
-          />
-        </label>
+        <Select
+          label="Select"
+          name="string"
+          value={values.select}
+          onChange={handleChange("select")}
+          options={["One", "Two", "Three"]}
+        />
 
-        <label>
-          Integer
-          <IntegerInput
-            name="Integer"
-            value={values.integer}
-            onChange={handleChange("integer")}
-          />
-        </label>
+        <IntegerInput
+          label="Integer"
+          name="integer"
+          value={values.integer}
+          onChange={handleChange("integer")}
+        />
 
-        <label>
-          Float
-          <FloatInput
-            name="float"
-            value={values.float}
-            onChange={handleChange("float")}
-          />
-        </label>
+        <FloatInput
+          label="Float"
+          name="float"
+          value={values.float}
+          onChange={handleChange("float")}
+        />
 
-        <label>
-          Date
-          <DateInput
-            name="date"
-            value={values.date}
-            onChange={handleChange("date")}
-          />
-        </label>
+        <DateInput
+          label="Date"
+          name="date"
+          value={values.date}
+          onChange={handleChange("date")}
+        />
 
-        <label>
-          Date Time
-          <DateTimeInput
-            name="datetime"
-            value={values.datetime}
-            onChange={handleChange("datetime")}
-          />
-        </label>
+        <DateTimeInput
+          label="DateTime"
+          name="datetime"
+          value={values.datetime}
+          onChange={handleChange("datetime")}
+        />
 
-        <label>
-          File
-          <FileInput
-            name="file"
-            value={values.file}
-            onChange={handleChange("file")}
-          />
-        </label>
+        <FileInput
+          label="File"
+          name="file"
+          value={values.file}
+          onChange={handleChange("file")}
+        />
 
-        <label>
-          Files
-          <FileInput
-            name="files"
-            value={values.files}
-            onChange={handleChange("files")}
-            multiple
-          />
-        </label>
+        <FileInput
+          label="Files"
+          name="files"
+          value={values.files}
+          onChange={handleChange("files")}
+          multiple
+        />
 
-        <label>
-          Text Area
-          <TextArea
-            name="textarea"
-            value={values.textarea}
-            onChange={handleChange("textarea")}
-          />
-        </label>
+        <TextArea
+          label="TextArea"
+          name="textarea"
+          value={values.textarea}
+          onChange={handleChange("textarea")}
+        />
 
-        <label>
-          Checkbox
-          <Checkbox
-            name="boolean"
-            value={values.boolean}
-            onChange={handleChange("boolean")}
-          />
-        </label>
+        <Checkbox
+          label="Checkbox"
+          name="boolean"
+          value={values.boolean}
+          onChange={handleChange("boolean")}
+        />
       </main>
     </div>
   );

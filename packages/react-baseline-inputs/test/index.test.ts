@@ -5,6 +5,7 @@ test("exports", () => {
     "Checkbox",
     "DateInput",
     "DateTimeInput",
+    "Field",
     "FileInput",
     "FloatInput",
     "IntegerInput",

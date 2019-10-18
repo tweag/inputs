@@ -1,21 +1,19 @@
 import * as React from "react";
 import { mount, render } from "enzyme";
-import { IntegerInput } from "../src";
+import { TextArea } from "../src";
 
-describe("<IntegerInput />", () => {
+describe("<TextArea />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = render(<IntegerInput value={null} onChange={onChange} />);
+    const input = render(<TextArea value="" onChange={onChange} />);
 
     expect(input).toMatchInlineSnapshot(`
       <div
         class="field"
       >
-        <input
+        <textarea
           class="field__input"
           id="field_1"
-          type="number"
-          value=""
         />
       </div>
     `);
@@ -24,7 +22,7 @@ describe("<IntegerInput />", () => {
   it("renders with a label", () => {
     const onChange = jest.fn();
     const input = render(
-      <IntegerInput label="Integer Input" value={null} onChange={onChange} />
+      <TextArea label="TextArea Input" value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
@@ -35,13 +33,11 @@ describe("<IntegerInput />", () => {
           class="field__label"
           for="field_2"
         >
-          Integer Input
+          TextArea Input
         </label>
-        <input
+        <textarea
           class="field__input"
           id="field_2"
-          type="number"
-          value=""
         />
       </div>
     `);
@@ -50,35 +46,33 @@ describe("<IntegerInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <IntegerInput wrapper={false} value={null} onChange={onChange} />
+      <TextArea wrapper={false} value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
-      <input
+      <textarea
         class="field__input"
         id="field_3"
-        type="number"
-        value=""
       />
     `);
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<IntegerInput value={null} onChange={onChange} />);
+    const field = mount(<TextArea value="" onChange={onChange} />);
 
-    field.find("input").simulate("change", {
-      target: { value: "5" }
+    field.find("textarea").simulate("change", {
+      target: { value: "hi" }
     });
 
-    expect(onChange).toHaveBeenCalledWith(5);
+    expect(onChange).toHaveBeenCalledWith("hi");
   });
 
-  it("emits `null` if the value is not an integer", () => {
+  test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const field = mount(<IntegerInput value={null} onChange={onChange} />);
+    const field = mount(<TextArea value="" onChange={onChange} />);
 
-    field.find("input").simulate("change", {
+    field.find("textarea").simulate("change", {
       target: { value: "" }
     });
 

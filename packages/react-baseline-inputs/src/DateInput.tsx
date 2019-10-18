@@ -1,7 +1,6 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
-
-export type DateInputProps = CustomInputProps<"input", string | null>;
+import { Field } from "./Field";
+import { DateInputProps } from "./types";
 
 /**
  * An HTML `<input type="date" />`, but with the following benefits:
@@ -25,6 +24,16 @@ export const DateInput: React.FC<DateInputProps> = ({
   );
 
   return (
-    <input {...props} type="date" value={value || ""} onChange={handleChange} />
+    <Field
+      render={inputProps => (
+        <input
+          {...inputProps}
+          type="date"
+          value={value || ""}
+          onChange={handleChange}
+        />
+      )}
+      {...props}
+    />
   );
 };

@@ -1,7 +1,6 @@
 import * as React from "react";
-import { CustomInputProps } from "./types";
-
-export type TextInputProps = CustomInputProps<"input", string | null>;
+import { Field } from "./Field";
+import { TextInputProps } from "./types";
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -21,6 +20,16 @@ export const TextInput: React.FC<TextInputProps> = ({
   );
 
   return (
-    <input type="text" value={value || ""} onChange={handleChange} {...props} />
+    <Field
+      render={inputProps => (
+        <input
+          {...inputProps}
+          type="text"
+          value={value || ""}
+          onChange={handleChange}
+        />
+      )}
+      {...props}
+    />
   );
 };
