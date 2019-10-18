@@ -5,11 +5,13 @@ test("exports", () => {
     "Checkbox",
     "DateInput",
     "DateTimeInput",
+    "Field",
     "FileInput",
     "FloatInput",
     "IntegerInput",
     "Select",
     "TextArea",
-    "TextInput"
+    "TextInput",
+    "useField"
   ]);
 });
