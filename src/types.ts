@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface FieldInputProps {
+export interface FieldInputProps {
   id?: string;
   inline?: boolean;
   large?: boolean;
@@ -38,7 +38,7 @@ interface FieldInputProps {
   errorClassName?: string;
 }
 
-interface ValueProps<V> {
+export interface ValueProps<V> {
   value: V;
   onChange: (value: V) => void;
 }
