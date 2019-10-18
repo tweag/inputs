@@ -3,7 +3,14 @@ import { FileInput, FileInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 
 const setup = (props: Partial<FileInputProps> = {}) =>
-  render(<FileInput label="Jawn" onChange={jest.fn()} {...props} />);
+  render(
+    <FileInput
+      label="Jawn"
+      multiple={undefined}
+      onChange={jest.fn()}
+      {...props}
+    />
+  );
 
 describe("<FileInput />", () => {
   describe("single", () => {
