@@ -1,44 +1,5 @@
 import * as React from "react";
-
-export interface FieldProps {
-  label?: React.ReactNode;
-  render: (props: object) => React.ReactNode;
-
-  wrap?: boolean;
-
-  id?: string;
-  inline?: boolean;
-  large?: boolean;
-  small?: boolean;
-  touched?: boolean;
-  success?: boolean;
-  error?: React.ReactNode;
-  help?: React.ReactNode;
-
-  fieldClassName?: string;
-  fieldInlineClassName?: string;
-  fieldValidClassName?: string;
-  fieldInvalidClassName?: string;
-  fieldTouchedClassName?: string;
-  fieldLargeClassName?: string;
-  fieldSmallClassName?: string;
-
-  inputClassName?: string;
-  inputValidClassName?: string;
-  inputInvalidClassName?: string;
-  inputTouchedClassName?: string;
-  inputInlineClassName?: string;
-  inputLargeClassName?: string;
-  inputSmallClassName?: string;
-
-  labelClassName?: string;
-  labelInlineClassName?: string;
-  labelLargeClassName?: string;
-  labelSmallClassName?: string;
-
-  helpClassName?: string;
-  errorClassName?: string;
-}
+import { FieldProps } from "./types";
 
 const generateUniqueId = (() => {
   let previousId = 0;
@@ -48,11 +9,10 @@ const generateUniqueId = (() => {
   };
 })();
 
-export const Field: React.FC<FieldProps> = ({
-  label = false,
+export function Field<T extends FieldProps>({
+  label,
   render,
-  id = React.useMemo(() => generateUniqueId(), []),
-  wrap = true,
+  id = React.useMemo(generateUniqueId, []),
 
   help,
   inline,
@@ -61,6 +21,7 @@ export const Field: React.FC<FieldProps> = ({
   success = touched && !error,
   large,
   small,
+  wrapper = true,
 
   fieldClassName = "field",
   fieldInlineClassName = "field--inline",
@@ -85,8 +46,10 @@ export const Field: React.FC<FieldProps> = ({
 
   helpClassName = "field__help",
   errorClassName = "message message--problem",
+
   ...props
-}) => {
+}: T) {
+  const Wrapper = wrapper ? "div" : React.Fragment;
   const fieldClassNames = [fieldClassName];
   const inputClassNames = [inputClassName];
   const labelClassNames = [labelClassName];
@@ -130,10 +93,8 @@ export const Field: React.FC<FieldProps> = ({
     ...props
   };
 
-  const Element = wrap ? "div" : React.Fragment;
-
   return (
-    <Element className={fieldClassNames.join(" ")}>
+    <Wrapper className={fieldClassNames.join(" ")}>
       {inline && render(inputProps)}
 
       {label && (
@@ -150,6 +111,6 @@ export const Field: React.FC<FieldProps> = ({
           {error}
         </span>
       )}
-    </Element>
+    </Wrapper>
   );
-};
+}
