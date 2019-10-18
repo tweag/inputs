@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> an array of objects as options renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_4"
+  >
+    <option
+      value="foo"
+    >
+      Foo
+    </option>
+    <option
+      disabled=""
+      value="bar"
+    >
+      Bar
+    </option>
+    <option
+      value="buzz"
+    >
+      Buzz
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Select /> an array of strings as options accepts a placeholder 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_2"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_2"
+  >
+    <option
+      disabled=""
+      value=""
+    >
+      Choose an option
+    </option>
+    <option
+      value="foo"
+    >
+      foo
+    </option>
+    <option
+      value="bar"
+    >
+      bar
+    </option>
+    <option
+      value="buzz"
+    >
+      buzz
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Select /> an array of strings as options accepts an array of strings as options 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_1"
+  >
+    <option
+      value="foo"
+    >
+      foo
+    </option>
+    <option
+      value="bar"
+    >
+      bar
+    </option>
+    <option
+      value="buzz"
+    >
+      buzz
+    </option>
+  </select>
+</div>
+`;

@@ -1,67 +1,24 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
 import { TextArea } from "../src";
+import { render, fireEvent } from "@testing-library/react";
 
 describe("<TextArea />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = render(<TextArea value="" onChange={onChange} />);
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <textarea
-          class="field__input"
-          id="field_1"
-        />
-      </div>
-    `);
-  });
-
-  it("renders with a label", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextArea label="TextArea Input" value="" onChange={onChange} />
+    const { container } = render(
+      <TextArea label="Jawn" value="" onChange={onChange} />
     );
 
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <label
-          class="field__label"
-          for="field_2"
-        >
-          TextArea Input
-        </label>
-        <textarea
-          class="field__input"
-          id="field_2"
-        />
-      </div>
-    `);
-  });
-
-  it("renders unwrapped input", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextArea wrapper={false} value="" onChange={onChange} />
-    );
-
-    expect(input).toMatchInlineSnapshot(`
-      <textarea
-        class="field__input"
-        id="field_3"
-      />
-    `);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<TextArea value="" onChange={onChange} />);
+    const { getByLabelText } = render(
+      <TextArea label="Jawn" type="text" value="" onChange={onChange} />
+    );
 
-    field.find("textarea").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "hi" }
     });
 
@@ -70,9 +27,11 @@ describe("<TextArea />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const field = mount(<TextArea value="" onChange={onChange} />);
+    const { getByLabelText } = render(
+      <TextArea label="Jawn" type="text" value="hi" onChange={onChange} />
+    );
 
-    field.find("textarea").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }
     });
 

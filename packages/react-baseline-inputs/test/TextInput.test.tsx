@@ -1,73 +1,24 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
 import { TextInput } from "../src";
+import { render, fireEvent } from "@testing-library/react";
 
 describe("<TextInput />", () => {
   it("renders with default values", () => {
     const onChange = jest.fn();
-    const input = render(<TextInput value="" onChange={onChange} />);
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <input
-          class="field__input"
-          id="field_1"
-          type="text"
-          value=""
-        />
-      </div>
-    `);
-  });
-
-  it("renders with a label", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextInput label="Text Input" value="" onChange={onChange} />
+    const { container } = render(
+      <TextInput label="Jawn" value="" onChange={onChange} />
     );
 
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <label
-          class="field__label"
-          for="field_2"
-        >
-          Text Input
-        </label>
-        <input
-          class="field__input"
-          id="field_2"
-          type="text"
-          value=""
-        />
-      </div>
-    `);
-  });
-
-  it("renders unwrapped input", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextInput wrapper={false} value="" onChange={onChange} />
-    );
-
-    expect(input).toMatchInlineSnapshot(`
-      <input
-        class="field__input"
-        id="field_3"
-        type="text"
-        value=""
-      />
-    `);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<TextInput type="text" value="" onChange={onChange} />);
+    const { getByLabelText } = render(
+      <TextInput label="Jawn" type="text" value="" onChange={onChange} />
+    );
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "hi" }
     });
 
@@ -76,9 +27,11 @@ describe("<TextInput />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const field = mount(<TextInput type="text" value="" onChange={onChange} />);
+    const { getByLabelText } = render(
+      <TextInput label="Jawn" type="text" value="hi" onChange={onChange} />
+    );
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }
     });
 

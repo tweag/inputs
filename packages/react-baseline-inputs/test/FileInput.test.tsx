@@ -1,6 +1,6 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
 import { FileInput } from "../src";
+import { render, fireEvent } from "@testing-library/react";
 
 describe("<FileInput />", () => {
   describe("single", () => {
@@ -50,22 +50,20 @@ describe("<FileInput />", () => {
 
     it("renders unwrapped input", () => {
       const onChange = jest.fn();
-      const input = render(<FileInput wrapper={false} onChange={onChange} />);
+      const { container } = render(
+        <FileInput label="Jawn" onChange={onChange} />
+      );
 
-      expect(input).toMatchInlineSnapshot(`
-        <input
-          class="field__input"
-          id="field_3"
-          type="file"
-        />
-      `);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it("emits an instance of File", () => {
       const onChange = jest.fn();
-      const field = mount(<FileInput onChange={onChange} />);
+      const { getByLabelText } = render(
+        <FileInput label="Jawn" onChange={onChange} />
+      );
 
-      field.find("input").simulate("change", {
+      fireEvent.change(getByLabelText("Jawn"), {
         target: { files: [file] }
       });
 
@@ -74,9 +72,11 @@ describe("<FileInput />", () => {
 
     it("emits `null` when the list of files is empty", () => {
       const onChange = jest.fn();
-      const field = mount(<FileInput onChange={onChange} />);
+      const { getByLabelText } = render(
+        <FileInput label="Jawn" onChange={onChange} />
+      );
 
-      field.find("input").simulate("change", {
+      fireEvent.change(getByLabelText("Jawn"), {
         target: { files: [] }
       });
 
@@ -85,35 +85,28 @@ describe("<FileInput />", () => {
   });
 
   describe("multiple", () => {
-    const fileList = Symbol("FileList");
+    const files = Symbol("FileList");
 
     it("renders", () => {
       const onChange = jest.fn();
-      const input = render(<FileInput multiple onChange={onChange} />);
+      const { container } = render(
+        <FileInput multiple label="Jawn" onChange={onChange} />
+      );
 
-      expect(input).toMatchInlineSnapshot(`
-        <div
-          class="field"
-        >
-          <input
-            class="field__input"
-            id="field_6"
-            multiple=""
-            type="file"
-          />
-        </div>
-      `);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it("emits an instance of FileList", () => {
       const onChange = jest.fn();
-      const field = mount(<FileInput multiple onChange={onChange} />);
+      const { getByLabelText } = render(
+        <FileInput multiple label="Jawn" onChange={onChange} />
+      );
 
-      field.find("input").simulate("change", {
-        target: { files: fileList }
+      fireEvent.change(getByLabelText("Jawn"), {
+        target: { files }
       });
 
-      expect(onChange).toHaveBeenCalledWith(fileList);
+      expect(onChange).toHaveBeenCalledWith(files);
     });
   });
 });
