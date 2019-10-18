@@ -73,6 +73,8 @@ export interface SelectProps
 }
 
 export type FileInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & { value?: any } & (
-    | { multiple?: false | null | undefined; onChange: (value: File) => void }
-    | { multiple: true; onChange: (value: FileList) => void });
+  HTMLProps<HTMLInputElement> & {
+    value?: any;
+    multiple?: boolean;
+    onChange: (value: File | FileList | null) => void;
+  };

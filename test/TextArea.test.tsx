@@ -1,22 +1,21 @@
 import * as React from "react";
-import { TextArea } from "../src";
+import { TextArea, TextAreaProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
+
+const setup = (props: Partial<TextAreaProps> = {}) =>
+  render(
+    <TextArea label="Jawn" value="hello" onChange={jest.fn()} {...props} />
+  );
 
 describe("<TextArea />", () => {
   it("renders with default values", () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <TextArea label="Jawn" value="" onChange={onChange} />
-    );
-
+    const { container } = setup();
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
-      <TextArea label="Jawn" type="text" value="" onChange={onChange} />
-    );
+    const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "hi" }
@@ -27,9 +26,7 @@ describe("<TextArea />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
-      <TextArea label="Jawn" type="text" value="hi" onChange={onChange} />
-    );
+    const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }

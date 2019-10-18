@@ -14,7 +14,7 @@ exports[`<TextInput /> renders with default values 1`] = `
     class="field__input"
     id="field_1"
     type="text"
-    value=""
+    value="hello"
   />
 </div>
 `;

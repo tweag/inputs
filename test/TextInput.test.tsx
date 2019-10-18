@@ -1,22 +1,21 @@
 import * as React from "react";
-import { TextInput } from "../src";
+import { TextInput, TextInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
+
+const setup = (props: Partial<TextInputProps> = {}) =>
+  render(
+    <TextInput label="Jawn" value="hello" onChange={jest.fn()} {...props} />
+  );
 
 describe("<TextInput />", () => {
   it("renders with default values", () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <TextInput label="Jawn" value="" onChange={onChange} />
-    );
-
+    const { container } = setup();
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
-      <TextInput label="Jawn" type="text" value="" onChange={onChange} />
-    );
+    const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "hi" }
@@ -27,9 +26,7 @@ describe("<TextInput />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const { getByLabelText } = render(
-      <TextInput label="Jawn" type="text" value="hi" onChange={onChange} />
-    );
+    const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }
