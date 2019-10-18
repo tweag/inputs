@@ -72,6 +72,7 @@ export interface SelectProps
   options?: Array<SelectOption | string>;
 }
 
-export type FileInputProps = FieldInputProps & { value?: any } & (
+export type FileInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> & { value?: any } & (
     | { multiple?: false | null | undefined; onChange: (value: File) => void }
     | { multiple: true; onChange: (value: FileList) => void });

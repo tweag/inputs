@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 
 import {
   Checkbox,
@@ -40,6 +40,8 @@ const initialValues: Values = {
   textarea: null
 };
 
+const options = ["One", "Two", "Three"];
+
 const notBlank = (value: any) => {
   if (!value) {
     return "The value cannot be blank.";
@@ -60,62 +62,16 @@ const App = () => {
       <main>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <Form>
-            <label>
-              Text
-              <TextInput name="text" validate={notBlank} />
-              <ErrorMessage name="text" />
-            </label>
-
-            <label>
-              Select
-              <Select name="select" options={["One", "Two", "Three"]} />
-            </label>
-
-            <label>
-              Integer
-              <IntegerInput name="integer" />
-            </label>
-
-            <label>
-              Float
-              <FloatInput
-                name="float"
-                validate={notBlank}
-                invalidStyle={{ border: "1px solid red" }}
-              />
-            </label>
-
-            <label>
-              Date
-              <DateInput name="date" />
-            </label>
-
-            <label>
-              Date Time
-              <DateTimeInput name="datetime" />
-            </label>
-
-            <label>
-              File
-              <FileInput name="file" />
-            </label>
-
-            <label>
-              Files
-              <FileInput name="files" multiple />
-            </label>
-
-            <label>
-              Text Area
-              <TextArea name="textarea" />
-              <ErrorMessage name="textarea" />
-            </label>
-
-            <label>
-              Checkbox
-              <Checkbox name="checkbox" />
-            </label>
-
+            <TextInput label="Text" name="text" validate={notBlank} />
+            <Select label="Select" name="string" options={options} />
+            <IntegerInput label="Integer" name="integer" />
+            <FloatInput label="Float" name="float" />
+            <DateInput label="Date" name="date" />
+            <DateTimeInput label="DateTime" name="datetime" />
+            <FileInput label="File" name="file" />
+            <FileInput label="Files" name="files" multiple />
+            <TextArea label="TextArea" name="textarea" />
+            <Checkbox label="Checkbox" name="boolean" />
             <button type="submit">Submit</button>
           </Form>
         </Formik>
