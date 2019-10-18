@@ -50,7 +50,7 @@ describe("<IntegerInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <IntegerInput inputOnly={true} value={null} onChange={onChange} />
+      <IntegerInput wrapper={false} value={null} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`

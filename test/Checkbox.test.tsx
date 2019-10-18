@@ -9,10 +9,10 @@ describe("<Checkbox />", () => {
 
     expect(input).toMatchInlineSnapshot(`
       <div
-        class="field"
+        class="field field--inline"
       >
         <input
-          class="field__input"
+          class="field__input field__input--inline"
           id="field_1"
           type="checkbox"
         />
@@ -28,19 +28,19 @@ describe("<Checkbox />", () => {
 
     expect(input).toMatchInlineSnapshot(`
       <div
-        class="field"
+        class="field field--inline"
       >
+        <input
+          class="field__input field__input--inline"
+          id="field_2"
+          type="checkbox"
+        />
         <label
-          class="field__label"
+          class="field__label field__label--inline"
           for="field_2"
         >
           Checkbox Input
         </label>
-        <input
-          class="field__input"
-          id="field_2"
-          type="checkbox"
-        />
       </div>
     `);
   });
@@ -48,12 +48,12 @@ describe("<Checkbox />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <Checkbox inputOnly={true} value={false} onChange={onChange} />
+      <Checkbox wrapper={false} value={false} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
       <input
-        class="field__input"
+        class="field__input field__input--inline"
         id="field_3"
         type="checkbox"
       />

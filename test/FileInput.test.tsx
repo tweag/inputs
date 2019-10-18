@@ -50,7 +50,7 @@ describe("<FileInput />", () => {
 
     it("renders unwrapped input", () => {
       const onChange = jest.fn();
-      const input = render(<FileInput inputOnly={true} onChange={onChange} />);
+      const input = render(<FileInput wrapper={false} onChange={onChange} />);
 
       expect(input).toMatchInlineSnapshot(`
         <input

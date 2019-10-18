@@ -49,7 +49,9 @@ describe("<TextInput />", () => {
 
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
-    const input = render(<TextInput inputOnly value="" onChange={onChange} />);
+    const input = render(
+      <TextInput wrapper={false} value="" onChange={onChange} />
+    );
 
     expect(input).toMatchInlineSnapshot(`
       <input

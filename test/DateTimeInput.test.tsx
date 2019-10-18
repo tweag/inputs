@@ -54,7 +54,7 @@ describe("<DateTimeInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <DateTimeInput inputOnly={true} value={value} onChange={onChange} />
+      <DateTimeInput wrapper={false} value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
