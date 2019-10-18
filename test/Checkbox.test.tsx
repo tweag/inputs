@@ -13,6 +13,21 @@ describe("<Checkbox />", () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it("renders without a label", () => {
+    const { container } = setup({ label: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders without a wrapper", () => {
+    const { container } = setup({ label: false, wrapper: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders with an error", () => {
+    const { container } = setup({ error: "Oh no!" });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it("emits `false` when then value is `true`", () => {
     const onChange = jest.fn();
     const { getByLabelText } = setup({ value: true, onChange });

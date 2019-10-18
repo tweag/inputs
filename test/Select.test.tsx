@@ -6,20 +6,36 @@ const setup = (props: Partial<SelectProps> = {}) =>
   render(<Select label="Jawn" value={null} onChange={jest.fn()} {...props} />);
 
 describe("<Select />", () => {
+  it("renders", () => {
+    const { container } = setup();
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders with a placeholder", () => {
+    const { container } = setup({ placeholder: "Choose an option" });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders without a label", () => {
+    const { container } = setup({ label: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders without a wrapper", () => {
+    const { container } = setup({ label: false, wrapper: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it("renders with an error", () => {
+    const { container } = setup({ error: "Oh no!" });
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe("an array of strings as options", () => {
     const options = ["foo", "bar", "buzz"];
 
     it("accepts an array of strings as options", () => {
       const { container } = setup({ options });
-      expect(container.firstChild).toMatchSnapshot();
-    });
-
-    it("accepts a placeholder", () => {
-      const { container } = setup({
-        options,
-        placeholder: "Choose an option"
-      });
-
       expect(container.firstChild).toMatchSnapshot();
     });
 

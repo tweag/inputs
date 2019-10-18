@@ -18,3 +18,50 @@ exports[`<Checkbox /> renders 1`] = `
   </label>
 </div>
 `;
+
+exports[`<Checkbox /> renders with an error 1`] = `
+<div
+  class="field field--inline field--erroneous"
+>
+  <input
+    checked=""
+    class="field__input field__input--inline field__input--erroneous"
+    id="field_4"
+    type="checkbox"
+  />
+  <label
+    class="field__label field__label--inline"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<Checkbox /> renders without a label 1`] = `
+<div
+  class="field field--inline"
+>
+  <input
+    checked=""
+    class="field__input field__input--inline"
+    id="field_2"
+    type="checkbox"
+  />
+</div>
+`;
+
+exports[`<Checkbox /> renders without a wrapper 1`] = `
+<input
+  checked=""
+  class="field__input field__input--inline"
+  id="field_3"
+  type="checkbox"
+/>
+`;
