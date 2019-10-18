@@ -6,13 +6,13 @@ exports[`<FileInput /> multiple renders 1`] = `
 >
   <label
     class="field__label"
-    for="field_4"
+    for="field_7"
   >
     Jawn
   </label>
   <input
     class="field__input"
-    id="field_4"
+    id="field_7"
     multiple=""
     type="file"
   />
@@ -35,4 +35,48 @@ exports[`<FileInput /> single renders 1`] = `
     type="file"
   />
 </div>
+`;
+
+exports[`<FileInput /> single renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input field__input--erroneous"
+    id="field_4"
+    type="file"
+  />
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<FileInput /> single renders without a label 1`] = `
+<div
+  class="field"
+>
+  <input
+    class="field__input"
+    id="field_2"
+    type="file"
+  />
+</div>
+`;
+
+exports[`<FileInput /> single renders without a wrapper 1`] = `
+<input
+  class="field__input"
+  id="field_3"
+  type="file"
+/>
 `;

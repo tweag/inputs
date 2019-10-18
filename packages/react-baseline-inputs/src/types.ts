@@ -43,7 +43,7 @@ export interface ValueProps<V> {
   onChange: (value: V) => void;
 }
 
-type HTMLProps<T> = Omit<React.HTMLProps<T>, "value" | "onChange">;
+type HTMLProps<T> = Omit<React.HTMLProps<T>, "value" | "onChange" | "label">;
 type InputProps<V, E = HTMLInputElement> = FieldInputProps &
   HTMLProps<E> &
   ValueProps<V>;
