@@ -1,27 +1,27 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { FileInputProps } from "./types";
+import { FileListInputProps } from "./types";
 
 /**
  * An HTML `<input type="file" />`, but with the following benefits:
  *
- *   * It emits a `File | null` when changed.
+ *   * It emits a `FileList` when changed.
  *   * It ignores any `value` prop that you give it.
  */
-export const FileInput: React.FC<FileInputProps> = ({
+export const FileListInput: React.FC<FileListInputProps> = ({
   onChange,
   value: _value,
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.files[0] || null),
+    event => onChange(event.target.files),
     [onChange]
   );
 
   return (
     <Field
       render={inputProps => (
-        <input {...inputProps} type="file" onChange={handleChange} />
+        <input {...inputProps} type="file" onChange={handleChange} multiple />
       )}
       {...props}
     />

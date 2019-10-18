@@ -3,6 +3,7 @@ export * from "./Field";
 export * from "./DateInput";
 export * from "./DateTimeInput";
 export * from "./FileInput";
+export * from "./FileListInput";
 export * from "./FloatInput";
 export * from "./IntegerInput";
 export * from "./Select";

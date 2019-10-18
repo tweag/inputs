@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FileInput /> renders 1`] = `
+exports[`<FileListInput /> renders 1`] = `
 <div
   class="field"
 >
@@ -13,12 +13,13 @@ exports[`<FileInput /> renders 1`] = `
   <input
     class="field__input"
     id="field_1"
+    multiple=""
     type="file"
   />
 </div>
 `;
 
-exports[`<FileInput /> renders with an error 1`] = `
+exports[`<FileListInput /> renders with an error 1`] = `
 <div
   class="field field--erroneous"
 >
@@ -31,6 +32,7 @@ exports[`<FileInput /> renders with an error 1`] = `
   <input
     class="field__input field__input--erroneous"
     id="field_4"
+    multiple=""
     type="file"
   />
   <span
@@ -42,22 +44,24 @@ exports[`<FileInput /> renders with an error 1`] = `
 </div>
 `;
 
-exports[`<FileInput /> renders without a label 1`] = `
+exports[`<FileListInput /> renders without a label 1`] = `
 <div
   class="field"
 >
   <input
     class="field__input"
     id="field_2"
+    multiple=""
     type="file"
   />
 </div>
 `;
 
-exports[`<FileInput /> renders without a wrapper 1`] = `
+exports[`<FileListInput /> renders without a wrapper 1`] = `
 <input
   class="field__input"
   id="field_3"
+  multiple=""
   type="file"
 />
 `;
