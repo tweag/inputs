@@ -51,7 +51,7 @@ describe("<FloatInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <FloatInput inputOnly={true} value={null} onChange={onChange} />
+      <FloatInput wrapper={false} value={null} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`

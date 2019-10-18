@@ -92,7 +92,7 @@ describe("<Select />", () => {
       const select = render(
         <Select
           value="foo"
-          inputOnly={true}
+          wrapper={false}
           options={options}
           onChange={onChange}
         />

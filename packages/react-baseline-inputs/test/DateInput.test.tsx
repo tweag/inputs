@@ -53,7 +53,7 @@ describe("<DateInput />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <DateInput inputOnly={true} value={value} onChange={onChange} />
+      <DateInput wrapper={false} value={value} onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`

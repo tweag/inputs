@@ -46,7 +46,7 @@ describe("<TextArea />", () => {
   it("renders unwrapped input", () => {
     const onChange = jest.fn();
     const input = render(
-      <TextArea inputOnly={true} value="" onChange={onChange} />
+      <TextArea wrapper={false} value="" onChange={onChange} />
     );
 
     expect(input).toMatchInlineSnapshot(`
