@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea /> renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <textarea
+    class="field__input"
+    id="field_1"
+  >
+    hello
+  </textarea>
+</div>
+`;
+
+exports[`<TextArea /> renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <textarea
+    class="field__input field__input--erroneous"
+    id="field_4"
+  >
+    hello
+  </textarea>
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<TextArea /> renders without a label 1`] = `
+<div
+  class="field"
+>
+  <textarea
+    class="field__input"
+    id="field_2"
+  >
+    hello
+  </textarea>
+</div>
+`;
+
+exports[`<TextArea /> renders without a wrapper 1`] = `
+<textarea
+  class="field__input"
+  id="field_3"
+>
+  hello
+</textarea>
+`;

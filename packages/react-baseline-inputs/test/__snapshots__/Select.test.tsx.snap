@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> an array of objects as options renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_8"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_8"
+  >
+    <option
+      value="foo"
+    >
+      Foo
+    </option>
+    <option
+      disabled=""
+      value="bar"
+    >
+      Bar
+    </option>
+    <option
+      value="buzz"
+    >
+      Buzz
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Select /> an array of strings as options accepts an array of strings as options 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_6"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_6"
+  >
+    <option
+      value="foo"
+    >
+      foo
+    </option>
+    <option
+      value="bar"
+    >
+      bar
+    </option>
+    <option
+      value="buzz"
+    >
+      buzz
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Select /> renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_1"
+  />
+</div>
+`;
+
+exports[`<Select /> renders with a placeholder 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_2"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_2"
+  >
+    <option
+      disabled=""
+      value=""
+    >
+      Choose an option
+    </option>
+  </select>
+</div>
+`;
+
+exports[`<Select /> renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_5"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input field__input--erroneous"
+    id="field_5"
+  />
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<Select /> renders without a label 1`] = `
+<div
+  class="field"
+>
+  <select
+    class="field__input"
+    id="field_3"
+  />
+</div>
+`;
+
+exports[`<Select /> renders without a wrapper 1`] = `
+<select
+  class="field__input"
+  id="field_4"
+/>
+`;

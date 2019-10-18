@@ -1,85 +1,50 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
-import { FloatInput } from "../src";
-import { ninvoke } from "q";
+import { FloatInput, FloatInputProps } from "../src";
+import { render, fireEvent } from "@testing-library/react";
+
+const setup = (props: Partial<FloatInputProps> = {}) =>
+  render(
+    <FloatInput label="Jawn" value={5.5} onChange={jest.fn()} {...props} />
+  );
 
 describe("<FloatInput />", () => {
-  it("renders with default values", () => {
-    const onChange = jest.fn();
-    const input = render(<FloatInput value={null} onChange={onChange} />);
+  it("renders", () => {
+    const { container } = setup();
 
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <input
-          class="field__input"
-          id="field_1"
-          type="number"
-          value=""
-        />
-      </div>
-    `);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders with a label", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <FloatInput label="Float Input" value={null} onChange={onChange} />
-    );
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <label
-          class="field__label"
-          for="field_2"
-        >
-          Float Input
-        </label>
-        <input
-          class="field__input"
-          id="field_2"
-          type="number"
-          value=""
-        />
-      </div>
-    `);
+  it("renders without a label", () => {
+    const { container } = setup({ label: false });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders unwrapped input", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <FloatInput wrapper={false} value={null} onChange={onChange} />
-    );
+  it("renders without a wrapper", () => {
+    const { container } = setup({ label: false, wrapper: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
-    expect(input).toMatchInlineSnapshot(`
-      <input
-        class="field__input"
-        id="field_3"
-        type="number"
-        value=""
-      />
-    `);
+  it("renders with an error", () => {
+    const { container } = setup({ error: "Oh no!" });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<FloatInput value={null} onChange={onChange} />);
+    const { getByLabelText } = setup({ onChange });
 
-    field.find("input").simulate("change", {
-      target: { value: "5.5" }
+    fireEvent.change(getByLabelText("Jawn"), {
+      target: { value: "7.5" }
     });
 
-    expect(onChange).toHaveBeenCalledWith(5.5);
+    expect(onChange).toHaveBeenCalledWith(7.5);
   });
 
   it("emits `null` if the value is not a float", () => {
     const onChange = jest.fn();
-    const field = mount(<FloatInput value={null} onChange={onChange} />);
+    const { getByLabelText } = setup({ onChange });
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }
     });
 

@@ -9,6 +9,7 @@ import {
   DateInput,
   DateTimeInput,
   FileInput,
+  FileListInput,
   FloatInput,
   TextInput,
   IntegerInput,
@@ -101,19 +102,12 @@ const App = () => {
           onChange={handleChange("datetime")}
         />
 
-        <FileInput
-          label="File"
-          name="file"
-          value={values.file}
-          onChange={handleChange("file")}
-        />
+        <FileInput label="File" name="file" onChange={handleChange("file")} />
 
-        <FileInput
+        <FileListInput
           label="Files"
           name="files"
-          value={values.files}
           onChange={handleChange("files")}
-          multiple
         />
 
         <TextArea

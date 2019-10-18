@@ -1,73 +1,38 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
-import { TextInput } from "../src";
+import { TextInput, TextInputProps } from "../src";
+import { render, fireEvent } from "@testing-library/react";
+
+const setup = (props: Partial<TextInputProps> = {}) =>
+  render(
+    <TextInput label="Jawn" value="hello" onChange={jest.fn()} {...props} />
+  );
 
 describe("<TextInput />", () => {
-  it("renders with default values", () => {
-    const onChange = jest.fn();
-    const input = render(<TextInput value="" onChange={onChange} />);
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <input
-          class="field__input"
-          id="field_1"
-          type="text"
-          value=""
-        />
-      </div>
-    `);
+  it("renders", () => {
+    const { container } = setup();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders with a label", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextInput label="Text Input" value="" onChange={onChange} />
-    );
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <label
-          class="field__label"
-          for="field_2"
-        >
-          Text Input
-        </label>
-        <input
-          class="field__input"
-          id="field_2"
-          type="text"
-          value=""
-        />
-      </div>
-    `);
+  it("renders without a label", () => {
+    const { container } = setup({ label: false });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders unwrapped input", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <TextInput wrapper={false} value="" onChange={onChange} />
-    );
+  it("renders without a wrapper", () => {
+    const { container } = setup({ label: false, wrapper: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
-    expect(input).toMatchInlineSnapshot(`
-      <input
-        class="field__input"
-        id="field_3"
-        type="text"
-        value=""
-      />
-    `);
+  it("renders with an error", () => {
+    const { container } = setup({ error: "Oh no!" });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
-    const field = mount(<TextInput type="text" value="" onChange={onChange} />);
+    const { getByLabelText } = setup({ onChange });
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "hi" }
     });
 
@@ -76,9 +41,9 @@ describe("<TextInput />", () => {
 
   test("emits `null` when the value is blank", () => {
     const onChange = jest.fn();
-    const field = mount(<TextInput type="text" value="" onChange={onChange} />);
+    const { getByLabelText } = setup({ onChange });
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: "" }
     });
 

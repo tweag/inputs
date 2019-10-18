@@ -43,7 +43,10 @@ export interface ValueProps<V> {
   onChange: (value: V) => void;
 }
 
-type HTMLProps<T> = Omit<React.HTMLProps<T>, "value" | "onChange">;
+type HTMLProps<T> = Omit<
+  React.HTMLProps<T>,
+  "value" | "onChange" | "label" | "multiple"
+>;
 type InputProps<V, E = HTMLInputElement> = FieldInputProps &
   HTMLProps<E> &
   ValueProps<V>;
@@ -73,6 +76,13 @@ export interface SelectProps
 }
 
 export type FileInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & { value?: any } & (
-    | { multiple?: false | null | undefined; onChange: (value: File) => void }
-    | { multiple: true; onChange: (value: FileList) => void });
+  HTMLProps<HTMLInputElement> & {
+    value?: any;
+    onChange: (value: File | null) => void;
+  };
+
+export type FileListInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> & {
+    value?: any;
+    onChange: (value: FileList) => void;
+  };

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DateInput /> renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_1"
+    type="date"
+    value="2001-01-01"
+  />
+</div>
+`;
+
+exports[`<DateInput /> renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input field__input--erroneous"
+    id="field_4"
+    type="date"
+    value="2001-01-01"
+  />
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<DateInput /> renders without a label 1`] = `
+<div
+  class="field"
+>
+  <input
+    class="field__input"
+    id="field_2"
+    type="date"
+    value="2001-01-01"
+  />
+</div>
+`;
+
+exports[`<DateInput /> renders without a wrapper 1`] = `
+<input
+  class="field__input"
+  id="field_3"
+  type="date"
+  value="2001-01-01"
+/>
+`;

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FloatInput /> renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_1"
+    type="number"
+    value="5.5"
+  />
+</div>
+`;
+
+exports[`<FloatInput /> renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input field__input--erroneous"
+    id="field_4"
+    type="number"
+    value="5.5"
+  />
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<FloatInput /> renders without a label 1`] = `
+<div
+  class="field"
+>
+  <input
+    class="field__input"
+    id="field_2"
+    type="number"
+    value="5.5"
+  />
+</div>
+`;
+
+exports[`<FloatInput /> renders without a wrapper 1`] = `
+<input
+  class="field__input"
+  id="field_3"
+  type="number"
+  value="5.5"
+/>
+`;

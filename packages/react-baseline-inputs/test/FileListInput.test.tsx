@@ -1,16 +1,15 @@
 import * as React from "react";
-import { IntegerInput, IntegerInputProps } from "../src";
+import { FileListInput, FileListInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 
-const setup = (props: Partial<IntegerInputProps> = {}) =>
-  render(
-    <IntegerInput label="Jawn" value={5} onChange={jest.fn()} {...props} />
-  );
+const setup = (props: Partial<FileListInputProps> = {}) =>
+  render(<FileListInput label="Jawn" onChange={jest.fn()} {...props} />);
 
-describe("<IntegerInput />", () => {
+describe("<FileListInput />", () => {
+  const files = Symbol("FileList");
+
   it("renders", () => {
     const { container } = setup();
-
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -29,25 +28,14 @@ describe("<IntegerInput />", () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test("emits the value on change", () => {
+  it("emits an instance of FileList", () => {
     const onChange = jest.fn();
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "7" }
+      target: { files }
     });
 
-    expect(onChange).toHaveBeenCalledWith(7);
-  });
-
-  it("emits `null` if the value is not an integer", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
-
-    fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "" }
-    });
-
-    expect(onChange).toHaveBeenCalledWith(null);
+    expect(onChange).toHaveBeenCalledWith(files);
   });
 });

@@ -20,12 +20,6 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setup.ts"
-    ],
     "collectCoverageFrom": [
       "<rootDir>/packages/**/*.{ts,tsx}"
     ],
@@ -52,17 +46,13 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@testing-library/react": "^9.3.0",
     "@testing-library/react-hooks": "^3.1.0",
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.15",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "apollo-client": "^2.6.4",
-    "concurrently": "^4.1.1",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.3.5",
+    "concurrently": "^5.0.0",
     "formik": "^2.0.1-rc.13",
     "graphql": "^14.5.8",
     "husky": "^3.0.2",

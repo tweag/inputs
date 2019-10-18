@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DateTimeInput /> renders 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_1"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_1"
+    type="datetime-local"
+    value="2001-01-01T00:00:00"
+  />
+</div>
+`;
+
+exports[`<DateTimeInput /> renders with an error 1`] = `
+<div
+  class="field field--erroneous"
+>
+  <label
+    class="field__label"
+    for="field_4"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input field__input--erroneous"
+    id="field_4"
+    type="datetime-local"
+    value="2001-01-01T00:00:00"
+  />
+  <span
+    class="message message--problem"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</div>
+`;
+
+exports[`<DateTimeInput /> renders without a label 1`] = `
+<div
+  class="field"
+>
+  <input
+    class="field__input"
+    id="field_2"
+    type="datetime-local"
+    value="2001-01-01T00:00:00"
+  />
+</div>
+`;
+
+exports[`<DateTimeInput /> renders without a wrapper 1`] = `
+<input
+  class="field__input"
+  id="field_3"
+  type="datetime-local"
+  value="2001-01-01T00:00:00"
+/>
+`;

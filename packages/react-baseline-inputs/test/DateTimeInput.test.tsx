@@ -1,77 +1,42 @@
 import * as React from "react";
-import { mount, render } from "enzyme";
-import { DateTimeInput } from "../src";
+import { DateTimeInput, DateTimeInputProps } from "../src";
+import { render, fireEvent } from "@testing-library/react";
+
+const value = "2001-01-01T05:00:00.000Z";
+const nextLocalValue = "2018-06-13T19:00";
+const nextISOValue = "2018-06-13T23:00:00.000Z";
+
+const setup = (props: Partial<DateTimeInputProps> = {}) =>
+  render(
+    <DateTimeInput label="Jawn" value={value} onChange={jest.fn()} {...props} />
+  );
 
 describe("<DateTimeInput />", () => {
-  const value = "2001-01-01T05:00:00.000Z";
-  const nextLocalValue = "2018-06-13T19:00";
-  const nextISOValue = "2018-06-13T23:00:00.000Z";
-
-  it("renders with default values", () => {
-    const onChange = jest.fn();
-    const input = render(<DateTimeInput value={value} onChange={onChange} />);
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <input
-          class="field__input"
-          id="field_1"
-          type="datetime-local"
-          value="2001-01-01T00:00:00"
-        />
-      </div>
-    `);
+  it("renders", () => {
+    const { container } = setup();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders with a label", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <DateTimeInput label="DateTime Input" value={value} onChange={onChange} />
-    );
-
-    expect(input).toMatchInlineSnapshot(`
-      <div
-        class="field"
-      >
-        <label
-          class="field__label"
-          for="field_2"
-        >
-          DateTime Input
-        </label>
-        <input
-          class="field__input"
-          id="field_2"
-          type="datetime-local"
-          value="2001-01-01T00:00:00"
-        />
-      </div>
-    `);
+  it("renders without a label", () => {
+    const { container } = setup({ label: false });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("renders unwrapped input", () => {
-    const onChange = jest.fn();
-    const input = render(
-      <DateTimeInput wrapper={false} value={value} onChange={onChange} />
-    );
+  it("renders without a wrapper", () => {
+    const { container } = setup({ label: false, wrapper: false });
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
-    expect(input).toMatchInlineSnapshot(`
-      <input
-        class="field__input"
-        id="field_3"
-        type="datetime-local"
-        value="2001-01-01T00:00:00"
-      />
-    `);
+  it("renders with an error", () => {
+    const { container } = setup({ error: "Oh no!" });
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("emits an ISO-formatted date", () => {
     const onChange = jest.fn();
-    const field = mount(<DateTimeInput value={value} onChange={onChange} />);
+    const { getByLabelText } = setup({ onChange });
 
-    field.find("input").simulate("change", {
+    fireEvent.change(getByLabelText("Jawn"), {
       target: { value: nextLocalValue }
     });
 
