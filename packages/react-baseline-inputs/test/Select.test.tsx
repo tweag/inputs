@@ -1,50 +1,31 @@
 import * as React from "react";
-import { Select } from "../src";
+import { Select, SelectProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
+
+const setup = (props: Partial<SelectProps> = {}) =>
+  render(<Select label="Jawn" value={null} onChange={jest.fn()} {...props} />);
 
 describe("<Select />", () => {
   describe("an array of strings as options", () => {
     const options = ["foo", "bar", "buzz"];
 
-    it("renders with default values", () => {
-      const onChange = jest.fn();
-      const { container } = render(
-        <Select
-          label="Jawn"
-          value="foo"
-          options={options}
-          onChange={onChange}
-        />
-      );
-
+    it("accepts an array of strings as options", () => {
+      const { container } = setup({ options });
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("accepts a placeholder", () => {
-      const onChange = jest.fn();
-      const { container } = render(
-        <Select
-          label="Jawn"
-          value={null}
-          options={options}
-          onChange={onChange}
-          placeholder="Choose an option"
-        />
-      );
+      const { container } = setup({
+        options,
+        placeholder: "Choose an option"
+      });
 
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("emits a value", () => {
       const onChange = jest.fn();
-      const { getByLabelText } = render(
-        <Select
-          label="Jawn"
-          value="foo"
-          options={options}
-          onChange={onChange}
-        />
-      );
+      const { getByLabelText } = setup({ options, onChange });
 
       fireEvent.change(getByLabelText("Jawn"), {
         target: { value: "bar" }
@@ -62,29 +43,13 @@ describe("<Select />", () => {
     ];
 
     it("renders", () => {
-      const onChange = jest.fn();
-      const { container } = render(
-        <Select
-          label="Jawn"
-          value="foo"
-          onChange={onChange}
-          options={options}
-        />
-      );
-
+      const { container } = setup({ options });
       expect(container.firstChild).toMatchSnapshot();
     });
 
     it("emits the `value` property", () => {
       const onChange = jest.fn();
-      const { getByLabelText } = render(
-        <Select
-          label="Jawn"
-          value="foo"
-          onChange={onChange}
-          options={options}
-        />
-      );
+      const { getByLabelText } = setup({ options, onChange });
 
       fireEvent.change(getByLabelText("Jawn"), {
         target: { value: "buzz" }

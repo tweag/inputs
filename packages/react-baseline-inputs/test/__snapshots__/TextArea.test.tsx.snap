@@ -13,25 +13,8 @@ exports[`<TextArea /> renders with default values 1`] = `
   <textarea
     class="field__input"
     id="field_1"
-  />
-</div>
-`;
-
-exports[`<TextInput /> renders with default values 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_1"
   >
-    Jawn
-  </label>
-  <input
-    class="field__input"
-    id="field_1"
-    type="text"
-    value=""
-  />
+    hello
+  </textarea>
 </div>
 `;
