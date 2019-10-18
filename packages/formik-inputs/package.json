@@ -14,6 +14,9 @@
     "prebuild": "rm -rf ./lib",
     "build": "tsc"
   },
+  "peerDependencies": {
+    "formik": "^2.0.1-rc.13"
+  },
   "dependencies": {
     "react-baseline-inputs": "^1.5.0"
   }
