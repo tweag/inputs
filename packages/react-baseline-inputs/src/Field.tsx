@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FieldProps } from "./types";
+import { defaultTheme } from "./theme";
 
 const generateUniqueId = (() => {
   let previousId = 0;
@@ -13,7 +14,6 @@ export function Field<T extends FieldProps>({
   label,
   render,
   id = React.useMemo(generateUniqueId, []),
-
   help,
   inline,
   touched,
@@ -22,77 +22,60 @@ export function Field<T extends FieldProps>({
   large,
   small,
   wrapper = true,
-
-  fieldClassName = "field",
-  fieldInlineClassName = "field--inline",
-  fieldInvalidClassName = "field--erroneous",
-  fieldTouchedClassName = "field--touched",
-  fieldValidClassName = "field--success",
-  fieldLargeClassName = "field--large",
-  fieldSmallClassName = "field--small",
-
-  inputClassName = "field__input",
-  inputInlineClassName = "field__input--inline",
-  inputInvalidClassName = "field__input--erroneous",
-  inputTouchedClassName = "field__input--touched",
-  inputValidClassName = "field__input--success",
-  inputLargeClassName = "field__input--large",
-  inputSmallClassName = "field__input--small",
-
-  labelClassName = "field__label",
-  labelInlineClassName = "field__label--inline",
-  labelLargeClassName = "field__label--large",
-  labelSmallClassName = "field__label--small",
-
-  helpClassName = "field__help",
-  errorClassName = "message message--problem",
-
+  theme = defaultTheme,
   ...props
 }: T) {
-  const fieldClassNames = [fieldClassName];
-  const inputClassNames = [inputClassName];
-  const labelClassNames = [labelClassName];
+  const fieldClassNames = [theme.field];
+  const inputClassNames = [theme.input];
+  const labelClassNames = [theme.label];
 
   if (inline) {
-    fieldClassNames.push(fieldInlineClassName);
-    inputClassNames.push(inputInlineClassName);
-    labelClassNames.push(labelInlineClassName);
+    fieldClassNames.push(theme.fieldInline);
+    inputClassNames.push(theme.inputInline);
+    labelClassNames.push(theme.labelInline);
   }
 
   if (touched) {
-    fieldClassNames.push(fieldTouchedClassName);
-    inputClassNames.push(inputTouchedClassName);
+    fieldClassNames.push(theme.fieldTouched);
+    inputClassNames.push(theme.inputTouched);
+    labelClassNames.push(theme.labelTouched);
   }
 
   if (error) {
-    fieldClassNames.push(fieldInvalidClassName);
-    inputClassNames.push(inputInvalidClassName);
+    fieldClassNames.push(theme.fieldError);
+    inputClassNames.push(theme.inputError);
+    labelClassNames.push(theme.labelError);
   }
 
   if (success) {
-    fieldClassNames.push(fieldValidClassName);
-    inputClassNames.push(inputValidClassName);
+    fieldClassNames.push(theme.fieldSuccess);
+    inputClassNames.push(theme.inputSuccess);
+    labelClassNames.push(theme.labelSuccess);
   }
 
   if (large) {
-    fieldClassNames.push(fieldLargeClassName);
-    inputClassNames.push(inputLargeClassName);
-    labelClassNames.push(labelLargeClassName);
+    fieldClassNames.push(theme.fieldLarge);
+    inputClassNames.push(theme.inputLarge);
+    labelClassNames.push(theme.labelLarge);
   }
 
   if (small) {
-    fieldClassNames.push(fieldSmallClassName);
-    inputClassNames.push(inputSmallClassName);
-    labelClassNames.push(labelSmallClassName);
+    fieldClassNames.push(theme.fieldSmall);
+    inputClassNames.push(theme.inputSmall);
+    labelClassNames.push(theme.labelSmall);
   }
 
+  const fieldClassName = fieldClassNames.join(" ").trim();
+  const inputClassName = inputClassNames.join(" ").trim();
+  const labelClassName = labelClassNames.join(" ").trim();
+
   const [Wrapper, wrapperProps] = wrapper
-    ? ["div", { className: fieldClassNames.join(" ") }]
+    ? ["div", { className: fieldClassName }]
     : [React.Fragment, {}];
 
   const inputProps = {
     id,
-    className: inputClassNames.join(" "),
+    className: inputClassName,
     ...props
   };
 
@@ -101,16 +84,16 @@ export function Field<T extends FieldProps>({
       {inline && render(inputProps)}
 
       {label && (
-        <label className={labelClassNames.join(" ")} htmlFor={id}>
+        <label className={labelClassName} htmlFor={id}>
           {label}
-          {help && <span className={helpClassName}>{help}</span>}
+          {help && <span className={theme.help}>{help}</span>}
         </label>
       )}
 
       {!inline && render(inputProps)}
 
       {error && (
-        <span role="alert" className={errorClassName}>
+        <span role="alert" className={theme.error}>
           {error}
         </span>
       )}

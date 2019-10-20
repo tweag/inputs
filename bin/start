@@ -2,4 +2,4 @@
 
 node_modules/.bin/concurrently \
   "bin/build --watch" \
-  "yarn --cwd apps/$1 start"
+  "yarn --cwd examples/app start"

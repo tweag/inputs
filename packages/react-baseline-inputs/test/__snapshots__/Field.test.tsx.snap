@@ -39,7 +39,7 @@ exports[`<Field /> renders with an error 1`] = `
   class="field field--erroneous"
 >
   <label
-    class="field__label"
+    class="field__label field__label--error"
     for="field_4"
   >
     Jawn
@@ -135,7 +135,7 @@ exports[`<Field /> renders with success 1`] = `
   class="field field--success"
 >
   <label
-    class="field__label"
+    class="field__label field__label--success"
     for="field_6"
   >
     Jawn
@@ -152,7 +152,7 @@ exports[`<Field /> renders with touched 1`] = `
   class="field field--touched field--success"
 >
   <label
-    class="field__label"
+    class="field__label field__label--touched field__label--success"
     for="field_7"
   >
     Jawn
