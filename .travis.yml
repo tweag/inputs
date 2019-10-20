@@ -5,5 +5,4 @@ node_js:
 script:
   - yarn format:check
   - yarn build
-  - yarn typecheck
   - yarn test --ci
