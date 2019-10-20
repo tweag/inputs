@@ -2,5 +2,5 @@
 .DS_Store
 node_modules
 packages/*/lib/
-apps/*/.cache/
-apps/*/dist/
+examples/*/.cache/
+examples/*/dist/

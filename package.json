@@ -5,8 +5,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "apps/basic/",
-    "apps/formik/"
+    "examples/*"
   ],
   "husky": {
     "hooks": {
@@ -27,21 +26,20 @@
       "<rootDir>/packages/**/*.test.{ts,tsx}"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/apps/"
+      "<rootDir>/examples/"
     ]
   },
   "scripts": {
     "prerelease": "bin/clean && bin/build",
     "release": "lerna publish",
     "postinstall": "bin/build",
+    "start": "bin/start",
     "build": "bin/build",
     "clean": "bin/clean",
     "test": "TZ=America/New_York jest",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
-    "format:check": "prettier --check '**/*.{js,ts,tsx}'",
-    "start:basic": "bin/start basic",
-    "start:formik": "bin/start formik"
+    "format:check": "prettier --check '**/*.{js,ts,tsx}'"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
