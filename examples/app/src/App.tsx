@@ -1,17 +1,19 @@
 import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Baseline } from "./Baseline";
+import { BaselineInputs } from "./BaselineInputs";
+import { FormikInputs } from "./FormikInputs";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="container">
       <header>
-        <h1>React Forms</h1>
+        <h1 className="display-3">React Forms</h1>
       </header>
 
       <main>
-        <Baseline />
+        <BaselineInputs />
+        <FormikInputs />
       </main>
     </div>
   );

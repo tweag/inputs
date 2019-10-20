@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Theme } from "react-baseline-inputs";
 
 export interface Values {
-  boolean: boolean | null;
+  checkbox: boolean | null;
   date: string | null;
   datetime: string | null;
   file: File | null;
-  files: FileList | null;
+  filelist: FileList | null;
   float: number | null;
   integer: number | null;
   select: string | null;
@@ -13,12 +14,12 @@ export interface Values {
   textarea: string | null;
 }
 
-export const INITIAL_VALUES: Values = {
-  boolean: null,
+export const initialValues: Values = {
+  checkbox: null,
   date: null,
   datetime: null,
   file: null,
-  files: null,
+  filelist: null,
   float: null,
   integer: null,
   select: null,
@@ -26,7 +27,7 @@ export const INITIAL_VALUES: Values = {
   textarea: null
 };
 
-export type Form<T> = {
+export type Fields<T> = {
   [K in keyof T]: {
     name: K;
     value: T[K];
@@ -34,18 +35,60 @@ export type Form<T> = {
   };
 };
 
-export const useForm = <T>(initialValues: T): Form<T> => {
+export const notBlank = (value: any) => {
+  if (value === null) {
+    return "This field is required.";
+  }
+};
+
+export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
   const [values, setValues] = useState<T>(initialValues);
 
-  return Object.entries(values).reduce(
+  const fields = Object.entries(values).reduce(
     (acc, [name, value]) => ({
       ...acc,
       [name]: {
         name,
         value,
-        onChange: (v: any) => setValues({ ...values, [name]: v })
+        onChange: (v: any) => {
+          const changes = { ...values, [name]: v };
+          console.table(changes);
+          setValues(changes);
+        }
       }
     }),
-    {} as Form<T>
+    {} as Fields<T>
   );
+
+  return [values, fields];
+};
+
+export const theme: Theme = {
+  field: "form-group",
+  input: "form-control",
+  inputSuccess: "is-valid",
+  inputError: "is-invalid",
+  inputSmall: "form-control-sm",
+  inputLarge: "form-control-lg",
+  error: "invalid-feedback",
+  help: "form-text text-muted"
+};
+
+export const selectTheme: Theme = {
+  ...theme,
+  input: "custom-select"
+};
+
+export const fileTheme: Theme = {
+  ...theme,
+  field: "custom-file mt-1 mb-3",
+  input: "custom-file-input",
+  label: "custom-file-label"
+};
+
+export const checkboxTheme: Theme = {
+  ...theme,
+  field: "form-check",
+  input: "form-check-input",
+  label: "form-check-label"
 };
