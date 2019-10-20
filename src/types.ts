@@ -1,5 +1,34 @@
 import * as React from "react";
 
+export interface Theme {
+  field?: string | undefined;
+  fieldInline?: string | undefined;
+  fieldSuccess?: string | undefined;
+  fieldError?: string | undefined;
+  fieldTouched?: string | undefined;
+  fieldLarge?: string | undefined;
+  fieldSmall?: string | undefined;
+
+  input?: string | undefined;
+  inputSuccess?: string | undefined;
+  inputError?: string | undefined;
+  inputTouched?: string | undefined;
+  inputInline?: string | undefined;
+  inputLarge?: string | undefined;
+  inputSmall?: string | undefined;
+
+  label?: string | undefined;
+  labelSuccess?: string | undefined;
+  labelError?: string | undefined;
+  labelTouched?: string | undefined;
+  labelInline?: string | undefined;
+  labelLarge?: string | undefined;
+  labelSmall?: string | undefined;
+
+  help?: string | undefined;
+  error?: string | undefined;
+}
+
 export interface FieldInputProps {
   id?: string;
   inline?: boolean;
@@ -9,33 +38,9 @@ export interface FieldInputProps {
   success?: boolean;
   error?: React.ReactNode;
   help?: React.ReactNode;
-
   label?: React.ReactNode;
   wrapper?: boolean;
-
-  fieldClassName?: string;
-  fieldInlineClassName?: string;
-  fieldValidClassName?: string;
-  fieldInvalidClassName?: string;
-  fieldTouchedClassName?: string;
-  fieldLargeClassName?: string;
-  fieldSmallClassName?: string;
-
-  inputClassName?: string;
-  inputValidClassName?: string;
-  inputInvalidClassName?: string;
-  inputTouchedClassName?: string;
-  inputInlineClassName?: string;
-  inputLargeClassName?: string;
-  inputSmallClassName?: string;
-
-  labelClassName?: string;
-  labelInlineClassName?: string;
-  labelLargeClassName?: string;
-  labelSmallClassName?: string;
-
-  helpClassName?: string;
-  errorClassName?: string;
+  theme?: Theme;
 }
 
 export interface ValueProps<V> {
