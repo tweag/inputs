@@ -30,7 +30,7 @@ exports[`<Checkbox /> renders with an error 1`] = `
     type="checkbox"
   />
   <label
-    class="field__label field__label--inline"
+    class="field__label field__label--inline field__label--error"
     for="field_4"
   >
     Jawn
