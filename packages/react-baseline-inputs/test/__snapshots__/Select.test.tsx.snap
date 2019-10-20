@@ -113,7 +113,7 @@ exports[`<Select /> renders with an error 1`] = `
   class="field field--erroneous"
 >
   <label
-    class="field__label"
+    class="field__label field__label--error"
     for="field_5"
   >
     Jawn
