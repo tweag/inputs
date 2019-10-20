@@ -65,13 +65,17 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(theme.labelSmall);
   }
 
+  const fieldClassName = fieldClassNames.join(" ").trim();
+  const inputClassName = inputClassNames.join(" ").trim();
+  const labelClassName = labelClassNames.join(" ").trim();
+
   const [Wrapper, wrapperProps] = wrapper
-    ? ["div", { className: fieldClassNames.join(" ") }]
+    ? ["div", { className: fieldClassName }]
     : [React.Fragment, {}];
 
   const inputProps = {
     id,
-    className: inputClassNames.join(" "),
+    className: inputClassName,
     ...props
   };
 
@@ -80,7 +84,7 @@ export function Field<T extends FieldProps>({
       {inline && render(inputProps)}
 
       {label && (
-        <label className={labelClassNames.join(" ")} htmlFor={id}>
+        <label className={labelClassName} htmlFor={id}>
           {label}
           {help && <span className={theme.help}>{help}</span>}
         </label>
