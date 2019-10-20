@@ -1,6 +1,7 @@
 *.log
 .DS_Store
 node_modules
-packages/*/lib/
+tsconfig.tsbuildinfo
+packages/*/dist/
 examples/*/.cache/
 examples/*/dist/

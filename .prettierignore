@@ -1,4 +1,3 @@
-apps/*/dist/
-packages/*/lib/
 node_modules
-.expo
+examples/*/dist/
+packages/*/dist/

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
 
@@ -13,7 +13,10 @@
 
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true
-  },
-  "exclude": ["node_modules", "**/lib", "**/test"]
+    "declarationMap": true,
+
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
 }

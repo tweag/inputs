@@ -30,14 +30,12 @@
     ]
   },
   "scripts": {
-    "prerelease": "bin/clean && bin/build",
-    "release": "lerna publish",
-    "postinstall": "bin/build",
-    "start": "bin/start",
-    "build": "bin/build",
-    "clean": "bin/clean",
+    "release": "lerna run clean && lerna run build && lerna publish",
+    "postinstall": "lerna run build",
+    "start": "yarn --cwd examples/app start",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
     "test": "TZ=America/New_York jest",
-    "typecheck": "tsc --noEmit",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'"
   },
@@ -50,6 +48,7 @@
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "apollo-client": "^2.6.4",
+    "bili": "^4.8.1",
     "concurrently": "^5.0.0",
     "formik": "^2.0.1-rc.13",
     "graphql": "^14.5.8",
@@ -60,6 +59,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.9.0",
+    "rollup-plugin-typescript2": "^0.24.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }
