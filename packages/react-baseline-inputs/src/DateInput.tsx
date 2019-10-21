@@ -2,6 +2,12 @@ import * as React from "react";
 import { Field } from "./Field";
 import { DateInputProps } from "./types";
 
+const parse = (value: string): string | null => {
+  const date = new Date(value);
+  const isValid = !isNaN(date.getTime());
+  return isValid ? value : null;
+};
+
 /**
  * An HTML `<input type="date" />`, but with the following benefits:
  *
@@ -14,12 +20,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => {
-      const { value } = event.target;
-      const date = new Date(value);
-      const isValid = !isNaN(date.valueOf());
-      onChange(isValid ? value : null);
-    },
+    event => onChange(parse(event.target.value)),
     [onChange]
   );
 

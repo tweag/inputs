@@ -50,11 +50,7 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
       [name]: {
         name,
         value,
-        onChange: (v: any) => {
-          const changes = { ...values, [name]: v };
-          console.table(changes);
-          setValues(changes);
-        }
+        onChange: (v: any) => setValues({ ...values, [name]: v })
       }
     }),
     {} as Fields<T>
