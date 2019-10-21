@@ -8,14 +8,6 @@ const format = (value: string | null): string => {
 
 const parse = (value: string): string | null => {
   const date = new Date(`${value}:00.000Z`);
-  // const offset = date.getTimezoneOffset() / 60;
-
-  // if (offset < 0) {
-  //   date.setHours(date.getHours() + offset);
-  // } else {
-  //   date.setHours(date.getHours() - offset);
-  // }
-
   const isValid = !isNaN(date.getTime());
   return isValid ? date.toISOString() : null;
 };
