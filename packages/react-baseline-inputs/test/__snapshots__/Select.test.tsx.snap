@@ -115,11 +115,12 @@ exports[`<Select /> renders with an error 1`] = `
   <label
     class="field__label field__label--erroneous"
     for="field_5"
+    id="field_5_label"
   >
     Jawn
   </label>
   <select
-    aria-labelledby="field_5 field_5_error"
+    aria-labelledby="field_5_label field_5_error"
     class="field__input field__input--erroneous"
     id="field_5"
   />
