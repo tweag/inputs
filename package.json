@@ -32,7 +32,8 @@
   "scripts": {
     "release": "lerna run clean && lerna run build && lerna publish",
     "postinstall": "lerna run build",
-    "start": "yarn --cwd examples/app start",
+    "example": "yarn --cwd examples/app start",
+    "start": "lerna run --parallel build -- --watch",
     "build": "lerna run build",
     "clean": "lerna run clean",
     "test": "TZ=America/New_York jest",
