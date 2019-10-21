@@ -69,6 +69,7 @@ export function Field<T extends FieldProps>({
   const inputClassName = inputClassNames.join(" ").trim();
   const labelClassName = labelClassNames.join(" ").trim();
   const errorLabelId = `${id}_error`;
+  const labelId = `${id}_label`;
 
   const [Wrapper, wrapperProps] = wrapper
     ? ["div", { className: fieldClassName }]
@@ -77,7 +78,7 @@ export function Field<T extends FieldProps>({
   const inputProps = {
     id,
     className: inputClassName,
-    "aria-labelledby": error ? `${id} ${errorLabelId}` : undefined,
+    "aria-labelledby": error ? `${labelId} ${errorLabelId}` : undefined,
     ...props
   };
 
@@ -86,7 +87,11 @@ export function Field<T extends FieldProps>({
       {inline && render(inputProps)}
 
       {label && (
-        <label className={labelClassName} htmlFor={id}>
+        <label
+          className={labelClassName}
+          htmlFor={id}
+          id={error ? labelId : undefined}
+        >
           {label}
           {help && <span className={theme.help}>{help}</span>}
         </label>
