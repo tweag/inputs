@@ -57,7 +57,7 @@ exports[`<DateInput /> renders with an error 1`] = `
     value="2001-01-01"
   />
   <span
-    class="message message--problem"
+    class="field__error"
     id="field_4_error"
     role="alert"
   >

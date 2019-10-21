@@ -26,5 +26,5 @@ export const defaultTheme: Theme = {
   labelSmall: "field__label--small",
 
   help: "field__help",
-  error: "message message--problem"
+  error: "field__error"
 };
