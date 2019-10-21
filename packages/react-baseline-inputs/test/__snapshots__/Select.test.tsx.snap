@@ -142,7 +142,7 @@ exports[`<Select /> renders with an error 1`] = `
     id="field_4"
   />
   <span
-    class="message message--problem"
+    class="field__error"
     id="field_4_error"
     role="alert"
   >

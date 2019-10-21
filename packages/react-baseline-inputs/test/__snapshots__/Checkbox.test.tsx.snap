@@ -57,7 +57,7 @@ exports[`<Checkbox /> renders with an error 1`] = `
     Jawn
   </label>
   <span
-    class="message message--problem"
+    class="field__error"
     id="field_4_error"
     role="alert"
   >
