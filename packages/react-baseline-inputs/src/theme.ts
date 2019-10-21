@@ -20,7 +20,7 @@ export const defaultTheme: Theme = {
   label: "field__label",
   labelInline: "field__label--inline",
   labelSuccess: "field__label--success",
-  labelError: "field__label--error",
+  labelError: "field__label--erroneous",
   labelTouched: "field__label--touched",
   labelLarge: "field__label--large",
   labelSmall: "field__label--small",
