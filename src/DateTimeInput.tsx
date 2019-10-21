@@ -1,9 +1,24 @@
 import * as React from "react";
-import format from "date-fns/format";
-import parse from "date-fns/parse";
-import isValid from "date-fns/is_valid";
 import { Field } from "./Field";
 import { DateTimeInputProps } from "./types";
+
+const format = (value: string | null): string => {
+  return value ? value.substring(0, 16) : "";
+};
+
+const parse = (value: string): string | null => {
+  const date = new Date(`${value}:00.000Z`);
+  // const offset = date.getTimezoneOffset() / 60;
+
+  // if (offset < 0) {
+  //   date.setHours(date.getHours() + offset);
+  // } else {
+  //   date.setHours(date.getHours() - offset);
+  // }
+
+  const isValid = !isNaN(date.getTime());
+  return isValid ? date.toISOString() : null;
+};
 
 /**
  * An HTML `<input type="datetime-local" />`, but with the following benefits:
@@ -16,21 +31,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onChange,
   ...props
 }) => {
-  const formattedValue = React.useMemo(
-    () => (value ? format(value, "YYYY-MM-DDTHH:mm:ss") : ""),
-    [value]
-  );
-
   const handleChange = React.useCallback(
-    event => {
-      const value = parse(event.target.value);
-
-      if (isValid(value)) {
-        onChange(value.toISOString());
-      } else {
-        onChange(null);
-      }
-    },
+    event => onChange(parse(event.target.value)),
     [onChange]
   );
 
@@ -40,7 +42,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
         <input
           {...inputProps}
           type="datetime-local"
-          value={formattedValue}
+          value={format(value)}
           onChange={handleChange}
         />
       )}

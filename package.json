@@ -17,8 +17,5 @@
   },
   "peerDependencies": {
     "react": ">=16.8"
-  },
-  "dependencies": {
-    "date-fns": "^1.30"
   }
 }

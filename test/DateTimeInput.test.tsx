@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 const value = "2001-01-01T05:00:00.000Z";
 const nextLocalValue = "2018-06-13T19:00";
-const nextISOValue = "2018-06-13T23:00:00.000Z";
+const nextISOValue = "2018-06-13T19:00:00.000Z";
 
 const setup = (props: Partial<DateTimeInputProps> = {}) =>
   render(

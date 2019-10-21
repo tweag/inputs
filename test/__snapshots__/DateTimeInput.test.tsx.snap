@@ -14,7 +14,7 @@ exports[`<DateTimeInput /> renders 1`] = `
     class="field__input"
     id="field_1"
     type="datetime-local"
-    value="2001-01-01T00:00:00"
+    value="2001-01-01T05:00"
   />
 </div>
 `;
@@ -33,7 +33,7 @@ exports[`<DateTimeInput /> renders with an error 1`] = `
     class="field__input field__input--erroneous"
     id="field_4"
     type="datetime-local"
-    value="2001-01-01T00:00:00"
+    value="2001-01-01T05:00"
   />
   <span
     class="message message--problem"
@@ -52,7 +52,7 @@ exports[`<DateTimeInput /> renders without a label 1`] = `
     class="field__input"
     id="field_2"
     type="datetime-local"
-    value="2001-01-01T00:00:00"
+    value="2001-01-01T05:00"
   />
 </div>
 `;
@@ -62,6 +62,6 @@ exports[`<DateTimeInput /> renders without a wrapper 1`] = `
   class="field__input"
   id="field_3"
   type="datetime-local"
-  value="2001-01-01T00:00:00"
+  value="2001-01-01T05:00"
 />
 `;
