@@ -8,12 +8,13 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   theme = defaultTheme
 }) => {
   const fieldSetClassName = theme.fieldSet;
+  const fieldSetBodyClassName = theme.fieldSetBody;
   const legendClassName = theme.legend;
 
   return (
     <fieldset className={fieldSetClassName}>
       <legend className={legendClassName}>{name}</legend>
-      {children}
+      <div className={fieldSetBodyClassName}>{children}</div>
     </fieldset>
   );
 };
