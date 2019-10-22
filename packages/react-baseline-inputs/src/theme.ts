@@ -11,6 +11,7 @@ export const defaultTheme: Theme = {
   fieldDisabled: "field--disabled",
 
   fieldSet: "fieldset",
+  fieldSetInline: "fieldset--inline",
   fieldSetBody: "fieldset__body",
   legend: "fieldset__legend",
 

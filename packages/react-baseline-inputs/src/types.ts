@@ -11,6 +11,7 @@ export interface Theme {
   fieldDisabled?: string | undefined;
 
   fieldSet?: string | undefined;
+  fieldSetInline?: string | undefined;
   fieldSetBody?: string | undefined;
   legend?: string | undefined;
 
@@ -69,6 +70,7 @@ export interface FieldProps extends FieldInputProps {
 }
 
 export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
+  inline?: boolean;
   theme?: Theme;
 }
 
@@ -108,5 +110,6 @@ export type FileListInputProps = FieldInputProps &
 export type RadioGroupProps = FieldSetProps & {
   options: Array<SelectOption>;
   name: string;
+  inline?: boolean;
   onChange: () => void;
 };

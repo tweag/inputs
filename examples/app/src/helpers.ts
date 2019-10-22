@@ -63,6 +63,11 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
 
 export const theme: Theme = {
   field: "form-group",
+  fieldSet: "form-group",
+  fieldInline: "form-check form-check-inline",
+  inputInline: "form-check-input",
+  labelInline: "form-check-label",
+  legend: "col-form-label",
   input: "form-control",
   inputSuccess: "is-valid",
   inputError: "is-invalid",

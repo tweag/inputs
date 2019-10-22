@@ -36,15 +36,6 @@ export const BaselineInputs = () => {
           console.table(values);
         }}
       >
-        <RadioGroup
-          title="whatever"
-          name="whatevername"
-          options={[
-            { label: "Foo", value: "foo" },
-            { label: "Bar", value: "bar" },
-            { label: "Buzz", value: "buzz", disabled: true }
-          ]}
-        />
         <div className="row">
           <div className="col">
             <TextInput
@@ -99,6 +90,19 @@ export const BaselineInputs = () => {
           </div>
         </div>
         <TextArea label="TextArea" {...fields.textarea} theme={theme} />
+
+        <RadioGroup
+          inline
+          title="Radio Group"
+          name="radio-group"
+          options={[
+            { label: "Foo", value: "foo" },
+            { label: "Bar", value: "bar" },
+            { label: "Disabled", value: "buzz", disabled: true }
+          ]}
+          theme={theme}
+        />
+
         <Checkbox label="Checkbox" {...fields.checkbox} theme={checkboxTheme} />
         <ToggleButton label="Toggle" {...fields.toggle} theme={toggleTheme} />
 
