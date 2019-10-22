@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Radio } from "./Radio";
+import { Field } from "./Field";
 import { FieldSet } from "./FieldSet";
 import { RadioGroupProps } from "./types";
 
@@ -22,13 +22,21 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
   return (
     <FieldSet name={title} {...props}>
-      {options.map(option => (
-        <Radio
-          name={name}
-          key={option.key}
-          value={option.value}
+      {options.map((option, idx) => (
+        <Field
+          inline
           label={option.label}
-          onChange={handleChange}
+          key={idx}
+          render={inputProps => (
+            <input
+              {...inputProps}
+              name={name}
+              type="radio"
+              value={option.value || ""}
+              onChange={handleChange}
+            />
+          )}
+          {...props}
         />
       ))}
     </FieldSet>

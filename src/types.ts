@@ -76,10 +76,6 @@ export type FloatInputProps = InputProps<number | null>;
 export type TextAreaProps = InputProps<string | null, HTMLTextAreaElement>;
 export type ToggleButtonProps = InputProps<boolean | null, HTMLButtonElement>;
 
-export interface RadioProps extends InputProps<string | null> {
-  name: string;
-}
-
 export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;
   label: string;
