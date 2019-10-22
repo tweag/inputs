@@ -1,6 +1,7 @@
 import * as React from "react";
 import { IntegerInput, IntegerInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
+import { itBehavesLikeAField } from "./sharedExamples";
 
 const setup = (props: Partial<IntegerInputProps> = {}) =>
   render(
@@ -8,26 +9,7 @@ const setup = (props: Partial<IntegerInputProps> = {}) =>
   );
 
 describe("<IntegerInput />", () => {
-  it("renders", () => {
-    const { container } = setup();
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it("renders without a label", () => {
-    const { container } = setup({ label: false });
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it("renders without a wrapper", () => {
-    const { container } = setup({ label: false, wrapper: false });
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it("renders with an error", () => {
-    const { container } = setup({ error: "Oh no!" });
-    expect(container.firstChild).toMatchSnapshot();
-  });
+  itBehavesLikeAField(setup);
 
   test("emits the value on change", () => {
     const onChange = jest.fn();

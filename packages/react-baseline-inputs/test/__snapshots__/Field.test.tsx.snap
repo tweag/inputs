@@ -179,8 +179,10 @@ exports[`<Field /> renders without a label 1`] = `
 `;
 
 exports[`<Field /> renders without a wrapper 1`] = `
-<input
-  class="field__input"
-  id="field_3"
-/>
+<label
+  class="field__label"
+  for="field_3"
+>
+  Jawn
+</label>
 `;
