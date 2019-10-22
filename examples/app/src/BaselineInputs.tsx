@@ -9,6 +9,7 @@ import {
   toggleTheme
 } from "./helpers";
 import {
+  RadioGroup,
   Checkbox,
   DateInput,
   DateTimeInput,
@@ -35,6 +36,15 @@ export const BaselineInputs = () => {
           console.table(values);
         }}
       >
+        <RadioGroup
+          title="whatever"
+          name="whatevername"
+          options={[
+            { label: "Foo", value: "foo" },
+            { label: "Bar", value: "bar" },
+            { label: "Buzz", value: "buzz" }
+          ]}
+        />
         <div className="row">
           <div className="col">
             <TextInput
