@@ -9,6 +9,9 @@ export interface Theme {
   fieldLarge?: string | undefined;
   fieldSmall?: string | undefined;
 
+  fieldSet?: string | undefined;
+  legend?: string | undefined;
+
   input?: string | undefined;
   inputSuccess?: string | undefined;
   inputError?: string | undefined;
@@ -60,6 +63,10 @@ export interface FieldProps extends FieldInputProps {
   render: (props: object) => React.ReactNode;
 }
 
+export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
+  theme?: Theme;
+}
+
 export type TextInputProps = InputProps<string | null>;
 export type IntegerInputProps = InputProps<number | null>;
 export type CheckboxProps = InputProps<boolean | null>;
@@ -68,6 +75,10 @@ export type DateTimeInputProps = InputProps<string | null>;
 export type FloatInputProps = InputProps<number | null>;
 export type TextAreaProps = InputProps<string | null, HTMLTextAreaElement>;
 export type ToggleButtonProps = InputProps<boolean | null, HTMLButtonElement>;
+
+export interface RadioProps extends InputProps<string | null> {
+  name: string;
+}
 
 export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;
@@ -92,3 +103,9 @@ export type FileListInputProps = FieldInputProps &
     value?: any;
     onChange: (value: FileList) => void;
   };
+
+export type RadioGroupProps = FieldSetProps & {
+  options: Array<SelectOption>;
+  name: string;
+  onChange: () => void;
+};
