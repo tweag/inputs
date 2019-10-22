@@ -1,5 +1,4 @@
 export * from "./Checkbox";
-export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./Field";
 export * from "./DateInput";
