@@ -27,6 +27,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           inline
           label={option.label}
           key={idx}
+          disabled={option.disabled}
           render={inputProps => (
             <input
               {...inputProps}

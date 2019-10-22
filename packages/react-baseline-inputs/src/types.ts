@@ -8,8 +8,10 @@ export interface Theme {
   fieldTouched?: string | undefined;
   fieldLarge?: string | undefined;
   fieldSmall?: string | undefined;
+  fieldDisabled?: string | undefined;
 
   fieldSet?: string | undefined;
+  fieldSetBody?: string | undefined;
   legend?: string | undefined;
 
   input?: string | undefined;
@@ -19,6 +21,7 @@ export interface Theme {
   inputInline?: string | undefined;
   inputLarge?: string | undefined;
   inputSmall?: string | undefined;
+  inputDisabled?: string | undefined;
 
   label?: string | undefined;
   labelSuccess?: string | undefined;
@@ -27,6 +30,7 @@ export interface Theme {
   labelInline?: string | undefined;
   labelLarge?: string | undefined;
   labelSmall?: string | undefined;
+  labelDisabled?: string | undefined;
 
   help?: string | undefined;
   error?: string | undefined;
@@ -39,6 +43,7 @@ export interface FieldInputProps {
   small?: boolean;
   touched?: boolean;
   success?: boolean;
+  disabled?: boolean;
   error?: React.ReactNode;
   help?: React.ReactNode;
   label?: React.ReactNode;

@@ -8,8 +8,10 @@ export const defaultTheme: Theme = {
   fieldTouched: "field--touched",
   fieldLarge: "field--large",
   fieldSmall: "field--small",
+  fieldDisabled: "field--disabled",
 
   fieldSet: "fieldset",
+  fieldSetBody: "fieldset__body",
   legend: "fieldset__legend",
 
   input: "field__input",
@@ -19,6 +21,7 @@ export const defaultTheme: Theme = {
   inputTouched: "field__input--touched",
   inputLarge: "field__input--large",
   inputSmall: "field__input--small",
+  inputDisabled: "field__input--disabled",
 
   label: "field__label",
   labelInline: "field__label--inline",
@@ -27,6 +30,7 @@ export const defaultTheme: Theme = {
   labelTouched: "field__label--touched",
   labelLarge: "field__label--large",
   labelSmall: "field__label--small",
+  labelDisabled: "field__label--disabled",
 
   help: "field__help",
   error: "field__error"

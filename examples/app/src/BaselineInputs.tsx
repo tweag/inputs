@@ -42,7 +42,7 @@ export const BaselineInputs = () => {
           options={[
             { label: "Foo", value: "foo" },
             { label: "Bar", value: "bar" },
-            { label: "Buzz", value: "buzz" }
+            { label: "Buzz", value: "buzz", disabled: true }
           ]}
         />
         <div className="row">

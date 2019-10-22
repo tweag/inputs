@@ -23,6 +23,7 @@ export function Field<T extends FieldProps>({
   small,
   wrapper = true,
   theme = defaultTheme,
+  disabled,
   ...props
 }: T) {
   const fieldClassNames = [theme.field];
@@ -65,6 +66,12 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(theme.labelSmall);
   }
 
+  if (disabled) {
+    fieldClassNames.push(theme.fieldDisabled);
+    inputClassNames.push(theme.inputDisabled);
+    labelClassNames.push(theme.labelDisabled);
+  }
+
   const fieldClassName = fieldClassNames.join(" ").trim();
   const inputClassName = inputClassNames.join(" ").trim();
   const labelClassName = labelClassNames.join(" ").trim();
@@ -77,6 +84,7 @@ export function Field<T extends FieldProps>({
 
   const inputProps = {
     id,
+    disabled,
     className: inputClassName,
     "aria-labelledby": error ? `${labelId} ${errorLabelId}` : undefined,
     ...props
