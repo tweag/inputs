@@ -12,6 +12,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   title,
   name,
   options,
+  inline,
   onChange,
   ...props
 }) => {
@@ -21,7 +22,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   );
 
   return (
-    <FieldSet name={title} {...props}>
+    <FieldSet name={title} inline={inline} {...props}>
       {options.map((option, idx) => (
         <Field
           inline
