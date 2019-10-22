@@ -24,19 +24,22 @@ exports[`<Checkbox /> renders with an error 1`] = `
   class="field field--inline field--erroneous"
 >
   <input
+    aria-labelledby="field_4_label field_4_error"
     checked=""
     class="field__input field__input--inline field__input--erroneous"
     id="field_4"
     type="checkbox"
   />
   <label
-    class="field__label field__label--inline field__label--error"
+    class="field__label field__label--inline field__label--erroneous"
     for="field_4"
+    id="field_4_label"
   >
     Jawn
   </label>
   <span
     class="message message--problem"
+    id="field_4_error"
     role="alert"
   >
     Oh no!

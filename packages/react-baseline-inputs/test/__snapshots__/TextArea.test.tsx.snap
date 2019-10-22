@@ -24,12 +24,14 @@ exports[`<TextArea /> renders with an error 1`] = `
   class="field field--erroneous"
 >
   <label
-    class="field__label field__label--error"
+    class="field__label field__label--erroneous"
     for="field_4"
+    id="field_4_label"
   >
     Jawn
   </label>
   <textarea
+    aria-labelledby="field_4_label field_4_error"
     class="field__input field__input--erroneous"
     id="field_4"
   >
@@ -37,6 +39,7 @@ exports[`<TextArea /> renders with an error 1`] = `
   </textarea>
   <span
     class="message message--problem"
+    id="field_4_error"
     role="alert"
   >
     Oh no!
