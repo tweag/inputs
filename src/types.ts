@@ -107,9 +107,12 @@ export type FileListInputProps = FieldInputProps &
     onChange: (value: FileList) => void;
   };
 
-export type RadioGroupProps = FieldSetProps & {
-  options: Array<SelectOption>;
-  name: string;
-  inline?: boolean;
-  onChange: () => void;
-};
+export type RadioProps = Omit<InputProps<string | null>, "value">;
+
+export type RadioGroupProps = FieldSetProps &
+  RadioProps & {
+    options: Array<SelectOption>;
+    name: string;
+    inline?: boolean;
+    onChange: () => void;
+  };
