@@ -14,6 +14,7 @@ const setup = (props: Partial<RadioGroupProps> = {}) =>
         { label: "Bar", value: "bar" },
         { label: "Disabled", value: "buzz", disabled: true }
       ]}
+      value={null}
       onChange={jest.fn()}
       {...props}
     />
@@ -26,21 +27,26 @@ describe("<RadioGroup />", () => {
     const onChange = jest.fn();
     const { getByLabelText } = setup({ onChange });
 
-    fireEvent.change(getByLabelText("Foo"), {
-      target: { value: "foo" }
-    });
+    fireEvent.click(getByLabelText("Foo"));
 
     expect(onChange).toHaveBeenCalledWith("foo");
   });
 
-  test("emits `null` when the value is blank", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
+  describe("an array of strings as options", () => {
+    const options = ["foo", "bar", "buzz"];
 
-    fireEvent.change(getByLabelText("Foo"), {
-      target: { value: "" }
+    it("accepts an array of strings as options", () => {
+      const { container } = setup({ options });
+      expect(container.firstChild).toMatchSnapshot();
     });
 
-    expect(onChange).toHaveBeenCalledWith(null);
+    it("emits a value", () => {
+      const onChange = jest.fn();
+      const { getByLabelText } = setup({ options, onChange });
+
+      fireEvent.click(getByLabelText("foo"));
+
+      expect(onChange).toHaveBeenCalledWith("foo");
+    });
   });
 });

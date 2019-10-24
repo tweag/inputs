@@ -13,6 +13,7 @@ export interface Values {
   text: string | null;
   textarea: string | null;
   toggle: boolean | null;
+  radioGroup: string | null;
 }
 
 export const initialValues: Values = {
@@ -26,7 +27,8 @@ export const initialValues: Values = {
   select: null,
   text: null,
   textarea: null,
-  toggle: null
+  toggle: null,
+  radioGroup: null
 };
 
 export type Fields<T> = {
@@ -63,11 +65,9 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
 
 export const theme: Theme = {
   field: "form-group",
-  fieldSet: "form-group",
   fieldInline: "form-check form-check-inline",
   inputInline: "form-check-input",
   labelInline: "form-check-label",
-  legend: "col-form-label",
   input: "form-control",
   inputSuccess: "is-valid",
   inputError: "is-invalid",

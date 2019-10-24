@@ -101,6 +101,7 @@ export const BaselineInputs = () => {
             { label: "Disabled", value: "buzz", disabled: true }
           ]}
           theme={theme}
+          {...fields.radioGroup}
         />
 
         <Checkbox label="Checkbox" {...fields.checkbox} theme={checkboxTheme} />
