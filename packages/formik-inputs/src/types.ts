@@ -11,7 +11,8 @@ import {
   SelectProps as BSelectProps,
   TextAreaProps as BTextAreaProps,
   TextInputProps as BTextInputProps,
-  ToggleButtonProps as BToggleButtonProps
+  ToggleButtonProps as BToggleButtonProps,
+  RadioGroupProps as BRadioGroupProps
 } from "react-baseline-inputs";
 
 export interface FieldConfig {
@@ -34,3 +35,4 @@ export type SelectProps = InputProps<BSelectProps>;
 export type TextAreaProps = InputProps<BTextAreaProps>;
 export type TextInputProps = InputProps<BTextInputProps>;
 export type ToggleButtonProps = InputProps<BToggleButtonProps>;
+export type RadioGroupProps = InputProps<BRadioGroupProps>;

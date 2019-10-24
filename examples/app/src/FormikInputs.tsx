@@ -18,7 +18,8 @@ import {
   TextInput,
   IntegerInput,
   Select,
-  TextArea
+  TextArea,
+  RadioGroup
 } from "formik-inputs";
 
 export const FormikInputs = () => {
@@ -84,6 +85,19 @@ export const FormikInputs = () => {
           </div>
 
           <TextArea label="TextArea" name="textarea" theme={theme} />
+
+          <RadioGroup
+            inline
+            title="Radio Group"
+            name="radio-group"
+            options={[
+              { label: "Foo", value: "foo" },
+              { label: "Bar", value: "bar" },
+              { label: "Disabled", value: "buzz", disabled: true }
+            ]}
+            theme={theme}
+          />
+
           <Checkbox label="Checkbox" name="checkbox" theme={checkboxTheme} />
 
           <button type="submit" className="btn btn-primary mt-2 float-right">

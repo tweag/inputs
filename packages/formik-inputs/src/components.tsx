@@ -12,7 +12,8 @@ import {
   Select as BSelect,
   TextArea as BTextArea,
   TextInput as BTextInput,
-  ToggleButton as BToggleButton
+  ToggleButton as BToggleButton,
+  RadioGroup as BRadioGroup
 } from "react-baseline-inputs";
 import {
   CheckboxProps,
@@ -26,7 +27,8 @@ import {
   SelectProps,
   TextAreaProps,
   TextInputProps,
-  ToggleButtonProps
+  ToggleButtonProps,
+  RadioGroupProps
 } from "./types";
 
 export const Checkbox: React.FC<CheckboxProps> = props => (
@@ -75,4 +77,8 @@ export const TextInput: React.FC<TextInputProps> = props => (
 
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
   <BToggleButton {...useField(props)} />
+);
+
+export const RadioGroup: React.FC<RadioGroupProps> = props => (
+  <BRadioGroup options={props.options} {...useField(props)} />
 );
