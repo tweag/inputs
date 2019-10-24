@@ -57,7 +57,7 @@ exports[`<IntegerInput /> renders with an error 1`] = `
     value="5"
   />
   <span
-    class="message message--problem"
+    class="field__error"
     id="field_4_error"
     role="alert"
   >
