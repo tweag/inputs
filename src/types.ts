@@ -69,11 +69,6 @@ export interface FieldProps extends FieldInputProps {
   render: (props: object) => React.ReactNode;
 }
 
-export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
-  inline?: boolean;
-  theme?: Theme;
-}
-
 export type TextInputProps = InputProps<string | null>;
 export type IntegerInputProps = InputProps<number | null>;
 export type CheckboxProps = InputProps<boolean | null>;
@@ -107,12 +102,14 @@ export type FileListInputProps = FieldInputProps &
     onChange: (value: FileList) => void;
   };
 
-export type RadioProps = Omit<InputProps<string | null>, "value">;
+export interface RadioGroupOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  key?: any;
+}
 
-export type RadioGroupProps = FieldSetProps &
-  RadioProps & {
-    options: Array<SelectOption>;
-    name: string;
-    inline?: boolean;
-    onChange: () => void;
-  };
+export type RadioGroupProps = InputProps<string | null> & {
+  options: Array<RadioGroupOption | string>;
+  name: string;
+};
