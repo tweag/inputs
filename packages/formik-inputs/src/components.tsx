@@ -80,5 +80,5 @@ export const ToggleButton: React.FC<ToggleButtonProps> = props => (
 );
 
 export const RadioGroup: React.FC<RadioGroupProps> = props => (
-  <BRadioGroup options={props.options} {...useField(props)} />
+  <BRadioGroup {...useField(props)} />
 );
