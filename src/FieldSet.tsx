@@ -9,8 +9,6 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   theme = defaultTheme
 }) => {
   const fieldSetClassNames = [theme.fieldSet];
-  const fieldSetBodyClassName = theme.fieldSetBody;
-  const legendClassName = theme.legend;
 
   if (inline) {
     fieldSetClassNames.push(theme.fieldSetInline);
@@ -20,8 +18,8 @@ export const FieldSet: React.FC<FieldSetProps> = ({
 
   return (
     <fieldset className={fieldSetClassName}>
-      <legend className={legendClassName}>{name}</legend>
-      <div className={fieldSetBodyClassName}>{children}</div>
+      <legend className={theme.legend}>{name}</legend>
+      <div className={theme.fieldSetBody}>{children}</div>
     </fieldset>
   );
 };
