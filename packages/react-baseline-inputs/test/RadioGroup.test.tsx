@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeARadioGroup } from "./sharedExamples";
+import { itBehavesLikeAField } from "./sharedExamples";
 import { RadioGroup, RadioGroupProps } from "../src";
 
 const setup = (props: Partial<RadioGroupProps> = {}) =>
@@ -21,7 +21,7 @@ const setup = (props: Partial<RadioGroupProps> = {}) =>
   );
 
 describe("<RadioGroup />", () => {
-  itBehavesLikeARadioGroup(setup);
+  itBehavesLikeAField(setup, ["label", "wrapper", "id"]);
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
