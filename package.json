@@ -11,10 +11,6 @@
     "src",
     "dist"
   ],
-  "scripts": {
-    "build": "bili --format cjs --format esm src/index.ts",
-    "clean": "rm -rf dist"
-  },
   "peerDependencies": {
     "react": ">=16.8"
   }
