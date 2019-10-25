@@ -13,6 +13,7 @@ test("exports", () => {
     "Select",
     "TextArea",
     "TextInput",
+    "ToggleButton",
     "useField"
   ]);
 });

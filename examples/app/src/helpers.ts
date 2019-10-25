@@ -12,6 +12,7 @@ export interface Values {
   select: string | null;
   text: string | null;
   textarea: string | null;
+  toggle: boolean | null;
 }
 
 export const initialValues: Values = {
@@ -24,7 +25,8 @@ export const initialValues: Values = {
   integer: null,
   select: null,
   text: null,
-  textarea: null
+  textarea: null,
+  toggle: null
 };
 
 export type Fields<T> = {
@@ -87,4 +89,11 @@ export const checkboxTheme: Theme = {
   field: "form-check",
   input: "form-check-input",
   label: "form-check-label"
+};
+
+export const toggleTheme: Theme = {
+  ...theme,
+  field: "custom-control custom-switch",
+  input: "custom-control-input",
+  label: "custom-control-label"
 };

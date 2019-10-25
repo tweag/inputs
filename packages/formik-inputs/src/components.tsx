@@ -11,7 +11,8 @@ import {
   IntegerInput as BIntegerInput,
   Select as BSelect,
   TextArea as BTextArea,
-  TextInput as BTextInput
+  TextInput as BTextInput,
+  ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
   CheckboxProps,
@@ -24,7 +25,8 @@ import {
   IntegerInputProps,
   SelectProps,
   TextAreaProps,
-  TextInputProps
+  TextInputProps,
+  ToggleButtonProps
 } from "./types";
 
 export const Checkbox: React.FC<CheckboxProps> = props => (
@@ -69,4 +71,8 @@ export const TextArea: React.FC<TextAreaProps> = props => (
 
 export const TextInput: React.FC<TextInputProps> = props => (
   <BTextInput {...useField(props)} />
+);
+
+export const ToggleButton: React.FC<ToggleButtonProps> = props => (
+  <BToggleButton {...useField(props)} />
 );

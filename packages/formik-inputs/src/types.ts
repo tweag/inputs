@@ -10,7 +10,8 @@ import {
   IntegerInputProps as BIntegerInputProps,
   SelectProps as BSelectProps,
   TextAreaProps as BTextAreaProps,
-  TextInputProps as BTextInputProps
+  TextInputProps as BTextInputProps,
+  ToggleButtonProps as BToggleButtonProps
 } from "react-baseline-inputs";
 
 export interface FieldConfig {
@@ -32,3 +33,4 @@ export type IntegerInputProps = InputProps<BIntegerInputProps>;
 export type SelectProps = InputProps<BSelectProps>;
 export type TextAreaProps = InputProps<BTextAreaProps>;
 export type TextInputProps = InputProps<BTextInputProps>;
+export type ToggleButtonProps = InputProps<BToggleButtonProps>;

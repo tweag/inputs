@@ -5,7 +5,8 @@ import {
   theme,
   fileTheme,
   selectTheme,
-  checkboxTheme
+  checkboxTheme,
+  toggleTheme
 } from "./helpers";
 import {
   Checkbox,
@@ -17,7 +18,8 @@ import {
   TextInput,
   IntegerInput,
   Select,
-  TextArea
+  TextArea,
+  ToggleButton
 } from "react-baseline-inputs";
 
 export const BaselineInputs = () => {
@@ -51,7 +53,6 @@ export const BaselineInputs = () => {
             <FloatInput label="Float" {...fields.float} theme={theme} />
           </div>
         </div>
-
         <div className="row">
           <div className="col">
             <DateInput label="Date" {...fields.date} theme={theme} />
@@ -74,7 +75,6 @@ export const BaselineInputs = () => {
             />
           </div>
         </div>
-
         <div className="row mt-2">
           <div className="col">
             <FileInput label="File" {...fields.file} theme={fileTheme} />
@@ -88,9 +88,9 @@ export const BaselineInputs = () => {
             />
           </div>
         </div>
-
         <TextArea label="TextArea" {...fields.textarea} theme={theme} />
         <Checkbox label="Checkbox" {...fields.checkbox} theme={checkboxTheme} />
+        <ToggleButton label="Toggle" {...fields.toggle} theme={toggleTheme} />
 
         <button type="submit" className="btn btn-primary mt-2 float-right">
           Submit

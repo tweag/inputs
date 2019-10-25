@@ -67,6 +67,7 @@ export type DateInputProps = InputProps<string | null>;
 export type DateTimeInputProps = InputProps<string | null>;
 export type FloatInputProps = InputProps<number | null>;
 export type TextAreaProps = InputProps<string | null, HTMLTextAreaElement>;
+export type ToggleButtonProps = InputProps<boolean | null, HTMLButtonElement>;
 
 export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
   value: string;

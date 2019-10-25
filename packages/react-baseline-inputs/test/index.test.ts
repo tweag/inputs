@@ -12,6 +12,7 @@ test("exports", () => {
     "IntegerInput",
     "Select",
     "TextArea",
-    "TextInput"
+    "TextInput",
+    "ToggleButton"
   ]);
 });
