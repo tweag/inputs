@@ -86,17 +86,20 @@ export const FormikInputs = () => {
 
           <TextArea label="TextArea" name="textarea" theme={theme} />
 
-          <RadioGroup
-            inline
-            title="Radio Group"
-            name="radio-group"
-            options={[
-              { label: "Foo", value: "foo" },
-              { label: "Bar", value: "bar" },
-              { label: "Disabled", value: "buzz", disabled: true }
-            ]}
-            theme={theme}
-          />
+          <div className="row mt-2">
+            <div className="col">
+              <RadioGroup
+                title="Radio Group"
+                name="radio-group"
+                options={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                  { label: "Disabled", value: "buzz", disabled: true }
+                ]}
+                theme={theme}
+              />
+            </div>
+          </div>
 
           <Checkbox label="Checkbox" name="checkbox" theme={checkboxTheme} />
 

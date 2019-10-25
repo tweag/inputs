@@ -91,18 +91,21 @@ export const BaselineInputs = () => {
         </div>
         <TextArea label="TextArea" {...fields.textarea} theme={theme} />
 
-        <RadioGroup
-          inline
-          title="Radio Group"
-          name="radio-group"
-          options={[
-            { label: "Foo", value: "foo" },
-            { label: "Bar", value: "bar" },
-            { label: "Disabled", value: "buzz", disabled: true }
-          ]}
-          theme={theme}
-          {...fields.radioGroup}
-        />
+        <div className="row mt-2">
+          <div className="col">
+            <RadioGroup
+              title="Radio Group"
+              name="radio-group"
+              options={[
+                { label: "Foo", value: "foo" },
+                { label: "Bar", value: "bar" },
+                { label: "Disabled", value: "buzz", disabled: true }
+              ]}
+              theme={theme}
+              {...fields.radioGroup}
+            />
+          </div>
+        </div>
 
         <Checkbox label="Checkbox" {...fields.checkbox} theme={checkboxTheme} />
         <ToggleButton label="Toggle" {...fields.toggle} theme={toggleTheme} />
