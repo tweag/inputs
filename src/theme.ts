@@ -10,11 +10,6 @@ export const defaultTheme: Theme = {
   fieldSmall: "field--small",
   fieldDisabled: "field--disabled",
 
-  fieldSet: "fieldset",
-  fieldSetInline: "fieldset--inline",
-  fieldSetBody: "fieldset__body",
-  legend: "fieldset__legend",
-
   input: "field__input",
   inputInline: "field__input--inline",
   inputSuccess: "field__input--success",
