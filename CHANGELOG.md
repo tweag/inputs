@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.2](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2019-10-27)
+
+
+### Bug Fixes
+
+* make sure the ToggleButton emits the value ([9c92bce](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/9c92bceec1fc1741ca8c15c043d227f025ade4e9))
+
+
+### Features
+
+* add a CheckboxList component ([87e1e81](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/87e1e810db8262c4a6cdaf840282cfe1137269c3))
+
+
+
+
+
 # [2.0.0-alpha.1](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2019-10-27)
 
 
