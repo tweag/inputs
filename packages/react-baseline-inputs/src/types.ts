@@ -107,3 +107,14 @@ export interface RadioGroupOptionProps {
 export type RadioGroupProps = InputProps<string | null> & {
   options?: Array<RadioGroupOptionProps | string>;
 };
+
+export interface CheckboxListOptionProps {
+  value: string;
+  label?: string;
+  disabled?: boolean;
+  key?: any;
+}
+
+export type CheckboxListProps = InputProps<string[] | null> & {
+  options?: Array<CheckboxListOptionProps | string>;
+};

@@ -6,10 +6,12 @@ import {
   fileTheme,
   selectTheme,
   checkboxTheme,
-  notBlank
+  notBlank,
+  toggleTheme
 } from "./helpers";
 import {
   Checkbox,
+  CheckboxList,
   DateInput,
   DateTimeInput,
   FileInput,
@@ -17,9 +19,10 @@ import {
   FloatInput,
   TextInput,
   IntegerInput,
+  RadioGroup,
   Select,
   TextArea,
-  RadioGroup
+  ToggleButton
 } from "formik-inputs";
 
 export const FormikInputs = () => {
@@ -88,6 +91,32 @@ export const FormikInputs = () => {
 
           <div className="row mt-2">
             <div className="col">
+              <Checkbox
+                label="Checkbox"
+                name="checkbox"
+                theme={checkboxTheme}
+              />
+            </div>
+
+            <div className="col">
+              <ToggleButton label="Toggle" name="toggle" theme={toggleTheme} />
+            </div>
+          </div>
+
+          <div className="row mt-2">
+            <div className="col">
+              <CheckboxList
+                name="checkboxList"
+                options={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                  { label: "Disabled", value: "buzz", disabled: true }
+                ]}
+                theme={checkboxTheme}
+              />
+            </div>
+
+            <div className="col">
               <RadioGroup
                 name="radioGroup"
                 options={[
@@ -99,8 +128,6 @@ export const FormikInputs = () => {
               />
             </div>
           </div>
-
-          <Checkbox label="Checkbox" name="checkbox" theme={checkboxTheme} />
 
           <button type="submit" className="btn btn-primary mt-2 float-right">
             Submit

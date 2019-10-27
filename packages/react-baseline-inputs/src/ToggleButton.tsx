@@ -16,6 +16,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         <button
           {...inputProps}
           onClick={handleClick}
+          type="button"
           role="switch"
           aria-checked={Boolean(value)}
           aria-label={value ? "On" : "Off"}
