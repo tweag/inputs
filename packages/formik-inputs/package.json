@@ -12,7 +12,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "formik": "^2.0.1-rc.13",
+    "formik": "^2.0.2",
     "react": ">=16.8"
   },
   "dependencies": {

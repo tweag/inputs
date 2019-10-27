@@ -48,11 +48,11 @@ export const Field: React.FC<FieldProps> = props => (
 );
 
 export const FileInput: React.FC<FileInputProps> = props => (
-  <BFileInput {...useField<any>(props)} />
+  <BFileInput {...useField(props)} />
 );
 
 export const FileListInput: React.FC<FileListInputProps> = props => (
-  <BFileListInput {...useField<any>(props)} />
+  <BFileListInput {...useField(props)} />
 );
 
 export const FloatInput: React.FC<FloatInputProps> = props => (

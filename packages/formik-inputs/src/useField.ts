@@ -8,7 +8,7 @@ export const useField = <T extends FieldConfig>({
   ...props
 }: T) => {
   const { setFieldValue } = useFormikContext<any>();
-  const [field, meta] = useFormikField({ name, validate });
+  const [field, meta] = useFormikField<any>({ name, validate });
 
   const onChange = useCallback(value => setFieldValue(name, value), [
     name,
