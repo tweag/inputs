@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "name": "formik-inputs",
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",
@@ -15,6 +15,6 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "react-baseline-inputs": "^2.0.0-alpha.1"
+    "react-baseline-inputs": "^2.0.0-alpha.2"
   }
 }
