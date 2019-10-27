@@ -9,8 +9,16 @@ export default packages.map(name => {
   return {
     input: `packages/${name}/src/index.ts`,
     output: [
-      { file: `packages/${name}/${pkg.main}`, format: "cjs" },
-      { file: `packages/${name}/${pkg.module}`, format: "es" }
+      {
+        file: `packages/${name}/${pkg.main}`,
+        format: "cjs",
+        sourcemap: true
+      },
+      {
+        file: `packages/${name}/${pkg.module}`,
+        format: "es",
+        sourcemap: true
+      }
     ],
     external: [
       ...Object.keys(pkg.dependencies || {}),
