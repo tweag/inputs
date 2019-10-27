@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/promptworks/react-forms/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2019-10-27)
+
+
+### Bug Fixes
+
+* add "aria-labelledby" to input if there is an error label ([a60ed76](https://github.com/promptworks/react-forms/commit/a60ed765fe01b143d4a14d090b2a9ff2ac3a3300))
+* add disabled support and classes to field, add fieldset__body ([a8c49f5](https://github.com/promptworks/react-forms/commit/a8c49f52b427a05328c64ba3230baab4eaa3365b))
+* add radio group to formik inputs ([efb5356](https://github.com/promptworks/react-forms/commit/efb5356012e9d92a11243d665e9e6b14cfaaf7fd))
+* add tests for radio group ([75379eb](https://github.com/promptworks/react-forms/commit/75379eb3b7cf4e0d415238ba70088ce16f35e5e4))
+* aria-labelledby should use label id ([264955a](https://github.com/promptworks/react-forms/commit/264955ad3c53e3ebaa97c8404c210bfd4d041b83))
+* feedback and removing fieldset ([c5968fa](https://github.com/promptworks/react-forms/commit/c5968fa716ec912b834aa89e20b83c4fc76ca154))
+* never use index as key and pass name prop through ([d311aa8](https://github.com/promptworks/react-forms/commit/d311aa8cd9aa4b30051e5d3c1aacf67cfdd9be5e))
+* radio group test fix, allow string options ([106a1bc](https://github.com/promptworks/react-forms/commit/106a1bc8665805f932b12e3ce4a5d4efdf6affed))
+* refactor itBehavesLikeaField setup function ([013849b](https://github.com/promptworks/react-forms/commit/013849b97902cde4d8f8c9682dfd17ff46c15d64))
+* regenerate snaps ([7839e95](https://github.com/promptworks/react-forms/commit/7839e95b3422fe3f90756705092a2824dff914b8))
+* remove passed radio group options, don't redeclare theme vars ([abf6749](https://github.com/promptworks/react-forms/commit/abf6749357949398d180a2b672d3e2376a10955b))
+* remove radio component, put everything in radiogroup ([71a20b3](https://github.com/promptworks/react-forms/commit/71a20b3968fea0f2a4d6ff7614d5109a940654d3))
+* remove radio from index.ts ([8a1d9ad](https://github.com/promptworks/react-forms/commit/8a1d9ad8e3e40757a38b4c5610883a1d60731151))
+
+
+### Features
+
+* add a ToggleButton component ([5fcbdea](https://github.com/promptworks/react-forms/commit/5fcbdeaae41294439c897b26e7f7215ca150d36a))
+* enable inline radio group ([aea0867](https://github.com/promptworks/react-forms/commit/aea08670d25c7c4c76f68ccd33ec2ec5619f91a1))
+* make the error message class name consistent ([41a17e6](https://github.com/promptworks/react-forms/commit/41a17e6fdcc997158c4d048385f192338aeca113))
+* radio and radioGroup in react-baseline-inputs ([bc7f017](https://github.com/promptworks/react-forms/commit/bc7f0173521694ba0e49ab3fe5477c3dfd905a31))
+* test with jest-axe ([e45da46](https://github.com/promptworks/react-forms/commit/e45da467d985353cc074e3ea2539016308376c1e))
+
+
+
+
+
 # [2.0.0-alpha.0](https://github.com/promptworks/react-forms/compare/v1.5.0...v2.0.0-alpha.0) (2019-10-21)
 
 

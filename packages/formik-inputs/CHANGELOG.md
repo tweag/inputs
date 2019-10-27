@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.0...v2.0.0-alpha.1) (2019-10-27)
+
+
+### Bug Fixes
+
+* add radio group to formik inputs ([efb5356](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/efb5356012e9d92a11243d665e9e6b14cfaaf7fd))
+* remove passed radio group options, don't redeclare theme vars ([abf6749](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/abf6749357949398d180a2b672d3e2376a10955b))
+
+
+### Features
+
+* add a ToggleButton component ([5fcbdea](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/5fcbdeaae41294439c897b26e7f7215ca150d36a))
+
+
+
+
+
 # [2.0.0-alpha.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v1.5.0...v2.0.0-alpha.0) (2019-10-21)
 
 
