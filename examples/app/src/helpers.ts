@@ -65,9 +65,6 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
 
 export const theme: Theme = {
   field: "form-group",
-  fieldInline: "form-check form-check-inline",
-  inputInline: "form-check-input",
-  labelInline: "form-check-label",
   input: "form-control",
   inputSuccess: "is-valid",
   inputError: "is-invalid",
@@ -92,6 +89,7 @@ export const fileTheme: Theme = {
 export const checkboxTheme: Theme = {
   ...theme,
   field: "form-check",
+  fieldInline: "form-check-inline",
   input: "form-check-input",
   label: "form-check-label"
 };

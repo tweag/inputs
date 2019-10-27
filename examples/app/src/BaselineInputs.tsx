@@ -94,14 +94,13 @@ export const BaselineInputs = () => {
         <div className="row mt-2">
           <div className="col">
             <RadioGroup
-              title="Radio Group"
-              name="radio-group"
+              name="radioGroup"
               options={[
                 { label: "Foo", value: "foo" },
                 { label: "Bar", value: "bar" },
                 { label: "Disabled", value: "buzz", disabled: true }
               ]}
-              theme={theme}
+              theme={checkboxTheme}
               {...fields.radioGroup}
             />
           </div>
