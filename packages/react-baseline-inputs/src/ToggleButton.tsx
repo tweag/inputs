@@ -7,7 +7,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
   onChange,
   ...props
 }) => {
-  const handleClick = useCallback(() => onChange(!value), [onChange]);
+  const handleClick = useCallback(() => onChange(!value), [onChange, value]);
 
   return (
     <Field
