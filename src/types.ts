@@ -73,7 +73,7 @@ export type FloatInputProps = InputProps<number | null>;
 export type TextAreaProps = InputProps<string | null, HTMLTextAreaElement>;
 export type ToggleButtonProps = InputProps<boolean | null, HTMLButtonElement>;
 
-export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
+export interface SelectOptionProps extends React.HTMLProps<HTMLOptionElement> {
   value: string;
   label: string;
   key?: any;
@@ -82,7 +82,7 @@ export interface SelectOption extends React.HTMLProps<HTMLOptionElement> {
 export interface SelectProps
   extends InputProps<string | null, HTMLSelectElement> {
   placeholder?: string;
-  options?: Array<SelectOption | string>;
+  options?: Array<SelectOptionProps | string>;
 }
 
 export type FileInputProps = FieldInputProps &
@@ -97,7 +97,7 @@ export type FileListInputProps = FieldInputProps &
     onChange: (value: FileList) => void;
   };
 
-export interface RadioGroupOption {
+export interface RadioGroupOptionProps {
   value: string;
   label?: string;
   disabled?: boolean;
@@ -105,6 +105,5 @@ export interface RadioGroupOption {
 }
 
 export type RadioGroupProps = InputProps<string | null> & {
-  options: Array<RadioGroupOption | string>;
-  name: string;
+  options?: Array<RadioGroupOptionProps | string>;
 };

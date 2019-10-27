@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { SelectProps, SelectOption } from "./types";
+import { SelectProps, SelectOptionProps } from "./types";
 
 const getOptionProps = ({
   label: _label,
   value,
   key = value,
   ...option
-}: SelectOption) => ({
+}: SelectOptionProps) => ({
   key,
   value,
   ...option
