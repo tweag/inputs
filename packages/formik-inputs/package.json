@@ -11,12 +11,9 @@
     "src",
     "dist"
   ],
-  "scripts": {
-    "build": "bili --format cjs --format esm src/index.ts",
-    "clean": "rm -rf dist"
-  },
   "peerDependencies": {
-    "formik": "^2.0.1-rc.13"
+    "formik": "^2.0.1-rc.13",
+    "react": ">=16.8"
   },
   "dependencies": {
     "react-baseline-inputs": "^2.0.0-alpha.0"
