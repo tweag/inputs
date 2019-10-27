@@ -1,0 +1,28 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Test on node ${{ matrix.node }}
+    runs-on: ubunutu-latest
+    strategy:
+      matrix:
+        node: ["10.x", "12.x"]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install yarn package manager
+        run: npm install -g yarn
+
+      - name: Install deps and build
+        run: yarn install --frozen-lockfile
+
+      - name: Check formatting
+        run: yarn format:check
+
+      - name: Test
+        run: yarn test --ci
