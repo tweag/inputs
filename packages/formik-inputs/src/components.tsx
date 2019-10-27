@@ -2,6 +2,7 @@ import * as React from "react";
 import { useField } from "./useField";
 import {
   Checkbox as BCheckbox,
+  CheckboxList as BCheckboxList,
   DateInput as BDateInput,
   DateTimeInput as BDateTimeInput,
   Field as BField,
@@ -9,14 +10,15 @@ import {
   FileListInput as BFileListInput,
   FloatInput as BFloatInput,
   IntegerInput as BIntegerInput,
+  RadioGroup as BRadioGroup,
   Select as BSelect,
   TextArea as BTextArea,
   TextInput as BTextInput,
-  ToggleButton as BToggleButton,
-  RadioGroup as BRadioGroup
+  ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
   CheckboxProps,
+  CheckboxListProps,
   DateInputProps,
   DateTimeInputProps,
   FieldProps,
@@ -24,15 +26,19 @@ import {
   FileListInputProps,
   FloatInputProps,
   IntegerInputProps,
+  RadioGroupProps,
   SelectProps,
   TextAreaProps,
   TextInputProps,
-  ToggleButtonProps,
-  RadioGroupProps
+  ToggleButtonProps
 } from "./types";
 
 export const Checkbox: React.FC<CheckboxProps> = props => (
   <BCheckbox {...useField(props)} />
+);
+
+export const CheckboxList: React.FC<CheckboxListProps> = props => (
+  <BCheckboxList {...useField(props)} />
 );
 
 export const DateInput: React.FC<DateInputProps> = props => (
@@ -63,6 +69,10 @@ export const IntegerInput: React.FC<IntegerInputProps> = props => (
   <BIntegerInput {...useField(props)} />
 );
 
+export const RadioGroup: React.FC<RadioGroupProps> = props => (
+  <BRadioGroup {...useField(props)} />
+);
+
 export const Select: React.FC<SelectProps> = props => (
   <BSelect {...useField(props)} />
 );
@@ -77,8 +87,4 @@ export const TextInput: React.FC<TextInputProps> = props => (
 
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
   <BToggleButton {...useField(props)} />
-);
-
-export const RadioGroup: React.FC<RadioGroupProps> = props => (
-  <BRadioGroup {...useField(props)} />
 );

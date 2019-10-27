@@ -9,8 +9,8 @@ import {
   toggleTheme
 } from "./helpers";
 import {
-  RadioGroup,
   Checkbox,
+  CheckboxList,
   DateInput,
   DateTimeInput,
   FileInput,
@@ -18,6 +18,7 @@ import {
   FloatInput,
   TextInput,
   IntegerInput,
+  RadioGroup,
   Select,
   TextArea,
   ToggleButton
@@ -89,12 +90,42 @@ export const BaselineInputs = () => {
             />
           </div>
         </div>
+
         <TextArea label="TextArea" {...fields.textarea} theme={theme} />
 
         <div className="row mt-2">
           <div className="col">
+            <Checkbox
+              label="Checkbox"
+              {...fields.checkbox}
+              theme={checkboxTheme}
+            />
+          </div>
+
+          <div className="col">
+            <ToggleButton
+              label="Toggle"
+              {...fields.toggle}
+              theme={toggleTheme}
+            />
+          </div>
+        </div>
+
+        <div className="row mt-2">
+          <div className="col">
+            <CheckboxList
+              options={[
+                { label: "Foo", value: "foo" },
+                { label: "Bar", value: "bar" },
+                { label: "Disabled", value: "buzz", disabled: true }
+              ]}
+              theme={checkboxTheme}
+              {...fields.checkboxList}
+            />
+          </div>
+
+          <div className="col">
             <RadioGroup
-              name="radioGroup"
               options={[
                 { label: "Foo", value: "foo" },
                 { label: "Bar", value: "bar" },
@@ -105,9 +136,6 @@ export const BaselineInputs = () => {
             />
           </div>
         </div>
-
-        <Checkbox label="Checkbox" {...fields.checkbox} theme={checkboxTheme} />
-        <ToggleButton label="Toggle" {...fields.toggle} theme={toggleTheme} />
 
         <button type="submit" className="btn btn-primary mt-2 float-right">
           Submit

@@ -28,20 +28,20 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   return (
     <>
       {options.map(option => {
-        const meta = getRadioProps(option);
+        const radio = getRadioProps(option);
 
         return (
           <Field
             inline
-            key={meta.key}
-            label={meta.label}
-            disabled={meta.disabled}
+            key={radio.key}
+            label={radio.label}
+            disabled={radio.disabled}
             render={inputProps => (
               <input
                 {...inputProps}
                 type="radio"
-                checked={meta.value === value}
-                value={meta.value}
+                checked={radio.value === value}
+                value={radio.value}
                 onChange={handleChange}
               />
             )}

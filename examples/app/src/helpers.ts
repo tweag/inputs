@@ -3,32 +3,34 @@ import { Theme } from "react-baseline-inputs";
 
 export interface Values {
   checkbox: boolean | null;
+  checkboxList: string[] | null;
   date: string | null;
   datetime: string | null;
   file: File | null;
   filelist: FileList | null;
   float: number | null;
   integer: number | null;
+  radioGroup: string | null;
   select: string | null;
   text: string | null;
   textarea: string | null;
   toggle: boolean | null;
-  radioGroup: string | null;
 }
 
 export const initialValues: Values = {
   checkbox: null,
+  checkboxList: null,
   date: null,
   datetime: null,
   file: null,
   filelist: null,
   float: null,
   integer: null,
+  radioGroup: null,
   select: null,
   text: null,
   textarea: null,
-  toggle: null,
-  radioGroup: null
+  toggle: null
 };
 
 export type Fields<T> = {

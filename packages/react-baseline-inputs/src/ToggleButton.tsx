@@ -7,7 +7,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
   onChange,
   ...props
 }) => {
-  const handleClick = useCallback(() => onChange(!value), [onChange]);
+  const handleClick = useCallback(() => onChange(!value), [onChange, value]);
 
   return (
     <Field
@@ -16,6 +16,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         <button
           {...inputProps}
           onClick={handleClick}
+          type="button"
           role="switch"
           aria-checked={Boolean(value)}
           aria-label={value ? "On" : "Off"}
