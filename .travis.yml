@@ -4,5 +4,4 @@ node_js:
   - lts/*
 script:
   - yarn format:check
-  - yarn build
   - yarn test --ci
