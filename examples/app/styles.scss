@@ -1,0 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
+
+header {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+// Make the switch component work with a button
+.custom-control-input[aria-checked="true"] ~ .custom-control-label:after {
+  transform: translateX($custom-switch-width - $custom-control-indicator-size);
+}
