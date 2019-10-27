@@ -8,6 +8,7 @@ export interface Theme {
   fieldTouched?: string | undefined;
   fieldLarge?: string | undefined;
   fieldSmall?: string | undefined;
+  fieldDisabled?: string | undefined;
 
   input?: string | undefined;
   inputSuccess?: string | undefined;
@@ -16,6 +17,7 @@ export interface Theme {
   inputInline?: string | undefined;
   inputLarge?: string | undefined;
   inputSmall?: string | undefined;
+  inputDisabled?: string | undefined;
 
   label?: string | undefined;
   labelSuccess?: string | undefined;
@@ -24,6 +26,7 @@ export interface Theme {
   labelInline?: string | undefined;
   labelLarge?: string | undefined;
   labelSmall?: string | undefined;
+  labelDisabled?: string | undefined;
 
   help?: string | undefined;
   error?: string | undefined;
@@ -36,6 +39,7 @@ export interface FieldInputProps {
   small?: boolean;
   touched?: boolean;
   success?: boolean;
+  disabled?: boolean;
   error?: React.ReactNode;
   help?: React.ReactNode;
   label?: React.ReactNode;
@@ -92,3 +96,15 @@ export type FileListInputProps = FieldInputProps &
     value?: any;
     onChange: (value: FileList) => void;
   };
+
+export interface RadioGroupOption {
+  value: string;
+  label?: string;
+  disabled?: boolean;
+  key?: any;
+}
+
+export type RadioGroupProps = InputProps<string | null> & {
+  options: Array<RadioGroupOption | string>;
+  name: string;
+};

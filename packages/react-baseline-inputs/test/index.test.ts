@@ -10,6 +10,7 @@ test("exports", () => {
     "FileListInput",
     "FloatInput",
     "IntegerInput",
+    "RadioGroup",
     "Select",
     "TextArea",
     "TextInput",
