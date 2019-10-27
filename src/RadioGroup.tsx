@@ -1,25 +1,23 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { RadioGroupProps, RadioGroupOption } from "./types";
+import { RadioGroupProps, RadioGroupOptionProps } from "./types";
 
-const getRadioProps = (option: RadioGroupOption | string) => {
+const getRadioProps = (option: RadioGroupOptionProps | string) => {
   if (typeof option === "string") {
     return { value: option, key: option, label: option };
   }
-  const { value, label = value, ...props } = option;
-  return { value, label, ...props };
+
+  const { value, label = value, key = value, ...props } = option;
+  return { value, label, key, ...props };
 };
 
 /**
  * A list of HTML `<input type="radio" />` inputs
  */
 export const RadioGroup: React.FC<RadioGroupProps> = ({
-  title,
-  name,
-  options,
-  inline,
   value,
   onChange,
+  options = [],
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -29,14 +27,14 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
   return (
     <>
-      {options.map((option, idx) => {
+      {options.map(option => {
         const meta = getRadioProps(option);
 
         return (
           <Field
             inline
+            key={meta.key}
             label={meta.label}
-            key={meta.key || idx}
             disabled={meta.disabled}
             render={inputProps => (
               <input

@@ -6,9 +6,6 @@ import { RadioGroup, RadioGroupProps } from "../src";
 const setup = (props: Partial<RadioGroupProps> = {}) =>
   render(
     <RadioGroup
-      inline
-      title="Jawn"
-      name="jawn"
       options={[
         { label: "Foo", value: "foo" },
         { label: "Bar", value: "bar" },
