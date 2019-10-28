@@ -36,9 +36,9 @@ export const Select: React.FC<SelectProps> = ({
     <Field
       render={inputProps => (
         <select
-          {...inputProps}
           value={value === null ? "" : value}
           onChange={handleChange}
+          {...inputProps}
         >
           {placeholder && (
             <option disabled value="" key="placeholder">

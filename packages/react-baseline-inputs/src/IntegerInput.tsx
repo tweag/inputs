@@ -25,10 +25,10 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
     <Field
       render={inputProps => (
         <input
-          {...inputProps}
           type="number"
           onChange={handleChange}
           value={value === null ? "" : value}
+          {...inputProps}
         />
       )}
       {...props}

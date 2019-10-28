@@ -28,10 +28,10 @@ export const DateInput: React.FC<DateInputProps> = ({
     <Field
       render={inputProps => (
         <input
-          {...inputProps}
           type="date"
           value={value || ""}
           onChange={handleChange}
+          {...inputProps}
         />
       )}
       {...props}

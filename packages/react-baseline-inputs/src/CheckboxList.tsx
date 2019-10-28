@@ -50,11 +50,11 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             disabled={checkbox.disabled}
             render={inputProps => (
               <input
-                {...inputProps}
                 type="checkbox"
                 checked={values.includes(checkbox.value)}
                 value={checkbox.value}
                 onChange={handleChange}
+                {...inputProps}
               />
             )}
             {...props}
