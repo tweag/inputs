@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "name": "react-baseline-inputs",
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs",
   "description": "React components for creating data-driven forms.",

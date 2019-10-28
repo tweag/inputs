@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.4](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2019-10-28)
+
+
+### Bug Fixes
+
+* add values to the list of dependencies ([8601abb](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/8601abbcbf16c96a8553217b81e5d0d6cf7ee7b0))
+
+
+### Features
+
+* add a prop for `labelPosition` ([90948b5](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/90948b5f879190df675c9d61c605055717aecf93))
+
+
+
+
+
 # [2.0.0-alpha.3](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2019-10-28)
 
 
