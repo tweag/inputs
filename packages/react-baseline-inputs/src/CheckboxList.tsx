@@ -34,7 +34,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
         onChange(remove(values, value));
       }
     },
-    [onChange]
+    [onChange, value]
   );
 
   return (
@@ -44,9 +44,9 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
         return (
           <Field
-            inline
             key={checkbox.key}
             label={checkbox.label}
+            labelPosition="after"
             disabled={checkbox.disabled}
             render={inputProps => (
               <input

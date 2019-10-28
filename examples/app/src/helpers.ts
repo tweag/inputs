@@ -83,7 +83,7 @@ export const selectTheme: Theme = {
 
 export const fileTheme: Theme = {
   ...theme,
-  field: "custom-file mt-1 mb-3",
+  field: "custom-file mb-3",
   input: "custom-file-input",
   label: "custom-file-label"
 };

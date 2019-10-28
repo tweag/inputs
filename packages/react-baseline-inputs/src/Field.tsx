@@ -12,6 +12,7 @@ const generateUniqueId = (() => {
 
 export function Field<T extends FieldProps>({
   label,
+  labelPosition = "before",
   render,
   id = React.useMemo(generateUniqueId, []),
   help,
@@ -92,7 +93,7 @@ export function Field<T extends FieldProps>({
 
   return (
     <Wrapper {...wrapperProps}>
-      {inline && render(inputProps)}
+      {labelPosition === "after" && render(inputProps)}
 
       {label && (
         <label
@@ -105,7 +106,7 @@ export function Field<T extends FieldProps>({
         </label>
       )}
 
-      {!inline && render(inputProps)}
+      {labelPosition === "before" && render(inputProps)}
 
       {error && (
         <span role="alert" className={theme.error} id={errorLabelId}>

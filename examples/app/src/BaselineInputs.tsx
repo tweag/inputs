@@ -106,29 +106,37 @@ export const BaselineInputs = () => {
           </div>
         </div>
 
-        <div className="row mt-2">
+        <div className="row mt-4">
           <div className="col">
-            <CheckboxList
-              options={[
-                { label: "Foo", value: "foo" },
-                { label: "Bar", value: "bar" },
-                { label: "Disabled", value: "buzz", disabled: true }
-              ]}
-              theme={checkboxTheme}
-              {...fields.checkboxList}
-            />
+            <fieldset>
+              <legend>Checkbox List</legend>
+              <CheckboxList
+                name="checkboxList"
+                options={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                  { label: "Disabled", value: "buzz", disabled: true }
+                ]}
+                theme={checkboxTheme}
+                {...fields.checkboxList}
+              />
+            </fieldset>
           </div>
 
           <div className="col">
-            <RadioGroup
-              options={[
-                { label: "Foo", value: "foo" },
-                { label: "Bar", value: "bar" },
-                { label: "Disabled", value: "buzz", disabled: true }
-              ]}
-              theme={checkboxTheme}
-              {...fields.radioGroup}
-            />
+            <fieldset>
+              <legend>Radio Group</legend>
+              <RadioGroup
+                name="radioGroup"
+                options={[
+                  { label: "Foo", value: "foo" },
+                  { label: "Bar", value: "bar" },
+                  { label: "Disabled", value: "buzz", disabled: true }
+                ]}
+                theme={checkboxTheme}
+                {...fields.radioGroup}
+              />
+            </fieldset>
           </div>
         </div>
 
