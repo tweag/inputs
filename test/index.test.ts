@@ -6,15 +6,16 @@ test("exports", () => {
     "CheckboxList",
     "DateInput",
     "DateTimeInput",
+    "defaultTheme",
     "Field",
     "FileInput",
     "FileListInput",
     "FloatInput",
+    "Input",
     "IntegerInput",
     "RadioGroup",
     "Select",
     "TextArea",
-    "TextInput",
     "ToggleButton"
   ]);
 });

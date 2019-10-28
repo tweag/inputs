@@ -68,14 +68,6 @@ export interface FieldProps extends FieldInputProps {
   render: (props: object) => React.ReactNode;
 }
 
-export type TextInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type IntegerInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<number | null>;
-
 export type CheckboxProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
   ValueProps<boolean | null>;
@@ -103,6 +95,14 @@ export type FileListInputProps = FieldInputProps &
   ValueProps<any, FileList>;
 
 export type FloatInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<number | null>;
+
+export type InputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string | null>;
+
+export type IntegerInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
   ValueProps<number | null>;
 
