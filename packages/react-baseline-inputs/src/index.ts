@@ -3,6 +3,7 @@ export * from "./CheckboxList";
 export * from "./Field";
 export * from "./DateInput";
 export * from "./DateTimeInput";
+export * from "./defaultTheme";
 export * from "./FileInput";
 export * from "./FileListInput";
 export * from "./FloatInput";
