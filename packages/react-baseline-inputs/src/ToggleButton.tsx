@@ -14,12 +14,12 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
       inline
       render={inputProps => (
         <button
-          {...inputProps}
           onClick={handleClick}
           type="button"
           role="switch"
           aria-checked={Boolean(value)}
           aria-label={value ? "On" : "Off"}
+          {...inputProps}
         />
       )}
       {...props}

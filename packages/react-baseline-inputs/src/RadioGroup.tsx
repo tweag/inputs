@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { RadioGroupProps, RadioGroupOptionProps } from "./types";
+import { RadioGroupProps, OptionProps } from "./types";
 
-const getRadioProps = (option: RadioGroupOptionProps | string) => {
+const getRadioProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
     return { value: option, key: option, label: option };
   }
@@ -38,11 +38,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             disabled={radio.disabled}
             render={inputProps => (
               <input
-                {...inputProps}
                 type="radio"
                 checked={radio.value === value}
                 value={radio.value}
                 onChange={handleChange}
+                {...inputProps}
               />
             )}
             {...props}

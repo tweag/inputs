@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { CheckboxListProps, CheckboxListOptionProps } from "./types";
+import { CheckboxListProps, OptionProps } from "./types";
 
-const getCheckboxProps = (option: CheckboxListOptionProps | string) => {
+const getCheckboxProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
     return { value: option, key: option, label: option };
   }
@@ -50,11 +50,11 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             disabled={checkbox.disabled}
             render={inputProps => (
               <input
-                {...inputProps}
                 type="checkbox"
                 checked={values.includes(checkbox.value)}
                 value={checkbox.value}
                 onChange={handleChange}
+                {...inputProps}
               />
             )}
             {...props}

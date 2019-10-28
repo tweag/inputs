@@ -1,14 +1,12 @@
 import * as React from "react";
-import { TextInput, TextInputProps } from "../src";
+import { Input, InputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
-const setup = (props: Partial<TextInputProps> = {}) =>
-  render(
-    <TextInput label="Jawn" value="hello" onChange={jest.fn()} {...props} />
-  );
+const setup = (props: Partial<InputProps> = {}) =>
+  render(<Input label="Jawn" value="hello" onChange={jest.fn()} {...props} />);
 
-describe("<TextInput />", () => {
+describe("<Input />", () => {
   itBehavesLikeAField(setup);
 
   test("emits the value on change", () => {

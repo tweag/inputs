@@ -23,10 +23,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       inline
       render={inputProps => (
         <input
-          {...inputProps}
           type="checkbox"
           checked={Boolean(value)}
           onChange={handleChange}
+          {...inputProps}
         />
       )}
       {...props}

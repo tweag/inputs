@@ -32,10 +32,10 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
     <Field
       render={inputProps => (
         <input
-          {...inputProps}
           type="datetime-local"
           value={format(value)}
           onChange={handleChange}
+          {...inputProps}
         />
       )}
       {...props}

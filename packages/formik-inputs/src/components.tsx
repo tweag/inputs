@@ -9,11 +9,11 @@ import {
   FileInput as BFileInput,
   FileListInput as BFileListInput,
   FloatInput as BFloatInput,
+  Input as BInput,
   IntegerInput as BIntegerInput,
   RadioGroup as BRadioGroup,
   Select as BSelect,
   TextArea as BTextArea,
-  TextInput as BTextInput,
   ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
@@ -29,7 +29,7 @@ import {
   RadioGroupProps,
   SelectProps,
   TextAreaProps,
-  TextInputProps,
+  InputProps,
   ToggleButtonProps
 } from "./types";
 
@@ -65,6 +65,10 @@ export const FloatInput: React.FC<FloatInputProps> = props => (
   <BFloatInput {...useField(props)} />
 );
 
+export const Input: React.FC<InputProps> = props => (
+  <BInput {...useField(props)} />
+);
+
 export const IntegerInput: React.FC<IntegerInputProps> = props => (
   <BIntegerInput {...useField(props)} />
 );
@@ -79,10 +83,6 @@ export const Select: React.FC<SelectProps> = props => (
 
 export const TextArea: React.FC<TextAreaProps> = props => (
   <BTextArea {...useField(props)} />
-);
-
-export const TextInput: React.FC<TextInputProps> = props => (
-  <BTextInput {...useField(props)} />
 );
 
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
