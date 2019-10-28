@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextInput /> renders 1`] = `
+exports[`<Input /> renders 1`] = `
 <div
   class="field"
 >
@@ -19,7 +19,7 @@ exports[`<TextInput /> renders 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with a custom ID 1`] = `
+exports[`<Input /> renders with a custom ID 1`] = `
 <div
   class="field"
 >
@@ -38,7 +38,7 @@ exports[`<TextInput /> renders with a custom ID 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with an error 1`] = `
+exports[`<Input /> renders with an error 1`] = `
 <div
   class="field field--erroneous"
 >
@@ -66,7 +66,7 @@ exports[`<TextInput /> renders with an error 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with help 1`] = `
+exports[`<Input /> renders with help 1`] = `
 <div
   class="field"
 >
@@ -90,7 +90,7 @@ exports[`<TextInput /> renders with help 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with inline 1`] = `
+exports[`<Input /> renders with inline 1`] = `
 <div
   class="field field--inline"
 >
@@ -109,7 +109,7 @@ exports[`<TextInput /> renders with inline 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with large 1`] = `
+exports[`<Input /> renders with large 1`] = `
 <div
   class="field field--large"
 >
@@ -128,7 +128,7 @@ exports[`<TextInput /> renders with large 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with small 1`] = `
+exports[`<Input /> renders with small 1`] = `
 <div
   class="field field--small"
 >
@@ -147,7 +147,7 @@ exports[`<TextInput /> renders with small 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with success 1`] = `
+exports[`<Input /> renders with success 1`] = `
 <div
   class="field field--success"
 >
@@ -166,7 +166,7 @@ exports[`<TextInput /> renders with success 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders with touched 1`] = `
+exports[`<Input /> renders with touched 1`] = `
 <div
   class="field field--touched field--success"
 >
@@ -185,7 +185,7 @@ exports[`<TextInput /> renders with touched 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders without a label 1`] = `
+exports[`<Input /> renders without a label 1`] = `
 <div
   class="field"
 >
@@ -198,7 +198,7 @@ exports[`<TextInput /> renders without a label 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> renders without a wrapper 1`] = `
+exports[`<Input /> renders without a wrapper 1`] = `
 <label
   class="field__label"
   for="field_3"

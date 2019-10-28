@@ -16,7 +16,7 @@ import {
   FileInput,
   FileListInput,
   FloatInput,
-  TextInput,
+  Input,
   IntegerInput,
   RadioGroup,
   Select,
@@ -39,12 +39,7 @@ export const BaselineInputs = () => {
       >
         <div className="row">
           <div className="col">
-            <TextInput
-              {...fields.text}
-              label="Text"
-              name="text"
-              theme={theme}
-            />
+            <Input {...fields.text} label="Text" name="text" theme={theme} />
           </div>
 
           <div className="col">

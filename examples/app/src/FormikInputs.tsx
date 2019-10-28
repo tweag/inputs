@@ -17,7 +17,7 @@ import {
   FileInput,
   FileListInput,
   FloatInput,
-  TextInput,
+  Input,
   IntegerInput,
   RadioGroup,
   Select,
@@ -37,7 +37,7 @@ export const FormikInputs = () => {
         <Form>
           <div className="row">
             <div className="col">
-              <TextInput
+              <Input
                 name="text"
                 label="Text"
                 theme={theme}

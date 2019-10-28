@@ -10,11 +10,11 @@ test("exports", () => {
     "FileInput",
     "FileListInput",
     "FloatInput",
+    "Input",
     "IntegerInput",
     "RadioGroup",
     "Select",
     "TextArea",
-    "TextInput",
     "ToggleButton",
     "useField"
   ]);
