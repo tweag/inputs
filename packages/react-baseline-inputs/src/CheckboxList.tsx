@@ -34,7 +34,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
         onChange(remove(values, value));
       }
     },
-    [onChange]
+    [onChange, value]
   );
 
   return (
