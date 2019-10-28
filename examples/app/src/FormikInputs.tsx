@@ -103,29 +103,35 @@ export const FormikInputs = () => {
             </div>
           </div>
 
-          <div className="row mt-2">
+          <div className="row mt-4">
             <div className="col">
-              <CheckboxList
-                name="checkboxList"
-                options={[
-                  { label: "Foo", value: "foo" },
-                  { label: "Bar", value: "bar" },
-                  { label: "Disabled", value: "buzz", disabled: true }
-                ]}
-                theme={checkboxTheme}
-              />
+              <fieldset>
+                <legend>Checkbox List</legend>
+                <CheckboxList
+                  name="checkboxList"
+                  options={[
+                    { label: "Foo", value: "foo" },
+                    { label: "Bar", value: "bar" },
+                    { label: "Disabled", value: "buzz", disabled: true }
+                  ]}
+                  theme={checkboxTheme}
+                />
+              </fieldset>
             </div>
 
             <div className="col">
-              <RadioGroup
-                name="radioGroup"
-                options={[
-                  { label: "Foo", value: "foo" },
-                  { label: "Bar", value: "bar" },
-                  { label: "Disabled", value: "buzz", disabled: true }
-                ]}
-                theme={checkboxTheme}
-              />
+              <fieldset>
+                <legend>Checkbox List</legend>
+                <RadioGroup
+                  name="radioGroup"
+                  options={[
+                    { label: "Foo", value: "foo" },
+                    { label: "Bar", value: "bar" },
+                    { label: "Disabled", value: "buzz", disabled: true }
+                  ]}
+                  theme={checkboxTheme}
+                />
+              </fieldset>
             </div>
           </div>
 
