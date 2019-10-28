@@ -6,7 +6,6 @@ test("exports", () => {
     "CheckboxList",
     "DateInput",
     "DateTimeInput",
-    "defaultTheme",
     "Field",
     "FileInput",
     "FileListInput",
@@ -16,6 +15,7 @@ test("exports", () => {
     "RadioGroup",
     "Select",
     "TextArea",
-    "ToggleButton"
+    "ToggleButton",
+    "defaultTheme"
   ]);
 });
