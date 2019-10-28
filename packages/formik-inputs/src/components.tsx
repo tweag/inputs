@@ -14,22 +14,24 @@ import {
   RadioGroup as BRadioGroup,
   Select as BSelect,
   TextArea as BTextArea,
+  MaskedInput as BMaskedInput,
   ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
-  CheckboxProps,
   CheckboxListProps,
+  CheckboxProps,
   DateInputProps,
   DateTimeInputProps,
   FieldProps,
   FileInputProps,
   FileListInputProps,
   FloatInputProps,
+  InputProps,
   IntegerInputProps,
+  MaskedInputProps,
   RadioGroupProps,
   SelectProps,
   TextAreaProps,
-  InputProps,
   ToggleButtonProps
 } from "./types";
 
@@ -83,6 +85,10 @@ export const Select: React.FC<SelectProps> = props => (
 
 export const TextArea: React.FC<TextAreaProps> = props => (
   <BTextArea {...useField(props)} />
+);
+
+export const MaskedInput: React.FC<MaskedInputProps> = props => (
+  <BMaskedInput {...useField(props)} />
 );
 
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (

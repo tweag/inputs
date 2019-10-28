@@ -7,7 +7,8 @@ import {
   selectTheme,
   checkboxTheme,
   notBlank,
-  toggleTheme
+  toggleTheme,
+  telephoneMask
 } from "./helpers";
 import {
   Checkbox,
@@ -19,6 +20,7 @@ import {
   FloatInput,
   Input,
   IntegerInput,
+  MaskedInput,
   RadioGroup,
   Select,
   TextArea,
@@ -73,7 +75,17 @@ export const FormikInputs = () => {
             </div>
           </div>
 
-          <div className="row mt-2">
+          <div className="row">
+            <div className="col">
+              <MaskedInput
+                label="Masked"
+                name="masked"
+                showMask
+                mask={telephoneMask}
+                theme={theme}
+              />
+            </div>
+
             <div className="col">
               <FileInput label="File" name="file" theme={fileTheme} />
             </div>

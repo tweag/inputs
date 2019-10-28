@@ -13,6 +13,7 @@ export interface Values {
   radioGroup: string | null;
   select: string | null;
   text: string | null;
+  masked: string | null;
   textarea: string | null;
   toggle: boolean | null;
 }
@@ -29,6 +30,7 @@ export const initialValues: Values = {
   radioGroup: null,
   select: null,
   text: null,
+  masked: null,
   textarea: null,
   toggle: null
 };
@@ -102,3 +104,20 @@ export const toggleTheme: Theme = {
   input: "custom-control-input",
   label: "custom-control-label"
 };
+
+export const telephoneMask = [
+  "(",
+  /[1-9]/,
+  /\d/,
+  /\d/,
+  ")",
+  " ",
+  /\d/,
+  /\d/,
+  /\d/,
+  "-",
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/
+];

@@ -12,5 +12,9 @@
   ],
   "peerDependencies": {
     "react": ">=16.8"
+  },
+  "dependencies": {
+    "react-text-mask": "^5.4.3",
+    "@types/react-text-mask": "^5.4.6"
   }
 }
