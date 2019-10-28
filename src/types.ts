@@ -47,74 +47,82 @@ export interface FieldInputProps {
   theme?: Theme;
 }
 
-export interface ValueProps<V> {
-  value: V;
-  onChange: (value: V) => void;
+export interface OptionProps {
+  value: string;
+  label?: string;
+  key?: any;
+  disabled?: boolean;
 }
 
 type HTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  "value" | "onChange" | "label" | "multiple"
+  "value" | "onChange" | "label" | "multiple" | "render"
 >;
-type InputProps<V, E = HTMLInputElement> = FieldInputProps &
-  HTMLProps<E> &
-  ValueProps<V>;
+
+export interface ValueProps<V, C = V> {
+  value: V;
+  onChange: (value: C) => void;
+}
 
 export interface FieldProps extends FieldInputProps {
   render: (props: object) => React.ReactNode;
 }
 
-export type TextInputProps = InputProps<string | null>;
-export type IntegerInputProps = InputProps<number | null>;
-export type CheckboxProps = InputProps<boolean | null>;
-export type DateInputProps = InputProps<string | null>;
-export type DateTimeInputProps = InputProps<string | null>;
-export type FloatInputProps = InputProps<number | null>;
-export type TextAreaProps = InputProps<string | null, HTMLTextAreaElement>;
-export type ToggleButtonProps = InputProps<boolean | null, HTMLButtonElement>;
+export type TextInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string | null>;
 
-export interface SelectOptionProps extends React.HTMLProps<HTMLOptionElement> {
-  value: string;
-  label: string;
-  key?: any;
-}
+export type IntegerInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<number | null>;
 
-export interface SelectProps
-  extends InputProps<string | null, HTMLSelectElement> {
-  placeholder?: string;
-  options?: Array<SelectOptionProps | string>;
-}
+export type CheckboxProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<boolean | null>;
+
+export type CheckboxListProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string[] | null> & {
+    options?: Array<OptionProps | string>;
+  };
+
+export type DateInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string | null>;
+
+export type DateTimeInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string | null>;
 
 export type FileInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: File | null) => void;
-  };
+  HTMLProps<HTMLInputElement> &
+  ValueProps<any, File | null>;
 
 export type FileListInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: FileList) => void;
+  HTMLProps<HTMLInputElement> &
+  ValueProps<any, FileList>;
+
+export type FloatInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<number | null>;
+
+export type RadioGroupProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
+  ValueProps<string | null> & {
+    options?: Array<OptionProps | string>;
   };
 
-export interface RadioGroupOptionProps {
-  value: string;
-  label?: string;
-  disabled?: boolean;
-  key?: any;
-}
+export type SelectProps = FieldInputProps &
+  HTMLProps<HTMLSelectElement> &
+  ValueProps<string | null> & {
+    placeholder?: string;
+    options: Array<OptionProps | string>;
+  };
 
-export type RadioGroupProps = InputProps<string | null> & {
-  options?: Array<RadioGroupOptionProps | string>;
-};
+export type TextAreaProps = FieldInputProps &
+  HTMLProps<HTMLTextAreaElement> &
+  ValueProps<string | null>;
 
-export interface CheckboxListOptionProps {
-  value: string;
-  label?: string;
-  disabled?: boolean;
-  key?: any;
-}
-
-export type CheckboxListProps = InputProps<string[] | null> & {
-  options?: Array<CheckboxListOptionProps | string>;
-};
+export type ToggleButtonProps = FieldInputProps &
+  HTMLProps<HTMLButtonElement> &
+  ValueProps<boolean | null>;
