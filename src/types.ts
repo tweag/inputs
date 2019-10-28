@@ -1,4 +1,5 @@
 import * as React from "react";
+import { MaskedInputProps as TextMaskProps } from "react-text-mask";
 
 export interface Theme {
   field?: string | undefined;
@@ -62,8 +63,9 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-type HTMLProps<T> = Omit<
-  React.HTMLProps<T>,
+type HTMLProps<T> = OmitConflicts<React.HTMLProps<T>>;
+type OmitConflicts<T> = Omit<
+  T,
   "value" | "onChange" | "label" | "multiple" | "render"
 >;
 
@@ -117,6 +119,10 @@ export type InputProps = FieldInputProps &
 export type IntegerInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
   ValueProps<number | null>;
+
+export type MaskedInputProps = FieldInputProps &
+  OmitConflicts<TextMaskProps> &
+  ValueProps<string | null>;
 
 export type RadioGroupProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
