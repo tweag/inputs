@@ -1,17 +1,15 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { SelectProps, SelectOptionProps } from "./types";
+import { SelectProps, OptionProps } from "./types";
 
-const getOptionProps = ({
-  label: _label,
-  value,
-  key = value,
-  ...option
-}: SelectOptionProps) => ({
-  key,
-  value,
-  ...option
-});
+const getOptionProps = (option: OptionProps | string) => {
+  if (typeof option === "string") {
+    return { value: option, key: option, children: option };
+  }
+
+  const { value, label = value, key = value, ...props } = option;
+  return { value, key, children: label, ...props };
+};
 
 /**
  * An HTML `<select />`, but with the following benefits:
@@ -46,15 +44,9 @@ export const Select: React.FC<SelectProps> = ({
             </option>
           )}
 
-          {options.map(option =>
-            typeof option === "string" ? (
-              <option value={option} key={option}>
-                {option}
-              </option>
-            ) : (
-              <option {...getOptionProps(option)}>{option.label}</option>
-            )
-          )}
+          {options.map(option => (
+            <option {...getOptionProps(option)} />
+          ))}
         </select>
       )}
       {...props}
