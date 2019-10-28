@@ -1,9 +1,8 @@
 export * from "./Checkbox";
 export * from "./CheckboxList";
-export * from "./Field";
 export * from "./DateInput";
 export * from "./DateTimeInput";
-export * from "./defaultTheme";
+export * from "./Field";
 export * from "./FileInput";
 export * from "./FileListInput";
 export * from "./FloatInput";
@@ -13,4 +12,5 @@ export * from "./RadioGroup";
 export * from "./Select";
 export * from "./TextArea";
 export * from "./ToggleButton";
+export * from "./defaultTheme";
 export * from "./types";

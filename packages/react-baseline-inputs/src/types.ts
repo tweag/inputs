@@ -87,12 +87,16 @@ export type DateTimeInputProps = FieldInputProps &
   ValueProps<string | null>;
 
 export type FileInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<any, File | null>;
+  HTMLProps<HTMLInputElement> & {
+    value?: any;
+    onChange: (value: File | null) => void;
+  };
 
 export type FileListInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<any, FileList>;
+  HTMLProps<HTMLInputElement> & {
+    value?: any;
+    onChange: (value: FileList) => void;
+  };
 
 export type FloatInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
@@ -116,7 +120,7 @@ export type SelectProps = FieldInputProps &
   HTMLProps<HTMLSelectElement> &
   ValueProps<string | null> & {
     placeholder?: string;
-    options: Array<OptionProps | string>;
+    options?: Array<OptionProps | string>;
   };
 
 export type TextAreaProps = FieldInputProps &
