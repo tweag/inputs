@@ -2,6 +2,6 @@
 .DS_Store
 node_modules
 tsconfig.tsbuildinfo
-packages/*/dist/
+packages/*/pkg/
 examples/*/.cache/
 examples/*/dist/

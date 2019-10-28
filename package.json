@@ -26,16 +26,18 @@
       "<rootDir>/packages/**/*.test.{ts,tsx}"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/examples/"
+      "<rootDir>/examples/",
+      "<rootDir>/packages/.*/pkg/"
     ]
   },
   "scripts": {
-    "release": "yarn clean && yarn build && lerna publish",
-    "postinstall": "yarn build",
+    "release": "lerna run clean && lerna run build && lerna publish --contents pkg",
+    "postinstall": "lerna run build",
     "example": "yarn --cwd examples/app start",
-    "start": "rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js",
-    "clean": "rm -rf packages/*/dist",
+    "start": "chokidar 'packages/*/src/**/*' -c 'lerna run build'",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "typecheck": "lerna run typecheck",
     "test": "TZ=America/New_York jest",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'"
@@ -43,11 +45,16 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.7.1",
+    "@pika/plugin-build-web": "^0.7.1",
+    "@pika/plugin-ts-standard-pkg": "^0.7.1",
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.15",
     "@types/jest-axe": "^3.2.1",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "chokidar-cli": "^2.0.0",
     "formik": "^2.0.2",
     "husky": "^3.0.2",
     "jest": "^24.8.0",
@@ -57,8 +64,6 @@
     "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.9.0",
-    "rollup": "^1.25.2",
-    "rollup-plugin-typescript2": "^0.24.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }

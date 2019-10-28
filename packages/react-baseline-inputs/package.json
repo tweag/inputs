@@ -4,12 +4,27 @@
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs",
   "description": "React components for creating data-driven forms.",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "pkg/dist-node/index.js",
+  "module": "pkg/dist-web/index.js",
+  "types": "pkg/dist-types/index.d.ts",
+  "scripts": {
+    "build": "pika build",
+    "clean": "rm -rf pkg",
+    "typecheck": "tsc --noEmit"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
   "peerDependencies": {
     "react": ">=16.8"
   }
