@@ -1,4 +1,5 @@
-import * as path from "path";
+import resolve from "rollup-plugin-node-resolve";
+import sourcemaps from "rollup-plugin-sourcemaps";
 import typescript from "rollup-plugin-typescript2";
 
 const packages = ["react-baseline-inputs", "formik-inputs"];
@@ -25,10 +26,12 @@ export default packages.map(name => {
       ...Object.keys(pkg.peerDependencies || {})
     ],
     plugins: [
+      resolve(),
       typescript({
         typescript: require("typescript"),
         tsconfig: `./packages/${name}/tsconfig.json`
-      })
+      }),
+      sourcemaps()
     ]
   };
 });
