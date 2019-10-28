@@ -38,11 +38,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             disabled={radio.disabled}
             render={inputProps => (
               <input
-                {...inputProps}
                 type="radio"
                 checked={radio.value === value}
                 value={radio.value}
                 onChange={handleChange}
+                {...inputProps}
               />
             )}
             {...props}

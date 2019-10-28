@@ -21,7 +21,7 @@ export const FileListInput: React.FC<FileListInputProps> = ({
   return (
     <Field
       render={inputProps => (
-        <input {...inputProps} type="file" onChange={handleChange} multiple />
+        <input type="file" onChange={handleChange} multiple {...inputProps} />
       )}
       {...props}
     />

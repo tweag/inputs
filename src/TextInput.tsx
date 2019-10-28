@@ -23,10 +23,10 @@ export const TextInput: React.FC<TextInputProps> = ({
     <Field
       render={inputProps => (
         <input
-          {...inputProps}
           type="text"
           value={value || ""}
           onChange={handleChange}
+          {...inputProps}
         />
       )}
       {...props}

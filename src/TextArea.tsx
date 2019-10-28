@@ -21,7 +21,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   return (
     <Field
       render={inputProps => (
-        <textarea {...inputProps} value={value || ""} onChange={handleChange} />
+        <textarea value={value || ""} onChange={handleChange} {...inputProps} />
       )}
       {...props}
     />

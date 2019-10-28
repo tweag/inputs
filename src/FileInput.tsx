@@ -21,7 +21,7 @@ export const FileInput: React.FC<FileInputProps> = ({
   return (
     <Field
       render={inputProps => (
-        <input {...inputProps} type="file" onChange={handleChange} />
+        <input type="file" onChange={handleChange} {...inputProps} />
       )}
       {...props}
     />
