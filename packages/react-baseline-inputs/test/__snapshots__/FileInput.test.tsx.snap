@@ -90,17 +90,17 @@ exports[`<FileInput /> renders with inline 1`] = `
 <div
   class="field field--inline"
 >
-  <input
-    class="field__input field__input--inline"
-    id="field_10"
-    type="file"
-  />
   <label
     class="field__label field__label--inline"
     for="field_10"
   >
     Jawn
   </label>
+  <input
+    class="field__input field__input--inline"
+    id="field_10"
+    type="file"
+  />
 </div>
 `;
 
