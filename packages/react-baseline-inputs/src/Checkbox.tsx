@@ -20,7 +20,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <Field
-      inline
+      labelPosition="after"
       render={inputProps => (
         <input
           type="checkbox"
