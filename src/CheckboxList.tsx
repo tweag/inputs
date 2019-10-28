@@ -44,9 +44,9 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
         return (
           <Field
-            inline
             key={checkbox.key}
             label={checkbox.label}
+            labelPosition="after"
             disabled={checkbox.disabled}
             render={inputProps => (
               <input

@@ -43,6 +43,7 @@ export interface FieldInputProps {
   error?: React.ReactNode;
   help?: React.ReactNode;
   label?: React.ReactNode;
+  labelPosition?: "before" | "after";
   wrapper?: boolean;
   theme?: Theme;
 }

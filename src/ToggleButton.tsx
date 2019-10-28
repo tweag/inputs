@@ -11,7 +11,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
 
   return (
     <Field
-      inline
+      labelPosition="after"
       render={inputProps => (
         <button
           onClick={handleClick}

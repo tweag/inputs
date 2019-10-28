@@ -32,9 +32,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
         return (
           <Field
-            inline
             key={radio.key}
             label={radio.label}
+            labelPosition="after"
             disabled={radio.disabled}
             render={inputProps => (
               <input
