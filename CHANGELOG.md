@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.3](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* export the default theme ([0845b3b](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/0845b3bf830019a6eba8435c7ac059823669c69f))
+* make sure props override ([6fc80e1](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/6fc80e1bdaa51d9b4431fabe3a4b3929311c8e62))
+
+
+
+
+
 # [2.0.0-alpha.2](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2019-10-27)
 
 
