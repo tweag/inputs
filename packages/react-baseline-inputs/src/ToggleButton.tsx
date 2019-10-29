@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import * as React from "react";
 import { Field } from "./Field";
 import { ToggleButtonProps } from "./types";
 
@@ -7,7 +7,10 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
   onChange,
   ...props
 }) => {
-  const handleClick = useCallback(() => onChange(!value), [onChange, value]);
+  const handleClick = React.useCallback(() => onChange(!value), [
+    onChange,
+    value
+  ]);
 
   return (
     <Field

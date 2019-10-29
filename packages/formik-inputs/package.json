@@ -4,12 +4,20 @@
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",
   "license": "MIT",
+  "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "umd:main": "dist/index.umd.js",
   "files": [
+    "src",
     "dist"
   ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "microbundle --format es,cjs,umd --jsx React.createElement"
+  },
   "peerDependencies": {
     "formik": "^2.0.2",
     "react": ">=16.8"
