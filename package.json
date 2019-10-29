@@ -30,12 +30,12 @@
     ]
   },
   "scripts": {
-    "release": "yarn clean && yarn build && lerna publish",
-    "postinstall": "yarn build",
+    "release": "lerna run clean && lerna run build && lerna publish",
+    "postinstall": "lerna run build",
     "example": "yarn --cwd examples/app start",
-    "start": "rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js",
-    "clean": "rm -rf packages/*/dist",
+    "start": "lerna run --parallel build -- --watch",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
     "test": "TZ=America/New_York jest",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '**/*.{js,ts,tsx}'"
@@ -53,14 +53,11 @@
     "jest": "^24.8.0",
     "jest-axe": "^3.2.0",
     "lerna": "^3.16.4",
+    "microbundle": "^0.12.0-next.6",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.9.0",
-    "rollup": "^1.25.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.24.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }

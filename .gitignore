@@ -5,3 +5,4 @@ tsconfig.tsbuildinfo
 packages/*/dist/
 examples/*/.cache/
 examples/*/dist/
+.rts2_cache_cjs

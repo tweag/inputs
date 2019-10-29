@@ -26,7 +26,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   );
 
   return (
-    <>
+    <React.Fragment>
       {options.map(option => {
         const radio = getRadioProps(option);
 
@@ -49,6 +49,6 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           />
         );
       })}
-    </>
+    </React.Fragment>
   );
 };
