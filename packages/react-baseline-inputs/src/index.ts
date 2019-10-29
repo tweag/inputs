@@ -13,5 +13,5 @@ export * from "./RadioGroup";
 export * from "./Select";
 export * from "./TextArea";
 export * from "./ToggleButton";
-export * from "./defaultTheme";
+export * from "./theme";
 export * from "./types";

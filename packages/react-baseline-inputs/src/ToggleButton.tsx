@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { ToggleButtonProps } from "./types";
+import { useTheme } from "./theme";
 
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
   value,
   onChange,
+  theme = useTheme("toggleButton"),
   ...props
 }) => {
   const handleClick = React.useCallback(() => onChange(!value), [
@@ -14,6 +16,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
 
   return (
     <Field
+      theme={theme}
       labelPosition="after"
       render={inputProps => (
         <button

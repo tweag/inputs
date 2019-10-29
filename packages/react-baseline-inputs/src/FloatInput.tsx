@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { FloatInputProps } from "./types";
+import { useTheme } from "./theme";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -11,6 +12,7 @@ import { FloatInputProps } from "./types";
 export const FloatInput: React.FC<FloatInputProps> = ({
   value,
   onChange,
+  theme = useTheme("floatInput"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -23,6 +25,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input
           type="number"

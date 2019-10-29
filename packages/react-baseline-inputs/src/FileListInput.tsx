@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { FileListInputProps } from "./types";
+import { useTheme } from "./theme";
 
 /**
  * An HTML `<input type="file" />`, but with the following benefits:
@@ -11,6 +12,7 @@ import { FileListInputProps } from "./types";
 export const FileListInput: React.FC<FileListInputProps> = ({
   onChange,
   value: _value,
+  theme = useTheme("fileInput"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -20,6 +22,7 @@ export const FileListInput: React.FC<FileListInputProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input type="file" onChange={handleChange} multiple {...inputProps} />
       )}
