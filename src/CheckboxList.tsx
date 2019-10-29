@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { CheckboxListProps, OptionProps } from "./types";
+import { useTheme } from "./theme";
 
 const getCheckboxProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -21,6 +22,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   value,
   onChange,
   options = [],
+  theme = useTheme("checkbox"),
   ...props
 }) => {
   const values = value || [];
@@ -44,6 +46,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
         return (
           <Field
+            theme={theme}
             key={checkbox.key}
             label={checkbox.label}
             labelPosition="after"

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { SelectProps, OptionProps } from "./types";
+import { useTheme } from "./theme";
 
 const getOptionProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -23,6 +24,7 @@ export const Select: React.FC<SelectProps> = ({
   options = [],
   placeholder,
   value,
+  theme = useTheme("select"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -32,6 +34,7 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <select
           value={value === null ? "" : value}
