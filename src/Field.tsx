@@ -10,6 +10,17 @@ const generateUniqueId = (() => {
   };
 })();
 
+// This is ugly, but performance is important here.
+const join = (names: Array<string | undefined>) => {
+  let name = "";
+  for (let i = 0; i < names.length; i++) {
+    if (names[i]) {
+      name += name ? ` ${names[i]}` : names[i];
+    }
+  }
+  return name;
+};
+
 export function Field<T extends FieldProps>({
   label,
   labelPosition = "before",
@@ -30,11 +41,15 @@ export function Field<T extends FieldProps>({
   const fieldClassNames = [theme.field];
   const inputClassNames = [theme.input];
   const labelClassNames = [theme.label];
+  const errorClassNames = [theme.error];
+  const helpClassNames = [theme.help];
 
   if (inline) {
     fieldClassNames.push(theme.fieldInline);
     inputClassNames.push(theme.inputInline);
     labelClassNames.push(theme.labelInline);
+    errorClassNames.push(theme.errorInline);
+    helpClassNames.push(theme.helpInline);
   }
 
   if (touched) {
@@ -59,12 +74,16 @@ export function Field<T extends FieldProps>({
     fieldClassNames.push(theme.fieldLarge);
     inputClassNames.push(theme.inputLarge);
     labelClassNames.push(theme.labelLarge);
+    errorClassNames.push(theme.errorLarge);
+    helpClassNames.push(theme.helpLarge);
   }
 
   if (small) {
     fieldClassNames.push(theme.fieldSmall);
     inputClassNames.push(theme.inputSmall);
     labelClassNames.push(theme.labelSmall);
+    errorClassNames.push(theme.errorSmall);
+    helpClassNames.push(theme.helpSmall);
   }
 
   if (disabled) {
@@ -73,20 +92,17 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(theme.labelDisabled);
   }
 
-  const fieldClassName = fieldClassNames.join(" ").trim();
-  const inputClassName = inputClassNames.join(" ").trim();
-  const labelClassName = labelClassNames.join(" ").trim();
-  const errorLabelId = `${id}_error`;
   const labelId = `${id}_label`;
+  const errorLabelId = `${id}_error`;
 
   const [Wrapper, wrapperProps] = wrapper
-    ? ["div", { className: fieldClassName }]
+    ? ["div", { className: join(fieldClassNames) }]
     : [React.Fragment, {}];
 
   const inputProps = {
     id,
     disabled,
-    className: inputClassName,
+    className: join(inputClassNames),
     "aria-labelledby": error ? `${labelId} ${errorLabelId}` : undefined,
     ...props
   };
@@ -97,19 +113,19 @@ export function Field<T extends FieldProps>({
 
       {label && (
         <label
-          className={labelClassName}
+          className={join(labelClassNames)}
           htmlFor={id}
           id={error ? labelId : undefined}
         >
           {label}
-          {help && <span className={theme.help}>{help}</span>}
+          {help && <span className={join(helpClassNames)}>{help}</span>}
         </label>
       )}
 
       {labelPosition === "before" && render(inputProps)}
 
       {error && (
-        <span role="alert" className={theme.error} id={errorLabelId}>
+        <span role="alert" className={join(errorClassNames)} id={errorLabelId}>
           {error}
         </span>
       )}

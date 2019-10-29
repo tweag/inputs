@@ -29,5 +29,12 @@ export const defaultTheme: Theme = {
   labelDisabled: "field__label--disabled",
 
   help: "field__help",
-  error: "field__error"
+  helpInline: "field__help--inline",
+  helpSmall: "field__help--small",
+  helpLarge: "field__help--large",
+
+  error: "field__error",
+  errorInline: "field__error--inline",
+  errorSmall: "field__error--small",
+  errorLarge: "field__error--large"
 };
