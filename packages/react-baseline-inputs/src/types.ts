@@ -29,7 +29,14 @@ export interface Theme {
   labelDisabled?: string | undefined;
 
   help?: string | undefined;
+  helpInline?: string | undefined;
+  helpSmall?: string | undefined;
+  helpLarge?: string | undefined;
+
   error?: string | undefined;
+  errorInline?: string | undefined;
+  errorSmall?: string | undefined;
+  errorLarge?: string | undefined;
 }
 
 export interface FieldInputProps {
