@@ -38,7 +38,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   );
 
   return (
-    <>
+    <React.Fragment>
       {options.map(option => {
         const checkbox = getCheckboxProps(option);
 
@@ -61,6 +61,6 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
           />
         );
       })}
-    </>
+    </React.Fragment>
   );
 };
