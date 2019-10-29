@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { CheckboxProps } from "./types";
+import { useTheme } from "./config";
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -11,6 +12,7 @@ import { CheckboxProps } from "./types";
 export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   value,
+  theme = useTheme("checkbox"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -20,6 +22,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <Field
+      theme={theme}
       labelPosition="after"
       render={inputProps => (
         <input

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { RadioGroupProps, OptionProps } from "./types";
+import { useTheme } from "./config";
 
 const getRadioProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -17,6 +18,7 @@ const getRadioProps = (option: OptionProps | string) => {
 export const RadioGroup: React.FC<RadioGroupProps> = ({
   value,
   onChange,
+  theme = useTheme("radioGroup"),
   options = [],
   ...props
 }) => {
@@ -32,6 +34,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
         return (
           <Field
+            theme={theme}
             key={radio.key}
             label={radio.label}
             labelPosition="after"

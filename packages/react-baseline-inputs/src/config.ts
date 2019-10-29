@@ -1,6 +1,7 @@
-import { Theme } from "./types";
+import { Config } from "./types";
+import { useContext, createContext } from "react";
 
-export const defaultTheme: Theme = {
+export const defaultTheme = {
   field: "field",
   fieldInline: "field--inline",
   fieldSuccess: "field--success",
@@ -37,4 +38,27 @@ export const defaultTheme: Theme = {
   errorInline: "field__error--inline",
   errorSmall: "field__error--small",
   errorLarge: "field__error--large"
+};
+
+export const defaultConfig: Config = {
+  input: defaultTheme,
+  checkbox: defaultTheme,
+  dateInput: defaultTheme,
+  dateTimeInput: defaultTheme,
+  field: defaultTheme,
+  fileInput: defaultTheme,
+  floatInput: defaultTheme,
+  integerInput: defaultTheme,
+  radioGroup: defaultTheme,
+  select: defaultTheme,
+  textarea: defaultTheme,
+  toggleButton: defaultTheme
+};
+
+export const ThemeContext = createContext(defaultConfig);
+export const ThemeProvider = ThemeContext.Provider;
+
+export const useTheme = (element: keyof Config) => {
+  const config = useContext(ThemeContext);
+  return config[element];
 };

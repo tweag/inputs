@@ -16,6 +16,7 @@ test("exports", () => {
     "RadioGroup",
     "Select",
     "TextArea",
+    "ThemeProvider",
     "ToggleButton",
     "useField"
   ]);

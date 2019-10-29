@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { DateInputProps } from "./types";
+import { useTheme } from "./config";
 
 const parse = (value: string): string | null => {
   const date = new Date(value);
@@ -17,6 +18,7 @@ const parse = (value: string): string | null => {
 export const DateInput: React.FC<DateInputProps> = ({
   value,
   onChange,
+  theme = useTheme("dateInput"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -26,6 +28,7 @@ export const DateInput: React.FC<DateInputProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input
           type="date"

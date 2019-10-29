@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { DateTimeInputProps } from "./types";
+import { useTheme } from "./config";
 
 const format = (value: string | null): string => {
   return value ? value.substring(0, 16) : "";
@@ -21,6 +22,7 @@ const parse = (value: string): string | null => {
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,
   onChange,
+  theme = useTheme("dateTimeInput"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -30,6 +32,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input
           type="datetime-local"

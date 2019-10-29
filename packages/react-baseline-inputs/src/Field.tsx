@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FieldProps } from "./types";
-import { defaultTheme } from "./defaultTheme";
+import { useTheme } from "./config";
 
 const generateUniqueId = (() => {
   let previousId = 0;
@@ -34,7 +34,7 @@ export function Field<T extends FieldProps>({
   large,
   small,
   wrapper = true,
-  theme = defaultTheme,
+  theme = useTheme("field"),
   disabled,
   ...props
 }: T) {

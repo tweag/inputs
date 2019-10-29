@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { TextAreaProps } from "./types";
+import { useTheme } from "./config";
 
 /**
  * An HTML `<textarea />`, but with the following benefits:
@@ -11,6 +12,7 @@ import { TextAreaProps } from "./types";
 export const TextArea: React.FC<TextAreaProps> = ({
   value,
   onChange,
+  theme = useTheme("textarea"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -20,6 +22,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <textarea value={value || ""} onChange={handleChange} {...inputProps} />
       )}

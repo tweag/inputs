@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { InputProps } from "./types";
+import { useTheme } from "./config";
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -9,7 +10,12 @@ import { InputProps } from "./types";
  *   * It defaults to `type="text"`.
  *   * It emits a `null` value to the `onChange` handler when the input is empty.
  */
-export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
+export const Input: React.FC<InputProps> = ({
+  value,
+  onChange,
+  theme = useTheme("input"),
+  ...props
+}) => {
   const handleChange = React.useCallback(
     event => onChange(event.target.value || null),
     [onChange]
@@ -17,6 +23,7 @@ export const Input: React.FC<InputProps> = ({ value, onChange, ...props }) => {
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input
           type="text"

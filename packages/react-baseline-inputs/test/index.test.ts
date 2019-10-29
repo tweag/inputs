@@ -16,7 +16,11 @@ test("exports", () => {
     "RadioGroup",
     "Select",
     "TextArea",
+    "ThemeContext",
+    "ThemeProvider",
     "ToggleButton",
-    "defaultTheme"
+    "defaultConfig",
+    "defaultTheme",
+    "useTheme"
   ]);
 });

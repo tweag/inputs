@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Theme } from "react-baseline-inputs";
+import { Theme, defaultConfig, defaultTheme } from "react-baseline-inputs";
 
 export interface Values {
   checkbox: boolean | null;
@@ -67,7 +67,8 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
   return [values, fields];
 };
 
-export const theme: Theme = {
+export const fieldConfig = {
+  ...defaultTheme,
   field: "form-group",
   input: "form-control",
   inputSuccess: "is-valid",
@@ -78,31 +79,46 @@ export const theme: Theme = {
   help: "form-text text-muted"
 };
 
-export const selectTheme: Theme = {
-  ...theme,
-  input: "custom-select"
-};
-
-export const fileTheme: Theme = {
-  ...theme,
-  field: "custom-file mb-3",
-  input: "custom-file-input",
-  label: "custom-file-label"
-};
-
-export const checkboxTheme: Theme = {
-  ...theme,
+export const checkboxConfig = {
+  ...defaultTheme,
   field: "form-check",
   fieldInline: "form-check-inline",
   input: "form-check-input",
   label: "form-check-label"
 };
 
-export const toggleTheme: Theme = {
-  ...theme,
+export const selectConfig = {
+  ...defaultTheme,
+  input: "custom-select"
+};
+
+export const fileInputConfig = {
+  ...defaultTheme,
+  field: "custom-file mb-3",
+  input: "custom-file-input",
+  label: "custom-file-label"
+};
+
+export const toggleButtonConfig = {
+  ...defaultTheme,
   field: "custom-control custom-switch",
   input: "custom-control-input",
   label: "custom-control-label"
+};
+
+export const config = {
+  input: fieldConfig,
+  dateInput: fieldConfig,
+  dateTimeInput: fieldConfig,
+  field: fieldConfig,
+  floatInput: fieldConfig,
+  integerInput: fieldConfig,
+  radioGroup: checkboxConfig,
+  textarea: fieldConfig,
+  select: selectConfig,
+  fileInput: fileInputConfig,
+  checkbox: checkboxConfig,
+  toggleButton: toggleButtonConfig
 };
 
 export const telephoneMask = [

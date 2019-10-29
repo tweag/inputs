@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { IntegerInputProps } from "./types";
+import { useTheme } from "./config";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -11,6 +12,7 @@ import { IntegerInputProps } from "./types";
 export const IntegerInput: React.FC<IntegerInputProps> = ({
   value,
   onChange,
+  theme = useTheme("integerInput"),
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -23,6 +25,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
 
   return (
     <Field
+      theme={theme}
       render={inputProps => (
         <input
           type="number"

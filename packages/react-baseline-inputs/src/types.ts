@@ -40,6 +40,21 @@ export interface Theme {
   errorLarge?: string | undefined;
 }
 
+export interface Config {
+  input: Theme;
+  checkbox: Theme;
+  dateInput: Theme;
+  dateTimeInput: Theme;
+  field: Theme;
+  fileInput: Theme;
+  floatInput: Theme;
+  integerInput: Theme;
+  radioGroup: Theme;
+  select: Theme;
+  textarea: Theme;
+  toggleButton: Theme;
+}
+
 export interface FieldInputProps {
   id?: string;
   inline?: boolean;
