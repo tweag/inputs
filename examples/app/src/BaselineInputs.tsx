@@ -6,7 +6,8 @@ import {
   fileTheme,
   selectTheme,
   checkboxTheme,
-  toggleTheme
+  toggleTheme,
+  telephoneMask
 } from "./helpers";
 import {
   Checkbox,
@@ -18,6 +19,7 @@ import {
   FloatInput,
   Input,
   IntegerInput,
+  MaskedInput,
   RadioGroup,
   Select,
   TextArea,
@@ -50,6 +52,7 @@ export const BaselineInputs = () => {
             <FloatInput label="Float" {...fields.float} theme={theme} />
           </div>
         </div>
+
         <div className="row">
           <div className="col">
             <DateInput label="Date" {...fields.date} theme={theme} />
@@ -72,7 +75,18 @@ export const BaselineInputs = () => {
             />
           </div>
         </div>
+
         <div className="row mt-2">
+          <div className="col">
+            <MaskedInput
+              label="Masked"
+              {...fields.masked}
+              showMask
+              mask={telephoneMask}
+              theme={theme}
+            />
+          </div>
+
           <div className="col">
             <FileInput label="File" {...fields.file} theme={fileTheme} />
           </div>
