@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "name": "react-baseline-inputs",
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs",
   "description": "React components for creating data-driven forms.",
@@ -22,7 +22,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "react-text-mask": "^5.4.3",
-    "@types/react-text-mask": "^5.4.6"
+    "@types/react-text-mask": "^5.4.6",
+    "react-text-mask": "^5.4.3"
   }
 }
