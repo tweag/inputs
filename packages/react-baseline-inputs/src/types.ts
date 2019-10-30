@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MaskedInputProps as TextMaskProps } from "react-text-mask";
 
-export interface Theme {
+export interface FieldTheme {
   field?: string | undefined;
   fieldInline?: string | undefined;
   fieldSuccess?: string | undefined;
@@ -40,19 +40,19 @@ export interface Theme {
   errorLarge?: string | undefined;
 }
 
-export interface Config {
-  input: Theme;
-  checkbox: Theme;
-  dateInput: Theme;
-  dateTimeInput: Theme;
-  field: Theme;
-  fileInput: Theme;
-  floatInput: Theme;
-  integerInput: Theme;
-  radioGroup: Theme;
-  select: Theme;
-  textarea: Theme;
-  toggleButton: Theme;
+export interface Theme {
+  input: FieldTheme;
+  checkbox: FieldTheme;
+  dateInput: FieldTheme;
+  dateTimeInput: FieldTheme;
+  field: FieldTheme;
+  fileInput: FieldTheme;
+  floatInput: FieldTheme;
+  integerInput: FieldTheme;
+  radioGroup: FieldTheme;
+  select: FieldTheme;
+  textarea: FieldTheme;
+  toggleButton: FieldTheme;
 }
 
 export interface FieldInputProps {
@@ -68,7 +68,7 @@ export interface FieldInputProps {
   label?: React.ReactNode;
   labelPosition?: "before" | "after";
   wrapper?: boolean;
-  theme?: Theme;
+  theme?: FieldTheme;
 }
 
 export interface OptionProps {

@@ -63,7 +63,7 @@ export const BaselineInputs = () => {
             </div>
           </div>
           <div className="row mt-2">
-            <div className="col">
+            <div className="col-4">
               <MaskedInput
                 label="Masked"
                 {...fields.masked}
@@ -71,6 +71,8 @@ export const BaselineInputs = () => {
                 mask={telephoneMask}
               />
             </div>
+          </div>
+          <div className="row mt-3 mb-2">
             <div className="col">
               <FileInput label="File" {...fields.file} />
             </div>

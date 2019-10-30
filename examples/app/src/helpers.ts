@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Theme, defaultFieldTheme, defaultTheme } from "react-baseline-inputs";
+import { Theme, FieldTheme } from "react-baseline-inputs";
 
 export interface Values {
   checkbox: boolean | null;
@@ -67,8 +67,7 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
   return [values, fields];
 };
 
-export const fieldTheme = {
-  ...defaultFieldTheme,
+export const fieldTheme: FieldTheme = {
   field: "form-group",
   input: "form-control",
   inputSuccess: "is-valid",
@@ -79,34 +78,34 @@ export const fieldTheme = {
   help: "form-text text-muted"
 };
 
-export const checkboxTheme = {
-  ...defaultFieldTheme,
+export const checkboxTheme: FieldTheme = {
+  ...fieldTheme,
   field: "form-check",
   fieldInline: "form-check-inline",
   input: "form-check-input",
   label: "form-check-label"
 };
 
-export const selectTheme = {
-  ...defaultFieldTheme,
+export const selectTheme: FieldTheme = {
+  ...fieldTheme,
   input: "custom-select"
 };
 
-export const fileInputTheme = {
-  ...defaultFieldTheme,
+export const fileInputTheme: FieldTheme = {
+  ...fieldTheme,
   field: "custom-file mb-3",
   input: "custom-file-input",
   label: "custom-file-label"
 };
 
-export const toggleButtonTheme = {
-  ...defaultFieldTheme,
+export const toggleButtonTheme: FieldTheme = {
+  ...fieldTheme,
   field: "custom-control custom-switch",
   input: "custom-control-input",
   label: "custom-control-label"
 };
 
-export const theme = {
+export const theme: Theme = {
   input: fieldTheme,
   dateInput: fieldTheme,
   dateTimeInput: fieldTheme,

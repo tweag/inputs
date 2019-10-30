@@ -63,7 +63,7 @@ export const FormikInputs = () => {
             </div>
 
             <div className="row mt-2">
-              <div className="col">
+              <div className="col-4">
                 <MaskedInput
                   label="Masked"
                   name="masked"
@@ -71,7 +71,8 @@ export const FormikInputs = () => {
                   mask={telephoneMask}
                 />
               </div>
-
+            </div>
+            <div className="row mt-3 mb-2">
               <div className="col">
                 <FileInput label="File" name="file" />
               </div>

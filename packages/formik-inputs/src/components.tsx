@@ -15,8 +15,7 @@ import {
   Select as BSelect,
   TextArea as BTextArea,
   MaskedInput as BMaskedInput,
-  ToggleButton as BToggleButton,
-  ThemeProvider
+  ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
   CheckboxListProps,
@@ -95,5 +94,3 @@ export const MaskedInput: React.FC<MaskedInputProps> = props => (
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
   <BToggleButton {...useField(props)} />
 );
-
-export { ThemeProvider };
