@@ -19,7 +19,7 @@ test("exports", () => {
     "ThemeContext",
     "ThemeProvider",
     "ToggleButton",
-    "defaultConfig",
+    "defaultFieldTheme",
     "defaultTheme",
     "useTheme"
   ]);

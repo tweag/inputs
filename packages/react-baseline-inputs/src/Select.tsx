@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { SelectProps, OptionProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 const getOptionProps = (option: OptionProps | string) => {
   if (typeof option === "string") {

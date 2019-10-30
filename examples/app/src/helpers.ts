@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Theme, defaultConfig, defaultTheme } from "react-baseline-inputs";
+import { Theme, defaultFieldTheme, defaultTheme } from "react-baseline-inputs";
 
 export interface Values {
   checkbox: boolean | null;
@@ -67,8 +67,8 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
   return [values, fields];
 };
 
-export const fieldConfig = {
-  ...defaultTheme,
+export const fieldTheme = {
+  ...defaultFieldTheme,
   field: "form-group",
   input: "form-control",
   inputSuccess: "is-valid",
@@ -79,46 +79,46 @@ export const fieldConfig = {
   help: "form-text text-muted"
 };
 
-export const checkboxConfig = {
-  ...defaultTheme,
+export const checkboxTheme = {
+  ...defaultFieldTheme,
   field: "form-check",
   fieldInline: "form-check-inline",
   input: "form-check-input",
   label: "form-check-label"
 };
 
-export const selectConfig = {
-  ...defaultTheme,
+export const selectTheme = {
+  ...defaultFieldTheme,
   input: "custom-select"
 };
 
-export const fileInputConfig = {
-  ...defaultTheme,
+export const fileInputTheme = {
+  ...defaultFieldTheme,
   field: "custom-file mb-3",
   input: "custom-file-input",
   label: "custom-file-label"
 };
 
-export const toggleButtonConfig = {
-  ...defaultTheme,
+export const toggleButtonTheme = {
+  ...defaultFieldTheme,
   field: "custom-control custom-switch",
   input: "custom-control-input",
   label: "custom-control-label"
 };
 
-export const config = {
-  input: fieldConfig,
-  dateInput: fieldConfig,
-  dateTimeInput: fieldConfig,
-  field: fieldConfig,
-  floatInput: fieldConfig,
-  integerInput: fieldConfig,
-  radioGroup: checkboxConfig,
-  textarea: fieldConfig,
-  select: selectConfig,
-  fileInput: fileInputConfig,
-  checkbox: checkboxConfig,
-  toggleButton: toggleButtonConfig
+export const theme = {
+  input: fieldTheme,
+  dateInput: fieldTheme,
+  dateTimeInput: fieldTheme,
+  field: fieldTheme,
+  floatInput: fieldTheme,
+  integerInput: fieldTheme,
+  radioGroup: checkboxTheme,
+  textarea: fieldTheme,
+  select: selectTheme,
+  fileInput: fileInputTheme,
+  checkbox: checkboxTheme,
+  toggleButton: toggleButtonTheme
 };
 
 export const telephoneMask = [

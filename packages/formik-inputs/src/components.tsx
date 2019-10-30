@@ -15,7 +15,7 @@ import {
   Select as BSelect,
   TextArea as BTextArea,
   MaskedInput as BMaskedInput,
-  ToggleButton as BToggleButton
+  ToggleButton as BToggleButton,
   ThemeProvider
 } from "react-baseline-inputs";
 import {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { InputProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 /**
  * An HTML `<input />`, but with the following benefits:

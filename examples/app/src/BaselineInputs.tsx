@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useForm, initialValues, config, telephoneMask } from "./helpers";
+import { useForm, initialValues, theme, telephoneMask } from "./helpers";
 import {
   Checkbox,
   CheckboxList,
@@ -22,7 +22,7 @@ export const BaselineInputs = () => {
   const [values, fields] = useForm(initialValues);
 
   return (
-    <ThemeProvider value={config}>
+    <ThemeProvider value={theme}>
       <section>
         <h2 className="mb-4">react-baseline-inputs</h2>
 

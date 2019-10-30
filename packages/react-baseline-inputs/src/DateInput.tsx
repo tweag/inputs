@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { DateInputProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 const parse = (value: string): string | null => {
   const date = new Date(value);

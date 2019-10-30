@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FieldProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 const generateUniqueId = (() => {
   let previousId = 0;

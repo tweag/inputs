@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { DateTimeInputProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 const format = (value: string | null): string => {
   return value ? value.substring(0, 16) : "";

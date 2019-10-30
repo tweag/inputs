@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { ToggleButtonProps } from "./types";
-import { useTheme } from "./config";
+import { useTheme } from "./theme";
 
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
   value,

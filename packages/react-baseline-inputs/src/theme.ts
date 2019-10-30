@@ -1,7 +1,7 @@
 import { Config } from "./types";
 import { useContext, createContext } from "react";
 
-export const defaultTheme = {
+export const defaultFieldTheme = {
   field: "field",
   fieldInline: "field--inline",
   fieldSuccess: "field--success",
@@ -40,22 +40,22 @@ export const defaultTheme = {
   errorLarge: "field__error--large"
 };
 
-export const defaultConfig: Config = {
-  input: defaultTheme,
-  checkbox: defaultTheme,
-  dateInput: defaultTheme,
-  dateTimeInput: defaultTheme,
-  field: defaultTheme,
-  fileInput: defaultTheme,
-  floatInput: defaultTheme,
-  integerInput: defaultTheme,
-  radioGroup: defaultTheme,
-  select: defaultTheme,
-  textarea: defaultTheme,
-  toggleButton: defaultTheme
+export const defaultTheme: Config = {
+  input: defaultFieldTheme,
+  checkbox: defaultFieldTheme,
+  dateInput: defaultFieldTheme,
+  dateTimeInput: defaultFieldTheme,
+  field: defaultFieldTheme,
+  fileInput: defaultFieldTheme,
+  floatInput: defaultFieldTheme,
+  integerInput: defaultFieldTheme,
+  radioGroup: defaultFieldTheme,
+  select: defaultFieldTheme,
+  textarea: defaultFieldTheme,
+  toggleButton: defaultFieldTheme
 };
 
-export const ThemeContext = createContext(defaultConfig);
+export const ThemeContext = createContext(defaultTheme);
 export const ThemeProvider = ThemeContext.Provider;
 
 export const useTheme = (element: keyof Config) => {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Formik, Form } from "formik";
-import { initialValues, config, notBlank, telephoneMask } from "./helpers";
+import { initialValues, theme, notBlank, telephoneMask } from "./helpers";
 import {
   Checkbox,
   CheckboxList,
@@ -21,7 +21,7 @@ import {
 
 export const FormikInputs = () => {
   return (
-    <ThemeProvider value={config}>
+    <ThemeProvider value={theme}>
       <section>
         <h2 className="mb-4">formik-inputs</h2>
 
