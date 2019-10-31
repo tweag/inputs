@@ -20,8 +20,8 @@ export const useField = <T extends FieldConfig>({
     onChange,
     onBlur: field.onBlur,
     value: field.value,
-    error: meta.error,
     touched: meta.touched,
+    error: meta.touched ? meta.error : undefined,
     ...props
   };
 };
