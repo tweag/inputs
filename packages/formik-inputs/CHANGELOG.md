@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.6](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2019-10-31)
+
+
+### Bug Fixes
+
+* only pass the error prop when the field has been touched ([e4bc2a8](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/e4bc2a8a342d1ee07b5c04871a4fcd720d976c3a))
+
+
+
+
+
 # [2.0.0-alpha.5](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2019-10-30)
 
 
