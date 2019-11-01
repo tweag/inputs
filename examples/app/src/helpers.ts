@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Theme, FieldTheme } from "react-baseline-inputs";
 
 export interface Values {
   checkbox: boolean | null;
@@ -65,59 +64,6 @@ export const useForm = <T>(initialValues: T): [T, Fields<T>] => {
   );
 
   return [values, fields];
-};
-
-export const fieldTheme: FieldTheme = {
-  field: "form-group",
-  input: "form-control",
-  inputSuccess: "is-valid",
-  inputError: "is-invalid",
-  inputSmall: "form-control-sm",
-  inputLarge: "form-control-lg",
-  error: "invalid-feedback",
-  help: "form-text text-muted"
-};
-
-export const checkboxTheme: FieldTheme = {
-  ...fieldTheme,
-  field: "form-check",
-  fieldInline: "form-check-inline",
-  input: "form-check-input",
-  label: "form-check-label"
-};
-
-export const selectTheme: FieldTheme = {
-  ...fieldTheme,
-  input: "custom-select"
-};
-
-export const fileInputTheme: FieldTheme = {
-  ...fieldTheme,
-  field: "custom-file mb-3",
-  input: "custom-file-input",
-  label: "custom-file-label"
-};
-
-export const toggleButtonTheme: FieldTheme = {
-  ...fieldTheme,
-  field: "custom-control custom-switch",
-  input: "custom-control-input",
-  label: "custom-control-label"
-};
-
-export const theme: Theme = {
-  input: fieldTheme,
-  dateInput: fieldTheme,
-  dateTimeInput: fieldTheme,
-  field: fieldTheme,
-  floatInput: fieldTheme,
-  integerInput: fieldTheme,
-  radioGroup: checkboxTheme,
-  textarea: fieldTheme,
-  select: selectTheme,
-  fileInput: fileInputTheme,
-  checkbox: checkboxTheme,
-  toggleButton: toggleButtonTheme
 };
 
 export const telephoneMask = [

@@ -16,10 +16,9 @@ test("exports", () => {
     "RadioGroup",
     "Select",
     "TextArea",
-    "ThemeContext",
     "ThemeProvider",
     "ToggleButton",
-    "defaultFieldTheme",
+    "bootstrapTheme",
     "defaultTheme",
     "useTheme"
   ]);

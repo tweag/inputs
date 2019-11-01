@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Formik, Form } from "formik";
-import { initialValues, theme, notBlank, telephoneMask } from "./helpers";
+import { initialValues, notBlank, telephoneMask } from "./helpers";
 import {
+  bootstrapTheme,
   Checkbox,
   CheckboxList,
   DateInput,
@@ -21,7 +22,7 @@ import {
 
 export const FormikInputs = () => {
   return (
-    <ThemeProvider value={theme}>
+    <ThemeProvider value={bootstrapTheme}>
       <section>
         <h2 className="mb-4">formik-inputs</h2>
 

@@ -18,6 +18,9 @@ test("exports", () => {
     "TextArea",
     "ThemeProvider",
     "ToggleButton",
-    "useField"
+    "bootstrapTheme",
+    "defaultTheme",
+    "useField",
+    "useTheme"
   ]);
 });
