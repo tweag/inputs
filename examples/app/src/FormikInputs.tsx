@@ -17,7 +17,8 @@ import {
   Select,
   TextArea,
   ToggleButton,
-  ThemeProvider
+  ThemeProvider,
+  SubmitButton
 } from "formik-inputs";
 
 export const FormikInputs = () => {
@@ -125,9 +126,7 @@ export const FormikInputs = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-2 float-right">
-              Submit
-            </button>
+            <SubmitButton className="btn btn-primary mt-2 float-right" />
           </Form>
         </Formik>
       </section>
