@@ -15,6 +15,7 @@ test("exports", () => {
     "MaskedInput",
     "RadioGroup",
     "Select",
+    "SubmitButton",
     "TextArea",
     "ThemeProvider",
     "ToggleButton",
