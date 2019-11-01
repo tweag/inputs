@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.7](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2019-11-01)
+
+
+### Features
+
+* add a submit button that will be disabled automatically ([b1714e4](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/b1714e47fb1d069f51d6da3bdbd07e8bd859fda3))
+* include a bootstrap theme ([2a9ca41](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/2a9ca41c9e97fd648f15c0080f4a3aa86335fabb))
+
+
+
+
+
 # [2.0.0-alpha.6](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2019-10-31)
 
 

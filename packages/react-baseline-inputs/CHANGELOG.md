@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.7](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2019-11-01)
+
+
+### Features
+
+* include a bootstrap theme ([2a9ca41](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/2a9ca41c9e97fd648f15c0080f4a3aa86335fabb))
+
+
+
+
+
 # [2.0.0-alpha.5](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2019-10-30)
 
 
