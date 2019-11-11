@@ -39,16 +39,17 @@ const toggleButtonTheme: FieldTheme = {
 };
 
 export const bootstrapTheme: Theme = {
-  input: fieldTheme,
+  checkbox: checkboxTheme,
   dateInput: fieldTheme,
   dateTimeInput: fieldTheme,
   field: fieldTheme,
+  fileInput: fileInputTheme,
   floatInput: fieldTheme,
+  input: fieldTheme,
   integerInput: fieldTheme,
   radioGroup: checkboxTheme,
-  textarea: fieldTheme,
   select: selectTheme,
-  fileInput: fileInputTheme,
-  checkbox: checkboxTheme,
+  textarea: fieldTheme,
+  timeInput: fieldTheme,
   toggleButton: toggleButtonTheme
 };
