@@ -14,6 +14,7 @@ export interface Values {
   text: string | null;
   masked: string | null;
   textarea: string | null;
+  time: string | null;
   toggle: boolean | null;
 }
 
@@ -31,6 +32,7 @@ export const initialValues: Values = {
   text: null,
   masked: null,
   textarea: null,
+  time: null,
   toggle: null
 };
 

@@ -18,6 +18,7 @@ test("exports", () => {
     "SubmitButton",
     "TextArea",
     "ThemeProvider",
+    "TimeInput",
     "ToggleButton",
     "bootstrapTheme",
     "defaultTheme",

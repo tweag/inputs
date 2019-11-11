@@ -51,5 +51,6 @@ export const defaultTheme: Theme = {
   radioGroup: fieldTheme,
   select: fieldTheme,
   textarea: fieldTheme,
+  timeInput: fieldTheme,
   toggleButton: fieldTheme
 };
