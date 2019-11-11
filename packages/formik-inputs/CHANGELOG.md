@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.8](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2019-11-11)
+
+
+### Features
+
+* add a time input ([0c596d1](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/0c596d1399107401675368d183cc361505707f3b))
+
+
+
+
+
 # [2.0.0-alpha.7](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2019-11-01)
 
 
