@@ -52,6 +52,7 @@ export interface Theme {
   radioGroup: FieldTheme;
   select: FieldTheme;
   textarea: FieldTheme;
+  timeInput: FieldTheme;
   toggleButton: FieldTheme;
 }
 
@@ -154,6 +155,10 @@ export type SelectProps = FieldInputProps &
 
 export type TextAreaProps = FieldInputProps &
   HTMLProps<HTMLTextAreaElement> &
+  ValueProps<string | null>;
+
+export type TimeInputProps = FieldInputProps &
+  HTMLProps<HTMLInputElement> &
   ValueProps<string | null>;
 
 export type ToggleButtonProps = FieldInputProps &

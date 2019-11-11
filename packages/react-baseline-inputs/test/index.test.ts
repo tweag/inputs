@@ -17,6 +17,7 @@ test("exports", () => {
     "Select",
     "TextArea",
     "ThemeProvider",
+    "TimeInput",
     "ToggleButton",
     "bootstrapTheme",
     "defaultTheme",

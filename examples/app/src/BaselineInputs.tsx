@@ -15,6 +15,7 @@ import {
   RadioGroup,
   Select,
   TextArea,
+  TimeInput,
   ToggleButton,
   ThemeProvider
 } from "react-baseline-inputs";
@@ -46,24 +47,30 @@ export const BaselineInputs = () => {
               <FloatInput label="Float" {...fields.float} />
             </div>
           </div>
+
           <div className="row">
             <div className="col">
               <DateInput label="Date" {...fields.date} />
             </div>
 
             <div className="col">
-              <DateTimeInput label="DateTime" {...fields.datetime} />
+              <TimeInput label="Time" {...fields.time} />
             </div>
 
             <div className="col">
+              <DateTimeInput label="DateTime" {...fields.datetime} />
+            </div>
+          </div>
+
+          <div className="row mt-2">
+            <div className="col-4">
               <Select
                 {...fields.select}
                 label="Select"
                 options={["One", "Two", "Three"]}
               />
             </div>
-          </div>
-          <div className="row mt-2">
+
             <div className="col-4">
               <MaskedInput
                 label="Masked"
@@ -73,6 +80,7 @@ export const BaselineInputs = () => {
               />
             </div>
           </div>
+
           <div className="row mt-3 mb-2">
             <div className="col">
               <FileInput label="File" {...fields.file} />

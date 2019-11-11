@@ -11,10 +11,11 @@ import {
   FloatInput as BFloatInput,
   Input as BInput,
   IntegerInput as BIntegerInput,
+  MaskedInput as BMaskedInput,
   RadioGroup as BRadioGroup,
   Select as BSelect,
   TextArea as BTextArea,
-  MaskedInput as BMaskedInput,
+  TimeInput as BTimeInput,
   ToggleButton as BToggleButton
 } from "react-baseline-inputs";
 import {
@@ -32,6 +33,7 @@ import {
   RadioGroupProps,
   SelectProps,
   TextAreaProps,
+  TimeInputProps,
   ToggleButtonProps
 } from "./types";
 
@@ -75,6 +77,10 @@ export const IntegerInput: React.FC<IntegerInputProps> = props => (
   <BIntegerInput {...useField(props)} />
 );
 
+export const MaskedInput: React.FC<MaskedInputProps> = props => (
+  <BMaskedInput {...useField(props)} />
+);
+
 export const RadioGroup: React.FC<RadioGroupProps> = props => (
   <BRadioGroup {...useField(props)} />
 );
@@ -87,8 +93,8 @@ export const TextArea: React.FC<TextAreaProps> = props => (
   <BTextArea {...useField(props)} />
 );
 
-export const MaskedInput: React.FC<MaskedInputProps> = props => (
-  <BMaskedInput {...useField(props)} />
+export const TimeInput: React.FC<TimeInputProps> = props => (
+  <BTimeInput {...useField(props)} />
 );
 
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (

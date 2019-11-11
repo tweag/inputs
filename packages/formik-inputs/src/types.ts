@@ -14,6 +14,7 @@ import {
   RadioGroupProps as BRadioGroupProps,
   SelectProps as BSelectProps,
   TextAreaProps as BTextAreaProps,
+  TimeInputProps as BTimeInputProps,
   ToggleButtonProps as BToggleButtonProps
 } from "react-baseline-inputs";
 
@@ -39,4 +40,5 @@ export type MaskedInputProps = AsFormik<BMaskedInputProps>;
 export type RadioGroupProps = AsFormik<BRadioGroupProps>;
 export type SelectProps = AsFormik<BSelectProps>;
 export type TextAreaProps = AsFormik<BTextAreaProps>;
+export type TimeInputProps = AsFormik<BTimeInputProps>;
 export type ToggleButtonProps = AsFormik<BToggleButtonProps>;

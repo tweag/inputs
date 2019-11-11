@@ -18,6 +18,7 @@ import {
   TextArea,
   ToggleButton,
   ThemeProvider,
+  TimeInput,
   SubmitButton
 } from "formik-inputs";
 
@@ -52,19 +53,23 @@ export const FormikInputs = () => {
               </div>
 
               <div className="col">
-                <DateTimeInput label="DateTime" name="datetime" />
+                <TimeInput label="Time" name="time" />
               </div>
 
               <div className="col">
+                <DateTimeInput label="DateTime" name="datetime" />
+              </div>
+            </div>
+
+            <div className="row mt-2">
+              <div className="col-4">
                 <Select
                   name="select"
                   label="Select"
                   options={["One", "Two", "Three"]}
                 />
               </div>
-            </div>
 
-            <div className="row mt-2">
               <div className="col-4">
                 <MaskedInput
                   label="Masked"
@@ -74,6 +79,7 @@ export const FormikInputs = () => {
                 />
               </div>
             </div>
+
             <div className="row mt-3 mb-2">
               <div className="col">
                 <FileInput label="File" name="file" />

@@ -12,6 +12,7 @@ export * from "./MaskedInput";
 export * from "./RadioGroup";
 export * from "./Select";
 export * from "./TextArea";
+export * from "./TimeInput";
 export * from "./ToggleButton";
 export * from "./theme";
 export * from "./types";
