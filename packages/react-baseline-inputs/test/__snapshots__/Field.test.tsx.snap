@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Field /> accepts a passed className 1`] = `
+<div
+  class="field sample"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_11"
+  />
+</div>
+`;
+
 exports[`<Field /> renders 1`] = `
 <div
   class="field"
