@@ -1,6 +1,6 @@
 {
   "name": "web-basic",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "parcel": "^1.12.3",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
-    "react-baseline-inputs": "^2.0.0-alpha.8",
+    "react-baseline-inputs": "^2.0.0",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {

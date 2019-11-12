@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/promptworks/react-forms/compare/v2.0.0-alpha.8...v2.0.0) (2019-11-12)
+
+
+### Bug Fixes
+
+* allow passed className in Field ([e5e90ef](https://github.com/promptworks/react-forms/commit/e5e90ef91cebb06057dd43ac01b6135e2b29496a))
+
+
+
+
+
 # [2.0.0-alpha.8](https://github.com/promptworks/react-forms/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2019-11-11)
 
 
