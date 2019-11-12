@@ -14,4 +14,10 @@ const setup = (props: Partial<FieldProps> = {}) =>
 
 describe("<Field />", () => {
   itBehavesLikeAField(setup);
+
+  it("accepts a passed className", () => {
+    const { container } = setup({ className: "sample" });
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });

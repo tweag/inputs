@@ -91,6 +91,7 @@ export interface ValueProps<V, C = V> {
 }
 
 export interface FieldProps extends FieldInputProps {
+  className?: string;
   render: (props: object) => React.ReactNode;
 }
 
