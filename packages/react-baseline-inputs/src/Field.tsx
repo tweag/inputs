@@ -36,6 +36,7 @@ export function Field<T extends FieldProps>({
   wrapper = true,
   theme = useTheme("field"),
   disabled,
+  className,
   ...props
 }: T) {
   const fieldClassNames = [theme.field];
@@ -43,6 +44,10 @@ export function Field<T extends FieldProps>({
   const labelClassNames = [theme.label];
   const errorClassNames = [theme.error];
   const helpClassNames = [theme.help];
+
+  if (className) {
+    fieldClassNames.push(className);
+  }
 
   if (inline) {
     fieldClassNames.push(theme.fieldInline);
