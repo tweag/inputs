@@ -3,6 +3,7 @@ export * from "./CheckboxList";
 export * from "./DateInput";
 export * from "./DateTimeInput";
 export * from "./Field";
+export * from "./FieldSet";
 export * from "./FileInput";
 export * from "./FileListInput";
 export * from "./FloatInput";

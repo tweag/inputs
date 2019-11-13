@@ -43,6 +43,7 @@ export const bootstrapTheme: Theme = {
   dateInput: fieldTheme,
   dateTimeInput: fieldTheme,
   field: fieldTheme,
+  fieldSet: {},
   fileInput: fileInputTheme,
   floatInput: fieldTheme,
   input: fieldTheme,
