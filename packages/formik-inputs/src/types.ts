@@ -5,6 +5,7 @@ import {
   DateInputProps as BDateInputProps,
   DateTimeInputProps as BDateTimeInputProps,
   FieldProps as BFieldProps,
+  FieldSetProps as BFieldSetProps,
   FileInputProps as BFileInputProps,
   FileListInputProps as BFileListInputProps,
   FloatInputProps as BFloatInputProps,
@@ -31,6 +32,7 @@ export type CheckboxProps = AsFormik<BCheckboxProps>;
 export type DateInputProps = AsFormik<BDateInputProps>;
 export type DateTimeInputProps = AsFormik<BDateTimeInputProps>;
 export type FieldProps = AsFormik<BFieldProps>;
+export type FieldSetProps = AsFormik<BFieldSetProps>;
 export type FileInputProps = AsFormik<BFileInputProps>;
 export type FileListInputProps = AsFormik<BFileListInputProps>;
 export type FloatInputProps = AsFormik<BFloatInputProps>;

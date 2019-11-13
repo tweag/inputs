@@ -7,6 +7,7 @@ import {
   CheckboxList,
   DateInput,
   DateTimeInput,
+  FieldSet,
   FileInput,
   FileListInput,
   FloatInput,
@@ -104,8 +105,7 @@ export const FormikInputs = () => {
 
             <div className="row mt-4">
               <div className="col">
-                <fieldset>
-                  <legend>Checkbox List</legend>
+                <FieldSet title="Checkbox List">
                   <CheckboxList
                     name="checkboxList"
                     options={[
@@ -114,12 +114,11 @@ export const FormikInputs = () => {
                       { label: "Disabled", value: "buzz", disabled: true }
                     ]}
                   />
-                </fieldset>
+                </FieldSet>
               </div>
 
               <div className="col">
-                <fieldset>
-                  <legend>Checkbox List</legend>
+                <FieldSet title="Radio Group">
                   <RadioGroup
                     name="radioGroup"
                     options={[
@@ -128,7 +127,7 @@ export const FormikInputs = () => {
                       { label: "Disabled", value: "buzz", disabled: true }
                     ]}
                   />
-                </fieldset>
+                </FieldSet>
               </div>
             </div>
 

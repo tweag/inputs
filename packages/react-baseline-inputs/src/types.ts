@@ -40,12 +40,33 @@ export interface FieldTheme {
   errorLarge?: string | undefined;
 }
 
+export interface FieldSetTheme {
+  fieldSet?: string | undefined;
+  fieldSetError?: string | undefined;
+  fieldSetLarge?: string | undefined;
+  fieldSetSmall?: string | undefined;
+
+  legend?: string | undefined;
+  legendLarge?: string | undefined;
+  legendSmall?: string | undefined;
+  legendError?: string | undefined;
+
+  help?: string | undefined;
+  helpSmall?: string | undefined;
+  helpLarge?: string | undefined;
+
+  error?: string | undefined;
+  errorSmall?: string | undefined;
+  errorLarge?: string | undefined;
+}
+
 export interface Theme {
   input: FieldTheme;
   checkbox: FieldTheme;
   dateInput: FieldTheme;
   dateTimeInput: FieldTheme;
   field: FieldTheme;
+  fieldSet: FieldSetTheme;
   fileInput: FieldTheme;
   floatInput: FieldTheme;
   integerInput: FieldTheme;
@@ -93,6 +114,16 @@ export interface ValueProps<V, C = V> {
 export interface FieldProps extends FieldInputProps {
   className?: string;
   render: (props: object) => React.ReactNode;
+}
+
+export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
+  title: string;
+  help?: string;
+  className?: string;
+  error?: string;
+  theme?: FieldSetTheme;
+  large?: boolean;
+  small?: boolean;
 }
 
 export type CheckboxProps = FieldInputProps &
