@@ -2,7 +2,7 @@ import * as React from "react";
 import { FieldProps } from "./types";
 import { useTheme } from "./theme";
 
-const generateUniqueId = (() => {
+export const generateUniqueId = (() => {
   let previousId = 0;
   return () => {
     const id = ++previousId;
