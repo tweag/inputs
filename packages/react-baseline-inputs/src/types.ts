@@ -43,13 +43,17 @@ export interface FieldTheme {
 export interface FieldSetTheme {
   fieldSet?: string | undefined;
   fieldSetError?: string | undefined;
+  fieldSetSuccess?: string | undefined;
+  fieldSetTouched?: string | undefined;
   fieldSetLarge?: string | undefined;
   fieldSetSmall?: string | undefined;
 
   legend?: string | undefined;
+  legendError?: string | undefined;
+  legendSuccess?: string | undefined;
+  legendTouched?: string | undefined;
   legendLarge?: string | undefined;
   legendSmall?: string | undefined;
-  legendError?: string | undefined;
 
   help?: string | undefined;
   helpSmall?: string | undefined;
@@ -117,13 +121,15 @@ export interface FieldProps extends FieldInputProps {
 }
 
 export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
-  title: string;
+  legend: React.ReactNode;
   help?: string;
   className?: string;
   error?: string;
   theme?: FieldSetTheme;
   large?: boolean;
   small?: boolean;
+  success?: boolean;
+  touched?: boolean;
 }
 
 export type CheckboxProps = FieldInputProps &

@@ -60,7 +60,7 @@ export const Field: React.FC<FieldProps> = props => (
 );
 
 export const FieldSet: React.FC<FieldSetProps> = props => (
-  <BFieldSet title={props.title}>{props.children}</BFieldSet>
+  <BFieldSet {...props}>{props.children}</BFieldSet>
 );
 
 export const FileInput: React.FC<FileInputProps> = props => (

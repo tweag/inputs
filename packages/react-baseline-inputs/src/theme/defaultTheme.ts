@@ -42,13 +42,17 @@ const fieldTheme: FieldTheme = {
 const fieldSetTheme: FieldSetTheme = {
   fieldSet: "fieldset",
   fieldSetError: "fieldset--erroneous",
-  fieldSetLarge: "fieldset--large",
+  fieldSetSuccess: "fieldset--success",
+  fieldSetTouched: "fieldset--touched",
   fieldSetSmall: "fieldset--small",
+  fieldSetLarge: "fieldset--large",
 
   legend: "fieldset__legend",
+  legendError: "fieldset__legend--erroneous",
+  legendSuccess: "fieldset__legend--success",
+  legendTouched: "fieldset__legend--touched",
   legendSmall: "fieldset__legend--small",
   legendLarge: "fieldset__legend--large",
-  legendError: "fieldset__legend--erroneous",
 
   help: "fieldset__help",
   helpSmall: "fieldset__help--small",

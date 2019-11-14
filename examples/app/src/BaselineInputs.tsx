@@ -106,7 +106,7 @@ export const BaselineInputs = () => {
 
           <div className="row mt-4">
             <div className="col">
-              <FieldSet title="Checkbox List">
+              <FieldSet legend="Checkbox List">
                 <CheckboxList
                   name="checkboxList"
                   options={[
@@ -120,7 +120,7 @@ export const BaselineInputs = () => {
             </div>
 
             <div className="col">
-              <FieldSet title="Radio Group">
+              <FieldSet legend="Radio Group">
                 <RadioGroup
                   name="radioGroup"
                   options={[
