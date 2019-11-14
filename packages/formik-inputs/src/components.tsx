@@ -6,7 +6,6 @@ import {
   DateInput as BDateInput,
   DateTimeInput as BDateTimeInput,
   Field as BField,
-  FieldSet as BFieldSet,
   FileInput as BFileInput,
   FileListInput as BFileListInput,
   FloatInput as BFloatInput,
@@ -17,7 +16,8 @@ import {
   Select as BSelect,
   TextArea as BTextArea,
   TimeInput as BTimeInput,
-  ToggleButton as BToggleButton
+  ToggleButton as BToggleButton,
+  FieldSet
 } from "react-baseline-inputs";
 import {
   CheckboxListProps,
@@ -25,7 +25,6 @@ import {
   DateInputProps,
   DateTimeInputProps,
   FieldProps,
-  FieldSetProps,
   FileInputProps,
   FileListInputProps,
   FloatInputProps,
@@ -57,10 +56,6 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = props => (
 
 export const Field: React.FC<FieldProps> = props => (
   <BField {...useField(props)} />
-);
-
-export const FieldSet: React.FC<FieldSetProps> = props => (
-  <BFieldSet {...props}>{props.children}</BFieldSet>
 );
 
 export const FileInput: React.FC<FileInputProps> = props => (
@@ -106,3 +101,5 @@ export const TimeInput: React.FC<TimeInputProps> = props => (
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
   <BToggleButton {...useField(props)} />
 );
+
+export { FieldSet };

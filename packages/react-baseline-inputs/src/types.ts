@@ -121,7 +121,7 @@ export interface FieldProps extends FieldInputProps {
 }
 
 export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
-  legend: React.ReactNode;
+  legend?: React.ReactNode;
   help?: string;
   className?: string;
   error?: string;
