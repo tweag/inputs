@@ -119,11 +119,11 @@ exports[`<FieldSet /> renders with success 1`] = `
 
 exports[`<FieldSet /> renders with touched 1`] = `
 <fieldset
-  class="fieldset fieldset--touched"
+  class="fieldset fieldset--success fieldset--touched"
   id="field_5"
 >
   <legend
-    class="fieldset__legend fieldset__legend--touched"
+    class="fieldset__legend fieldset__legend--success fieldset__legend--touched"
   >
     Jawn
   </legend>

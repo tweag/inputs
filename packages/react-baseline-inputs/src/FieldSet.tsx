@@ -10,9 +10,9 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   children,
   className,
   theme = useTheme("fieldSet"),
-  success,
   touched,
   error,
+  success = touched && !error,
   large,
   small
 }) => {

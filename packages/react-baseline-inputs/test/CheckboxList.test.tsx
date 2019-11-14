@@ -60,4 +60,18 @@ describe("<CheckboxList />", () => {
       expect(onChange).toHaveBeenCalledWith([]);
     });
   });
+
+  describe("<fieldset>", () => {
+    const options = ["foo", "bar", "buzz"];
+
+    it("is wrapped in a <fieldset> by default", () => {
+      const { container } = setup({ options });
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("can be rendered unwrapped", () => {
+      const { container } = setup({ options, wrapper: false });
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
 });
