@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FieldSet /> accepts a passed className 1`] = `
+<fieldset
+  class="fieldset sample"
+  id="field_8"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_1"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with a custom ID 1`] = `
+<fieldset
+  class="fieldset"
+  id="foo"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with an error 1`] = `
+<fieldset
+  aria-describedby="field_2_error"
+  class="fieldset fieldset--erroneous"
+  id="field_2"
+>
+  <legend
+    class="fieldset__legend fieldset__legend--erroneous"
+  >
+    Jawn
+  </legend>
+  <span
+    class="fieldset__error"
+    id="field_2_error"
+    role="alert"
+  >
+    Oh no!
+  </span>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with help 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_3"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+  </legend>
+  <p
+    class="fieldset__help"
+  >
+    Good luck
+  </p>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with large 1`] = `
+<fieldset
+  class="fieldset fieldset--large"
+  id="field_6"
+>
+  <legend
+    class="fieldset__legend fieldset__legend--large"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with small 1`] = `
+<fieldset
+  class="fieldset fieldset--small"
+  id="field_7"
+>
+  <legend
+    class="fieldset__legend fieldset__legend--small"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with success 1`] = `
+<fieldset
+  class="fieldset fieldset--success"
+  id="field_4"
+>
+  <legend
+    class="fieldset__legend fieldset__legend--success"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with touched 1`] = `
+<fieldset
+  class="fieldset fieldset--touched"
+  id="field_5"
+>
+  <legend
+    class="fieldset__legend fieldset__legend--touched"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;

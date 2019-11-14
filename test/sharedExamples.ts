@@ -1,4 +1,4 @@
-import { FieldInputProps, RadioGroupProps } from "../src";
+import { FieldInputProps, RadioGroupProps, FieldSetProps } from "../src";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { RenderResult } from "@testing-library/react";
 
@@ -6,13 +6,14 @@ expect.extend(toHaveNoViolations);
 
 type FieldSetup = (props?: Partial<FieldInputProps>) => RenderResult;
 type RadioGroupSetup = (props?: Partial<RadioGroupProps>) => RenderResult;
+type FieldSetSetup = (props?: Partial<FieldSetProps>) => RenderResult;
 
 /**
  * A set of common shared tests for a field.
  */
 export const itBehavesLikeAField = (
-  setup: FieldSetup | RadioGroupSetup,
-  excludeTests: Array<"label" | "wrapper" | "id"> = []
+  setup: FieldSetup | RadioGroupSetup | FieldSetSetup,
+  excludeTests: Array<"label" | "wrapper" | "id" | "inline"> = []
 ) => {
   it("renders", async () => {
     const { container } = setup();
@@ -79,9 +80,11 @@ export const itBehavesLikeAField = (
     expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("renders with inline", async () => {
-    const { container } = setup({ inline: true });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
+  if (!excludeTests.includes("inline")) {
+    it("renders with inline", async () => {
+      const { container } = setup({ inline: true });
+      expect(container.firstChild).toMatchSnapshot();
+      expect(await axe(container)).toHaveNoViolations();
+    });
+  }
 };

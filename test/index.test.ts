@@ -7,6 +7,7 @@ test("exports", () => {
     "DateInput",
     "DateTimeInput",
     "Field",
+    "FieldSet",
     "FileInput",
     "FileListInput",
     "FloatInput",

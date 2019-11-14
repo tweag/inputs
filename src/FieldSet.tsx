@@ -4,12 +4,14 @@ import { useTheme } from "./theme";
 import { generateUniqueId, join } from "./utils";
 
 export const FieldSet: React.FC<FieldSetProps> = ({
-  title,
+  legend,
   id = React.useMemo(generateUniqueId, []),
   help,
   children,
   className,
   theme = useTheme("fieldSet"),
+  success,
+  touched,
   error,
   large,
   small
@@ -27,6 +29,16 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   if (error) {
     fieldSetClassNames.push(fieldSetTheme.fieldSetError);
     legendClassNames.push(fieldSetTheme.legendError);
+  }
+
+  if (success) {
+    fieldSetClassNames.push(fieldSetTheme.fieldSetSuccess);
+    legendClassNames.push(fieldSetTheme.legendSuccess);
+  }
+
+  if (touched) {
+    fieldSetClassNames.push(fieldSetTheme.fieldSetTouched);
+    legendClassNames.push(fieldSetTheme.legendTouched);
   }
 
   if (large) {
@@ -51,7 +63,7 @@ export const FieldSet: React.FC<FieldSetProps> = ({
       aria-describedby={error ? errorLabelId : undefined}
       className={join(fieldSetClassNames)}
     >
-      <legend className={join(legendClassNames)}>{title}</legend>
+      <legend className={join(legendClassNames)}>{legend}</legend>
 
       {help && <p className={join(helpClassNames)}>{help}</p>}
 
