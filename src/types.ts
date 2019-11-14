@@ -124,12 +124,18 @@ export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   legend?: React.ReactNode;
   help?: string;
   className?: string;
-  error?: string;
+  error?: React.ReactNode;
   theme?: FieldSetTheme;
   large?: boolean;
   small?: boolean;
   success?: boolean;
   touched?: boolean;
+}
+
+export interface ToggleGroupProps {
+  title?: string;
+  wrapper?: boolean;
+  options?: Array<OptionProps | string>;
 }
 
 export type CheckboxProps = FieldInputProps &
@@ -138,9 +144,8 @@ export type CheckboxProps = FieldInputProps &
 
 export type CheckboxListProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
-  ValueProps<string[] | null> & {
-    options?: Array<OptionProps | string>;
-  };
+  ValueProps<string[] | null> &
+  ToggleGroupProps;
 
 export type DateInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
@@ -180,9 +185,8 @@ export type MaskedInputProps = FieldInputProps &
 
 export type RadioGroupProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
-  ValueProps<string | null> & {
-    options?: Array<OptionProps | string>;
-  };
+  ValueProps<string | null> &
+  ToggleGroupProps;
 
 export type SelectProps = FieldInputProps &
   HTMLProps<HTMLSelectElement> &

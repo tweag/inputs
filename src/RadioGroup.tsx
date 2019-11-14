@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Field } from "./Field";
+import { FieldSet } from "./FieldSet";
 import { RadioGroupProps, OptionProps } from "./types";
 import { useTheme } from "./theme";
 
@@ -20,6 +21,10 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
   theme = useTheme("radioGroup"),
   options = [],
+  title,
+  wrapper = true,
+  error,
+  touched,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -27,8 +32,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     [onChange]
   );
 
+  const [Wrapper, wrapperProps] = wrapper
+    ? [FieldSet, { legend: title, error, touched }]
+    : [React.Fragment, {}];
+
   return (
-    <React.Fragment>
+    <Wrapper {...wrapperProps}>
       {options.map(option => {
         const radio = getRadioProps(option);
 
@@ -52,6 +61,6 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           />
         );
       })}
-    </React.Fragment>
+    </Wrapper>
   );
 };

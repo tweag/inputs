@@ -1,186 +1,641 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RadioGroup /> an array of strings as options accepts an array of strings as options 1`] = `
+exports[`<RadioGroup /> <fieldset> can be rendered unwrapped 1`] = `
 <div
   class="field"
 >
   <input
     class="field__input"
-    id="field_28"
+    id="field_49"
     type="radio"
     value="foo"
   />
   <label
     class="field__label"
-    for="field_28"
+    for="field_49"
   >
     foo
   </label>
 </div>
 `;
 
-exports[`<RadioGroup /> renders 1`] = `
-<div
-  class="field"
+exports[`<RadioGroup /> <fieldset> is wrapped in a <fieldset> by default 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_45"
 >
-  <input
-    class="field__input"
-    id="field_1"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label"
-    for="field_1"
+  <div
+    class="field"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input"
+      id="field_46"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_46"
+    >
+      foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_47"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_47"
+    >
+      bar
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_48"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label"
+      for="field_48"
+    >
+      buzz
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<RadioGroup /> an array of strings as options accepts an array of strings as options 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_37"
+>
+  <legend
+    class="fieldset__legend"
+  />
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_38"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_38"
+    >
+      foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_39"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_39"
+    >
+      bar
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_40"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label"
+      for="field_40"
+    >
+      buzz
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<RadioGroup /> renders 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_1"
+>
+  <legend
+    class="fieldset__legend"
+  />
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_2"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_2"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_3"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_3"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_4"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_4"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with an error 1`] = `
-<div
-  class="field field--erroneous"
+<fieldset
+  aria-describedby="field_5_error"
+  class="fieldset fieldset--erroneous"
+  id="field_5"
 >
-  <input
-    aria-labelledby="field_4_label field_4_error"
-    class="field__input field__input--erroneous"
-    id="field_4"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend fieldset__legend--erroneous"
   />
-  <label
-    class="field__label field__label--erroneous"
-    for="field_4"
-    id="field_4_label"
+  <div
+    class="field"
   >
-    Foo
-  </label>
+    <input
+      class="field__input"
+      id="field_6"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_6"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_7"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_7"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_8"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_8"
+    >
+      Disabled
+    </label>
+  </div>
   <span
-    class="field__error"
-    id="field_4_error"
+    class="fieldset__error"
+    id="field_5_error"
     role="alert"
   >
     Oh no!
   </span>
-</div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with help 1`] = `
-<div
-  class="field"
+<fieldset
+  class="fieldset"
+  id="field_9"
 >
-  <input
-    class="field__input"
-    id="field_7"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label"
-    for="field_7"
+  <div
+    class="field"
   >
-    Foo
-    <span
-      class="field__help"
+    <input
+      class="field__input"
+      id="field_10"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_10"
     >
-      Good luck
-    </span>
-  </label>
-</div>
+      Foo
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_11"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_11"
+    >
+      Bar
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_12"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_12"
+    >
+      Disabled
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with inline 1`] = `
-<div
-  class="field field--inline"
+<fieldset
+  class="fieldset"
+  id="field_29"
 >
-  <input
-    class="field__input field__input--inline"
-    id="field_22"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label field__label--inline"
-    for="field_22"
+  <div
+    class="field field--inline"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input field__input--inline"
+      id="field_30"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--inline"
+      for="field_30"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--inline"
+  >
+    <input
+      class="field__input field__input--inline"
+      id="field_31"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--inline"
+      for="field_31"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--inline field--disabled"
+  >
+    <input
+      class="field__input field__input--inline field__input--disabled"
+      disabled=""
+      id="field_32"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--inline field__label--disabled"
+      for="field_32"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with large 1`] = `
-<div
-  class="field field--large"
+<fieldset
+  class="fieldset"
+  id="field_21"
 >
-  <input
-    class="field__input field__input--large"
-    id="field_16"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label field__label--large"
-    for="field_16"
+  <div
+    class="field field--large"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input field__input--large"
+      id="field_22"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--large"
+      for="field_22"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--large"
+  >
+    <input
+      class="field__input field__input--large"
+      id="field_23"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--large"
+      for="field_23"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--large field--disabled"
+  >
+    <input
+      class="field__input field__input--large field__input--disabled"
+      disabled=""
+      id="field_24"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--large field__label--disabled"
+      for="field_24"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with small 1`] = `
-<div
-  class="field field--small"
+<fieldset
+  class="fieldset"
+  id="field_25"
 >
-  <input
-    class="field__input field__input--small"
-    id="field_19"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label field__label--small"
-    for="field_19"
+  <div
+    class="field field--small"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input field__input--small"
+      id="field_26"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--small"
+      for="field_26"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--small"
+  >
+    <input
+      class="field__input field__input--small"
+      id="field_27"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--small"
+      for="field_27"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--small field--disabled"
+  >
+    <input
+      class="field__input field__input--small field__input--disabled"
+      disabled=""
+      id="field_28"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--small field__label--disabled"
+      for="field_28"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with success 1`] = `
-<div
-  class="field field--success"
+<fieldset
+  class="fieldset"
+  id="field_13"
 >
-  <input
-    class="field__input field__input--success"
-    id="field_10"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend"
   />
-  <label
-    class="field__label field__label--success"
-    for="field_10"
+  <div
+    class="field field--success"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input field__input--success"
+      id="field_14"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--success"
+      for="field_14"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--success"
+  >
+    <input
+      class="field__input field__input--success"
+      id="field_15"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--success"
+      for="field_15"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--success field--disabled"
+  >
+    <input
+      class="field__input field__input--success field__input--disabled"
+      disabled=""
+      id="field_16"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--success field__label--disabled"
+      for="field_16"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<RadioGroup /> renders with touched 1`] = `
-<div
-  class="field field--touched field--success"
+<fieldset
+  class="fieldset fieldset--success fieldset--touched"
+  id="field_17"
 >
-  <input
-    class="field__input field__input--touched field__input--success"
-    id="field_13"
-    type="radio"
-    value="foo"
+  <legend
+    class="fieldset__legend fieldset__legend--success fieldset__legend--touched"
   />
-  <label
-    class="field__label field__label--touched field__label--success"
-    for="field_13"
+  <div
+    class="field"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input"
+      id="field_18"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_18"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_19"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_19"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_20"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_20"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
