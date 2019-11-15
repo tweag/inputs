@@ -6,6 +6,7 @@ import {
   CheckboxList,
   DateInput,
   DateTimeInput,
+  FieldSet,
   FileInput,
   FileListInput,
   FloatInput,
@@ -105,8 +106,7 @@ export const BaselineInputs = () => {
 
           <div className="row mt-4">
             <div className="col">
-              <fieldset>
-                <legend>Checkbox List</legend>
+              <FieldSet legend="Checkbox List">
                 <CheckboxList
                   name="checkboxList"
                   options={[
@@ -116,12 +116,11 @@ export const BaselineInputs = () => {
                   ]}
                   {...fields.checkboxList}
                 />
-              </fieldset>
+              </FieldSet>
             </div>
 
             <div className="col">
-              <fieldset>
-                <legend>Radio Group</legend>
+              <FieldSet legend="Radio Group">
                 <RadioGroup
                   name="radioGroup"
                   options={[
@@ -131,7 +130,7 @@ export const BaselineInputs = () => {
                   ]}
                   {...fields.radioGroup}
                 />
-              </fieldset>
+              </FieldSet>
             </div>
           </div>
 

@@ -16,7 +16,8 @@ import {
   Select as BSelect,
   TextArea as BTextArea,
   TimeInput as BTimeInput,
-  ToggleButton as BToggleButton
+  ToggleButton as BToggleButton,
+  FieldSet
 } from "react-baseline-inputs";
 import {
   CheckboxListProps,
@@ -100,3 +101,5 @@ export const TimeInput: React.FC<TimeInputProps> = props => (
 export const ToggleButton: React.FC<ToggleButtonProps> = props => (
   <BToggleButton {...useField(props)} />
 );
+
+export { FieldSet };

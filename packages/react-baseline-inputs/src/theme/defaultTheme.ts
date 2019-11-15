@@ -1,4 +1,4 @@
-import { FieldTheme, Theme } from "../types";
+import { FieldTheme, FieldSetTheme, Theme } from "../types";
 
 const fieldTheme: FieldTheme = {
   field: "field",
@@ -39,12 +39,37 @@ const fieldTheme: FieldTheme = {
   errorLarge: "field__error--large"
 };
 
+const fieldSetTheme: FieldSetTheme = {
+  fieldSet: "fieldset",
+  fieldSetError: "fieldset--erroneous",
+  fieldSetSuccess: "fieldset--success",
+  fieldSetTouched: "fieldset--touched",
+  fieldSetSmall: "fieldset--small",
+  fieldSetLarge: "fieldset--large",
+
+  legend: "fieldset__legend",
+  legendError: "fieldset__legend--erroneous",
+  legendSuccess: "fieldset__legend--success",
+  legendTouched: "fieldset__legend--touched",
+  legendSmall: "fieldset__legend--small",
+  legendLarge: "fieldset__legend--large",
+
+  help: "fieldset__help",
+  helpSmall: "fieldset__help--small",
+  helpLarge: "fieldset__help--large",
+
+  error: "fieldset__error",
+  errorSmall: "fieldset__error--small",
+  errorLarge: "fieldset__error--large"
+};
+
 export const defaultTheme: Theme = {
   input: fieldTheme,
   checkbox: fieldTheme,
   dateInput: fieldTheme,
   dateTimeInput: fieldTheme,
   field: fieldTheme,
+  fieldSet: fieldSetTheme,
   fileInput: fieldTheme,
   floatInput: fieldTheme,
   integerInput: fieldTheme,
