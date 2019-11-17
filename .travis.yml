@@ -1,7 +1,0 @@
-language: node_js
-node_js:
-  - node
-  - lts/*
-script:
-  - yarn format:check
-  - yarn test --ci
