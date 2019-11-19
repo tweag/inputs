@@ -18,7 +18,7 @@ const setup = (props: Partial<RadioGroupProps> = {}) =>
   );
 
 describe("<RadioGroup />", () => {
-  itBehavesLikeAField(setup, ["label", "wrapper", "id"]);
+  itBehavesLikeAField(setup, ["label", "id"]);
 
   test("emits the value on change", () => {
     const onChange = jest.fn();

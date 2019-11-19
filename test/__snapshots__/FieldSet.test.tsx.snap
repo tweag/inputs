@@ -3,7 +3,7 @@
 exports[`<FieldSet /> accepts a passed className 1`] = `
 <fieldset
   class="fieldset sample"
-  id="field_8"
+  id="field_9"
 >
   <legend
     class="fieldset__legend"
@@ -41,9 +41,9 @@ exports[`<FieldSet /> renders with a custom ID 1`] = `
 
 exports[`<FieldSet /> renders with an error 1`] = `
 <fieldset
-  aria-describedby="field_2_error"
+  aria-describedby="field_3_error"
   class="fieldset fieldset--erroneous"
-  id="field_2"
+  id="field_3"
 >
   <legend
     class="fieldset__legend fieldset__legend--erroneous"
@@ -52,7 +52,7 @@ exports[`<FieldSet /> renders with an error 1`] = `
   </legend>
   <span
     class="fieldset__error"
-    id="field_2_error"
+    id="field_3_error"
     role="alert"
   >
     Oh no!
@@ -63,7 +63,7 @@ exports[`<FieldSet /> renders with an error 1`] = `
 exports[`<FieldSet /> renders with help 1`] = `
 <fieldset
   class="fieldset"
-  id="field_3"
+  id="field_4"
 >
   <legend
     class="fieldset__legend"
@@ -81,7 +81,7 @@ exports[`<FieldSet /> renders with help 1`] = `
 exports[`<FieldSet /> renders with large 1`] = `
 <fieldset
   class="fieldset fieldset--large"
-  id="field_6"
+  id="field_7"
 >
   <legend
     class="fieldset__legend fieldset__legend--large"
@@ -94,7 +94,7 @@ exports[`<FieldSet /> renders with large 1`] = `
 exports[`<FieldSet /> renders with small 1`] = `
 <fieldset
   class="fieldset fieldset--small"
-  id="field_7"
+  id="field_8"
 >
   <legend
     class="fieldset__legend fieldset__legend--small"
@@ -107,7 +107,7 @@ exports[`<FieldSet /> renders with small 1`] = `
 exports[`<FieldSet /> renders with success 1`] = `
 <fieldset
   class="fieldset fieldset--success"
-  id="field_4"
+  id="field_5"
 >
   <legend
     class="fieldset__legend fieldset__legend--success"
@@ -120,7 +120,7 @@ exports[`<FieldSet /> renders with success 1`] = `
 exports[`<FieldSet /> renders with touched 1`] = `
 <fieldset
   class="fieldset fieldset--success fieldset--touched"
-  id="field_5"
+  id="field_6"
 >
   <legend
     class="fieldset__legend fieldset__legend--success fieldset__legend--touched"
@@ -129,3 +129,5 @@ exports[`<FieldSet /> renders with touched 1`] = `
   </legend>
 </fieldset>
 `;
+
+exports[`<FieldSet /> renders without a wrapper 1`] = `null`;
