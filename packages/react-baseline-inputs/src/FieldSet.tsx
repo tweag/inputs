@@ -14,7 +14,8 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   error,
   success = touched && !error,
   large,
-  small
+  small,
+  wrapper = true
 }) => {
   const fieldSetTheme = theme as FieldSetTheme;
   const fieldSetClassNames = [fieldSetTheme.fieldSet];
@@ -57,13 +58,13 @@ export const FieldSet: React.FC<FieldSetProps> = ({
 
   const errorLabelId = `${id}_error`;
 
-  return (
+  return wrapper ? (
     <fieldset
       id={id}
       aria-describedby={error ? errorLabelId : undefined}
       className={join(fieldSetClassNames)}
     >
-      <legend className={join(legendClassNames)}>{legend}</legend>
+      {legend && <legend className={join(legendClassNames)}>{legend}</legend>}
 
       {help && <p className={join(helpClassNames)}>{help}</p>}
 
@@ -75,5 +76,7 @@ export const FieldSet: React.FC<FieldSetProps> = ({
         </span>
       )}
     </fieldset>
+  ) : (
+    <React.Fragment>{children}</React.Fragment>
   );
 };

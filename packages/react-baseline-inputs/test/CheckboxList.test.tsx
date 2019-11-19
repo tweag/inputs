@@ -18,7 +18,7 @@ const setup = (props: Partial<CheckboxListProps> = {}) =>
   );
 
 describe("<CheckboxList />", () => {
-  itBehavesLikeAField(setup, ["label", "wrapper", "id"]);
+  itBehavesLikeAField(setup, ["label", "id"]);
 
   test("adds a new value when checked", () => {
     const onChange = jest.fn();
