@@ -18,7 +18,7 @@ const setup = (props: Partial<RadioGroupProps> = {}) =>
   );
 
 describe("<RadioGroup />", () => {
-  itBehavesLikeAField(setup, ["label", "wrapper", "id"]);
+  itBehavesLikeAField(setup, ["label", "id"]);
 
   test("emits the value on change", () => {
     const onChange = jest.fn();
@@ -44,6 +44,20 @@ describe("<RadioGroup />", () => {
       fireEvent.click(getByLabelText("foo"));
 
       expect(onChange).toHaveBeenCalledWith("foo");
+    });
+  });
+
+  describe("<fieldset>", () => {
+    const options = ["foo", "bar", "buzz"];
+
+    it("is wrapped in a <fieldset> by default", () => {
+      const { container } = setup({ options });
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("can be rendered unwrapped", () => {
+      const { container } = setup({ options, wrapper: false });
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 });
