@@ -21,7 +21,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
   theme = useTheme("radioGroup"),
   options = [],
-  title,
+  legend,
   wrapper = true,
   error,
   touched,
@@ -33,7 +33,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend: title, error, touched }]
+    ? [FieldSet, { legend, error, touched }]
     : [React.Fragment, {}];
 
   return (
