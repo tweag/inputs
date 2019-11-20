@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0...v2.1.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* make legend optional, export FieldSet from react-baseline-inputs ([a426673](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/a426673b5033538c7817140a82cd0c6e5ce88cf5))
+* title -> legend, add tests ([25bd0e7](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/25bd0e7a63192c39e2ed4f28675c33b7951ba4be))
+
+
+### Features
+
+* add FieldSet ([4acd4fd](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/4acd4fd201edc8359d45e786c06584d191951882))
+
+
+
+
+
 # [2.0.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0-alpha.8...v2.0.0) (2019-11-12)
 
 **Note:** Version bump only for package formik-inputs

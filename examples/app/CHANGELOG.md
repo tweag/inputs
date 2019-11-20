@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/promptworks/react-forms/compare/v2.0.0...v2.1.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* title -> legend, add tests ([25bd0e7](https://github.com/promptworks/react-forms/commit/25bd0e7a63192c39e2ed4f28675c33b7951ba4be))
+
+
+### Features
+
+* add FieldSet ([4acd4fd](https://github.com/promptworks/react-forms/commit/4acd4fd201edc8359d45e786c06584d191951882))
+
+
+
+
+
 # [2.0.0](https://github.com/promptworks/react-forms/compare/v2.0.0-alpha.8...v2.0.0) (2019-11-12)
 
 **Note:** Version bump only for package web-basic
