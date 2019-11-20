@@ -180,7 +180,6 @@ export type MaskedInputProps = FieldInputProps &
   OmitConflicts<TextMaskProps> &
   ValueProps<string | null>;
 
-// todo: see if we need fieldinputprops
 export type RadioGroupProps = FieldInputProps &
   FieldSetProps &
   HTMLProps<HTMLInputElement> &

@@ -6,7 +6,6 @@ import {
   CheckboxList,
   DateInput,
   DateTimeInput,
-  FieldSet,
   FileInput,
   FileListInput,
   FloatInput,
@@ -107,7 +106,7 @@ export const BaselineInputs = () => {
           <div className="row mt-4">
             <div className="col">
               <CheckboxList
-                title="Checkbox List"
+                legend="Checkbox List"
                 name="checkboxList"
                 options={[
                   { label: "Foo", value: "foo" },
@@ -120,7 +119,7 @@ export const BaselineInputs = () => {
 
             <div className="col">
               <RadioGroup
-                title="Radio Group"
+                legend="Radio Group"
                 name="radioGroup"
                 options={[
                   { label: "Foo", value: "foo" },

@@ -24,7 +24,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   onChange,
   options = [],
   theme = useTheme("checkbox"),
-  title,
+  legend,
   wrapper = true,
   error,
   touched,
@@ -45,7 +45,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend: title, error, touched }]
+    ? [FieldSet, { legend, error, touched }]
     : [React.Fragment, {}];
 
   return (
