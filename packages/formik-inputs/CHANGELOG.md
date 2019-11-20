@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.1.0...v2.2.0) (2019-11-20)
+
+**Note:** Version bump only for package formik-inputs
+
+
+
+
+
 # [2.1.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.0.0...v2.1.0) (2019-11-20)
 
 

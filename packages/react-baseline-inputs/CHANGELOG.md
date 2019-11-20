@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.1.0...v2.2.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* consolidate props, add wrapper prop to FieldSet ([cec708b](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/cec708bce2fb82da2f5126e33edbc0e6e0130840))
+* remove comments, legend -> title ([3a28fdc](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/3a28fdc40618aaf8eee69f0ceb5ce1c09f96204e))
+
+
+### Features
+
+* wrap RadioGroup and CheckboxList with FieldSet by default ([c368ec8](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/commit/c368ec8a694131210f13fdb66a0c29edd95f81e8))
+
+
+
+
+
 # [2.1.0](https://github.com/promptworks/react-forms/tree/master/packages/react-baseline-inputs/compare/v2.0.0...v2.1.0) (2019-11-20)
 
 
