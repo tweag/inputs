@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Field } from "./Field";
+import { FieldSet } from "./FieldSet";
 import { CheckboxListProps, OptionProps } from "./types";
 import { useTheme } from "./theme";
 
@@ -23,6 +24,10 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   onChange,
   options = [],
   theme = useTheme("checkbox"),
+  legend,
+  wrapper = true,
+  error,
+  touched,
   ...props
 }) => {
   const values = value || [];
@@ -39,8 +44,12 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
     [onChange, value]
   );
 
+  const [Wrapper, wrapperProps] = wrapper
+    ? [FieldSet, { legend, error, touched }]
+    : [React.Fragment, {}];
+
   return (
-    <React.Fragment>
+    <Wrapper {...wrapperProps}>
       {options.map(option => {
         const checkbox = getCheckboxProps(option);
 
@@ -64,6 +73,6 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
           />
         );
       })}
-    </React.Fragment>
+    </Wrapper>
   );
 };
