@@ -7,7 +7,7 @@ const setup = (props: Partial<FieldSetProps> = {}) =>
   render(<FieldSet legend="Jawn" {...props} />);
 
 describe("<FieldSet />", () => {
-  itBehavesLikeAField(setup, ["label", "wrapper", "inline"]);
+  itBehavesLikeAField(setup, ["label", "inline"]);
 
   it("accepts a passed className", () => {
     const { container } = setup({ className: "sample" });

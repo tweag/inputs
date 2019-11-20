@@ -1,184 +1,628 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckboxList /> an array of strings as options accepts an array of strings as options 1`] = `
+exports[`<CheckboxList /> <fieldset> can be rendered unwrapped 1`] = `
 <div
   class="field"
 >
   <input
     class="field__input"
-    id="field_31"
+    id="field_60"
     type="checkbox"
     value="foo"
   />
   <label
     class="field__label"
-    for="field_31"
+    for="field_60"
   >
     foo
   </label>
 </div>
 `;
 
-exports[`<CheckboxList /> renders 1`] = `
-<div
-  class="field"
+exports[`<CheckboxList /> <fieldset> is wrapped in a <fieldset> by default 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_56"
 >
-  <input
-    class="field__input"
-    id="field_1"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label"
-    for="field_1"
+  <div
+    class="field"
   >
-    Foo
-  </label>
-</div>
+    <input
+      class="field__input"
+      id="field_57"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_57"
+    >
+      foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_58"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_58"
+    >
+      bar
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_59"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label"
+      for="field_59"
+    >
+      buzz
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> an array of strings as options accepts an array of strings as options 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_44"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_45"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_45"
+    >
+      foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_46"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_46"
+    >
+      bar
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_47"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label"
+      for="field_47"
+    >
+      buzz
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_1"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_2"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_2"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_3"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_3"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_4"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_4"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
 `;
 
 exports[`<CheckboxList /> renders with an error 1`] = `
-<div
-  class="field field--erroneous"
+<fieldset
+  aria-describedby="field_8_error"
+  class="fieldset fieldset--erroneous"
+  id="field_8"
 >
-  <input
-    aria-labelledby="field_4_label field_4_error"
-    class="field__input field__input--erroneous"
-    id="field_4"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--erroneous"
-    for="field_4"
-    id="field_4_label"
+  <div
+    class="field"
   >
-    Foo
-  </label>
+    <input
+      class="field__input"
+      id="field_9"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_9"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_10"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_10"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_11"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_11"
+    >
+      Disabled
+    </label>
+  </div>
   <span
-    class="field__error"
-    id="field_4_error"
+    class="fieldset__error"
+    id="field_8_error"
     role="alert"
   >
     Oh no!
   </span>
-</div>
+</fieldset>
 `;
 
 exports[`<CheckboxList /> renders with help 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_12"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_13"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_13"
+    >
+      Foo
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_14"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_14"
+    >
+      Bar
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_15"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_15"
+    >
+      Disabled
+      <span
+        class="field__help"
+      >
+        Good luck
+      </span>
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with inline 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_32"
+>
+  <div
+    class="field field--inline"
+  >
+    <input
+      class="field__input field__input--inline"
+      id="field_33"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--inline"
+      for="field_33"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--inline"
+  >
+    <input
+      class="field__input field__input--inline"
+      id="field_34"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--inline"
+      for="field_34"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--inline field--disabled"
+  >
+    <input
+      class="field__input field__input--inline field__input--disabled"
+      disabled=""
+      id="field_35"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--inline field__label--disabled"
+      for="field_35"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with large 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_24"
+>
+  <div
+    class="field field--large"
+  >
+    <input
+      class="field__input field__input--large"
+      id="field_25"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--large"
+      for="field_25"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--large"
+  >
+    <input
+      class="field__input field__input--large"
+      id="field_26"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--large"
+      for="field_26"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--large field--disabled"
+  >
+    <input
+      class="field__input field__input--large field__input--disabled"
+      disabled=""
+      id="field_27"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--large field__label--disabled"
+      for="field_27"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with small 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_28"
+>
+  <div
+    class="field field--small"
+  >
+    <input
+      class="field__input field__input--small"
+      id="field_29"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--small"
+      for="field_29"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--small"
+  >
+    <input
+      class="field__input field__input--small"
+      id="field_30"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--small"
+      for="field_30"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--small field--disabled"
+  >
+    <input
+      class="field__input field__input--small field__input--disabled"
+      disabled=""
+      id="field_31"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--small field__label--disabled"
+      for="field_31"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with success 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_16"
+>
+  <div
+    class="field field--success"
+  >
+    <input
+      class="field__input field__input--success"
+      id="field_17"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label field__label--success"
+      for="field_17"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field field--success"
+  >
+    <input
+      class="field__input field__input--success"
+      id="field_18"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label field__label--success"
+      for="field_18"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--success field--disabled"
+  >
+    <input
+      class="field__input field__input--success field__input--disabled"
+      disabled=""
+      id="field_19"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--success field__label--disabled"
+      for="field_19"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with touched 1`] = `
+<fieldset
+  class="fieldset fieldset--success fieldset--touched"
+  id="field_20"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_21"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_21"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_22"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_22"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_23"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_23"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders without a wrapper 1`] = `
 <div
   class="field"
 >
   <input
     class="field__input"
-    id="field_7"
+    id="field_5"
     type="checkbox"
     value="foo"
   />
   <label
     class="field__label"
-    for="field_7"
-  >
-    Foo
-    <span
-      class="field__help"
-    >
-      Good luck
-    </span>
-  </label>
-</div>
-`;
-
-exports[`<CheckboxList /> renders with inline 1`] = `
-<div
-  class="field field--inline"
->
-  <input
-    class="field__input field__input--inline"
-    id="field_22"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--inline"
-    for="field_22"
-  >
-    Foo
-  </label>
-</div>
-`;
-
-exports[`<CheckboxList /> renders with large 1`] = `
-<div
-  class="field field--large"
->
-  <input
-    class="field__input field__input--large"
-    id="field_16"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--large"
-    for="field_16"
-  >
-    Foo
-  </label>
-</div>
-`;
-
-exports[`<CheckboxList /> renders with small 1`] = `
-<div
-  class="field field--small"
->
-  <input
-    class="field__input field__input--small"
-    id="field_19"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--small"
-    for="field_19"
-  >
-    Foo
-  </label>
-</div>
-`;
-
-exports[`<CheckboxList /> renders with success 1`] = `
-<div
-  class="field field--success"
->
-  <input
-    class="field__input field__input--success"
-    id="field_10"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--success"
-    for="field_10"
-  >
-    Foo
-  </label>
-</div>
-`;
-
-exports[`<CheckboxList /> renders with touched 1`] = `
-<div
-  class="field field--touched field--success"
->
-  <input
-    class="field__input field__input--touched field__input--success"
-    id="field_13"
-    type="checkbox"
-    value="foo"
-  />
-  <label
-    class="field__label field__label--touched field__label--success"
-    for="field_13"
+    for="field_5"
   >
     Foo
   </label>

@@ -18,7 +18,7 @@ const setup = (props: Partial<CheckboxListProps> = {}) =>
   );
 
 describe("<CheckboxList />", () => {
-  itBehavesLikeAField(setup, ["label", "wrapper", "id"]);
+  itBehavesLikeAField(setup, ["label", "id"]);
 
   test("adds a new value when checked", () => {
     const onChange = jest.fn();
@@ -58,6 +58,20 @@ describe("<CheckboxList />", () => {
 
       fireEvent.click(getByLabelText("foo"));
       expect(onChange).toHaveBeenCalledWith([]);
+    });
+  });
+
+  describe("<fieldset>", () => {
+    const options = ["foo", "bar", "buzz"];
+
+    it("is wrapped in a <fieldset> by default", () => {
+      const { container } = setup({ options });
+      expect(container.firstChild).toMatchSnapshot();
+    });
+
+    it("can be rendered unwrapped", () => {
+      const { container } = setup({ options, wrapper: false });
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 });
