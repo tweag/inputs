@@ -32,10 +32,10 @@ export const FormikInputs = () => {
           initialValues={initialValues}
           onSubmit={values => console.table(values)}
         >
-          <Form>
+          <Form noValidate>
             <div className="row">
               <div className="col">
-                <Input name="text" label="Text" validate={notBlank} />
+                <Input required name="text" label="Text" validate={notBlank} />
               </div>
 
               <div className="col">
@@ -117,8 +117,10 @@ export const FormikInputs = () => {
 
               <div className="col">
                 <RadioGroup
+                  required
                   legend="Radio Group"
                   name="radioGroup"
+                  validate={notBlank}
                   options={[
                     { label: "Foo", value: "foo" },
                     { label: "Bar", value: "bar" },

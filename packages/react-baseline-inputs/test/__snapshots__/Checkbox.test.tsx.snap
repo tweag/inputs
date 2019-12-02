@@ -66,6 +66,25 @@ exports[`<Checkbox /> renders with an error 1`] = `
 </div>
 `;
 
+exports[`<Checkbox /> renders with custom requiredIndicator 1`] = `
+<div
+  class="field"
+>
+  <input
+    checked=""
+    class="field__input"
+    id="field_11"
+    type="checkbox"
+  />
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+</div>
+`;
+
 exports[`<Checkbox /> renders with help 1`] = `
 <div
   class="field"
@@ -97,12 +116,12 @@ exports[`<Checkbox /> renders with inline 1`] = `
   <input
     checked=""
     class="field__input field__input--inline"
-    id="field_10"
+    id="field_12"
     type="checkbox"
   />
   <label
     class="field__label field__label--inline"
-    for="field_10"
+    for="field_12"
   >
     Jawn
   </label>
@@ -124,6 +143,32 @@ exports[`<Checkbox /> renders with large 1`] = `
     for="field_8"
   >
     Jawn
+  </label>
+</div>
+`;
+
+exports[`<Checkbox /> renders with required 1`] = `
+<div
+  class="field"
+>
+  <input
+    aria-required="true"
+    checked=""
+    class="field__input"
+    id="field_10"
+    required=""
+    type="checkbox"
+  />
+  <label
+    class="field__label"
+    for="field_10"
+  >
+    Jawn
+    <span
+      class="field__required-indicator"
+    >
+      *
+    </span>
   </label>
 </div>
 `;

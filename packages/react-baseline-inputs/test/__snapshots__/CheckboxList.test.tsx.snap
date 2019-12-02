@@ -6,13 +6,13 @@ exports[`<CheckboxList /> <fieldset> can be rendered unwrapped 1`] = `
 >
   <input
     class="field__input"
-    id="field_60"
+    id="field_68"
     type="checkbox"
     value="foo"
   />
   <label
     class="field__label"
-    for="field_60"
+    for="field_68"
   >
     foo
   </label>
@@ -22,20 +22,20 @@ exports[`<CheckboxList /> <fieldset> can be rendered unwrapped 1`] = `
 exports[`<CheckboxList /> <fieldset> is wrapped in a <fieldset> by default 1`] = `
 <fieldset
   class="fieldset"
-  id="field_56"
+  id="field_64"
 >
   <div
     class="field"
   >
     <input
       class="field__input"
-      id="field_57"
+      id="field_65"
       type="checkbox"
       value="foo"
     />
     <label
       class="field__label"
-      for="field_57"
+      for="field_65"
     >
       foo
     </label>
@@ -45,13 +45,13 @@ exports[`<CheckboxList /> <fieldset> is wrapped in a <fieldset> by default 1`] =
   >
     <input
       class="field__input"
-      id="field_58"
+      id="field_66"
       type="checkbox"
       value="bar"
     />
     <label
       class="field__label"
-      for="field_58"
+      for="field_66"
     >
       bar
     </label>
@@ -61,13 +61,13 @@ exports[`<CheckboxList /> <fieldset> is wrapped in a <fieldset> by default 1`] =
   >
     <input
       class="field__input"
-      id="field_59"
+      id="field_67"
       type="checkbox"
       value="buzz"
     />
     <label
       class="field__label"
-      for="field_59"
+      for="field_67"
     >
       buzz
     </label>
@@ -78,20 +78,20 @@ exports[`<CheckboxList /> <fieldset> is wrapped in a <fieldset> by default 1`] =
 exports[`<CheckboxList /> an array of strings as options accepts an array of strings as options 1`] = `
 <fieldset
   class="fieldset"
-  id="field_44"
+  id="field_52"
 >
   <div
     class="field"
   >
     <input
       class="field__input"
-      id="field_45"
+      id="field_53"
       type="checkbox"
       value="foo"
     />
     <label
       class="field__label"
-      for="field_45"
+      for="field_53"
     >
       foo
     </label>
@@ -101,13 +101,13 @@ exports[`<CheckboxList /> an array of strings as options accepts an array of str
   >
     <input
       class="field__input"
-      id="field_46"
+      id="field_54"
       type="checkbox"
       value="bar"
     />
     <label
       class="field__label"
-      for="field_46"
+      for="field_54"
     >
       bar
     </label>
@@ -117,13 +117,13 @@ exports[`<CheckboxList /> an array of strings as options accepts an array of str
   >
     <input
       class="field__input"
-      id="field_47"
+      id="field_55"
       type="checkbox"
       value="buzz"
     />
     <label
       class="field__label"
-      for="field_47"
+      for="field_55"
     >
       buzz
     </label>
@@ -253,6 +253,63 @@ exports[`<CheckboxList /> renders with an error 1`] = `
 </fieldset>
 `;
 
+exports[`<CheckboxList /> renders with custom requiredIndicator 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_36"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_37"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_37"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_38"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_38"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_39"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_39"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
 exports[`<CheckboxList /> renders with help 1`] = `
 <fieldset
   class="fieldset"
@@ -328,20 +385,20 @@ exports[`<CheckboxList /> renders with help 1`] = `
 exports[`<CheckboxList /> renders with inline 1`] = `
 <fieldset
   class="fieldset"
-  id="field_32"
+  id="field_40"
 >
   <div
     class="field field--inline"
   >
     <input
       class="field__input field__input--inline"
-      id="field_33"
+      id="field_41"
       type="checkbox"
       value="foo"
     />
     <label
       class="field__label field__label--inline"
-      for="field_33"
+      for="field_41"
     >
       Foo
     </label>
@@ -351,13 +408,13 @@ exports[`<CheckboxList /> renders with inline 1`] = `
   >
     <input
       class="field__input field__input--inline"
-      id="field_34"
+      id="field_42"
       type="checkbox"
       value="bar"
     />
     <label
       class="field__label field__label--inline"
-      for="field_34"
+      for="field_42"
     >
       Bar
     </label>
@@ -368,13 +425,13 @@ exports[`<CheckboxList /> renders with inline 1`] = `
     <input
       class="field__input field__input--inline field__input--disabled"
       disabled=""
-      id="field_35"
+      id="field_43"
       type="checkbox"
       value="buzz"
     />
     <label
       class="field__label field__label--inline field__label--disabled"
-      for="field_35"
+      for="field_43"
     >
       Disabled
     </label>
@@ -432,6 +489,64 @@ exports[`<CheckboxList /> renders with large 1`] = `
     <label
       class="field__label field__label--large field__label--disabled"
       for="field_27"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with required 1`] = `
+<fieldset
+  aria-required="true"
+  class="fieldset"
+  id="field_32"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_33"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_33"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_34"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_34"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_35"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_35"
     >
       Disabled
     </label>

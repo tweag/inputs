@@ -9,7 +9,7 @@ const setup = (props: Partial<ToggleButtonProps> = {}) =>
   );
 
 describe("<ToggleButton />", () => {
-  itBehavesLikeAField(setup);
+  itBehavesLikeAField(setup, ["required"]);
 
   test("emits the value on change", () => {
     const onChange = jest.fn();

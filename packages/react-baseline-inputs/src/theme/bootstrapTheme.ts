@@ -1,4 +1,4 @@
-import { FieldTheme, Theme } from "../types";
+import { FieldTheme, FieldSetTheme, Theme } from "../types";
 
 const fieldTheme: FieldTheme = {
   field: "form-group",
@@ -8,7 +8,16 @@ const fieldTheme: FieldTheme = {
   inputSmall: "form-control-sm",
   inputLarge: "form-control-lg",
   error: "invalid-feedback",
-  help: "form-text text-muted"
+  help: "form-text text-muted",
+  requiredIndicator: "ml-1 text-danger"
+};
+
+const fieldSetTheme: FieldSetTheme = {
+  fieldSet: "form-group",
+  error: "invalid-feedback d-block",
+  fieldSetSuccess: "is-valid",
+  fieldSetError: "is-invalid",
+  requiredIndicator: "ml-1 text-danger"
 };
 
 const checkboxTheme: FieldTheme = {
@@ -43,7 +52,7 @@ export const bootstrapTheme: Theme = {
   dateInput: fieldTheme,
   dateTimeInput: fieldTheme,
   field: fieldTheme,
-  fieldSet: {},
+  fieldSet: fieldSetTheme,
   fileInput: fileInputTheme,
   floatInput: fieldTheme,
   input: fieldTheme,

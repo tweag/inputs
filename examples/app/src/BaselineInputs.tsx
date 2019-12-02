@@ -29,6 +29,7 @@ export const BaselineInputs = () => {
         <h2 className="mb-4">react-baseline-inputs</h2>
 
         <form
+          noValidate
           onSubmit={event => {
             event.preventDefault();
             console.table(values);
@@ -36,7 +37,7 @@ export const BaselineInputs = () => {
         >
           <div className="row">
             <div className="col">
-              <Input {...fields.text} label="Text" name="text" />
+              <Input required {...fields.text} label="Text" name="text" />
             </div>
 
             <div className="col">
@@ -119,6 +120,7 @@ export const BaselineInputs = () => {
 
             <div className="col">
               <RadioGroup
+                required
                 legend="Radio Group"
                 name="radioGroup"
                 options={[

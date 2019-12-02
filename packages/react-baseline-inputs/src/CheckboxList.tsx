@@ -28,6 +28,8 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   wrapper = true,
   error,
   touched,
+  required,
+  requiredIndicator,
   ...props
 }) => {
   const values = value || [];
@@ -45,7 +47,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend, error, touched }]
+    ? [FieldSet, { legend, error, touched, required, requiredIndicator }]
     : [React.Fragment, {}];
 
   return (

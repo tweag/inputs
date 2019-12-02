@@ -38,6 +38,8 @@ export interface FieldTheme {
   errorInline?: string | undefined;
   errorSmall?: string | undefined;
   errorLarge?: string | undefined;
+
+  requiredIndicator?: string | undefined;
 }
 
 export interface FieldSetTheme {
@@ -62,6 +64,8 @@ export interface FieldSetTheme {
   error?: string | undefined;
   errorSmall?: string | undefined;
   errorLarge?: string | undefined;
+
+  requiredIndicator?: string | undefined;
 }
 
 export interface Theme {
@@ -95,6 +99,8 @@ export interface FieldInputProps {
   labelPosition?: "before" | "after";
   wrapper?: boolean;
   theme?: FieldTheme;
+  required?: boolean;
+  requiredIndicator?: React.ReactNode;
 }
 
 export interface OptionProps {
@@ -109,6 +115,7 @@ type OmitConflicts<T> = Omit<
   T,
   "value" | "onChange" | "label" | "multiple" | "render"
 >;
+type OmitRequired<T> = Omit<T, "required" | "requiredIndicator">;
 
 export interface ValueProps<V, C = V> {
   value: V;
@@ -131,6 +138,8 @@ export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   success?: boolean;
   touched?: boolean;
   wrapper?: boolean;
+  required?: boolean;
+  requiredIndicator?: React.ReactNode;
 }
 
 export type CheckboxProps = FieldInputProps &
@@ -202,6 +211,6 @@ export type TimeInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
   ValueProps<string | null>;
 
-export type ToggleButtonProps = FieldInputProps &
-  HTMLProps<HTMLButtonElement> &
-  ValueProps<boolean | null>;
+export type ToggleButtonProps = OmitRequired<
+  FieldInputProps & HTMLProps<HTMLButtonElement> & ValueProps<boolean | null>
+>;

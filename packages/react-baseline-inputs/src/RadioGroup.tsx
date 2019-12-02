@@ -25,6 +25,8 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   wrapper = true,
   error,
   touched,
+  required,
+  requiredIndicator,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -33,7 +35,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend, error, touched }]
+    ? [FieldSet, { legend, error, touched, required, requiredIndicator }]
     : [React.Fragment, {}];
 
   return (

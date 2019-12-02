@@ -66,6 +66,25 @@ exports[`<TextArea /> renders with an error 1`] = `
 </div>
 `;
 
+exports[`<TextArea /> renders with custom requiredIndicator 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <textarea
+    class="field__input"
+    id="field_11"
+  >
+    hello
+  </textarea>
+</div>
+`;
+
 exports[`<TextArea /> renders with help 1`] = `
 <div
   class="field"
@@ -96,13 +115,13 @@ exports[`<TextArea /> renders with inline 1`] = `
 >
   <label
     class="field__label field__label--inline"
-    for="field_10"
+    for="field_12"
   >
     Jawn
   </label>
   <textarea
     class="field__input field__input--inline"
-    id="field_10"
+    id="field_12"
   >
     hello
   </textarea>
@@ -122,6 +141,32 @@ exports[`<TextArea /> renders with large 1`] = `
   <textarea
     class="field__input field__input--large"
     id="field_8"
+  >
+    hello
+  </textarea>
+</div>
+`;
+
+exports[`<TextArea /> renders with required 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_10"
+  >
+    Jawn
+    <span
+      class="field__required-indicator"
+    >
+      *
+    </span>
+  </label>
+  <textarea
+    aria-required="true"
+    class="field__input"
+    id="field_10"
+    required=""
   >
     hello
   </textarea>

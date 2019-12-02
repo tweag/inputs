@@ -15,6 +15,8 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   success = touched && !error,
   large,
   small,
+  required,
+  requiredIndicator = "*",
   wrapper = true
 }) => {
   const fieldSetTheme = theme as FieldSetTheme;
@@ -22,6 +24,7 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   const legendClassNames = [fieldSetTheme.legend];
   const helpClassNames = [fieldSetTheme.help];
   const errorClassNames = [fieldSetTheme.error];
+  const requiredIndicatorClassNames = [theme.requiredIndicator];
 
   if (className) {
     fieldSetClassNames.push(className);
@@ -62,9 +65,19 @@ export const FieldSet: React.FC<FieldSetProps> = ({
     <fieldset
       id={id}
       aria-describedby={error ? errorLabelId : undefined}
+      aria-required={required ? "true" : undefined}
       className={join(fieldSetClassNames)}
     >
-      {legend && <legend className={join(legendClassNames)}>{legend}</legend>}
+      {legend && (
+        <legend className={join(legendClassNames)}>
+          {legend}
+          {required && (
+            <span className={join(requiredIndicatorClassNames)}>
+              {requiredIndicator}
+            </span>
+          )}
+        </legend>
+      )}
 
       {help && <p className={join(helpClassNames)}>{help}</p>}
 

@@ -36,7 +36,9 @@ const fieldTheme: FieldTheme = {
   error: "field__error",
   errorInline: "field__error--inline",
   errorSmall: "field__error--small",
-  errorLarge: "field__error--large"
+  errorLarge: "field__error--large",
+
+  requiredIndicator: "field__required-indicator"
 };
 
 const fieldSetTheme: FieldSetTheme = {
@@ -60,7 +62,9 @@ const fieldSetTheme: FieldSetTheme = {
 
   error: "fieldset__error",
   errorSmall: "fieldset__error--small",
-  errorLarge: "fieldset__error--large"
+  errorLarge: "fieldset__error--large",
+
+  requiredIndicator: "fieldset__required-indicator"
 };
 
 export const defaultTheme: Theme = {

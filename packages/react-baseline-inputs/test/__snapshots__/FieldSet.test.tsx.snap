@@ -3,7 +3,7 @@
 exports[`<FieldSet /> accepts a passed className 1`] = `
 <fieldset
   class="fieldset sample"
-  id="field_9"
+  id="field_11"
 >
   <legend
     class="fieldset__legend"
@@ -60,6 +60,19 @@ exports[`<FieldSet /> renders with an error 1`] = `
 </fieldset>
 `;
 
+exports[`<FieldSet /> renders with custom requiredIndicator 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_10"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
 exports[`<FieldSet /> renders with help 1`] = `
 <fieldset
   class="fieldset"
@@ -87,6 +100,25 @@ exports[`<FieldSet /> renders with large 1`] = `
     class="fieldset__legend fieldset__legend--large"
   >
     Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with required 1`] = `
+<fieldset
+  aria-required="true"
+  class="fieldset"
+  id="field_9"
+>
+  <legend
+    class="fieldset__legend"
+  >
+    Jawn
+    <span
+      class="fieldset__required-indicator"
+    >
+      *
+    </span>
   </legend>
 </fieldset>
 `;

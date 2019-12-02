@@ -63,6 +63,24 @@ exports[`<FileInput /> renders with an error 1`] = `
 </div>
 `;
 
+exports[`<FileInput /> renders with custom requiredIndicator 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_11"
+    type="file"
+  />
+</div>
+`;
+
 exports[`<FileInput /> renders with help 1`] = `
 <div
   class="field"
@@ -92,13 +110,13 @@ exports[`<FileInput /> renders with inline 1`] = `
 >
   <label
     class="field__label field__label--inline"
-    for="field_10"
+    for="field_12"
   >
     Jawn
   </label>
   <input
     class="field__input field__input--inline"
-    id="field_10"
+    id="field_12"
     type="file"
   />
 </div>
@@ -117,6 +135,31 @@ exports[`<FileInput /> renders with large 1`] = `
   <input
     class="field__input field__input--large"
     id="field_8"
+    type="file"
+  />
+</div>
+`;
+
+exports[`<FileInput /> renders with required 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_10"
+  >
+    Jawn
+    <span
+      class="field__required-indicator"
+    >
+      *
+    </span>
+  </label>
+  <input
+    aria-required="true"
+    class="field__input"
+    id="field_10"
+    required=""
     type="file"
   />
 </div>

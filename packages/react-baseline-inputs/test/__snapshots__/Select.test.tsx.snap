@@ -6,13 +6,13 @@ exports[`<Select /> an array of objects as options renders 1`] = `
 >
   <label
     class="field__label"
-    for="field_14"
+    for="field_16"
   >
     Jawn
   </label>
   <select
     class="field__input"
-    id="field_14"
+    id="field_16"
   >
     <option
       value="foo"
@@ -40,13 +40,13 @@ exports[`<Select /> an array of strings as options accepts an array of strings a
 >
   <label
     class="field__label"
-    for="field_12"
+    for="field_14"
   >
     Jawn
   </label>
   <select
     class="field__input"
-    id="field_12"
+    id="field_14"
   >
     <option
       value="foo"
@@ -107,13 +107,13 @@ exports[`<Select /> renders with a placeholder 1`] = `
 >
   <label
     class="field__label"
-    for="field_11"
+    for="field_13"
   >
     Jawn
   </label>
   <select
     class="field__input"
-    id="field_11"
+    id="field_13"
   >
     <option
       disabled=""
@@ -151,6 +151,23 @@ exports[`<Select /> renders with an error 1`] = `
 </div>
 `;
 
+exports[`<Select /> renders with custom requiredIndicator 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <select
+    class="field__input"
+    id="field_11"
+  />
+</div>
+`;
+
 exports[`<Select /> renders with help 1`] = `
 <div
   class="field"
@@ -179,13 +196,13 @@ exports[`<Select /> renders with inline 1`] = `
 >
   <label
     class="field__label field__label--inline"
-    for="field_10"
+    for="field_12"
   >
     Jawn
   </label>
   <select
     class="field__input field__input--inline"
-    id="field_10"
+    id="field_12"
   />
 </div>
 `;
@@ -203,6 +220,30 @@ exports[`<Select /> renders with large 1`] = `
   <select
     class="field__input field__input--large"
     id="field_8"
+  />
+</div>
+`;
+
+exports[`<Select /> renders with required 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_10"
+  >
+    Jawn
+    <span
+      class="field__required-indicator"
+    >
+      *
+    </span>
+  </label>
+  <select
+    aria-required="true"
+    class="field__input"
+    id="field_10"
+    required=""
   />
 </div>
 `;

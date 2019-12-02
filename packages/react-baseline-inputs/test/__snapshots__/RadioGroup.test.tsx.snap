@@ -6,13 +6,13 @@ exports[`<RadioGroup /> <fieldset> can be rendered unwrapped 1`] = `
 >
   <input
     class="field__input"
-    id="field_52"
+    id="field_60"
     type="radio"
     value="foo"
   />
   <label
     class="field__label"
-    for="field_52"
+    for="field_60"
   >
     foo
   </label>
@@ -20,6 +20,62 @@ exports[`<RadioGroup /> <fieldset> can be rendered unwrapped 1`] = `
 `;
 
 exports[`<RadioGroup /> <fieldset> is wrapped in a <fieldset> by default 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_56"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_57"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_57"
+    >
+      foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_58"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_58"
+    >
+      bar
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_59"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label"
+      for="field_59"
+    >
+      buzz
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<RadioGroup /> an array of strings as options accepts an array of strings as options 1`] = `
 <fieldset
   class="fieldset"
   id="field_48"
@@ -68,62 +124,6 @@ exports[`<RadioGroup /> <fieldset> is wrapped in a <fieldset> by default 1`] = `
     <label
       class="field__label"
       for="field_51"
-    >
-      buzz
-    </label>
-  </div>
-</fieldset>
-`;
-
-exports[`<RadioGroup /> an array of strings as options accepts an array of strings as options 1`] = `
-<fieldset
-  class="fieldset"
-  id="field_40"
->
-  <div
-    class="field"
-  >
-    <input
-      class="field__input"
-      id="field_41"
-      type="radio"
-      value="foo"
-    />
-    <label
-      class="field__label"
-      for="field_41"
-    >
-      foo
-    </label>
-  </div>
-  <div
-    class="field"
-  >
-    <input
-      class="field__input"
-      id="field_42"
-      type="radio"
-      value="bar"
-    />
-    <label
-      class="field__label"
-      for="field_42"
-    >
-      bar
-    </label>
-  </div>
-  <div
-    class="field"
-  >
-    <input
-      class="field__input"
-      id="field_43"
-      type="radio"
-      value="buzz"
-    />
-    <label
-      class="field__label"
-      for="field_43"
     >
       buzz
     </label>
@@ -253,6 +253,63 @@ exports[`<RadioGroup /> renders with an error 1`] = `
 </fieldset>
 `;
 
+exports[`<RadioGroup /> renders with custom requiredIndicator 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_36"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_37"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_37"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_38"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_38"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_39"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_39"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
 exports[`<RadioGroup /> renders with help 1`] = `
 <fieldset
   class="fieldset"
@@ -328,20 +385,20 @@ exports[`<RadioGroup /> renders with help 1`] = `
 exports[`<RadioGroup /> renders with inline 1`] = `
 <fieldset
   class="fieldset"
-  id="field_32"
+  id="field_40"
 >
   <div
     class="field field--inline"
   >
     <input
       class="field__input field__input--inline"
-      id="field_33"
+      id="field_41"
       type="radio"
       value="foo"
     />
     <label
       class="field__label field__label--inline"
-      for="field_33"
+      for="field_41"
     >
       Foo
     </label>
@@ -351,13 +408,13 @@ exports[`<RadioGroup /> renders with inline 1`] = `
   >
     <input
       class="field__input field__input--inline"
-      id="field_34"
+      id="field_42"
       type="radio"
       value="bar"
     />
     <label
       class="field__label field__label--inline"
-      for="field_34"
+      for="field_42"
     >
       Bar
     </label>
@@ -368,13 +425,13 @@ exports[`<RadioGroup /> renders with inline 1`] = `
     <input
       class="field__input field__input--inline field__input--disabled"
       disabled=""
-      id="field_35"
+      id="field_43"
       type="radio"
       value="buzz"
     />
     <label
       class="field__label field__label--inline field__label--disabled"
-      for="field_35"
+      for="field_43"
     >
       Disabled
     </label>
@@ -432,6 +489,64 @@ exports[`<RadioGroup /> renders with large 1`] = `
     <label
       class="field__label field__label--large field__label--disabled"
       for="field_27"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<RadioGroup /> renders with required 1`] = `
+<fieldset
+  aria-required="true"
+  class="fieldset"
+  id="field_32"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_33"
+      type="radio"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_33"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_34"
+      type="radio"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_34"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_35"
+      type="radio"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_35"
     >
       Disabled
     </label>

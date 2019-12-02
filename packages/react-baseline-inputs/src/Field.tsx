@@ -19,6 +19,8 @@ export function Field<T extends FieldProps>({
   theme = useTheme("field"),
   disabled,
   className,
+  required,
+  requiredIndicator = "*",
   ...props
 }: T) {
   const fieldClassNames = [theme.field];
@@ -26,6 +28,7 @@ export function Field<T extends FieldProps>({
   const labelClassNames = [theme.label];
   const errorClassNames = [theme.error];
   const helpClassNames = [theme.help];
+  const requiredIndicatorClassNames = [theme.requiredIndicator];
 
   if (className) {
     fieldClassNames.push(className);
@@ -91,6 +94,10 @@ export function Field<T extends FieldProps>({
     disabled,
     className: join(inputClassNames),
     "aria-labelledby": error ? `${labelId} ${errorLabelId}` : undefined,
+    // Adding both "aria-required" and "required" based on docs here:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required#Usability
+    "aria-required": required ? "true" : undefined,
+    required,
     ...props
   };
 
@@ -105,6 +112,11 @@ export function Field<T extends FieldProps>({
           id={error ? labelId : undefined}
         >
           {label}
+          {required && (
+            <span className={join(requiredIndicatorClassNames)}>
+              {requiredIndicator}
+            </span>
+          )}
           {help && <span className={join(helpClassNames)}>{help}</span>}
         </label>
       )}

@@ -13,7 +13,7 @@ type FieldSetSetup = (props?: Partial<FieldSetProps>) => RenderResult;
  */
 export const itBehavesLikeAField = (
   setup: FieldSetup | RadioGroupSetup | FieldSetSetup,
-  excludeTests: Array<"label" | "wrapper" | "id" | "inline"> = []
+  excludeTests: Array<"label" | "wrapper" | "id" | "inline" | "required"> = []
 ) => {
   it("renders", async () => {
     const { container } = setup();
@@ -79,6 +79,20 @@ export const itBehavesLikeAField = (
     expect(container.firstChild).toMatchSnapshot();
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  if (!excludeTests.includes("required")) {
+    it("renders with required", async () => {
+      const { container } = setup({ required: true });
+      expect(container.firstChild).toMatchSnapshot();
+      expect(await axe(container)).toHaveNoViolations();
+    });
+
+    it("renders with custom requiredIndicator", async () => {
+      const { container } = setup({ requiredIndicator: "* required" });
+      expect(container.firstChild).toMatchSnapshot();
+      expect(await axe(container)).toHaveNoViolations();
+    });
+  }
 
   if (!excludeTests.includes("inline")) {
     it("renders with inline", async () => {
