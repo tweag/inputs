@@ -2,6 +2,7 @@ import * as React from "react";
 import { FieldSetProps, FieldSetTheme } from "./types";
 import { useTheme } from "./theme";
 import { generateUniqueId, join } from "./utils";
+import { RenderRequiredDefault } from "./RenderRequiredDefault";
 
 export const FieldSet: React.FC<FieldSetProps> = ({
   legend,
@@ -16,7 +17,7 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   large,
   small,
   required,
-  requiredIndicator = "*",
+  renderRequired = RenderRequiredDefault,
   wrapper = true
 }) => {
   const fieldSetTheme = theme as FieldSetTheme;
@@ -24,7 +25,6 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   const legendClassNames = [fieldSetTheme.legend];
   const helpClassNames = [fieldSetTheme.help];
   const errorClassNames = [fieldSetTheme.error];
-  const requiredIndicatorClassNames = [theme.requiredIndicator];
 
   if (className) {
     fieldSetClassNames.push(className);
@@ -71,11 +71,11 @@ export const FieldSet: React.FC<FieldSetProps> = ({
       {legend && (
         <legend className={join(legendClassNames)}>
           {legend}
-          {required && (
-            <span className={join(requiredIndicatorClassNames)}>
-              {requiredIndicator}
-            </span>
-          )}
+          {required &&
+            renderRequired({
+              className: fieldSetTheme.requiredIndicator,
+              "aria-hidden": true
+            })}
         </legend>
       )}
 

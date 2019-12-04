@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { FieldSet } from "./FieldSet";
 import { RadioGroupProps, OptionProps } from "./types";
 import { useTheme } from "./theme";
+import { RenderRequiredDefault } from "./RenderRequiredDefault";
 
 const getRadioProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -26,7 +27,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   error,
   touched,
   required,
-  requiredIndicator,
+  renderRequired = RenderRequiredDefault,
   ...props
 }) => {
   const handleChange = React.useCallback(
@@ -35,7 +36,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend, error, touched, required, requiredIndicator }]
+    ? [FieldSet, { legend, error, touched, required, renderRequired }]
     : [React.Fragment, {}];
 
   return (

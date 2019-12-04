@@ -253,63 +253,6 @@ exports[`<CheckboxList /> renders with an error 1`] = `
 </fieldset>
 `;
 
-exports[`<CheckboxList /> renders with custom requiredIndicator 1`] = `
-<fieldset
-  class="fieldset"
-  id="field_36"
->
-  <div
-    class="field"
-  >
-    <input
-      class="field__input"
-      id="field_37"
-      type="checkbox"
-      value="foo"
-    />
-    <label
-      class="field__label"
-      for="field_37"
-    >
-      Foo
-    </label>
-  </div>
-  <div
-    class="field"
-  >
-    <input
-      class="field__input"
-      id="field_38"
-      type="checkbox"
-      value="bar"
-    />
-    <label
-      class="field__label"
-      for="field_38"
-    >
-      Bar
-    </label>
-  </div>
-  <div
-    class="field field--disabled"
-  >
-    <input
-      class="field__input field__input--disabled"
-      disabled=""
-      id="field_39"
-      type="checkbox"
-      value="buzz"
-    />
-    <label
-      class="field__label field__label--disabled"
-      for="field_39"
-    >
-      Disabled
-    </label>
-  </div>
-</fieldset>
-`;
-
 exports[`<CheckboxList /> renders with help 1`] = `
 <fieldset
   class="fieldset"
@@ -489,6 +432,63 @@ exports[`<CheckboxList /> renders with large 1`] = `
     <label
       class="field__label field__label--large field__label--disabled"
       for="field_27"
+    >
+      Disabled
+    </label>
+  </div>
+</fieldset>
+`;
+
+exports[`<CheckboxList /> renders with renderRequired 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_36"
+>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_37"
+      type="checkbox"
+      value="foo"
+    />
+    <label
+      class="field__label"
+      for="field_37"
+    >
+      Foo
+    </label>
+  </div>
+  <div
+    class="field"
+  >
+    <input
+      class="field__input"
+      id="field_38"
+      type="checkbox"
+      value="bar"
+    />
+    <label
+      class="field__label"
+      for="field_38"
+    >
+      Bar
+    </label>
+  </div>
+  <div
+    class="field field--disabled"
+  >
+    <input
+      class="field__input field__input--disabled"
+      disabled=""
+      id="field_39"
+      type="checkbox"
+      value="buzz"
+    />
+    <label
+      class="field__label field__label--disabled"
+      for="field_39"
     >
       Disabled
     </label>

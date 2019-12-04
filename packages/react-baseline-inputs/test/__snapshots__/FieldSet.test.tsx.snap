@@ -60,19 +60,6 @@ exports[`<FieldSet /> renders with an error 1`] = `
 </fieldset>
 `;
 
-exports[`<FieldSet /> renders with custom requiredIndicator 1`] = `
-<fieldset
-  class="fieldset"
-  id="field_10"
->
-  <legend
-    class="fieldset__legend"
-  >
-    Jawn
-  </legend>
-</fieldset>
-`;
-
 exports[`<FieldSet /> renders with help 1`] = `
 <fieldset
   class="fieldset"
@@ -98,6 +85,19 @@ exports[`<FieldSet /> renders with large 1`] = `
 >
   <legend
     class="fieldset__legend fieldset__legend--large"
+  >
+    Jawn
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders with renderRequired 1`] = `
+<fieldset
+  class="fieldset"
+  id="field_10"
+>
+  <legend
+    class="fieldset__legend"
   >
     Jawn
   </legend>

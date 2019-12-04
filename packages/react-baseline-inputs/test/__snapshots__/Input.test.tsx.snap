@@ -66,25 +66,6 @@ exports[`<Input /> renders with an error 1`] = `
 </div>
 `;
 
-exports[`<Input /> renders with custom requiredIndicator 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_11"
-  >
-    Jawn
-  </label>
-  <input
-    class="field__input"
-    id="field_11"
-    type="text"
-    value="hello"
-  />
-</div>
-`;
-
 exports[`<Input /> renders with help 1`] = `
 <div
   class="field"
@@ -141,6 +122,25 @@ exports[`<Input /> renders with large 1`] = `
   <input
     class="field__input field__input--large"
     id="field_8"
+    type="text"
+    value="hello"
+  />
+</div>
+`;
+
+exports[`<Input /> renders with renderRequired 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_11"
     type="text"
     value="hello"
   />

@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { FieldSet } from "./FieldSet";
 import { CheckboxListProps, OptionProps } from "./types";
 import { useTheme } from "./theme";
+import { RenderRequiredDefault } from "./RenderRequiredDefault";
 
 const getCheckboxProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -29,7 +30,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   error,
   touched,
   required,
-  requiredIndicator,
+  renderRequired = RenderRequiredDefault,
   ...props
 }) => {
   const values = value || [];
@@ -47,7 +48,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   );
 
   const [Wrapper, wrapperProps] = wrapper
-    ? [FieldSet, { legend, error, touched, required, requiredIndicator }]
+    ? [FieldSet, { legend, error, touched, required, renderRequired }]
     : [React.Fragment, {}];
 
   return (

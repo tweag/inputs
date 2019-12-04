@@ -100,7 +100,7 @@ export interface FieldInputProps {
   wrapper?: boolean;
   theme?: FieldTheme;
   required?: boolean;
-  requiredIndicator?: React.ReactNode;
+  renderRequired?: RenderRequired;
 }
 
 export interface OptionProps {
@@ -115,7 +115,7 @@ type OmitConflicts<T> = Omit<
   T,
   "value" | "onChange" | "label" | "multiple" | "render"
 >;
-type OmitRequired<T> = Omit<T, "required" | "requiredIndicator">;
+type OmitRequired<T> = Omit<T, "required" | "renderRequired">;
 
 export interface ValueProps<V, C = V> {
   value: V;
@@ -139,7 +139,7 @@ export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   touched?: boolean;
   wrapper?: boolean;
   required?: boolean;
-  requiredIndicator?: React.ReactNode;
+  renderRequired?: RenderRequired;
 }
 
 export type CheckboxProps = FieldInputProps &
@@ -214,3 +214,8 @@ export type TimeInputProps = FieldInputProps &
 export type ToggleButtonProps = OmitRequired<
   FieldInputProps & HTMLProps<HTMLButtonElement> & ValueProps<boolean | null>
 >;
+
+export type RenderRequired = (props: {
+  className?: string;
+  "aria-hidden": boolean;
+}) => React.ReactNode;

@@ -66,25 +66,6 @@ exports[`<Checkbox /> renders with an error 1`] = `
 </div>
 `;
 
-exports[`<Checkbox /> renders with custom requiredIndicator 1`] = `
-<div
-  class="field"
->
-  <input
-    checked=""
-    class="field__input"
-    id="field_11"
-    type="checkbox"
-  />
-  <label
-    class="field__label"
-    for="field_11"
-  >
-    Jawn
-  </label>
-</div>
-`;
-
 exports[`<Checkbox /> renders with help 1`] = `
 <div
   class="field"
@@ -141,6 +122,25 @@ exports[`<Checkbox /> renders with large 1`] = `
   <label
     class="field__label field__label--large"
     for="field_8"
+  >
+    Jawn
+  </label>
+</div>
+`;
+
+exports[`<Checkbox /> renders with renderRequired 1`] = `
+<div
+  class="field"
+>
+  <input
+    checked=""
+    class="field__input"
+    id="field_11"
+    type="checkbox"
+  />
+  <label
+    class="field__label"
+    for="field_11"
   >
     Jawn
   </label>

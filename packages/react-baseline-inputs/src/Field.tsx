@@ -2,6 +2,7 @@ import * as React from "react";
 import { FieldProps } from "./types";
 import { useTheme } from "./theme";
 import { generateUniqueId, join } from "./utils";
+import { RenderRequiredDefault } from "./RenderRequiredDefault";
 
 export function Field<T extends FieldProps>({
   label,
@@ -20,7 +21,7 @@ export function Field<T extends FieldProps>({
   disabled,
   className,
   required,
-  requiredIndicator = "*",
+  renderRequired = RenderRequiredDefault,
   ...props
 }: T) {
   const fieldClassNames = [theme.field];
@@ -28,7 +29,6 @@ export function Field<T extends FieldProps>({
   const labelClassNames = [theme.label];
   const errorClassNames = [theme.error];
   const helpClassNames = [theme.help];
-  const requiredIndicatorClassNames = [theme.requiredIndicator];
 
   if (className) {
     fieldClassNames.push(className);
@@ -112,11 +112,11 @@ export function Field<T extends FieldProps>({
           id={error ? labelId : undefined}
         >
           {label}
-          {required && (
-            <span className={join(requiredIndicatorClassNames)}>
-              {requiredIndicator}
-            </span>
-          )}
+          {required &&
+            renderRequired({
+              className: theme.requiredIndicator,
+              "aria-hidden": true
+            })}
           {help && <span className={join(helpClassNames)}>{help}</span>}
         </label>
       )}

@@ -1,3 +1,4 @@
+import React from "react";
 import { FieldInputProps, RadioGroupProps, FieldSetProps } from "../src";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { RenderResult } from "@testing-library/react";
@@ -87,8 +88,12 @@ export const itBehavesLikeAField = (
       expect(await axe(container)).toHaveNoViolations();
     });
 
-    it("renders with custom requiredIndicator", async () => {
-      const { container } = setup({ requiredIndicator: "* required" });
+    it("renders with renderRequired", async () => {
+      const { container } = setup({
+        renderRequired: ({ className }) => (
+          <span className={className}>required</span>
+        )
+      });
       expect(container.firstChild).toMatchSnapshot();
       expect(await axe(container)).toHaveNoViolations();
     });

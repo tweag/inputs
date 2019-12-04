@@ -63,24 +63,6 @@ exports[`<MaskedInput /> renders with an error 1`] = `
 </div>
 `;
 
-exports[`<MaskedInput /> renders with custom requiredIndicator 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_11"
-  >
-    Jawn
-  </label>
-  <input
-    class="field__input"
-    id="field_11"
-    value="2"
-  />
-</div>
-`;
-
 exports[`<MaskedInput /> renders with help 1`] = `
 <div
   class="field"
@@ -135,6 +117,24 @@ exports[`<MaskedInput /> renders with large 1`] = `
   <input
     class="field__input field__input--large"
     id="field_8"
+    value="2"
+  />
+</div>
+`;
+
+exports[`<MaskedInput /> renders with renderRequired 1`] = `
+<div
+  class="field"
+>
+  <label
+    class="field__label"
+    for="field_11"
+  >
+    Jawn
+  </label>
+  <input
+    class="field__input"
+    id="field_11"
     value="2"
   />
 </div>
