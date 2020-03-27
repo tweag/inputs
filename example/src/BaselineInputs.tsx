@@ -27,8 +27,6 @@ export const BaselineInputs = () => {
   return (
     <ThemeProvider value={bootstrapTheme}>
       <section>
-        <h2 className="mb-4">react-baseline-inputs</h2>
-
         <form
           onSubmit={event => {
             event.preventDefault();

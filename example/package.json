@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "parcel": "^1.12.3",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
-    "react-baseline-inputs": "file://..",
+    "react-baseline-inputs": "../",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "parcel-bundler": "^1.12.4",
     "sass": "^1.23.1"
   }
 }
