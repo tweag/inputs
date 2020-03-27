@@ -19,7 +19,7 @@
     "clean": "rm -rf dist",
     "format": "prettier --write '{src,test}/**/*.{js,ts,tsx}'",
     "format:check": "prettier --check '{src,test}/**/*.{js,ts,tsx}'",
-    "prepack": "microbundle --jsx React.createElement --name ReactBaselineInputs"
+    "prepack": "microbundle --jsx React.createElement"
   },
   "jest": {
     "preset": "ts-jest",
