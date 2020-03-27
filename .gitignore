@@ -1,4 +1,4 @@
-/node_modules
-/yarn-error.log
-/dist
-/.rts2_cache_*/
+node_modules
+yarn-error.log
+dist
+.rts2_cache_*/

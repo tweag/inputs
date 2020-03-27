@@ -1,0 +1,20 @@
+{
+  "name": "web-basic",
+  "version": "2.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "parcel": "^1.12.3",
+    "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.1",
+    "react-baseline-inputs": "file://..",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "sass": "^1.23.1"
+  }
+}
