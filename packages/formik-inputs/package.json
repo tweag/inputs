@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "3.0.0-alpha.0",
   "name": "formik-inputs",
   "repository": "https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs",
   "description": "React components for creating data-driven forms using Formik.",

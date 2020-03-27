@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-alpha.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.2.0...v3.0.0-alpha.0) (2020-03-27)
+
+
+### Features
+
+* only show errors after the form has been submitted ([1e6a626](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/commit/1e6a626a9a0c481f9a5bedd320aa33eaf76dfac1))
+
+
+### BREAKING CHANGES
+
+* previously, errors would show up on blur
+
+
+
+
+
 # [2.2.0](https://github.com/promptworks/react-forms/tree/master/packages/formik-inputs/compare/v2.1.0...v2.2.0) (2019-11-20)
 
 **Note:** Version bump only for package formik-inputs
