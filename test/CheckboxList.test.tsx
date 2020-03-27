@@ -9,7 +9,7 @@ const setup = (props: Partial<CheckboxListProps> = {}) =>
       options={[
         { label: "Foo", value: "foo" },
         { label: "Bar", value: "bar" },
-        { label: "Disabled", value: "buzz", disabled: true }
+        { label: "Disabled", value: "buzz", disabled: true },
       ]}
       value={null}
       onChange={jest.fn()}

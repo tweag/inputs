@@ -15,7 +15,7 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   success = touched && !error,
   large,
   small,
-  wrapper = true
+  wrapper = true,
 }) => {
   const fieldSetTheme = theme as FieldSetTheme;
   const fieldSetClassNames = [fieldSetTheme.fieldSet];

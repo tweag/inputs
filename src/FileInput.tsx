@@ -16,14 +16,14 @@ export const FileInput: React.FC<FileInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.files[0] || null),
+    (event) => onChange(event.target.files[0] || null),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input type="file" onChange={handleChange} {...inputProps} />
       )}
       {...props}

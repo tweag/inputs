@@ -22,14 +22,14 @@ export const DateInput: React.FC<DateInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(parse(event.target.value)),
+    (event) => onChange(parse(event.target.value)),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input
           type="date"
           value={value || ""}

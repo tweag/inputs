@@ -10,14 +10,14 @@ export const TimeInput: React.FC<TimeInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.value),
+    (event) => onChange(event.target.value),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input
           type="time"
           value={value || ""}

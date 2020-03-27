@@ -26,14 +26,14 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(parse(event.target.value)),
+    (event) => onChange(parse(event.target.value)),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input
           type="datetime-local"
           value={format(value)}

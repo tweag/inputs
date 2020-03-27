@@ -28,14 +28,14 @@ export const Select: React.FC<SelectProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.value),
+    (event) => onChange(event.target.value),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <select
           value={value === null ? "" : value}
           onChange={handleChange}
@@ -47,7 +47,7 @@ export const Select: React.FC<SelectProps> = ({
             </option>
           )}
 
-          {options.map(option => (
+          {options.map((option) => (
             <option {...getOptionProps(option)} />
           ))}
         </select>

@@ -16,7 +16,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       const value = parseFloat(event.target.value);
       isNaN(value) ? onChange(null) : onChange(value);
     },
@@ -26,7 +26,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input
           type="number"
           onChange={handleChange}

@@ -16,7 +16,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       const value = parseInt(event.target.value, 10);
       isNaN(value) ? onChange(null) : onChange(value);
     },
@@ -26,7 +26,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <input
           type="number"
           onChange={handleChange}

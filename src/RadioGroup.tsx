@@ -28,7 +28,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.value),
+    (event) => onChange(event.target.value),
     [onChange]
   );
 
@@ -38,7 +38,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
   return (
     <Wrapper {...wrapperProps}>
-      {options.map(option => {
+      {options.map((option) => {
         const radio = getRadioProps(option);
 
         return (
@@ -48,7 +48,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             label={radio.label}
             labelPosition="after"
             disabled={radio.disabled}
-            render={inputProps => (
+            render={(inputProps) => (
               <input
                 type="radio"
                 checked={radio.value === value}

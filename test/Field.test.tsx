@@ -7,7 +7,7 @@ const setup = (props: Partial<FieldProps> = {}) =>
   render(
     <Field
       label="Jawn"
-      render={inputProps => <input {...inputProps} />}
+      render={(inputProps) => <input {...inputProps} />}
       {...props}
     />
   );

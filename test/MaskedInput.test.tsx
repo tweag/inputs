@@ -22,7 +22,7 @@ describe("<MaskedInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "1" }
+      target: { value: "1" },
     });
 
     expect(onChange).toHaveBeenCalledWith("1");
@@ -33,7 +33,7 @@ describe("<MaskedInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "" }
+      target: { value: "" },
     });
 
     expect(onChange).toHaveBeenCalledWith(null);

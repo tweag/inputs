@@ -11,14 +11,14 @@ export const MaskedInput: React.FC<MaskedInputProps> = ({
   ...props
 }) => {
   const handleChange = React.useCallback(
-    event => onChange(event.target.value || null),
+    (event) => onChange(event.target.value || null),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={inputProps => (
+      render={(inputProps) => (
         <TextMask {...inputProps} value={value || ""} onChange={handleChange} />
       )}
       {...props}

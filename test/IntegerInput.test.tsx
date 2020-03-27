@@ -16,7 +16,7 @@ describe("<IntegerInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "7" }
+      target: { value: "7" },
     });
 
     expect(onChange).toHaveBeenCalledWith(7);
@@ -27,7 +27,7 @@ describe("<IntegerInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "" }
+      target: { value: "" },
     });
 
     expect(onChange).toHaveBeenCalledWith(null);
