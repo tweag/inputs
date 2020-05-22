@@ -4293,11 +4293,9 @@ react-app-polyfill@^1.0.1:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-baseline-inputs@../:
-  version "2.2.0"
-  dependencies:
-    "@types/react-text-mask" "^5.4.6"
-    react-text-mask "^5.4.3"
+"react-baseline-inputs@link:..":
+  version "0.0.0"
+  uid ""
 
 react-dom@^16.8.6:
   version "16.13.1"
