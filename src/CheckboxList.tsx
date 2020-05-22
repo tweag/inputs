@@ -22,7 +22,7 @@ const remove = (items: any[], item: any) => {
 export const CheckboxList: React.FC<CheckboxListProps> = ({
   value,
   onChange,
-  options = [],
+  options,
   theme: _theme,
   legend,
   wrapper = true,
@@ -32,13 +32,13 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 }) => {
   const theme = useTheme("checkbox", _theme);
 
-  const values = value || [];
   const handleChange = React.useCallback(
     event => {
-      const { checked, value } = event.target;
+      const input = event.target;
+      const values = value || [];
 
-      if (checked) {
-        onChange([...values, value]);
+      if (input.checked) {
+        onChange([...values, input.value]);
       } else {
         onChange(remove(values, value));
       }
@@ -52,7 +52,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
   return (
     <Wrapper {...wrapperProps}>
-      {options.map(option => {
+      {options?.map(option => {
         const checkbox = getCheckboxProps(option);
 
         return (
@@ -65,7 +65,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             render={inputProps => (
               <input
                 type="checkbox"
-                checked={values.includes(checkbox.value)}
+                checked={value?.includes(checkbox.value)}
                 value={checkbox.value}
                 onChange={handleChange}
                 {...inputProps}

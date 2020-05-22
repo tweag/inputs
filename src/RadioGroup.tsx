@@ -20,7 +20,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   value,
   onChange,
   theme: _theme,
-  options = [],
+  options,
   legend,
   wrapper = true,
   error,
@@ -40,7 +40,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 
   return (
     <Wrapper {...wrapperProps}>
-      {options.map(option => {
+      {options?.map(option => {
         const radio = getRadioProps(option);
 
         return (

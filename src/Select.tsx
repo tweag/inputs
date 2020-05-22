@@ -21,7 +21,7 @@ const getOptionProps = (option: OptionProps | string) => {
  */
 export const Select: React.FC<SelectProps> = ({
   onChange,
-  options = [],
+  options,
   placeholder,
   value,
   theme: _theme,
@@ -49,7 +49,7 @@ export const Select: React.FC<SelectProps> = ({
             </option>
           )}
 
-          {options.map(option => (
+          {options?.map(option => (
             <option {...getOptionProps(option)} />
           ))}
         </select>
