@@ -6,15 +6,19 @@
   "scripts": {
     "start": "parcel index.html"
   },
+  "alias": {
+    "react": "../node_modules/react",
+    "react-dom": "../node_modules/react-dom/profiling",
+    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
+  },
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "formik": "^2.1.4",
-    "react": "^16.8.0",
     "react-app-polyfill": "^1.0.1",
-    "react-baseline-inputs": "link:../",
-    "react-dom": "^16.8.0"
+    "react-baseline-inputs": "link:../"
   },
   "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.5"
   }
