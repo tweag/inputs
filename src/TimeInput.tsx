@@ -6,9 +6,11 @@ import { useTheme } from "./theme";
 export const TimeInput: React.FC<TimeInputProps> = ({
   value,
   onChange,
-  theme = useTheme("timeInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("timeInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.value),
     [onChange]

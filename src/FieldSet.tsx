@@ -1,15 +1,15 @@
 import * as React from "react";
 import { FieldSetProps, FieldSetTheme } from "./types";
 import { useTheme } from "./theme";
-import { generateUniqueId, join } from "./utils";
+import { join, useUniqueId } from "./utils";
 
 export const FieldSet: React.FC<FieldSetProps> = ({
   legend,
-  id = React.useMemo(generateUniqueId, []),
+  id: _id,
   help,
   children,
   className,
-  theme = useTheme("fieldSet"),
+  theme: _theme,
   touched,
   error,
   success = touched && !error,
@@ -17,6 +17,9 @@ export const FieldSet: React.FC<FieldSetProps> = ({
   small,
   wrapper = true,
 }) => {
+  const id = useUniqueId(_id);
+
+  const theme = useTheme("fieldSet", _theme);
   const fieldSetTheme = theme as FieldSetTheme;
   const fieldSetClassNames = [fieldSetTheme.fieldSet];
   const legendClassNames = [fieldSetTheme.legend];

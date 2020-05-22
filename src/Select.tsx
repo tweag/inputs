@@ -24,9 +24,11 @@ export const Select: React.FC<SelectProps> = ({
   options = [],
   placeholder,
   value,
-  theme = useTheme("select"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("select", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.value),
     [onChange]

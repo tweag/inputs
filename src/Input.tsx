@@ -13,9 +13,11 @@ import { useTheme } from "./theme";
 export const Input: React.FC<InputProps> = ({
   value,
   onChange,
-  theme = useTheme("input"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("input", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.value || null),
     [onChange]

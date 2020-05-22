@@ -12,9 +12,11 @@ import { useTheme } from "./theme";
 export const TextArea: React.FC<TextAreaProps> = ({
   value,
   onChange,
-  theme = useTheme("textarea"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("textarea", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.value || null),
     [onChange]

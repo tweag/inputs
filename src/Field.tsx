@@ -1,13 +1,13 @@
 import * as React from "react";
 import { FieldProps } from "./types";
 import { useTheme } from "./theme";
-import { generateUniqueId, join } from "./utils";
+import { join, useUniqueId } from "./utils";
 
 export function Field<T extends FieldProps>({
   label,
   labelPosition = "before",
   render,
-  id = React.useMemo(generateUniqueId, []),
+  id: _id,
   help,
   inline,
   touched,
@@ -16,11 +16,14 @@ export function Field<T extends FieldProps>({
   large,
   small,
   wrapper = true,
-  theme = useTheme("field"),
+  theme: _theme,
   disabled,
   className,
   ...props
 }: T) {
+  const id = useUniqueId(_id);
+
+  const theme = useTheme("field", _theme);
   const fieldClassNames = [theme.field];
   const inputClassNames = [theme.input];
   const labelClassNames = [theme.label];

@@ -22,9 +22,11 @@ const parse = (value: string): string | null => {
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,
   onChange,
-  theme = useTheme("dateTimeInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("dateTimeInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(parse(event.target.value)),
     [onChange]

@@ -23,13 +23,15 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
   value,
   onChange,
   options = [],
-  theme = useTheme("checkbox"),
+  theme: _theme,
   legend,
   wrapper = true,
   error,
   touched,
   ...props
 }) => {
+  const theme = useTheme("checkbox", _theme);
+
   const values = value || [];
   const handleChange = React.useCallback(
     (event) => {

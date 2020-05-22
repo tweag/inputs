@@ -12,9 +12,10 @@ import { useTheme } from "./theme";
 export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   value,
-  theme = useTheme("checkbox"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("checkbox", _theme);
   const handleChange = React.useCallback(
     (event) => onChange(event.target.checked),
     [onChange]

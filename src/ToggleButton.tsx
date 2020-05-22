@@ -6,9 +6,11 @@ import { useTheme } from "./theme";
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
   value,
   onChange,
-  theme = useTheme("toggleButton"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("toggleButton", _theme);
+
   const handleClick = React.useCallback(() => onChange(!value), [
     onChange,
     value,

@@ -12,9 +12,11 @@ import { useTheme } from "./theme";
 export const FileInput: React.FC<FileInputProps> = ({
   onChange,
   value: _value,
-  theme = useTheme("fileInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("fileInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.files[0] || null),
     [onChange]

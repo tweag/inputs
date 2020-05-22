@@ -12,9 +12,11 @@ import { useTheme } from "./theme";
 export const FloatInput: React.FC<FloatInputProps> = ({
   value,
   onChange,
-  theme = useTheme("floatInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("floatInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => {
       const value = parseFloat(event.target.value);

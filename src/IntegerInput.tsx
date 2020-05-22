@@ -12,9 +12,11 @@ import { useTheme } from "./theme";
 export const IntegerInput: React.FC<IntegerInputProps> = ({
   value,
   onChange,
-  theme = useTheme("integerInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("integerInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => {
       const value = parseInt(event.target.value, 10);

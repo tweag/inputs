@@ -18,9 +18,11 @@ const parse = (value: string): string | null => {
 export const DateInput: React.FC<DateInputProps> = ({
   value,
   onChange,
-  theme = useTheme("dateInput"),
+  theme: _theme,
   ...props
 }) => {
+  const theme = useTheme("dateInput", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(parse(event.target.value)),
     [onChange]

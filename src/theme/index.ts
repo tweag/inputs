@@ -6,9 +6,12 @@ const context = createContext(defaultTheme);
 
 export const ThemeProvider = context.Provider;
 
-export const useTheme = (element: keyof Theme) => {
+export const useTheme = <K extends keyof Theme>(
+  element: K,
+  override?: Theme[K]
+) => {
   const config = useContext(context);
-  return config[element];
+  return override || config[element];
 };
 
 export { defaultTheme };

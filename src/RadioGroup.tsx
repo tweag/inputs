@@ -19,7 +19,7 @@ const getRadioProps = (option: OptionProps | string) => {
 export const RadioGroup: React.FC<RadioGroupProps> = ({
   value,
   onChange,
-  theme = useTheme("radioGroup"),
+  theme: _theme,
   options = [],
   legend,
   wrapper = true,
@@ -27,6 +27,8 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   touched,
   ...props
 }) => {
+  const theme = useTheme("radioGroup", _theme);
+
   const handleChange = React.useCallback(
     (event) => onChange(event.target.value),
     [onChange]
