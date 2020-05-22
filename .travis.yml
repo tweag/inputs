@@ -3,5 +3,5 @@ node_js:
   - node
   - lts/*
 script:
-  - yarn format:check
+  - yarn lint
   - yarn test --ci
