@@ -3,7 +3,7 @@
 exports[`<FieldSet /> accepts a passed className 1`] = `
 <fieldset
   class="fieldset sample"
-  id="field_9"
+  id="field_10"
 >
   <legend
     class="fieldset__legend"
@@ -81,7 +81,7 @@ exports[`<FieldSet /> renders with help 1`] = `
 exports[`<FieldSet /> renders with large 1`] = `
 <fieldset
   class="fieldset fieldset--large"
-  id="field_7"
+  id="field_8"
 >
   <legend
     class="fieldset__legend fieldset__legend--large"
@@ -94,7 +94,7 @@ exports[`<FieldSet /> renders with large 1`] = `
 exports[`<FieldSet /> renders with small 1`] = `
 <fieldset
   class="fieldset fieldset--small"
-  id="field_8"
+  id="field_9"
 >
   <legend
     class="fieldset__legend fieldset__legend--small"
