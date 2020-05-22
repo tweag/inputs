@@ -19,7 +19,7 @@ describe("<DateInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: nextValue },
+      target: { value: nextValue }
     });
 
     expect(onChange).toHaveBeenCalledWith(nextValue);

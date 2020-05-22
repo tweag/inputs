@@ -13,14 +13,14 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
 
   const handleClick = React.useCallback(() => onChange(!value), [
     onChange,
-    value,
+    value
   ]);
 
   return (
     <Field
       theme={theme}
       labelPosition="after"
-      render={(inputProps) => (
+      render={inputProps => (
         <button
           onClick={handleClick}
           type="button"

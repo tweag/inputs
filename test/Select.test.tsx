@@ -27,7 +27,7 @@ describe("<Select />", () => {
       const { getByLabelText } = setup({ options, onChange });
 
       fireEvent.change(getByLabelText("Jawn"), {
-        target: { value: "bar" },
+        target: { value: "bar" }
       });
 
       expect(onChange).toHaveBeenCalledWith("bar");
@@ -38,7 +38,7 @@ describe("<Select />", () => {
     const options = [
       { label: "Foo", value: "foo" },
       { label: "Bar", value: "bar", disabled: true },
-      { label: "Buzz", value: "buzz" },
+      { label: "Buzz", value: "buzz" }
     ];
 
     it("renders", () => {
@@ -51,7 +51,7 @@ describe("<Select />", () => {
       const { getByLabelText } = setup({ options, onChange });
 
       fireEvent.change(getByLabelText("Jawn"), {
-        target: { value: "buzz" },
+        target: { value: "buzz" }
       });
 
       expect(onChange).toHaveBeenCalledWith("buzz");

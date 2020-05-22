@@ -18,14 +18,14 @@ export const TextArea: React.FC<TextAreaProps> = ({
   const theme = useTheme("textarea", _theme);
 
   const handleChange = React.useCallback(
-    (event) => onChange(event.target.value || null),
+    event => onChange(event.target.value || null),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={(inputProps) => (
+      render={inputProps => (
         <textarea value={value || ""} onChange={handleChange} {...inputProps} />
       )}
       {...props}

@@ -17,7 +17,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   const theme = useTheme("checkbox", _theme);
   const handleChange = React.useCallback(
-    (event) => onChange(event.target.checked),
+    event => onChange(event.target.checked),
     [onChange]
   );
 
@@ -25,7 +25,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <Field
       theme={theme}
       labelPosition="after"
-      render={(inputProps) => (
+      render={inputProps => (
         <input
           type="checkbox"
           checked={Boolean(value)}

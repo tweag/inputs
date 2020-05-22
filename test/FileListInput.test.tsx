@@ -15,7 +15,7 @@ describe("<FileListInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { files },
+      target: { files }
     });
 
     expect(onChange).toHaveBeenCalledWith(files);

@@ -20,7 +20,7 @@ describe("<DateTimeInput />", () => {
     const { getByLabelText } = setup({ onChange });
 
     fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: nextLocalValue },
+      target: { value: nextLocalValue }
     });
 
     expect(onChange).toHaveBeenCalledWith(nextISOValue);

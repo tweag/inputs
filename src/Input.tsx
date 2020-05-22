@@ -19,14 +19,14 @@ export const Input: React.FC<InputProps> = ({
   const theme = useTheme("input", _theme);
 
   const handleChange = React.useCallback(
-    (event) => onChange(event.target.value || null),
+    event => onChange(event.target.value || null),
     [onChange]
   );
 
   return (
     <Field
       theme={theme}
-      render={(inputProps) => (
+      render={inputProps => (
         <input
           type="text"
           value={value || ""}

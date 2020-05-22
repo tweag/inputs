@@ -22,6 +22,6 @@ test("exports", () => {
     "ToggleButton",
     "bootstrapTheme",
     "defaultTheme",
-    "useTheme",
+    "useTheme"
   ]);
 });

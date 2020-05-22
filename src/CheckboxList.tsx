@@ -34,7 +34,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
   const values = value || [];
   const handleChange = React.useCallback(
-    (event) => {
+    event => {
       const { checked, value } = event.target;
 
       if (checked) {
@@ -52,7 +52,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
 
   return (
     <Wrapper {...wrapperProps}>
-      {options.map((option) => {
+      {options.map(option => {
         const checkbox = getCheckboxProps(option);
 
         return (
@@ -62,7 +62,7 @@ export const CheckboxList: React.FC<CheckboxListProps> = ({
             label={checkbox.label}
             labelPosition="after"
             disabled={checkbox.disabled}
-            render={(inputProps) => (
+            render={inputProps => (
               <input
                 type="checkbox"
                 checked={values.includes(checkbox.value)}

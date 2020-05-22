@@ -94,7 +94,7 @@ export function Field<T extends FieldProps>({
     disabled,
     className: join(inputClassNames),
     "aria-labelledby": error ? `${labelId} ${errorLabelId}` : undefined,
-    ...props,
+    ...props
   };
 
   return (

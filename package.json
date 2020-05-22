@@ -18,7 +18,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "TZ=America/New_York tsdx test",
-    "lint": "tsdx lint",
+    "lint": "tsdx lint src test",
     "prepare": "tsdx build"
   },
   "prettier": {
