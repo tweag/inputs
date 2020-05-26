@@ -23,11 +23,6 @@ export const FloatInput: React.FC<FloatInputProps> = ({
     [onChange]
   );
 
-  const formattedValue = React.useMemo(
-    () => (typeof value === "number" ? floatFormat.format(value) : ""),
-    [value]
-  );
-
   return (
     <Field
       theme={theme}
@@ -35,7 +30,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
         <input
           type="number"
           onChange={handleChange}
-          value={formattedValue}
+          value={value === null ? "" : value}
           {...inputProps}
         />
       )}

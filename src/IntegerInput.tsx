@@ -23,11 +23,6 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
     [onChange]
   );
 
-  const formattedValue = React.useMemo(
-    () => (typeof value === "number" ? integerFormat.format(value) : ""),
-    [value]
-  );
-
   return (
     <Field
       theme={theme}
@@ -35,7 +30,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
         <input
           type="number"
           onChange={handleChange}
-          value={formattedValue}
+          value={value === null ? "" : value}
           {...inputProps}
         />
       )}
