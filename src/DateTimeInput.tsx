@@ -18,6 +18,7 @@ const parse = (value: string): string | null => {
  *
  *   * It accepts `null` as a value.
  *   * It emits an ISO-formatted datetime string when changed.
+ *   * The time is converted to UTC.
  */
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,

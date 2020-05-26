@@ -14,7 +14,7 @@ exports[`<TimeInput /> renders 1`] = `
     class="field__input"
     id="field_1"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -33,7 +33,7 @@ exports[`<TimeInput /> renders with a custom ID 1`] = `
     class="field__input"
     id="foo"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -54,7 +54,7 @@ exports[`<TimeInput /> renders with an error 1`] = `
     class="field__input field__input--erroneous"
     id="field_4"
     type="time"
-    value="10:22"
+    value="08:04"
   />
   <span
     class="field__error"
@@ -85,7 +85,7 @@ exports[`<TimeInput /> renders with help 1`] = `
     class="field__input"
     id="field_5"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -104,7 +104,7 @@ exports[`<TimeInput /> renders with inline 1`] = `
     class="field__input field__input--inline"
     id="field_11"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -123,7 +123,7 @@ exports[`<TimeInput /> renders with large 1`] = `
     class="field__input field__input--large"
     id="field_9"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -142,7 +142,7 @@ exports[`<TimeInput /> renders with small 1`] = `
     class="field__input field__input--small"
     id="field_10"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -161,7 +161,7 @@ exports[`<TimeInput /> renders with success 1`] = `
     class="field__input field__input--success"
     id="field_6"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -180,7 +180,7 @@ exports[`<TimeInput /> renders with touched 1`] = `
     class="field__input field__input--touched field__input--success"
     id="field_7"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
@@ -193,7 +193,7 @@ exports[`<TimeInput /> renders without a label 1`] = `
     class="field__input"
     id="field_2"
     type="time"
-    value="10:22"
+    value="08:04"
   />
 </div>
 `;
