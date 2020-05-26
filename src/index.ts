@@ -9,7 +9,6 @@ export * from "./FileListInput";
 export * from "./FloatInput";
 export * from "./Input";
 export * from "./IntegerInput";
-export * from "./MaskedInput";
 export * from "./RadioGroup";
 export * from "./Select";
 export * from "./TextArea";

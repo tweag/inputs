@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useForm, initialValues, telephoneMask } from "./helpers";
+import { useForm, initialValues } from "./helpers";
 import {
   bootstrapTheme,
   Checkbox,
@@ -12,7 +12,6 @@ import {
   FloatInput,
   Input,
   IntegerInput,
-  MaskedInput,
   RadioGroup,
   Select,
   TextArea,
@@ -67,15 +66,6 @@ export const BaselineInputs = () => {
                 {...fields.select}
                 label="Select"
                 options={["One", "Two", "Three"]}
-              />
-            </div>
-
-            <div className="col-4">
-              <MaskedInput
-                label="Masked"
-                {...fields.masked}
-                showMask
-                mask={telephoneMask}
               />
             </div>
           </div>

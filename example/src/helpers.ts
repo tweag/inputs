@@ -12,7 +12,6 @@ export interface Values {
   radioGroup: string | null;
   select: string | null;
   text: string | null;
-  masked: string | null;
   textarea: string | null;
   time: string | null;
   toggle: boolean | null;
@@ -30,7 +29,6 @@ export const initialValues: Values = {
   radioGroup: null,
   select: null,
   text: null,
-  masked: null,
   textarea: null,
   time: null,
   toggle: null

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { MaskedInputProps as TextMaskProps } from "react-text-mask";
 
 export interface FieldTheme {
   field?: string | undefined;
@@ -175,10 +174,6 @@ export type InputProps = FieldInputProps &
 export type IntegerInputProps = FieldInputProps &
   HTMLProps<HTMLInputElement> &
   ValueProps<number | null>;
-
-export type MaskedInputProps = FieldInputProps &
-  OmitConflicts<TextMaskProps> &
-  ValueProps<string | null>;
 
 export type RadioGroupProps = FieldInputProps &
   FieldSetProps &

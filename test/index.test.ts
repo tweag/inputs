@@ -13,7 +13,6 @@ test("exports", () => {
     "FloatInput",
     "Input",
     "IntegerInput",
-    "MaskedInput",
     "RadioGroup",
     "Select",
     "TextArea",
