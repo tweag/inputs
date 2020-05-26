@@ -2,12 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { DateInputProps } from "./types";
 import { useTheme } from "./theme";
-
-const parse = (value: string): string | null => {
-  const date = new Date(value);
-  const isValid = !isNaN(date.getTime());
-  return isValid ? value : null;
-};
+import { dateFormat } from "./formats";
 
 /**
  * An HTML `<input type="date" />`, but with the following benefits:
@@ -24,7 +19,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   const theme = useTheme("dateInput", _theme);
 
   const handleChange = React.useCallback(
-    event => onChange(parse(event.target.value)),
+    event => onChange(dateFormat.parse(event.target.value)),
     [onChange]
   );
 

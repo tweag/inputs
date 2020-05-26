@@ -2,34 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { TimeInputProps } from "./types";
 import { useTheme } from "./theme";
-
-const pad = (value: number): string => {
-  return (value < 10 ? "0" : "") + value;
-};
-
-const format = (value: string): string => {
-  const [hours, minutes] = value.split(":").map(Number);
-
-  const date = new Date();
-  date.setUTCHours(hours);
-  date.setUTCMinutes(minutes);
-
-  const localHours = pad(date.getHours());
-  const localMinutes = pad(date.getMinutes());
-  return `${localHours}:${localMinutes}`;
-};
-
-const parse = (value: string): string => {
-  const [hours, minutes] = value.split(":").map(Number);
-
-  const date = new Date();
-  date.setHours(hours);
-  date.setMinutes(minutes);
-
-  const utcHours = pad(date.getUTCHours());
-  const utcMinutes = pad(date.getUTCMinutes());
-  return `${utcHours}:${utcMinutes}:00`;
-};
+import { timeFormat } from "./formats";
 
 /**
  * An HTML `<input type="time" />`, but with the following benefits:
@@ -47,8 +20,13 @@ export const TimeInput: React.FC<TimeInputProps> = ({
   const theme = useTheme("timeInput", _theme);
 
   const handleChange = React.useCallback(
-    event => onChange(parse(event.target.value)),
+    event => onChange(timeFormat.parse(event.target.value)),
     [onChange]
+  );
+
+  const formattedValue = React.useMemo(
+    () => (value ? timeFormat.format(value) : ""),
+    [value]
   );
 
   return (
@@ -57,7 +35,7 @@ export const TimeInput: React.FC<TimeInputProps> = ({
       render={inputProps => (
         <input
           type="time"
-          value={value ? format(value) : ""}
+          value={formattedValue}
           onChange={handleChange}
           {...inputProps}
         />

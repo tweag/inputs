@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { IntegerInputProps } from "./types";
 import { useTheme } from "./theme";
+import { integerFormat } from "./formats";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -18,11 +19,13 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
   const theme = useTheme("integerInput", _theme);
 
   const handleChange = React.useCallback(
-    event => {
-      const value = parseInt(event.target.value, 10);
-      isNaN(value) ? onChange(null) : onChange(value);
-    },
+    event => onChange(integerFormat.parse(event.target.value)),
     [onChange]
+  );
+
+  const formattedValue = React.useMemo(
+    () => (typeof value === "number" ? integerFormat.format(value) : ""),
+    [value]
   );
 
   return (
@@ -32,7 +35,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
         <input
           type="number"
           onChange={handleChange}
-          value={value === null ? "" : value}
+          value={formattedValue}
           {...inputProps}
         />
       )}

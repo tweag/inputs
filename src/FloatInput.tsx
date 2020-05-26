@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { FloatInputProps } from "./types";
 import { useTheme } from "./theme";
+import { floatFormat } from "./formats";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -18,11 +19,13 @@ export const FloatInput: React.FC<FloatInputProps> = ({
   const theme = useTheme("floatInput", _theme);
 
   const handleChange = React.useCallback(
-    event => {
-      const value = parseFloat(event.target.value);
-      isNaN(value) ? onChange(null) : onChange(value);
-    },
+    event => onChange(floatFormat.parse(event.target.value)),
     [onChange]
+  );
+
+  const formattedValue = React.useMemo(
+    () => (typeof value === "number" ? floatFormat.format(value) : ""),
+    [value]
   );
 
   return (
@@ -32,7 +35,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
         <input
           type="number"
           onChange={handleChange}
-          value={value === null ? "" : value}
+          value={formattedValue}
           {...inputProps}
         />
       )}
