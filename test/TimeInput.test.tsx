@@ -5,7 +5,7 @@ import { TimeInput, TimeInputProps } from "../src";
 
 const setup = (props: Partial<TimeInputProps> = {}) =>
   render(
-    <TimeInput label="Jawn" value="12:04" onChange={jest.fn()} {...props} />
+    <TimeInput label="Jawn" value="12:04Z" onChange={jest.fn()} {...props} />
   );
 
 describe("<TimeInput />", () => {
@@ -19,6 +19,6 @@ describe("<TimeInput />", () => {
       target: { value: "09:06" }
     });
 
-    expect(onChange).toHaveBeenCalledWith("13:06:00");
+    expect(onChange).toHaveBeenCalledWith("13:06Z");
   });
 });

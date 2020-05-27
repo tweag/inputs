@@ -20,7 +20,10 @@ export const dateFormat: Formatter<string> = {
 
 export const timeFormat: Formatter<string> = {
   format(value) {
-    const [hours, minutes] = value.split(":").map(Number);
+    const [hours, minutes] = value
+      .replace(/Z$/, "")
+      .split(":")
+      .map(Number);
 
     const date = new Date();
     date.setUTCHours(hours);
@@ -43,7 +46,7 @@ export const timeFormat: Formatter<string> = {
 
     const utcHours = pad(date.getUTCHours());
     const utcMinutes = pad(date.getUTCMinutes());
-    return `${utcHours}:${utcMinutes}:00`;
+    return `${utcHours}:${utcMinutes}Z`;
   }
 };
 
