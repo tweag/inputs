@@ -10,6 +10,7 @@ import { timeFormat } from "./formats";
  *   * It accepts `null` as a value.
  *   * It emits an ISO-formatted time string when changed.
  *   * The time is converted to UTC.
+ *   * The time must be formatted as `00:00Z`
  */
 export const TimeInput: React.FC<TimeInputProps> = ({
   value,

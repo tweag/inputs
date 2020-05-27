@@ -20,29 +20,26 @@ export const dateFormat: Formatter<string> = {
 
 export const timeFormat: Formatter<string> = {
   format(value) {
-    const [hours, minutes] = value
-      .replace(/Z$/, "")
-      .split(":")
-      .map(Number);
+    const [h, m] = value.split(/[:Z]/);
 
     const date = new Date();
-    date.setUTCHours(hours);
-    date.setUTCMinutes(minutes);
+    date.setUTCHours(Number(h));
+    date.setUTCMinutes(Number(m));
 
     const localHours = pad(date.getHours());
     const localMinutes = pad(date.getMinutes());
     return `${localHours}:${localMinutes}`;
   },
   parse(value) {
-    const [hours, minutes] = value.split(":").map(Number);
+    const [h, m] = value.split(":").map(Number);
 
-    if (isNaN(hours) || isNaN(minutes)) {
+    if (isNaN(h) || isNaN(m)) {
       return null;
     }
 
     const date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
+    date.setHours(h);
+    date.setMinutes(m);
 
     const utcHours = pad(date.getUTCHours());
     const utcMinutes = pad(date.getUTCMinutes());
