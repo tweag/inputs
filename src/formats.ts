@@ -33,6 +33,10 @@ export const timeFormat: Formatter<string> = {
   parse(value) {
     const [hours, minutes] = value.split(":").map(Number);
 
+    if (isNaN(hours) || isNaN(minutes)) {
+      return null;
+    }
+
     const date = new Date();
     date.setHours(hours);
     date.setMinutes(minutes);
