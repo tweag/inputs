@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "react-baseline-inputs",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0",
   "repository": "https://github.com/promptworks/react-baseline-inputs",
   "description": "React components for creating data-driven forms.",
   "main": "dist/index.js",
