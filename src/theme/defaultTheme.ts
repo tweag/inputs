@@ -3,6 +3,7 @@ import { FieldTheme, FieldSetTheme, Theme } from "../types";
 const fieldTheme: FieldTheme = {
   field: "field",
   fieldInline: "field--inline",
+  fieldCondensed: "field--condensed",
   fieldSuccess: "field--success",
   fieldError: "field--erroneous",
   fieldTouched: "field--touched",
@@ -12,6 +13,7 @@ const fieldTheme: FieldTheme = {
 
   input: "field__input",
   inputInline: "field__input--inline",
+  inputCondensed: "field__input--condensed",
   inputSuccess: "field__input--success",
   inputError: "field__input--erroneous",
   inputTouched: "field__input--touched",
@@ -21,6 +23,7 @@ const fieldTheme: FieldTheme = {
 
   label: "field__label",
   labelInline: "field__label--inline",
+  labelCondensed: "field__label--condensed",
   labelSuccess: "field__label--success",
   labelError: "field__label--erroneous",
   labelTouched: "field__label--touched",
@@ -30,11 +33,13 @@ const fieldTheme: FieldTheme = {
 
   help: "field__help",
   helpInline: "field__help--inline",
+  helpCondensed: "field__help--condensed",
   helpSmall: "field__help--small",
   helpLarge: "field__help--large",
 
   error: "field__error",
   errorInline: "field__error--inline",
+  errorCondensed: "field__error--condensed",
   errorSmall: "field__error--small",
   errorLarge: "field__error--large"
 };

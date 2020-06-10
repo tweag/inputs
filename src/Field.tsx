@@ -10,6 +10,7 @@ export function Field<T extends FieldProps>({
   id: _id,
   help,
   inline,
+  condensed,
   touched,
   error,
   success = touched && !error,
@@ -40,6 +41,14 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(theme.labelInline);
     errorClassNames.push(theme.errorInline);
     helpClassNames.push(theme.helpInline);
+  }
+
+  if (condensed) {
+    fieldClassNames.push(theme.fieldCondensed);
+    inputClassNames.push(theme.inputCondensed);
+    labelClassNames.push(theme.labelCondensed);
+    errorClassNames.push(theme.errorCondensed);
+    helpClassNames.push(theme.helpCondensed);
   }
 
   if (touched) {
