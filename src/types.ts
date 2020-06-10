@@ -3,6 +3,7 @@ import * as React from "react";
 export interface FieldTheme {
   field?: string | undefined;
   fieldInline?: string | undefined;
+  fieldCondensed?: string | undefined;
   fieldSuccess?: string | undefined;
   fieldError?: string | undefined;
   fieldTouched?: string | undefined;
@@ -15,6 +16,7 @@ export interface FieldTheme {
   inputError?: string | undefined;
   inputTouched?: string | undefined;
   inputInline?: string | undefined;
+  inputCondensed?: string | undefined;
   inputLarge?: string | undefined;
   inputSmall?: string | undefined;
   inputDisabled?: string | undefined;
@@ -24,17 +26,20 @@ export interface FieldTheme {
   labelError?: string | undefined;
   labelTouched?: string | undefined;
   labelInline?: string | undefined;
+  labelCondensed?: string | undefined;
   labelLarge?: string | undefined;
   labelSmall?: string | undefined;
   labelDisabled?: string | undefined;
 
   help?: string | undefined;
   helpInline?: string | undefined;
+  helpCondensed?: string | undefined;
   helpSmall?: string | undefined;
   helpLarge?: string | undefined;
 
   error?: string | undefined;
   errorInline?: string | undefined;
+  errorCondensed?: string | undefined;
   errorSmall?: string | undefined;
   errorLarge?: string | undefined;
 }
@@ -88,6 +93,7 @@ export interface FieldInputProps {
   touched?: boolean;
   success?: boolean;
   disabled?: boolean;
+  condensed?: boolean;
   error?: React.ReactNode;
   help?: React.ReactNode;
   label?: React.ReactNode;
