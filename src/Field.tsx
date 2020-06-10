@@ -47,7 +47,7 @@ export function Field<T extends FieldProps>({
     fieldClassNames.push(theme.fieldCondensed);
     inputClassNames.push(theme.inputCondensed);
     labelClassNames.push(theme.labelCondensed);
-    errorClassNames.push(theme.errorCondended);
+    errorClassNames.push(theme.errorCondensed);
     helpClassNames.push(theme.helpCondensed);
   }
 
