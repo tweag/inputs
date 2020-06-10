@@ -12,6 +12,7 @@ export function Field<T extends FieldProps>({
   inline,
   condensed,
   touched,
+  populated,
   error,
   success = touched && !error,
   large,
@@ -55,6 +56,12 @@ export function Field<T extends FieldProps>({
     fieldClassNames.push(theme.fieldTouched);
     inputClassNames.push(theme.inputTouched);
     labelClassNames.push(theme.labelTouched);
+  }
+
+  if (populated) {
+    fieldClassNames.push(theme.fieldPopulated);
+    inputClassNames.push(theme.inputPopulated);
+    labelClassNames.push(theme.labelPopulated);
   }
 
   if (error) {
