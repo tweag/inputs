@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { TimeInputProps } from "./types";
 import { useTheme } from "./theme";
 import { timeFormat } from "./formats";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input type="time" />`, but with the following benefits:
@@ -33,6 +34,7 @@ export const TimeInput: React.FC<TimeInputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="time"

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { InputProps } from "./types";
 import { useTheme } from "./theme";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input />`, but with the following benefits:
@@ -26,7 +27,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <Field
       theme={theme}
-      populated={value !== null && value !== undefined && value !== ""}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="text"

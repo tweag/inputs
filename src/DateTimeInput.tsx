@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { DateTimeInputProps } from "./types";
 import { useTheme } from "./theme";
 import { dateTimeFormat } from "./formats";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input type="datetime-local" />`, but with the following benefits:
@@ -32,6 +33,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="datetime-local"

@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { IntegerInputProps } from "./types";
 import { useTheme } from "./theme";
 import { integerFormat } from "./formats";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -26,6 +27,7 @@ export const IntegerInput: React.FC<IntegerInputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="number"
