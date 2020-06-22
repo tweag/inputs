@@ -26,6 +26,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={value !== null && value !== undefined && value !== ""}
       render={inputProps => (
         <input
           type="text"

@@ -7,6 +7,7 @@ export interface FieldTheme {
   fieldSuccess?: string | undefined;
   fieldError?: string | undefined;
   fieldTouched?: string | undefined;
+  fieldPopulated?: string | undefined;
   fieldLarge?: string | undefined;
   fieldSmall?: string | undefined;
   fieldDisabled?: string | undefined;
@@ -15,6 +16,7 @@ export interface FieldTheme {
   inputSuccess?: string | undefined;
   inputError?: string | undefined;
   inputTouched?: string | undefined;
+  inputPopulated?: string | undefined;
   inputInline?: string | undefined;
   inputCondensed?: string | undefined;
   inputLarge?: string | undefined;
@@ -25,6 +27,7 @@ export interface FieldTheme {
   labelSuccess?: string | undefined;
   labelError?: string | undefined;
   labelTouched?: string | undefined;
+  labelPopulated?: string | undefined;
   labelInline?: string | undefined;
   labelCondensed?: string | undefined;
   labelLarge?: string | undefined;
@@ -91,6 +94,7 @@ export interface FieldInputProps {
   large?: boolean;
   small?: boolean;
   touched?: boolean;
+  populated?: boolean;
   success?: boolean;
   disabled?: boolean;
   condensed?: boolean;
