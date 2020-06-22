@@ -22,3 +22,7 @@ export const join = (names: Array<string | undefined>) => {
   }
   return name;
 };
+
+export const isPopulated = (value: any): boolean => {
+  return typeof value !== undefined && value !== null && value !== "";
+};

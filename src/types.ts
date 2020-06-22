@@ -94,7 +94,6 @@ export interface FieldInputProps {
   large?: boolean;
   small?: boolean;
   touched?: boolean;
-  populated?: boolean;
   success?: boolean;
   disabled?: boolean;
   condensed?: boolean;
@@ -126,6 +125,7 @@ export interface ValueProps<V, C = V> {
 
 export interface FieldProps extends FieldInputProps {
   className?: string;
+  populated?: boolean;
   render: (props: object) => React.ReactNode;
 }
 

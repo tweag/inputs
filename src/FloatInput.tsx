@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { FloatInputProps } from "./types";
 import { useTheme } from "./theme";
 import { floatFormat } from "./formats";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input type="number" />`, but with the following benefits:
@@ -26,6 +27,7 @@ export const FloatInput: React.FC<FloatInputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="number"

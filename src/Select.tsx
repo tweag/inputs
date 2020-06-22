@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { SelectProps, OptionProps } from "./types";
 import { useTheme } from "./theme";
+import { isPopulated } from "./utils";
 
 const getOptionProps = (option: OptionProps | string) => {
   if (typeof option === "string") {
@@ -37,6 +38,7 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <select
           value={value === null ? "" : value}

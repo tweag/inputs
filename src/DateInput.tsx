@@ -3,6 +3,7 @@ import { Field } from "./Field";
 import { DateInputProps } from "./types";
 import { useTheme } from "./theme";
 import { dateFormat } from "./formats";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<input type="date" />`, but with the following benefits:
@@ -26,6 +27,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <input
           type="date"

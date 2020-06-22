@@ -2,6 +2,7 @@ import * as React from "react";
 import { Field } from "./Field";
 import { TextAreaProps } from "./types";
 import { useTheme } from "./theme";
+import { isPopulated } from "./utils";
 
 /**
  * An HTML `<textarea />`, but with the following benefits:
@@ -25,6 +26,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   return (
     <Field
       theme={theme}
+      populated={isPopulated(value)}
       render={inputProps => (
         <textarea value={value || ""} onChange={handleChange} {...inputProps} />
       )}
