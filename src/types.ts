@@ -90,7 +90,6 @@ export interface Theme {
 
 export interface FieldInputProps {
   id?: string;
-  value?: string;
   inline?: boolean;
   large?: boolean;
   small?: boolean;
