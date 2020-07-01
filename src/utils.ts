@@ -24,5 +24,5 @@ export const join = (names: Array<string | undefined>) => {
 };
 
 export const isPopulated = (value: any): boolean => {
-  return typeof value !== undefined && value !== null && value !== "";
+  return value !== undefined && value !== null && value !== "";
 };
