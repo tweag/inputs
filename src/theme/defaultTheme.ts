@@ -11,6 +11,8 @@ const fieldTheme: FieldTheme = {
   fieldLarge: "field--large",
   fieldSmall: "field--small",
   fieldDisabled: "field--disabled",
+  fieldHasIcon: "field--hasIcon",
+  fieldHasIconBefore: "field--hasIconBefore",
 
   input: "field__input",
   inputInline: "field__input--inline",
@@ -22,6 +24,8 @@ const fieldTheme: FieldTheme = {
   inputLarge: "field__input--large",
   inputSmall: "field__input--small",
   inputDisabled: "field__input--disabled",
+  inputHasIcon: "field__input--hasIcon",
+  inputHasIconBefore: "field__input--hasIconBefore",
 
   label: "field__label",
   labelInline: "field__label--inline",
@@ -33,6 +37,8 @@ const fieldTheme: FieldTheme = {
   labelLarge: "field__label--large",
   labelSmall: "field__label--small",
   labelDisabled: "field__label--disabled",
+  labelHasIcon: "field__label--hasIcon",
+  labelHasIconBefore: "field__label--hasIconBefore",
 
   help: "field__help",
   helpInline: "field__help--inline",
@@ -44,7 +50,10 @@ const fieldTheme: FieldTheme = {
   errorInline: "field__error--inline",
   errorCondensed: "field__error--condensed",
   errorSmall: "field__error--small",
-  errorLarge: "field__error--large"
+  errorLarge: "field__error--large",
+
+  icon: "field__icon",
+  iconBefore: "field__icon--before",
 };
 
 const fieldSetTheme: FieldSetTheme = {
