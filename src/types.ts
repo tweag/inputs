@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export interface Theme {
+export interface ThemeClassNames {
   field?: string;
   input?: string;
   label?: string;
@@ -12,7 +12,8 @@ export interface Theme {
 
 export interface ThemeContext {
   type: string;
-  valid: boolean;
+  success: boolean;
+  error: boolean;
   touched: boolean;
   inline: boolean;
   condensed: boolean;
@@ -21,6 +22,8 @@ export interface ThemeContext {
   small: boolean;
   disabled: boolean;
 }
+
+export type Theme = (context: ThemeContext) => ThemeClassNames;
 
 export interface FieldInputProps {
   id?: string;
@@ -36,7 +39,7 @@ export interface FieldInputProps {
   label?: React.ReactNode;
   labelPosition?: "before" | "after";
   wrapper?: boolean;
-  theme?: (context: ThemeContext) => Theme;
+  theme?: Theme;
 }
 
 export interface OptionProps {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, ThemeContext } from "./types";
 import { useTheme } from "./theme";
 import { join, useUniqueId } from "./utils";
 
@@ -9,23 +9,34 @@ export function Field<T extends FieldProps>({
   render,
   id: _id,
   help,
-  inline,
-  condensed,
-  touched,
-  populated,
+  inline = false,
+  condensed = false,
+  touched = false,
+  populated = false,
+  disabled = false,
   error,
-  success = touched && !error,
+  success = false,
   large,
   small,
   wrapper = true,
   theme: _theme,
-  disabled,
   className,
   ...props
 }: T) {
   const id = useUniqueId(_id);
 
-  const theme = useTheme("field", _theme);
+  const context: ThemeContext = {
+    inline,
+    condensed,
+    populated,
+    disabled,
+    success,
+    error: Boolean(error),
+    large,
+    small
+  };
+
+  const theme = useTheme(context, _theme);
   const fieldClassNames = [theme.field];
   const inputClassNames = [theme.input];
   const labelClassNames = [theme.label];

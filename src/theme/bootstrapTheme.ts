@@ -1,7 +1,7 @@
 import cc from "classcat";
-import { ThemeContext, Theme } from "../types";
+import { Theme } from "../types";
 
-export const bootstrapTheme = (ctx: ThemeContext): Theme => {
+export const bootstrapTheme: Theme = ctx => {
   const isCheckbox = ctx.type === "checkbox";
   const isSelect = ctx.type === "select";
   const isToggle = ctx.type === "toggle-button";
@@ -14,8 +14,8 @@ export const bootstrapTheme = (ctx: ThemeContext): Theme => {
   };
 
   const input: Record<string, boolean> = {
-    "is-valid": ctx.valid,
-    "is-invalid": !ctx.valid
+    "is-valid": ctx.success,
+    "is-invalid": ctx.error
   };
 
   if (isCheckbox) {
