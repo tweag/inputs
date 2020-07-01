@@ -1,91 +1,25 @@
 import * as React from "react";
 
-export interface FieldTheme {
-  field?: string | undefined;
-  fieldInline?: string | undefined;
-  fieldCondensed?: string | undefined;
-  fieldSuccess?: string | undefined;
-  fieldError?: string | undefined;
-  fieldTouched?: string | undefined;
-  fieldPopulated?: string | undefined;
-  fieldLarge?: string | undefined;
-  fieldSmall?: string | undefined;
-  fieldDisabled?: string | undefined;
-
-  input?: string | undefined;
-  inputSuccess?: string | undefined;
-  inputError?: string | undefined;
-  inputTouched?: string | undefined;
-  inputPopulated?: string | undefined;
-  inputInline?: string | undefined;
-  inputCondensed?: string | undefined;
-  inputLarge?: string | undefined;
-  inputSmall?: string | undefined;
-  inputDisabled?: string | undefined;
-
-  label?: string | undefined;
-  labelSuccess?: string | undefined;
-  labelError?: string | undefined;
-  labelTouched?: string | undefined;
-  labelPopulated?: string | undefined;
-  labelInline?: string | undefined;
-  labelCondensed?: string | undefined;
-  labelLarge?: string | undefined;
-  labelSmall?: string | undefined;
-  labelDisabled?: string | undefined;
-
-  help?: string | undefined;
-  helpInline?: string | undefined;
-  helpCondensed?: string | undefined;
-  helpSmall?: string | undefined;
-  helpLarge?: string | undefined;
-
-  error?: string | undefined;
-  errorInline?: string | undefined;
-  errorCondensed?: string | undefined;
-  errorSmall?: string | undefined;
-  errorLarge?: string | undefined;
-}
-
-export interface FieldSetTheme {
-  fieldSet?: string | undefined;
-  fieldSetError?: string | undefined;
-  fieldSetSuccess?: string | undefined;
-  fieldSetTouched?: string | undefined;
-  fieldSetLarge?: string | undefined;
-  fieldSetSmall?: string | undefined;
-
-  legend?: string | undefined;
-  legendError?: string | undefined;
-  legendSuccess?: string | undefined;
-  legendTouched?: string | undefined;
-  legendLarge?: string | undefined;
-  legendSmall?: string | undefined;
-
-  help?: string | undefined;
-  helpSmall?: string | undefined;
-  helpLarge?: string | undefined;
-
-  error?: string | undefined;
-  errorSmall?: string | undefined;
-  errorLarge?: string | undefined;
-}
-
 export interface Theme {
-  input: FieldTheme;
-  checkbox: FieldTheme;
-  dateInput: FieldTheme;
-  dateTimeInput: FieldTheme;
-  field: FieldTheme;
-  fieldSet: FieldSetTheme;
-  fileInput: FieldTheme;
-  floatInput: FieldTheme;
-  integerInput: FieldTheme;
-  radioGroup: FieldTheme;
-  select: FieldTheme;
-  textarea: FieldTheme;
-  timeInput: FieldTheme;
-  toggleButton: FieldTheme;
+  field?: string;
+  input?: string;
+  label?: string;
+  help?: string;
+  error?: string;
+  fieldset?: string;
+  legend?: string;
+}
+
+export interface ThemeContext {
+  type: string;
+  valid: boolean;
+  touched: boolean;
+  inline: boolean;
+  condensed: boolean;
+  populated: boolean;
+  large: boolean;
+  small: boolean;
+  disabled: boolean;
 }
 
 export interface FieldInputProps {
@@ -102,7 +36,7 @@ export interface FieldInputProps {
   label?: React.ReactNode;
   labelPosition?: "before" | "after";
   wrapper?: boolean;
-  theme?: FieldTheme;
+  theme?: (context: ThemeContext) => Theme;
 }
 
 export interface OptionProps {
@@ -132,14 +66,13 @@ export interface FieldProps extends FieldInputProps {
 export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   legend?: React.ReactNode;
   help?: React.ReactNode;
-  className?: string;
   error?: React.ReactNode;
-  theme?: FieldSetTheme;
   large?: boolean;
   small?: boolean;
   success?: boolean;
   touched?: boolean;
   wrapper?: boolean;
+  theme?: Theme;
 }
 
 export type CheckboxProps = FieldInputProps &
