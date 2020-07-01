@@ -1,44 +1,7 @@
+import cc from "classcat";
 import { useMemo } from "react";
 import { useTheme } from "./theme";
-import { Theme } from "./types";
-
-export interface FieldConfig {
-  theme?: Theme;
-  label?: React.ReactNode;
-  error?: React.ReactNode;
-  labelProps?: React.HTMLProps<HTMLLabelElement>;
-  errorProps?: React.HTMLProps<HTMLSpanElement>;
-  containerProps?: React.HTMLProps<HTMLDivElement>;
-  fieldSetProps?: React.HTMLProps<HTMLFieldSetElement>;
-  legendProps?: React.HTMLProps<HTMLLegendElement>;
-  inline?: boolean;
-  small?: boolean;
-  large?: boolean;
-  condensed?: boolean;
-  touched?: boolean;
-  disabled?: boolean;
-  success?: boolean;
-  [key: string]: any;
-}
-
-export interface InputProps {
-  id: string;
-  disabled: boolean;
-  className?: string;
-  "aria-labelledby"?: string;
-  [key: string]: any;
-}
-
-export interface Field {
-  label?: React.ReactNode;
-  error?: React.ReactNode;
-  getInputProps(): InputProps;
-  getLabelProps(): React.HTMLProps<HTMLLabelElement>;
-  getErrorProps(): React.HTMLProps<HTMLSpanElement>;
-  getContainerProps(): React.HTMLProps<HTMLDivElement>;
-  getFieldsetProps(): React.HTMLProps<HTMLFieldSetElement>;
-  getLegendProps(): React.HTMLProps<HTMLLegendElement>;
-}
+import { FieldConfig, Field } from "./types";
 
 const generate: () => number = (() => {
   let previousId = 0;
@@ -53,7 +16,7 @@ const isPopulated = (value: any): boolean => {
   return !isUndefined(value) && value !== null && value !== "";
 };
 
-export function useField(
+export function useField<T extends FieldConfig>(
   type: string,
   {
     theme: themeViaProp,
@@ -72,8 +35,8 @@ export function useField(
     disabled = false,
     success = touched && !error,
     ...inputProps
-  }: FieldConfig
-): Field {
+  }: T
+): Field<typeof inputProps> {
   const componentId = useMemo(generate, []);
 
   const id = inputProps.id || `input-${componentId}`;
@@ -100,37 +63,38 @@ export function useField(
     label,
     error,
     getFieldsetProps: () => ({
-      className: classNames.fieldset,
+      ...fieldSetProps,
       "aria-describedby": isUndefined(error) ? undefined : errorId,
-      ...fieldSetProps
+      className: cc([classNames.fieldset, fieldSetProps?.className])
     }),
     getLegendProps: () => ({
-      className: classNames.legend,
-      ...legendProps
+      ...legendProps,
+      className: cc([classNames.legend, legendProps?.className])
     }),
     getContainerProps: () => ({
-      className: classNames.field,
-      ...containerProps
+      ...containerProps,
+      className: cc([classNames.field, containerProps?.className])
     }),
     getLabelProps: () => ({
+      ...labelProps,
       id: labelId,
       htmlFor: id,
-      className: classNames.label,
-      ...labelProps
+      className: cc([classNames.label, labelProps?.className])
     }),
     getErrorProps: () => ({
+      ...errorProps,
       id: errorId,
       role: "alert",
-      ...errorProps
+      className: cc([classNames.error, errorProps?.className])
     }),
     getInputProps: () => ({
+      ...inputProps,
       id,
       disabled,
-      className: classNames.input,
+      className: cc([classNames.input, inputProps.className]),
       "aria-labelledby": isUndefined(error)
         ? undefined
-        : `${labelId} ${errorId}`,
-      ...inputProps
+        : `${labelId} ${errorId}`
     })
   };
 }
