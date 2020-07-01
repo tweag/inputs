@@ -129,11 +129,22 @@ export function Field<T extends FieldProps>({
 
   const renderInput = () => (
     <React.Fragment>
-      {renderIconBefore && <div className={join([theme.icon, theme.iconBefore])} role="presentation">{renderIconBefore()}</div>}
-      {renderIcon && <div className={theme.icon} role="presentation">{renderIcon()}</div>}
+      {renderIconBefore && (
+        <div
+          className={join([theme.icon, theme.iconBefore])}
+          role="presentation"
+        >
+          {renderIconBefore()}
+        </div>
+      )}
+      {renderIcon && (
+        <div className={theme.icon} role="presentation">
+          {renderIcon()}
+        </div>
+      )}
       {render(inputProps)}
     </React.Fragment>
-  )
+  );
 
   return (
     <Wrapper {...wrapperProps}>

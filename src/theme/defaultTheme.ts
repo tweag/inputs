@@ -53,7 +53,7 @@ const fieldTheme: FieldTheme = {
   errorLarge: "field__error--large",
 
   icon: "field__icon",
-  iconBefore: "field__icon--before",
+  iconBefore: "field__icon--before"
 };
 
 const fieldSetTheme: FieldSetTheme = {
