@@ -19,6 +19,9 @@ const isPopulated = (value: any): boolean => {
 export function useField<T extends FieldConfig>(
   type: string,
   {
+    id: _id,
+    value,
+    className,
     theme: themeViaProp,
     label,
     error,
@@ -39,9 +42,9 @@ export function useField<T extends FieldConfig>(
 ): Field<typeof inputProps> {
   const componentId = useMemo(generate, []);
 
-  const id = inputProps.id || `input-${componentId}`;
-  const labelId = labelProps?.id || `label-${componentId}`;
-  const errorId = errorProps?.id || `error-${componentId}`;
+  const id = _id || `input-${componentId}`;
+  const labelId = labelProps?.id || `${id}-label`;
+  const errorId = errorProps?.id || `${id}-error`;
 
   const themeViaContext = useTheme();
   const theme = themeViaProp || themeViaContext;
@@ -50,7 +53,7 @@ export function useField<T extends FieldConfig>(
     type,
     inline,
     condensed,
-    populated: isPopulated(inputProps.value),
+    populated: isPopulated(value),
     disabled,
     success,
     error: Boolean(error),
@@ -88,13 +91,14 @@ export function useField<T extends FieldConfig>(
       className: cc([classNames.error, errorProps?.className])
     }),
     getInputProps: () => ({
-      ...inputProps,
       id,
+      value,
       disabled,
-      className: cc([classNames.input, inputProps.className]),
+      className: cc([classNames.input, className]),
       "aria-labelledby": isUndefined(error)
         ? undefined
-        : `${labelId} ${errorId}`
+        : `${labelId} ${errorId}`,
+      ...inputProps
     })
   };
 }

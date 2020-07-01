@@ -115,9 +115,7 @@ export type FloatInputProps = FieldConfig &
   HTMLProps<HTMLInputElement> &
   ValueProps<number | null>;
 
-export type InputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
+export type InputProps = FieldConfig & HTMLProps<HTMLInputElement>;
 
 export type IntegerInputProps = FieldConfig &
   HTMLProps<HTMLInputElement> &
