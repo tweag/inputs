@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
+    "example": "yarn --cwd example run -s start",
     "build": "tsdx build",
     "test": "TZ=America/New_York tsdx test",
     "lint": "tsdx lint src test",

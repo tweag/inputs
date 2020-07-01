@@ -71,77 +71,29 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLProps<T> = Omit<
-  React.HTMLProps<T>,
-  "value" | "onChange" | "label" | "multiple" | "render"
->;
-
-export interface ValueProps<V, C = V> {
-  value: V;
-  onChange: (value: C) => void;
-}
-
-export type CheckboxProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<boolean | null>;
-
-export type CheckboxListProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string[] | null> & {
-    options?: Array<OptionProps | string>;
-  };
-
-export type DateInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type DateTimeInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type FileInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: File | null) => void;
-  };
-
-export type FileListInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: FileList) => void;
-  };
-
-export type FloatInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<number | null>;
+export type HTMLProps<T> = Omit<React.HTMLProps<T>, "label"> & { name: string };
 
 export type InputProps = FieldConfig & HTMLProps<HTMLInputElement>;
-
-export type IntegerInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<number | null>;
-
-export type RadioGroupProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null> & {
-    options?: Array<OptionProps | string>;
-  };
+export type TextAreaProps = FieldConfig & HTMLProps<HTMLTextAreaElement>;
 
 export type SelectProps = FieldConfig &
-  HTMLProps<HTMLSelectElement> &
-  ValueProps<string | null> & {
+  HTMLProps<HTMLSelectElement> & {
     placeholder?: string;
     options?: Array<OptionProps | string>;
   };
 
-export type TextAreaProps = FieldConfig &
-  HTMLProps<HTMLTextAreaElement> &
-  ValueProps<string | null>;
+interface SingleFileProps {
+  multiple?: false | undefined;
+  value?: any;
+  onChange(file: File | undefined): void;
+}
 
-export type TimeInputProps = FieldConfig &
+interface MultipleFileProps {
+  multiple: true;
+  value?: any;
+  onChange(files: FileList): void;
+}
+
+export type FileInputProps = FieldConfig &
   HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type ToggleButtonProps = FieldConfig &
-  HTMLProps<HTMLButtonElement> &
-  ValueProps<boolean | null>;
+  (SingleFileProps | MultipleFileProps);

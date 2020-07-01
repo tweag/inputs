@@ -1,34 +1,22 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Input } from "./Input";
 import { FileInputProps } from "./types";
-import { useTheme } from "./theme";
 
-/**
- * An HTML `<input type="file" />`, but with the following benefits:
- *
- *   * It emits a `File | null` when changed.
- *   * It ignores any `value` prop that you give it.
- */
 export const FileInput: React.FC<FileInputProps> = ({
+  multiple,
   onChange,
-  value: _value,
-  theme: _theme,
   ...props
 }) => {
-  const theme = useTheme("fileInput", _theme);
-
   const handleChange = React.useCallback(
-    event => onChange(event.target.files[0] || null),
-    [onChange]
+    event => {
+      if (multiple) {
+        onChange(event.target.files);
+      } else {
+        onChange(event.target.files[0]);
+      }
+    },
+    [multiple, onChange]
   );
 
-  return (
-    <Field
-      theme={theme}
-      render={inputProps => (
-        <input type="file" onChange={handleChange} {...inputProps} />
-      )}
-      {...props}
-    />
-  );
+  return <Input {...props} multiple={multiple} onChange={handleChange} />;
 };

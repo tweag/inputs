@@ -1,42 +1,21 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { InputProps } from "./types";
-import { useTheme } from "./theme";
-import { isPopulated } from "./utils";
+import { useField } from "./useField";
 
-/**
- * An HTML `<input />`, but with the following benefits:
- *
- *   * It accepts `null` as a value.
- *   * It defaults to `type="text"`.
- *   * It emits a `null` value to the `onChange` handler when the input is empty.
- */
-export const Input: React.FC<InputProps> = ({
-  value,
-  onChange,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("input", _theme);
+export const Input: React.FC<InputProps> = props => {
+  const type = props.type || "text";
+  const field = useField(type, props);
+  const isCheckbox = props.type === "checkbox" || props.type === "radio";
 
-  const handleChange = React.useCallback(
-    event => onChange(event.target.value || null),
-    [onChange]
-  );
+  const renderLabel = () =>
+    field.label && <label {...field.getLabelProps()}>{field.label}</label>;
 
   return (
-    <Field
-      theme={theme}
-      populated={isPopulated(value)}
-      render={inputProps => (
-        <input
-          type="text"
-          value={value || ""}
-          onChange={handleChange}
-          {...inputProps}
-        />
-      )}
-      {...props}
-    />
+    <div {...field.getContainerProps()}>
+      {!isCheckbox && renderLabel()}
+      <input type={type} {...field.getInputProps()} />
+      {isCheckbox && renderLabel()}
+      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+    </div>
   );
 };
