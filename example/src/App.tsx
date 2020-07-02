@@ -1,7 +1,7 @@
 import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useValue, required } from "./helpers";
+import { useValue, required } from "./useValue";
 import {
   bootstrapTheme,
   Input,
@@ -34,27 +34,15 @@ const App = () => {
         <ThemeProvider value={bootstrapTheme}>
           <section>
             <form onSubmit={event => event.preventDefault()}>
-              <Input label="Text" value={text.value} {...text.props} />
-
+              <Input label="Text" {...text} />
               <Select
                 label="Select"
                 options={["A", "B"]}
                 placeholder="Choose an option"
-                value={select.value}
-                {...select.props}
+                {...select}
               />
-
-              <Checkbox
-                label="I agree"
-                checked={checkbox.value}
-                {...checkbox.props}
-              />
-
-              <TextArea
-                label="Textarea"
-                value={textarea.value}
-                {...textarea.props}
-              />
+              <Checkbox label="I agree" {...checkbox} />
+              <TextArea label="Textarea" {...textarea} />
 
               <button type="submit" className="btn btn-primary mt-2">
                 Submit

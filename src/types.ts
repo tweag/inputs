@@ -23,9 +23,18 @@ export interface ThemeContext {
 
 export type Theme = (context: ThemeContext) => ThemeClassNames;
 
-export interface FieldConfig {
+export interface FieldInputProps {
+  id: string;
+  disabled: boolean;
+  className?: string;
+  "aria-labelledby"?: string;
+  [key: string]: any;
+}
+
+export interface FieldConfig<V> {
+  value: V;
+  onChange(value: V): void;
   id?: any;
-  value?: any;
   className?: string;
   theme?: Theme;
   label?: React.ReactNode;
@@ -42,20 +51,16 @@ export interface FieldConfig {
   touched?: boolean;
   disabled?: boolean;
   success?: boolean;
+  [key: string]: any;
 }
 
-export interface FieldInputProps {
-  id: string;
-  disabled: boolean;
-  className?: string;
-  "aria-labelledby"?: string;
-}
-
-export interface Field<T> {
+export interface Field<V> {
+  value: V;
+  onChange(value: V): void;
   label?: React.ReactNode;
   help?: React.ReactNode;
   error?: React.ReactNode;
-  getInputProps(): FieldInputProps & T;
+  getInputProps(): FieldInputProps;
   getLabelProps(): React.HTMLProps<HTMLLabelElement>;
   getHelpProps(): React.HTMLProps<HTMLSpanElement>;
   getErrorProps(): React.HTMLProps<HTMLSpanElement>;
@@ -69,13 +74,18 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLProps<T> = Omit<React.HTMLProps<T>, "label">;
-export type InputProps = FieldConfig & HTMLProps<HTMLInputElement>;
-export type CheckboxProps = InputProps;
-export type RadioProps = InputProps;
-export type TextAreaProps = FieldConfig & HTMLProps<HTMLTextAreaElement>;
+export type HTMLProps<T> = Omit<
+  React.HTMLProps<T>,
+  "value" | "onChange" | "label"
+>;
 
-export type SelectProps = FieldConfig &
+export type InputProps = FieldConfig<string> & HTMLProps<HTMLInputElement>;
+export type CheckboxProps = FieldConfig<boolean> & HTMLProps<HTMLInputElement>;
+
+export type TextAreaProps = FieldConfig<string> &
+  HTMLProps<HTMLTextAreaElement>;
+
+export type SelectProps = FieldConfig<string> &
   HTMLProps<HTMLSelectElement> & {
     placeholder?: string;
     options?: Array<OptionProps | string>;

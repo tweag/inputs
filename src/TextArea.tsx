@@ -5,6 +5,13 @@ import { TextAreaProps } from "./types";
 export const TextArea: React.FC<TextAreaProps> = props => {
   const field = useField("textarea", props);
 
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      field.onChange(event.target.value);
+    },
+    [field.onChange]
+  );
+
   return (
     <div {...field.getContainerProps()}>
       {field.label && (
@@ -13,7 +20,13 @@ export const TextArea: React.FC<TextAreaProps> = props => {
           {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
         </label>
       )}
-      <textarea {...field.getInputProps()} />
+
+      <textarea
+        {...field.getInputProps()}
+        value={field.value}
+        onChange={onChange}
+      />
+
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );

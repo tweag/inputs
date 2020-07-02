@@ -6,6 +6,13 @@ export const Input: React.FC<InputProps> = props => {
   const type = props.type || "text";
   const field = useField(type, props);
 
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      field.onChange(event.target.value);
+    },
+    [field.onChange]
+  );
+
   return (
     <div {...field.getContainerProps()}>
       {field.label && (
@@ -14,7 +21,14 @@ export const Input: React.FC<InputProps> = props => {
           {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
         </label>
       )}
-      <input type={type} {...field.getInputProps()} />
+
+      <input
+        {...field.getInputProps()}
+        type={type}
+        value={field.value}
+        onChange={onChange}
+      />
+
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );

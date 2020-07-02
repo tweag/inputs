@@ -15,6 +15,13 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   const field = useField("select", props);
 
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      field.onChange(event.target.value);
+    },
+    [field.onChange]
+  );
+
   const renderOption = (option: OptionProps | string) => {
     const { value, label = value, key = value, ...props } = coerce(option);
 
@@ -34,7 +41,11 @@ export const Select: React.FC<SelectProps> = ({
         </label>
       )}
 
-      <select {...field.getInputProps()}>
+      <select
+        {...field.getInputProps()}
+        value={field.value}
+        onChange={onChange}
+      >
         {placeholder && (
           <option disabled value="" key="placeholder">
             {placeholder}

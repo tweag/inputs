@@ -16,13 +16,17 @@ const isPopulated = (value: any): boolean => {
   return !isUndefined(value) && value !== null && value !== "";
 };
 
-export function useField<T extends FieldConfig>(
-  type: string,
-  {
-    id: _id,
+export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
+  const componentId = useMemo(generate, []);
+  const defaultId = `input-${componentId}`;
+  const defaultTheme = useTheme();
+
+  const {
+    id = defaultId,
+    theme: buildTheme = defaultTheme,
     value,
+    onChange,
     className,
-    theme: themeViaProp,
     label,
     help,
     error,
@@ -38,17 +42,12 @@ export function useField<T extends FieldConfig>(
     disabled = false,
     success = touched && !error,
     ...inputProps
-  }: T
-): Field<typeof inputProps> {
-  const componentId = useMemo(generate, []);
-  const id = _id || `input-${componentId}`;
+  } = props;
+
   const labelId = labelProps?.id || `${id}-label`;
   const errorId = errorProps?.id || `${id}-error`;
 
-  const themeViaContext = useTheme();
-  const theme = themeViaProp || themeViaContext;
-
-  const classNames = theme({
+  const classNames = buildTheme({
     type,
     inline,
     condensed,
@@ -65,6 +64,8 @@ export function useField<T extends FieldConfig>(
     label,
     help,
     error,
+    value,
+    onChange,
     getContainerProps: () => ({
       ...containerProps,
       className: cc([classNames.field, containerProps?.className])
@@ -87,7 +88,6 @@ export function useField<T extends FieldConfig>(
     }),
     getInputProps: () => ({
       id,
-      value,
       disabled,
       className: cc([classNames.input, className]),
       "aria-labelledby": isUndefined(error)
@@ -96,4 +96,4 @@ export function useField<T extends FieldConfig>(
       ...inputProps
     })
   };
-}
+};
