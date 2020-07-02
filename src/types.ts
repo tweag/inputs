@@ -1,31 +1,8 @@
 import * as React from "react";
 
-export type InputType =
-  | "color"
-  | "date"
-  | "datetime-local"
-  | "email"
-  | "month"
-  | "number"
-  | "password"
-  | "range"
-  | "tel"
-  | "text"
-  | "time"
-  | "url"
-  | "week";
-
-export type FieldType =
-  | InputType
-  | "textarea"
-  | "checkbox"
-  | "radio"
-  | "select"
-  | "switch";
-
 export interface ThemeContext {
-  success: boolean;
-  error: boolean;
+  valid: boolean;
+  invalid: boolean;
   touched: boolean;
   inline: boolean;
   condensed: boolean;
@@ -51,7 +28,7 @@ export interface FieldSetClassNames {
 }
 
 export interface Theme {
-  buildField(type: FieldType, context: ThemeContext): FieldClassNames;
+  buildField(type: string, context: ThemeContext): FieldClassNames;
   buildFieldSet(context: ThemeContext): FieldSetClassNames;
 }
 
@@ -82,7 +59,8 @@ export interface FieldConfig<V> {
   condensed?: boolean;
   touched?: boolean;
   disabled?: boolean;
-  success?: boolean;
+  valid?: boolean;
+  invalid?: boolean;
   [key: string]: any;
 }
 
@@ -117,14 +95,10 @@ export interface OptionProps {
 
 export type HTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  "type" | "value" | "onChange" | "label"
+  "value" | "onChange" | "label"
 >;
 
-export type InputProps = FieldConfig<string> &
-  HTMLProps<HTMLInputElement> & {
-    type: InputType;
-  };
-
+export type InputProps = FieldConfig<string> & HTMLProps<HTMLInputElement>;
 export type CheckboxProps = FieldConfig<boolean> & HTMLProps<HTMLInputElement>;
 
 export type CheckboxItemProps<T> = FieldConfig<T[]> &

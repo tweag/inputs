@@ -38,8 +38,8 @@ export const bootstrapTheme: Theme = {
         "custom-select-sm": isSelect && ctx.small,
         "custom-select-lg": isSelect && ctx.large,
         "custom-control-input": isSwitch,
-        "is-valid": ctx.success,
-        "is-invalid": ctx.error
+        "is-valid": ctx.valid,
+        "is-invalid": ctx.invalid
       })
     };
   }

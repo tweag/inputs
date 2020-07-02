@@ -1,6 +1,6 @@
 import cc from "classcat";
 import { useTheme } from "./theme";
-import { FieldConfig, Field } from "./types";
+import { Field, FieldConfig } from "./types";
 import { useComponentId } from "./useComponentId";
 import { isPopulated, isUndefined } from "./utilities";
 
@@ -11,7 +11,7 @@ export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
 
   const {
     id = defaultId,
-    theme: buildTheme = defaultTheme,
+    theme = defaultTheme,
     value,
     onChange,
     className,
@@ -28,21 +28,21 @@ export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
     condensed = false,
     touched = false,
     disabled = false,
-    success = touched && !error,
+    valid = touched && !error,
+    invalid = Boolean(error),
     ...inputProps
   } = props;
 
   const labelId = labelProps?.id || `${id}-label`;
   const errorId = errorProps?.id || `${id}-error`;
 
-  const classNames = buildTheme({
-    type,
+  const classNames = theme.buildField(type, {
     inline,
     condensed,
     populated: isPopulated(value),
     disabled,
-    success,
-    error: Boolean(error),
+    valid,
+    invalid,
     touched,
     large,
     small
