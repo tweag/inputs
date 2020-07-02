@@ -9,7 +9,8 @@ import {
   ThemeProvider,
   Select,
   TextArea,
-  CheckboxItem
+  CheckboxItem,
+  Radio
 } from "../../src";
 
 interface Person {
@@ -28,13 +29,15 @@ const App = () => {
   const textarea = useValue("");
   const checkbox = useValue(true);
   const checkboxes = useValue<Person[]>([]);
+  const radio = useValue<Person | null>(null);
 
   const values = {
     text: text.value,
     select: select.value,
     textarea: textarea.value,
     checkbox: checkbox.value,
-    checkboxes: checkboxes.value
+    checkboxes: checkboxes.value,
+    radio: radio.value
   };
 
   return (
@@ -66,6 +69,14 @@ const App = () => {
                     represents={person}
                     {...checkboxes}
                   />
+                ))}
+              </fieldset>
+
+              <fieldset>
+                <legend>Radio Group</legend>
+
+                {people.map(person => (
+                  <Radio label={person.name} represents={person} {...radio} />
                 ))}
               </fieldset>
 

@@ -1,6 +1,7 @@
 export * from "./Input";
 export * from "./Checkbox";
 export * from "./CheckboxItem";
+export * from "./Radio";
 export * from "./Select";
 export * from "./TextArea";
 export * from "./theme";
