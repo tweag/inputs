@@ -3,6 +3,7 @@ import { Theme } from "../types";
 
 export const bootstrapTheme: Theme = ctx => {
   const isCheckbox = ctx.type === "checkbox";
+  const isRadio = ctx.type === "radio";
   const isSelect = ctx.type === "select";
   const isToggle = ctx.type === "toggle-button";
   const isFile = ["file", "file-list"].includes(ctx.type);
@@ -18,7 +19,7 @@ export const bootstrapTheme: Theme = ctx => {
     "is-invalid": ctx.error
   };
 
-  if (isCheckbox) {
+  if (isCheckbox || isRadio) {
     label = "form-check-label";
     field["form-check"] = true;
     input["form-check-input"] = true;

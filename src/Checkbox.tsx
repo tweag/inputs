@@ -1,15 +1,14 @@
 import * as React from "react";
-import { InputProps } from "./types";
 import { useField } from "./useField";
+import { CheckboxProps } from "./types";
 
-export const Input: React.FC<InputProps> = props => {
-  const type = props.type || "text";
-  const field = useField(type, props);
+export const Checkbox: React.FC<CheckboxProps> = props => {
+  const field = useField("checkbox", props);
 
   return (
     <div {...field.getContainerProps()}>
+      <input type="checkbox" {...field.getInputProps()} />
       {field.label && <label {...field.getLabelProps()}>{field.label}</label>}
-      <input type={type} {...field.getInputProps()} />
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );

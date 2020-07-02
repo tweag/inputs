@@ -27,8 +27,6 @@ export function useField<T extends FieldConfig>(
     error,
     labelProps,
     errorProps,
-    legendProps,
-    fieldSetProps,
     containerProps,
     inline = false,
     small = false,
@@ -41,7 +39,6 @@ export function useField<T extends FieldConfig>(
   }: T
 ): Field<typeof inputProps> {
   const componentId = useMemo(generate, []);
-
   const id = _id || `input-${componentId}`;
   const labelId = labelProps?.id || `${id}-label`;
   const errorId = errorProps?.id || `${id}-error`;
@@ -65,15 +62,6 @@ export function useField<T extends FieldConfig>(
   return {
     label,
     error,
-    getFieldsetProps: () => ({
-      ...fieldSetProps,
-      "aria-describedby": isUndefined(error) ? undefined : errorId,
-      className: cc([classNames.fieldset, fieldSetProps?.className])
-    }),
-    getLegendProps: () => ({
-      ...legendProps,
-      className: cc([classNames.legend, legendProps?.className])
-    }),
     getContainerProps: () => ({
       ...containerProps,
       className: cc([classNames.field, containerProps?.className])

@@ -6,8 +6,6 @@ export interface ThemeClassNames {
   label?: string;
   help?: string;
   error?: string;
-  fieldset?: string;
-  legend?: string;
 }
 
 export interface ThemeContext {
@@ -35,8 +33,6 @@ export interface FieldConfig {
   labelProps?: React.HTMLProps<HTMLLabelElement>;
   errorProps?: React.HTMLProps<HTMLSpanElement>;
   containerProps?: React.HTMLProps<HTMLDivElement>;
-  fieldSetProps?: React.HTMLProps<HTMLFieldSetElement>;
-  legendProps?: React.HTMLProps<HTMLLegendElement>;
   inline?: boolean;
   small?: boolean;
   large?: boolean;
@@ -60,8 +56,6 @@ export interface Field<T> {
   getLabelProps(): React.HTMLProps<HTMLLabelElement>;
   getErrorProps(): React.HTMLProps<HTMLSpanElement>;
   getContainerProps(): React.HTMLProps<HTMLDivElement>;
-  getFieldsetProps(): React.HTMLProps<HTMLFieldSetElement>;
-  getLegendProps(): React.HTMLProps<HTMLLegendElement>;
 }
 
 export interface OptionProps {
@@ -71,9 +65,11 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLProps<T> = Omit<React.HTMLProps<T>, "label"> & { name: string };
+export type HTMLProps<T> = Omit<React.HTMLProps<T>, "label">;
 
 export type InputProps = FieldConfig & HTMLProps<HTMLInputElement>;
+export type CheckboxProps = InputProps;
+export type RadioProps = InputProps;
 export type TextAreaProps = FieldConfig & HTMLProps<HTMLTextAreaElement>;
 
 export type SelectProps = FieldConfig &
