@@ -22,6 +22,8 @@ export const useValue = <T>(
     value,
     error,
     touched,
+    valid: touched && !error,
+    invalid: Boolean(error),
     onChange(value: T) {
       setValue(value);
       setError(validate && validate(value));

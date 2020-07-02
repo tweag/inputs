@@ -28,8 +28,8 @@ export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
     condensed = false,
     touched = false,
     disabled = false,
-    valid = touched && !error,
-    invalid = Boolean(error),
+    valid = false,
+    invalid = false,
     ...inputProps
   } = props;
 
