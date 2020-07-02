@@ -11,6 +11,7 @@ const coerce = (option: OptionProps | string): OptionProps => {
 export const Select: React.FC<SelectProps> = ({
   placeholder,
   options,
+  children,
   ...props
 }) => {
   const field = useField("select", props);
@@ -53,6 +54,7 @@ export const Select: React.FC<SelectProps> = ({
         )}
 
         {options?.map(renderOption)}
+        {children}
       </select>
 
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
