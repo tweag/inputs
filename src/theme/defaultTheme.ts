@@ -19,7 +19,5 @@ export const defaultTheme: Theme = ctx => ({
   input: cc(build("field__input", ctx)),
   label: cc(build("field__label", ctx)),
   help: cc(build("field__help", ctx)),
-  error: cc(build("field__error", ctx)),
-  fieldset: cc(build("fieldset", ctx)),
-  legend: cc(build("fieldset__legend", ctx))
+  error: cc(build("field__error", ctx))
 });
