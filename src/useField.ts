@@ -22,24 +22,25 @@ export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
     error,
     errorProps,
     containerProps,
-    inline = false,
-    small = false,
-    large = false,
-    condensed = false,
-    touched = false,
+    inline,
+    small,
+    large,
+    condensed,
+    touched,
     disabled = false,
-    valid = false,
-    invalid = false,
+    valid = touched && !error,
+    invalid = touched && !!error,
+    populated = isPopulated(value),
     ...inputProps
   } = props;
 
   const labelId = labelProps?.id || `${id}-label`;
   const errorId = errorProps?.id || `${id}-error`;
 
-  const classNames = theme.buildField(type, {
+  const classNames = theme.getClassNames(type, {
     inline,
     condensed,
-    populated: isPopulated(value),
+    populated,
     disabled,
     valid,
     invalid,

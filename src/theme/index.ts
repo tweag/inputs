@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import { defaultTheme } from "./defaultTheme";
+import { bem } from "./bem";
 import { Theme } from "../types";
 
-const context = createContext(defaultTheme);
+const context = createContext(bem);
 
 export const ThemeProvider = context.Provider;
 
@@ -10,5 +10,5 @@ export const useTheme = (): Theme => {
   return useContext(context);
 };
 
-export { defaultTheme };
-export { bootstrapTheme } from "./bootstrapTheme";
+export { bem };
+export { bootstrap } from "./bootstrap";

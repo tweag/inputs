@@ -1,18 +1,20 @@
 import * as React from "react";
 
-export interface ThemeContext {
-  valid: boolean;
-  invalid: boolean;
-  touched: boolean;
-  inline: boolean;
-  condensed: boolean;
-  populated: boolean;
-  large: boolean;
-  small: boolean;
-  disabled: boolean;
+export interface ThemeProps {
+  valid?: boolean;
+  invalid?: boolean;
+  touched?: boolean;
+  inline?: boolean;
+  condensed?: boolean;
+  populated?: boolean;
+  large?: boolean;
+  small?: boolean;
+  disabled?: boolean;
 }
 
-export interface FieldClassNames {
+export interface ClassNames {
+  fieldset?: string;
+  legend?: string;
   field?: string;
   input?: string;
   label?: string;
@@ -20,16 +22,8 @@ export interface FieldClassNames {
   error?: string;
 }
 
-export interface FieldSetClassNames {
-  fieldSet?: string;
-  legend?: string;
-  help?: string;
-  error?: string;
-}
-
 export interface Theme {
-  buildField(type: string, context: ThemeContext): FieldClassNames;
-  buildFieldSet(context: ThemeContext): FieldSetClassNames;
+  getClassNames(type: string, props: ThemeProps): ClassNames;
 }
 
 export interface FieldInputProps {
@@ -40,7 +34,7 @@ export interface FieldInputProps {
   [key: string]: any;
 }
 
-export interface FieldConfig<V> {
+export interface FieldConfig<V> extends ThemeProps {
   value: V;
   onChange(value: V): void;
   id?: any;
@@ -61,7 +55,6 @@ export interface FieldConfig<V> {
   disabled?: boolean;
   valid?: boolean;
   invalid?: boolean;
-  [key: string]: any;
 }
 
 export interface Field<V> {
@@ -77,7 +70,9 @@ export interface Field<V> {
   getContainerProps(): React.HTMLProps<HTMLDivElement>;
 }
 
-export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
+export interface FieldSetProps
+  extends ThemeProps,
+    React.HTMLProps<HTMLFieldSetElement> {
   legend?: React.ReactNode;
   legendProps?: React.HTMLProps<HTMLLegendElement>;
   help?: React.ReactNode;
