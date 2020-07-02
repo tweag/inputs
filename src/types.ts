@@ -67,6 +67,15 @@ export interface Field<V> {
   getContainerProps(): React.HTMLProps<HTMLDivElement>;
 }
 
+export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
+  legend?: React.ReactNode;
+  legendProps?: React.HTMLProps<HTMLLegendElement>;
+  help?: React.ReactNode;
+  helpProps?: React.HTMLProps<HTMLSpanElement>;
+  error?: React.ReactNode;
+  errorProps?: React.HTMLProps<HTMLSpanElement>;
+}
+
 export interface OptionProps {
   value: string;
   label?: string;

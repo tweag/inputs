@@ -1,23 +1,11 @@
 import cc from "classcat";
-import { useMemo } from "react";
 import { useTheme } from "./theme";
 import { FieldConfig, Field } from "./types";
-
-const generate: () => number = (() => {
-  let previousId = 0;
-  return () => ++previousId;
-})();
-
-const isUndefined = (value: any): value is undefined => {
-  return typeof value === "undefined";
-};
-
-const isPopulated = (value: any): boolean => {
-  return !isUndefined(value) && value !== null && value !== "";
-};
+import { useComponentId } from "./useComponentId";
+import { isPopulated, isUndefined } from "./utilities";
 
 export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
-  const componentId = useMemo(generate, []);
+  const componentId = useComponentId();
   const defaultId = `input-${componentId}`;
   const defaultTheme = useTheme();
 
