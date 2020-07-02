@@ -82,6 +82,9 @@ export type HTMLProps<T> = Omit<
 export type InputProps = FieldConfig<string> & HTMLProps<HTMLInputElement>;
 export type CheckboxProps = FieldConfig<boolean> & HTMLProps<HTMLInputElement>;
 
+export type CheckboxItemProps<T> = FieldConfig<T[]> &
+  HTMLProps<HTMLInputElement> & { represents: T };
+
 export type TextAreaProps = FieldConfig<string> &
   HTMLProps<HTMLTextAreaElement>;
 

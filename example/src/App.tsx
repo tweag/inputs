@@ -8,20 +8,33 @@ import {
   Checkbox,
   ThemeProvider,
   Select,
-  TextArea
+  TextArea,
+  CheckboxItem
 } from "../../src";
+
+interface Person {
+  name: string;
+}
+
+const people: Person[] = [
+  { name: "Guy Fietti" },
+  { name: "Abe Lincoln" },
+  { name: "Oprah Winfrey" }
+];
 
 const App = () => {
   const text = useValue("", required);
   const select = useValue("");
   const textarea = useValue("");
   const checkbox = useValue(true);
+  const checkboxes = useValue<Person[]>([]);
 
   const values = {
     text: text.value,
     select: select.value,
     textarea: textarea.value,
-    checkbox: checkbox.value
+    checkbox: checkbox.value,
+    checkboxes: checkboxes.value
   };
 
   return (
@@ -43,6 +56,18 @@ const App = () => {
               />
               <Checkbox label="I agree" {...checkbox} />
               <TextArea label="Textarea" {...textarea} />
+
+              <fieldset>
+                <legend>Checkbox List</legend>
+
+                {people.map(person => (
+                  <CheckboxItem
+                    label={person.name}
+                    represents={person}
+                    {...checkboxes}
+                  />
+                ))}
+              </fieldset>
 
               <button type="submit" className="btn btn-primary mt-2">
                 Submit
