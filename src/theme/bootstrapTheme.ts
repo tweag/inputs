@@ -1,49 +1,46 @@
 import cc from "classcat";
 import { Theme } from "../types";
 
-export const bootstrapTheme: Theme = ctx => {
-  const isCheckbox = ctx.type === "checkbox";
-  const isRadio = ctx.type === "radio";
-  const isSelect = ctx.type === "select";
-  const isSwitch = ctx.type === "switch";
-  const isFile = ["file", "file-list"].includes(ctx.type);
+export const bootstrapTheme: Theme = {
+  buildFieldSet() {
+    return {
+      help: "form-text text-muted",
+      error: "invalid-feedback"
+    };
+  },
+  buildField(type, ctx) {
+    const isCheckbox = type === "checkbox";
+    const isRadio = type === "radio";
+    const isSelect = type === "select";
+    const isSwitch = type === "switch";
+    const isFile = ["file", "file-list"].includes(type);
+    const isControl = !isCheckbox && !isRadio && !isSelect && !isSwitch;
 
-  let label: string | undefined = undefined;
-
-  const field: Record<string, boolean> = {
-    "form-group": true
-  };
-
-  const input: Record<string, boolean> = {
-    "is-valid": ctx.success,
-    "is-invalid": ctx.error
-  };
-
-  if (isCheckbox || isRadio) {
-    label = "form-check-label";
-    field["form-check"] = true;
-    input["form-check-input"] = true;
-  } else if (isSelect) {
-    input["custom-select"] = true;
-    input["custom-select-sm"] = ctx.small;
-    input["custom-select-lg"] = ctx.large;
-  } else if (isSwitch) {
-    label = "custom-control-label";
-    field["custom-control"] = true;
-    field["custom-switch"] = true;
-    input["custom-control-input"] = true;
-  } else {
-    input["form-control"] = !isFile;
-    input["form-control-file"] = isFile;
-    input["form-control-sm"] = ctx.small;
-    input["form-control-lg"] = ctx.large;
+    return {
+      help: "form-text text-muted",
+      error: "invalid-feedback",
+      field: cc({
+        "form-check": isCheckbox || isRadio,
+        "custom-control": isSwitch,
+        "custom-switch": isSwitch
+      }),
+      label: cc({
+        "form-check-label": isCheckbox || isRadio,
+        "custom-control-label": isSwitch
+      }),
+      input: cc({
+        "form-control": isControl && !isFile,
+        "form-control-file": isFile,
+        "form-control-sm": isControl && ctx.small,
+        "form-control-lg": isControl && ctx.large,
+        "form-check-input": isCheckbox || isRadio,
+        "custom-select": isSelect,
+        "custom-select-sm": isSelect && ctx.small,
+        "custom-select-lg": isSelect && ctx.large,
+        "custom-control-input": isSwitch,
+        "is-valid": ctx.success,
+        "is-invalid": ctx.error
+      })
+    };
   }
-
-  return {
-    label,
-    error: "invalid-feedback",
-    help: "form-text text-muted",
-    field: cc(field),
-    input: cc(input)
-  };
 };
