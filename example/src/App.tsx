@@ -1,7 +1,7 @@
 import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useValue, required } from "./useValue";
+import { useValue, required, notEmpty } from "./useValue";
 import {
   bootstrapTheme,
   Input,
@@ -10,7 +10,8 @@ import {
   Select,
   TextArea,
   CheckboxItem,
-  Radio
+  Radio,
+  FieldSet
 } from "../../src";
 
 interface Person {
@@ -28,7 +29,7 @@ const App = () => {
   const select = useValue("");
   const textarea = useValue("");
   const checkbox = useValue(true);
-  const checkboxes = useValue<Person[]>([]);
+  const checkboxes = useValue<Person[]>([], notEmpty);
   const radio = useValue<Person | null>(null);
 
   const values = {
@@ -60,25 +61,35 @@ const App = () => {
               <Checkbox label="I agree" {...checkbox} />
               <TextArea label="Textarea" {...textarea} />
 
-              <fieldset>
+              <FieldSet error={checkboxes.error}>
                 <legend>Checkbox List</legend>
 
                 {people.map(person => (
                   <CheckboxItem
                     label={person.name}
                     represents={person}
-                    {...checkboxes}
+                    value={checkboxes.value}
+                    touched={checkboxes.touched}
+                    onChange={checkboxes.onChange}
+                    onBlur={checkboxes.onBlur}
                   />
                 ))}
-              </fieldset>
+              </FieldSet>
 
-              <fieldset>
+              <FieldSet error={radio.error}>
                 <legend>Radio Group</legend>
 
                 {people.map(person => (
-                  <Radio label={person.name} represents={person} {...radio} />
+                  <Radio
+                    label={person.name}
+                    represents={person}
+                    value={radio.value}
+                    touched={radio.touched}
+                    onChange={radio.onChange}
+                    onBlur={radio.onBlur}
+                  />
                 ))}
-              </fieldset>
+              </FieldSet>
 
               <button type="submit" className="btn btn-primary mt-2">
                 Submit

@@ -6,6 +6,10 @@ export const required = (value: any): string | undefined => {
     : undefined;
 };
 
+export const notEmpty = (value: any[]): string | undefined => {
+  return value.length ? undefined : "You must choose at least one";
+};
+
 export const useValue = <T>(
   initialValue: T,
   validate?: (value: T) => string | undefined
