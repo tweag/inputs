@@ -7,7 +7,12 @@ export const TextArea: React.FC<TextAreaProps> = props => {
 
   return (
     <div {...field.getContainerProps()}>
-      {field.label && <label {...field.getLabelProps()}>{field.label}</label>}
+      {field.label && (
+        <label {...field.getLabelProps()}>
+          {field.label}
+          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+        </label>
+      )}
       <textarea {...field.getInputProps()} />
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>

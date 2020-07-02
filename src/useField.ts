@@ -24,8 +24,10 @@ export function useField<T extends FieldConfig>(
     className,
     theme: themeViaProp,
     label,
+    help,
     error,
     labelProps,
+    helpProps,
     errorProps,
     containerProps,
     inline = false,
@@ -61,6 +63,7 @@ export function useField<T extends FieldConfig>(
 
   return {
     label,
+    help,
     error,
     getContainerProps: () => ({
       ...containerProps,
@@ -71,6 +74,10 @@ export function useField<T extends FieldConfig>(
       id: labelId,
       htmlFor: id,
       className: cc([classNames.label, labelProps?.className])
+    }),
+    getHelpProps: () => ({
+      ...helpProps,
+      className: cc([classNames.help, helpProps?.className])
     }),
     getErrorProps: () => ({
       ...errorProps,

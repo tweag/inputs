@@ -8,7 +8,12 @@ export const Input: React.FC<InputProps> = props => {
 
   return (
     <div {...field.getContainerProps()}>
-      {field.label && <label {...field.getLabelProps()}>{field.label}</label>}
+      {field.label && (
+        <label {...field.getLabelProps()}>
+          {field.label}
+          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+        </label>
+      )}
       <input type={type} {...field.getInputProps()} />
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>

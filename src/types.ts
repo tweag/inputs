@@ -29,8 +29,10 @@ export interface FieldConfig {
   className?: string;
   theme?: Theme;
   label?: React.ReactNode;
+  help?: React.ReactNode;
   error?: React.ReactNode;
   labelProps?: React.HTMLProps<HTMLLabelElement>;
+  helpProps?: React.HTMLProps<HTMLSpanElement>;
   errorProps?: React.HTMLProps<HTMLSpanElement>;
   containerProps?: React.HTMLProps<HTMLDivElement>;
   inline?: boolean;
@@ -51,9 +53,11 @@ export interface FieldInputProps {
 
 export interface Field<T> {
   label?: React.ReactNode;
+  help?: React.ReactNode;
   error?: React.ReactNode;
   getInputProps(): FieldInputProps & T;
   getLabelProps(): React.HTMLProps<HTMLLabelElement>;
+  getHelpProps(): React.HTMLProps<HTMLSpanElement>;
   getErrorProps(): React.HTMLProps<HTMLSpanElement>;
   getContainerProps(): React.HTMLProps<HTMLDivElement>;
 }
@@ -66,7 +70,6 @@ export interface OptionProps {
 }
 
 export type HTMLProps<T> = Omit<React.HTMLProps<T>, "label">;
-
 export type InputProps = FieldConfig & HTMLProps<HTMLInputElement>;
 export type CheckboxProps = InputProps;
 export type RadioProps = InputProps;
@@ -77,19 +80,3 @@ export type SelectProps = FieldConfig &
     placeholder?: string;
     options?: Array<OptionProps | string>;
   };
-
-interface SingleFileProps {
-  multiple?: false | undefined;
-  value?: any;
-  onChange(file: File | undefined): void;
-}
-
-interface MultipleFileProps {
-  multiple: true;
-  value?: any;
-  onChange(files: FileList): void;
-}
-
-export type FileInputProps = FieldConfig &
-  HTMLProps<HTMLInputElement> &
-  (SingleFileProps | MultipleFileProps);

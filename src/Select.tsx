@@ -27,7 +27,12 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div {...field.getContainerProps()}>
-      {field.label && <label {...field.getLabelProps()}>{field.label}</label>}
+      {field.label && (
+        <label {...field.getLabelProps()}>
+          {field.label}
+          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+        </label>
+      )}
 
       <select {...field.getInputProps()}>
         {placeholder && (
