@@ -21,6 +21,8 @@ export function Field<T extends FieldProps>({
   theme: _theme,
   disabled,
   className,
+  renderIcon,
+  renderIconBefore,
   ...props
 }: T) {
   const id = useUniqueId(_id);
@@ -98,6 +100,18 @@ export function Field<T extends FieldProps>({
     labelClassNames.push(theme.labelDisabled);
   }
 
+  if (renderIcon) {
+    fieldClassNames.push(theme.fieldHasIcon);
+    inputClassNames.push(theme.inputHasIcon);
+    labelClassNames.push(theme.labelHasIcon);
+  }
+
+  if (renderIconBefore) {
+    fieldClassNames.push(theme.fieldHasIconBefore);
+    inputClassNames.push(theme.inputHasIconBefore);
+    labelClassNames.push(theme.labelHasIconBefore);
+  }
+
   const labelId = `${id}_label`;
   const errorLabelId = `${id}_error`;
 
@@ -113,9 +127,28 @@ export function Field<T extends FieldProps>({
     ...props
   };
 
+  const renderInput = () => (
+    <React.Fragment>
+      {renderIconBefore && (
+        <div
+          className={join([theme.icon, theme.iconBefore])}
+          role="presentation"
+        >
+          {renderIconBefore()}
+        </div>
+      )}
+      {renderIcon && (
+        <div className={theme.icon} role="presentation">
+          {renderIcon()}
+        </div>
+      )}
+      {render(inputProps)}
+    </React.Fragment>
+  );
+
   return (
     <Wrapper {...wrapperProps}>
-      {labelPosition === "after" && render(inputProps)}
+      {labelPosition === "after" && renderInput()}
 
       {label && (
         <label
@@ -128,7 +161,7 @@ export function Field<T extends FieldProps>({
         </label>
       )}
 
-      {labelPosition === "before" && render(inputProps)}
+      {labelPosition === "before" && renderInput()}
 
       {error && (
         <span role="alert" className={join(errorClassNames)} id={errorLabelId}>

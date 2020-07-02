@@ -11,6 +11,8 @@ export interface FieldTheme {
   fieldLarge?: string | undefined;
   fieldSmall?: string | undefined;
   fieldDisabled?: string | undefined;
+  fieldHasIcon?: string | undefined;
+  fieldHasIconBefore?: string | undefined;
 
   input?: string | undefined;
   inputSuccess?: string | undefined;
@@ -22,6 +24,8 @@ export interface FieldTheme {
   inputLarge?: string | undefined;
   inputSmall?: string | undefined;
   inputDisabled?: string | undefined;
+  inputHasIcon?: string | undefined;
+  inputHasIconBefore?: string | undefined;
 
   label?: string | undefined;
   labelSuccess?: string | undefined;
@@ -33,6 +37,8 @@ export interface FieldTheme {
   labelLarge?: string | undefined;
   labelSmall?: string | undefined;
   labelDisabled?: string | undefined;
+  labelHasIcon?: string | undefined;
+  labelHasIconBefore?: string | undefined;
 
   help?: string | undefined;
   helpInline?: string | undefined;
@@ -45,6 +51,9 @@ export interface FieldTheme {
   errorCondensed?: string | undefined;
   errorSmall?: string | undefined;
   errorLarge?: string | undefined;
+
+  icon?: string | undefined;
+  iconBefore?: string | undefined;
 }
 
 export interface FieldSetTheme {
@@ -103,6 +112,8 @@ export interface FieldInputProps {
   labelPosition?: "before" | "after";
   wrapper?: boolean;
   theme?: FieldTheme;
+  renderIcon?: () => React.ReactNode;
+  renderIconBefore?: () => React.ReactNode;
 }
 
 export interface OptionProps {
