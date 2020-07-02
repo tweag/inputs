@@ -38,10 +38,10 @@ export interface FieldConfig<V> {
   className?: string;
   theme?: Theme;
   label?: React.ReactNode;
-  help?: React.ReactNode;
-  error?: React.ReactNode;
   labelProps?: React.HTMLProps<HTMLLabelElement>;
+  help?: React.ReactNode;
   helpProps?: React.HTMLProps<HTMLSpanElement>;
+  error?: React.ReactNode;
   errorProps?: React.HTMLProps<HTMLSpanElement>;
   containerProps?: React.HTMLProps<HTMLDivElement>;
   inline?: boolean;
