@@ -1,53 +1,32 @@
-import cc from "classcat";
-import { useTheme } from "./theme";
 import { Field, FieldConfig } from "./types";
+import { isUndefined, join } from "./utilities";
 import { useComponentId } from "./useComponentId";
-import { isPopulated, isUndefined } from "./utilities";
 
-export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
+export const useField = <V>(
+  props: FieldConfig<V> & { [key: string]: any }
+): Field<V> => {
   const componentId = useComponentId();
-  const defaultId = `input-${componentId}`;
-  const defaultTheme = useTheme();
 
   const {
-    id = defaultId,
-    theme = defaultTheme,
+    id = `input-${componentId}`,
     value,
     onChange,
-    className,
     label,
     labelProps,
+    labelClassName,
     help,
     helpProps,
+    helpClassName,
     error,
     errorProps,
+    errorClassName,
     containerProps,
-    inline,
-    small,
-    large,
-    condensed,
-    touched,
-    disabled = false,
-    valid = touched && !error,
-    invalid = touched && !!error,
-    populated = isPopulated(value),
+    containerClassName,
     ...inputProps
   } = props;
 
   const labelId = labelProps?.id || `${id}-label`;
   const errorId = errorProps?.id || `${id}-error`;
-
-  const classNames = theme.getClassNames(type, {
-    inline,
-    condensed,
-    populated,
-    disabled,
-    valid,
-    invalid,
-    touched,
-    large,
-    small
-  });
 
   return {
     label,
@@ -57,28 +36,26 @@ export const useField = <V>(type: string, props: FieldConfig<V>): Field<V> => {
     onChange,
     getContainerProps: () => ({
       ...containerProps,
-      className: cc([classNames.field, containerProps?.className])
+      className: join([containerClassName, containerProps?.className])
     }),
     getLabelProps: () => ({
       ...labelProps,
       id: labelId,
       htmlFor: id,
-      className: cc([classNames.label, labelProps?.className])
+      className: join([labelClassName, labelProps?.className])
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: cc([classNames.help, helpProps?.className])
+      className: join([helpClassName, helpProps?.className])
     }),
     getErrorProps: () => ({
       ...errorProps,
       id: errorId,
       role: "alert",
-      className: cc([classNames.error, errorProps?.className])
+      className: join([errorClassName, errorProps?.className])
     }),
     getInputProps: () => ({
       id,
-      disabled,
-      className: cc([classNames.input, className]),
       "aria-labelledby": isUndefined(error)
         ? undefined
         : `${labelId} ${errorId}`,

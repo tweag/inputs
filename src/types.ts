@@ -1,60 +1,26 @@
 import * as React from "react";
 
-export interface ThemeProps {
-  valid?: boolean;
-  invalid?: boolean;
-  touched?: boolean;
-  inline?: boolean;
-  condensed?: boolean;
-  populated?: boolean;
-  large?: boolean;
-  small?: boolean;
-  disabled?: boolean;
-}
-
-export interface ClassNames {
-  fieldset?: string;
-  legend?: string;
-  field?: string;
-  input?: string;
-  label?: string;
-  help?: string;
-  error?: string;
-}
-
-export interface Theme {
-  getClassNames(type: string, props: ThemeProps): ClassNames;
-}
-
 export interface FieldInputProps {
   id: string;
-  disabled: boolean;
-  className?: string;
   "aria-labelledby"?: string;
   [key: string]: any;
 }
 
-export interface FieldConfig<V> extends ThemeProps {
+export interface FieldConfig<V> {
   value: V;
   onChange(value: V): void;
   id?: any;
-  className?: string;
-  theme?: Theme;
   label?: React.ReactNode;
   labelProps?: React.HTMLProps<HTMLLabelElement>;
+  labelClassName?: string;
   help?: React.ReactNode;
   helpProps?: React.HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
   error?: React.ReactNode;
   errorProps?: React.HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
   containerProps?: React.HTMLProps<HTMLDivElement>;
-  inline?: boolean;
-  small?: boolean;
-  large?: boolean;
-  condensed?: boolean;
-  touched?: boolean;
-  disabled?: boolean;
-  valid?: boolean;
-  invalid?: boolean;
+  containerClassName?: string;
 }
 
 export interface Field<V> {
@@ -70,15 +36,16 @@ export interface Field<V> {
   getContainerProps(): React.HTMLProps<HTMLDivElement>;
 }
 
-export interface FieldSetProps
-  extends ThemeProps,
-    React.HTMLProps<HTMLFieldSetElement> {
+export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
   legend?: React.ReactNode;
   legendProps?: React.HTMLProps<HTMLLegendElement>;
+  legendClassName?: string;
   help?: React.ReactNode;
   helpProps?: React.HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
   error?: React.ReactNode;
   errorProps?: React.HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
 }
 
 export interface OptionProps {
@@ -110,3 +77,15 @@ export type SelectProps = FieldConfig<string> &
     placeholder?: string;
     options?: Array<OptionProps | string>;
   };
+
+export interface Config<P> {
+  displayName: string;
+  getInputProps(props: InputProps & P): InputProps;
+  getSelectProps(props: SelectProps & P): SelectProps;
+  getTextAreaProps(props: TextAreaProps & P): TextAreaProps;
+  getRadioProps(props: RadioProps<unknown> & P): RadioProps<unknown>;
+  getCheckboxProps(props: CheckboxProps & P): CheckboxProps;
+  getCheckboxItemProps(
+    props: CheckboxItemProps<unknown> & P
+  ): CheckboxItemProps<unknown>;
+}

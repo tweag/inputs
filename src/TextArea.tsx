@@ -3,7 +3,7 @@ import { useField } from "./useField";
 import { TextAreaProps } from "./types";
 
 export const TextArea: React.FC<TextAreaProps> = props => {
-  const field = useField("textarea", props);
+  const field = useField(props);
 
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {

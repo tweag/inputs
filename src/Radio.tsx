@@ -4,7 +4,7 @@ import { useField } from "./useField";
 import { RadioProps } from "./types";
 
 export function Radio<T>({ represents, ...props }: RadioProps<T>) {
-  const field = useField("radio", props);
+  const field = useField(props);
 
   const checked = React.useMemo(() => isEqual(field.value, represents), [
     represents,

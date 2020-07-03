@@ -4,7 +4,7 @@ import { useField } from "./useField";
 
 export const Input: React.FC<InputProps> = props => {
   const type = props.type || "text";
-  const field = useField(type, props);
+  const field = useField(props);
 
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -7,7 +7,7 @@ export function CheckboxItem<T>({
   represents,
   ...props
 }: CheckboxItemProps<T>) {
-  const field = useField("checkbox", props);
+  const field = useField(props);
 
   const checked = React.useMemo(() => contains(field.value, represents), [
     represents,

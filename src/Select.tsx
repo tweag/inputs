@@ -14,7 +14,7 @@ export const Select: React.FC<SelectProps> = ({
   children,
   ...props
 }) => {
-  const field = useField("select", props);
+  const field = useField(props);
 
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {

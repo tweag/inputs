@@ -38,3 +38,16 @@ export function remove<T>(values: T[], value: T): T[] {
   }
   return result;
 }
+
+/**
+ * Join multiple classnames together
+ */
+export function join(names: any[]) {
+  let name = "";
+  for (let i = 0; i < names.length; i++) {
+    if (names[i]) {
+      name += name ? ` ${names[i]}` : names[i];
+    }
+  }
+  return name;
+}

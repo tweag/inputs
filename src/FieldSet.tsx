@@ -1,64 +1,45 @@
 import * as React from "react";
 import { FieldSetProps } from "./types";
 import { useComponentId } from "./useComponentId";
-import { isUndefined } from "./utilities";
-import { useTheme } from "./theme";
+import { join, isUndefined } from "./utilities";
 
 export const FieldSet: React.FC<FieldSetProps> = props => {
-  const theme = useTheme();
   const componentId = useComponentId();
 
   const {
     id = `fieldset-${componentId}`,
     legend,
     legendProps,
+    legendClassName,
     help,
     helpProps,
+    helpClassName,
     error,
     errorProps,
+    errorClassName,
     children,
-    inline,
-    small,
-    large,
-    condensed,
-    touched,
-    disabled,
-    valid,
-    invalid,
-    populated,
     ...fieldsetProps
   } = props;
 
   const errorId = errorProps?.id || `${id}-error`;
   const describedBy = isUndefined(error) ? undefined : errorId;
 
-  const classNames = theme.getClassNames("fieldset", {
-    inline,
-    small,
-    large,
-    condensed,
-    touched,
-    disabled,
-    valid,
-    invalid,
-    populated
-  });
-
   return (
-    <fieldset
-      {...fieldsetProps}
-      id={id}
-      aria-describedBy={describedBy}
-      className={classNames.fieldset}
-    >
+    <fieldset {...fieldsetProps} id={id} aria-describedBy={describedBy}>
       {legend && (
-        <legend {...legendProps} className={classNames.legend}>
+        <legend
+          {...legendProps}
+          className={join([legendClassName, legendProps?.className])}
+        >
           {legend}
         </legend>
       )}
 
       {help && (
-        <span {...helpProps} className={classNames.help}>
+        <span
+          {...helpProps}
+          className={join([helpClassName, helpProps?.className])}
+        >
           {help}
         </span>
       )}
@@ -70,7 +51,7 @@ export const FieldSet: React.FC<FieldSetProps> = props => {
           role="alert"
           {...errorProps}
           id={errorId}
-          className={classNames.error}
+          className={join([errorClassName, errorProps?.className])}
         >
           {error}
         </span>
