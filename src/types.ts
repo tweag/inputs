@@ -85,6 +85,7 @@ export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
 
 export interface Config<P> {
   displayName: string;
+  getFieldSetProps(props: FieldSetProps & P): FieldSetProps;
   getInputProps(props: InputProps & P): InputProps;
   getSelectProps(props: SelectProps & P): SelectProps;
   getTextAreaProps(props: TextAreaProps & P): TextAreaProps;

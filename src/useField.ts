@@ -1,5 +1,5 @@
 import { Field, FieldConfig } from "./types";
-import { isUndefined, join } from "./utilities";
+import { join, isUndefined } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
 export const useField = <V>(

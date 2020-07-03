@@ -5,6 +5,7 @@ import { Checkbox } from "./Checkbox";
 import { CheckboxItem } from "./CheckboxItem";
 import { TextArea } from "./TextArea";
 import { Radio } from "./Radio";
+import { FieldSet } from "./FieldSet";
 import {
   FC,
   Config,
@@ -14,7 +15,8 @@ import {
   CheckboxProps,
   CheckboxItemProps,
   TextAreaProps,
-  RadioProps
+  RadioProps,
+  FieldSetProps
 } from "./types";
 
 export function withProps<Props, ExtraProps>(
@@ -66,6 +68,11 @@ export function configure<ExtraProps>(
       Radio,
       config.displayName,
       config.getRadioProps
+    ),
+    FieldSet: withProps<FieldSetProps, ExtraProps>(
+      FieldSet,
+      config.displayName,
+      config.getFieldSetProps
     )
   };
 }

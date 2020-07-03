@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FieldSetProps, Element } from "./types";
-import { useComponentId } from "./useComponentId";
 import { join, isUndefined } from "./utilities";
+import { useComponentId } from "./useComponentId";
 
 export function FieldSet(props: FieldSetProps): Element {
   const componentId = useComponentId();

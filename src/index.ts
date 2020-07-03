@@ -5,7 +5,7 @@ export * from "./Input";
 export * from "./Radio";
 export * from "./Select";
 export * from "./TextArea";
-export * from "./theme";
 export * from "./types";
 export * from "./useComponentId";
 export * from "./useField";
+export * from "./configure";
