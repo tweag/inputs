@@ -1,18 +1,16 @@
 import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useValue, required, notEmpty } from "./useValue";
+import { useValue, required, notEmpty, pick } from "./useValue";
 import {
-  bootstrapTheme,
   Input,
   Checkbox,
-  ThemeProvider,
   Select,
   TextArea,
   CheckboxItem,
   Radio,
   FieldSet
-} from "../../src";
+} from "./fields";
 
 interface Person {
   name: string;
@@ -32,13 +30,13 @@ const App = () => {
   const checkboxes = useValue<Person[]>([], notEmpty);
   const radio = useValue<Person | null>(null);
 
-  const values = {
-    text: text.value,
-    select: select.value,
-    textarea: textarea.value,
-    checkbox: checkbox.value,
-    checkboxes: checkboxes.value,
-    radio: radio.value
+  const fields = {
+    text,
+    select,
+    textarea,
+    checkbox,
+    checkboxes,
+    radio
   };
 
   return (
@@ -48,61 +46,69 @@ const App = () => {
       </header>
 
       <main>
-        <ThemeProvider value={bootstrapTheme}>
-          <section>
-            <form onSubmit={event => event.preventDefault()}>
-              <Input label="Text" {...text} />
-              <Select
-                label="Select"
-                options={["A", "B"]}
-                placeholder="Choose an option"
-                {...select}
-              />
-              <Checkbox label="I agree" {...checkbox} />
-              <TextArea label="Textarea" {...textarea} />
+        <section>
+          <form onSubmit={event => event.preventDefault()}>
+            <Input label="Text" {...text} />
+            <Select
+              label="Select"
+              options={["A", "B"]}
+              placeholder="Choose an option"
+              {...select}
+            />
+            <Checkbox label="I agree" {...checkbox} />
+            <TextArea label="Textarea" {...textarea} />
 
-              <FieldSet error={checkboxes.error}>
-                <legend>Checkbox List</legend>
+            <FieldSet error={checkboxes.error}>
+              <legend>Checkbox List</legend>
 
-                {people.map(person => (
-                  <CheckboxItem
-                    label={person.name}
-                    represents={person}
-                    value={checkboxes.value}
-                    touched={checkboxes.touched}
-                    onChange={checkboxes.onChange}
-                    onBlur={checkboxes.onBlur}
-                  />
-                ))}
-              </FieldSet>
+              {people.map(person => (
+                <CheckboxItem
+                  key={person.name}
+                  label={person.name}
+                  represents={person}
+                  valid={checkboxes.valid}
+                  invalid={checkboxes.invalid}
+                  value={checkboxes.value}
+                  onChange={checkboxes.onChange}
+                  onBlur={checkboxes.onBlur}
+                />
+              ))}
+            </FieldSet>
 
-              <FieldSet error={radio.error}>
-                <legend>Radio Group</legend>
+            <FieldSet error={radio.error}>
+              <legend>Radio Group</legend>
 
-                {people.map(person => (
-                  <Radio
-                    label={person.name}
-                    represents={person}
-                    value={radio.value}
-                    touched={radio.touched}
-                    onChange={radio.onChange}
-                    onBlur={radio.onBlur}
-                  />
-                ))}
-              </FieldSet>
+              {people.map(person => (
+                <Radio
+                  key={person.name}
+                  label={person.name}
+                  represents={person}
+                  valid={radio.valid}
+                  invalid={radio.invalid}
+                  value={radio.value}
+                  onChange={radio.onChange}
+                  onBlur={radio.onBlur}
+                />
+              ))}
+            </FieldSet>
 
-              <button type="submit" className="btn btn-primary mt-2">
-                Submit
-              </button>
-            </form>
-          </section>
+            <button type="submit" className="btn btn-primary mt-2">
+              Submit
+            </button>
+          </form>
+        </section>
 
-          <section className="mt-4">
-            <pre className="p-2 rounded bg-light border">
-              <code>{JSON.stringify(values, null, 2)}</code>
-            </pre>
-          </section>
-        </ThemeProvider>
+        <section className="mt-4">
+          <h4>Values</h4>
+          <pre className="p-2 rounded bg-light border">
+            <code>{JSON.stringify(pick(fields, "value"), null, 2)}</code>
+          </pre>
+
+          <h4>Errors</h4>
+          <pre className="p-2 rounded bg-light border">
+            <code>{JSON.stringify(pick(fields, "error"), null, 2)}</code>
+          </pre>
+        </section>
       </main>
     </div>
   );

@@ -25,7 +25,7 @@ export function FieldSet(props: FieldSetProps): Element {
   const describedBy = isUndefined(error) ? undefined : errorId;
 
   return (
-    <fieldset {...fieldsetProps} id={id} aria-describedBy={describedBy}>
+    <fieldset {...fieldsetProps} id={id} aria-describedby={describedBy}>
       {legend && (
         <legend
           {...legendProps}

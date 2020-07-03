@@ -21,9 +21,8 @@ export const useValue = <T>(
   return {
     value,
     error,
-    touched,
     valid: touched && !error,
-    invalid: Boolean(error),
+    invalid: touched && !!error,
     onChange(value: T) {
       setValue(value);
       setError(validate && validate(value));
@@ -32,4 +31,12 @@ export const useValue = <T>(
       setTouched(true);
     }
   };
+};
+
+export const pick = (data: { [key: string]: any }, key: string): any => {
+  const result: any = {};
+  for (const [name, value] of Object.entries(data)) {
+    result[name] = value[key];
+  }
+  return result;
 };
