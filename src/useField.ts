@@ -1,5 +1,5 @@
 import { Field, FieldConfig } from "./types";
-import { join, isUndefined } from "./utilities";
+import { concat, isUndefined } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
 export const useField = <V>(
@@ -36,23 +36,23 @@ export const useField = <V>(
     onChange,
     getContainerProps: () => ({
       ...containerProps,
-      className: join([containerClassName, containerProps?.className])
+      className: concat([containerClassName, containerProps?.className])
     }),
     getLabelProps: () => ({
       ...labelProps,
       id: labelId,
       htmlFor: id,
-      className: join([labelClassName, labelProps?.className])
+      className: concat([labelClassName, labelProps?.className])
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: join([helpClassName, helpProps?.className])
+      className: concat([helpClassName, helpProps?.className])
     }),
     getErrorProps: () => ({
       ...errorProps,
       id: errorId,
       role: "alert",
-      className: join([errorClassName, errorProps?.className])
+      className: concat([errorClassName, errorProps?.className])
     }),
     getInputProps: () => ({
       id,

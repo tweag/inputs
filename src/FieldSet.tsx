@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FieldSetProps, Element } from "./types";
-import { join, isUndefined } from "./utilities";
+import { concat, isUndefined } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
 export function FieldSet(props: FieldSetProps): Element {
@@ -29,7 +29,7 @@ export function FieldSet(props: FieldSetProps): Element {
       {legend && (
         <legend
           {...legendProps}
-          className={join([legendClassName, legendProps?.className])}
+          className={concat([legendClassName, legendProps?.className])}
         >
           {legend}
         </legend>
@@ -38,7 +38,7 @@ export function FieldSet(props: FieldSetProps): Element {
       {help && (
         <span
           {...helpProps}
-          className={join([helpClassName, helpProps?.className])}
+          className={concat([helpClassName, helpProps?.className])}
         >
           {help}
         </span>
@@ -51,7 +51,7 @@ export function FieldSet(props: FieldSetProps): Element {
           role="alert"
           {...errorProps}
           id={errorId}
-          className={join([errorClassName, errorProps?.className])}
+          className={concat([errorClassName, errorProps?.className])}
         >
           {error}
         </span>
