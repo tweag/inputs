@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { TextAreaProps } from "./types";
+import { TextAreaProps, Element } from "./types";
 
-export const TextArea: React.FC<TextAreaProps> = props => {
+export function TextArea(props: TextAreaProps): Element {
   const field = useField(props);
 
   const onChange = React.useCallback(
@@ -30,4 +30,4 @@ export const TextArea: React.FC<TextAreaProps> = props => {
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );
-};
+}

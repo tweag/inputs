@@ -1,9 +1,9 @@
 import * as React from "react";
-import { FieldSetProps } from "./types";
+import { FieldSetProps, Element } from "./types";
 import { useComponentId } from "./useComponentId";
 import { join, isUndefined } from "./utilities";
 
-export const FieldSet: React.FC<FieldSetProps> = props => {
+export function FieldSet(props: FieldSetProps): Element {
   const componentId = useComponentId();
 
   const {
@@ -58,4 +58,4 @@ export const FieldSet: React.FC<FieldSetProps> = props => {
       )}
     </fieldset>
   );
-};
+}

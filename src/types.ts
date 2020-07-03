@@ -1,5 +1,12 @@
 import * as React from "react";
 
+export type Element = React.ReactElement<any, any> | null;
+
+export interface FC<T> {
+  (props: T): Element;
+  displayName?: string;
+}
+
 export interface FieldInputProps {
   id: string;
   "aria-labelledby"?: string;
@@ -55,28 +62,26 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLProps<T> = Omit<
-  React.HTMLProps<T>,
-  "value" | "onChange" | "label"
->;
+export type HTMLField<T, V> = FieldConfig<V> &
+  Omit<React.HTMLProps<T>, "value" | "onChange" | "label">;
 
-export type InputProps = FieldConfig<string> & HTMLProps<HTMLInputElement>;
-export type CheckboxProps = FieldConfig<boolean> & HTMLProps<HTMLInputElement>;
+export interface InputProps extends HTMLField<HTMLInputElement, string> {}
+export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
+export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
 
-export type CheckboxItemProps<T> = FieldConfig<T[]> &
-  HTMLProps<HTMLInputElement> & { represents: T };
+export interface CheckboxItemProps<T> extends HTMLField<HTMLInputElement, T[]> {
+  represents: T;
+}
 
-export type RadioProps<T> = FieldConfig<T> &
-  HTMLProps<HTMLInputElement> & { represents: T };
+export interface RadioProps<T> extends HTMLField<HTMLInputElement, T> {
+  represents: T;
+}
 
-export type TextAreaProps = FieldConfig<string> &
-  HTMLProps<HTMLTextAreaElement>;
-
-export type SelectProps = FieldConfig<string> &
-  HTMLProps<HTMLSelectElement> & {
-    placeholder?: string;
-    options?: Array<OptionProps | string>;
-  };
+export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
+  placeholder?: string;
+  options?: Array<OptionProps | string>;
+  children?: React.ReactNode;
+}
 
 export interface Config<P> {
   displayName: string;
@@ -88,4 +93,14 @@ export interface Config<P> {
   getCheckboxItemProps(
     props: CheckboxItemProps<unknown> & P
   ): CheckboxItemProps<unknown>;
+}
+
+export interface Components<P> {
+  Input(props: InputProps & P): Element;
+  Select(props: SelectProps & P): Element;
+  TextArea(props: TextAreaProps & P): Element;
+  Radio<T>(props: RadioProps<T> & P): Element;
+  Checkbox(props: CheckboxProps & P): Element;
+  CheckboxItem<T>(props: CheckboxItemProps<T> & P): Element;
+  FieldSet(props: FieldSetProps & P): Element;
 }

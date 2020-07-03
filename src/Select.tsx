@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { SelectProps, OptionProps } from "./types";
+import { SelectProps, OptionProps, Element } from "./types";
 
 const coerce = (option: OptionProps | string): OptionProps => {
   return typeof option === "string"
@@ -8,12 +8,12 @@ const coerce = (option: OptionProps | string): OptionProps => {
     : option;
 };
 
-export const Select: React.FC<SelectProps> = ({
+export function Select({
   placeholder,
   options,
   children,
   ...props
-}) => {
+}: SelectProps): Element {
   const field = useField(props);
 
   const onChange = React.useCallback(
@@ -60,4 +60,4 @@ export const Select: React.FC<SelectProps> = ({
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );
-};
+}

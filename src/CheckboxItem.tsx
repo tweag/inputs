@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { CheckboxItemProps } from "./types";
+import { CheckboxItemProps, Element } from "./types";
 import { contains, remove } from "./utilities";
 
 export function CheckboxItem<T>({
   represents,
   ...props
-}: CheckboxItemProps<T>) {
+}: CheckboxItemProps<T>): Element {
   const field = useField(props);
 
   const checked = React.useMemo(() => contains(field.value, represents), [

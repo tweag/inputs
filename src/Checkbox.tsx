@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { CheckboxProps } from "./types";
+import { CheckboxProps, Element } from "./types";
 
-export const Checkbox: React.FC<CheckboxProps> = props => {
+export function Checkbox(props: CheckboxProps): Element {
   const field = useField(props);
 
   const onChange = React.useCallback(
@@ -31,4 +31,4 @@ export const Checkbox: React.FC<CheckboxProps> = props => {
       {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );
-};
+}

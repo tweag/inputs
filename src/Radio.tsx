@@ -1,9 +1,9 @@
 import * as React from "react";
 import isEqual from "fast-deep-equal";
 import { useField } from "./useField";
-import { RadioProps } from "./types";
+import { RadioProps, Element } from "./types";
 
-export function Radio<T>({ represents, ...props }: RadioProps<T>) {
+export function Radio<T>({ represents, ...props }: RadioProps<T>): Element {
   const field = useField(props);
 
   const checked = React.useMemo(() => isEqual(field.value, represents), [

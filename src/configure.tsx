@@ -1,13 +1,28 @@
 import * as React from "react";
-import { Input as BaseInput } from "./Input";
-import { InputProps, Config } from "./types";
+import { Input } from "./Input";
+import { Select } from "./Select";
+import { Checkbox } from "./Checkbox";
+import { CheckboxItem } from "./CheckboxItem";
+import { TextArea } from "./TextArea";
+import { Radio } from "./Radio";
+import {
+  FC,
+  Config,
+  Components,
+  InputProps,
+  SelectProps,
+  CheckboxProps,
+  CheckboxItemProps,
+  TextAreaProps,
+  RadioProps
+} from "./types";
 
 export function withProps<Props, ExtraProps>(
-  Inner: React.ComponentType<Props>,
+  Inner: FC<Props>,
   displayName: string,
   getProps: (props: Props & ExtraProps) => Props
-): React.FC<Props & ExtraProps> {
-  const Outer: React.FC<Props & ExtraProps> = props => {
+): FC<Props & ExtraProps> {
+  const Outer: FC<Props & ExtraProps> = props => {
     return <Inner {...getProps(props)} />;
   };
 
@@ -18,14 +33,39 @@ export function withProps<Props, ExtraProps>(
   return Outer;
 }
 
-export function configure<ExtraProps>(config: Config<ExtraProps>) {
-  const Input = withProps<InputProps, ExtraProps>(
-    BaseInput,
-    config.displayName,
-    props => {
-      return config.getInputProps(props);
-    }
-  );
-
-  return { Input };
+export function configure<ExtraProps>(
+  config: Config<ExtraProps>
+): Components<ExtraProps> {
+  return {
+    Input: withProps<InputProps, ExtraProps>(
+      Input,
+      config.displayName,
+      config.getInputProps
+    ),
+    Select: withProps<SelectProps, ExtraProps>(
+      Select,
+      config.displayName,
+      config.getSelectProps
+    ),
+    Checkbox: withProps<CheckboxProps, ExtraProps>(
+      Checkbox,
+      config.displayName,
+      config.getCheckboxProps
+    ),
+    CheckboxItem: withProps<CheckboxItemProps<any>, ExtraProps>(
+      CheckboxItem,
+      config.displayName,
+      config.getCheckboxItemProps
+    ),
+    TextArea: withProps<TextAreaProps, ExtraProps>(
+      TextArea,
+      config.displayName,
+      config.getTextAreaProps
+    ),
+    Radio: withProps<RadioProps<any>, ExtraProps>(
+      Radio,
+      config.displayName,
+      config.getRadioProps
+    )
+  };
 }

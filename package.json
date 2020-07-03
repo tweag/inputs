@@ -42,7 +42,6 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "classcat": "^4.1.0",
     "fast-deep-equal": "^3.1.3"
   }
 }
