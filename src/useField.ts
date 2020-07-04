@@ -36,23 +36,23 @@ export const useField = <V>(
     onChange,
     getContainerProps: () => ({
       ...containerProps,
-      className: concat([containerClassName, containerProps?.className])
+      className: concat(containerClassName, containerProps?.className)
     }),
     getLabelProps: () => ({
       ...labelProps,
       id: labelId,
       htmlFor: id,
-      className: concat([labelClassName, labelProps?.className])
+      className: concat(labelClassName, labelProps?.className)
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: concat([helpClassName, helpProps?.className])
+      className: concat(helpClassName, helpProps?.className)
     }),
     getErrorProps: () => ({
       ...errorProps,
       id: errorId,
       role: "alert",
-      className: concat([errorClassName, errorProps?.className])
+      className: concat(errorClassName, errorProps?.className)
     }),
     getInputProps: () => ({
       id,

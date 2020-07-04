@@ -29,7 +29,7 @@ export function FieldSet(props: FieldSetProps): Element {
       {legend && (
         <legend
           {...legendProps}
-          className={concat([legendClassName, legendProps?.className])}
+          className={concat(legendClassName, legendProps?.className)}
         >
           {legend}
         </legend>
@@ -38,7 +38,7 @@ export function FieldSet(props: FieldSetProps): Element {
       {help && (
         <span
           {...helpProps}
-          className={concat([helpClassName, helpProps?.className])}
+          className={concat(helpClassName, helpProps?.className)}
         >
           {help}
         </span>
@@ -51,7 +51,7 @@ export function FieldSet(props: FieldSetProps): Element {
           role="alert"
           {...errorProps}
           id={errorId}
-          className={concat([errorClassName, errorProps?.className])}
+          className={concat(errorClassName, errorProps?.className)}
         >
           {error}
         </span>

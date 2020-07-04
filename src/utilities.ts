@@ -35,12 +35,12 @@ export function remove<T>(values: T[], value: T): T[] {
 /**
  * Join multiple classnames together
  */
-export function concat(names: any[]) {
+export function concat(...names: any[]): string | undefined {
   let name = "";
   for (let i = 0; i < names.length; i++) {
     if (names[i]) {
       name += name ? ` ${names[i]}` : names[i];
     }
   }
-  return name;
+  return name || undefined;
 }

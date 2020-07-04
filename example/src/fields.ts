@@ -1,5 +1,15 @@
-import cc from "classcat";
-import { configure } from "../../src";
+import {
+  concat,
+  decorate,
+  createDecorator,
+  Input as BaseInput,
+  Select as BaseSelect,
+  Radio as BaseRadio,
+  TextArea as BaseTextArea,
+  Checkbox as BaseCheckbox,
+  CheckboxItem as BaseCheckboxItem,
+  FieldSet as BaseFieldSet
+} from "../../src";
 
 interface ThemeProps {
   valid?: boolean;
@@ -8,86 +18,61 @@ interface ThemeProps {
 
 const defaultProps = {
   helpClassName: "form-text text-muted",
-  errorClassName: "invalid-feedback"
+  errorClassName: "invalid-feedback",
+  containerClassName: "form-group"
 };
 
-export const {
-  Input,
-  Select,
-  Checkbox,
-  CheckboxItem,
-  FieldSet,
-  Radio,
-  TextArea
-} = configure<ThemeProps>({
-  displayName: "Bootstrap",
-  getInputProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    containerClassName: "form-group",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "form-control": props.type !== "file",
-      "form-control-file": props.type === "file"
-    })
-  }),
-  getSelectProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    containerClassName: "form-group",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "custom-select": true
-    })
-  }),
-  getCheckboxItemProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "custom-control custom-checkbox",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "custom-control-input": true
-    })
-  }),
-  getCheckboxProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "custom-control custom-checkbox",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "custom-control-input": true
-    })
-  }),
-  getFieldSetProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    helpClassName: "form-text text-muted",
-    errorClassName: "text-danger"
-  }),
-  getRadioProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "custom-control custom-radio",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "custom-control-input": true
-    })
-  }),
-  getTextAreaProps: ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    containerClassName: "form-group",
-    className: cc({
-      "is-valid": valid,
-      "is-invalid": invalid,
-      "form-control": true
-    })
-  })
+const validity = (props: ThemeProps) => [
+  props.valid && "is-valid",
+  props.invalid && "is-invalid"
+];
+
+const theme = createDecorator<ThemeProps>({
+  displayNamePrefix: "Bootstrap",
+  omitProps: ["valid", "invalid"]
 });
+
+export const Input = theme(BaseInput, props => ({
+  ...defaultProps,
+  className: concat(
+    ...validity(props),
+    props.type === "file" ? "form-control-file" : "form-control"
+  )
+}));
+
+export const Checkbox = theme(BaseCheckbox, props => ({
+  ...defaultProps,
+  labelClassName: "custom-control-label",
+  containerClassName: "form-group custom-control custom-checkbox",
+  className: concat(...validity(props), "custom-control-input")
+}));
+
+export const CheckboxItem = theme(BaseCheckboxItem, props => ({
+  ...defaultProps,
+  labelClassName: "custom-control-label",
+  containerClassName: "custom-control custom-checkbox",
+  className: concat(...validity(props), "custom-control-input")
+}));
+
+export const Radio = theme(BaseRadio, props => ({
+  ...defaultProps,
+  labelClassName: "custom-control-label",
+  containerClassName: "custom-control custom-radio",
+  className: concat(...validity(props), "custom-control-input")
+}));
+
+export const Select = theme(BaseSelect, props => ({
+  ...defaultProps,
+  className: concat(...validity(props), "custom-select")
+}));
+
+export const TextArea = theme(BaseTextArea, props => ({
+  ...defaultProps,
+  className: concat(...validity(props), "form-control")
+}));
+
+export const FieldSet = decorate(BaseFieldSet, () => ({
+  className: "form-group",
+  helpClassName: "form-text text-muted",
+  errorClassName: "text-danger"
+}));

@@ -82,26 +82,3 @@ export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
   options?: Array<OptionProps | string>;
   children?: React.ReactNode;
 }
-
-export interface Config<P> {
-  displayName: string;
-  getFieldSetProps(props: FieldSetProps & P): FieldSetProps;
-  getInputProps(props: InputProps & P): InputProps;
-  getSelectProps(props: SelectProps & P): SelectProps;
-  getTextAreaProps(props: TextAreaProps & P): TextAreaProps;
-  getRadioProps(props: RadioProps<unknown> & P): RadioProps<unknown>;
-  getCheckboxProps(props: CheckboxProps & P): CheckboxProps;
-  getCheckboxItemProps(
-    props: CheckboxItemProps<unknown> & P
-  ): CheckboxItemProps<unknown>;
-}
-
-export interface Components<P> {
-  Input(props: InputProps & P): Element;
-  Select(props: SelectProps & P): Element;
-  TextArea(props: TextAreaProps & P): Element;
-  Radio<T>(props: RadioProps<T> & P): Element;
-  Checkbox(props: CheckboxProps & P): Element;
-  CheckboxItem<T>(props: CheckboxItemProps<T> & P): Element;
-  FieldSet(props: FieldSetProps & P): Element;
-}
