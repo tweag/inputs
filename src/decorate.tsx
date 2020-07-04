@@ -6,6 +6,14 @@ export interface DecoratorConfig<MoreProps> {
   omitProps?: Array<keyof MoreProps>;
 }
 
+const getName = (component: any) => {
+  if (typeof component === "string") {
+    return component;
+  }
+
+  return component?.displayName || component?.name || "Component";
+};
+
 export function createDecorator<MoreProps>({
   omitProps = [],
   displayNamePrefix = "Decorated"
@@ -24,11 +32,7 @@ export function createDecorator<MoreProps>({
       return <Inner {...inner} />;
     };
 
-    if (Inner.displayName) {
-      Outer.displayName = `${displayNamePrefix}${Inner.displayName}`;
-    } else {
-      Outer.displayName = `${displayNamePrefix}Component`;
-    }
+    Outer.displayName = `${displayNamePrefix}${getName(Inner)}`;
 
     return Outer;
   };
