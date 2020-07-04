@@ -6,13 +6,21 @@ export interface DecoratorConfig<MoreProps> {
   omitProps?: Array<keyof MoreProps>;
 }
 
-const getName = (component: any) => {
+function getName(component: any): string {
   if (typeof component === "string") {
     return component;
   }
 
   return component?.displayName || component?.name || "Component";
-};
+}
+
+function merge<T, R>(props: T & R, merge: Partial<T>, omit: Array<keyof R>): T {
+  const result = { ...props, ...merge };
+  for (const key of omit) {
+    delete result[key];
+  }
+  return result;
+}
 
 export function createDecorator<MoreProps>({
   omitProps = [],
@@ -23,13 +31,7 @@ export function createDecorator<MoreProps>({
     getProps: (props: Props & MoreProps) => Partial<Props> = () => ({})
   ) {
     const Outer: FC<Props & MoreProps> = props => {
-      const inner = { ...props, ...getProps(props) };
-
-      for (const key of omitProps) {
-        delete inner[key];
-      }
-
-      return <Inner {...inner} />;
+      return <Inner {...merge(props, getProps(props), omitProps)} />;
     };
 
     Outer.displayName = `${displayNamePrefix}${getName(Inner)}`;
