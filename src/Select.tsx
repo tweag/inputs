@@ -10,7 +10,15 @@ const coerce = (option: OptionProps | string): OptionProps => {
 
 export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
   return function Select(props: SelectProps & E): Element {
-    const { placeholder, options, children, ...fieldProps } = getProps(props);
+    const {
+      placeholder,
+      options,
+      append,
+      prepend,
+      children,
+      ...fieldProps
+    } = getProps(props);
+
     const field = useField(fieldProps);
 
     const onChange = React.useCallback(
@@ -38,7 +46,7 @@ export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
             {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
           </label>
         )}
-
+        {prepend}
         <select
           {...field.getInputProps()}
           value={field.value}
@@ -53,7 +61,7 @@ export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
           {options?.map(renderOption)}
           {children}
         </select>
-
+        {append}
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </div>
     );

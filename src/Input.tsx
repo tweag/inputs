@@ -4,7 +4,8 @@ import { InputProps, Element, GetProps } from "./types";
 
 export function createInput<E>(getProps: GetProps<InputProps, E>) {
   return function Input(props: InputProps & E): Element {
-    const field = useField(getProps(props));
+    const { append, prepend, ...fieldProps } = getProps(props);
+    const field = useField(fieldProps);
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,14 +22,14 @@ export function createInput<E>(getProps: GetProps<InputProps, E>) {
             {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
           </label>
         )}
-
+        {prepend}
         <input
           type="text"
           value={field.value}
           onChange={onChange}
           {...field.getInputProps()}
         />
-
+        {append}
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </div>
     );

@@ -65,7 +65,11 @@ export interface OptionProps {
 export type HTMLField<T, V> = FieldConfig<V> &
   Omit<React.HTMLProps<T>, "value" | "onChange" | "label">;
 
-export interface InputProps extends HTMLField<HTMLInputElement, string> {}
+export interface InputProps extends HTMLField<HTMLInputElement, string> {
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
 export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
 
@@ -80,6 +84,8 @@ export interface RadioProps<T> extends HTMLField<HTMLInputElement, T> {
 export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
   placeholder?: string;
   options?: Array<OptionProps | string>;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
   children?: React.ReactNode;
 }
 
