@@ -1,35 +1,38 @@
 import * as React from "react";
-import { InputProps, Element } from "./types";
 import { useField } from "./useField";
+import { InputProps, Element, GetProps } from "./types";
 
-export function Input(props: InputProps): Element {
-  const type = props.type || "text";
-  const field = useField(props);
+export function createInput<E>(getProps: GetProps<InputProps, E>) {
+  return function Input(props: InputProps & E): Element {
+    const field = useField(getProps(props));
 
-  const onChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      field.onChange(event.target.value);
-    },
-    [field.onChange]
-  );
+    const onChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        field.onChange(event.target.value);
+      },
+      [field.onChange]
+    );
 
-  return (
-    <div {...field.getContainerProps()}>
-      {field.label && (
-        <label {...field.getLabelProps()}>
-          {field.label}
-          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-        </label>
-      )}
+    return (
+      <div {...field.getContainerProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
 
-      <input
-        {...field.getInputProps()}
-        type={type}
-        value={field.value}
-        onChange={onChange}
-      />
+        <input
+          type="text"
+          value={field.value}
+          onChange={onChange}
+          {...field.getInputProps()}
+        />
 
-      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-    </div>
-  );
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
 }
+
+export const Input = createInput(props => props);

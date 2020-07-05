@@ -1,14 +1,12 @@
 import {
   concat,
-  decorate,
-  createDecorator,
-  Input as BaseInput,
-  Select as BaseSelect,
-  Radio as BaseRadio,
-  TextArea as BaseTextArea,
-  Checkbox as BaseCheckbox,
-  CheckboxItem as BaseCheckboxItem,
-  FieldSet as BaseFieldSet
+  createInput,
+  createSelect,
+  createRadio,
+  createTextArea,
+  createCheckbox,
+  createCheckboxItem,
+  createFieldSet
 } from "../../src";
 
 interface ThemeProps {
@@ -22,56 +20,86 @@ const defaultProps = {
   containerClassName: "form-group"
 };
 
-const validity = (props: ThemeProps) => [
-  props.valid && "is-valid",
-  props.invalid && "is-invalid"
-];
+export const Input = createInput<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    className: concat(
+      props.type === "file" ? "form-control-file" : "form-control",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-const theme = createDecorator<ThemeProps>({
-  displayNamePrefix: "Bootstrap",
-  omitProps: ["valid", "invalid"]
-});
+export const Checkbox = createCheckbox<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    labelClassName: "custom-control-label",
+    containerClassName: "form-group custom-control custom-checkbox",
+    className: concat(
+      "custom-control-input",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-export const Input = theme(BaseInput, props => ({
-  ...defaultProps,
-  className: concat(
-    ...validity(props),
-    props.type === "file" ? "form-control-file" : "form-control"
-  )
-}));
+export const CheckboxItem = createCheckboxItem<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    labelClassName: "custom-control-label",
+    containerClassName: "custom-control custom-checkbox",
+    className: concat(
+      "custom-control-input",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-export const Checkbox = theme(BaseCheckbox, props => ({
-  ...defaultProps,
-  labelClassName: "custom-control-label",
-  containerClassName: "form-group custom-control custom-checkbox",
-  className: concat(...validity(props), "custom-control-input")
-}));
+export const Radio = createRadio<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    labelClassName: "custom-control-label",
+    containerClassName: "custom-control custom-radio",
+    className: concat(
+      "custom-control-input",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-export const CheckboxItem = theme(BaseCheckboxItem, props => ({
-  ...defaultProps,
-  labelClassName: "custom-control-label",
-  containerClassName: "custom-control custom-checkbox",
-  className: concat(...validity(props), "custom-control-input")
-}));
+export const Select = createSelect<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    className: concat(
+      "custom-select",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-export const Radio = theme(BaseRadio, props => ({
-  ...defaultProps,
-  labelClassName: "custom-control-label",
-  containerClassName: "custom-control custom-radio",
-  className: concat(...validity(props), "custom-control-input")
-}));
+export const TextArea = createTextArea<ThemeProps>(
+  ({ valid, invalid, ...props }) => ({
+    ...props,
+    ...defaultProps,
+    className: concat(
+      "form-control",
+      valid && "is-valid",
+      invalid && "is-invalid"
+    )
+  })
+);
 
-export const Select = theme(BaseSelect, props => ({
-  ...defaultProps,
-  className: concat(...validity(props), "custom-select")
-}));
-
-export const TextArea = theme(BaseTextArea, props => ({
-  ...defaultProps,
-  className: concat(...validity(props), "form-control")
-}));
-
-export const FieldSet = decorate(BaseFieldSet, () => ({
+export const FieldSet = createFieldSet(props => ({
+  ...props,
   className: "form-group",
   helpClassName: "form-text text-muted",
   errorClassName: "text-danger"

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { SelectProps, OptionProps, Element } from "./types";
+import { SelectProps, OptionProps, Element, GetProps } from "./types";
 
 const coerce = (option: OptionProps | string): OptionProps => {
   return typeof option === "string"
@@ -8,56 +8,56 @@ const coerce = (option: OptionProps | string): OptionProps => {
     : option;
 };
 
-export function Select({
-  placeholder,
-  options,
-  children,
-  ...props
-}: SelectProps): Element {
-  const field = useField(props);
+export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
+  return function Select(props: SelectProps & E): Element {
+    const { placeholder, options, children, ...fieldProps } = getProps(props);
+    const field = useField(fieldProps);
 
-  const onChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      field.onChange(event.target.value);
-    },
-    [field.onChange]
-  );
+    const onChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLSelectElement>) => {
+        field.onChange(event.target.value);
+      },
+      [field.onChange]
+    );
 
-  const renderOption = (option: OptionProps | string) => {
-    const { value, label = value, key = value, ...props } = coerce(option);
+    const renderOption = (option: OptionProps | string) => {
+      const { value, label = value, key = value, ...props } = coerce(option);
+
+      return (
+        <option key={key} value={value} {...props}>
+          {label}
+        </option>
+      );
+    };
 
     return (
-      <option key={key} value={value} {...props}>
-        {label}
-      </option>
-    );
-  };
-
-  return (
-    <div {...field.getContainerProps()}>
-      {field.label && (
-        <label {...field.getLabelProps()}>
-          {field.label}
-          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-        </label>
-      )}
-
-      <select
-        {...field.getInputProps()}
-        value={field.value}
-        onChange={onChange}
-      >
-        {placeholder && (
-          <option disabled value="" key="placeholder">
-            {placeholder}
-          </option>
+      <div {...field.getContainerProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
         )}
 
-        {options?.map(renderOption)}
-        {children}
-      </select>
+        <select
+          {...field.getInputProps()}
+          value={field.value}
+          onChange={onChange}
+        >
+          {placeholder && (
+            <option disabled value="" key="placeholder">
+              {placeholder}
+            </option>
+          )}
 
-      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-    </div>
-  );
+          {options?.map(renderOption)}
+          {children}
+        </select>
+
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
 }
+
+export const Select = createSelect(props => props);

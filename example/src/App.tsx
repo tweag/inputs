@@ -4,11 +4,11 @@ import * as ReactDOM from "react-dom";
 import { useValue, required, notEmpty, pick } from "./useValue";
 import {
   Input,
-  Checkbox,
   Select,
-  TextArea,
-  CheckboxItem,
   Radio,
+  TextArea,
+  Checkbox,
+  CheckboxItem,
   FieldSet
 } from "./fields";
 
@@ -58,9 +58,7 @@ const App = () => {
             <Checkbox label="I agree" {...checkbox} />
             <TextArea label="Textarea" {...textarea} />
 
-            <FieldSet error={checkboxes.error}>
-              <legend>Checkbox List</legend>
-
+            <FieldSet legend="Checkbox List" error={checkboxes.error}>
               {people.map(person => (
                 <CheckboxItem
                   key={person.name}
@@ -75,9 +73,7 @@ const App = () => {
               ))}
             </FieldSet>
 
-            <FieldSet error={radio.error}>
-              <legend>Radio Group</legend>
-
+            <FieldSet legend="Radio Group" error={radio.error}>
               {people.map(person => (
                 <Radio
                   key={person.name}

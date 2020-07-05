@@ -8,5 +8,4 @@ export * from "./TextArea";
 export * from "./types";
 export * from "./useComponentId";
 export * from "./useField";
-export * from "./decorate";
 export * from "./utilities";

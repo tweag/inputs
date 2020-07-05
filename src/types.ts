@@ -82,3 +82,5 @@ export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
   options?: Array<OptionProps | string>;
   children?: React.ReactNode;
 }
+
+export type GetProps<T, R> = (props: T & R) => T;
