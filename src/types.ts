@@ -70,6 +70,18 @@ export interface InputProps extends HTMLField<HTMLInputElement, string> {
   prepend?: React.ReactNode;
 }
 
+export interface FileInputProps
+  extends Omit<HTMLField<HTMLInputElement, File>, "value"> {
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
+export interface FileListInputProps
+  extends Omit<HTMLField<HTMLInputElement, FileList>, "value"> {
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
 export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
 export interface ToggleButtonProps
