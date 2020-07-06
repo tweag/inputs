@@ -33,14 +33,15 @@ export function remove<T>(values: T[], value: T): T[] {
 }
 
 /**
- * Join multiple classnames together
+ * Join multiple class names together
  */
-export function concat(...names: any[]): string | undefined {
-  let name = "";
-  for (let i = 0; i < names.length; i++) {
-    if (names[i]) {
-      name += name ? ` ${names[i]}` : names[i];
-    }
+export function concat(
+  a: string | undefined,
+  b: string | undefined
+): string | undefined {
+  if (a && b) {
+    return `${a} ${b}`;
+  } else {
+    return a || b;
   }
-  return name || undefined;
 }

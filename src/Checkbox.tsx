@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { CheckboxProps, Element, GetProps } from "./types";
+import { applyTheme } from "./applyTheme";
+import { CheckboxProps, Element, Theme } from "./types";
 
-export function createCheckbox<E>(getProps: GetProps<CheckboxProps, E>) {
-  return function Checkbox(props: CheckboxProps & E): Element {
-    const field = useField(getProps(props));
+export function createCheckbox<ThemeProps>(
+  theme: Theme<ThemeProps, CheckboxProps>
+) {
+  return function Checkbox(props: CheckboxProps & ThemeProps): Element {
+    const field = useField(applyTheme(props, theme));
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,4 +38,4 @@ export function createCheckbox<E>(getProps: GetProps<CheckboxProps, E>) {
   };
 }
 
-export const Checkbox = createCheckbox(props => props);
+export const Checkbox = createCheckbox({});

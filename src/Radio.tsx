@@ -1,11 +1,14 @@
 import * as React from "react";
 import isEqual from "fast-deep-equal";
 import { useField } from "./useField";
-import { RadioProps, Element, GetProps } from "./types";
+import { applyTheme } from "./applyTheme";
+import { RadioProps, Element, Theme } from "./types";
 
-export function createRadio<E>(getProps: GetProps<RadioProps<unknown>, E>) {
-  return function Radio<T>(props: RadioProps<T> & E): Element {
-    const { represents, ...fieldProps } = getProps(props);
+export function createRadio<ThemeProps>(
+  theme: Theme<ThemeProps, RadioProps<unknown>>
+) {
+  return function Radio<Value>(props: RadioProps<Value> & ThemeProps): Element {
+    const { represents, ...fieldProps } = applyTheme(props, theme);
     const field = useField(fieldProps);
 
     const checked = React.useMemo(() => isEqual(field.value, represents), [
@@ -39,4 +42,4 @@ export function createRadio<E>(getProps: GetProps<RadioProps<unknown>, E>) {
   };
 }
 
-export const Radio = createRadio(props => props);
+export const Radio = createRadio({});

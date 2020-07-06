@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { SelectProps, OptionProps, Element, GetProps } from "./types";
+import { applyTheme } from "./applyTheme";
+import { SelectProps, OptionProps, Element, Theme } from "./types";
 
 const coerce = (option: OptionProps | string): OptionProps => {
   return typeof option === "string"
@@ -8,8 +9,10 @@ const coerce = (option: OptionProps | string): OptionProps => {
     : option;
 };
 
-export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
-  return function Select(props: SelectProps & E): Element {
+export function createSelect<ThemeProps>(
+  theme: Theme<ThemeProps, SelectProps>
+) {
+  return function Select(props: SelectProps & ThemeProps): Element {
     const {
       placeholder,
       options,
@@ -17,7 +20,7 @@ export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
       prepend,
       children,
       ...fieldProps
-    } = getProps(props);
+    } = applyTheme(props, theme);
 
     const field = useField(fieldProps);
 
@@ -68,4 +71,4 @@ export function createSelect<E>(getProps: GetProps<SelectProps, E>) {
   };
 }
 
-export const Select = createSelect(props => props);
+export const Select = createSelect({});

@@ -2,8 +2,8 @@ import * as React from "react";
 
 export type Element = React.ReactElement<any, any> | null;
 
-export interface FC<T> {
-  (props: T): Element;
+export interface FC<Props = {}> {
+  (props: Props): Element;
   displayName?: string;
 }
 
@@ -13,9 +13,9 @@ export interface FieldInputProps {
   [key: string]: any;
 }
 
-export interface FieldConfig<V> {
-  value: V;
-  onChange(value: V): void;
+export interface FieldConfig<Value> {
+  value: Value;
+  onChange(value: Value): void;
   id?: any;
   label?: React.ReactNode;
   labelProps?: React.HTMLProps<HTMLLabelElement>;
@@ -27,12 +27,12 @@ export interface FieldConfig<V> {
   errorProps?: React.HTMLProps<HTMLSpanElement>;
   errorClassName?: string;
   containerProps?: React.HTMLProps<HTMLDivElement>;
-  containerClassName?: string;
+  fieldClassName?: string;
 }
 
-export interface Field<V> {
-  value: V;
-  onChange(value: V): void;
+export interface Field<Value> {
+  value: Value;
+  onChange(value: Value): void;
   label?: React.ReactNode;
   help?: React.ReactNode;
   error?: React.ReactNode;
@@ -62,8 +62,8 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLField<T, V> = FieldConfig<V> &
-  Omit<React.HTMLProps<T>, "value" | "onChange" | "label">;
+export type HTMLField<Element, Value> = FieldConfig<Value> &
+  Omit<React.HTMLProps<Element>, "value" | "onChange" | "label">;
 
 export interface InputProps extends HTMLField<HTMLInputElement, string> {
   append?: React.ReactNode;
@@ -73,12 +73,13 @@ export interface InputProps extends HTMLField<HTMLInputElement, string> {
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
 export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
 
-export interface CheckboxItemProps<T> extends HTMLField<HTMLInputElement, T[]> {
-  represents: T;
+export interface CheckboxItemProps<Value>
+  extends HTMLField<HTMLInputElement, Value[]> {
+  represents: Value;
 }
 
-export interface RadioProps<T> extends HTMLField<HTMLInputElement, T> {
-  represents: T;
+export interface RadioProps<Value> extends HTMLField<HTMLInputElement, Value> {
+  represents: Value;
 }
 
 export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
@@ -89,4 +90,23 @@ export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
   children?: React.ReactNode;
 }
 
-export type GetProps<T, R> = (props: T & R) => T;
+interface ThemeClassNames {
+  className?: string;
+  fieldClassName?: string;
+  labelClassName?: string;
+  legendClassName?: string;
+  helpClassName?: string;
+  errorClassName?: string;
+}
+
+export interface ClassName<Props = {}> {
+  [key: string]: boolean | ((props: Props) => any);
+}
+
+export type Theme<ThemeProps = {}, Props = {}> = {
+  props?: Array<keyof ThemeProps | string>;
+} & {
+  [K in keyof Props & keyof ThemeClassNames]?:
+    | string
+    | ClassName<Props & ThemeProps>;
+};

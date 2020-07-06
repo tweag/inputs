@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { InputProps, Element, GetProps } from "./types";
+import { applyTheme } from "./applyTheme";
+import { InputProps, Element, Theme } from "./types";
 
-export function createInput<E>(getProps: GetProps<InputProps, E>) {
-  return function Input(props: InputProps & E): Element {
-    const { append, prepend, ...fieldProps } = getProps(props);
+export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
+  return function Input(props: InputProps & ThemeProps): Element {
+    const { append, prepend, ...fieldProps } = applyTheme(props, theme);
     const field = useField(fieldProps);
 
     const onChange = React.useCallback(
@@ -36,4 +37,4 @@ export function createInput<E>(getProps: GetProps<InputProps, E>) {
   };
 }
 
-export const Input = createInput(props => props);
+export const Input = createInput({});

@@ -21,7 +21,7 @@ export const useField = <V>(
     errorProps,
     errorClassName,
     containerProps,
-    containerClassName,
+    fieldClassName,
     ...inputProps
   } = props;
 
@@ -36,7 +36,7 @@ export const useField = <V>(
     onChange,
     getContainerProps: () => ({
       ...containerProps,
-      className: concat(containerClassName, containerProps?.className)
+      className: concat(fieldClassName, containerProps?.className)
     }),
     getLabelProps: () => ({
       ...labelProps,

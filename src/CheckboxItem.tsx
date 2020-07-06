@@ -1,13 +1,16 @@
 import * as React from "react";
 import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
 import { contains, remove } from "./utilities";
-import { CheckboxItemProps, Element, GetProps } from "./types";
+import { CheckboxItemProps, Element, Theme } from "./types";
 
-export function createCheckboxItem<E>(
-  getProps: GetProps<CheckboxItemProps<unknown>, E>
+export function createCheckboxItem<ThemeProps>(
+  theme: Theme<ThemeProps, CheckboxItemProps<unknown>>
 ) {
-  return function CheckboxItem<T>(props: CheckboxItemProps<T> & E): Element {
-    const { represents, ...fieldProps } = getProps(props);
+  return function CheckboxItem<Value>(
+    props: CheckboxItemProps<Value> & ThemeProps
+  ): Element {
+    const { represents, ...fieldProps } = applyTheme(props, theme);
     const field = useField(fieldProps);
 
     const checked = React.useMemo(() => contains(field.value, represents), [
@@ -48,4 +51,4 @@ export function createCheckboxItem<E>(
   };
 }
 
-export const CheckboxItem = createCheckboxItem(props => props);
+export const CheckboxItem = createCheckboxItem({});

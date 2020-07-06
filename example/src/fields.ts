@@ -1,5 +1,5 @@
 import {
-  concat,
+  ClassName,
   createInput,
   createSelect,
   createRadio,
@@ -14,93 +14,55 @@ interface ThemeProps {
   invalid?: boolean;
 }
 
-const defaultProps = {
+const theme = {
+  props: ["valid", "invalid"],
   helpClassName: "form-text text-muted",
   errorClassName: "invalid-feedback",
-  containerClassName: "form-group"
+  fieldClassName: "form-group"
 };
 
-export const Input = createInput<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    className: concat(
-      props.type === "file" ? "form-control-file" : "form-control",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+const className: ClassName<ThemeProps> = {
+  "is-valid": props => props.valid,
+  "is-invalid": props => props.invalid
+};
 
-export const Checkbox = createCheckbox<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "form-group custom-control custom-checkbox",
-    className: concat(
-      "custom-control-input",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+export const Input = createInput<ThemeProps>({
+  ...theme,
+  className: { ...className, "form-control": true }
+});
 
-export const CheckboxItem = createCheckboxItem<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "custom-control custom-checkbox",
-    className: concat(
-      "custom-control-input",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+export const Select = createSelect<ThemeProps>({
+  ...theme,
+  className: { ...className, "custom-select": true }
+});
 
-export const Radio = createRadio<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    labelClassName: "custom-control-label",
-    containerClassName: "custom-control custom-radio",
-    className: concat(
-      "custom-control-input",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+export const TextArea = createTextArea<ThemeProps>({
+  ...theme,
+  className: { ...className, "form-control": true }
+});
 
-export const Select = createSelect<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    className: concat(
-      "custom-select",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+export const Radio = createRadio<ThemeProps>({
+  ...theme,
+  labelClassName: "custom-control-label",
+  fieldClassName: "custom-control custom-radio",
+  className: { ...className, "custom-control-input": true }
+});
 
-export const TextArea = createTextArea<ThemeProps>(
-  ({ valid, invalid, ...props }) => ({
-    ...props,
-    ...defaultProps,
-    className: concat(
-      "form-control",
-      valid && "is-valid",
-      invalid && "is-invalid"
-    )
-  })
-);
+export const Checkbox = createCheckbox<ThemeProps>({
+  ...theme,
+  labelClassName: "custom-control-label",
+  fieldClassName: "form-group custom-control custom-checkbox",
+  className: { ...className, "custom-control-input": true }
+});
 
-export const FieldSet = createFieldSet(props => ({
-  ...props,
-  className: "form-group",
+export const CheckboxItem = createCheckboxItem<ThemeProps>({
+  ...theme,
+  labelClassName: "custom-control-label",
+  fieldClassName: "custom-control custom-checkbox",
+  className: { ...className, "custom-control-input": true }
+});
+
+export const FieldSet = createFieldSet({
   helpClassName: "form-text text-muted",
   errorClassName: "text-danger"
-}));
+});

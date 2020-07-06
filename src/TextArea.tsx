@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useField } from "./useField";
-import { TextAreaProps, Element, GetProps } from "./types";
+import { applyTheme } from "./applyTheme";
+import { TextAreaProps, Element, Theme } from "./types";
 
-export function createTextArea<E>(getProps: GetProps<TextAreaProps, E>) {
-  return function TextArea(props: TextAreaProps & E): Element {
-    const field = useField(getProps(props));
+export function createTextArea<ThemeProps>(
+  theme: Theme<ThemeProps, TextAreaProps>
+) {
+  return function TextArea(props: TextAreaProps & ThemeProps): Element {
+    const field = useField(applyTheme(props, theme));
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,4 +37,4 @@ export function createTextArea<E>(getProps: GetProps<TextAreaProps, E>) {
   };
 }
 
-export const TextArea = createTextArea(props => props);
+export const TextArea = createTextArea({});

@@ -1,10 +1,13 @@
 import * as React from "react";
+import { applyTheme } from "./applyTheme";
 import { concat, isUndefined } from "./utilities";
 import { useComponentId } from "./useComponentId";
-import { FieldSetProps, Element, GetProps } from "./types";
+import { FieldSetProps, Element, Theme } from "./types";
 
-export function createFieldSet<E>(getProps: GetProps<FieldSetProps, E>) {
-  return function FieldSet(props: FieldSetProps & E): Element {
+export function createFieldSet<ThemeProps>(
+  theme: Theme<ThemeProps, FieldSetProps>
+) {
+  return function FieldSet(props: FieldSetProps & ThemeProps): Element {
     const componentId = useComponentId();
 
     const {
@@ -20,7 +23,7 @@ export function createFieldSet<E>(getProps: GetProps<FieldSetProps, E>) {
       errorClassName,
       children,
       ...fieldsetProps
-    } = getProps(props);
+    } = applyTheme(props, theme);
 
     const errorId = errorProps?.id || `${id}-error`;
     const describedBy = isUndefined(error) ? undefined : errorId;
@@ -62,4 +65,4 @@ export function createFieldSet<E>(getProps: GetProps<FieldSetProps, E>) {
   };
 }
 
-export const FieldSet = createFieldSet(props => props);
+export const FieldSet = createFieldSet({});
