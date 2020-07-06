@@ -72,6 +72,8 @@ export interface InputProps extends HTMLField<HTMLInputElement, string> {
 
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
 export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
+export interface ToggleButtonProps
+  extends HTMLField<HTMLButtonElement, boolean> {}
 
 export interface CheckboxItemProps<Value>
   extends HTMLField<HTMLInputElement, Value[]> {

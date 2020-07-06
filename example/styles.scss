@@ -9,7 +9,10 @@ section {
   margin-bottom: 4rem;
 }
 
-// Make the switch component work with a button
-.custom-control-input[aria-checked="true"] ~ .custom-control-label:after {
-  transform: translateX($custom-switch-width - $custom-control-indicator-size);
+.custom-switch {
+  .custom-control-input[aria-checked="true"] ~ .custom-control-label:after {
+    transform: translateX(
+      $custom-switch-width - $custom-control-indicator-size
+    );
+  }
 }

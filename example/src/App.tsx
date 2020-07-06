@@ -7,6 +7,7 @@ import {
   Select,
   Radio,
   TextArea,
+  ToggleButton,
   Checkbox,
   CheckboxItem,
   FieldSet
@@ -29,6 +30,7 @@ const App = () => {
   const checkbox = useValue(true);
   const checkboxes = useValue<Person[]>([], notEmpty);
   const radio = useValue<Person | null>(null);
+  const toggle = useValue(true);
 
   const fields = {
     text,
@@ -36,7 +38,8 @@ const App = () => {
     textarea,
     checkbox,
     checkboxes,
-    radio
+    radio,
+    toggle
   };
 
   return (
@@ -56,6 +59,7 @@ const App = () => {
               {...select}
             />
             <Checkbox label="I agree" {...checkbox} />
+            <ToggleButton label="Enable" {...toggle} />
             <TextArea label="Textarea" {...textarea} />
 
             <FieldSet legend="Checkbox List" error={checkboxes.error}>

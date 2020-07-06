@@ -6,7 +6,8 @@ import {
   createTextArea,
   createCheckbox,
   createCheckboxItem,
-  createFieldSet
+  createFieldSet,
+  createToggleButton
 } from "../../src";
 
 interface ThemeProps {
@@ -59,6 +60,13 @@ export const CheckboxItem = createCheckboxItem<ThemeProps>({
   ...theme,
   labelClassName: "custom-control-label",
   fieldClassName: "custom-control custom-checkbox",
+  className: { ...className, "custom-control-input": true }
+});
+
+export const ToggleButton = createToggleButton<ThemeProps>({
+  ...theme,
+  labelClassName: "custom-control-label",
+  fieldClassName: "form-group custom-control custom-switch",
   className: { ...className, "custom-control-input": true }
 });
 

@@ -4,6 +4,7 @@ export * from "./FieldSet";
 export * from "./Input";
 export * from "./Radio";
 export * from "./Select";
+export * from "./ToggleButton";
 export * from "./TextArea";
 export * from "./types";
 export * from "./useComponentId";
