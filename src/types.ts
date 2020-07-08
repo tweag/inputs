@@ -69,20 +69,18 @@ export interface OptionProps {
 export type HTMLField<Element, Value> = FieldConfig<Value> &
   Omit<HTMLProps<Element>, "value" | "onChange" | "label">;
 
-type HTMLFileField<Value> = Omit<FieldConfig<Value>, "value"> &
-  Omit<HTMLProps<HTMLInputElement>, "value" | "onChange" | "label">;
-
 export interface InputProps extends HTMLField<HTMLInputElement, string> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileInputProps extends HTMLFileField<File> {
+export interface FileInputProps extends HTMLField<HTMLInputElement, File> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileListInputProps extends HTMLFileField<FileList> {
+export interface FileListInputProps
+  extends HTMLField<HTMLInputElement, FileList> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }

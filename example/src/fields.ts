@@ -1,12 +1,14 @@
 import {
   ClassName,
-  createInput,
-  createSelect,
-  createRadio,
-  createTextArea,
   createCheckbox,
   createCheckboxItem,
   createFieldSet,
+  createFileInput,
+  createFileListInput,
+  createInput,
+  createRadio,
+  createSelect,
+  createTextArea,
   createToggleButton
 } from "../../src";
 
@@ -30,6 +32,16 @@ const className: ClassName<ThemeProps> = {
 export const Input = createInput<ThemeProps>({
   ...theme,
   className: { ...className, "form-control": true }
+});
+
+export const FileInput = createFileInput<ThemeProps>({
+  ...theme,
+  className: { ...className, "form-control-file": true }
+});
+
+export const FileListInput = createFileListInput<ThemeProps>({
+  ...theme,
+  className: { ...className, "form-control-file": true }
 });
 
 export const Select = createSelect<ThemeProps>({

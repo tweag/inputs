@@ -3,14 +3,16 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useValue, required, notEmpty, pick } from "./useValue";
 import {
-  Input,
-  Select,
-  Radio,
-  TextArea,
-  ToggleButton,
   Checkbox,
   CheckboxItem,
-  FieldSet
+  FieldSet,
+  FileInput,
+  FileListInput,
+  Input,
+  Radio,
+  Select,
+  TextArea,
+  ToggleButton
 } from "./fields";
 
 interface Person {
@@ -24,13 +26,15 @@ const people: Person[] = [
 ];
 
 const App = () => {
-  const text = useValue("", required);
-  const select = useValue("");
-  const textarea = useValue("");
-  const checkbox = useValue(true);
+  const text = useValue<string>("", required);
+  const select = useValue<string>("");
+  const textarea = useValue<string>("");
+  const checkbox = useValue<boolean>(true);
   const checkboxes = useValue<Person[]>([], notEmpty);
-  const radio = useValue<Person | null>(null);
-  const toggle = useValue(true);
+  const radio = useValue<Person>();
+  const toggle = useValue<boolean>(true);
+  const file = useValue<File>();
+  const files = useValue<FileList>();
 
   const fields = {
     text,
@@ -39,7 +43,9 @@ const App = () => {
     checkbox,
     checkboxes,
     radio,
-    toggle
+    toggle,
+    file,
+    files
   };
 
   return (
@@ -60,7 +66,9 @@ const App = () => {
             />
             <Checkbox label="I agree" {...checkbox} />
             <ToggleButton label="Enable" {...toggle} />
-            <TextArea label="Textarea" {...textarea} />
+            <TextArea label="Comments" {...textarea} />
+            <FileInput label="File" {...file} />
+            <FileListInput label="Files" {...files} />
 
             <FieldSet legend="Checkbox List" error={checkboxes.error}>
               {people.map(person => (

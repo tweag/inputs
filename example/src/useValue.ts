@@ -11,10 +11,10 @@ export const notEmpty = (value: any[]): string | undefined => {
 };
 
 export const useValue = <T>(
-  initialValue: T,
+  initialValue?: T,
   validate?: (value: T) => string | undefined
 ) => {
-  const [value, setValue] = React.useState<T>(initialValue);
+  const [value, setValue] = React.useState(initialValue);
   const [error, setError] = React.useState<string>();
   const [touched, setTouched] = React.useState<boolean>(false);
 
