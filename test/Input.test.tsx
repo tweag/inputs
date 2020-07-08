@@ -22,7 +22,7 @@ describe("<Input />", () => {
     expect(input).toHaveAttribute("value", "foo");
   });
 
-  it("emits `onChange` with a string", () => {
+  it("emits `onChange`", () => {
     const onChange = jest.fn();
     const field = setup({ onChange });
     const input = field.getByRole("textbox");
