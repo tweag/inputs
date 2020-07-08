@@ -10,8 +10,8 @@ export function createCheckboxItem<ThemeProps>(
   return function CheckboxItem<Value>(
     props: CheckboxItemProps<Value> & ThemeProps
   ): Element {
-    const { represents, ...fieldProps } = applyTheme(props, theme);
-    const field = useField(fieldProps);
+    const { represents, ...fieldConfig } = applyTheme(props, theme);
+    const field = useField(fieldConfig);
 
     const checked = React.useMemo(() => contains(field.value, represents), [
       represents,
@@ -30,7 +30,7 @@ export function createCheckboxItem<ThemeProps>(
     );
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         <input
           {...field.getInputProps()}
           type="checkbox"

@@ -17,7 +17,7 @@ export function createCheckbox<ThemeProps>(
     );
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         <input
           {...field.getInputProps()}
           type="checkbox"

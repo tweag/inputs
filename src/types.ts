@@ -1,5 +1,9 @@
 import * as React from "react";
 
+interface HTMLProps<T> extends React.HTMLProps<T> {
+  "data-testid"?: string;
+}
+
 export type Element = React.ReactElement<any, any> | null;
 
 export interface FC<Props = {}> {
@@ -18,15 +22,15 @@ export interface FieldConfig<Value> {
   onChange(value: Value): void;
   id?: any;
   label?: React.ReactNode;
-  labelProps?: React.HTMLProps<HTMLLabelElement>;
+  labelProps?: HTMLProps<HTMLLabelElement>;
   labelClassName?: string;
   help?: React.ReactNode;
-  helpProps?: React.HTMLProps<HTMLSpanElement>;
+  helpProps?: HTMLProps<HTMLSpanElement>;
   helpClassName?: string;
   error?: React.ReactNode;
-  errorProps?: React.HTMLProps<HTMLSpanElement>;
+  errorProps?: HTMLProps<HTMLSpanElement>;
   errorClassName?: string;
-  containerProps?: React.HTMLProps<HTMLDivElement>;
+  fieldProps?: HTMLProps<HTMLDivElement>;
   fieldClassName?: string;
 }
 
@@ -37,21 +41,21 @@ export interface Field<Value> {
   help?: React.ReactNode;
   error?: React.ReactNode;
   getInputProps(): FieldInputProps;
-  getLabelProps(): React.HTMLProps<HTMLLabelElement>;
-  getHelpProps(): React.HTMLProps<HTMLSpanElement>;
-  getErrorProps(): React.HTMLProps<HTMLSpanElement>;
-  getContainerProps(): React.HTMLProps<HTMLDivElement>;
+  getLabelProps(): HTMLProps<HTMLLabelElement>;
+  getHelpProps(): HTMLProps<HTMLSpanElement>;
+  getErrorProps(): HTMLProps<HTMLSpanElement>;
+  getFieldProps(): HTMLProps<HTMLDivElement>;
 }
 
-export interface FieldSetProps extends React.HTMLProps<HTMLFieldSetElement> {
+export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   legend?: React.ReactNode;
-  legendProps?: React.HTMLProps<HTMLLegendElement>;
+  legendProps?: HTMLProps<HTMLLegendElement>;
   legendClassName?: string;
   help?: React.ReactNode;
-  helpProps?: React.HTMLProps<HTMLSpanElement>;
+  helpProps?: HTMLProps<HTMLSpanElement>;
   helpClassName?: string;
   error?: React.ReactNode;
-  errorProps?: React.HTMLProps<HTMLSpanElement>;
+  errorProps?: HTMLProps<HTMLSpanElement>;
   errorClassName?: string;
 }
 
@@ -63,21 +67,22 @@ export interface OptionProps {
 }
 
 export type HTMLField<Element, Value> = FieldConfig<Value> &
-  Omit<React.HTMLProps<Element>, "value" | "onChange" | "label">;
+  Omit<HTMLProps<Element>, "value" | "onChange" | "label">;
+
+type HTMLFileField<Value> = Omit<FieldConfig<Value>, "value"> &
+  Omit<HTMLProps<HTMLInputElement>, "value" | "onChange" | "label">;
 
 export interface InputProps extends HTMLField<HTMLInputElement, string> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileInputProps
-  extends Omit<HTMLField<HTMLInputElement, File>, "value"> {
+export interface FileInputProps extends HTMLFileField<File> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileListInputProps
-  extends Omit<HTMLField<HTMLInputElement, FileList>, "value"> {
+export interface FileListInputProps extends HTMLFileField<FileList> {
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }

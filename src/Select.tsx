@@ -19,10 +19,10 @@ export function createSelect<ThemeProps>(
       append,
       prepend,
       children,
-      ...fieldProps
+      ...fieldConfig
     } = applyTheme(props, theme);
 
-    const field = useField(fieldProps);
+    const field = useField(fieldConfig);
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -42,7 +42,7 @@ export function createSelect<ThemeProps>(
     };
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         {field.label && (
           <label {...field.getLabelProps()}>
             {field.label}

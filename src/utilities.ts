@@ -36,12 +36,12 @@ export function remove<T>(values: T[], value: T): T[] {
  * Join multiple class names together
  */
 export function concat(
-  a: string | undefined,
-  b: string | undefined
+  a: string | false | 0 | null | undefined,
+  b: string | false | 0 | null | undefined
 ): string | undefined {
   if (a && b) {
     return `${a} ${b}`;
   } else {
-    return a || b;
+    return a || b || undefined;
   }
 }

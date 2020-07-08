@@ -17,7 +17,7 @@ export function createTextArea<ThemeProps>(
     );
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         {field.label && (
           <label {...field.getLabelProps()}>
             {field.label}

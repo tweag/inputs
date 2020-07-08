@@ -1,5 +1,5 @@
 import { Field, FieldConfig } from "./types";
-import { concat, isUndefined } from "./utilities";
+import { concat } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
 export const useField = <V>(
@@ -20,7 +20,7 @@ export const useField = <V>(
     error,
     errorProps,
     errorClassName,
-    containerProps,
+    fieldProps,
     fieldClassName,
     ...inputProps
   } = props;
@@ -34,9 +34,9 @@ export const useField = <V>(
     error,
     value,
     onChange,
-    getContainerProps: () => ({
-      ...containerProps,
-      className: concat(fieldClassName, containerProps?.className)
+    getFieldProps: () => ({
+      ...fieldProps,
+      className: concat(fieldClassName, fieldProps?.className)
     }),
     getLabelProps: () => ({
       ...labelProps,
@@ -56,9 +56,7 @@ export const useField = <V>(
     }),
     getInputProps: () => ({
       id,
-      "aria-labelledby": isUndefined(error)
-        ? undefined
-        : `${labelId} ${errorId}`,
+      "aria-labelledby": concat(label && labelId, error && errorId),
       ...inputProps
     })
   };

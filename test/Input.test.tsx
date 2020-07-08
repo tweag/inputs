@@ -3,31 +3,34 @@ import { Input, InputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
-const setup = (props: Partial<InputProps> = {}) =>
-  render(<Input label="Jawn" value="hello" onChange={jest.fn()} {...props} />);
+function setup(props: Partial<InputProps> = {}) {
+  return render(<Input onChange={() => null} value="" {...props} />);
+}
 
 describe("<Input />", () => {
   itBehavesLikeAField(setup);
 
-  test("emits the value on change", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
+  it("defaults to `type=text`", () => {
+    const field = setup();
+    const input = field.getByRole("textbox");
+    expect(input).toHaveAttribute("type", "text");
+  });
 
-    fireEvent.change(getByLabelText("Jawn"), {
+  it("has a value", () => {
+    const field = setup({ value: "foo" });
+    const input = field.getByRole("textbox");
+    expect(input).toHaveAttribute("value", "foo");
+  });
+
+  it("emits `onChange` with a string", () => {
+    const onChange = jest.fn();
+    const field = setup({ onChange });
+    const input = field.getByRole("textbox");
+
+    fireEvent.change(input, {
       target: { value: "hi" }
     });
 
     expect(onChange).toHaveBeenCalledWith("hi");
-  });
-
-  test("emits `null` when the value is blank", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
-
-    fireEvent.change(getByLabelText("Jawn"), {
-      target: { value: "" }
-    });
-
-    expect(onChange).toHaveBeenCalledWith(null);
   });
 });

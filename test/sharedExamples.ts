@@ -1,90 +1,95 @@
-import { FieldInputProps, RadioGroupProps, FieldSetProps } from "../src";
-import { axe, toHaveNoViolations } from "jest-axe";
 import { RenderResult } from "@testing-library/react";
+import { FieldConfig } from "../src";
+import { axe } from "jest-axe";
 
-expect.extend(toHaveNoViolations);
-
-type FieldSetup = (props?: Partial<FieldInputProps>) => RenderResult;
-type RadioGroupSetup = (props?: Partial<RadioGroupProps>) => RenderResult;
-type FieldSetSetup = (props?: Partial<FieldSetProps>) => RenderResult;
-
-/**
- * A set of common shared tests for a field.
- */
-export const itBehavesLikeAField = (
-  setup: FieldSetup | RadioGroupSetup | FieldSetSetup,
-  excludeTests: Array<"label" | "wrapper" | "id" | "inline"> = []
-) => {
-  it("renders", async () => {
-    const { container } = setup();
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
+export function itBehavesLikeAField(
+  render: (props?: Partial<FieldConfig<any>>) => RenderResult
+) {
+  it("renders", () => {
+    const field = render();
+    expect(field.container.firstChild).toMatchSnapshot();
   });
 
-  if (!excludeTests.includes("label")) {
-    it("renders without a label", () => {
-      const { container } = setup({ label: false });
-      expect(container.firstChild).toMatchSnapshot();
+  describe("label", () => {
+    it("renders", () => {
+      const field = render({ label: "Label" });
+      expect(field.container).toHaveTextContent("Label");
+      expect(field.container.firstChild).toMatchSnapshot();
     });
-  }
 
-  if (!excludeTests.includes("wrapper")) {
-    it("renders without a wrapper", async () => {
-      const { container } = setup({ wrapper: false });
-      expect(container.firstChild).toMatchSnapshot();
-      expect(await axe(container)).toHaveNoViolations();
+    it("has a corresponding input", () => {
+      const field = render({ label: "Label" });
+      const input = field.queryByLabelText("Label");
+      expect(input).toBeInTheDocument();
     });
-  }
 
-  it("renders with an error", async () => {
-    const { container } = setup({ error: "Oh no!" });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
+    it("respects `labelProps` and `labelClassName`", () => {
+      const field = render({
+        label: "Label",
+        labelProps: { "data-testid": "label", className: "a" },
+        labelClassName: "b"
+      });
 
-  it("renders with help", async () => {
-    const { container } = setup({ help: "Good luck" });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  it("renders with success", async () => {
-    const { container } = setup({ success: true });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  it("renders with touched", async () => {
-    const { container } = setup({ touched: true });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  if (!excludeTests.includes("id")) {
-    it("renders with a custom ID", async () => {
-      const { container } = setup({ id: "foo" });
-      expect(container.firstChild).toMatchSnapshot();
-      expect(await axe(container)).toHaveNoViolations();
+      const label = field.queryByTestId("label");
+      expect(label).toBeInTheDocument();
+      expect(label).toHaveClass("a b");
     });
-  }
-
-  it("renders with large", async () => {
-    const { container } = setup({ large: true });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("renders with small", async () => {
-    const { container } = setup({ small: true });
-    expect(container.firstChild).toMatchSnapshot();
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  if (!excludeTests.includes("inline")) {
-    it("renders with inline", async () => {
-      const { container } = setup({ inline: true });
-      expect(container.firstChild).toMatchSnapshot();
-      expect(await axe(container)).toHaveNoViolations();
+  describe("help", () => {
+    it("renders", () => {
+      const field = render({ label: "Label", help: "Help" });
+      expect(field.container).toHaveTextContent("Help");
+      expect(field.container.firstChild).toMatchSnapshot();
     });
-  }
-};
+
+    it("is accessible", async () => {
+      const field = render({ label: "Label", help: "Help" });
+      expect(await axe(field.container)).toHaveNoViolations();
+    });
+
+    it("respects `helpProps` and `helpClassName`", () => {
+      const field = render({
+        label: "Label",
+        help: "Help",
+        helpProps: { "data-testid": "help", className: "a" },
+        helpClassName: "b"
+      });
+
+      const help = field.queryByTestId("help");
+      expect(help).toBeInTheDocument();
+      expect(help).toHaveClass("a b");
+    });
+  });
+
+  describe("error", () => {
+    it("renders", () => {
+      const field = render({ label: "Label", error: "Error" });
+      expect(field.container).toHaveTextContent("Error");
+      expect(field.container.firstChild).toMatchSnapshot();
+    });
+
+    it("has a corresponding input", () => {
+      const field = render({ label: "Label", error: "Error" });
+      const input = field.queryByLabelText("Error");
+      expect(input).toBeInTheDocument();
+    });
+
+    it("is accessible", async () => {
+      const field = render({ label: "Label", error: "Error" });
+      expect(await axe(field.container)).toHaveNoViolations();
+    });
+
+    it("respects `errorProps` and `errorClassName`", () => {
+      const field = render({
+        error: "Label",
+        errorProps: { "data-testid": "error", className: "a" },
+        errorClassName: "b"
+      });
+
+      const error = field.queryByTestId("error");
+      expect(error).toBeInTheDocument();
+      expect(error).toHaveClass("a b");
+    });
+  });
+}

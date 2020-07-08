@@ -15,7 +15,7 @@ export function createToggleButton<ThemeProps>(
     ]);
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         <button
           onClick={onClick}
           type="button"

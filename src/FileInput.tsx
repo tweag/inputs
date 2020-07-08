@@ -7,8 +7,8 @@ export function createFileInput<ThemeProps>(
   theme: Theme<ThemeProps, FileInputProps>
 ) {
   return function FileInput(props: FileInputProps & ThemeProps): Element {
-    const { append, prepend, ...fieldProps } = applyTheme(props, theme);
-    const field = useField({ ...fieldProps, value: undefined });
+    const { append, prepend, ...fieldConfig } = applyTheme(props, theme);
+    const field = useField({ ...fieldConfig, value: undefined });
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +18,7 @@ export function createFileInput<ThemeProps>(
     );
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         {field.label && (
           <label {...field.getLabelProps()}>
             {field.label}

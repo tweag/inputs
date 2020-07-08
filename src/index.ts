@@ -8,7 +8,7 @@ export * from "./Radio";
 export * from "./Select";
 export * from "./TextArea";
 export * from "./ToggleButton";
+export * from "./conversions";
 export * from "./types";
 export * from "./useComponentId";
 export * from "./useField";
-export * from "./utilities";

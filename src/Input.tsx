@@ -5,8 +5,8 @@ import { InputProps, Element, Theme } from "./types";
 
 export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
   return function Input(props: InputProps & ThemeProps): Element {
-    const { append, prepend, ...fieldProps } = applyTheme(props, theme);
-    const field = useField(fieldProps);
+    const { append, prepend, ...fieldConfig } = applyTheme(props, theme);
+    const field = useField(fieldConfig);
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +16,7 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
     );
 
     return (
-      <div {...field.getContainerProps()}>
+      <div {...field.getFieldProps()}>
         {field.label && (
           <label {...field.getLabelProps()}>
             {field.label}

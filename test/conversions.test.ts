@@ -5,7 +5,7 @@ import {
   parseDateTime,
   parseNumber,
   parseTime
-} from "./conversions";
+} from "../src";
 
 describe("number", () => {
   describe("formatNumber", () => {
