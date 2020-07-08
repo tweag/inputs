@@ -8,33 +8,26 @@ function assert(test: any, type: string, value: any): asserts test {
   }
 }
 
+/**
+ * Convert a number to a string
+ */
 export function formatNumber(value: number): string {
   assert(!isNaN(value), "number", value);
   return value.toString();
 }
 
+/**
+ * Convert a string to number
+ */
 export function parseNumber(value: string): number {
   const parsed = parseFloat(value);
   assert(!isNaN(parsed), "number", value);
   return parsed;
 }
 
-export function formatTime(value: string, date: Date = new Date()): string {
-  const match = value.match(/^(\d{2}):(\d{2})Z$/);
-  assert(match, "time", value);
-
-  const hours = Number(match[1]);
-  assert(hours < 24, "time", value);
-
-  const minutes = Number(match[2]);
-  assert(minutes < 60, "time", value);
-
-  date.setUTCHours(hours);
-  date.setUTCMinutes(minutes);
-
-  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
+/**
+ * Convert the value from an `input[type=time]` to an ISO-8601 time (UTC).
+ */
 export function parseTime(value: string, date: Date = new Date()): string {
   const match = value.match(/^(\d{2}):(\d{2})$/);
   assert(match, "time", value);
@@ -51,12 +44,37 @@ export function parseTime(value: string, date: Date = new Date()): string {
   return `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}Z`;
 }
 
+/**
+ * Convert an ISO-8601 time (UTC) to the format expected by `input[type=time]`.
+ */
+export function formatTime(value: string, date: Date = new Date()): string {
+  const match = value.match(/^(\d{2}):(\d{2})Z$/);
+  assert(match, "time", value);
+
+  const hours = Number(match[1]);
+  assert(hours < 24, "time", value);
+
+  const minutes = Number(match[2]);
+  assert(minutes < 60, "time", value);
+
+  date.setUTCHours(hours);
+  date.setUTCMinutes(minutes);
+
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+/**
+ * Convert the value from an `input[type=datetime-local]` to an ISO-8601 datetime (UTC).
+ */
 export function parseDateTime(value: string): string {
   const date = new Date(value);
   assert(!isNaN(date.valueOf()), "datetime", value);
   return date.toISOString();
 }
 
+/**
+ * Convert an ISO-8601 datetime (UTC) to the format expected by `input[type=datetime-local]`.
+ */
 export function formatDateTime(value: string): string {
   const date = new Date(value);
   assert(!isNaN(date.valueOf()), "datetime", value);
