@@ -11,7 +11,7 @@ export function createCheckbox<ThemeProps>(
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange(event.target.checked);
+        field.onChange && field.onChange(event.target.checked);
       },
       [field.onChange]
     );

@@ -12,7 +12,7 @@ export function createFileInput<ThemeProps>(
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange(event.target.files![0]);
+        field.onChange && field.onChange(event.target.files![0]);
       },
       [field.onChange]
     );

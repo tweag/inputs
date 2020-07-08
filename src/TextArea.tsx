@@ -11,7 +11,7 @@ export function createTextArea<ThemeProps>(
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        field.onChange(event.target.value);
+        field.onChange && field.onChange(event.target.value);
       },
       [field.onChange]
     );

@@ -5,7 +5,7 @@ import { contains, remove } from "./utilities";
 import { CheckboxItemProps, Element, Theme } from "./types";
 
 export function createCheckboxItem<ThemeProps>(
-  theme: Theme<ThemeProps, CheckboxItemProps<unknown>>
+  theme: Theme<ThemeProps, CheckboxItemProps<any>>
 ) {
   return function CheckboxItem<Value>(
     props: CheckboxItemProps<Value> & ThemeProps
@@ -13,18 +13,22 @@ export function createCheckboxItem<ThemeProps>(
     const { represents, ...fieldConfig } = applyTheme(props, theme);
     const field = useField(fieldConfig);
 
-    const checked = React.useMemo(() => contains(field.value, represents), [
-      represents,
-      field.value
-    ]);
+    const checked = React.useMemo(
+      () => field.value && contains(field.value, represents),
+      [represents, field.value]
+    );
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-          field.onChange(field.value.concat([represents]));
-        } else {
-          field.onChange(remove(field.value, represents));
+        if (!field.value || !field.onChange) {
+          return;
         }
+
+        const nextValue = event.target.checked
+          ? field.value.concat([represents])
+          : remove(field.value, represents);
+
+        field.onChange(nextValue);
       },
       [represents, field.value, field.onChange]
     );
@@ -34,6 +38,7 @@ export function createCheckboxItem<ThemeProps>(
         <input
           {...field.getInputProps()}
           type="checkbox"
+          value={typeof represents === "string" ? represents : undefined}
           checked={checked}
           onChange={onChange}
         />

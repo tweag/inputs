@@ -6,6 +6,7 @@ exports[`<Radio /> error renders 1`] = `
     aria-labelledby="input-1-label input-1-error"
     id="input-1"
     type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -28,6 +29,7 @@ exports[`<Radio /> help renders 1`] = `
     aria-labelledby="input-1-label"
     id="input-1"
     type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -47,6 +49,7 @@ exports[`<Radio /> label renders 1`] = `
     aria-labelledby="input-1-label"
     id="input-1"
     type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -62,6 +65,7 @@ exports[`<Radio /> renders 1`] = `
   <input
     id="input-1"
     type="radio"
+    value=""
   />
 </div>
 `;

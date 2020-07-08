@@ -5,7 +5,7 @@ import { applyTheme } from "./applyTheme";
 import { RadioProps, Element, Theme } from "./types";
 
 export function createRadio<ThemeProps>(
-  theme: Theme<ThemeProps, RadioProps<unknown>>
+  theme: Theme<ThemeProps, RadioProps<any>>
 ) {
   return function Radio<Value>(props: RadioProps<Value> & ThemeProps): Element {
     const { represents, ...fieldConfig } = applyTheme(props, theme);
@@ -17,7 +17,7 @@ export function createRadio<ThemeProps>(
     ]);
 
     const onChange = React.useCallback(() => {
-      field.onChange(represents);
+      field.onChange && field.onChange(represents);
     }, [represents, field.onChange]);
 
     return (
@@ -25,6 +25,7 @@ export function createRadio<ThemeProps>(
         <input
           {...field.getInputProps()}
           type="radio"
+          value={typeof represents === "string" ? represents : undefined}
           checked={checked}
           onChange={onChange}
         />

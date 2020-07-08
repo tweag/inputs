@@ -14,7 +14,7 @@ export function createFileListInput<ThemeProps>(
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange(event.target.files!);
+        field.onChange && field.onChange(event.target.files!);
       },
       [field.onChange]
     );

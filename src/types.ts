@@ -18,8 +18,8 @@ export interface FieldInputProps {
 }
 
 export interface FieldConfig<Value> {
-  value: Value;
-  onChange(value: Value): void;
+  value?: Value;
+  onChange?: (value: Value) => void;
   id?: any;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
@@ -35,8 +35,8 @@ export interface FieldConfig<Value> {
 }
 
 export interface Field<Value> {
-  value: Value;
-  onChange(value: Value): void;
+  value?: Value;
+  onChange?: (value: Value) => void;
   label?: React.ReactNode;
   help?: React.ReactNode;
   error?: React.ReactNode;

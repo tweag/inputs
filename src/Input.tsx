@@ -10,7 +10,7 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange(event.target.value);
+        field.onChange && field.onChange(event.target.value);
       },
       [field.onChange]
     );

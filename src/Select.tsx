@@ -26,7 +26,7 @@ export function createSelect<ThemeProps>(
 
     const onChange = React.useCallback(
       (event: React.ChangeEvent<HTMLSelectElement>) => {
-        field.onChange(event.target.value);
+        field.onChange && field.onChange(event.target.value);
       },
       [field.onChange]
     );
