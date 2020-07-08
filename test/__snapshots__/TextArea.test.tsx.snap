@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea /> error renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <textarea
+    aria-labelledby="input-1-label input-1-error"
+    id="input-1"
+  />
+  <span
+    id="input-1-error"
+    role="alert"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`<TextArea /> help renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+    <span>
+      Help
+    </span>
+  </label>
+  <textarea
+    aria-labelledby="input-1-label"
+    id="input-1"
+  />
+</div>
+`;
+
+exports[`<TextArea /> label renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <textarea
+    aria-labelledby="input-1-label"
+    id="input-1"
+  />
+</div>
+`;
+
+exports[`<TextArea /> renders 1`] = `
+<div>
+  <textarea
+    id="input-1"
+  />
+</div>
+`;
