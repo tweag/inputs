@@ -8,40 +8,63 @@ function assert(test: any, type: string, value: any): asserts test {
   }
 }
 
-export const formatNumber = (value: number): string => {
+export function formatNumber(value: number): string {
   assert(!isNaN(value), "number", value);
   return value.toString();
-};
+}
 
-export const parseNumber = (value: string): number => {
+export function parseNumber(value: string): number {
   const parsed = parseFloat(value);
   assert(!isNaN(parsed), "number", value);
   return parsed;
-};
+}
 
-export const formatTime = (value: string, date: Date = new Date()): string => {
-  const [h, m] = value
-    .replace(/Z$/, "")
-    .split(":")
-    .map(parseFloat);
+export function formatTime(value: string, date: Date = new Date()): string {
+  const match = value.match(/^(\d{2}):(\d{2})Z$/);
+  assert(match, "time", value);
 
-  assert(!isNaN(h), "time", value);
-  assert(!isNaN(m), "time", value);
+  const hours = Number(match[1]);
+  assert(hours < 24, "time", value);
 
-  date.setUTCHours(h);
-  date.setUTCMinutes(m);
+  const minutes = Number(match[2]);
+  assert(minutes < 60, "time", value);
+
+  date.setUTCHours(hours);
+  date.setUTCMinutes(minutes);
 
   return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-};
+}
 
-export const parseTime = (value: string, date: Date = new Date()): string => {
-  const [h, m] = value.split(":").map(parseFloat);
+export function parseTime(value: string, date: Date = new Date()): string {
+  const match = value.match(/^(\d{2}):(\d{2})$/);
+  assert(match, "time", value);
 
-  assert(!isNaN(h), "time", value);
-  assert(!isNaN(m), "time", value);
+  const hours = Number(match[1]);
+  assert(hours < 24, "time", value);
 
-  date.setHours(h);
-  date.setMinutes(m);
+  const minutes = Number(match[2]);
+  assert(minutes < 60, "time", value);
+
+  date.setHours(hours);
+  date.setMinutes(minutes);
 
   return `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}Z`;
-};
+}
+
+export function parseDateTime(value: string): string {
+  const date = new Date(value);
+  assert(!isNaN(date.valueOf()), "datetime", value);
+  return date.toISOString();
+}
+
+export function formatDateTime(value: string): string {
+  const date = new Date(value);
+  assert(!isNaN(date.valueOf()), "datetime", value);
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${year}-${pad(month)}-${pad(day)}T${pad(hours)}:${pad(minutes)}`;
+}
