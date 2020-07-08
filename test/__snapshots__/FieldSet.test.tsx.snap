@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FieldSet /> children renders 1`] = `
+<fieldset
+  id="fieldset-1"
+>
+  Children
+</fieldset>
+`;
+
+exports[`<FieldSet /> error renders 1`] = `
+<fieldset
+  aria-describedby="fieldset-1-error"
+  id="fieldset-1"
+>
+  <span
+    id="fieldset-1-error"
+    role="alert"
+  >
+    Error
+  </span>
+</fieldset>
+`;
+
+exports[`<FieldSet /> help renders 1`] = `
+<fieldset
+  id="fieldset-1"
+>
+  <span>
+    Help
+  </span>
+</fieldset>
+`;
+
+exports[`<FieldSet /> legend renders 1`] = `
+<fieldset
+  id="fieldset-1"
+>
+  <legend>
+    Legend
+  </legend>
+</fieldset>
+`;
+
+exports[`<FieldSet /> renders 1`] = `
+<fieldset
+  id="fieldset-1"
+/>
+`;

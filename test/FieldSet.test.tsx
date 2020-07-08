@@ -1,56 +1,65 @@
-import { RenderResult } from "@testing-library/react";
-import { FieldConfig } from "../src";
+import * as React from "react";
+import { FieldSet, FieldSetProps } from "../src";
+import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
 
-export function itBehavesLikeAField(
-  render: (props?: Partial<FieldConfig<any>>) => RenderResult
-) {
+function setup(props: Partial<FieldSetProps> = {}) {
+  return render(<FieldSet {...props} />);
+}
+
+describe("<FieldSet />", () => {
   it("renders", () => {
-    const field = render();
+    const field = setup();
     expect(field.container.firstChild).toMatchSnapshot();
   });
 
-  describe("label", () => {
+  it("is accessible", async () => {
+    const field = setup();
+    expect(await axe(field.container)).toHaveNoViolations();
+  });
+
+  describe("children", () => {
     it("renders", () => {
-      const field = render({ label: "Label" });
-      expect(field.container).toHaveTextContent("Label");
+      const field = setup({ children: "Children" });
+      expect(field.container).toHaveTextContent("Children");
+      expect(field.container.firstChild).toMatchSnapshot();
+    });
+  });
+
+  describe("legend", () => {
+    it("renders", () => {
+      const field = setup({ legend: "Legend" });
+      expect(field.container).toHaveTextContent("Legend");
       expect(field.container.firstChild).toMatchSnapshot();
     });
 
-    it("has a corresponding input", () => {
-      const field = render({ label: "Label" });
-      const input = field.queryByLabelText("Label");
-      expect(input).toBeInTheDocument();
-    });
-
-    it("respects `labelProps` and `labelClassName`", () => {
-      const field = render({
-        label: "Label",
-        labelProps: { "data-testid": "label", className: "a" },
-        labelClassName: "b"
+    it("respects `legendProps` and `legendClassName`", () => {
+      const field = setup({
+        legend: "Legend",
+        legendProps: { "data-testid": "legend", className: "a" },
+        legendClassName: "b"
       });
 
-      const label = field.queryByTestId("label");
-      expect(label).toBeInTheDocument();
-      expect(label).toHaveClass("a b");
+      const legend = field.queryByTestId("legend");
+      expect(legend).toBeInTheDocument();
+      expect(legend).toHaveClass("a b");
     });
   });
 
   describe("help", () => {
     it("renders", () => {
-      const field = render({ label: "Label", help: "Help" });
+      const field = setup({ help: "Help" });
       expect(field.container).toHaveTextContent("Help");
       expect(field.container.firstChild).toMatchSnapshot();
     });
 
     it("is accessible", async () => {
-      const field = render({ label: "Label", help: "Help" });
+      const field = setup({ help: "Help" });
       expect(await axe(field.container)).toHaveNoViolations();
     });
 
     it("respects `helpProps` and `helpClassName`", () => {
-      const field = render({
-        label: "Label",
+      const field = setup({
         help: "Help",
         helpProps: { "data-testid": "help", className: "a" },
         helpClassName: "b"
@@ -64,24 +73,18 @@ export function itBehavesLikeAField(
 
   describe("error", () => {
     it("renders", () => {
-      const field = render({ label: "Label", error: "Error" });
+      const field = setup({ error: "Error" });
       expect(field.container).toHaveTextContent("Error");
       expect(field.container.firstChild).toMatchSnapshot();
     });
 
-    it("has a corresponding input", () => {
-      const field = render({ label: "Label", error: "Error" });
-      const input = field.queryByLabelText("Error");
-      expect(input).toBeInTheDocument();
-    });
-
     it("is accessible", async () => {
-      const field = render({ label: "Label", error: "Error" });
+      const field = setup({ error: "Error" });
       expect(await axe(field.container)).toHaveNoViolations();
     });
 
     it("respects `errorProps` and `errorClassName`", () => {
-      const field = render({
+      const field = setup({
         error: "Error",
         errorProps: { "data-testid": "error", className: "a" },
         errorClassName: "b"
@@ -92,4 +95,4 @@ export function itBehavesLikeAField(
       expect(error).toHaveClass("a b");
     });
   });
-}
+});
