@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> error renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <select
+    aria-labelledby="input-1-label input-1-error"
+    id="input-1"
+  />
+  <span
+    id="input-1-error"
+    role="alert"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`<Select /> help renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+    <span>
+      Help
+    </span>
+  </label>
+  <select
+    aria-labelledby="input-1-label"
+    id="input-1"
+  />
+</div>
+`;
+
+exports[`<Select /> label renders 1`] = `
+<div>
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <select
+    aria-labelledby="input-1-label"
+    id="input-1"
+  />
+</div>
+`;
+
+exports[`<Select /> renders 1`] = `
+<div>
+  <select
+    id="input-1"
+  />
+</div>
+`;

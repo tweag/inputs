@@ -19,7 +19,7 @@ describe("<Input />", () => {
   it("has a value", () => {
     const field = setup({ value: "foo" });
     const input = field.getByRole("textbox");
-    expect(input).toHaveAttribute("value", "foo");
+    expect(input).toHaveValue("foo");
   });
 
   it("emits `onChange`", () => {
