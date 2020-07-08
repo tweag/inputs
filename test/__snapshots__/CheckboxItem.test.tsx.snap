@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckboxItem /> error renders 1`] = `
+<div>
+  <input
+    aria-labelledby="input-1-label input-1-error"
+    id="input-1"
+    type="checkbox"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <span
+    id="input-1-error"
+    role="alert"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`<CheckboxItem /> help renders 1`] = `
+<div>
+  <input
+    aria-labelledby="input-1-label"
+    id="input-1"
+    type="checkbox"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+    <span>
+      Help
+    </span>
+  </label>
+</div>
+`;
+
+exports[`<CheckboxItem /> label renders 1`] = `
+<div>
+  <input
+    aria-labelledby="input-1-label"
+    id="input-1"
+    type="checkbox"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`<CheckboxItem /> renders 1`] = `
+<div>
+  <input
+    id="input-1"
+    type="checkbox"
+  />
+</div>
+`;
