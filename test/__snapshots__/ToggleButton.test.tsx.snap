@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToggleButton /> error renders 1`] = `
+<div>
+  <button
+    aria-checked="false"
+    aria-label="Off"
+    aria-labelledby="input-1-label input-1-error"
+    id="input-1"
+    role="switch"
+    type="button"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+  <span
+    id="input-1-error"
+    role="alert"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`<ToggleButton /> help renders 1`] = `
+<div>
+  <button
+    aria-checked="false"
+    aria-label="Off"
+    aria-labelledby="input-1-label"
+    id="input-1"
+    role="switch"
+    type="button"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+    <span>
+      Help
+    </span>
+  </label>
+</div>
+`;
+
+exports[`<ToggleButton /> label renders 1`] = `
+<div>
+  <button
+    aria-checked="false"
+    aria-label="Off"
+    aria-labelledby="input-1-label"
+    id="input-1"
+    role="switch"
+    type="button"
+  />
+  <label
+    for="input-1"
+    id="input-1-label"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`<ToggleButton /> renders 1`] = `
+<div>
+  <button
+    aria-checked="false"
+    aria-label="Off"
+    id="input-1"
+    role="switch"
+    type="button"
+  />
+</div>
+`;
