@@ -3,58 +3,93 @@ import { Select, SelectProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
-const setup = (props: Partial<SelectProps> = {}) =>
-  render(<Select label="Jawn" value={null} onChange={jest.fn()} {...props} />);
+function setup(props: Partial<SelectProps> = {}) {
+  return render(<Select {...props} />);
+}
 
 describe("<Select />", () => {
   itBehavesLikeAField(setup);
 
-  it("renders with a placeholder", () => {
-    const { container } = setup({ placeholder: "Choose an option" });
-    expect(container.firstChild).toMatchSnapshot();
+  it("has a value", () => {
+    const field = setup({ value: "dog", options: ["dog"] });
+    const select = field.getByRole("combobox");
+    expect(select).toHaveValue("dog");
   });
 
-  describe("an array of strings as options", () => {
-    const options = ["foo", "bar", "buzz"];
+  it("emits `onChange`", () => {
+    const onChange = jest.fn();
+    const field = setup({ onChange, options: ["dog"] });
+    const select = field.getByRole("combobox");
 
-    it("accepts an array of strings as options", () => {
-      const { container } = setup({ options });
-      expect(container.firstChild).toMatchSnapshot();
+    fireEvent.change(select, {
+      target: { value: "dog" }
     });
 
-    it("emits a value", () => {
-      const onChange = jest.fn();
-      const { getByLabelText } = setup({ options, onChange });
-
-      fireEvent.change(getByLabelText("Jawn"), {
-        target: { value: "bar" }
-      });
-
-      expect(onChange).toHaveBeenCalledWith("bar");
-    });
+    expect(onChange).toHaveBeenCalled();
   });
 
-  describe("an array of objects as options", () => {
-    const options = [
-      { label: "Foo", value: "foo" },
-      { label: "Bar", value: "bar", disabled: true },
-      { label: "Buzz", value: "buzz" }
-    ];
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue, options: ["dog"] });
+    const select = field.getByRole("combobox");
 
+    fireEvent.change(select, {
+      target: { value: "dog" }
+    });
+
+    expect(onChangeValue).toHaveBeenCalledWith("dog");
+  });
+
+  describe("children", () => {
     it("renders", () => {
-      const { container } = setup({ options });
-      expect(container.firstChild).toMatchSnapshot();
+      const field = setup({ children: <option>child</option> });
+      const option = field.getByRole("option");
+      expect(option).toHaveTextContent("child");
+    });
+  });
+
+  describe("placeholder", () => {
+    it("renders", () => {
+      const field = setup({ placeholder: "placeholder" });
+      const option = field.getByRole("option");
+
+      expect(option).toBeDisabled();
+      expect(option).toHaveTextContent("placeholder");
+      expect(option).toHaveAttribute("value", "");
+    });
+  });
+
+  describe("options", () => {
+    it("renders", () => {
+      const field = setup({ options: [{ value: "dog" }] });
+      const option = field.getByRole("option");
+
+      expect(option).toHaveTextContent("dog");
+      expect(option).toHaveAttribute("value", "dog");
     });
 
-    it("emits the `value` property", () => {
-      const onChange = jest.fn();
-      const { getByLabelText } = setup({ options, onChange });
+    it("renders custom labels", () => {
+      const field = setup({ options: [{ value: "dog", label: "Dog" }] });
+      const option = field.getByRole("option");
 
-      fireEvent.change(getByLabelText("Jawn"), {
-        target: { value: "buzz" }
+      expect(option).toHaveTextContent("Dog");
+      expect(option).toHaveAttribute("value", "dog");
+    });
+
+    it("renders when disabled", () => {
+      const field = setup({
+        options: [{ value: "Option", disabled: true }]
       });
 
-      expect(onChange).toHaveBeenCalledWith("buzz");
+      expect(field.getByRole("option")).toBeDisabled();
+    });
+
+    it("renders strings", () => {
+      const field = setup({ options: ["dog"] });
+      const option = field.getByRole("option");
+
+      expect(option).toHaveTextContent("dog");
+      expect(option).toHaveAttribute("value", "dog");
     });
   });
 });

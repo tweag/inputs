@@ -1,36 +1,45 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { TextAreaProps } from "./types";
-import { useTheme } from "./theme";
-import { isPopulated } from "./utils";
+import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
+import { TextAreaProps, Element, Theme } from "./types";
 
-/**
- * An HTML `<textarea />`, but with the following benefits:
- *
- *   * It accepts `null` as a value.
- *   * It emits a `null` value to the `onChange` handler when the input is empty.
- */
-export const TextArea: React.FC<TextAreaProps> = ({
-  value,
-  onChange,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("textarea", _theme);
+export function createTextArea<ThemeProps>(
+  theme: Theme<ThemeProps, TextAreaProps>
+) {
+  return function TextArea(props: TextAreaProps & ThemeProps): Element {
+    const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
+      props,
+      theme
+    );
 
-  const handleChange = React.useCallback(
-    event => onChange(event.target.value || null),
-    [onChange]
-  );
+    const field = useField(otherProps);
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.value);
+      },
+      [onChange, onChangeValue]
+    );
 
-  return (
-    <Field
-      theme={theme}
-      populated={isPopulated(value)}
-      render={inputProps => (
-        <textarea value={value || ""} onChange={handleChange} {...inputProps} />
-      )}
-      {...props}
-    />
-  );
-};
+    return (
+      <div {...field.getFieldProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+
+        <textarea
+          value={value}
+          onChange={handleChange}
+          {...field.getInputProps()}
+        />
+
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
+}
+
+export const TextArea = createTextArea({});

@@ -1,39 +1,46 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { CheckboxProps } from "./types";
-import { useTheme } from "./theme";
+import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
+import { CheckboxProps, Element, Theme } from "./types";
 
-/**
- * An HTML `<input />`, but with the following benefits:
- *
- *   * It accepts `null` as a value.
- *   * It emits a `null` value to the `onChange` handler when the input is empty.
- */
-export const Checkbox: React.FC<CheckboxProps> = ({
-  onChange,
-  value,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("checkbox", _theme);
-  const handleChange = React.useCallback(
-    event => onChange(event.target.checked),
-    [onChange]
-  );
+export function createCheckbox<ThemeProps>(
+  theme: Theme<ThemeProps, CheckboxProps>
+) {
+  return function Checkbox(props: CheckboxProps & ThemeProps): Element {
+    const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
+      props,
+      theme
+    );
 
-  return (
-    <Field
-      theme={theme}
-      labelPosition="after"
-      render={inputProps => (
+    const field = useField(otherProps);
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.checked);
+      },
+      [onChange, onChangeValue]
+    );
+
+    return (
+      <div {...field.getFieldProps()}>
         <input
           type="checkbox"
-          checked={Boolean(value)}
+          checked={value}
           onChange={handleChange}
-          {...inputProps}
+          {...field.getInputProps()}
         />
-      )}
-      {...props}
-    />
-  );
-};
+
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
+}
+
+export const Checkbox = createCheckbox({});

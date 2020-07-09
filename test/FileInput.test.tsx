@@ -1,34 +1,45 @@
 import * as React from "react";
-import { render, fireEvent } from "@testing-library/react";
 import { FileInput, FileInputProps } from "../src";
+import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
-const setup = (props: Partial<FileInputProps> = {}) =>
-  render(<FileInput label="Jawn" onChange={jest.fn()} {...props} />);
+const FILE = Symbol("File");
+
+function setup(props: Partial<FileInputProps> = {}) {
+  return render(<FileInput onChange={() => null} {...props} />);
+}
 
 describe("<FileInput />", () => {
   itBehavesLikeAField(setup);
 
-  it("emits an instance of File", () => {
-    const onChange = jest.fn();
-    const file = Symbol("File");
-    const { getByLabelText } = setup({ onChange });
-
-    fireEvent.change(getByLabelText("Jawn"), {
-      target: { files: [file] }
-    });
-
-    expect(onChange).toHaveBeenCalledWith(file);
+  it("is a file", () => {
+    const field = setup();
+    const input = field.container.querySelector("input");
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute("type", "file");
   });
 
-  it("emits `null` when the list of files is empty", () => {
+  it("emits `onChange`", () => {
     const onChange = jest.fn();
-    const { getByLabelText } = setup({ onChange });
+    const field = setup({ onChange });
+    const input = field.container.querySelector("input");
 
-    fireEvent.change(getByLabelText("Jawn"), {
-      target: { files: [] }
+    fireEvent.change(input!, {
+      target: { files: [FILE] }
     });
 
-    expect(onChange).toHaveBeenCalledWith(null);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.container.querySelector("input");
+
+    fireEvent.change(input!, {
+      target: { files: [FILE] }
+    });
+
+    expect(onChangeValue).toHaveBeenCalledWith(FILE);
   });
 });

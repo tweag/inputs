@@ -3,3 +3,4 @@ yarn-error.log
 dist
 .rts2_cache_*
 .cache
+coverage

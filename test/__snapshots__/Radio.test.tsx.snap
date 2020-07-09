@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Checkbox /> error renders 1`] = `
+exports[`<Radio /> error renders 1`] = `
 <div>
   <input
     aria-labelledby="input-1-label input-1-error"
     id="input-1"
-    type="checkbox"
+    type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -22,12 +23,13 @@ exports[`<Checkbox /> error renders 1`] = `
 </div>
 `;
 
-exports[`<Checkbox /> help renders 1`] = `
+exports[`<Radio /> help renders 1`] = `
 <div>
   <input
     aria-labelledby="input-1-label"
     id="input-1"
-    type="checkbox"
+    type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -41,12 +43,13 @@ exports[`<Checkbox /> help renders 1`] = `
 </div>
 `;
 
-exports[`<Checkbox /> label renders 1`] = `
+exports[`<Radio /> label renders 1`] = `
 <div>
   <input
     aria-labelledby="input-1-label"
     id="input-1"
-    type="checkbox"
+    type="radio"
+    value=""
   />
   <label
     for="input-1"
@@ -57,11 +60,12 @@ exports[`<Checkbox /> label renders 1`] = `
 </div>
 `;
 
-exports[`<Checkbox /> renders 1`] = `
+exports[`<Radio /> renders 1`] = `
 <div>
   <input
     id="input-1"
-    type="checkbox"
+    type="radio"
+    value=""
   />
 </div>
 `;

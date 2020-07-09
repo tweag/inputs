@@ -1,33 +1,52 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { FileListInputProps } from "./types";
-import { useTheme } from "./theme";
+import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
+import { Element, Theme, FileListInputProps } from "./types";
 
-/**
- * An HTML `<input type="file" />`, but with the following benefits:
- *
- *   * It emits a `FileList` when changed.
- *   * It ignores any `value` prop that you give it.
- */
-export const FileListInput: React.FC<FileListInputProps> = ({
-  onChange,
-  value: _value,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("fileInput", _theme);
-  const handleChange = React.useCallback(
-    event => onChange(event.target.files),
-    [onChange]
-  );
+export function createFileListInput<ThemeProps>(
+  theme: Theme<ThemeProps, FileListInputProps>
+) {
+  return function FileListInput(
+    props: FileListInputProps & ThemeProps
+  ): Element {
+    const {
+      value: _value,
+      onChange,
+      onChangeValue,
+      append,
+      prepend,
+      ...otherProps
+    } = applyTheme(props, theme);
 
-  return (
-    <Field
-      theme={theme}
-      render={inputProps => (
-        <input type="file" onChange={handleChange} multiple {...inputProps} />
-      )}
-      {...props}
-    />
-  );
-};
+    const field = useField(otherProps);
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.files!);
+      },
+      [onChange, onChangeValue]
+    );
+
+    return (
+      <div {...field.getFieldProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+        {prepend}
+        <input
+          type="file"
+          multiple
+          onChange={handleChange}
+          {...field.getInputProps()}
+        />
+        {append}
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
+}
+
+export const FileListInput = createFileListInput({});

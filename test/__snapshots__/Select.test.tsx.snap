@@ -1,279 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Select /> an array of objects as options renders 1`] = `
-<div
-  class="field"
->
+exports[`<Select /> error renders 1`] = `
+<div>
   <label
-    class="field__label"
-    for="field_15"
+    for="input-1"
+    id="input-1-label"
   >
-    Jawn
+    Label
   </label>
   <select
-    class="field__input"
-    id="field_15"
-  >
-    <option
-      value="foo"
-    >
-      Foo
-    </option>
-    <option
-      disabled=""
-      value="bar"
-    >
-      Bar
-    </option>
-    <option
-      value="buzz"
-    >
-      Buzz
-    </option>
-  </select>
-</div>
-`;
-
-exports[`<Select /> an array of strings as options accepts an array of strings as options 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_13"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input"
-    id="field_13"
-  >
-    <option
-      value="foo"
-    >
-      foo
-    </option>
-    <option
-      value="bar"
-    >
-      bar
-    </option>
-    <option
-      value="buzz"
-    >
-      buzz
-    </option>
-  </select>
-</div>
-`;
-
-exports[`<Select /> renders 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_1"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input"
-    id="field_1"
-  />
-</div>
-`;
-
-exports[`<Select /> renders with a custom ID 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="foo"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input"
-    id="foo"
-  />
-</div>
-`;
-
-exports[`<Select /> renders with a placeholder 1`] = `
-<div
-  class="field"
->
-  <label
-    class="field__label"
-    for="field_12"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input"
-    id="field_12"
-  >
-    <option
-      disabled=""
-      value=""
-    >
-      Choose an option
-    </option>
-  </select>
-</div>
-`;
-
-exports[`<Select /> renders with an error 1`] = `
-<div
-  class="field field--erroneous"
->
-  <label
-    class="field__label field__label--erroneous"
-    for="field_4"
-    id="field_4_label"
-  >
-    Jawn
-  </label>
-  <select
-    aria-labelledby="field_4_label field_4_error"
-    class="field__input field__input--erroneous"
-    id="field_4"
+    aria-labelledby="input-1-label input-1-error"
+    id="input-1"
   />
   <span
-    class="field__error"
-    id="field_4_error"
+    id="input-1-error"
     role="alert"
   >
-    Oh no!
+    Error
   </span>
 </div>
 `;
 
-exports[`<Select /> renders with help 1`] = `
-<div
-  class="field"
->
+exports[`<Select /> help renders 1`] = `
+<div>
   <label
-    class="field__label"
-    for="field_5"
+    for="input-1"
+    id="input-1-label"
   >
-    Jawn
-    <span
-      class="field__help"
-    >
-      Good luck
+    Label
+    <span>
+      Help
     </span>
   </label>
   <select
-    class="field__input"
-    id="field_5"
+    aria-labelledby="input-1-label"
+    id="input-1"
   />
 </div>
 `;
 
-exports[`<Select /> renders with inline 1`] = `
-<div
-  class="field field--inline"
->
+exports[`<Select /> label renders 1`] = `
+<div>
   <label
-    class="field__label field__label--inline"
-    for="field_11"
+    for="input-1"
+    id="input-1-label"
   >
-    Jawn
+    Label
   </label>
   <select
-    class="field__input field__input--inline"
-    id="field_11"
+    aria-labelledby="input-1-label"
+    id="input-1"
   />
 </div>
 `;
 
-exports[`<Select /> renders with large 1`] = `
-<div
-  class="field field--large"
->
-  <label
-    class="field__label field__label--large"
-    for="field_9"
-  >
-    Jawn
-  </label>
+exports[`<Select /> renders 1`] = `
+<div>
   <select
-    class="field__input field__input--large"
-    id="field_9"
+    id="input-1"
   />
 </div>
-`;
-
-exports[`<Select /> renders with small 1`] = `
-<div
-  class="field field--small"
->
-  <label
-    class="field__label field__label--small"
-    for="field_10"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input field__input--small"
-    id="field_10"
-  />
-</div>
-`;
-
-exports[`<Select /> renders with success 1`] = `
-<div
-  class="field field--success"
->
-  <label
-    class="field__label field__label--success"
-    for="field_6"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input field__input--success"
-    id="field_6"
-  />
-</div>
-`;
-
-exports[`<Select /> renders with touched 1`] = `
-<div
-  class="field field--touched field--success"
->
-  <label
-    class="field__label field__label--touched field__label--success"
-    for="field_7"
-  >
-    Jawn
-  </label>
-  <select
-    class="field__input field__input--touched field__input--success"
-    id="field_7"
-  />
-</div>
-`;
-
-exports[`<Select /> renders without a label 1`] = `
-<div
-  class="field"
->
-  <select
-    class="field__input"
-    id="field_2"
-  />
-</div>
-`;
-
-exports[`<Select /> renders without a wrapper 1`] = `
-<label
-  class="field__label"
-  for="field_3"
->
-  Jawn
-</label>
 `;

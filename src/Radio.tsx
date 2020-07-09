@@ -1,48 +1,53 @@
 import * as React from "react";
+import isEqual from "fast-deep-equal";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
-import { InputProps, Element, Theme } from "./types";
+import { RadioProps, Element, Theme } from "./types";
 
-export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
-  return function Input(props: InputProps & ThemeProps): Element {
+export function createRadio<ThemeProps>(
+  theme: Theme<ThemeProps, RadioProps<any>>
+) {
+  return function Radio<Value>(props: RadioProps<Value> & ThemeProps): Element {
     const {
       value,
       onChange,
       onChangeValue,
-      append,
-      prepend,
+      represents,
       ...otherProps
     } = applyTheme(props, theme);
 
     const field = useField(otherProps);
+    const checked = value && isEqual(value, represents);
+
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(event);
-        onChangeValue && onChangeValue(event.target.value);
+        onChangeValue && onChangeValue(represents);
       },
-      [onChange, onChangeValue]
+      [represents, onChange, onChangeValue]
     );
 
     return (
       <div {...field.getFieldProps()}>
+        <input
+          type="radio"
+          value={typeof represents === "string" ? represents : undefined}
+          checked={checked}
+          onChange={handleChange}
+          {...field.getInputProps()}
+        />
+
         {field.label && (
           <label {...field.getLabelProps()}>
             {field.label}
             {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
           </label>
         )}
-        {prepend}
-        <input
-          type="text"
-          value={value}
-          onChange={handleChange}
-          {...field.getInputProps()}
-        />
-        {append}
+
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </div>
     );
   };
 }
 
-export const Input = createInput({});
+export const Radio = createRadio({});

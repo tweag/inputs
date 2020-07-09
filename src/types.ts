@@ -1,119 +1,62 @@
 import * as React from "react";
 
-export interface FieldTheme {
-  field?: string | undefined;
-  fieldInline?: string | undefined;
-  fieldCondensed?: string | undefined;
-  fieldSuccess?: string | undefined;
-  fieldError?: string | undefined;
-  fieldTouched?: string | undefined;
-  fieldPopulated?: string | undefined;
-  fieldLarge?: string | undefined;
-  fieldSmall?: string | undefined;
-  fieldDisabled?: string | undefined;
-  fieldHasIcon?: string | undefined;
-  fieldHasIconBefore?: string | undefined;
-
-  input?: string | undefined;
-  inputSuccess?: string | undefined;
-  inputError?: string | undefined;
-  inputTouched?: string | undefined;
-  inputPopulated?: string | undefined;
-  inputInline?: string | undefined;
-  inputCondensed?: string | undefined;
-  inputLarge?: string | undefined;
-  inputSmall?: string | undefined;
-  inputDisabled?: string | undefined;
-  inputHasIcon?: string | undefined;
-  inputHasIconBefore?: string | undefined;
-
-  label?: string | undefined;
-  labelSuccess?: string | undefined;
-  labelError?: string | undefined;
-  labelTouched?: string | undefined;
-  labelPopulated?: string | undefined;
-  labelInline?: string | undefined;
-  labelCondensed?: string | undefined;
-  labelLarge?: string | undefined;
-  labelSmall?: string | undefined;
-  labelDisabled?: string | undefined;
-  labelHasIcon?: string | undefined;
-  labelHasIconBefore?: string | undefined;
-
-  help?: string | undefined;
-  helpInline?: string | undefined;
-  helpCondensed?: string | undefined;
-  helpSmall?: string | undefined;
-  helpLarge?: string | undefined;
-
-  error?: string | undefined;
-  errorInline?: string | undefined;
-  errorCondensed?: string | undefined;
-  errorSmall?: string | undefined;
-  errorLarge?: string | undefined;
-
-  icon?: string | undefined;
-  iconBefore?: string | undefined;
+interface HTMLProps<T> extends React.HTMLProps<T> {
+  "data-testid"?: string;
 }
 
-export interface FieldSetTheme {
-  fieldSet?: string | undefined;
-  fieldSetError?: string | undefined;
-  fieldSetSuccess?: string | undefined;
-  fieldSetTouched?: string | undefined;
-  fieldSetLarge?: string | undefined;
-  fieldSetSmall?: string | undefined;
+export type Element = React.ReactElement<any, any> | null;
 
-  legend?: string | undefined;
-  legendError?: string | undefined;
-  legendSuccess?: string | undefined;
-  legendTouched?: string | undefined;
-  legendLarge?: string | undefined;
-  legendSmall?: string | undefined;
-
-  help?: string | undefined;
-  helpSmall?: string | undefined;
-  helpLarge?: string | undefined;
-
-  error?: string | undefined;
-  errorSmall?: string | undefined;
-  errorLarge?: string | undefined;
-}
-
-export interface Theme {
-  input: FieldTheme;
-  checkbox: FieldTheme;
-  dateInput: FieldTheme;
-  dateTimeInput: FieldTheme;
-  field: FieldTheme;
-  fieldSet: FieldSetTheme;
-  fileInput: FieldTheme;
-  floatInput: FieldTheme;
-  integerInput: FieldTheme;
-  radioGroup: FieldTheme;
-  select: FieldTheme;
-  textarea: FieldTheme;
-  timeInput: FieldTheme;
-  toggleButton: FieldTheme;
+export interface FC<Props = {}> {
+  (props: Props): Element;
+  displayName?: string;
 }
 
 export interface FieldInputProps {
-  id?: string;
-  inline?: boolean;
-  large?: boolean;
-  small?: boolean;
-  touched?: boolean;
-  success?: boolean;
-  disabled?: boolean;
-  condensed?: boolean;
-  error?: React.ReactNode;
-  help?: React.ReactNode;
+  id: string;
+  "aria-labelledby"?: string;
+  [key: string]: any;
+}
+
+export interface FieldConfig {
+  id?: any;
   label?: React.ReactNode;
-  labelPosition?: "before" | "after";
-  wrapper?: boolean;
-  theme?: FieldTheme;
-  renderIcon?: () => React.ReactNode;
-  renderIconBefore?: () => React.ReactNode;
+  labelProps?: HTMLProps<HTMLLabelElement>;
+  labelClassName?: string;
+  help?: React.ReactNode;
+  helpProps?: HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
+  error?: React.ReactNode;
+  errorProps?: HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
+  fieldProps?: HTMLProps<HTMLDivElement>;
+  fieldClassName?: string;
+}
+
+export interface FieldProps extends FieldConfig {
+  [key: string]: any;
+}
+
+export interface Field {
+  label?: React.ReactNode;
+  help?: React.ReactNode;
+  error?: React.ReactNode;
+  getInputProps(): FieldInputProps;
+  getLabelProps(): HTMLProps<HTMLLabelElement>;
+  getHelpProps(): HTMLProps<HTMLSpanElement>;
+  getErrorProps(): HTMLProps<HTMLSpanElement>;
+  getFieldProps(): HTMLProps<HTMLDivElement>;
+}
+
+export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
+  legend?: React.ReactNode;
+  legendProps?: HTMLProps<HTMLLegendElement>;
+  legendClassName?: string;
+  help?: React.ReactNode;
+  helpProps?: HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
+  error?: React.ReactNode;
+  errorProps?: HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
 }
 
 export interface OptionProps {
@@ -123,101 +66,85 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-type HTMLProps<T> = OmitConflicts<React.HTMLProps<T>>;
-type OmitConflicts<T> = Omit<
-  T,
-  "value" | "onChange" | "label" | "multiple" | "render"
->;
+export type HTMLField<Element> = FieldConfig &
+  Omit<HTMLProps<Element>, "value" | "label">;
 
-export interface ValueProps<V, C = V> {
-  value: V;
-  onChange: (value: C) => void;
+export interface InputProps extends HTMLField<HTMLInputElement> {
+  value?: string;
+  onChangeValue?: (value: string) => void;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
 }
 
-export interface FieldProps extends FieldInputProps {
+export interface FileInputProps extends HTMLField<HTMLInputElement> {
+  value?: any;
+  onChangeValue?: (value: File) => void;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
+export interface FileListInputProps extends HTMLField<HTMLInputElement> {
+  value?: any;
+  onChangeValue?: (value: FileList) => void;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
+export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
+  value?: string;
+  onChangeValue?: (value: string) => void;
+}
+
+export interface CheckboxProps extends HTMLField<HTMLInputElement> {
+  value?: boolean;
+  onChangeValue?: (value: boolean) => void;
+}
+
+export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
+  value?: boolean;
+  onChangeValue?: (value: boolean) => void;
+  children?: React.ReactNode;
+}
+
+export interface CheckboxItemProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value[];
+  onChangeValue?: (value: Value[]) => void;
+  represents: Value;
+}
+
+export interface RadioProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value;
+  onChangeValue?: (value: Value) => void;
+  represents: Value;
+}
+
+export interface SelectProps extends HTMLField<HTMLSelectElement> {
+  value?: string;
+  onChangeValue?: (value: string) => void;
+  placeholder?: string;
+  options?: Array<OptionProps | string>;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+interface ThemeClassNames {
   className?: string;
-  populated?: boolean;
-  render: (props: object) => React.ReactNode;
+  fieldClassName?: string;
+  labelClassName?: string;
+  legendClassName?: string;
+  helpClassName?: string;
+  errorClassName?: string;
 }
 
-export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
-  legend?: React.ReactNode;
-  help?: React.ReactNode;
-  className?: string;
-  error?: React.ReactNode;
-  theme?: FieldSetTheme;
-  large?: boolean;
-  small?: boolean;
-  success?: boolean;
-  touched?: boolean;
-  wrapper?: boolean;
+export interface ClassName<Props = {}> {
+  [key: string]: boolean | ((props: Props) => any);
 }
 
-export type CheckboxProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<boolean | null>;
-
-export type CheckboxListProps = FieldInputProps &
-  FieldSetProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string[] | null> & {
-    options?: Array<OptionProps | string>;
-  };
-
-export type DateInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type DateTimeInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type FileInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: File | null) => void;
-  };
-
-export type FileListInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> & {
-    value?: any;
-    onChange: (value: FileList) => void;
-  };
-
-export type FloatInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<number | null>;
-
-export type InputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type IntegerInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<number | null>;
-
-export type RadioGroupProps = FieldInputProps &
-  FieldSetProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null> & {
-    options?: Array<OptionProps | string>;
-  };
-
-export type SelectProps = FieldInputProps &
-  HTMLProps<HTMLSelectElement> &
-  ValueProps<string | null> & {
-    placeholder?: string;
-    options?: Array<OptionProps | string>;
-  };
-
-export type TextAreaProps = FieldInputProps &
-  HTMLProps<HTMLTextAreaElement> &
-  ValueProps<string | null>;
-
-export type TimeInputProps = FieldInputProps &
-  HTMLProps<HTMLInputElement> &
-  ValueProps<string | null>;
-
-export type ToggleButtonProps = FieldInputProps &
-  HTMLProps<HTMLButtonElement> &
-  ValueProps<boolean | null>;
+export type Theme<ThemeProps = {}, Props = {}> = {
+  props?: Array<keyof ThemeProps | string>;
+} & {
+  [K in keyof Props & keyof ThemeClassNames]?:
+    | string
+    | ClassName<Props & ThemeProps>;
+};

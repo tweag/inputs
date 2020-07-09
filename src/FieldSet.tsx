@@ -1,85 +1,68 @@
 import * as React from "react";
-import { FieldSetProps, FieldSetTheme } from "./types";
-import { useTheme } from "./theme";
-import { join, useUniqueId } from "./utils";
+import { applyTheme } from "./applyTheme";
+import { concat, isUndefined } from "./utilities";
+import { useComponentId } from "./useComponentId";
+import { FieldSetProps, Element, Theme } from "./types";
 
-export const FieldSet: React.FC<FieldSetProps> = ({
-  legend,
-  id: _id,
-  help,
-  children,
-  className,
-  theme: _theme,
-  touched,
-  error,
-  success = touched && !error,
-  large,
-  small,
-  wrapper = true
-}) => {
-  const id = useUniqueId(_id);
+export function createFieldSet<ThemeProps>(
+  theme: Theme<ThemeProps, FieldSetProps>
+) {
+  return function FieldSet(props: FieldSetProps & ThemeProps): Element {
+    const componentId = useComponentId();
 
-  const theme = useTheme("fieldSet", _theme);
-  const fieldSetTheme = theme as FieldSetTheme;
-  const fieldSetClassNames = [fieldSetTheme.fieldSet];
-  const legendClassNames = [fieldSetTheme.legend];
-  const helpClassNames = [fieldSetTheme.help];
-  const errorClassNames = [fieldSetTheme.error];
+    const {
+      id = `fieldset-${componentId}`,
+      legend,
+      legendProps,
+      legendClassName,
+      help,
+      helpProps,
+      helpClassName,
+      error,
+      errorProps,
+      errorClassName,
+      children,
+      ...fieldsetProps
+    } = applyTheme(props, theme);
 
-  if (className) {
-    fieldSetClassNames.push(className);
-  }
+    const errorId = errorProps?.id || `${id}-error`;
+    const describedBy = isUndefined(error) ? undefined : errorId;
 
-  if (error) {
-    fieldSetClassNames.push(fieldSetTheme.fieldSetError);
-    legendClassNames.push(fieldSetTheme.legendError);
-  }
+    return (
+      <fieldset {...fieldsetProps} id={id} aria-describedby={describedBy}>
+        {legend && (
+          <legend
+            {...legendProps}
+            className={concat(legendClassName, legendProps?.className)}
+          >
+            {legend}
+          </legend>
+        )}
 
-  if (success) {
-    fieldSetClassNames.push(fieldSetTheme.fieldSetSuccess);
-    legendClassNames.push(fieldSetTheme.legendSuccess);
-  }
+        {help && (
+          <span
+            {...helpProps}
+            className={concat(helpClassName, helpProps?.className)}
+          >
+            {help}
+          </span>
+        )}
 
-  if (touched) {
-    fieldSetClassNames.push(fieldSetTheme.fieldSetTouched);
-    legendClassNames.push(fieldSetTheme.legendTouched);
-  }
+        {children}
 
-  if (large) {
-    fieldSetClassNames.push(fieldSetTheme.fieldSetLarge);
-    legendClassNames.push(fieldSetTheme.legendLarge);
-    errorClassNames.push(fieldSetTheme.errorLarge);
-    helpClassNames.push(fieldSetTheme.helpLarge);
-  }
+        {error && (
+          <span
+            role="alert"
+            {...errorProps}
+            id={errorId}
+            className={concat(errorClassName, errorProps?.className)}
+          >
+            {error}
+          </span>
+        )}
+      </fieldset>
+    );
+  };
+}
 
-  if (small) {
-    fieldSetClassNames.push(fieldSetTheme.fieldSetSmall);
-    legendClassNames.push(fieldSetTheme.legendSmall);
-    errorClassNames.push(fieldSetTheme.errorSmall);
-    helpClassNames.push(fieldSetTheme.helpSmall);
-  }
-
-  const errorLabelId = `${id}_error`;
-
-  return wrapper ? (
-    <fieldset
-      id={id}
-      aria-describedby={error ? errorLabelId : undefined}
-      className={join(fieldSetClassNames)}
-    >
-      {legend && <legend className={join(legendClassNames)}>{legend}</legend>}
-
-      {help && <p className={join(helpClassNames)}>{help}</p>}
-
-      {children}
-
-      {error && (
-        <span role="alert" className={join(errorClassNames)} id={errorLabelId}>
-          {error}
-        </span>
-      )}
-    </fieldset>
-  ) : (
-    <React.Fragment>{children}</React.Fragment>
-  );
-};
+export const FieldSet = createFieldSet({});

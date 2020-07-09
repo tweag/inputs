@@ -1,29 +1,55 @@
 import * as React from "react";
+import { Checkbox, CheckboxProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
-import { Checkbox, CheckboxProps } from "../src";
 
-const setup = (props: Partial<CheckboxProps> = {}) =>
-  render(
-    <Checkbox label="Jawn" value={true} onChange={jest.fn()} {...props} />
-  );
+function setup(props: Partial<CheckboxProps> = {}) {
+  return render(<Checkbox {...props} />);
+}
 
 describe("<Checkbox />", () => {
   itBehavesLikeAField(setup);
 
-  it("emits `false` when then value is `true`", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ value: true, onChange });
-
-    fireEvent.click(getByLabelText("Jawn"));
-    expect(onChange).toHaveBeenCalledWith(false);
+  it("is a checkbox", () => {
+    const field = setup();
+    const input = field.getByRole("checkbox");
+    expect(input).toHaveAttribute("type", "checkbox");
+    expect(input).not.toBeChecked();
   });
 
-  it("emits `true` when then value is `false`", () => {
-    const onChange = jest.fn();
-    const { getByLabelText } = setup({ value: false, onChange });
+  it("respects `value` for checked", () => {
+    const field = setup({ value: true });
+    const input = field.getByRole("checkbox");
+    expect(input).toBeChecked();
+  });
 
-    fireEvent.click(getByLabelText("Jawn"));
-    expect(onChange).toHaveBeenCalledWith(true);
+  it("respects `value` for unchecked", () => {
+    const field = setup({ value: false });
+    const input = field.getByRole("checkbox");
+    expect(input).not.toBeChecked();
+  });
+
+  it("can be uncontrolled", () => {
+    const field = setup({ defaultChecked: true });
+    const input = field.getByRole("checkbox");
+    expect(input).toBeChecked();
+  });
+
+  it("emits `onChange`", () => {
+    const onChange = jest.fn();
+    const field = setup({ onChange });
+    const input = field.getByRole("checkbox");
+
+    fireEvent.click(input);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.getByRole("checkbox");
+
+    fireEvent.click(input);
+    expect(onChangeValue).toHaveBeenCalledWith(true);
   });
 });

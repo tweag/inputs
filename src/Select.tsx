@@ -1,49 +1,62 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { SelectProps, OptionProps } from "./types";
-import { useTheme } from "./theme";
-import { isPopulated } from "./utils";
+import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
+import { SelectProps, OptionProps, Element, Theme } from "./types";
 
-const getOptionProps = (option: OptionProps | string) => {
-  if (typeof option === "string") {
-    return { value: option, key: option, children: option };
-  }
-
-  const { value, label = value, key = value, ...props } = option;
-  return { value, key, children: label, ...props };
+const coerce = (option: OptionProps | string): OptionProps => {
+  return typeof option === "string"
+    ? { label: option, value: option, key: option }
+    : option;
 };
 
-/**
- * An HTML `<select />`, but with the following benefits:
- *
- *   * It accepts `null` as a value.
- *   * It accepts a `placeholder`.
- *   * It allows you to pass in an array of options.
- */
-export const Select: React.FC<SelectProps> = ({
-  onChange,
-  options,
-  placeholder,
-  value,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("select", _theme);
+export function createSelect<ThemeProps>(
+  theme: Theme<ThemeProps, SelectProps>
+) {
+  return function Select(props: SelectProps & ThemeProps): Element {
+    const {
+      value,
+      onChange,
+      onChangeValue,
+      placeholder,
+      options,
+      append,
+      prepend,
+      children,
+      ...otherProps
+    } = applyTheme(props, theme);
 
-  const handleChange = React.useCallback(
-    event => onChange(event.target.value),
-    [onChange]
-  );
+    const field = useField(otherProps);
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLSelectElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.value);
+      },
+      [onChange, onChangeValue]
+    );
 
-  return (
-    <Field
-      theme={theme}
-      populated={isPopulated(value)}
-      render={inputProps => (
+    const renderOption = (option: OptionProps | string) => {
+      const { value, label = value, key = value, ...props } = coerce(option);
+
+      return (
+        <option key={key} value={value} {...props}>
+          {label}
+        </option>
+      );
+    };
+
+    return (
+      <div {...field.getFieldProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+        {prepend}
         <select
-          value={value === null ? "" : value}
+          value={value}
           onChange={handleChange}
-          {...inputProps}
+          {...field.getInputProps()}
         >
           {placeholder && (
             <option disabled value="" key="placeholder">
@@ -51,12 +64,14 @@ export const Select: React.FC<SelectProps> = ({
             </option>
           )}
 
-          {options?.map(option => (
-            <option {...getOptionProps(option)} />
-          ))}
+          {options?.map(renderOption)}
+          {children}
         </select>
-      )}
-      {...props}
-    />
-  );
-};
+        {append}
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
+}
+
+export const Select = createSelect({});

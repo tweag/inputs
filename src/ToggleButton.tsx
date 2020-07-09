@@ -1,36 +1,46 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { ToggleButtonProps } from "./types";
-import { useTheme } from "./theme";
+import { useField } from "./useField";
+import { applyTheme } from "./applyTheme";
+import { Element, Theme, ToggleButtonProps } from "./types";
 
-export const ToggleButton: React.FC<ToggleButtonProps> = ({
-  value,
-  onChange,
-  theme: _theme,
-  ...props
-}) => {
-  const theme = useTheme("toggleButton", _theme);
+export function createToggleButton<ThemeProps>(
+  theme: Theme<ThemeProps, ToggleButtonProps>
+) {
+  return function ToggleButton(props: ToggleButtonProps & ThemeProps): Element {
+    const { value, onChangeValue, children, ...otherProps } = applyTheme(
+      props,
+      theme
+    );
 
-  const handleClick = React.useCallback(() => onChange(!value), [
-    onChange,
-    value
-  ]);
+    const field = useField(otherProps);
+    const handleClick = React.useCallback(
+      () => onChangeValue && onChangeValue(!value),
+      [value, onChangeValue]
+    );
 
-  return (
-    <Field
-      theme={theme}
-      labelPosition="after"
-      render={inputProps => (
+    return (
+      <div {...field.getFieldProps()}>
         <button
           onClick={handleClick}
           type="button"
           role="switch"
-          aria-checked={Boolean(value)}
+          aria-checked={value}
           aria-label={value ? "On" : "Off"}
-          {...inputProps}
-        />
-      )}
-      {...props}
-    />
-  );
-};
+          {...field.getInputProps()}
+        >
+          {children}
+        </button>
+
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
+}
+
+export const ToggleButton = createToggleButton({});
