@@ -10,7 +10,7 @@ import {
   createSelect,
   createTextArea,
   createToggleButton
-} from "../../src";
+} from "../src";
 
 interface ThemeProps {
   valid?: boolean;
@@ -77,9 +77,10 @@ export const CheckboxItem = createCheckboxItem<ThemeProps>({
 
 export const ToggleButton = createToggleButton<ThemeProps>({
   ...theme,
-  labelClassName: "custom-control-label",
-  fieldClassName: "form-group custom-control custom-switch",
-  className: { ...className, "custom-control-input": true }
+  className: {
+    "btn btn-sm btn-outline-primary mr-2": true,
+    active: props => props.value
+  }
 });
 
 export const FieldSet = createFieldSet({
