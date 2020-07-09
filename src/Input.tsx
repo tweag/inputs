@@ -1,7 +1,14 @@
 import * as React from "react";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
-import { InputProps, Element, Theme } from "./types";
+import { Element, Theme, HTMLField } from "./types";
+
+export interface InputProps extends HTMLField<HTMLInputElement> {
+  value?: string;
+  onChangeValue?: (value: string) => void;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
 
 export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
   return function Input(props: InputProps & ThemeProps): Element {

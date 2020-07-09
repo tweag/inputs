@@ -1,7 +1,24 @@
 import * as React from "react";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
-import { SelectProps, OptionProps, Element, Theme } from "./types";
+import { Element, Theme, HTMLField } from "./types";
+
+export interface OptionProps {
+  value: string;
+  label?: string;
+  key?: any;
+  disabled?: boolean;
+}
+
+export interface SelectProps extends HTMLField<HTMLSelectElement> {
+  value?: string;
+  onChangeValue?: (value: string) => void;
+  placeholder?: string;
+  options?: Array<OptionProps | string>;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  children?: React.ReactNode;
+}
 
 const coerce = (option: OptionProps | string): OptionProps => {
   return typeof option === "string"
