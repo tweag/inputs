@@ -1,6 +1,7 @@
 import * as React from "react";
 
-interface HTMLProps<T> extends React.HTMLProps<T> {
+export interface HTMLProps<T>
+  extends Omit<React.HTMLProps<T>, "value" | "label"> {
   "data-testid"?: string;
 }
 
@@ -49,20 +50,7 @@ export interface Field {
   getFieldProps(): HTMLProps<HTMLDivElement>;
 }
 
-export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
-  legend?: React.ReactNode;
-  legendProps?: HTMLProps<HTMLLegendElement>;
-  legendClassName?: string;
-  help?: React.ReactNode;
-  helpProps?: HTMLProps<HTMLSpanElement>;
-  helpClassName?: string;
-  error?: React.ReactNode;
-  errorProps?: HTMLProps<HTMLSpanElement>;
-  errorClassName?: string;
-}
-
-export type HTMLField<Element> = FieldConfig &
-  Omit<HTMLProps<Element>, "value" | "label">;
+export type HTMLField<Element> = FieldConfig & HTMLProps<Element>;
 
 interface ThemeClassNames {
   className?: string;

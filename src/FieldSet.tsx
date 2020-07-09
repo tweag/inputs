@@ -2,7 +2,22 @@ import * as React from "react";
 import { applyTheme } from "./applyTheme";
 import { concat, isUndefined } from "./utilities";
 import { useComponentId } from "./useComponentId";
-import { FieldSetProps, Element, Theme } from "./types";
+import { Element, Theme, HTMLProps } from "./types";
+import { GroupContextProvider, GroupContext } from "./useGroupContext";
+
+export interface FieldSetProps
+  extends GroupContext,
+    HTMLProps<HTMLFieldSetElement> {
+  legend?: React.ReactNode;
+  legendProps?: HTMLProps<HTMLLegendElement>;
+  legendClassName?: string;
+  help?: React.ReactNode;
+  helpProps?: HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
+  error?: React.ReactNode;
+  errorProps?: HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
+}
 
 export function createFieldSet<ThemeProps>(
   theme: Theme<ThemeProps, FieldSetProps>
@@ -11,6 +26,8 @@ export function createFieldSet<ThemeProps>(
     const componentId = useComponentId();
 
     const {
+      value,
+      onChangeValue,
       id = `fieldset-${componentId}`,
       legend,
       legendProps,
@@ -48,7 +65,9 @@ export function createFieldSet<ThemeProps>(
           </span>
         )}
 
-        {children}
+        <GroupContextProvider value={{ value, onChangeValue }}>
+          {children}
+        </GroupContextProvider>
 
         {error && (
           <span
