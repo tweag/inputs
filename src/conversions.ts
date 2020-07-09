@@ -9,6 +9,13 @@ function assert(test: any, type: string, value: any): asserts test {
 }
 
 /**
+ * Does the string contain a valid number?
+ */
+export function isValidNumber(value: string): boolean {
+  return !isNaN(parseFloat(value));
+}
+
+/**
  * Convert a number to a string
  */
 export function formatNumber(value: number): string {
@@ -23,6 +30,14 @@ export function parseNumber(value: string): number {
   const parsed = parseFloat(value);
   assert(!isNaN(parsed), "number", value);
   return parsed;
+}
+
+/**
+ * Does the string contain a valid time?
+ */
+export function isValidTime(value: string): boolean {
+  const match = value.match(/^(\d{2}):(\d{2})$/);
+  return !!match && Number(match[1]) < 24 && Number(match[2]) < 60;
 }
 
 /**
@@ -61,6 +76,13 @@ export function formatTime(value: string, date: Date = new Date()): string {
   date.setUTCMinutes(minutes);
 
   return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+/**
+ * Does the string contain a valid datetime?
+ */
+export function isValidDateTime(value: string): boolean {
+  return !isNaN(new Date(value).valueOf());
 }
 
 /**
