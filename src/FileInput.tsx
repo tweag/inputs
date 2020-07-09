@@ -8,7 +8,7 @@ export function createFileInput<ThemeProps>(
 ) {
   return function FileInput(props: FileInputProps & ThemeProps): Element {
     const {
-      value,
+      value: _value,
       onChange,
       onChangeValue,
       append,

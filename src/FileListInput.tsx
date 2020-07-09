@@ -10,7 +10,7 @@ export function createFileListInput<ThemeProps>(
     props: FileListInputProps & ThemeProps
   ): Element {
     const {
-      value,
+      value: _value,
       onChange,
       onChangeValue,
       append,
