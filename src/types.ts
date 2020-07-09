@@ -87,8 +87,11 @@ export interface FileListInputProps
 
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
 export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
+
 export interface ToggleButtonProps
-  extends HTMLField<HTMLButtonElement, boolean> {}
+  extends HTMLField<HTMLButtonElement, boolean> {
+  children?: React.ReactNode;
+}
 
 export interface CheckboxItemProps<Value>
   extends HTMLField<HTMLInputElement, Value[]> {

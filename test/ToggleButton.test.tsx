@@ -33,4 +33,11 @@ describe("<ToggleButton />", () => {
 
     expect(onChange).toHaveBeenCalledWith(true);
   });
+
+  describe("children", () => {
+    it("renders", () => {
+      const field = setup({ children: "Children" });
+      expect(field.container).toHaveTextContent("Children");
+    });
+  });
 });
