@@ -14,10 +14,7 @@ export function createRadio<ThemeProps>(
     );
 
     const field = useField(otherProps);
-    const checked = React.useMemo(() => isEqual(value, represents), [
-      represents,
-      value
-    ]);
+    const checked = value && isEqual(value, represents);
 
     const handleChange = React.useCallback(
       () => onChange && onChange(represents),

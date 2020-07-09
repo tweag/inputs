@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
 function setup(props: Partial<CheckboxProps> = {}) {
-  return render(<Checkbox onChange={() => null} value={false} {...props} />);
+  return render(<Checkbox {...props} />);
 }
 
 describe("<Checkbox />", () => {
@@ -17,8 +17,20 @@ describe("<Checkbox />", () => {
     expect(input).not.toBeChecked();
   });
 
-  it("has a value", () => {
+  it("respects `value` for checked", () => {
     const field = setup({ value: true });
+    const input = field.getByRole("checkbox");
+    expect(input).toBeChecked();
+  });
+
+  it("respects `value` for unchecked", () => {
+    const field = setup({ value: false });
+    const input = field.getByRole("checkbox");
+    expect(input).not.toBeChecked();
+  });
+
+  it("can be uncontrolled", () => {
+    const field = setup({ defaultChecked: true });
     const input = field.getByRole("checkbox");
     expect(input).toBeChecked();
   });

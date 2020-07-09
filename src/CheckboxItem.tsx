@@ -16,11 +16,7 @@ export function createCheckboxItem<ThemeProps>(
     );
 
     const field = useField(otherProps);
-
-    const checked = React.useMemo(() => value && contains(value, represents), [
-      represents,
-      value
-    ]);
+    const checked = value && contains(value, represents);
 
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {

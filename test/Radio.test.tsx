@@ -6,14 +6,7 @@ import { itBehavesLikeAField } from "./sharedExamples";
 const REPRESENTS = { name: "Rick" };
 
 function setup(props: Partial<RadioProps<any>> = {}) {
-  return render(
-    <Radio
-      value={null}
-      onChange={() => null}
-      represents={REPRESENTS}
-      {...props}
-    />
-  );
+  return render(<Radio represents={REPRESENTS} {...props} />);
 }
 
 describe("<Radio />", () => {
@@ -26,10 +19,22 @@ describe("<Radio />", () => {
     expect(input).not.toBeChecked();
   });
 
-  it("has a value", () => {
+  it("respects `value`", () => {
     const field = setup({ value: REPRESENTS });
     const input = field.getByRole("radio");
     expect(input).toBeChecked();
+  });
+
+  it("can be uncontrolled", () => {
+    const field = setup({ defaultChecked: true });
+    const input = field.getByRole("radio");
+    expect(input).toBeChecked();
+  });
+
+  it("sets the `value` attribute when `represents` is a string", () => {
+    const field = setup({ represents: "foo" });
+    const input = field.getByRole("radio");
+    expect(input).toHaveAttribute("value", "foo");
   });
 
   it("emits `onChange`", () => {

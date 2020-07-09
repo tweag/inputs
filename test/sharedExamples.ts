@@ -3,7 +3,7 @@ import { FieldConfig } from "../src";
 import { axe } from "jest-axe";
 
 export function itBehavesLikeAField(
-  render: (props?: Partial<FieldConfig<any>>) => RenderResult
+  render: (props?: Partial<FieldConfig>) => RenderResult
 ) {
   it("renders", () => {
     const field = render();
