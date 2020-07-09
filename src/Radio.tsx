@@ -2,8 +2,14 @@ import * as React from "react";
 import isEqual from "fast-deep-equal";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
-import { RadioProps, Element, Theme } from "./types";
+import { Element, Theme, HTMLField } from "./types";
 import { isUndefined } from "./utilities";
+
+export interface RadioProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value;
+  onChangeValue?: (value: Value) => void;
+  represents: Value;
+}
 
 export function createRadio<ThemeProps>(
   theme: Theme<ThemeProps, RadioProps<any>>

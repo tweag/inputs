@@ -2,7 +2,13 @@ import * as React from "react";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
 import { contains, remove, isUndefined } from "./utilities";
-import { CheckboxItemProps, Element, Theme } from "./types";
+import { Element, Theme, HTMLField } from "./types";
+
+export interface CheckboxItemProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value[];
+  onChangeValue?: (value: Value[]) => void;
+  represents: Value;
+}
 
 export function createCheckboxItem<ThemeProps>(
   theme: Theme<ThemeProps, CheckboxItemProps<any>>

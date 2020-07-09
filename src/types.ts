@@ -61,74 +61,8 @@ export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
   errorClassName?: string;
 }
 
-export interface OptionProps {
-  value: string;
-  label?: string;
-  key?: any;
-  disabled?: boolean;
-}
-
 export type HTMLField<Element> = FieldConfig &
   Omit<HTMLProps<Element>, "value" | "label">;
-
-export interface InputProps extends HTMLField<HTMLInputElement> {
-  value?: string;
-  onChangeValue?: (value: string) => void;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
-}
-
-export interface FileInputProps extends HTMLField<HTMLInputElement> {
-  value?: any;
-  onChangeValue?: (value: File) => void;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
-}
-
-export interface FileListInputProps extends HTMLField<HTMLInputElement> {
-  value?: any;
-  onChangeValue?: (value: FileList) => void;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
-}
-
-export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
-  value?: string;
-  onChangeValue?: (value: string) => void;
-}
-
-export interface CheckboxProps extends HTMLField<HTMLInputElement> {
-  value?: boolean;
-  onChangeValue?: (value: boolean) => void;
-}
-
-export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
-  value?: boolean;
-  onChangeValue?: (value: boolean) => void;
-  children?: React.ReactNode;
-}
-
-export interface CheckboxItemProps<Value> extends HTMLField<HTMLInputElement> {
-  value?: Value[];
-  onChangeValue?: (value: Value[]) => void;
-  represents: Value;
-}
-
-export interface RadioProps<Value> extends HTMLField<HTMLInputElement> {
-  value?: Value;
-  onChangeValue?: (value: Value) => void;
-  represents: Value;
-}
-
-export interface SelectProps extends HTMLField<HTMLSelectElement> {
-  value?: string;
-  onChangeValue?: (value: string) => void;
-  placeholder?: string;
-  options?: Array<OptionProps | string>;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
-  children?: React.ReactNode;
-}
 
 interface ThemeClassNames {
   className?: string;
