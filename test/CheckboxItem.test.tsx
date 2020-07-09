@@ -43,23 +43,32 @@ describe("<CheckboxItem />", () => {
     expect(input).toHaveAttribute("value", "foo");
   });
 
-  it("adds an item `onChange`", () => {
+  it("emits `onChange`", () => {
     const onChange = jest.fn();
-    const field = setup({ onChange, value: [] });
+    const field = setup({ onChange });
     const input = field.getByRole("checkbox");
 
     fireEvent.click(input);
-
-    expect(onChange).toHaveBeenCalledWith([REPRESENTS]);
+    expect(onChange).toHaveBeenCalled();
   });
 
-  it("removes an item `onChange`", () => {
-    const onChange = jest.fn();
-    const field = setup({ onChange, value: [REPRESENTS] });
+  it("adds an item `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue, value: [] });
     const input = field.getByRole("checkbox");
 
     fireEvent.click(input);
 
-    expect(onChange).toHaveBeenCalledWith([]);
+    expect(onChangeValue).toHaveBeenCalledWith([REPRESENTS]);
+  });
+
+  it("removes an item `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue, value: [REPRESENTS] });
+    const input = field.getByRole("checkbox");
+
+    fireEvent.click(input);
+
+    expect(onChangeValue).toHaveBeenCalledWith([]);
   });
 });

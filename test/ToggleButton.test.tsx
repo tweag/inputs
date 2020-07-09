@@ -4,9 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
 function setup(props: Partial<ToggleButtonProps> = {}) {
-  return render(
-    <ToggleButton onChange={() => null} value={false} {...props} />
-  );
+  return render(<ToggleButton value={false} {...props} />);
 }
 
 describe("<ToggleButton />", () => {
@@ -24,14 +22,22 @@ describe("<ToggleButton />", () => {
     expect(button).toBeChecked();
   });
 
-  it("emits `onChange`", () => {
-    const onChange = jest.fn();
-    const field = setup({ onChange });
+  it("emits `onClick`", () => {
+    const onClick = jest.fn();
+    const field = setup({ onClick });
     const button = field.getByRole("switch");
 
     fireEvent.click(button);
+    expect(onClick).toHaveBeenCalled();
+  });
 
-    expect(onChange).toHaveBeenCalledWith(true);
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const button = field.getByRole("switch");
+
+    fireEvent.click(button);
+    expect(onChangeValue).toHaveBeenCalledWith(true);
   });
 
   describe("children", () => {

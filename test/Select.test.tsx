@@ -4,9 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
 function setup(props: Partial<SelectProps> = {}) {
-  return render(
-    <Select options={[]} onChange={() => null} value="" {...props} />
-  );
+  return render(<Select {...props} />);
 }
 
 describe("<Select />", () => {
@@ -27,7 +25,19 @@ describe("<Select />", () => {
       target: { value: "dog" }
     });
 
-    expect(onChange).toHaveBeenCalledWith("dog");
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue, options: ["dog"] });
+    const select = field.getByRole("combobox");
+
+    fireEvent.change(select, {
+      target: { value: "dog" }
+    });
+
+    expect(onChangeValue).toHaveBeenCalledWith("dog");
   });
 
   describe("children", () => {

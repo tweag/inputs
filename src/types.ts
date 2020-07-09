@@ -67,60 +67,60 @@ export interface OptionProps {
 }
 
 export type HTMLField<Element> = FieldConfig &
-  Omit<HTMLProps<Element>, "value" | "onChange" | "label">;
+  Omit<HTMLProps<Element>, "value" | "label">;
 
 export interface InputProps extends HTMLField<HTMLInputElement> {
   value?: string;
-  onChange?: (value: string) => void;
+  onChangeValue?: (value: string) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
 export interface FileInputProps extends HTMLField<HTMLInputElement> {
   value?: any;
-  onChange?: (value: File) => void;
+  onChangeValue?: (value: File) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
 export interface FileListInputProps extends HTMLField<HTMLInputElement> {
   value?: any;
-  onChange?: (value: FileList) => void;
+  onChangeValue?: (value: FileList) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
 export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
   value?: string;
-  onChange?: (value: string) => void;
+  onChangeValue?: (value: string) => void;
 }
 
 export interface CheckboxProps extends HTMLField<HTMLInputElement> {
   value?: boolean;
-  onChange?: (value: boolean) => void;
+  onChangeValue?: (value: boolean) => void;
 }
 
 export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
   value?: boolean;
-  onChange?: (value: boolean) => void;
+  onChangeValue?: (value: boolean) => void;
   children?: React.ReactNode;
 }
 
 export interface CheckboxItemProps<Value> extends HTMLField<HTMLInputElement> {
   value?: Value[];
-  onChange?: (value: Value[]) => void;
+  onChangeValue?: (value: Value[]) => void;
   represents: Value;
 }
 
 export interface RadioProps<Value> extends HTMLField<HTMLInputElement> {
   value?: Value;
-  onChange?: (value: Value) => void;
+  onChangeValue?: (value: Value) => void;
   represents: Value;
 }
 
 export interface SelectProps extends HTMLField<HTMLSelectElement> {
   value?: string;
-  onChange?: (value: string) => void;
+  onChangeValue?: (value: string) => void;
   placeholder?: string;
   options?: Array<OptionProps | string>;
   append?: React.ReactNode;

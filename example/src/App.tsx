@@ -79,7 +79,7 @@ const App = () => {
                   valid={checkboxes.valid}
                   invalid={checkboxes.invalid}
                   value={checkboxes.value}
-                  onChange={checkboxes.onChange}
+                  onChangeValue={checkboxes.onChangeValue}
                   onBlur={checkboxes.onBlur}
                 />
               ))}
@@ -94,7 +94,7 @@ const App = () => {
                   valid={radio.valid}
                   invalid={radio.invalid}
                   value={radio.value}
-                  onChange={radio.onChange}
+                  onChangeValue={radio.onChangeValue}
                   onBlur={radio.onBlur}
                 />
               ))}

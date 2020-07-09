@@ -7,14 +7,18 @@ export function createCheckbox<ThemeProps>(
   theme: Theme<ThemeProps, CheckboxProps>
 ) {
   return function Checkbox(props: CheckboxProps & ThemeProps): Element {
-    const { value, onChange, ...otherProps } = applyTheme(props, theme);
-    const field = useField(otherProps);
+    const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
+      props,
+      theme
+    );
 
+    const field = useField(otherProps);
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event.target.checked);
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.checked);
       },
-      [onChange]
+      [onChange, onChangeValue]
     );
 
     return (

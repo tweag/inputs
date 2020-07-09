@@ -8,17 +8,23 @@ export function createRadio<ThemeProps>(
   theme: Theme<ThemeProps, RadioProps<any>>
 ) {
   return function Radio<Value>(props: RadioProps<Value> & ThemeProps): Element {
-    const { value, onChange, represents, ...otherProps } = applyTheme(
-      props,
-      theme
-    );
+    const {
+      value,
+      onChange,
+      onChangeValue,
+      represents,
+      ...otherProps
+    } = applyTheme(props, theme);
 
     const field = useField(otherProps);
     const checked = value && isEqual(value, represents);
 
     const handleChange = React.useCallback(
-      () => onChange && onChange(represents),
-      [represents, onChange]
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(represents);
+      },
+      [represents, onChange, onChangeValue]
     );
 
     return (

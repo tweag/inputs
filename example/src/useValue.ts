@@ -23,7 +23,7 @@ export const useValue = <T>(
     error,
     valid: touched && !error,
     invalid: touched && !!error,
-    onChange(value: T) {
+    onChangeValue(value: T) {
       setValue(value);
       setError(validate && validate(value));
     },

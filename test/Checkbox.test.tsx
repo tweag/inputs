@@ -41,7 +41,15 @@ describe("<Checkbox />", () => {
     const input = field.getByRole("checkbox");
 
     fireEvent.click(input);
+    expect(onChange).toHaveBeenCalled();
+  });
 
-    expect(onChange).toHaveBeenCalledWith(true);
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.getByRole("checkbox");
+
+    fireEvent.click(input);
+    expect(onChangeValue).toHaveBeenCalledWith(true);
   });
 });

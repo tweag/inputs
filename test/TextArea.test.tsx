@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { itBehavesLikeAField } from "./sharedExamples";
 
 function setup(props: Partial<TextAreaProps> = {}) {
-  return render(<TextArea onChange={() => null} value="" {...props} />);
+  return render(<TextArea {...props} />);
 }
 
 describe("<TextArea />", () => {
@@ -25,6 +25,18 @@ describe("<TextArea />", () => {
       target: { value: "hi" }
     });
 
-    expect(onChange).toHaveBeenCalledWith("hi");
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.getByRole("textbox");
+
+    fireEvent.change(input, {
+      target: { value: "hi" }
+    });
+
+    expect(onChangeValue).toHaveBeenCalledWith("hi");
   });
 });

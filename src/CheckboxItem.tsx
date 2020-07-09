@@ -10,27 +10,32 @@ export function createCheckboxItem<ThemeProps>(
   return function CheckboxItem<Value>(
     props: CheckboxItemProps<Value> & ThemeProps
   ): Element {
-    const { value, onChange, represents, ...otherProps } = applyTheme(
-      props,
-      theme
-    );
+    const {
+      value,
+      onChange,
+      onChangeValue,
+      represents,
+      ...otherProps
+    } = applyTheme(props, theme);
 
     const field = useField(otherProps);
     const checked = value && contains(value, represents);
 
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (!value || !onChange) {
-          return;
+        if (onChange) {
+          onChange(event);
         }
 
-        const nextValue = event.target.checked
-          ? value.concat([represents])
-          : remove(value, represents);
-
-        onChange(nextValue);
+        if (value && onChangeValue) {
+          if (event.target.checked) {
+            onChangeValue(value.concat([represents]));
+          } else {
+            onChangeValue(remove(value, represents));
+          }
+        }
       },
-      [represents, value, onChange]
+      [represents, value, onChange, onChangeValue]
     );
 
     return (

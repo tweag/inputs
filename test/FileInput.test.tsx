@@ -28,6 +28,18 @@ describe("<FileInput />", () => {
       target: { files: [FILE] }
     });
 
-    expect(onChange).toHaveBeenCalledWith(FILE);
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.container.querySelector("input");
+
+    fireEvent.change(input!, {
+      target: { files: [FILE] }
+    });
+
+    expect(onChangeValue).toHaveBeenCalledWith(FILE);
   });
 });

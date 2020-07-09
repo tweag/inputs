@@ -7,15 +7,16 @@ export function createToggleButton<ThemeProps>(
   theme: Theme<ThemeProps, ToggleButtonProps>
 ) {
   return function ToggleButton(props: ToggleButtonProps & ThemeProps): Element {
-    const { value, onChange, children, ...otherProps } = applyTheme(
+    const { value, onChangeValue, children, ...otherProps } = applyTheme(
       props,
       theme
     );
 
     const field = useField(otherProps);
-    const handleClick = React.useCallback(() => {
-      onChange && onChange(!value);
-    }, [value, onChange]);
+    const handleClick = React.useCallback(
+      () => onChangeValue && onChangeValue(!value),
+      [value, onChangeValue]
+    );
 
     return (
       <div {...field.getFieldProps()}>

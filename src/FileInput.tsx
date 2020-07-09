@@ -7,17 +7,22 @@ export function createFileInput<ThemeProps>(
   theme: Theme<ThemeProps, FileInputProps>
 ) {
   return function FileInput(props: FileInputProps & ThemeProps): Element {
-    const { value, onChange, append, prepend, ...otherProps } = applyTheme(
-      props,
-      theme
-    );
+    const {
+      value,
+      onChange,
+      onChangeValue,
+      append,
+      prepend,
+      ...otherProps
+    } = applyTheme(props, theme);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event.target.files![0]);
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.files![0]);
       },
-      [onChange]
+      [onChange, onChangeValue]
     );
 
     return (

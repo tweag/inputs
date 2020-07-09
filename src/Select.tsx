@@ -16,6 +16,7 @@ export function createSelect<ThemeProps>(
     const {
       value,
       onChange,
+      onChangeValue,
       placeholder,
       options,
       append,
@@ -27,9 +28,10 @@ export function createSelect<ThemeProps>(
     const field = useField(otherProps);
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLSelectElement>) => {
-        onChange && onChange(event.target.value);
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.value);
       },
-      [onChange]
+      [onChange, onChangeValue]
     );
 
     const renderOption = (option: OptionProps | string) => {

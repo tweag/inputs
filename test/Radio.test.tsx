@@ -43,7 +43,15 @@ describe("<Radio />", () => {
     const input = field.getByRole("radio");
 
     fireEvent.click(input);
+    expect(onChange).toHaveBeenCalled();
+  });
 
-    expect(onChange).toHaveBeenCalledWith(REPRESENTS);
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.getByRole("radio");
+
+    fireEvent.click(input);
+    expect(onChangeValue).toHaveBeenCalledWith(REPRESENTS);
   });
 });

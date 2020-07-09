@@ -9,17 +9,22 @@ export function createFileListInput<ThemeProps>(
   return function FileListInput(
     props: FileListInputProps & ThemeProps
   ): Element {
-    const { value, onChange, append, prepend, ...otherProps } = applyTheme(
-      props,
-      theme
-    );
+    const {
+      value,
+      onChange,
+      onChangeValue,
+      append,
+      prepend,
+      ...otherProps
+    } = applyTheme(props, theme);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event.target.files!);
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.files!);
       },
-      [onChange]
+      [onChange, onChangeValue]
     );
 
     return (
