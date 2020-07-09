@@ -7,6 +7,7 @@ export const useField = (props: FieldProps): Field => {
 
   const {
     id = `input-${componentId}`,
+    innerRef,
     label,
     labelProps,
     labelClassName,
@@ -51,6 +52,7 @@ export const useField = (props: FieldProps): Field => {
     getInputProps: () => ({
       ...inputProps,
       id,
+      ref: innerRef,
       "aria-labelledby": concat(label && labelId, error && errorId)
     })
   };

@@ -10,6 +10,12 @@ export function itBehavesLikeAField(
     expect(field.container.firstChild).toMatchSnapshot();
   });
 
+  it("respects `innerRef`", () => {
+    const innerRef = jest.fn();
+    render({ innerRef });
+    expect(innerRef).toHaveBeenCalled();
+  });
+
   describe("label", () => {
     it("renders", () => {
       const field = render({ label: "Label" });

@@ -13,12 +13,14 @@ export interface FC<Props = {}> {
 
 export interface FieldInputProps {
   id: string;
+  ref?: React.Ref<any>;
   "aria-labelledby"?: string;
   [key: string]: any;
 }
 
 export interface FieldConfig {
   id?: any;
+  innerRef?: React.Ref<any>;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
   labelClassName?: string;
