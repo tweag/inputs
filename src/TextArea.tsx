@@ -7,9 +7,9 @@ export function createTextArea<ThemeProps>(
   theme: Theme<ThemeProps, TextAreaProps>
 ) {
   return function TextArea(props: TextAreaProps & ThemeProps): Element {
-    const field = useField(applyTheme(props, theme));
+    const { value, onChange, ...otherProps } = applyTheme(props, theme);
 
-    const { onChange } = field;
+    const field = useField(otherProps);
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         onChange && onChange(event.target.value);
@@ -27,9 +27,9 @@ export function createTextArea<ThemeProps>(
         )}
 
         <textarea
-          {...field.getInputProps()}
-          value={field.value}
+          value={value}
           onChange={handleChange}
+          {...field.getInputProps()}
         />
 
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}

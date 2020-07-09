@@ -17,9 +17,7 @@ export interface FieldInputProps {
   [key: string]: any;
 }
 
-export interface FieldConfig<Value> {
-  value?: Value;
-  onChange?: (value: Value) => void;
+export interface FieldConfig {
   id?: any;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
@@ -34,9 +32,11 @@ export interface FieldConfig<Value> {
   fieldClassName?: string;
 }
 
-export interface Field<Value> {
-  value?: Value;
-  onChange?: (value: Value) => void;
+export interface FieldProps extends FieldConfig {
+  [key: string]: any;
+}
+
+export interface Field {
   label?: React.ReactNode;
   help?: React.ReactNode;
   error?: React.ReactNode;
@@ -66,43 +66,61 @@ export interface OptionProps {
   disabled?: boolean;
 }
 
-export type HTMLField<Element, Value> = FieldConfig<Value> &
+export type HTMLField<Element> = FieldConfig &
   Omit<HTMLProps<Element>, "value" | "onChange" | "label">;
 
-export interface InputProps extends HTMLField<HTMLInputElement, string> {
+export interface InputProps extends HTMLField<HTMLInputElement> {
+  value?: string;
+  onChange?: (value: string) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileInputProps extends HTMLField<HTMLInputElement, File> {
+export interface FileInputProps extends HTMLField<HTMLInputElement> {
+  value?: any;
+  onChange?: (value: File) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface FileListInputProps
-  extends HTMLField<HTMLInputElement, FileList> {
+export interface FileListInputProps extends HTMLField<HTMLInputElement> {
+  value?: any;
+  onChange?: (value: FileList) => void;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
 }
 
-export interface TextAreaProps extends HTMLField<HTMLTextAreaElement, string> {}
-export interface CheckboxProps extends HTMLField<HTMLInputElement, boolean> {}
+export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
+  value?: string;
+  onChange?: (value: string) => void;
+}
 
-export interface ToggleButtonProps
-  extends HTMLField<HTMLButtonElement, boolean> {
+export interface CheckboxProps extends HTMLField<HTMLInputElement> {
+  value?: boolean;
+  onChange?: (value: boolean) => void;
+}
+
+export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
+  value?: boolean;
+  onChange?: (value: boolean) => void;
   children?: React.ReactNode;
 }
 
-export interface CheckboxItemProps<Value>
-  extends HTMLField<HTMLInputElement, Value[]> {
+export interface CheckboxItemProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value[];
+  onChange?: (value: Value[]) => void;
   represents: Value;
 }
 
-export interface RadioProps<Value> extends HTMLField<HTMLInputElement, Value> {
+export interface RadioProps<Value> extends HTMLField<HTMLInputElement> {
+  value?: Value;
+  onChange?: (value: Value) => void;
   represents: Value;
 }
 
-export interface SelectProps extends HTMLField<HTMLSelectElement, string> {
+export interface SelectProps extends HTMLField<HTMLSelectElement> {
+  value?: string;
+  onChange?: (value: string) => void;
   placeholder?: string;
   options?: Array<OptionProps | string>;
   append?: React.ReactNode;

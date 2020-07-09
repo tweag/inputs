@@ -1,16 +1,12 @@
-import { Field, FieldConfig } from "./types";
+import { Field, FieldProps } from "./types";
 import { concat } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
-export const useField = <V>(
-  props: FieldConfig<V> & { [key: string]: any }
-): Field<V> => {
+export const useField = (props: FieldProps): Field => {
   const componentId = useComponentId();
 
   const {
     id = `input-${componentId}`,
-    value,
-    onChange,
     label,
     labelProps,
     labelClassName,
@@ -32,8 +28,6 @@ export const useField = <V>(
     label,
     help,
     error,
-    value,
-    onChange,
     getFieldProps: () => ({
       ...fieldProps,
       className: concat(fieldClassName, fieldProps?.className)
@@ -55,9 +49,9 @@ export const useField = <V>(
       className: concat(errorClassName, errorProps?.className)
     }),
     getInputProps: () => ({
+      ...inputProps,
       id,
-      "aria-labelledby": concat(label && labelId, error && errorId),
-      ...inputProps
+      "aria-labelledby": concat(label && labelId, error && errorId)
     })
   };
 };

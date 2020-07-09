@@ -7,10 +7,12 @@ export function createToggleButton<ThemeProps>(
   theme: Theme<ThemeProps, ToggleButtonProps>
 ) {
   return function ToggleButton(props: ToggleButtonProps & ThemeProps): Element {
-    const { children, ...fieldConfig } = applyTheme(props, theme);
-    const field = useField(fieldConfig);
+    const { value, onChange, children, ...otherProps } = applyTheme(
+      props,
+      theme
+    );
 
-    const { value, onChange } = field;
+    const field = useField(otherProps);
     const handleClick = React.useCallback(() => {
       onChange && onChange(!value);
     }, [value, onChange]);
@@ -21,8 +23,8 @@ export function createToggleButton<ThemeProps>(
           onClick={handleClick}
           type="button"
           role="switch"
-          aria-checked={field.value}
-          aria-label={field.value ? "On" : "Off"}
+          aria-checked={value}
+          aria-label={value ? "On" : "Off"}
           {...field.getInputProps()}
         >
           {children}
