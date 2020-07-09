@@ -9,14 +9,15 @@ export function createToggleButton<ThemeProps>(
   return function ToggleButton(props: ToggleButtonProps & ThemeProps): Element {
     const field = useField(applyTheme(props, theme));
 
-    const onClick = React.useCallback(() => {
-      field.onChange && field.onChange(!field.value);
-    }, [field.value, field.onChange]);
+    const { value, onChange } = field;
+    const handleClick = React.useCallback(() => {
+      onChange && onChange(!value);
+    }, [value, onChange]);
 
     return (
       <div {...field.getFieldProps()}>
         <button
-          onClick={onClick}
+          onClick={handleClick}
           type="button"
           role="switch"
           aria-checked={field.value}

@@ -16,9 +16,11 @@ export function createRadio<ThemeProps>(
       field.value
     ]);
 
-    const onChange = React.useCallback(() => {
-      field.onChange && field.onChange(represents);
-    }, [represents, field.onChange]);
+    const { onChange } = field;
+    const handleChange = React.useCallback(
+      () => onChange && onChange(represents),
+      [represents, onChange]
+    );
 
     return (
       <div {...field.getFieldProps()}>
@@ -27,7 +29,7 @@ export function createRadio<ThemeProps>(
           type="radio"
           value={typeof represents === "string" ? represents : undefined}
           checked={checked}
-          onChange={onChange}
+          onChange={handleChange}
         />
 
         {field.label && (

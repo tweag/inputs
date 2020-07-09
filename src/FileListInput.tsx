@@ -12,11 +12,12 @@ export function createFileListInput<ThemeProps>(
     const { append, prepend, ...fieldConfig } = applyTheme(props, theme);
     const field = useField({ ...fieldConfig, value: undefined });
 
-    const onChange = React.useCallback(
+    const { onChange } = field;
+    const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange && field.onChange(event.target.files!);
+        onChange && onChange(event.target.files!);
       },
-      [field.onChange]
+      [onChange]
     );
 
     return (
@@ -31,7 +32,7 @@ export function createFileListInput<ThemeProps>(
         <input
           type="file"
           multiple
-          onChange={onChange}
+          onChange={handleChange}
           {...field.getInputProps()}
         />
         {append}

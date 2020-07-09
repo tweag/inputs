@@ -8,11 +8,12 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
     const { append, prepend, ...fieldConfig } = applyTheme(props, theme);
     const field = useField(fieldConfig);
 
-    const onChange = React.useCallback(
+    const { onChange } = field;
+    const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        field.onChange && field.onChange(event.target.value);
+        onChange && onChange(event.target.value);
       },
-      [field.onChange]
+      [onChange]
     );
 
     return (
@@ -27,7 +28,7 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
         <input
           type="text"
           value={field.value}
-          onChange={onChange}
+          onChange={handleChange}
           {...field.getInputProps()}
         />
         {append}

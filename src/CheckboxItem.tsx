@@ -13,24 +13,25 @@ export function createCheckboxItem<ThemeProps>(
     const { represents, ...fieldConfig } = applyTheme(props, theme);
     const field = useField(fieldConfig);
 
-    const checked = React.useMemo(
-      () => field.value && contains(field.value, represents),
-      [represents, field.value]
-    );
+    const { value, onChange } = field;
+    const checked = React.useMemo(() => value && contains(value, represents), [
+      represents,
+      value
+    ]);
 
-    const onChange = React.useCallback(
+    const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (!field.value || !field.onChange) {
+        if (!value || !onChange) {
           return;
         }
 
         const nextValue = event.target.checked
-          ? field.value.concat([represents])
-          : remove(field.value, represents);
+          ? value.concat([represents])
+          : remove(value, represents);
 
-        field.onChange(nextValue);
+        onChange(nextValue);
       },
-      [represents, field.value, field.onChange]
+      [represents, value, onChange]
     );
 
     return (
@@ -40,7 +41,7 @@ export function createCheckboxItem<ThemeProps>(
           type="checkbox"
           value={typeof represents === "string" ? represents : undefined}
           checked={checked}
-          onChange={onChange}
+          onChange={handleChange}
         />
 
         {field.label && (
