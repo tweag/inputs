@@ -3,6 +3,7 @@ import isEqual from "fast-deep-equal";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
 import { RadioProps, Element, Theme } from "./types";
+import { isUndefined } from "./utilities";
 
 export function createRadio<ThemeProps>(
   theme: Theme<ThemeProps, RadioProps<any>>
@@ -17,7 +18,7 @@ export function createRadio<ThemeProps>(
     } = applyTheme(props, theme);
 
     const field = useField(otherProps);
-    const checked = value && isEqual(value, represents);
+    const checked = isUndefined(value) ? undefined : isEqual(value, represents);
 
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {

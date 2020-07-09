@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
-import { contains, remove } from "./utilities";
+import { contains, remove, isUndefined } from "./utilities";
 import { CheckboxItemProps, Element, Theme } from "./types";
 
 export function createCheckboxItem<ThemeProps>(
@@ -19,7 +19,9 @@ export function createCheckboxItem<ThemeProps>(
     } = applyTheme(props, theme);
 
     const field = useField(otherProps);
-    const checked = value && contains(value, represents);
+    const checked = isUndefined(value)
+      ? undefined
+      : contains(value, represents);
 
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
