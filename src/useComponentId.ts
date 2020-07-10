@@ -1,4 +1,5 @@
 import * as React from "react";
+import { isUndefined } from "./utilities";
 
 const generate: () => number = (() => {
   let previousId = 0;
@@ -6,5 +7,11 @@ const generate: () => number = (() => {
 })();
 
 export const useComponentId = (): number => {
-  return React.useMemo(generate, []);
+  const ref = React.useRef<number>();
+
+  if (isUndefined(ref.current)) {
+    ref.current = generate();
+  }
+
+  return ref.current;
 };
