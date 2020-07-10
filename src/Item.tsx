@@ -6,14 +6,12 @@ import { applyTheme } from "./applyTheme";
 import { Element, Theme, HTMLField } from "./types";
 import { isUndefined, contains, remove } from "./utilities";
 
-export interface ItemProps<Value> extends HTMLField<HTMLInputElement> {
-  value: Value;
+export interface ItemProps extends HTMLField<HTMLInputElement> {
+  value: any;
 }
 
-export function createItem<ThemeProps>(
-  theme: Theme<ThemeProps, ItemProps<any>>
-) {
-  return function Item<Value>(props: ItemProps<Value> & ThemeProps): Element {
+export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
+  return function Item(props: ItemProps & ThemeProps): Element {
     const { type, value, onChangeValue, ...groupProps } = useGroup();
     const { value: itemValue, onChange, ...otherProps } = applyTheme(
       { type, ...props, ...groupProps },
