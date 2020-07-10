@@ -1,5 +1,5 @@
 import * as React from "react";
-import { applyTheme, Theme } from "./theme";
+import { useTheme, Theme } from "./useTheme";
 import { useField, FieldProps } from "./useField";
 import { HTMLProps } from "./utilities";
 
@@ -15,7 +15,7 @@ export function createToggleButton<ThemeProps>(
   theme: Theme<ThemeProps, ToggleButtonProps>
 ) {
   return function ToggleButton(props: ToggleButtonProps & ThemeProps) {
-    const { value, onChangeValue, children, ...otherProps } = applyTheme(
+    const { value, onChangeValue, children, ...otherProps } = useTheme(
       props,
       theme
     );

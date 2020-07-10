@@ -37,7 +37,7 @@ function compileClassName<Props>(
   return className.trim() || undefined;
 }
 
-export function applyTheme<Props extends { [key: string]: any }, ThemeProps>(
+export function useTheme<Props extends { [key: string]: any }, ThemeProps>(
   props: Props & ThemeProps,
   theme: Theme<ThemeProps, Props>,
   removeProps: boolean = true

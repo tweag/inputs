@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { applyTheme, Theme } from "./theme";
+import { useTheme, Theme } from "./useTheme";
 import { useField, FieldProps } from "./useField";
 
 export interface TextAreaProps
@@ -14,7 +14,7 @@ export function createTextArea<ThemeProps>(
   theme: Theme<ThemeProps, TextAreaProps>
 ) {
   return function TextArea(props: TextAreaProps & ThemeProps) {
-    const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
+    const { value, onChange, onChangeValue, ...otherProps } = useTheme(
       props,
       theme
     );

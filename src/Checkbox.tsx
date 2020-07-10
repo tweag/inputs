@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { applyTheme, Theme } from "./theme";
+import { useTheme, Theme } from "./useTheme";
 import { useField, FieldProps } from "./useField";
 
 export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
@@ -12,7 +12,7 @@ export function createCheckbox<ThemeProps>(
   theme: Theme<ThemeProps, CheckboxProps>
 ) {
   return function Checkbox(props: CheckboxProps & ThemeProps) {
-    const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
+    const { value, onChange, onChangeValue, ...otherProps } = useTheme(
       props,
       theme
     );

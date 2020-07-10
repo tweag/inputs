@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { applyTheme, Theme } from "./theme";
+import { useTheme, Theme } from "./useTheme";
 import { useField, FieldProps } from "./useField";
 
 export interface InputProps extends FieldProps, HTMLProps<HTMLInputElement> {
@@ -19,7 +19,7 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
       append,
       prepend,
       ...otherProps
-    } = applyTheme(props, theme);
+    } = useTheme(props, theme);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(

@@ -1,5 +1,5 @@
 import { Theme } from "../src";
-import { applyTheme } from "../src/theme";
+import { useTheme } from "../src/useTheme";
 
 interface Props {
   other?: boolean;
@@ -11,16 +11,16 @@ interface ThemeProps {
   bar?: boolean;
 }
 
-describe("applyTheme", () => {
+describe("useTheme", () => {
   it("removes theme props", () => {
     const theme: Theme<ThemeProps, Props> = { props: ["foo"] };
-    const newProps = applyTheme({ foo: true, other: true }, theme);
+    const newProps = useTheme({ foo: true, other: true }, theme);
     expect(newProps).toEqual({ other: true });
   });
 
   it("creates a `className` from a string", () => {
     const theme: Theme<ThemeProps, Props> = { className: "foo" };
-    const newProps = applyTheme({}, theme);
+    const newProps = useTheme({}, theme);
     expect(newProps).toEqual({ className: "foo" });
   });
 
@@ -29,7 +29,7 @@ describe("applyTheme", () => {
       className: { foo: true }
     };
 
-    const newProps = applyTheme({}, theme);
+    const newProps = useTheme({}, theme);
     expect(newProps).toEqual({ className: "foo" });
   });
 
@@ -42,19 +42,19 @@ describe("applyTheme", () => {
       }
     };
 
-    const newProps = applyTheme({ foo: true, bar: false }, theme);
+    const newProps = useTheme({ foo: true, bar: false }, theme);
     expect(newProps).toEqual({ className: "foo" });
   });
 
   it("appends to an incoming `className`", () => {
     const theme: Theme<ThemeProps, Props> = { className: "foo" };
-    const newProps = applyTheme({ className: "bar" }, theme);
+    const newProps = useTheme({ className: "bar" }, theme);
     expect(newProps).toEqual({ className: "bar foo" });
   });
 
   it("appends to an incoming `clasName` when given an object", () => {
     const theme: Theme<ThemeProps, Props> = { className: { foo: true } };
-    const newProps = applyTheme({ className: "bar" }, theme);
+    const newProps = useTheme({ className: "bar" }, theme);
     expect(newProps).toEqual({ className: "bar foo" });
   });
 });
