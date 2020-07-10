@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Input, InputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<InputProps> = {}) {
   return render(<Input {...props} />);
 }
 
 describe("<Input />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("defaults to `type=text`", () => {
     const field = setup();

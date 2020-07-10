@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Checkbox, CheckboxProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<CheckboxProps> = {}) {
   return render(<Checkbox {...props} />);
 }
 
 describe("<Checkbox />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("is a checkbox", () => {
     const field = setup();

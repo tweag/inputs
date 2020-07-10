@@ -2,9 +2,16 @@ import { RenderResult } from "@testing-library/react";
 import { FieldProps } from "../src";
 import { axe } from "jest-axe";
 
-export function itBehavesLikeAField(
-  render: (props?: Partial<FieldProps>) => RenderResult
-) {
+type Render = (props?: Partial<FieldProps>) => RenderResult;
+
+export function includeAllFieldTests(render: Render) {
+  includeFieldTests(render);
+  includeLabelTests(render);
+  includeHelpTests(render);
+  includeErrorTests(render);
+}
+
+export function includeFieldTests(render: Render) {
   it("renders", () => {
     const field = render();
     expect(field.container.firstChild).toMatchSnapshot();
@@ -15,7 +22,9 @@ export function itBehavesLikeAField(
     render({ innerRef });
     expect(innerRef).toHaveBeenCalled();
   });
+}
 
+export function includeLabelTests(render: Render) {
   describe("label", () => {
     it("renders", () => {
       const field = render({ label: "Label" });
@@ -41,7 +50,9 @@ export function itBehavesLikeAField(
       expect(label).toHaveClass("a b");
     });
   });
+}
 
+export function includeHelpTests(render: Render) {
   describe("help", () => {
     it("renders", () => {
       const field = render({ label: "Label", help: "Help" });
@@ -67,7 +78,9 @@ export function itBehavesLikeAField(
       expect(help).toHaveClass("a b");
     });
   });
+}
 
+export function includeErrorTests(render: Render) {
   describe("error", () => {
     it("renders", () => {
       const field = render({ label: "Label", error: "Error" });

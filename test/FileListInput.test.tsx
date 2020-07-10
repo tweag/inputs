@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FileListInput, FileListInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 const FILE_LIST = Symbol("FileList");
 
@@ -10,7 +10,7 @@ function setup(props: Partial<FileListInputProps> = {}) {
 }
 
 describe("<FileListInput />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("is a file", () => {
     const field = setup();

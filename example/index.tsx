@@ -55,7 +55,7 @@ const App = () => {
                 </div>
 
                 <div className="col-md">
-                  <Select label="Select" placeholder="Choose an option">
+                  <Select label="Select" placeholder="Choose an option" {...select}>
                     <option value="Milk">Milk</option>
                     <option value="Cheese">Cheese</option>
                     <option value="Eggs">Eggs</option>

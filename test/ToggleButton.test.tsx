@@ -1,14 +1,14 @@
 import * as React from "react";
 import { ToggleButton, ToggleButtonProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<ToggleButtonProps> = {}) {
   return render(<ToggleButton value={false} {...props} />);
 }
 
 describe("<ToggleButton />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("is a switch", () => {
     const field = setup();

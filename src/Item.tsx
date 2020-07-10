@@ -62,8 +62,6 @@ export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
             {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
           </label>
         )}
-
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </div>
     );
   };

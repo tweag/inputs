@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Item, ItemProps, Group, GroupProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import {
+  includeFieldTests,
+  includeLabelTests,
+  includeHelpTests
+} from "./sharedExamples";
 
 function setup(group: Partial<GroupProps> = {}, item: Partial<ItemProps> = {}) {
   return render(
@@ -11,9 +15,15 @@ function setup(group: Partial<GroupProps> = {}, item: Partial<ItemProps> = {}) {
   );
 }
 
+function includeTests(type: "radio" | "checkbox") {
+  includeFieldTests(props => setup({ type }, props));
+  includeLabelTests(props => setup({ type }, props));
+  includeHelpTests(props => setup({ type }, props));
+}
+
 describe("<Item />", () => {
   describe("checkbox", () => {
-    itBehavesLikeAField(props => setup({ type: "checkbox" }, props));
+    includeTests("checkbox");
 
     it("has a value", () => {
       const field = setup(
@@ -53,7 +63,7 @@ describe("<Item />", () => {
   });
 
   describe("radio", () => {
-    itBehavesLikeAField(props => setup({ type: "radio" }, props));
+    includeTests("radio");
 
     it("has a value", () => {
       const field = setup(

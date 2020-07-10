@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Select, SelectProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<SelectProps> = {}) {
   return render(
@@ -12,7 +12,7 @@ function setup(props: Partial<SelectProps> = {}) {
 }
 
 describe("<Select />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("has a value", () => {
     const field = setup({ value: "dog" });

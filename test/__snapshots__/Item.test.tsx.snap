@@ -1,32 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Item /> checkbox error renders 1`] = `
-<fieldset
-  id="fieldset-1"
->
-  <div>
-    <input
-      aria-labelledby="input-1-label input-1-error"
-      id="input-1"
-      type="checkbox"
-      value="1"
-    />
-    <label
-      for="input-1"
-      id="input-1-label"
-    >
-      Label
-    </label>
-    <span
-      id="input-1-error"
-      role="alert"
-    >
-      Error
-    </span>
-  </div>
-</fieldset>
-`;
-
 exports[`<Item /> checkbox help renders 1`] = `
 <fieldset
   id="fieldset-1"
@@ -82,33 +55,6 @@ exports[`<Item /> checkbox renders 1`] = `
       type="checkbox"
       value="1"
     />
-  </div>
-</fieldset>
-`;
-
-exports[`<Item /> radio error renders 1`] = `
-<fieldset
-  id="fieldset-1"
->
-  <div>
-    <input
-      aria-labelledby="input-1-label input-1-error"
-      id="input-1"
-      type="radio"
-      value="1"
-    />
-    <label
-      for="input-1"
-      id="input-1-label"
-    >
-      Label
-    </label>
-    <span
-      id="input-1-error"
-      role="alert"
-    >
-      Error
-    </span>
   </div>
 </fieldset>
 `;

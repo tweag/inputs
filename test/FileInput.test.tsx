@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FileInput, FileInputProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { itBehavesLikeAField } from "./sharedExamples";
+import { includeAllFieldTests } from "./sharedExamples";
 
 const FILE = Symbol("File");
 
@@ -10,7 +10,7 @@ function setup(props: Partial<FileInputProps> = {}) {
 }
 
 describe("<FileInput />", () => {
-  itBehavesLikeAField(setup);
+  includeAllFieldTests(setup);
 
   it("is a file", () => {
     const field = setup();
