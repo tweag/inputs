@@ -20,7 +20,8 @@ function compileClassName<Props>(
 
 export function applyTheme<Props extends { [key: string]: any }, ThemeProps>(
   props: Props & ThemeProps,
-  theme: Theme<ThemeProps, Props>
+  theme: Theme<ThemeProps, Props>,
+  removeProps: boolean = true
 ): Props {
   const newProps = { ...props };
   const { props: themeProps = [], ...classNames } = theme;
@@ -34,8 +35,10 @@ export function applyTheme<Props extends { [key: string]: any }, ThemeProps>(
     }
   }
 
-  for (const prop of themeProps) {
-    delete newProps[prop];
+  if (removeProps) {
+    for (const prop of themeProps) {
+      delete newProps[prop];
+    }
   }
 
   return newProps;

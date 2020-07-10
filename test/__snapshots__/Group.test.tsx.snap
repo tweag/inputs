@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FieldSet /> children renders 1`] = `
+exports[`<Group /> children renders 1`] = `
 <fieldset
   id="fieldset-1"
 >
@@ -8,7 +8,7 @@ exports[`<FieldSet /> children renders 1`] = `
 </fieldset>
 `;
 
-exports[`<FieldSet /> error renders 1`] = `
+exports[`<Group /> error renders 1`] = `
 <fieldset
   aria-describedby="fieldset-1-error"
   id="fieldset-1"
@@ -22,7 +22,7 @@ exports[`<FieldSet /> error renders 1`] = `
 </fieldset>
 `;
 
-exports[`<FieldSet /> help renders 1`] = `
+exports[`<Group /> help renders 1`] = `
 <fieldset
   id="fieldset-1"
 >
@@ -32,7 +32,7 @@ exports[`<FieldSet /> help renders 1`] = `
 </fieldset>
 `;
 
-exports[`<FieldSet /> legend renders 1`] = `
+exports[`<Group /> legend renders 1`] = `
 <fieldset
   id="fieldset-1"
 >
@@ -42,7 +42,7 @@ exports[`<FieldSet /> legend renders 1`] = `
 </fieldset>
 `;
 
-exports[`<FieldSet /> renders 1`] = `
+exports[`<Group /> renders 1`] = `
 <fieldset
   id="fieldset-1"
 />

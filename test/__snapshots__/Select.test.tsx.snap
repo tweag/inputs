@@ -11,7 +11,13 @@ exports[`<Select /> error renders 1`] = `
   <select
     aria-labelledby="input-1-label input-1-error"
     id="input-1"
-  />
+  >
+    <option
+      value="dog"
+    >
+      Dog
+    </option>
+  </select>
   <span
     id="input-1-error"
     role="alert"
@@ -35,7 +41,13 @@ exports[`<Select /> help renders 1`] = `
   <select
     aria-labelledby="input-1-label"
     id="input-1"
-  />
+  >
+    <option
+      value="dog"
+    >
+      Dog
+    </option>
+  </select>
 </div>
 `;
 
@@ -50,7 +62,13 @@ exports[`<Select /> label renders 1`] = `
   <select
     aria-labelledby="input-1-label"
     id="input-1"
-  />
+  >
+    <option
+      value="dog"
+    >
+      Dog
+    </option>
+  </select>
 </div>
 `;
 
@@ -58,6 +76,12 @@ exports[`<Select /> renders 1`] = `
 <div>
   <select
     id="input-1"
-  />
+  >
+    <option
+      value="dog"
+    >
+      Dog
+    </option>
+  </select>
 </div>
 `;

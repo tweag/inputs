@@ -1,9 +1,9 @@
 import { RenderResult } from "@testing-library/react";
-import { FieldConfig } from "../src";
+import { FieldProps } from "../src";
 import { axe } from "jest-axe";
 
 export function itBehavesLikeAField(
-  render: (props?: Partial<FieldConfig>) => RenderResult
+  render: (props?: Partial<FieldProps>) => RenderResult
 ) {
   it("renders", () => {
     const field = render();

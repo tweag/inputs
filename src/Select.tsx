@@ -3,28 +3,14 @@ import { useField } from "./useField";
 import { applyTheme } from "./applyTheme";
 import { Element, Theme, HTMLField } from "./types";
 
-export interface OptionProps {
-  value: string;
-  label?: string;
-  key?: any;
-  disabled?: boolean;
-}
-
 export interface SelectProps extends HTMLField<HTMLSelectElement> {
   value?: string;
   onChangeValue?: (value: string) => void;
   placeholder?: string;
-  options?: Array<OptionProps | string>;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
   children?: React.ReactNode;
 }
-
-const coerce = (option: OptionProps | string): OptionProps => {
-  return typeof option === "string"
-    ? { label: option, value: option, key: option }
-    : option;
-};
 
 export function createSelect<ThemeProps>(
   theme: Theme<ThemeProps, SelectProps>
@@ -35,7 +21,6 @@ export function createSelect<ThemeProps>(
       onChange,
       onChangeValue,
       placeholder,
-      options,
       append,
       prepend,
       children,
@@ -50,16 +35,6 @@ export function createSelect<ThemeProps>(
       },
       [onChange, onChangeValue]
     );
-
-    const renderOption = (option: OptionProps | string) => {
-      const { value, label = value, key = value, ...props } = coerce(option);
-
-      return (
-        <option key={key} value={value} {...props}>
-          {label}
-        </option>
-      );
-    };
 
     return (
       <div {...field.getFieldProps()}>
@@ -81,7 +56,6 @@ export function createSelect<ThemeProps>(
             </option>
           )}
 
-          {options?.map(renderOption)}
           {children}
         </select>
         {append}

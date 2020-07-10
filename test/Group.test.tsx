@@ -1,13 +1,13 @@
 import * as React from "react";
-import { FieldSet, FieldSetProps } from "../src";
+import { Group, GroupProps } from "../src";
 import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
 
-function setup(props: Partial<FieldSetProps> = {}) {
-  return render(<FieldSet {...props} />);
+function setup(props: Partial<GroupProps> = {}) {
+  return render(<Group type="checkbox" {...props} />);
 }
 
-describe("<FieldSet />", () => {
+describe("<Group />", () => {
   it("renders", () => {
     const field = setup();
     expect(field.container.firstChild).toMatchSnapshot();

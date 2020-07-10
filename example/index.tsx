@@ -1,37 +1,26 @@
 import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useValue, required, notEmpty, pick, omit } from "./utilities";
+import { useValue, required, notEmpty, pick } from "./utilities";
 import {
   Checkbox,
-  CheckboxItem,
-  FieldSet,
+  Item,
   FileInput,
   FileListInput,
   Input,
-  Radio,
   Select,
   TextArea,
-  ToggleButton
+  ToggleButton,
+  Group
 } from "./fields";
-
-interface Person {
-  name: string;
-}
-
-const people: Person[] = [
-  { name: "Guy Fietti" },
-  { name: "Abe Lincoln" },
-  { name: "Oprah Winfrey" }
-];
 
 const App = () => {
   const text = useValue<string>("", required);
-  const select = useValue<string>("");
-  const textarea = useValue<string>("");
+  const select = useValue<string>("", required);
+  const textarea = useValue<string>("", required);
   const checkbox = useValue<boolean>(true);
-  const checkboxes = useValue<Person[]>([], notEmpty);
-  const radio = useValue<Person>();
+  const checkboxes = useValue<string[]>([], notEmpty);
+  const radio = useValue<number>(null);
   const toggle = useValue<boolean>(true);
   const file = useValue<File>();
   const files = useValue<FileList>();
@@ -57,26 +46,29 @@ const App = () => {
       <main>
         <section>
           <form onSubmit={event => event.preventDefault()}>
-            <FieldSet legend="Controls" className="mb-4">
+            <fieldset className="mb-4">
+              <legend>Controls</legend>
+
               <div className="row">
                 <div className="col-md">
                   <Input label="Text" {...text} />
                 </div>
 
                 <div className="col-md">
-                  <Select
-                    label="Select"
-                    options={["A", "B"]}
-                    placeholder="Choose an option"
-                    {...select}
-                  />
+                  <Select label="Select" placeholder="Choose an option">
+                    <option value="Milk">Milk</option>
+                    <option value="Cheese">Cheese</option>
+                    <option value="Eggs">Eggs</option>
+                  </Select>
                 </div>
               </div>
 
               <TextArea label="Comments" {...textarea} />
-            </FieldSet>
+            </fieldset>
 
-            <FieldSet legend="File Uploads" className="mb-4">
+            <fieldset className="mb-4">
+              <legend>File Uploads</legend>
+
               <div className="row">
                 <div className="col-md">
                   <FileInput label="File" {...file} />
@@ -86,9 +78,11 @@ const App = () => {
                   <FileListInput label="Multiple Files" {...files} />
                 </div>
               </div>
-            </FieldSet>
+            </fieldset>
 
-            <FieldSet legend="Toggles" className="mb-4">
+            <fieldset className="mb-4">
+              <legend>Toggles</legend>
+
               <div className="row">
                 <div className="col-md">
                   <Checkbox label="I agree" {...checkbox} />
@@ -100,33 +94,27 @@ const App = () => {
                   </ToggleButton>
                 </div>
               </div>
-            </FieldSet>
+            </fieldset>
 
             <div className="row mb-4">
               <div className="col-md">
-                <FieldSet legend="Multiple Checkboxes" error={checkboxes.error}>
-                  {people.map(person => (
-                    <CheckboxItem
-                      key={person.name}
-                      label={person.name}
-                      represents={person}
-                      {...omit(checkboxes, "error")}
-                    />
-                  ))}
-                </FieldSet>
+                <Group
+                  type="checkbox"
+                  legend="Multiple Checkboxes"
+                  {...checkboxes}
+                >
+                  <Item value="PHL" label="Philadelphia" />
+                  <Item value="CHI" label="Chicago" />
+                  <Item value="NYC" label="New York" />
+                </Group>
               </div>
 
               <div className="col-md">
-                <FieldSet legend="Radio Group" error={radio.error}>
-                  {people.map(person => (
-                    <Radio
-                      key={person.name}
-                      label={person.name}
-                      represents={person}
-                      {...omit(radio, "error")}
-                    />
-                  ))}
-                </FieldSet>
+                <Group type="radio" legend="Radio Group" {...radio}>
+                  <Item value={1} label="Bacon" />
+                  <Item value={2} label="Cheetos" />
+                  <Item value={3} label="Waffles" />
+                </Group>
               </div>
             </div>
 

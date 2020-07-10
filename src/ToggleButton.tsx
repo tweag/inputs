@@ -28,11 +28,11 @@ export function createToggleButton<ThemeProps>(
       <div {...field.getFieldProps()}>
         <button
           onClick={handleClick}
-          type="button"
           role="switch"
           aria-checked={value}
           aria-label={value ? "On" : "Off"}
           {...field.getInputProps()}
+          type="button"
         >
           {children}
         </button>

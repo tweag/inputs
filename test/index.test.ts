@@ -3,22 +3,20 @@ import * as inputs from "../src";
 test("exports", () => {
   expect(Object.keys(inputs).sort()).toEqual([
     "Checkbox",
-    "CheckboxItem",
-    "FieldSet",
     "FileInput",
     "FileListInput",
+    "Group",
     "Input",
-    "Radio",
+    "Item",
     "Select",
     "TextArea",
     "ToggleButton",
     "createCheckbox",
-    "createCheckboxItem",
-    "createFieldSet",
     "createFileInput",
     "createFileListInput",
+    "createGroup",
     "createInput",
-    "createRadio",
+    "createItem",
     "createSelect",
     "createTextArea",
     "createToggleButton",
@@ -32,6 +30,7 @@ test("exports", () => {
     "parseNumber",
     "parseTime",
     "useComponentId",
-    "useField"
+    "useField",
+    "useFieldSet"
   ]);
 });

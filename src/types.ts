@@ -1,6 +1,7 @@
 import * as React from "react";
 
-interface HTMLProps<T> extends React.HTMLProps<T> {
+export interface HTMLProps<T>
+  extends Omit<React.HTMLProps<T>, "value" | "label"> {
   "data-testid"?: string;
 }
 
@@ -11,15 +12,8 @@ export interface FC<Props = {}> {
   displayName?: string;
 }
 
-export interface FieldInputProps {
-  id: string;
-  ref?: React.Ref<any>;
-  "aria-labelledby"?: string;
-  [key: string]: any;
-}
-
-export interface FieldConfig {
-  id?: any;
+export interface FieldProps {
+  id?: string;
   innerRef?: React.Ref<any>;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
@@ -34,35 +28,7 @@ export interface FieldConfig {
   fieldClassName?: string;
 }
 
-export interface FieldProps extends FieldConfig {
-  [key: string]: any;
-}
-
-export interface Field {
-  label?: React.ReactNode;
-  help?: React.ReactNode;
-  error?: React.ReactNode;
-  getInputProps(): FieldInputProps;
-  getLabelProps(): HTMLProps<HTMLLabelElement>;
-  getHelpProps(): HTMLProps<HTMLSpanElement>;
-  getErrorProps(): HTMLProps<HTMLSpanElement>;
-  getFieldProps(): HTMLProps<HTMLDivElement>;
-}
-
-export interface FieldSetProps extends HTMLProps<HTMLFieldSetElement> {
-  legend?: React.ReactNode;
-  legendProps?: HTMLProps<HTMLLegendElement>;
-  legendClassName?: string;
-  help?: React.ReactNode;
-  helpProps?: HTMLProps<HTMLSpanElement>;
-  helpClassName?: string;
-  error?: React.ReactNode;
-  errorProps?: HTMLProps<HTMLSpanElement>;
-  errorClassName?: string;
-}
-
-export type HTMLField<Element> = FieldConfig &
-  Omit<HTMLProps<Element>, "value" | "label">;
+export type HTMLField<Element> = FieldProps & HTMLProps<Element>;
 
 interface ThemeClassNames {
   className?: string;
