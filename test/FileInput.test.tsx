@@ -19,7 +19,7 @@ describe("<FileInput />", () => {
     expect(input).toHaveAttribute("type", "file");
   });
 
-  it("emits `onChange`", () => {
+  it("emits `onChangeValue`", () => {
     const onChange = jest.fn();
     const field = setup({ onChange });
     const input = field.container.querySelector("input");

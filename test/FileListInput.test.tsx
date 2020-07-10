@@ -20,7 +20,7 @@ describe("<FileListInput />", () => {
     expect(input).toHaveAttribute("multiple", "");
   });
 
-  it("emits `onChange`", () => {
+  it("emits `onChangeValue`", () => {
     const onChange = jest.fn();
     const field = setup({ onChange });
     const input = field.container.querySelector("input");
