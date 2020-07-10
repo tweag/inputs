@@ -26,7 +26,7 @@ export function remove<T>(values: T[], value: T): T[] {
   const result = [];
   for (let i = 0; i < values.length; i++) {
     if (!isEqual(values[i], value)) {
-      result.push(value);
+      result.push(values[i]);
     }
   }
   return result;

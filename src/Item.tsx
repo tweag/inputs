@@ -19,6 +19,7 @@ export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
     );
 
     const field = useField(otherProps);
+    const isDOMValue = ["string", "number"].includes(typeof itemValue);
     const checked = isUndefined(value)
       ? undefined
       : type === "checkbox"
@@ -50,7 +51,7 @@ export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
       <div {...field.getFieldProps()}>
         <input
           type={type}
-          value={typeof itemValue === "string" ? itemValue : undefined}
+          value={isDOMValue ? itemValue : undefined}
           checked={checked}
           onChange={handleChange}
           {...field.getInputProps()}

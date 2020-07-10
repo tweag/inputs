@@ -16,9 +16,7 @@ export function useGroup<T = any>(): GroupContext<T> {
   const group = useContext(context);
 
   if (!group) {
-    throw new Error(
-      "You attempted to render an <Item /> that was not wrapped in a <Group />"
-    );
+    throw new Error("<Item /> must be rendered within a <Group />");
   }
 
   return group;
