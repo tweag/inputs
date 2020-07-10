@@ -45,7 +45,7 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     getFieldSetProps: () => ({
       ...fieldSetProps,
       id,
-      className,
+      className: concat(className, fieldSetProps?.className),
       "aria-describedby": isUndefined(error) ? undefined : errorId
     }),
     getLegendProps: () => ({
