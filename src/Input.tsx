@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { HTMLProps } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
 
-export interface InputProps extends HTMLField<HTMLInputElement> {
+export interface InputProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value?: string;
   onChangeValue?: (value: string) => void;
   append?: React.ReactNode;
@@ -11,7 +11,7 @@ export interface InputProps extends HTMLField<HTMLInputElement> {
 }
 
 export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
-  return function Input(props: InputProps & ThemeProps): Element {
+  return function Input(props: InputProps & ThemeProps) {
     const {
       value,
       onChange,

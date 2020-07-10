@@ -1,6 +1,14 @@
 import isEqual from "fast-deep-equal";
 
 /**
+ * Extract props from an HTMLElement, but remove conflicts.
+ */
+export interface HTMLProps<T>
+  extends Omit<React.HTMLProps<T>, "value" | "label"> {
+  "data-testid"?: string;
+}
+
+/**
  * Check if the value is undefined.
  */
 export function isUndefined(value: any): value is undefined {

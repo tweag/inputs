@@ -1,9 +1,11 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { HTMLProps } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
 
-export interface FileInputProps extends HTMLField<HTMLInputElement> {
+export interface FileInputProps
+  extends FieldProps,
+    HTMLProps<HTMLInputElement> {
   value?: any;
   onChangeValue?: (value: File) => void;
   append?: React.ReactNode;
@@ -13,7 +15,7 @@ export interface FileInputProps extends HTMLField<HTMLInputElement> {
 export function createFileInput<ThemeProps>(
   theme: Theme<ThemeProps, FileInputProps>
 ) {
-  return function FileInput(props: FileInputProps & ThemeProps): Element {
+  return function FileInput(props: FileInputProps & ThemeProps) {
     const {
       value: _value,
       onChange,

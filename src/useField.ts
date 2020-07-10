@@ -1,6 +1,22 @@
-import { FieldProps } from "./types";
-import { concat } from "./utilities";
+import * as React from "react";
+import { concat, HTMLProps } from "./utilities";
 import { useComponentId } from "./useComponentId";
+
+export interface FieldProps {
+  id?: string;
+  innerRef?: React.Ref<any>;
+  label?: React.ReactNode;
+  labelProps?: HTMLProps<HTMLLabelElement>;
+  labelClassName?: string;
+  help?: React.ReactNode;
+  helpProps?: HTMLProps<HTMLSpanElement>;
+  helpClassName?: string;
+  error?: React.ReactNode;
+  errorProps?: HTMLProps<HTMLSpanElement>;
+  errorClassName?: string;
+  fieldProps?: HTMLProps<HTMLDivElement>;
+  fieldClassName?: string;
+}
 
 export const useField = <T extends FieldProps>(props: T) => {
   const componentId = useComponentId();

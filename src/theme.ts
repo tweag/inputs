@@ -1,4 +1,23 @@
-import { ClassName, Theme } from "./types";
+interface ThemeClassNames {
+  className?: string;
+  fieldClassName?: string;
+  labelClassName?: string;
+  legendClassName?: string;
+  helpClassName?: string;
+  errorClassName?: string;
+}
+
+export interface ClassName<Props = {}> {
+  [key: string]: boolean | ((props: Props) => any);
+}
+
+export type Theme<ThemeProps = {}, Props = {}> = {
+  props?: Array<keyof ThemeProps | string>;
+} & {
+  [K in keyof Props & keyof ThemeClassNames]?:
+    | string
+    | ClassName<Props & ThemeProps>;
+};
 
 function compileClassName<Props>(
   classNames: string | ClassName<Props> | undefined,

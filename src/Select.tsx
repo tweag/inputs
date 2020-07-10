@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { HTMLProps } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
 
-export interface SelectProps extends HTMLField<HTMLSelectElement> {
+export interface SelectProps extends FieldProps, HTMLProps<HTMLSelectElement> {
   value?: string;
   onChangeValue?: (value: string) => void;
   placeholder?: string;
@@ -15,7 +15,7 @@ export interface SelectProps extends HTMLField<HTMLSelectElement> {
 export function createSelect<ThemeProps>(
   theme: Theme<ThemeProps, SelectProps>
 ) {
-  return function Select(props: SelectProps & ThemeProps): Element {
+  return function Select(props: SelectProps & ThemeProps) {
     const {
       value,
       onChange,
