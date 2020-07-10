@@ -14,6 +14,13 @@ export function createGroup<ThemeProps>(
     const { children, ...otherProps } = useTheme(props, theme, false);
     const field = useFieldSet(otherProps);
 
+    /**
+     * It's important that we at least pass the error down
+     * to the field. Otherwise, theming becomes more challenging
+     * for the `Item`.
+     */
+    const fieldProps = { error: props.error, ...field.getFieldProps() };
+
     return (
       <fieldset {...field.getFieldSetProps()}>
         {field.legend && (
@@ -21,7 +28,7 @@ export function createGroup<ThemeProps>(
         )}
 
         {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-        <GroupProvider value={field.getFieldProps()}>{children}</GroupProvider>
+        <GroupProvider value={fieldProps}>{children}</GroupProvider>
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </fieldset>
     );
