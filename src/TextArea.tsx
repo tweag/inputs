@@ -1,9 +1,11 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { HTMLProps } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
 
-export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
+export interface TextAreaProps
+  extends FieldProps,
+    HTMLProps<HTMLTextAreaElement> {
   value?: string;
   onChangeValue?: (value: string) => void;
 }
@@ -11,7 +13,7 @@ export interface TextAreaProps extends HTMLField<HTMLTextAreaElement> {
 export function createTextArea<ThemeProps>(
   theme: Theme<ThemeProps, TextAreaProps>
 ) {
-  return function TextArea(props: TextAreaProps & ThemeProps): Element {
+  return function TextArea(props: TextAreaProps & ThemeProps) {
     const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
       props,
       theme

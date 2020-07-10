@@ -1,17 +1,16 @@
 import * as React from "react";
 import isEqual from "fast-deep-equal";
-import { useField } from "./useField";
 import { useGroup } from "./useGroup";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
-import { isUndefined, contains, remove } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
+import { isUndefined, contains, remove, HTMLProps } from "./utilities";
 
-export interface ItemProps extends HTMLField<HTMLInputElement> {
+export interface ItemProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value: any;
 }
 
 export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
-  return function Item(props: ItemProps & ThemeProps): Element {
+  return function Item(props: ItemProps & ThemeProps) {
     const { type, value, onChangeValue, ...groupProps } = useGroup();
     const { value: itemValue, onChange, ...otherProps } = applyTheme(
       { type, ...props, ...groupProps },

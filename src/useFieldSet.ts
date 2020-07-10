@@ -1,6 +1,5 @@
-import { HTMLProps } from "./types";
 import { useComponentId } from "./useComponentId";
-import { isUndefined, concat } from "./utilities";
+import { isUndefined, concat, HTMLProps } from "./utilities";
 
 export interface FieldSetProps {
   id?: string;

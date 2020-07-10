@@ -1,6 +1,5 @@
 import * as React from "react";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme } from "./types";
+import { applyTheme, Theme } from "./theme";
 import { GroupProvider, GroupContext } from "./useGroup";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
@@ -11,7 +10,7 @@ export interface GroupProps<T = any> extends GroupContext<T>, FieldSetProps {
 export function createGroup<ThemeProps>(
   theme: Theme<ThemeProps, GroupProps<any>>
 ) {
-  return function Group<T>(props: GroupProps<T> & ThemeProps): Element {
+  return function Group<T>(props: GroupProps<T> & ThemeProps) {
     const { children, ...otherProps } = applyTheme(props, theme, false);
     const field = useFieldSet(otherProps);
 

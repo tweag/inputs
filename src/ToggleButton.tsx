@@ -1,9 +1,11 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
+import { HTMLProps } from "./utilities";
 
-export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
+export interface ToggleButtonProps
+  extends FieldProps,
+    HTMLProps<HTMLButtonElement> {
   value?: boolean;
   onChangeValue?: (value: boolean) => void;
   children?: React.ReactNode;
@@ -12,7 +14,7 @@ export interface ToggleButtonProps extends HTMLField<HTMLButtonElement> {
 export function createToggleButton<ThemeProps>(
   theme: Theme<ThemeProps, ToggleButtonProps>
 ) {
-  return function ToggleButton(props: ToggleButtonProps & ThemeProps): Element {
+  return function ToggleButton(props: ToggleButtonProps & ThemeProps) {
     const { value, onChangeValue, children, ...otherProps } = applyTheme(
       props,
       theme

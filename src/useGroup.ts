@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { HTMLProps } from "./types";
+import { HTMLProps } from "./utilities";
 
 export interface GroupContext<T> extends HTMLProps<HTMLInputElement> {
   type: "checkbox" | "radio";

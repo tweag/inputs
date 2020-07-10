@@ -1,5 +1,5 @@
 import { Theme } from "../src";
-import { applyTheme } from "../src/applyTheme";
+import { applyTheme } from "../src/theme";
 
 interface Props {
   other?: boolean;

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useField } from "./useField";
-import { applyTheme } from "./applyTheme";
-import { Element, Theme, HTMLField } from "./types";
+import { HTMLProps } from "./utilities";
+import { applyTheme, Theme } from "./theme";
+import { useField, FieldProps } from "./useField";
 
-export interface CheckboxProps extends HTMLField<HTMLInputElement> {
+export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value?: boolean;
   onChangeValue?: (value: boolean) => void;
 }
@@ -11,7 +11,7 @@ export interface CheckboxProps extends HTMLField<HTMLInputElement> {
 export function createCheckbox<ThemeProps>(
   theme: Theme<ThemeProps, CheckboxProps>
 ) {
-  return function Checkbox(props: CheckboxProps & ThemeProps): Element {
+  return function Checkbox(props: CheckboxProps & ThemeProps) {
     const { value, onChange, onChangeValue, ...otherProps } = applyTheme(
       props,
       theme
