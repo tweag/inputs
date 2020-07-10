@@ -1,8 +1,12 @@
-# react-baseline-inputs
+<h1 align="center">react-baseline-inputs</h1>
 
-![Build](https://img.shields.io/travis/promptworks/react-baseline-inputs/master?style=flat-square)
-![Version](https://img.shields.io/npm/v/react-baseline-inputs?style=flat-square)
-![Size](https://img.shields.io/bundlephobia/minzip/react-baseline-inputs?style=flat-square)
-![License](https://img.shields.io/npm/l/react-baseline-inputs?style=flat-square)
+<div align="center">
+
+![Build](https://github.com/rzane/codegen/workflows/Build/badge.svg)
+![Version](https://img.shields.io/npm/v/react-baseline-inputs)
+![Size](https://img.shields.io/bundlephobia/minzip/react-baseline-inputs)
+![License](https://img.shields.io/npm/l/react-baseline-inputs)
+
+</div>
 
 A set of helpful input components that take the burden out of building forms with React.
