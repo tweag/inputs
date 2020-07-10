@@ -1,12 +1,11 @@
 import {
   ClassName,
   createCheckbox,
-  createCheckboxItem,
-  createFieldSet,
+  createItem,
+  createGroup,
   createFileInput,
   createFileListInput,
   createInput,
-  createRadio,
   createSelect,
   createTextArea,
   createToggleButton
@@ -54,13 +53,6 @@ export const TextArea = createTextArea<ThemeProps>({
   className: { ...className, "form-control": true }
 });
 
-export const Radio = createRadio<ThemeProps>({
-  ...theme,
-  labelClassName: "custom-control-label",
-  fieldClassName: "custom-control custom-radio",
-  className: { ...className, "custom-control-input": true }
-});
-
 export const Checkbox = createCheckbox<ThemeProps>({
   ...theme,
   labelClassName: "custom-control-label",
@@ -68,11 +60,15 @@ export const Checkbox = createCheckbox<ThemeProps>({
   className: { ...className, "custom-control-input": true }
 });
 
-export const CheckboxItem = createCheckboxItem<ThemeProps>({
+export const Item = createItem<ThemeProps>({
   ...theme,
   labelClassName: "custom-control-label",
-  fieldClassName: "custom-control custom-checkbox",
-  className: { ...className, "custom-control-input": true }
+  className: { ...className, "custom-control-input": true },
+  fieldClassName: {
+    "custom-control": true,
+    "custom-checkbox": props => props.type === "checkbox",
+    "custom-radio": props => props.type === "radio"
+  }
 });
 
 export const ToggleButton = createToggleButton<ThemeProps>({
@@ -83,7 +79,8 @@ export const ToggleButton = createToggleButton<ThemeProps>({
   }
 });
 
-export const FieldSet = createFieldSet({
+export const Group = createGroup<ThemeProps>({
+  props: ["valid", "invalid"],
   helpClassName: "form-text text-muted",
   errorClassName: "text-danger"
 });

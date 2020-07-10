@@ -10,11 +10,6 @@ export const notEmpty = (value: any[]): string | undefined => {
   return value.length ? undefined : "You must choose at least one";
 };
 
-export const omit = <T, K extends keyof T>(data: T, key: K): Omit<T, K> => {
-  const { [key]: _trash, ...result } = data;
-  return result;
-};
-
 export const useValue = <T>(
   initialValue?: T,
   validate?: (value: T) => string | undefined

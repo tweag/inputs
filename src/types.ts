@@ -20,7 +20,7 @@ export interface FieldInputProps {
 }
 
 export interface FieldConfig {
-  id?: any;
+  id?: string;
   innerRef?: React.Ref<any>;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
