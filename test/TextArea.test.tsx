@@ -16,7 +16,7 @@ describe("<TextArea />", () => {
     expect(input).toHaveValue("foo");
   });
 
-  it("emits `onChange`", () => {
+  it("emits `onChangeValue`", () => {
     const onChange = jest.fn();
     const field = setup({ onChange });
     const input = field.getByRole("textbox");

@@ -20,7 +20,7 @@ describe("<Select />", () => {
     expect(select).toHaveValue("dog");
   });
 
-  it("emits `onChange`", () => {
+  it("emits `onChangeValue`", () => {
     const onChange = jest.fn();
     const field = setup({ onChange });
     const select = field.getByRole("combobox");
