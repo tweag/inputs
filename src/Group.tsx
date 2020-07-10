@@ -4,7 +4,7 @@ import { Element, Theme } from "./types";
 import { GroupProvider, GroupContext } from "./useGroup";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps<T> extends GroupContext<T>, FieldSetProps {
+export interface GroupProps<T = any> extends GroupContext<T>, FieldSetProps {
   children?: React.ReactNode;
 }
 
