@@ -12,14 +12,7 @@ export interface FC<Props = {}> {
   displayName?: string;
 }
 
-export interface FieldInputProps {
-  id: string;
-  ref?: React.Ref<any>;
-  "aria-labelledby"?: string;
-  [key: string]: any;
-}
-
-export interface FieldConfig {
+export interface FieldProps {
   id?: string;
   innerRef?: React.Ref<any>;
   label?: React.ReactNode;
@@ -35,22 +28,7 @@ export interface FieldConfig {
   fieldClassName?: string;
 }
 
-export interface FieldProps extends FieldConfig {
-  [key: string]: any;
-}
-
-export interface Field {
-  label?: React.ReactNode;
-  help?: React.ReactNode;
-  error?: React.ReactNode;
-  getInputProps(): FieldInputProps;
-  getLabelProps(): HTMLProps<HTMLLabelElement>;
-  getHelpProps(): HTMLProps<HTMLSpanElement>;
-  getErrorProps(): HTMLProps<HTMLSpanElement>;
-  getFieldProps(): HTMLProps<HTMLDivElement>;
-}
-
-export type HTMLField<Element> = FieldConfig & HTMLProps<Element>;
+export type HTMLField<Element> = FieldProps & HTMLProps<Element>;
 
 interface ThemeClassNames {
   className?: string;

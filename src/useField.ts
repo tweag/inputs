@@ -1,8 +1,8 @@
-import { Field, FieldProps } from "./types";
+import { FieldProps } from "./types";
 import { concat } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
-export const useField = (props: FieldProps): Field => {
+export const useField = <T extends FieldProps>(props: T) => {
   const componentId = useComponentId();
 
   const {
