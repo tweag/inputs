@@ -55,12 +55,11 @@ const App = () => {
                 </div>
 
                 <div className="col-md">
-                  <Select
-                    label="Select"
-                    options={["A", "B"]}
-                    placeholder="Choose an option"
-                    {...select}
-                  />
+                  <Select label="Select" placeholder="Choose an option">
+                    <option value="Milk">Milk</option>
+                    <option value="Cheese">Cheese</option>
+                    <option value="Eggs">Eggs</option>
+                  </Select>
                 </div>
               </div>
 
