@@ -21,8 +21,9 @@ export type Theme<Props, ExtraProps = {}> = {
 };
 
 export interface Config<Props, ExtraProps = {}> {
-  props?: Array<keyof ExtraProps | string>;
+  remove?: string[];
   theme?: Theme<ExtraProps, Props>;
+  useHook?: (props: Props & ExtraProps) => Partial<Props>;
 }
 
 function compile<Props>(
@@ -43,26 +44,29 @@ function compile<Props>(
   return className.trim();
 }
 
-export function useConfig<Props, ThemeProps>(
-  config: Config<Props, ThemeProps>,
-  props: Props & ThemeProps,
-  remove: boolean = true
-): Props {
-  const result: any = { ...props };
+const THEME: Theme<any, any> = {};
+const HOOK = () => ({});
+const REMOVE: string[] = [];
 
-  if (config.theme) {
-    for (const prop in config.theme) {
-      const spec = config.theme[prop];
-      const className = compile(spec, props, (props as any)[prop]);
-      if (className) result[prop] = className;
+export function useConfig<P, T>(config: Config<P, T>, combinedProps: P & T): P {
+  const { theme = THEME, useHook = HOOK, remove = REMOVE } = config;
+
+  const props: any = {
+    ...combinedProps,
+    ...useHook(combinedProps)
+  };
+
+  for (const prop in theme) {
+    const className = compile(theme[prop], props, props[prop]);
+
+    if (className) {
+      props[prop] = className;
     }
   }
 
-  if (remove && config.props) {
-    for (const prop of config.props) {
-      delete result[prop];
-    }
+  for (const prop of remove) {
+    delete props[prop];
   }
 
-  return result;
+  return props;
 }

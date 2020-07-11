@@ -21,8 +21,7 @@ export const useValue = <T>(
   return {
     value,
     error,
-    valid: touched && !error,
-    invalid: touched && !!error,
+    touched,
     onChangeValue(value: T) {
       setValue(value);
       setError(validate && validate(value));

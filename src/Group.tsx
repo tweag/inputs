@@ -9,7 +9,7 @@ export interface GroupProps<V = any> extends GroupContext<V>, FieldSetProps {
 
 export function createGroup<T>(config: Config<GroupProps, T>) {
   return function Group<V>(props: GroupProps<V> & T) {
-    const { children, ...otherProps } = useConfig(config, props, false);
+    const { children, ...otherProps } = useConfig(config, props);
     const field = useFieldSet(otherProps);
 
     /**
