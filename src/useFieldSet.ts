@@ -2,8 +2,6 @@ import { useComponentId } from "./useComponentId";
 import { isUndefined, concat, HTMLProps } from "./utilities";
 
 export interface FieldSetProps {
-  id?: string;
-  className?: string;
   touched?: boolean;
   legend?: React.ReactNode;
   legendProps?: HTMLProps<HTMLLegendElement>;
@@ -15,14 +13,11 @@ export interface FieldSetProps {
   errorProps?: HTMLProps<HTMLSpanElement>;
   errorClassName?: string;
   fieldSetProps?: HTMLProps<HTMLFieldSetElement>;
+  fieldSetClassName?: string;
 }
 
 export function useFieldSet<T extends FieldSetProps>(props: T) {
-  const componentId = useComponentId();
-
   const {
-    id = `fieldset-${componentId}`,
-    className,
     legend,
     legendProps,
     legendClassName,
@@ -33,10 +28,13 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     errorProps,
     errorClassName,
     fieldSetProps,
+    fieldSetClassName,
     touched: _touched,
     ...fieldProps
   } = props;
 
+  const componentId = useComponentId();
+  const id = fieldSetProps?.id || `fieldset-${componentId}`;
   const errorId = errorProps?.id || `${id}-error`;
 
   return {
@@ -47,7 +45,7 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     getFieldSetProps: () => ({
       ...fieldSetProps,
       id,
-      className: concat(className, fieldSetProps?.className),
+      className: concat(fieldSetClassName, fieldSetProps?.className),
       "aria-describedby": isUndefined(error) ? undefined : errorId
     }),
     getLegendProps: () => ({

@@ -1,6 +1,7 @@
 interface ThemeClassNames {
   className?: string;
   fieldClassName?: string;
+  fieldSetClassName?: string;
   labelClassName?: string;
   legendClassName?: string;
   helpClassName?: string;
