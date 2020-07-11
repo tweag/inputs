@@ -4,6 +4,7 @@ import { isUndefined, concat, HTMLProps } from "./utilities";
 export interface FieldSetProps {
   id?: string;
   className?: string;
+  touched?: boolean;
   legend?: React.ReactNode;
   legendProps?: HTMLProps<HTMLLegendElement>;
   legendClassName?: string;
@@ -32,6 +33,7 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     errorProps,
     errorClassName,
     fieldSetProps,
+    touched: _touched,
     ...fieldProps
   } = props;
 
