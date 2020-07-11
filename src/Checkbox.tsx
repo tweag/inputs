@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
@@ -8,13 +8,13 @@ export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
   onChangeValue?: (value: boolean) => void;
 }
 
-export function createCheckbox<ThemeProps>(
-  theme: Theme<ThemeProps, CheckboxProps>
+export function createCheckbox<ExtraProps>(
+  config: Config<CheckboxProps, ExtraProps>
 ) {
-  return function Checkbox(props: CheckboxProps & ThemeProps) {
-    const { value, onChange, onChangeValue, ...otherProps } = useTheme(
-      props,
-      theme
+  return function Checkbox(props: CheckboxProps & ExtraProps) {
+    const { value, onChange, onChangeValue, ...otherProps } = useConfig(
+      config,
+      props
     );
 
     const field = useField(otherProps);

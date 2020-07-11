@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface InputProps extends FieldProps, HTMLProps<HTMLInputElement> {
@@ -10,8 +10,8 @@ export interface InputProps extends FieldProps, HTMLProps<HTMLInputElement> {
   prepend?: React.ReactNode;
 }
 
-export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
-  return function Input(props: InputProps & ThemeProps) {
+export function createInput<T>(config: Config<InputProps, T>) {
+  return function Input(props: InputProps & T) {
     const {
       value,
       onChange,
@@ -19,7 +19,7 @@ export function createInput<ThemeProps>(theme: Theme<ThemeProps, InputProps>) {
       append,
       prepend,
       ...otherProps
-    } = useTheme(props, theme);
+    } = useConfig(config, props);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(

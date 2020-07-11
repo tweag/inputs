@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface TextAreaProps
@@ -10,13 +10,11 @@ export interface TextAreaProps
   onChangeValue?: (value: string) => void;
 }
 
-export function createTextArea<ThemeProps>(
-  theme: Theme<ThemeProps, TextAreaProps>
-) {
-  return function TextArea(props: TextAreaProps & ThemeProps) {
-    const { value, onChange, onChangeValue, ...otherProps } = useTheme(
-      props,
-      theme
+export function createTextArea<T>(config: Config<TextAreaProps, T>) {
+  return function TextArea(props: TextAreaProps & T) {
+    const { value, onChange, onChangeValue, ...otherProps } = useConfig(
+      config,
+      props
     );
 
     const field = useField(otherProps);

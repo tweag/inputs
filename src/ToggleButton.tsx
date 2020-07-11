@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 import { HTMLProps } from "./utilities";
 
@@ -11,13 +11,11 @@ export interface ToggleButtonProps
   children?: React.ReactNode;
 }
 
-export function createToggleButton<ThemeProps>(
-  theme: Theme<ThemeProps, ToggleButtonProps>
-) {
-  return function ToggleButton(props: ToggleButtonProps & ThemeProps) {
-    const { value, onChangeValue, children, ...otherProps } = useTheme(
-      props,
-      theme
+export function createToggleButton<T>(config: Config<ToggleButtonProps, T>) {
+  return function ToggleButton(props: ToggleButtonProps & T) {
+    const { value, onChangeValue, children, ...otherProps } = useConfig(
+      config,
+      props
     );
 
     const field = useField(otherProps);

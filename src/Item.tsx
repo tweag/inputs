@@ -1,7 +1,7 @@
 import * as React from "react";
 import isEqual from "fast-deep-equal";
 import { useGroup } from "./useGroup";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 import { isUndefined, contains, remove, HTMLProps } from "./utilities";
 
@@ -9,13 +9,14 @@ export interface ItemProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value: any;
 }
 
-export function createItem<ThemeProps>(theme: Theme<ThemeProps, ItemProps>) {
-  return function Item(props: ItemProps & ThemeProps) {
+export function createItem<T>(config: Config<ItemProps, T>) {
+  return function Item(props: ItemProps & T) {
     const { type, value, onChangeValue, ...groupProps } = useGroup();
-    const { value: itemValue, onChange, ...otherProps } = useTheme(
-      { type, ...props, ...groupProps },
-      theme
-    );
+    const { value: itemValue, onChange, ...otherProps } = useConfig(config, {
+      type,
+      ...props,
+      ...groupProps
+    });
 
     const field = useField(otherProps);
     const isDOMValue = ["string", "number"].includes(typeof itemValue);

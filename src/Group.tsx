@@ -1,17 +1,15 @@
 import * as React from "react";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { GroupProvider, GroupContext } from "./useGroup";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps<T = any> extends GroupContext<T>, FieldSetProps {
+export interface GroupProps<V = any> extends GroupContext<V>, FieldSetProps {
   children?: React.ReactNode;
 }
 
-export function createGroup<ThemeProps>(
-  theme: Theme<ThemeProps, GroupProps<any>>
-) {
-  return function Group<T>(props: GroupProps<T> & ThemeProps) {
-    const { children, ...otherProps } = useTheme(props, theme, false);
+export function createGroup<T>(config: Config<GroupProps, T>) {
+  return function Group<V>(props: GroupProps<V> & T) {
+    const { children, ...otherProps } = useConfig(config, props, false);
     const field = useFieldSet(otherProps);
 
     /**

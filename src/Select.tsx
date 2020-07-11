@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface SelectProps extends FieldProps, HTMLProps<HTMLSelectElement> {
@@ -12,10 +12,8 @@ export interface SelectProps extends FieldProps, HTMLProps<HTMLSelectElement> {
   children?: React.ReactNode;
 }
 
-export function createSelect<ThemeProps>(
-  theme: Theme<ThemeProps, SelectProps>
-) {
-  return function Select(props: SelectProps & ThemeProps) {
+export function createSelect<T>(config: Config<SelectProps, T>) {
+  return function Select(props: SelectProps & T) {
     const {
       value,
       onChange,
@@ -25,7 +23,7 @@ export function createSelect<ThemeProps>(
       prepend,
       children,
       ...otherProps
-    } = useTheme(props, theme);
+    } = useConfig(config, props);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(
