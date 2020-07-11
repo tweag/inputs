@@ -5,6 +5,7 @@ import { useComponentId } from "./useComponentId";
 export interface FieldProps {
   id?: string;
   innerRef?: React.Ref<any>;
+  touched?: boolean;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
   labelClassName?: string;
@@ -35,6 +36,7 @@ export const useField = <T extends FieldProps>(props: T) => {
     errorClassName,
     fieldProps,
     fieldClassName,
+    touched: _touched,
     ...inputProps
   } = props;
 
