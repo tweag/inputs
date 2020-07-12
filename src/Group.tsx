@@ -3,12 +3,12 @@ import { useConfig, Config } from "./useConfig";
 import { GroupProvider, GroupContext } from "./useGroup";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps<V = any> extends GroupContext<V>, FieldSetProps {
+export interface GroupProps extends GroupContext, FieldSetProps {
   children?: React.ReactNode;
 }
 
 export function createGroup<T>(config: Config<GroupProps, T>) {
-  return function Group<V>(props: GroupProps<V> & T) {
+  return function Group(props: GroupProps & T) {
     const { children, ...otherProps } = useConfig(config, props);
     const field = useFieldSet(otherProps);
 
