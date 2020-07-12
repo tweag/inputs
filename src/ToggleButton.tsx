@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useConfig, Config } from "./useConfig";
-import { useField, FieldProps } from "./useField";
 import { HTMLProps } from "./utilities";
+import { customize } from "./customize";
+import { useField, FieldProps } from "./useField";
 
 export interface ToggleButtonProps
   extends FieldProps,
@@ -11,42 +11,37 @@ export interface ToggleButtonProps
   children?: React.ReactNode;
 }
 
-export function createToggleButton<T>(config: Config<ToggleButtonProps, T>) {
-  return function ToggleButton(props: ToggleButtonProps & T) {
-    const { value, onChangeValue, children, ...otherProps } = useConfig(
-      config,
-      props
-    );
+export function ToggleButton(props: ToggleButtonProps) {
+  const { value, onChangeValue, children, ...otherProps } = props;
 
-    const field = useField(otherProps);
-    const handleClick = React.useCallback(
-      () => onChangeValue && onChangeValue(!value),
-      [value, onChangeValue]
-    );
+  const field = useField(otherProps);
+  const handleClick = React.useCallback(
+    () => onChangeValue && onChangeValue(!value),
+    [value, onChangeValue]
+  );
 
-    return (
-      <div {...field.getFieldProps()}>
-        <button
-          onClick={handleClick}
-          role="switch"
-          aria-checked={value}
-          aria-label={value ? "On" : "Off"}
-          {...field.getInputProps()}
-          type="button"
-        >
-          {children}
-        </button>
+  return (
+    <div {...field.getFieldProps()}>
+      <button
+        onClick={handleClick}
+        role="switch"
+        aria-checked={value}
+        aria-label={value ? "On" : "Off"}
+        {...field.getInputProps()}
+        type="button"
+      >
+        {children}
+      </button>
 
-        {field.label && (
-          <label {...field.getLabelProps()}>
-            {field.label}
-            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-          </label>
-        )}
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-      </div>
-    );
-  };
+      {field.label && (
+        <label {...field.getLabelProps()}>
+          {field.label}
+          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+        </label>
+      )}
+      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+    </div>
+  );
 }
 
-export const ToggleButton = createToggleButton({});
+export const createToggleButton = customize(ToggleButton);

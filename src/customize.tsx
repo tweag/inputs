@@ -1,3 +1,5 @@
+import * as React from "react";
+
 interface ClassNameProps {
   className?: string;
   fieldClassName?: string;
@@ -48,25 +50,30 @@ const THEME: Theme<any, any> = {};
 const HOOK = () => ({});
 const REMOVE: string[] = [];
 
-export function useConfig<P, T>(config: Config<P, T>, combinedProps: P & T): P {
-  const { theme = THEME, useHook = HOOK, remove = REMOVE } = config;
+export function customize<P>(Inner: React.ComponentType<P>) {
+  return function create<T = {}>(config: Config<P, T>) {
+    const { theme = THEME, useHook = HOOK, remove = REMOVE } = config;
 
-  const props: any = {
-    ...combinedProps,
-    ...useHook(combinedProps)
-  };
+    function Outer(props: P & T) {
+      const innerProps: any = { ...props, ...useHook(props) };
 
-  for (const prop in theme) {
-    const className = compile(theme[prop], props, props[prop]);
+      for (const prop in theme) {
+        const className = compile(theme[prop], props, innerProps[prop]);
+        if (className) {
+          innerProps[prop] = className;
+        }
+      }
 
-    if (className) {
-      props[prop] = className;
+      for (const prop of remove) {
+        delete innerProps[prop];
+      }
+
+      return <Inner {...innerProps} />;
     }
-  }
 
-  for (const prop of remove) {
-    delete props[prop];
-  }
+    const name = Inner.displayName || Inner.name || "Field";
+    Outer.displayName = `Custom${name}`;
 
-  return props;
+    return Outer;
+  };
 }

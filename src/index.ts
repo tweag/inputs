@@ -8,7 +8,7 @@ export * from "./Select";
 export * from "./TextArea";
 export * from "./ToggleButton";
 export * from "./conversions";
-export { Config, Theme, ClassName } from "./useConfig";
+export { Config, Theme, ClassName } from "./customize";
 export { useComponentId } from "./useComponentId";
 export { useField, FieldProps } from "./useField";
 export { useFieldSet, FieldSetProps } from "./useFieldSet";
