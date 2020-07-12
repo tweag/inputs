@@ -22,7 +22,7 @@ export type Theme<Props, ExtraProps = {}> = {
 
 export interface Config<Props, ExtraProps = {}> {
   remove?: string[];
-  theme?: Theme<ExtraProps, Props>;
+  theme?: Theme<Props, ExtraProps>;
   useHook?: (props: Props & ExtraProps) => Partial<Props>;
 }
 
