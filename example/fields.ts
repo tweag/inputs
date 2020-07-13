@@ -1,7 +1,7 @@
 import { FieldValidator, useField } from "formik";
 import {
   Config,
-  ClassName,
+  Theme,
   FieldProps,
   createCheckbox,
   createItem,
@@ -11,7 +11,9 @@ import {
   createInput,
   createSelect,
   createTextArea,
-  createToggleButton
+  createToggleButton,
+  ClassName,
+  createTheme
 } from "../src";
 
 interface ExtraProps {
@@ -20,7 +22,7 @@ interface ExtraProps {
 }
 
 const config: Config<FieldProps, ExtraProps> = {
-  remove: ["validate"],
+  omit: ["validate"],
   useHook({ name, validate }) {
     const [field, meta, helpers] = useField({ name, validate });
 
@@ -35,7 +37,7 @@ const config: Config<FieldProps, ExtraProps> = {
   }
 };
 
-const theme = {
+const theme: Theme<FieldProps> = {
   fieldClassName: "form-group",
   helpClassName: "form-text text-muted",
   errorClassName: "invalid-feedback"
@@ -48,61 +50,70 @@ const className: ClassName<FieldProps & ExtraProps> = {
 
 export const Input = createInput<ExtraProps>({
   ...config,
-  theme: { ...theme, className: { ...className, "form-control": true } }
+  theme: createTheme({
+    ...theme,
+    className: { ...className, "form-control": true }
+  })
 });
 
 export const FileInput = createFileInput<ExtraProps>({
   ...config,
-  theme: { ...theme, className: { ...className, "form-control-file": true } }
+  theme: createTheme({
+    ...theme,
+    className: { ...className, "form-control-file": true }
+  })
 });
 
 export const FileListInput = createFileListInput<ExtraProps>({
   ...config,
-  theme: { ...theme, className: { ...className, "form-control-file": true } }
+  theme: createTheme({
+    ...theme,
+    className: { ...className, "form-control-file": true }
+  })
 });
 
 export const Select = createSelect<ExtraProps>({
   ...config,
-  theme: { ...theme, className: { ...className, "custom-select": true } }
+  theme: createTheme({
+    ...theme,
+    className: { ...className, "custom-select": true }
+  })
 });
 
 export const TextArea = createTextArea<ExtraProps>({
   ...config,
-  theme: { ...theme, className: { ...className, "form-control": true } }
+  theme: createTheme({
+    ...theme,
+    className: { ...className, "form-control": true }
+  })
 });
 
 export const Checkbox = createCheckbox<ExtraProps>({
   ...config,
-  theme: {
+  theme: createTheme({
     ...theme,
     labelClassName: "custom-control-label",
     fieldClassName: "form-group custom-control custom-checkbox",
     className: { ...className, "custom-control-input": true }
-  }
+  })
 });
 
 export const ToggleButton = createToggleButton<ExtraProps>({
   ...config,
-  theme: {
+  theme: createTheme({
     ...theme,
     className: {
       "btn btn-sm btn-outline-primary mr-2": true,
       active: props => props.value
     }
-  }
+  })
 });
 
 export const Group = createGroup<ExtraProps>({
   ...config,
-  theme: {
+  theme: createTheme({
     helpClassName: "form-text text-muted",
-    errorClassName: "text-danger"
-  }
-});
-
-export const Item = createItem({
-  theme: {
-    ...theme,
+    errorClassName: "text-danger",
     labelClassName: "custom-control-label",
     className: { ...className, "custom-control-input": true },
     fieldClassName: {
@@ -110,5 +121,7 @@ export const Item = createItem({
       "custom-checkbox": props => props.type === "checkbox",
       "custom-radio": props => props.type === "radio"
     }
-  }
+  })
 });
+
+export const Item = createItem({});
