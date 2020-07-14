@@ -1,11 +1,14 @@
 import * as React from "react";
+import { ThemeProp } from "./theme";
 import { concat, HTMLProps } from "./utilities";
 import { useComponentId } from "./useComponentId";
 
 export interface FieldProps {
   id?: string;
+  theme?: ThemeProp;
   innerRef?: React.Ref<any>;
   touched?: boolean;
+  className?: string;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
   labelClassName?: string;
@@ -23,7 +26,9 @@ export const useField = <T extends FieldProps>(props: T) => {
   const componentId = useComponentId();
 
   const {
+    theme,
     id = `input-${componentId}`,
+    className,
     innerRef,
     label,
     labelProps,
@@ -47,31 +52,32 @@ export const useField = <T extends FieldProps>(props: T) => {
     label,
     help,
     error,
+    getInputProps: () => ({
+      ...inputProps,
+      id,
+      ref: innerRef,
+      "aria-labelledby": concat(label && labelId, error && errorId),
+      className: concat(theme?.input, className)
+    }),
     getFieldProps: () => ({
       ...fieldProps,
-      className: concat(fieldClassName, fieldProps?.className)
+      className: concat(theme?.field, fieldClassName, fieldProps?.className)
     }),
     getLabelProps: () => ({
       ...labelProps,
       id: labelId,
       htmlFor: id,
-      className: concat(labelClassName, labelProps?.className)
+      className: concat(theme?.label, labelClassName, labelProps?.className)
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: concat(helpClassName, helpProps?.className)
+      className: concat(theme?.help, helpClassName, helpProps?.className)
     }),
     getErrorProps: () => ({
       ...errorProps,
       id: errorId,
       role: "alert",
-      className: concat(errorClassName, errorProps?.className)
-    }),
-    getInputProps: () => ({
-      ...inputProps,
-      id,
-      ref: innerRef,
-      "aria-labelledby": concat(label && labelId, error && errorId)
+      className: concat(theme?.error, errorClassName, errorProps?.className)
     })
   };
 };

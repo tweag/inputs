@@ -1,27 +1,30 @@
 import * as React from "react";
+import { Theme, apply, ThemeProp } from "./theme";
 
-export interface Config<P, T = {}> {
+export type Hook<P, T> = (props: P & T) => Partial<P>;
+
+export interface Config<P, T> {
   name?: string;
-  omit?: string[];
-  theme?: (props: P & T) => Partial<P>;
-  useHook?: (props: P & T) => Partial<P>;
+  omit?: Array<keyof T | string>;
+  theme?: Theme<P & T>;
+  hook?: Hook<P, T>;
 }
 
-export function customize<P>(Inner: React.ComponentType<P>) {
-  return function create<T = {}>(config: Config<P, T>) {
-    const {
-      name = "Custom",
-      omit = [],
-      theme = () => ({}),
-      useHook = () => ({})
-    } = config;
+export function customize<P extends { theme?: ThemeProp }>(
+  Inner: React.ComponentType<P>
+) {
+  return function create<T>(config: Config<P, T>) {
+    const { name = "Custom", omit = [], theme, hook } = config;
 
     function useProps(props: P & T): P {
-      let acc: any = { ...props, ...useHook(props) };
-      acc = { ...acc, ...theme(acc) };
+      const acc = hook ? { ...props, ...hook(props) } : { ...props };
+
+      if (theme && !props.theme) {
+        acc.theme = apply(theme, acc);
+      }
 
       for (const prop of omit) {
-        delete acc[prop];
+        delete acc[prop as keyof T];
       }
 
       return acc;
