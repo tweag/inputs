@@ -12,6 +12,7 @@
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
   },
   "dependencies": {
+    "formik": "^2.1.4",
     "react-app-polyfill": "^1.0.1"
   },
   "devDependencies": {

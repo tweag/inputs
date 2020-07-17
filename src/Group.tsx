@@ -1,25 +1,18 @@
 import * as React from "react";
-import { useTheme, Theme } from "./useTheme";
-import { GroupProvider, GroupContext } from "./useGroup";
+import { useConfig, Config } from "./useConfig";
+import { GroupProvider } from "./useGroupContext";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps<T = any> extends GroupContext<T>, FieldSetProps {
+export interface GroupProps extends FieldSetProps {
+  value?: any;
   children?: React.ReactNode;
+  onChangeValue?: (value: any) => void;
 }
 
-export function createGroup<ThemeProps>(
-  theme: Theme<ThemeProps, GroupProps<any>>
-) {
-  return function Group<T>(props: GroupProps<T> & ThemeProps) {
-    const { children, ...otherProps } = useTheme(props, theme, false);
+export function createGroup<T>(config: Config<GroupProps, T>) {
+  return function Group(props: GroupProps & T) {
+    const { children, ...otherProps } = useConfig(config, props);
     const field = useFieldSet(otherProps);
-
-    /**
-     * It's important that we at least pass the error down
-     * to the field. Otherwise, theming becomes more challenging
-     * for the `Item`.
-     */
-    const fieldProps = { error: props.error, ...field.getFieldProps() };
 
     return (
       <fieldset {...field.getFieldSetProps()}>
@@ -28,7 +21,7 @@ export function createGroup<ThemeProps>(
         )}
 
         {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-        <GroupProvider value={fieldProps}>{children}</GroupProvider>
+        <GroupProvider value={field.getFieldProps()}>{children}</GroupProvider>
         {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
       </fieldset>
     );

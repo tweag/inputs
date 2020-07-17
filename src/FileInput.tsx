@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { useTheme, Theme } from "./useTheme";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface FileInputProps
@@ -12,10 +12,8 @@ export interface FileInputProps
   prepend?: React.ReactNode;
 }
 
-export function createFileInput<ThemeProps>(
-  theme: Theme<ThemeProps, FileInputProps>
-) {
-  return function FileInput(props: FileInputProps & ThemeProps) {
+export function createFileInput<T>(config: Config<FileInputProps, T>) {
+  return function FileInput(props: FileInputProps & T) {
     const {
       value: _value,
       onChange,
@@ -23,7 +21,7 @@ export function createFileInput<ThemeProps>(
       append,
       prepend,
       ...otherProps
-    } = useTheme(props, theme);
+    } = useConfig(config, props);
 
     const field = useField(otherProps);
     const handleChange = React.useCallback(

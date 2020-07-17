@@ -1,7 +1,9 @@
+import { ThemeProp } from "./useConfig";
 import { useComponentId } from "./useComponentId";
 import { isUndefined, concat, HTMLProps } from "./utilities";
 
 export interface FieldSetProps {
+  theme?: ThemeProp;
   touched?: boolean;
   legend?: React.ReactNode;
   legendProps?: HTMLProps<HTMLLegendElement>;
@@ -18,6 +20,7 @@ export interface FieldSetProps {
 
 export function useFieldSet<T extends FieldSetProps>(props: T) {
   const {
+    theme,
     legend,
     legendProps,
     legendClassName,
@@ -41,26 +44,33 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     legend,
     help,
     error,
-    getFieldProps: () => fieldProps,
+    getFieldProps: () => ({
+      ...fieldProps,
+      theme
+    }),
     getFieldSetProps: () => ({
       ...fieldSetProps,
       id,
-      className: concat(fieldSetClassName, fieldSetProps?.className),
-      "aria-describedby": isUndefined(error) ? undefined : errorId
+      "aria-describedby": isUndefined(error) ? undefined : errorId,
+      className: concat(
+        theme?.fieldset,
+        fieldSetClassName,
+        fieldSetProps?.className
+      )
     }),
     getLegendProps: () => ({
       ...legendProps,
-      className: concat(legendClassName, legendProps?.className)
+      className: concat(theme?.legend, legendClassName, legendProps?.className)
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: concat(helpClassName, helpProps?.className)
+      className: concat(theme?.help, helpClassName, helpProps?.className)
     }),
     getErrorProps: () => ({
       ...errorProps,
       role: "alert",
       id: errorId,
-      className: concat(errorClassName, errorProps?.className)
+      className: concat(theme?.error, errorClassName, errorProps?.className)
     })
   };
 }

@@ -1,86 +1,108 @@
-import {
-  ClassName,
-  createCheckbox,
-  createItem,
-  createGroup,
-  createFileInput,
-  createFileListInput,
-  createInput,
-  createSelect,
-  createTextArea,
-  createToggleButton
-} from "../src";
+import * as Baseline from "../src";
+import { FieldValidator, useField } from "formik";
 
-interface ThemeProps {
-  valid?: boolean;
-  invalid?: boolean;
+interface Props {
+  name: string;
+  validate?: FieldValidator;
 }
 
-const theme = {
-  props: ["valid", "invalid"],
-  helpClassName: "form-text text-muted",
-  errorClassName: "invalid-feedback",
-  fieldClassName: "form-group"
+const useFormik = ({ name, validate }: Props) => {
+  const [field, meta, helpers] = useField({ name, validate });
+
+  return {
+    name,
+    error: meta.error,
+    touched: meta.touched,
+    value: field.value,
+    onBlur: field.onBlur,
+    onChangeValue: helpers.setValue
+  };
 };
 
-const className: ClassName<ThemeProps> = {
-  "is-valid": props => props.valid,
-  "is-invalid": props => props.invalid
+const field: Baseline.Theme<Baseline.FieldProps> = props => ({
+  field: "form-group",
+  help: "form-text text-muted",
+  error: "invalid-feedback",
+  input: Baseline.concat(
+    props.touched && !props.error && "is-valid",
+    props.touched && props.error && "is-invalid"
+  )
+});
+
+const fieldSet: Baseline.Theme<Baseline.FieldSetProps> = props => ({
+  help: "form-text text-muted",
+  error: Baseline.concat("text-danger", !props.touched && "d-none"),
+  input: Baseline.concat(
+    props.touched && !props.error && "is-valid",
+    props.touched && props.error && "is-invalid"
+  )
+});
+
+const config: Baseline.Config<any, Props> = {
+  omit: ["validate"],
+  hook: useFormik
 };
 
-export const Input = createInput<ThemeProps>({
-  ...theme,
-  className: { ...className, "form-control": true }
+export const Input = Baseline.createInput<Props>({
+  ...config,
+  theme: Baseline.merge(field, { input: "form-control" })
 });
 
-export const FileInput = createFileInput<ThemeProps>({
-  ...theme,
-  className: { ...className, "form-control-file": true }
+export const FileInput = Baseline.createFileInput<Props>({
+  ...config,
+  theme: Baseline.merge(field, { input: "form-control-file" })
 });
 
-export const FileListInput = createFileListInput<ThemeProps>({
-  ...theme,
-  className: { ...className, "form-control-file": true }
+export const FileListInput = Baseline.createFileListInput<Props>({
+  ...config,
+  theme: Baseline.merge(field, { input: "form-control-file" })
 });
 
-export const Select = createSelect<ThemeProps>({
-  ...theme,
-  className: { ...className, "custom-select": true }
+export const Select = Baseline.createSelect<Props>({
+  ...config,
+  theme: Baseline.merge(field, { input: "custom-select" })
 });
 
-export const TextArea = createTextArea<ThemeProps>({
-  ...theme,
-  className: { ...className, "form-control": true }
+export const TextArea = Baseline.createTextArea<Props>({
+  ...config,
+  theme: Baseline.merge(field, { input: "form-control" })
 });
 
-export const Checkbox = createCheckbox<ThemeProps>({
-  ...theme,
-  labelClassName: "custom-control-label",
-  fieldClassName: "form-group custom-control custom-checkbox",
-  className: { ...className, "custom-control-input": true }
+export const Checkbox = Baseline.createCheckbox<Props>({
+  ...config,
+  theme: Baseline.merge(field, {
+    label: "custom-control-label",
+    field: "custom-control custom-checkbox",
+    input: "custom-control-input"
+  })
 });
 
-export const Item = createItem<ThemeProps>({
-  ...theme,
-  labelClassName: "custom-control-label",
-  className: { ...className, "custom-control-input": true },
-  fieldClassName: {
-    "custom-control": true,
-    "custom-checkbox": props => props.type === "checkbox",
-    "custom-radio": props => props.type === "radio"
-  }
+export const ToggleButton = Baseline.createToggleButton<Props>({
+  ...config,
+  theme: Baseline.merge<Baseline.ToggleButtonProps>(field, props => ({
+    input: Baseline.concat(
+      "btn btn-sm btn-outline-primary mr-2",
+      props.value && "active"
+    )
+  }))
 });
 
-export const ToggleButton = createToggleButton<ThemeProps>({
-  ...theme,
-  className: {
-    "btn btn-sm btn-outline-primary mr-2": true,
-    active: props => props.value
-  }
+export const CheckboxGroup = Baseline.createGroup<Props>({
+  ...config,
+  theme: Baseline.merge(fieldSet, {
+    label: "custom-control-label",
+    input: "custom-control-input",
+    field: "custom-control custom-checkbox"
+  })
 });
 
-export const Group = createGroup<ThemeProps>({
-  props: ["valid", "invalid"],
-  helpClassName: "form-text text-muted",
-  errorClassName: "text-danger"
+export const RadioGroup = Baseline.createGroup<Props>({
+  ...config,
+  theme: Baseline.merge(fieldSet, {
+    label: "custom-control-label",
+    input: "custom-control-input",
+    field: "custom-control custom-radio"
+  })
 });
+
+export const Item = Baseline.Item;
