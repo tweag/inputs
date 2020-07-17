@@ -1,5 +1,5 @@
-import { Config, FieldProps, Theme, merge } from "../src";
 import { renderHook } from "@testing-library/react-hooks";
+import { Config, FieldProps, Theme, merge } from "../src";
 import { useConfig } from "../src/useConfig";
 
 interface Props {
