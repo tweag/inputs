@@ -11,13 +11,14 @@ export interface ThemeProp {
   [key: string]: string | undefined;
 }
 
-export type Theme<P> = ThemeProp | (<T extends P>(props: T) => ThemeProp);
+export type ThemeFn<P> = <T extends P>(props: T) => ThemeProp;
+export type Theme<P> = ThemeProp | ThemeFn<P>;
 
 export function apply<P>(theme: Theme<P>, props: P) {
   return typeof theme === "function" ? theme(props) : theme;
 }
 
-export function merge<P>(...themes: Theme<P>[]): Theme<P> {
+export function merge<P>(...themes: Theme<P>[]): ThemeFn<P> {
   return props => {
     const merged: ThemeProp = {};
 
