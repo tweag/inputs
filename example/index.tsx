@@ -125,24 +125,26 @@ const App = () => {
               <div className="row mb-4">
                 <CheckboxGroup
                   name="checkboxes"
+                  type="checkbox"
                   legend="Multiple Checkboxes"
                   validate={notEmpty}
                   fieldSetClassName="col-md"
                 >
-                  <Item type="checkbox" value="PHL" label="Philadelphia" />
-                  <Item type="checkbox" value="CHI" label="Chicago" />
-                  <Item type="checkbox" value="NYC" label="New York" />
+                  <Item value="PHL" label="Philadelphia" />
+                  <Item value="CHI" label="Chicago" />
+                  <Item value="NYC" label="New York" />
                 </CheckboxGroup>
 
                 <RadioGroup
                   name="radio"
+                  type="radio"
                   legend="Radio Group"
                   validate={required}
                   fieldSetClassName="col-md"
                 >
-                  <Item type="radio" value={1} label="Bacon" />
-                  <Item type="radio" value={2} label="Cheetos" />
-                  <Item type="radio" value={3} label="Waffles" />
+                  <Item value={1} label="Bacon" />
+                  <Item value={2} label="Cheetos" />
+                  <Item value={3} label="Waffles" />
                 </RadioGroup>
               </div>
 
