@@ -1,13 +1,13 @@
 import * as React from "react";
-import { ToggleButton, ToggleButtonProps } from "../src";
+import { Switch, SwitchProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { includeAllFieldTests } from "./sharedExamples";
 
-function setup(props: Partial<ToggleButtonProps> = {}) {
-  return render(<ToggleButton value={false} {...props} />);
+function setup(props: Partial<SwitchProps> = {}) {
+  return render(<Switch value={false} {...props} />);
 }
 
-describe("<ToggleButton />", () => {
+describe("<Switch />", () => {
   includeAllFieldTests(setup);
 
   it("is a switch", () => {

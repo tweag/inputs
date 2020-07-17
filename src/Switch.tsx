@@ -3,16 +3,14 @@ import { HTMLProps } from "./utilities";
 import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
-export interface ToggleButtonProps
-  extends FieldProps,
-    HTMLProps<HTMLButtonElement> {
+export interface SwitchProps extends FieldProps, HTMLProps<HTMLButtonElement> {
   value?: boolean;
   onChangeValue?: (value: boolean) => void;
   children?: React.ReactNode;
 }
 
-export function createToggleButton<T>(config: Config<ToggleButtonProps, T>) {
-  return function ToggleButton(props: ToggleButtonProps & T) {
+export function createSwitch<T>(config: Config<SwitchProps, T>) {
+  return function Switch(props: SwitchProps & T) {
     const { value, onChangeValue, children, ...otherProps } = useConfig(
       config,
       props
@@ -49,4 +47,4 @@ export function createToggleButton<T>(config: Config<ToggleButtonProps, T>) {
   };
 }
 
-export const ToggleButton = createToggleButton({});
+export const Switch = createSwitch({});

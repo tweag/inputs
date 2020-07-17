@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ToggleButton /> error renders 1`] = `
+exports[`<Switch /> error renders 1`] = `
 <div>
   <button
     aria-checked="false"
@@ -25,7 +25,7 @@ exports[`<ToggleButton /> error renders 1`] = `
 </div>
 `;
 
-exports[`<ToggleButton /> help renders 1`] = `
+exports[`<Switch /> help renders 1`] = `
 <div>
   <button
     aria-checked="false"
@@ -47,7 +47,7 @@ exports[`<ToggleButton /> help renders 1`] = `
 </div>
 `;
 
-exports[`<ToggleButton /> label renders 1`] = `
+exports[`<Switch /> label renders 1`] = `
 <div>
   <button
     aria-checked="false"
@@ -66,7 +66,7 @@ exports[`<ToggleButton /> label renders 1`] = `
 </div>
 `;
 
-exports[`<ToggleButton /> renders 1`] = `
+exports[`<Switch /> renders 1`] = `
 <div>
   <button
     aria-checked="false"

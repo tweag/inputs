@@ -6,7 +6,7 @@ export * from "./Group";
 export * from "./Item";
 export * from "./Select";
 export * from "./TextArea";
-export * from "./ToggleButton";
+export * from "./Switch";
 export * from "./conversions";
 
 export { concat } from "./utilities";
