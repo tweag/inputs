@@ -11,7 +11,7 @@ export interface ThemeProp {
   [key: string]: string | undefined;
 }
 
-export type ThemeFn<P> = <T extends P>(props: T) => ThemeProp;
+export type ThemeFn<P> = (props: P) => ThemeProp;
 export type Theme<P> = ThemeProp | ThemeFn<P>;
 
 export function apply<P>(theme: Theme<P>, props: P) {

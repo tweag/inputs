@@ -1,3 +1,4 @@
+import * as React from "react";
 import isEqual from "fast-deep-equal";
 
 /**

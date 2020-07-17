@@ -1,7 +1,7 @@
 import * as React from "react";
-import { HTMLProps } from "./utilities";
 import { customize } from "./customize";
 import { useField, FieldProps } from "./useField";
+import { HTMLProps } from "./utilities";
 
 export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value?: boolean;

@@ -46,7 +46,6 @@ export function useFieldSet<T extends FieldSetProps>(props: T) {
     error,
     getFieldProps: () => ({
       ...fieldProps,
-      error,
       theme
     }),
     getFieldSetProps: () => ({

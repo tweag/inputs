@@ -29,6 +29,15 @@ const field: Baseline.Theme<Baseline.FieldProps> = props => ({
   )
 });
 
+const fieldSet: Baseline.Theme<Baseline.FieldSetProps> = props => ({
+  help: "form-text text-muted",
+  error: Baseline.concat("text-danger", !props.touched && "d-none"),
+  input: Baseline.concat(
+    props.touched && !props.error && "is-valid",
+    props.touched && props.error && "is-invalid"
+  )
+});
+
 const config: Baseline.Config<any, Props> = {
   name: "Bootstrap",
   omit: ["validate"],
@@ -71,7 +80,7 @@ export const Checkbox = Baseline.createCheckbox<Props>({
 
 export const ToggleButton = Baseline.createToggleButton<Props>({
   ...config,
-  theme: Baseline.merge(field, props => ({
+  theme: Baseline.merge<Baseline.ToggleButtonProps>(field, props => ({
     input: Baseline.concat(
       "btn btn-sm btn-outline-primary mr-2",
       props.value && "active"
@@ -79,20 +88,22 @@ export const ToggleButton = Baseline.createToggleButton<Props>({
   }))
 });
 
-export const Group = Baseline.createGroup<Props>({
+export const CheckboxGroup = Baseline.createGroup<Props>({
   ...config,
-  theme: props => ({
-    input: "custom-control-input",
-    help: "form-text text-muted",
+  theme: Baseline.merge(fieldSet, {
     label: "custom-control-label",
-    error: Baseline.concat("text-danger", !props.touched && "d-none"),
-    field: Baseline.concat(
-      "custom-control",
-      props.type === "checkbox" ? "custom-checkbox" : "custom-radio"
-    )
+    input: "custom-control-input",
+    field: "custom-control custom-checkbox"
   })
 });
 
-export const Item = Baseline.createItem({
-  name: "Bootstrap"
+export const RadioGroup = Baseline.createGroup<Props>({
+  ...config,
+  theme: Baseline.merge(fieldSet, {
+    label: "custom-control-label",
+    input: "custom-control-input",
+    field: "custom-control custom-radio"
+  })
 });
+
+export const Item = Baseline.Item;

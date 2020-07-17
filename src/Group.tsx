@@ -1,10 +1,12 @@
 import * as React from "react";
 import { customize } from "./customize";
-import { GroupProvider, GroupContext } from "./useGroup";
+import { GroupProvider } from "./useGroupContext";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps extends GroupContext, FieldSetProps {
+export interface GroupProps extends FieldSetProps {
+  value?: any;
   children?: React.ReactNode;
+  onChangeValue?: (value: any) => void;
 }
 
 export function Group(props: GroupProps) {

@@ -6,9 +6,10 @@ import {
   Checkbox,
   FileInput,
   FileListInput,
-  Group,
-  Input,
+  CheckboxGroup,
+  RadioGroup,
   Item,
+  Input,
   Select,
   TextArea,
   ToggleButton
@@ -122,29 +123,27 @@ const App = () => {
               </fieldset>
 
               <div className="row mb-4">
-                <Group
+                <CheckboxGroup
                   name="checkboxes"
-                  type="checkbox"
                   legend="Multiple Checkboxes"
                   validate={notEmpty}
                   fieldSetClassName="col-md"
                 >
-                  <Item value="PHL" label="Philadelphia" />
-                  <Item value="CHI" label="Chicago" />
-                  <Item value="NYC" label="New York" />
-                </Group>
+                  <Item type="checkbox" value="PHL" label="Philadelphia" />
+                  <Item type="checkbox" value="CHI" label="Chicago" />
+                  <Item type="checkbox" value="NYC" label="New York" />
+                </CheckboxGroup>
 
-                <Group
+                <RadioGroup
                   name="radio"
-                  type="radio"
                   legend="Radio Group"
                   validate={required}
                   fieldSetClassName="col-md"
                 >
-                  <Item value={1} label="Bacon" />
-                  <Item value={2} label="Cheetos" />
-                  <Item value={3} label="Waffles" />
-                </Group>
+                  <Item type="radio" value={1} label="Bacon" />
+                  <Item type="radio" value={2} label="Cheetos" />
+                  <Item type="radio" value={3} label="Waffles" />
+                </RadioGroup>
               </div>
 
               <button type="submit" className="btn btn-primary">

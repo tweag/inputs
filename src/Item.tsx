@@ -1,56 +1,59 @@
 import * as React from "react";
-import isEqual from "fast-deep-equal";
-import { useGroup } from "./useGroup";
+import equals from "fast-deep-equal";
 import { customize } from "./customize";
 import { useField, FieldProps } from "./useField";
-import { isUndefined, contains, remove, HTMLProps } from "./utilities";
+import { HTMLProps, remove, isUndefined, contains } from "./utilities";
+import { useGroupContext } from "./useGroupContext";
 
 export interface ItemProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value: any;
+  type: "checkbox" | "radio";
 }
 
 export function Item(props: ItemProps) {
-  const { value, onChangeValue, ...groupProps } = useGroup();
-  const { type, value: itemValue, onChange, ...otherProps } = {
-    ...props,
-    ...groupProps
-  };
+  const { theme, value: selected, onChangeValue } = useGroupContext();
+  const { type, value, onChange, ...otherProps } = props;
+  const field = useField({ theme, ...otherProps });
 
-  const field = useField(otherProps);
-  const isDOMValue = ["string", "number"].includes(typeof itemValue);
-  const checked = isUndefined(value)
-    ? undefined
-    : type === "checkbox"
-    ? contains(value, itemValue)
-    : isEqual(value, itemValue);
+  const isDOMValue = ["string", "number"].includes(typeof value);
+
+  const checked = React.useMemo(() => {
+    if (isUndefined(selected)) {
+      return undefined;
+    } else if (type === "radio") {
+      return equals(selected, value);
+    } else {
+      return contains(selected, value);
+    }
+  }, [type, selected, value]);
 
   const handleChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { checked } = event.target;
+
       if (onChange) {
         onChange(event);
       }
 
-      if (onChangeValue && typeof value !== "undefined") {
-        if (type === "checkbox") {
-          if (event.target.checked) {
-            onChangeValue([...value, itemValue]);
-          } else {
-            onChangeValue(remove(value, itemValue));
-          }
-        } else {
-          onChangeValue(itemValue);
+      if (onChangeValue) {
+        if (type === "radio") {
+          onChangeValue(value);
+        } else if (checked && selected) {
+          onChangeValue([...selected, value]);
+        } else if (selected) {
+          onChangeValue(remove(selected, value));
         }
       }
     },
-    [type, value, itemValue, onChange, onChangeValue]
+    [type, value, selected, onChange, onChangeValue]
   );
 
   return (
     <div {...field.getFieldProps()}>
       <input
         type={type}
-        value={isDOMValue ? itemValue : undefined}
         checked={checked}
+        value={isDOMValue ? value : undefined}
         onChange={handleChange}
         {...field.getInputProps()}
       />
@@ -61,6 +64,8 @@ export function Item(props: ItemProps) {
           {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
         </label>
       )}
+
+      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
     </div>
   );
 }
