@@ -1,12 +1,10 @@
 import * as React from "react";
 import { useConfig, Config } from "./useConfig";
-import { GroupProvider } from "./useGroupContext";
+import { GroupProvider, GroupContext } from "./useGroupContext";
 import { FieldSetProps, useFieldSet } from "./useFieldSet";
 
-export interface GroupProps extends FieldSetProps {
-  value?: any;
+export interface GroupProps extends FieldSetProps, GroupContext {
   children?: React.ReactNode;
-  onChangeValue?: (value: any) => void;
 }
 
 export function createGroup<T>(config: Config<GroupProps, T>) {

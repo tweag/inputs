@@ -7,15 +7,17 @@ import { useGroupContext } from "./useGroupContext";
 
 export interface ItemProps extends FieldProps, HTMLProps<HTMLInputElement> {
   value: any;
-  type: "checkbox" | "radio";
 }
 
 export function createItem<T>(config: Config<ItemProps, T>) {
   return function Item(props: ItemProps & T) {
-    const { theme, value: selected, onChangeValue } = useGroupContext();
-    const { type, value, onChange, ...otherProps } = useConfig(config, props);
-    const field = useField({ theme, ...otherProps });
+    const { value: selected, onChangeValue, ...groupProps } = useGroupContext();
+    const { type, value, onChange, ...otherProps } = useConfig(config, {
+      ...groupProps,
+      ...props
+    });
 
+    const field = useField(otherProps);
     const isDOMValue = ["string", "number"].includes(typeof value);
 
     const checked = React.useMemo(() => {

@@ -8,6 +8,7 @@ exports[`<Item /> checkbox help renders 1`] = `
     <input
       aria-labelledby="input-1-label"
       id="input-1"
+      name="group"
       type="checkbox"
       value="1"
     />
@@ -32,6 +33,7 @@ exports[`<Item /> checkbox label renders 1`] = `
     <input
       aria-labelledby="input-1-label"
       id="input-1"
+      name="group"
       type="checkbox"
       value="1"
     />
@@ -52,6 +54,7 @@ exports[`<Item /> checkbox renders 1`] = `
   <div>
     <input
       id="input-1"
+      name="group"
       type="checkbox"
       value="1"
     />
@@ -67,6 +70,7 @@ exports[`<Item /> radio help renders 1`] = `
     <input
       aria-labelledby="input-1-label"
       id="input-1"
+      name="group"
       type="radio"
       value="1"
     />
@@ -91,6 +95,7 @@ exports[`<Item /> radio label renders 1`] = `
     <input
       aria-labelledby="input-1-label"
       id="input-1"
+      name="group"
       type="radio"
       value="1"
     />
@@ -111,6 +116,7 @@ exports[`<Item /> radio renders 1`] = `
   <div>
     <input
       id="input-1"
+      name="group"
       type="radio"
       value="1"
     />

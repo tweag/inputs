@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
 
 function setup(props: Partial<GroupProps> = {}) {
-  return render(<Group {...props} />);
+  return render(<Group name="group" type="checkbox" {...props} />);
 }
 
 describe("<Group />", () => {

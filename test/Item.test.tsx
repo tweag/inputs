@@ -9,16 +9,16 @@ import {
 
 function setup(group: Partial<GroupProps> = {}, item: Partial<ItemProps> = {}) {
   return render(
-    <Group {...group}>
-      <Item type="checkbox" value={1} {...item} />
+    <Group name="group" type="checkbox" {...group}>
+      <Item value={1} {...item} />
     </Group>
   );
 }
 
 function includeTests(type: "radio" | "checkbox") {
-  includeFieldTests(props => setup({}, { type, ...props }));
-  includeLabelTests(props => setup({}, { type, ...props }));
-  includeHelpTests(props => setup({}, { type, ...props }));
+  includeFieldTests(props => setup({ type }, props));
+  includeLabelTests(props => setup({ type }, props));
+  includeHelpTests(props => setup({ type }, props));
 }
 
 describe("<Item />", () => {
@@ -67,8 +67,8 @@ describe("<Item />", () => {
 
     it("has a value", () => {
       const field = setup(
-        { value: { foo: "bar" } },
-        { type: "radio", value: { foo: "bar" } }
+        { type: "radio", value: { foo: "bar" } },
+        { value: { foo: "bar" } }
       );
 
       const input = field.getByRole("radio");
@@ -77,7 +77,7 @@ describe("<Item />", () => {
     });
 
     it("renders value it's possible", () => {
-      const field = setup({ value: 1 }, { type: "radio", value: 1 });
+      const field = setup({ type: "radio", value: 1 }, { value: 1 });
       const input = field.getByRole("radio");
       expect(input).toBeChecked();
       expect(input).toHaveAttribute("value", "1");
@@ -86,8 +86,8 @@ describe("<Item />", () => {
     it("emits `onChangeValue`", () => {
       const onChangeValue = jest.fn();
       const field = setup(
-        { value: 1, onChangeValue },
-        { type: "radio", value: 2 }
+        { type: "radio", value: 1, onChangeValue },
+        { value: 2 }
       );
       const input = field.getByRole("radio");
 
