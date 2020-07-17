@@ -39,7 +39,6 @@ const fieldSet: Baseline.Theme<Baseline.FieldSetProps> = props => ({
 });
 
 const config: Baseline.Config<any, Props> = {
-  name: "Bootstrap",
   omit: ["validate"],
   hook: useFormik
 };

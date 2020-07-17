@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLProps } from "./utilities";
-import { customize } from "./customize";
+import { useConfig, Config } from "./useConfig";
 import { useField, FieldProps } from "./useField";
 
 export interface FileListInputProps
@@ -12,44 +12,46 @@ export interface FileListInputProps
   prepend?: React.ReactNode;
 }
 
-export function FileListInput(props: FileListInputProps) {
-  const {
-    value: _value,
-    onChange,
-    onChangeValue,
-    append,
-    prepend,
-    ...otherProps
-  } = props;
+export function createFileListInput<T>(config: Config<FileListInputProps, T>) {
+  return function FileListInput(props: FileListInputProps & T) {
+    const {
+      value: _value,
+      onChange,
+      onChangeValue,
+      append,
+      prepend,
+      ...otherProps
+    } = useConfig(config, props);
 
-  const field = useField(otherProps);
-  const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange && onChange(event);
-      onChangeValue && onChangeValue(event.target.files!);
-    },
-    [onChange, onChangeValue]
-  );
+    const field = useField(otherProps);
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange && onChange(event);
+        onChangeValue && onChangeValue(event.target.files!);
+      },
+      [onChange, onChangeValue]
+    );
 
-  return (
-    <div {...field.getFieldProps()}>
-      {field.label && (
-        <label {...field.getLabelProps()}>
-          {field.label}
-          {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-        </label>
-      )}
-      {prepend}
-      <input
-        type="file"
-        multiple
-        onChange={handleChange}
-        {...field.getInputProps()}
-      />
-      {append}
-      {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-    </div>
-  );
+    return (
+      <div {...field.getFieldProps()}>
+        {field.label && (
+          <label {...field.getLabelProps()}>
+            {field.label}
+            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
+          </label>
+        )}
+        {prepend}
+        <input
+          type="file"
+          multiple
+          onChange={handleChange}
+          {...field.getInputProps()}
+        />
+        {append}
+        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
+      </div>
+    );
+  };
 }
 
-export const createFileListInput = customize(FileListInput);
+export const FileListInput = createFileListInput({});

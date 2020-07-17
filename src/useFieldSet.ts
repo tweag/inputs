@@ -1,4 +1,4 @@
-import { ThemeProp } from "./theme";
+import { ThemeProp } from "./useConfig";
 import { useComponentId } from "./useComponentId";
 import { isUndefined, concat, HTMLProps } from "./utilities";
 

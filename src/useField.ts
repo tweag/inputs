@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ThemeProp } from "./theme";
+import { ThemeProp } from "./useConfig";
 import { concat, HTMLProps } from "./utilities";
 import { useComponentId } from "./useComponentId";
 

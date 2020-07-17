@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { ThemeProp } from "./theme";
+import { ThemeProp } from "./useConfig";
 
 export interface GroupContext {
   value?: any[];

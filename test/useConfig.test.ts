@@ -1,20 +1,4 @@
-import { apply, Theme, merge } from "../src/theme";
-
-describe("apply", () => {
-  it("builds a theme prop from an object", () => {
-    const theme: Theme<{}> = { input: "input" };
-    expect(apply(theme, {})).toEqual({ input: "input" });
-  });
-
-  it("builds a theme prop from a function", () => {
-    const theme: Theme<{ foo: boolean }> = props => ({
-      input: props.foo ? "foo" : "bar"
-    });
-
-    expect(apply(theme, { foo: true })).toEqual({ input: "foo" });
-    expect(apply(theme, { foo: false })).toEqual({ input: "bar" });
-  });
-});
+import { Theme, merge } from "../src";
 
 describe("merge", () => {
   it("combines two objects", () => {
