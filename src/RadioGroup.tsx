@@ -12,9 +12,9 @@ import {
 
 export interface RadioGroupProps<V> extends FieldSetProps {
   name: string;
-  value?: V[];
+  value?: V;
   children?: React.ReactNode;
-  onChangeValue?: (value: V[]) => void;
+  onChangeValue?: (value: V) => void;
 }
 
 export interface RadioGroupOptionProps
