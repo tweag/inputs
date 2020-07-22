@@ -42,6 +42,24 @@ export function remove<T>(values: T[], value: T): T[] {
 }
 
 /**
+ * Toggle an element's inclusion in an array
+ */
+export function toggle<T>(values: T[], value: T): T[] {
+  return contains(values, value) ? remove(values, value) : [...values, value];
+}
+
+/**
+ * Return the value if it can be rendered in the DOM
+ */
+export function getDOMValue(value: any): string | number | undefined {
+  if (typeof value === "string" || typeof value === "number") {
+    return value;
+  } else {
+    return undefined;
+  }
+}
+
+/**
  * Join multiple class names together
  */
 export function concat(...names: any[]): string | undefined {
@@ -50,4 +68,32 @@ export function concat(...names: any[]): string | undefined {
     if (names[i]) out += ` ${names[i]}`;
   }
   return out.trim() || undefined;
+}
+
+/**
+ * Create a new Group context
+ */
+
+export interface GroupContext {
+  name?: string;
+  value?: any;
+  children?: React.ReactNode;
+  onChangeValue?: (value: any) => void;
+}
+
+export function createGroupContext(name: string) {
+  const context = React.createContext<GroupContext | undefined>(undefined);
+  context.displayName = name;
+
+  function useGroup(): GroupContext {
+    const group = React.useContext(context);
+
+    if (!group) {
+      throw new Error(`<${name}.Item /> must be rendered within a <${name} />`);
+    }
+
+    return group;
+  }
+
+  return { Provider: context.Provider, useGroup };
 }

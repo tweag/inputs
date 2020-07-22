@@ -11,15 +11,21 @@ export interface SwitchProps extends FieldProps, HTMLProps<HTMLButtonElement> {
 
 export function createSwitch<T>(config: Config<SwitchProps, T>) {
   return function Switch(props: SwitchProps & T) {
-    const { value, onChangeValue, children, ...otherProps } = useConfig(
-      config,
-      props
-    );
+    const {
+      value,
+      onClick,
+      onChangeValue,
+      children,
+      ...otherProps
+    } = useConfig(config, props);
 
     const field = useField(otherProps);
     const handleClick = React.useCallback(
-      () => onChangeValue && onChangeValue(!value),
-      [value, onChangeValue]
+      (event: React.MouseEvent<HTMLButtonElement>) => {
+        onClick && onClick(event);
+        onChangeValue && onChangeValue(!value);
+      },
+      [value, onClick, onChangeValue]
     );
 
     return (

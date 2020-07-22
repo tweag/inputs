@@ -1,13 +1,17 @@
 import * as React from "react";
-import { Group, GroupProps } from "../src";
-import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { render, fireEvent } from "@testing-library/react";
+import { RadioGroup, RadioGroupProps } from "../src";
 
-function setup(props: Partial<GroupProps> = {}) {
-  return render(<Group name="group" type="checkbox" {...props} />);
+function setup(props: Partial<RadioGroupProps<string>> = {}) {
+  return render(
+    <RadioGroup name="group" {...props}>
+      <RadioGroup.Option value="foo" label="Foo" />
+    </RadioGroup>
+  );
 }
 
-describe("<Group />", () => {
+describe("<RadioGroup />", () => {
   it("renders", () => {
     const field = setup();
     expect(field.container.firstChild).toMatchSnapshot();
@@ -18,12 +22,18 @@ describe("<Group />", () => {
     expect(await axe(field.container)).toHaveNoViolations();
   });
 
-  describe("children", () => {
-    it("renders", () => {
-      const field = setup({ children: "Children" });
-      expect(field.container).toHaveTextContent("Children");
-      expect(field.container.firstChild).toMatchSnapshot();
-    });
+  it("has a value", () => {
+    const field = setup({ value: "foo" });
+    const input = field.getByRole("radio");
+    expect(input).toBeChecked();
+  });
+
+  it("emits `onChangeValue`", () => {
+    const onChangeValue = jest.fn();
+    const field = setup({ onChangeValue });
+    const input = field.getByRole("radio");
+    fireEvent.click(input);
+    expect(onChangeValue).toHaveBeenCalledWith("foo");
   });
 
   describe("legend", () => {
