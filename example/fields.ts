@@ -77,9 +77,9 @@ export const Checkbox = Baseline.createCheckbox<Props>({
   })
 });
 
-export const ToggleButton = Baseline.createToggleButton<Props>({
+export const Switch = Baseline.createSwitch<Props>({
   ...config,
-  theme: Baseline.merge<Baseline.ToggleButtonProps>(field, props => ({
+  theme: Baseline.merge<Baseline.SwitchProps>(field, props => ({
     input: Baseline.concat(
       "btn btn-sm btn-outline-primary mr-2",
       props.value && "active"
@@ -87,7 +87,7 @@ export const ToggleButton = Baseline.createToggleButton<Props>({
   }))
 });
 
-export const CheckboxGroup = Baseline.createGroup<Props>({
+export const CheckboxGroup = Baseline.createCheckboxGroup<Props>({
   ...config,
   theme: Baseline.merge(fieldSet, {
     label: "custom-control-label",
@@ -96,7 +96,7 @@ export const CheckboxGroup = Baseline.createGroup<Props>({
   })
 });
 
-export const RadioGroup = Baseline.createGroup<Props>({
+export const RadioGroup = Baseline.createRadioGroup<Props>({
   ...config,
   theme: Baseline.merge(fieldSet, {
     label: "custom-control-label",
@@ -104,5 +104,3 @@ export const RadioGroup = Baseline.createGroup<Props>({
     field: "custom-control custom-radio"
   })
 });
-
-export const Item = Baseline.Item;

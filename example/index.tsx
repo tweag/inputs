@@ -8,11 +8,10 @@ import {
   FileListInput,
   CheckboxGroup,
   RadioGroup,
-  Item,
   Input,
   Select,
   TextArea,
-  ToggleButton
+  Switch
 } from "./fields";
 
 interface Values {
@@ -107,7 +106,7 @@ const App = () => {
               </fieldset>
 
               <fieldset className="mb-4">
-                <legend>Toggles</legend>
+                <legend>gles</legend>
 
                 <div className="row">
                   <div className="col-md">
@@ -115,9 +114,9 @@ const App = () => {
                   </div>
 
                   <div className="col-md">
-                    <ToggleButton label="Push notifications" name="toggle">
+                    <Switch label="Push notifications" name="toggle">
                       Toggle
-                    </ToggleButton>
+                    </Switch>
                   </div>
                 </div>
               </fieldset>
@@ -125,26 +124,24 @@ const App = () => {
               <div className="row mb-4">
                 <CheckboxGroup
                   name="checkboxes"
-                  type="checkbox"
                   legend="Multiple Checkboxes"
                   validate={notEmpty}
                   fieldSetClassName="col-md"
                 >
-                  <Item value="PHL" label="Philadelphia" />
-                  <Item value="CHI" label="Chicago" />
-                  <Item value="NYC" label="New York" />
+                  <CheckboxGroup.Option value="PHL" label="Philadelphia" />
+                  <CheckboxGroup.Option value="CHI" label="Chicago" />
+                  <CheckboxGroup.Option value="NYC" label="New York" />
                 </CheckboxGroup>
 
                 <RadioGroup
                   name="radio"
-                  type="radio"
                   legend="Radio Group"
                   validate={required}
                   fieldSetClassName="col-md"
                 >
-                  <Item value={1} label="Bacon" />
-                  <Item value={2} label="Cheetos" />
-                  <Item value={3} label="Waffles" />
+                  <RadioGroup.Option value={1} label="Bacon" />
+                  <RadioGroup.Option value={2} label="Cheetos" />
+                  <RadioGroup.Option value={3} label="Waffles" />
                 </RadioGroup>
               </div>
 
