@@ -17,7 +17,7 @@ export interface RadioGroupProps<V> extends FieldSetProps {
   onChangeValue?: (value: V[]) => void;
 }
 
-export interface RadioGroupItemProps
+export interface RadioGroupOptionProps
   extends FieldProps,
     HTMLProps<HTMLInputElement> {
   value: any;
@@ -43,7 +43,7 @@ export function createRadioGroup<T>(config: Config<RadioGroupProps<any>, T>) {
     );
   }
 
-  function Item(props: RadioGroupItemProps) {
+  function Option(props: RadioGroupOptionProps) {
     const { value: selected, onChangeValue, ...groupProps } = useGroup();
     const { value, onChange, ...otherProps } = { ...groupProps, ...props };
     const field = useField(otherProps);
@@ -79,7 +79,7 @@ export function createRadioGroup<T>(config: Config<RadioGroupProps<any>, T>) {
     );
   }
 
-  return Object.assign(RadioGroup, { Item });
+  return Object.assign(RadioGroup, { Option });
 }
 
 export const RadioGroup = createRadioGroup({});

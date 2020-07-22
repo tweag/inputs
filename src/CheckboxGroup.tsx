@@ -18,7 +18,7 @@ export interface CheckboxGroupProps<V> extends FieldSetProps {
   onChangeValue?: (value: V[]) => void;
 }
 
-export interface CheckboxGroupItemProps
+export interface CheckboxGroupOptionProps
   extends FieldProps,
     HTMLProps<HTMLInputElement> {
   value: any;
@@ -46,7 +46,7 @@ export function createCheckboxGroup<T>(
     );
   }
 
-  function Item(props: CheckboxGroupItemProps) {
+  function Option(props: CheckboxGroupOptionProps) {
     const { value: selected, onChangeValue, ...groupProps } = useGroup();
     const { value, onChange, ...otherProps } = { ...groupProps, ...props };
     const field = useField(otherProps);
@@ -84,7 +84,7 @@ export function createCheckboxGroup<T>(
     );
   }
 
-  return Object.assign(CheckboxGroup, { Item });
+  return Object.assign(CheckboxGroup, { Option });
 }
 
 export const CheckboxGroup = createCheckboxGroup({});
