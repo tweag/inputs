@@ -2,26 +2,16 @@ import * as React from "react";
 import isEqual from "fast-deep-equal";
 import { Field } from "@stackup/form";
 
-/**
- * Extract props from an HTMLElement, but remove conflicts.
- */
-export interface HTMLProps<T>
-  extends Omit<React.HTMLProps<T>, "value" | "label"> {
-  "data-testid"?: string;
-}
-
-/**
- * Check if the value is undefined.
- */
 export function isUndefined(value: any): value is undefined {
   return typeof value === "undefined";
 }
 
-/**
- * Check if the value is a string.
- */
 export function isString(value: any): value is string {
   return typeof value === "string";
+}
+
+export function isNumber(value: any): value is number {
+  return typeof value === "number";
 }
 
 /**
@@ -60,7 +50,7 @@ export function toggle<T>(values: T[], value: T): T[] {
  * Return the value if it can be rendered in the DOM
  */
 export function getDOMValue(value: any): string | number | undefined {
-  if (typeof value === "string" || typeof value === "number") {
+  if (isString(value) || isNumber(value)) {
     return value;
   } else {
     return undefined;

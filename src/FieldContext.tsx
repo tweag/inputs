@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { Field as FormField } from "@stackup/form";
-import { concat } from "./utilities";
+import { concat, isUndefined, isString } from "./utilities";
 
 export interface StyleProps {
   check?: boolean;
@@ -31,7 +31,7 @@ export function useFieldContext(): FieldContextValue {
 }
 
 function isPopulated(value: any) {
-  return typeof value !== "undefined" && value !== null && value !== "";
+  return !isUndefined(value) && value !== null && value !== "";
 }
 
 export function getClassName(
@@ -56,9 +56,7 @@ export function getRelatedId(field: FormField<any>, suffix: string): string {
 }
 
 export function getError(field: FormField<any>): string | undefined {
-  return field.touched && typeof field.error === "string"
-    ? field.error
-    : undefined;
+  return field.touched && isString(field.error) ? field.error : undefined;
 }
 
 export function getLabelledBy(field: FormField<any>): string | undefined {
