@@ -1,23 +1,24 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-type Attributes = React.SelectHTMLAttributes<HTMLSelectElement>;
-
-export interface SelectProps extends Attributes {
-  field: Field<string>;
-  innerRef?: React.Ref<HTMLSelectElement>;
+export interface SelectProps {
+  field: FormField<string>;
   placeholder?: string;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  children?: React.ReactNode;
+  size?: Size;
+  inline?: boolean;
+  innerRef?: React.Ref<HTMLSelectElement>;
 }
 
 export function Select(props: SelectProps) {
-  const { field, innerRef, placeholder, children, ...moreProps } = props;
+  const { field, innerRef, placeholder, children } = props;
   const { id, value, setValue } = field;
-
-  const context = useFieldContext();
-  const labelledBy = getLabelledBy(field);
-  const className = getClassName(context, "field__input", moreProps.className);
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(
@@ -28,23 +29,24 @@ export function Select(props: SelectProps) {
   );
 
   return (
-    <select
-      {...moreProps}
-      id={id}
-      ref={innerRef}
-      value={value}
-      onBlur={onBlur}
-      onChange={onChange}
-      className={className}
-      aria-labelledby={labelledBy}
-    >
-      {placeholder && (
-        <option disabled value="" key="placeholder">
-          {placeholder}
-        </option>
-      )}
+    <Field {...props}>
+      <select
+        id={id}
+        ref={innerRef}
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={getClassName(props, "field__input")}
+        aria-labelledby={getLabelledBy(field)}
+      >
+        {placeholder && (
+          <option disabled value="" key="placeholder">
+            {placeholder}
+          </option>
+        )}
 
-      {children}
-    </select>
+        {children}
+      </select>
+    </Field>
   );
 }

@@ -1,6 +1,15 @@
 import * as React from "react";
-import isEqual from "fast-deep-equal";
-import { Field } from "@stackup/form";
+import { Field as FormField } from "@stackup/form";
+
+export type Size = "small" | "large";
+
+export interface StyleProps {
+  field: FormField<any>;
+  size?: Size;
+  check?: boolean;
+  inline?: boolean;
+  condensed?: boolean;
+}
 
 export function isUndefined(value: any): value is undefined {
   return typeof value === "undefined";
@@ -14,63 +23,54 @@ export function isNumber(value: any): value is number {
   return typeof value === "number";
 }
 
-/**
- * Check if an array contains a value using deep equality.
- */
-export function contains<T>(values: T[], value: T): boolean {
-  for (let i = 0; i < values.length; i++) {
-    if (isEqual(values[i], value)) {
-      return true;
-    }
-  }
-  return false;
+export function isPopulated(value: any) {
+  return !isUndefined(value) && value !== null && value !== "";
 }
 
-/**
- * Remove a value from an array using deep equality.
- */
-export function remove<T>(values: T[], value: T): T[] {
-  const result = [];
-  for (let i = 0; i < values.length; i++) {
-    if (!isEqual(values[i], value)) {
-      result.push(values[i]);
-    }
-  }
-  return result;
-}
-
-/**
- * Toggle an element's inclusion in an array
- */
-export function toggle<T>(values: T[], value: T): T[] {
-  return contains(values, value) ? remove(values, value) : [...values, value];
-}
-
-/**
- * Return the value if it can be rendered in the DOM
- */
 export function getDOMValue(value: any): string | number | undefined {
-  if (isString(value) || isNumber(value)) {
-    return value;
-  } else {
-    return undefined;
-  }
+  return isString(value) || isNumber(value) ? value : undefined;
 }
 
-/**
- * Create a handler for `onBlur`
- */
-export function useBlur({ setTouched }: Field<any>) {
+export function useBlur({ setTouched }: FormField<any>) {
   return React.useCallback(() => setTouched(true), [setTouched]);
 }
 
-/**
- * Join multiple class names together
- */
 export function concat(...names: any[]): string | undefined {
   let out = "";
   for (let i = 0; i < names.length; i++) {
     if (names[i]) out += ` ${names[i]}`;
   }
   return out.trim() || undefined;
+}
+
+export function getRelatedId(field: FormField<any>, suffix: string): string {
+  return `${field.id}--${suffix}`;
+}
+
+export function getError(field: FormField<any>): string | undefined {
+  return field.touched && isString(field.error) ? field.error : undefined;
+}
+
+export function getLabelledBy(field: FormField<any>): string | undefined {
+  const error = getError(field);
+  const errorId = getRelatedId(field, "error");
+  const labelId = getRelatedId(field, "label");
+  return concat(labelId, error && errorId);
+}
+
+export function getClassName(
+  style: StyleProps,
+  prefix: string,
+  ...otherClassNames: any[]
+) {
+  return concat(
+    prefix,
+    style.check && `${prefix}--check`,
+    style.inline && `${prefix}--inline`,
+    style.condensed && `${prefix}--condensed`,
+    style.size && `${prefix}--${style.size}`,
+    style.field.touched && `${prefix}--touched`,
+    isPopulated(style.field.value) && `${prefix}--populated`,
+    ...otherClassNames
+  );
 }

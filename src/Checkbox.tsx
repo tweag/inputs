@@ -1,22 +1,19 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
-
-export interface CheckboxProps extends Attributes {
-  field: Field<boolean>;
+export interface CheckboxProps {
+  field: FormField<boolean>;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  size?: Size;
   innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const { field, innerRef, ...moreProps } = props;
+  const { field, innerRef } = props;
   const { id, value, setValue } = field;
-
-  const context = useFieldContext();
-  const labelledBy = getLabelledBy(field);
-  const className = getClassName(context, "field__input", moreProps.className);
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(
@@ -27,16 +24,17 @@ export function Checkbox(props: CheckboxProps) {
   );
 
   return (
-    <input
-      {...moreProps}
-      type="checkbox"
-      id={id}
-      ref={innerRef}
-      checked={value}
-      onBlur={onBlur}
-      onChange={onChange}
-      className={className}
-      aria-labelledby={labelledBy}
-    />
+    <Field check {...props}>
+      <input
+        type="checkbox"
+        id={id}
+        ref={innerRef}
+        checked={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={getClassName(props, "field__input")}
+        aria-labelledby={getLabelledBy(field)}
+      />
+    </Field>
   );
 }

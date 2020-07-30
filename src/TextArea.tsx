@@ -1,22 +1,22 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-type Attributes = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-
-export interface TextAreaProps extends Attributes {
-  field: Field<string>;
+export interface TextAreaProps {
+  field: FormField<string>;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  size?: Size;
+  condensed?: boolean;
   innerRef?: React.Ref<HTMLTextAreaElement>;
 }
 
 export function TextArea(props: TextAreaProps) {
-  const { field, innerRef, ...moreProps } = props;
+  const { field, innerRef } = props;
   const { id, value, setValue } = field;
-
-  const context = useFieldContext();
-  const labelledBy = getLabelledBy(field);
-  const className = getClassName(context, "field__input", moreProps.className);
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(
@@ -27,15 +27,16 @@ export function TextArea(props: TextAreaProps) {
   );
 
   return (
-    <textarea
-      {...moreProps}
-      id={id}
-      value={value}
-      ref={innerRef}
-      onBlur={onBlur}
-      onChange={onChange}
-      className={className}
-      aria-labelledby={labelledBy}
-    />
+    <Field {...props}>
+      <textarea
+        id={id}
+        value={value}
+        ref={innerRef}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={getClassName(props, "field__input")}
+        aria-labelledby={getLabelledBy(field)}
+      />
+    </Field>
   );
 }

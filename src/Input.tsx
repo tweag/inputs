@@ -1,14 +1,7 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import {
-  getLabelledBy,
-  getClassName,
-  Size,
-  StyleProps,
-  getRelatedId,
-  getError
-} from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
 export type InputType =
   | "color"
@@ -27,29 +20,21 @@ export type InputType =
   | "week";
 
 export interface InputProps {
-  field: Field<string>;
+  field: FormField<string>;
   label: React.ReactNode;
   help?: React.ReactNode;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
   size?: Size;
   type?: InputType;
-  innerRef?: React.Ref<HTMLInputElement>;
   inline?: boolean;
   condensed?: boolean;
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function Input(props: InputProps) {
-  const { field, label, help, innerRef, type = "text" } = props;
+  const { field, innerRef, type = "text" } = props;
   const { id, value, setValue } = field;
-
-  const error = getError(field);
-  const errorId = getRelatedId(field, "error");
-  const labelledBy = getLabelledBy(field);
-  const labelId = getRelatedId(field, "label");
-  const fieldClassName = getClassName(props, "field");
-  const labelClassName = getClassName(props, "field__label");
-  const inputClassName = getClassName(props, "field__input");
-  const helpClassName = getClassName(props, "field__help");
-  const errorClassName = getClassName(props, "field__error");
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(
@@ -60,11 +45,7 @@ export function Input(props: InputProps) {
   );
 
   return (
-    <div className={fieldClassName}>
-      <label id={labelId} htmlFor={id} className={labelClassName}>
-        {label}
-        {help && <span className={helpClassName}>{help}</span>}
-      </label>
+    <Field {...props}>
       <input
         id={id}
         value={value}
@@ -72,14 +53,9 @@ export function Input(props: InputProps) {
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={inputClassName}
-        aria-labelledby={labelledBy}
+        className={getClassName(props, "field__input")}
+        aria-labelledby={getLabelledBy(field)}
       />
-      {error && (
-        <span role="alert" id={errorId} className={errorClassName}>
-          {error}
-        </span>
-      )}
-    </div>
+    </Field>
   );
 }

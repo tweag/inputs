@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Field as FormField } from "@stackup/form";
-import {
-  StyleProps,
-  getClassName,
-  getError,
-  getRelatedId
-} from "./FieldContext";
+import { StyleProps, getClassName, getError, getRelatedId } from "./utilities";
 
 export interface FieldProps extends StyleProps {
   field: FormField<any>;

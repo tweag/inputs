@@ -1,22 +1,20 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-type Attributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-export interface SwitchProps extends Attributes {
-  field: Field<boolean>;
+export interface SwitchProps {
+  field: FormField<boolean>;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  children?: React.ReactNode;
+  size?: Size;
   innerRef?: React.Ref<HTMLButtonElement>;
 }
 
 export function Switch(props: SwitchProps) {
-  const { field, innerRef, children, ...moreProps } = props;
+  const { field, innerRef, children } = props;
   const { id, value, setValue } = field;
-
-  const context = useFieldContext();
-  const labelledBy = getLabelledBy(field);
-  const className = getClassName(context, "field__input", moreProps.className);
 
   const onBlur = useBlur(field);
   const onClick = React.useCallback(() => {
@@ -24,20 +22,21 @@ export function Switch(props: SwitchProps) {
   }, [setValue]);
 
   return (
-    <button
-      {...moreProps}
-      id={id}
-      ref={innerRef}
-      type="button"
-      role="switch"
-      onBlur={onBlur}
-      onClick={onClick}
-      aria-checked={value}
-      aria-label={value ? "On" : "Off"}
-      aria-labelledby={labelledBy}
-      className={className}
-    >
-      {children}
-    </button>
+    <Field check {...props}>
+      <button
+        id={id}
+        ref={innerRef}
+        type="button"
+        role="switch"
+        onBlur={onBlur}
+        onClick={onClick}
+        aria-checked={value}
+        aria-label={value ? "On" : "Off"}
+        aria-labelledby={getLabelledBy(field)}
+        className={getClassName(props, "field__input")}
+      >
+        {children}
+      </button>
+    </Field>
   );
 }

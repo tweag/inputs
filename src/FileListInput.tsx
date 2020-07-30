@@ -1,22 +1,23 @@
 import * as React from "react";
-import { Field } from "@stackup/form";
-import { useBlur } from "./utilities";
-import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
+import { Field } from "./Field";
+import { Field as FormField } from "@stackup/form";
+import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
-
-export interface FileListInputProps extends Attributes {
-  field: Field<FileList | null>;
+export interface FileListInputProps {
+  field: FormField<FileList | null>;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+  size?: Size;
+  inline?: boolean;
+  condensed?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function FileListInput(props: FileListInputProps) {
-  const { field, innerRef, ...moreProps } = props;
+  const { field, innerRef } = props;
   const { id, setValue } = field;
-
-  const context = useFieldContext();
-  const labelledBy = getLabelledBy(field);
-  const className = getClassName(context, "field__input", moreProps.className);
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(
@@ -27,15 +28,16 @@ export function FileListInput(props: FileListInputProps) {
   );
 
   return (
-    <input
-      {...moreProps}
-      type="file"
-      id={id}
-      ref={innerRef}
-      onBlur={onBlur}
-      onChange={onChange}
-      className={className}
-      aria-labelledby={labelledBy}
-    />
+    <Field {...props}>
+      <input
+        type="file"
+        id={id}
+        ref={innerRef}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={getClassName(props, "field__input")}
+        aria-labelledby={getLabelledBy(field)}
+      />
+    </Field>
   );
 }
