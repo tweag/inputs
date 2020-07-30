@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field, FieldProps } from "./Field";
+import { Field, SharedFieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import {
   Size,
@@ -11,7 +11,7 @@ import {
   useBlur,
   useNestedId
 } from "./utilities";
-
+SharedFieldProps;
 export interface CheckboxItemProps<T> extends FieldProps {
   value: T;
   field: FormField<T[]>;

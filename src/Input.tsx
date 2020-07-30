@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field, FieldProps } from "./Field";
+import { Field, SharedFieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
@@ -19,7 +19,7 @@ export type InputType =
   | "url"
   | "week";
 
-export interface InputProps extends FieldProps {
+export interface InputProps extends SharedFieldProps {
   field: FormField<string>;
   size?: Size;
   type?: InputType;

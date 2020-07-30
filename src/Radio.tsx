@@ -1,6 +1,6 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
-import { Field, FieldProps } from "./Field";
+import { Field, SharedFieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import {
   Size,
@@ -10,7 +10,7 @@ import {
   useBlur,
   useNestedId
 } from "./utilities";
-
+SharedFieldProps;
 export interface RadioProps<T> extends FieldProps {
   value: T;
   field: FormField<T | null>;

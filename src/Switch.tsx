@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Field, FieldProps } from "./Field";
+import { Field, SharedFieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface SwitchProps extends FieldProps {
+export interface SwitchProps extends SharedFieldProps {
   field: FormField<boolean>;
   children?: React.ReactNode;
   size?: Size;
