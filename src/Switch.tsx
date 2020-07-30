@@ -1,56 +1,45 @@
 import * as React from "react";
-import { HTMLProps } from "./utilities";
-import { useConfig, Config } from "./useConfig";
+import { Field } from "@stackup/form";
+import { HTMLProps, useBlur } from "./utilities";
 import { useField, FieldProps } from "./useField";
 
 export interface SwitchProps extends FieldProps, HTMLProps<HTMLButtonElement> {
-  value?: boolean;
-  onChangeValue?: (value: boolean) => void;
+  field: Field<boolean>;
   children?: React.ReactNode;
 }
 
-export function createSwitch<T>(config: Config<SwitchProps, T>) {
-  return function Switch(props: SwitchProps & T) {
-    const {
-      value,
-      onClick,
-      onChangeValue,
-      children,
-      ...otherProps
-    } = useConfig(config, props);
+export function Switch(props: SwitchProps) {
+  const { children, ...otherProps } = props;
 
-    const field = useField(otherProps);
-    const handleClick = React.useCallback(
-      (event: React.MouseEvent<HTMLButtonElement>) => {
-        onClick && onClick(event);
-        onChangeValue && onChangeValue(!value);
-      },
-      [value, onClick, onChangeValue]
-    );
+  const layout = useField(otherProps);
+  const onBlur = useBlur(props.field);
 
-    return (
-      <div {...field.getFieldProps()}>
-        <button
-          onClick={handleClick}
-          role="switch"
-          aria-checked={value}
-          aria-label={value ? "On" : "Off"}
-          {...field.getInputProps()}
-          type="button"
-        >
-          {children}
-        </button>
+  const { value, setValue } = props.field;
+  const onClick = React.useCallback(() => {
+    setValue(value => !value);
+  }, [setValue]);
 
-        {field.label && (
-          <label {...field.getLabelProps()}>
-            {field.label}
-            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-          </label>
-        )}
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-      </div>
-    );
-  };
+  return (
+    <div {...layout.getFieldProps()}>
+      <button
+        onBlur={onBlur}
+        onClick={onClick}
+        role="switch"
+        aria-checked={value}
+        aria-label={value ? "On" : "Off"}
+        {...layout.getInputProps()}
+        type="button"
+      >
+        {children}
+      </button>
+
+      {layout.label && (
+        <label {...layout.getLabelProps()}>
+          {layout.label}
+          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
+        </label>
+      )}
+      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
+    </div>
+  );
 }
-
-export const Switch = createSwitch({});

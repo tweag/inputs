@@ -1,34 +1,31 @@
 import * as React from "react";
-import { ThemeProp } from "./useConfig";
+import { Field } from "@stackup/form";
 import { concat, HTMLProps } from "./utilities";
-import { useComponentId } from "./useComponentId";
 
 export interface FieldProps {
-  id?: string;
-  theme?: ThemeProp;
+  field: Field<any>;
   innerRef?: React.Ref<any>;
-  touched?: boolean;
-  className?: string;
   label?: React.ReactNode;
   labelProps?: HTMLProps<HTMLLabelElement>;
   labelClassName?: string;
   help?: React.ReactNode;
   helpProps?: HTMLProps<HTMLSpanElement>;
   helpClassName?: string;
-  error?: React.ReactNode;
   errorProps?: HTMLProps<HTMLSpanElement>;
   errorClassName?: string;
   fieldProps?: HTMLProps<HTMLDivElement>;
   fieldClassName?: string;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
+}
+
+function getString(value: any): string | undefined {
+  return typeof value === "string" ? value : undefined;
 }
 
 export const useField = <T extends FieldProps>(props: T) => {
-  const componentId = useComponentId();
-
   const {
-    theme,
-    id = `input-${componentId}`,
-    className,
+    field,
     innerRef,
     label,
     labelProps,
@@ -36,48 +33,49 @@ export const useField = <T extends FieldProps>(props: T) => {
     help,
     helpProps,
     helpClassName,
-    error,
     errorProps,
     errorClassName,
     fieldProps,
     fieldClassName,
-    touched: _touched,
+    append,
+    prepend,
     ...inputProps
   } = props;
 
-  const labelId = labelProps?.id || `${id}-label`;
-  const errorId = errorProps?.id || `${id}-error`;
+  const labelId = labelProps?.id || `${field.id}--label`;
+  const errorId = errorProps?.id || `${field.id}--error`;
 
   return {
     label,
     help,
-    error,
+    error: getString(field.error),
+    append,
+    prepend,
     getInputProps: () => ({
       ...inputProps,
-      id,
+      id: field.id,
       ref: innerRef,
-      "aria-labelledby": concat(label && labelId, error && errorId),
-      className: concat(theme?.input, className)
+      "aria-labelledby": concat(label && labelId, field.error && errorId)
     }),
     getFieldProps: () => ({
       ...fieldProps,
-      className: concat(theme?.field, fieldClassName, fieldProps?.className)
+      className: concat(fieldClassName, fieldProps?.className)
     }),
     getLabelProps: () => ({
       ...labelProps,
       id: labelId,
-      htmlFor: id,
-      className: concat(theme?.label, labelClassName, labelProps?.className)
+      htmlFor: field.id,
+      className: concat(labelClassName, labelProps?.className)
     }),
     getHelpProps: () => ({
       ...helpProps,
-      className: concat(theme?.help, helpClassName, helpProps?.className)
+      className: concat(helpClassName, helpProps?.className)
     }),
     getErrorProps: () => ({
       ...errorProps,
       id: errorId,
       role: "alert",
-      className: concat(theme?.error, errorClassName, errorProps?.className)
+      className: concat(errorClassName, errorProps?.className)
     })
   };
 };

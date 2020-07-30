@@ -1,66 +1,53 @@
 import * as React from "react";
-import { HTMLProps } from "./utilities";
-import { useConfig, Config } from "./useConfig";
+import { Field } from "@stackup/form";
+import { HTMLProps, useBlur } from "./utilities";
 import { useField, FieldProps } from "./useField";
 
 export interface SelectProps extends FieldProps, HTMLProps<HTMLSelectElement> {
-  value?: string;
-  onChangeValue?: (value: string) => void;
+  field: Field<string>;
   placeholder?: string;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   children?: React.ReactNode;
 }
 
-export function createSelect<T>(config: Config<SelectProps, T>) {
-  return function Select(props: SelectProps & T) {
-    const {
-      value,
-      onChange,
-      onChangeValue,
-      placeholder,
-      append,
-      prepend,
-      children,
-      ...otherProps
-    } = useConfig(config, props);
+export function Select(props: SelectProps) {
+  const { placeholder, children, ...otherProps } = props;
 
-    const field = useField(otherProps);
-    const handleChange = React.useCallback(
-      (event: React.ChangeEvent<HTMLSelectElement>) => {
-        onChange && onChange(event);
-        onChangeValue && onChangeValue(event.target.value);
-      },
-      [onChange, onChangeValue]
-    );
+  const layout = useField(otherProps);
+  const onBlur = useBlur(props.field);
 
-    return (
-      <div {...field.getFieldProps()}>
-        {field.label && (
-          <label {...field.getLabelProps()}>
-            {field.label}
-            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-          </label>
+  const { value, setValue } = props.field;
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setValue(event.target.value);
+    },
+    [setValue]
+  );
+
+  return (
+    <div {...layout.getFieldProps()}>
+      {layout.label && (
+        <label {...layout.getLabelProps()}>
+          {layout.label}
+          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
+        </label>
+      )}
+      {layout.prepend}
+      <select
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        {...layout.getInputProps()}
+      >
+        {placeholder && (
+          <option disabled value="" key="placeholder">
+            {placeholder}
+          </option>
         )}
-        {prepend}
-        <select
-          value={value}
-          onChange={handleChange}
-          {...field.getInputProps()}
-        >
-          {placeholder && (
-            <option disabled value="" key="placeholder">
-              {placeholder}
-            </option>
-          )}
 
-          {children}
-        </select>
-        {append}
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-      </div>
-    );
-  };
+        {children}
+      </select>
+      {layout.append}
+      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
+    </div>
+  );
 }
-
-export const Select = createSelect({});

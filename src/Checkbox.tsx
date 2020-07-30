@@ -1,49 +1,42 @@
 import * as React from "react";
-import { useConfig, Config } from "./useConfig";
+import { Field } from "@stackup/form";
+import { HTMLProps, useBlur } from "./utilities";
 import { useField, FieldProps } from "./useField";
-import { HTMLProps } from "./utilities";
 
 export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
-  value?: boolean;
-  onChangeValue?: (value: boolean) => void;
+  field: Field<boolean>;
 }
 
-export function createCheckbox<T>(config: Config<CheckboxProps, T>) {
-  return function Checkbox(props: CheckboxProps & T) {
-    const { value, onChange, onChangeValue, ...otherProps } = useConfig(
-      config,
-      props
-    );
+export function Checkbox(props: CheckboxProps) {
+  const layout = useField(props);
+  const onBlur = useBlur(props.field);
 
-    const field = useField(otherProps);
-    const handleChange = React.useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event);
-        onChangeValue && onChangeValue(event.target.checked);
-      },
-      [onChange, onChangeValue]
-    );
+  const { value, setValue } = props.field;
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.checked);
+    },
+    [setValue]
+  );
 
-    return (
-      <div {...field.getFieldProps()}>
-        <input
-          type="checkbox"
-          checked={value}
-          onChange={handleChange}
-          {...field.getInputProps()}
-        />
+  return (
+    <div {...layout.getFieldProps()}>
+      <input
+        type="checkbox"
+        checked={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        {...layout.getInputProps()}
+      />
 
-        {field.label && (
-          <label {...field.getLabelProps()}>
-            {field.label}
-            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-          </label>
-        )}
+      {layout.label && (
+        <label {...layout.getLabelProps()}>
+          {layout.label}
+          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
+        </label>
+      )}
 
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-      </div>
-    );
-  };
+      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
+    </div>
+  );
 }
-
-export const Checkbox = createCheckbox({});

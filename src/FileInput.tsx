@@ -1,52 +1,43 @@
 import * as React from "react";
-import { HTMLProps } from "./utilities";
-import { useConfig, Config } from "./useConfig";
+import { Field } from "@stackup/form";
+import { HTMLProps, useBlur } from "./utilities";
 import { useField, FieldProps } from "./useField";
 
 export interface FileInputProps
   extends FieldProps,
     HTMLProps<HTMLInputElement> {
-  value?: any;
-  onChangeValue?: (value: File) => void;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
+  field: Field<File | null>;
 }
 
-export function createFileInput<T>(config: Config<FileInputProps, T>) {
-  return function FileInput(props: FileInputProps & T) {
-    const {
-      value: _value,
-      onChange,
-      onChangeValue,
-      append,
-      prepend,
-      ...otherProps
-    } = useConfig(config, props);
+export function FileInput(props: FileInputProps) {
+  const layout = useField(props);
+  const onBlur = useBlur(props.field);
 
-    const field = useField(otherProps);
-    const handleChange = React.useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
-        onChange && onChange(event);
-        onChangeValue && onChangeValue(event.target.files![0]);
-      },
-      [onChange, onChangeValue]
-    );
+  const { setValue } = props.field;
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.files?.[0] || null);
+    },
+    [setValue]
+  );
 
-    return (
-      <div {...field.getFieldProps()}>
-        {field.label && (
-          <label {...field.getLabelProps()}>
-            {field.label}
-            {field.help && <span {...field.getHelpProps()}>{field.help}</span>}
-          </label>
-        )}
-        {prepend}
-        <input type="file" onChange={handleChange} {...field.getInputProps()} />
-        {append}
-        {field.error && <span {...field.getErrorProps()}>{field.error}</span>}
-      </div>
-    );
-  };
+  return (
+    <div {...layout.getFieldProps()}>
+      {layout.label && (
+        <label {...layout.getLabelProps()}>
+          {layout.label}
+          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
+        </label>
+      )}
+      {layout.prepend}
+      <input
+        type="file"
+        onBlur={onBlur}
+        onChange={onChange}
+        {...layout.getInputProps()}
+      />
+      {layout.append}
+      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
+    </div>
+  );
 }
-
-export const FileInput = createFileInput({});

@@ -1,3 +1,4 @@
+import { Field } from "@stackup/form";
 import * as React from "react";
 import isEqual from "fast-deep-equal";
 
@@ -57,6 +58,13 @@ export function getDOMValue(value: any): string | number | undefined {
   } else {
     return undefined;
   }
+}
+
+/**
+ * Create a handler for `onBlur`
+ */
+export function useBlur({ setTouched }: Field<any>) {
+  return React.useCallback(() => setTouched(true), [setTouched]);
 }
 
 /**
