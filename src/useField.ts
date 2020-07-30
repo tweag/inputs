@@ -19,10 +19,6 @@ export interface FieldProps {
   prepend?: React.ReactNode;
 }
 
-function getString(value: any): string | undefined {
-  return typeof value === "string" ? value : undefined;
-}
-
 export const useField = <T extends FieldProps>(props: T) => {
   const {
     field,
@@ -48,7 +44,7 @@ export const useField = <T extends FieldProps>(props: T) => {
   return {
     label,
     help,
-    error: getString(field.error),
+    error: typeof field.error === "string" ? field.error : undefined,
     append,
     prepend,
     getInputProps: () => ({
