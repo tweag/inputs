@@ -7,7 +7,7 @@ type Attributes = React.SelectHTMLAttributes<HTMLSelectElement>;
 
 export interface SelectProps extends Attributes {
   field: Field<string>;
-  innerRef: React.Ref<HTMLSelectElement>;
+  innerRef?: React.Ref<HTMLSelectElement>;
   placeholder?: string;
 }
 

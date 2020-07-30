@@ -7,7 +7,7 @@ type Attributes = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export interface TextAreaProps extends Attributes {
   field: Field<string>;
-  innerRef: React.Ref<HTMLTextAreaElement>;
+  innerRef?: React.Ref<HTMLTextAreaElement>;
 }
 
 export function TextArea(props: TextAreaProps) {

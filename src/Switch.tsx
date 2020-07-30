@@ -7,7 +7,7 @@ type Attributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export interface SwitchProps extends Attributes {
   field: Field<boolean>;
-  innerRef: React.Ref<HTMLButtonElement>;
+  innerRef?: React.Ref<HTMLButtonElement>;
 }
 
 export function Switch(props: SwitchProps) {

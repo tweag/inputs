@@ -7,7 +7,7 @@ type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
 
 export interface InputProps extends Attributes {
   field: Field<string>;
-  innerRef: React.Ref<HTMLInputElement>;
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function Input(props: InputProps) {

@@ -7,7 +7,7 @@ type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
 
 export interface FileListInputProps extends Attributes {
   field: Field<FileList | null>;
-  innerRef: React.Ref<HTMLInputElement>;
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function FileListInput(props: FileListInputProps) {

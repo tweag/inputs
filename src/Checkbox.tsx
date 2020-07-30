@@ -7,7 +7,7 @@ type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
 
 export interface CheckboxProps extends Attributes {
   field: Field<boolean>;
-  innerRef: React.Ref<HTMLInputElement>;
+  innerRef?: React.Ref<HTMLInputElement>;
 }
 
 export function Checkbox(props: CheckboxProps) {
