@@ -102,7 +102,7 @@ export function useNestedId<T extends FormField<any>>(field: T): T {
   return React.useMemo(
     () => ({
       ...field,
-      id: `${field.id}--${suffix}`
+      id: `${field.id}_${suffix}`
     }),
     [field, suffix]
   );
