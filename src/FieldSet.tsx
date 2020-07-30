@@ -14,9 +14,10 @@ export function FieldSet(props: FieldSetProps) {
 
   const error = getError(field);
   const errorId = getRelatedId(field, "error");
+  const describedBy = error ? errorId : undefined;
 
   return (
-    <fieldset className="fieldset">
+    <fieldset className="fieldset" aria-describedby={describedBy}>
       <legend className="fieldset__legend">{legend}</legend>
       {help && <p className="fieldset__help">{help}</p>}
       {children}

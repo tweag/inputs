@@ -1,5 +1,6 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
+import equals from "fast-deep-equal";
+import { FormField, useIdentifier } from "@stackup/form";
 
 export type Size = "small" | "large";
 
@@ -26,10 +27,6 @@ export function isNumber(value: any): value is number {
 
 export function isPopulated(value: any) {
   return !isUndefined(value) && value !== null && value !== "";
-}
-
-export function getDOMValue(value: any): string | number | undefined {
-  return isString(value) || isNumber(value) ? value : undefined;
 }
 
 export function useBlur({ setTouched }: FormField<any>) {
@@ -74,5 +71,39 @@ export function getClassName(
     style.field.touched && `${prefix}--touched`,
     isPopulated(style.field.value) && `${prefix}--populated`,
     ...otherClassNames
+  );
+}
+
+export function getDOMValue(value: any): string | number | undefined {
+  return isString(value) || isNumber(value) ? value : undefined;
+}
+
+export function remove<T>(values: T[], value: T): T[] {
+  return values.filter(v => !equals(v, value));
+}
+
+export function contains<T>(values: T[], value: T): boolean {
+  for (const v of values) {
+    if (equals(v, value)) return true;
+  }
+  return false;
+}
+
+/**
+ * In the case of radios and checkboxes, we needed to distinguish each item from
+ * other items. Howerver, many utilities rely on the field's ID property.
+ *
+ * To make sure that these items have unique IDs, we'll merge the new ID into the
+ * field.
+ */
+export function useNestedId<T extends FormField<any>>(field: T): T {
+  const suffix = useIdentifier();
+
+  return React.useMemo(
+    () => ({
+      ...field,
+      id: `${field.id}--${suffix}`
+    }),
+    [field, suffix]
   );
 }

@@ -9,7 +9,10 @@ import {
   FileListInput,
   Select,
   Switch,
-  TextArea
+  TextArea,
+  FieldSet,
+  CheckboxItem,
+  Radio
 } from "../src";
 
 const App = () => {
@@ -23,7 +26,9 @@ const App = () => {
       file: null,
       files: null,
       toggle: false,
-      textarea: ""
+      textarea: "",
+      checkboxes: [] as string[],
+      radio: null
     }
   });
 
@@ -31,6 +36,9 @@ const App = () => {
     event.preventDefault();
     form.submit();
   };
+
+  const checkboxes = useField(form, "checkboxes");
+  const radio = useField(form, "radio");
 
   return (
     <form onSubmit={onSubmit}>
@@ -45,6 +53,18 @@ const App = () => {
       <TextArea label="Text Area" field={useField(form, "textarea")} />
       <Switch label="Switch" field={useField(form, "toggle")} />
       <Checkbox label="Checkbox" field={useField(form, "checkbox")} />
+
+      <FieldSet legend="Checkboxes" field={checkboxes}>
+        <CheckboxItem label="Apple" value="apple" field={checkboxes} />
+        <CheckboxItem label="Banana" value="banana" field={checkboxes} />
+        <CheckboxItem label="Horse" value="horse" field={checkboxes} />
+      </FieldSet>
+
+      <FieldSet legend="Radio" field={radio}>
+        <Radio label="Apple" value="apple" field={radio} />
+        <Radio label="Banana" value="banana" field={radio} />
+        <Radio label="Horse" value="horse" field={radio} />
+      </FieldSet>
     </form>
   );
 };
