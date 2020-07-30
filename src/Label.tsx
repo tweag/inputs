@@ -12,7 +12,7 @@ export function Label(props: LabelProps) {
 
   const context = useFieldContext();
   const id = getRelatedId(context.field, "label");
-  const className = getClassName(context, "field--label", labelProps.className);
+  const className = getClassName(context, "field__label", labelProps.className);
 
   return (
     <label

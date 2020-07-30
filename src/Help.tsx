@@ -11,7 +11,7 @@ export function Help(props: HelpProps) {
   const { children, ...helpProps } = props;
 
   const context = useFieldContext();
-  const className = getClassName(context, "field--help", helpProps.className);
+  const className = getClassName(context, "field__help", helpProps.className);
 
   return (
     <span {...helpProps} className={className}>
