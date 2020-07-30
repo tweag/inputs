@@ -1,6 +1,6 @@
-import { Field } from "@stackup/form";
 import * as React from "react";
 import isEqual from "fast-deep-equal";
+import { Field } from "@stackup/form";
 
 /**
  * Extract props from an HTMLElement, but remove conflicts.
@@ -15,6 +15,13 @@ export interface HTMLProps<T>
  */
 export function isUndefined(value: any): value is undefined {
   return typeof value === "undefined";
+}
+
+/**
+ * Check if the value is a string.
+ */
+export function isString(value: any): value is string {
+  return typeof value === "string";
 }
 
 /**
@@ -76,32 +83,4 @@ export function concat(...names: any[]): string | undefined {
     if (names[i]) out += ` ${names[i]}`;
   }
   return out.trim() || undefined;
-}
-
-/**
- * Create a new Group context
- */
-
-export interface GroupContext {
-  name?: string;
-  value?: any;
-  children?: React.ReactNode;
-  onChangeValue?: (value: any) => void;
-}
-
-export function createGroupContext(name: string) {
-  const context = React.createContext<GroupContext | undefined>(undefined);
-  context.displayName = name;
-
-  function useGroup(): GroupContext {
-    const group = React.useContext(context);
-
-    if (!group) {
-      throw new Error(`<${name}.Item /> must be rendered within a <${name} />`);
-    }
-
-    return group;
-  }
-
-  return { Provider: context.Provider, useGroup };
 }

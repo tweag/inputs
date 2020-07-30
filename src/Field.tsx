@@ -1,52 +1,42 @@
 import * as React from "react";
-import { concat } from "./utilities";
 import { Field as FormField } from "@stackup/form";
+import {
+  StyleProps,
+  FieldContextValue,
+  getClassName,
+  FieldContext
+} from "./FieldContext";
 
 type Attributes = React.HTMLAttributes<HTMLDivElement>;
-
-export interface StyleProps {
-  check?: boolean;
-  inline?: boolean;
-  condensed?: boolean;
-  size?: "small" | "large";
-}
 
 export interface FieldProps extends StyleProps, Attributes {
   field: FormField<any>;
   children?: React.ReactNode;
 }
 
-function isPopulated(value: any) {
-  return typeof value !== "undefined" && value !== null && value !== "";
-}
-
 export function Field(props: FieldProps) {
   const {
     field,
-    className,
-    children,
-    onBlur,
     size,
     check,
     inline,
     condensed,
+    children,
     ...fieldProps
   } = props;
 
-  const fieldClassName = concat(
-    "field",
-    size && `field--${size}`,
-    check && "field--check",
-    inline && "field--inline",
-    condensed && "field--condensed",
-    field.touched && "field--touched",
-    isPopulated(field.value) && "field--populated",
-    className
-  );
+  const context: FieldContextValue = {
+    field,
+    style: { size, check, inline, condensed }
+  };
+
+  const className = getClassName(context, "field", fieldProps.className);
 
   return (
-    <div {...fieldProps} className={fieldClassName}>
-      {children}
-    </div>
+    <FieldContext.Provider value={context}>
+      <div {...fieldProps} className={className}>
+        {children}
+      </div>
+    </FieldContext.Provider>
   );
 }
