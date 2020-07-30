@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Field, SharedFieldProps } from "./Field";
+import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
+import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { SharedFieldProps, Size } from "./types";
 
 export interface FileInputProps extends SharedFieldProps {
   field: FormField<File | null>;

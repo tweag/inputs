@@ -1,23 +1,6 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
-import { StyleProps, getClassName, getError, getRelatedId } from "./utilities";
-
-export interface SharedFieldProps {
-  label: React.ReactNode;
-  help?: React.ReactNode;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
-  className?: string;
-  labelClassName?: string;
-  helpClassName?: string;
-  errorClassName?: string;
-}
-
-export interface FieldProps extends SharedFieldProps, StyleProps {
-  field: FormField<any>;
-  variant: string;
-  children?: React.ReactNode;
-}
+import { getClassName, getError, getRelatedId } from "./utilities";
+import { FieldProps } from "./types";
 
 export function Field(props: FieldProps) {
   const { field, label, help, append, prepend, check, children } = props;

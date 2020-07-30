@@ -1,17 +1,7 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
 import { FormField, useIdentifier } from "@stackup/form";
-
-export type Size = "small" | "large";
-
-export interface StyleProps {
-  field: FormField<any>;
-  size?: Size;
-  variant?: string;
-  check?: boolean;
-  inline?: boolean;
-  condensed?: boolean;
-}
+import { StyleProps } from "./types";
 
 export function isUndefined(value: any): value is undefined {
   return typeof value === "undefined";
