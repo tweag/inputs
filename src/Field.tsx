@@ -2,41 +2,51 @@ import * as React from "react";
 import { Field as FormField } from "@stackup/form";
 import {
   StyleProps,
-  FieldContextValue,
   getClassName,
-  FieldContext
+  getError,
+  getRelatedId
 } from "./FieldContext";
 
-type Attributes = React.HTMLAttributes<HTMLDivElement>;
-
-export interface FieldProps extends StyleProps, Attributes {
+export interface FieldProps extends StyleProps {
   field: FormField<any>;
+  label: React.ReactNode;
+  help?: React.ReactNode;
+  append?: React.ReactNode;
+  prepend?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 export function Field(props: FieldProps) {
-  const {
-    field,
-    size,
-    check,
-    inline,
-    condensed,
-    children,
-    ...fieldProps
-  } = props;
+  const { field, label, help, append, prepend, check, children } = props;
 
-  const context: FieldContextValue = {
-    field,
-    style: { size, check, inline, condensed }
-  };
+  const error = getError(field);
+  const errorId = getRelatedId(field, "error");
+  const labelId = getRelatedId(field, "label");
 
-  const className = getClassName(context, "field", fieldProps.className);
+  const className = getClassName(props, "field");
+  const labelClassName = getClassName(props, "field__label");
+  const errorClassName = getClassName(props, "field__error");
+  const helpClassName = getClassName(props, "field__help");
+
+  const renderLabel = () => (
+    <label id={labelId} htmlFor={field.id} className={labelClassName}>
+      {label}
+      {help && <span className={helpClassName}>{help}</span>}
+    </label>
+  );
 
   return (
-    <FieldContext.Provider value={context}>
-      <div {...fieldProps} className={className}>
-        {children}
-      </div>
-    </FieldContext.Provider>
+    <div className={className}>
+      {!check && renderLabel()}
+      {prepend}
+      {children}
+      {check && renderLabel()}
+      {append}
+      {error && (
+        <span id={errorId} role="alert" className={errorClassName}>
+          {error}
+        </span>
+      )}
+    </div>
   );
 }

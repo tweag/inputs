@@ -2,11 +2,13 @@ import { createContext, useContext } from "react";
 import { Field as FormField } from "@stackup/form";
 import { concat, isUndefined, isString } from "./utilities";
 
+export type Size = "small" | "large";
 export interface StyleProps {
   check?: boolean;
   inline?: boolean;
   condensed?: boolean;
-  size?: "small" | "large";
+  size?: Size;
+  field: FormField<any>;
 }
 
 export interface FieldContextValue {
@@ -35,18 +37,18 @@ function isPopulated(value: any) {
 }
 
 export function getClassName(
-  ctx: FieldContextValue,
+  style: StyleProps,
   prefix: string,
   ...otherClassNames: any[]
 ) {
   return concat(
     prefix,
-    ctx.style.check && `${prefix}--check`,
-    ctx.style.inline && `${prefix}--inline`,
-    ctx.style.condensed && `${prefix}--condensed`,
-    ctx.style.size && `${prefix}--${ctx.style.size}`,
-    ctx.field.touched && `${prefix}--touched`,
-    isPopulated(ctx.field.value) && `${prefix}--populated`,
+    style.check && `${prefix}--check`,
+    style.inline && `${prefix}--inline`,
+    style.condensed && `${prefix}--condensed`,
+    style.size && `${prefix}--${style.size}`,
+    style.field.touched && `${prefix}--touched`,
+    isPopulated(style.field.value) && `${prefix}--populated`,
     ...otherClassNames
   );
 }
