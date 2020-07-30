@@ -1,5 +1,6 @@
 export * from "./Checkbox";
 export * from "./Field";
+export * from "./FieldSet";
 export * from "./FileInput";
 export * from "./FileListInput";
 export * from "./Input";
