@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Field } from "./Field";
-import { Field as FormField } from "@stackup/form";
+import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
 export interface SelectProps {

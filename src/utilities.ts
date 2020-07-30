@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field as FormField } from "@stackup/form";
+import { FormField } from "@stackup/form";
 
 export type Size = "small" | "large";
 
