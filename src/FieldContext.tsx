@@ -41,22 +41,29 @@ export function getClassName(
 ) {
   return concat(
     prefix,
-    ctx.style.check && "field--check",
-    ctx.style.inline && "field--inline",
-    ctx.style.condensed && "field--condensed",
-    ctx.style.size && `field--${ctx.style.size}`,
-    ctx.field.touched && "field--touched",
-    isPopulated(ctx.field.value) && "field--populated",
+    ctx.style.check && `${prefix}--check`,
+    ctx.style.inline && `${prefix}--inline`,
+    ctx.style.condensed && `${prefix}--condensed`,
+    ctx.style.size && `${prefix}--${ctx.style.size}`,
+    ctx.field.touched && `${prefix}--touched`,
+    isPopulated(ctx.field.value) && `${prefix}--populated`,
     ...otherClassNames
   );
 }
 
-export function getRelatedId(ctx: FieldContextValue, suffix: string): string {
-  return `${ctx.field.id}--${suffix}`;
+export function getRelatedId(field: FormField<any>, suffix: string): string {
+  return `${field.id}--${suffix}`;
 }
 
-export function getError(ctx: FieldContextValue): string | undefined {
-  return ctx.field.touched && typeof ctx.field.error === "string"
-    ? ctx.field.error
+export function getError(field: FormField<any>): string | undefined {
+  return field.touched && typeof field.error === "string"
+    ? field.error
     : undefined;
+}
+
+export function getLabelledBy(field: FormField<any>): string | undefined {
+  const error = getError(field);
+  const errorId = getRelatedId(field, "error");
+  const labelId = getRelatedId(field, "label");
+  return concat(labelId, error && errorId);
 }

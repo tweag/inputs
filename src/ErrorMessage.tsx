@@ -14,9 +14,9 @@ export interface ErrorMessageProps extends Attributes {
 
 export function ErrorMessage({ children, ...props }: ErrorMessageProps) {
   const context = useFieldContext();
-  const error = getError(context);
-  const id = getRelatedId(context, "error");
-  const className = getClassName(context, "field--error", props.className);
+  const error = getError(context.field);
+  const id = getRelatedId(context.field, "error");
+  const className = getClassName(context, "field__error", props.className);
 
   if (!error) {
     return null;
