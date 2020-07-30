@@ -1,45 +1,43 @@
 import * as React from "react";
 import { Field } from "@stackup/form";
-import { HTMLProps, useBlur } from "./utilities";
-import { useField, FieldProps } from "./useField";
+import { useBlur } from "./utilities";
+import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
 
-export interface SwitchProps extends FieldProps, HTMLProps<HTMLButtonElement> {
+type Attributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export interface SwitchProps extends Attributes {
   field: Field<boolean>;
-  children?: React.ReactNode;
+  innerRef: React.Ref<HTMLButtonElement>;
 }
 
 export function Switch(props: SwitchProps) {
-  const { children, ...otherProps } = props;
+  const { field, innerRef, children, ...moreProps } = props;
+  const { id, value, setValue } = field;
 
-  const layout = useField(otherProps);
-  const onBlur = useBlur(props.field);
+  const context = useFieldContext();
+  const labelledBy = getLabelledBy(field);
+  const className = getClassName(context, "field__input", moreProps.className);
 
-  const { value, setValue } = props.field;
+  const onBlur = useBlur(field);
   const onClick = React.useCallback(() => {
     setValue(value => !value);
   }, [setValue]);
 
   return (
-    <div {...layout.getFieldProps()}>
-      <button
-        onBlur={onBlur}
-        onClick={onClick}
-        role="switch"
-        aria-checked={value}
-        aria-label={value ? "On" : "Off"}
-        {...layout.getInputProps()}
-        type="button"
-      >
-        {children}
-      </button>
-
-      {layout.label && (
-        <label {...layout.getLabelProps()}>
-          {layout.label}
-          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
-        </label>
-      )}
-      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
-    </div>
+    <button
+      {...moreProps}
+      id={id}
+      ref={innerRef}
+      type="button"
+      role="switch"
+      onBlur={onBlur}
+      onClick={onClick}
+      aria-checked={value}
+      aria-label={value ? "On" : "Off"}
+      aria-labelledby={labelledBy}
+      className={className}
+    >
+      {children}
+    </button>
   );
 }

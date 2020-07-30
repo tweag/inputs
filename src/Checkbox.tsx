@@ -1,17 +1,24 @@
 import * as React from "react";
 import { Field } from "@stackup/form";
-import { HTMLProps, useBlur } from "./utilities";
-import { useField, FieldProps } from "./useField";
+import { useBlur } from "./utilities";
+import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
 
-export interface CheckboxProps extends FieldProps, HTMLProps<HTMLInputElement> {
+type Attributes = React.InputHTMLAttributes<HTMLInputElement>;
+
+export interface CheckboxProps extends Attributes {
   field: Field<boolean>;
+  innerRef: React.Ref<HTMLInputElement>;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const layout = useField(props);
-  const onBlur = useBlur(props.field);
+  const { field, innerRef, ...moreProps } = props;
+  const { id, value, setValue } = field;
 
-  const { value, setValue } = props.field;
+  const context = useFieldContext();
+  const labelledBy = getLabelledBy(field);
+  const className = getClassName(context, "field__input", moreProps.className);
+
+  const onBlur = useBlur(field);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.checked);
@@ -20,23 +27,16 @@ export function Checkbox(props: CheckboxProps) {
   );
 
   return (
-    <div {...layout.getFieldProps()}>
-      <input
-        type="checkbox"
-        checked={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        {...layout.getInputProps()}
-      />
-
-      {layout.label && (
-        <label {...layout.getLabelProps()}>
-          {layout.label}
-          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
-        </label>
-      )}
-
-      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
-    </div>
+    <input
+      {...moreProps}
+      type="checkbox"
+      id={id}
+      ref={innerRef}
+      checked={value}
+      onBlur={onBlur}
+      onChange={onChange}
+      className={className}
+      aria-labelledby={labelledBy}
+    />
   );
 }

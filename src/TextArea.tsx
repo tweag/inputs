@@ -1,19 +1,24 @@
 import * as React from "react";
 import { Field } from "@stackup/form";
-import { HTMLProps, useBlur } from "./utilities";
-import { useField, FieldProps } from "./useField";
+import { useBlur } from "./utilities";
+import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
 
-export interface TextAreaProps
-  extends FieldProps,
-    HTMLProps<HTMLTextAreaElement> {
+type Attributes = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+
+export interface TextAreaProps extends Attributes {
   field: Field<string>;
+  innerRef: React.Ref<HTMLTextAreaElement>;
 }
 
 export function TextArea(props: TextAreaProps) {
-  const layout = useField(props);
-  const onBlur = useBlur(props.field);
+  const { field, innerRef, ...moreProps } = props;
+  const { id, value, setValue } = field;
 
-  const { value, setValue } = props.field;
+  const context = useFieldContext();
+  const labelledBy = getLabelledBy(field);
+  const className = getClassName(context, "field__input", moreProps.className);
+
+  const onBlur = useBlur(field);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setValue(event.target.value);
@@ -22,22 +27,15 @@ export function TextArea(props: TextAreaProps) {
   );
 
   return (
-    <div {...layout.getFieldProps()}>
-      {layout.label && (
-        <label {...layout.getLabelProps()}>
-          {layout.label}
-          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
-        </label>
-      )}
-      {layout.prepend}
-      <textarea
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        {...layout.getInputProps()}
-      />
-      {layout.append}
-      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
-    </div>
+    <textarea
+      {...moreProps}
+      id={id}
+      value={value}
+      ref={innerRef}
+      onBlur={onBlur}
+      onChange={onChange}
+      className={className}
+      aria-labelledby={labelledBy}
+    />
   );
 }

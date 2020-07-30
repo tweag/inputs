@@ -1,21 +1,25 @@
 import * as React from "react";
 import { Field } from "@stackup/form";
-import { HTMLProps, useBlur } from "./utilities";
-import { useField, FieldProps } from "./useField";
+import { useBlur } from "./utilities";
+import { getLabelledBy, getClassName, useFieldContext } from "./FieldContext";
 
-export interface SelectProps extends FieldProps, HTMLProps<HTMLSelectElement> {
+type Attributes = React.SelectHTMLAttributes<HTMLSelectElement>;
+
+export interface SelectProps extends Attributes {
   field: Field<string>;
+  innerRef: React.Ref<HTMLSelectElement>;
   placeholder?: string;
-  children?: React.ReactNode;
 }
 
 export function Select(props: SelectProps) {
-  const { placeholder, children, ...otherProps } = props;
+  const { field, innerRef, placeholder, children, ...moreProps } = props;
+  const { id, value, setValue } = field;
 
-  const layout = useField(otherProps);
-  const onBlur = useBlur(props.field);
+  const context = useFieldContext();
+  const labelledBy = getLabelledBy(field);
+  const className = getClassName(context, "field__input", moreProps.className);
 
-  const { value, setValue } = props.field;
+  const onBlur = useBlur(field);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setValue(event.target.value);
@@ -24,30 +28,23 @@ export function Select(props: SelectProps) {
   );
 
   return (
-    <div {...layout.getFieldProps()}>
-      {layout.label && (
-        <label {...layout.getLabelProps()}>
-          {layout.label}
-          {layout.help && <span {...layout.getHelpProps()}>{layout.help}</span>}
-        </label>
+    <select
+      {...moreProps}
+      id={id}
+      ref={innerRef}
+      value={value}
+      onBlur={onBlur}
+      onChange={onChange}
+      className={className}
+      aria-labelledby={labelledBy}
+    >
+      {placeholder && (
+        <option disabled value="" key="placeholder">
+          {placeholder}
+        </option>
       )}
-      {layout.prepend}
-      <select
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        {...layout.getInputProps()}
-      >
-        {placeholder && (
-          <option disabled value="" key="placeholder">
-            {placeholder}
-          </option>
-        )}
 
-        {children}
-      </select>
-      {layout.append}
-      {layout.error && <span {...layout.getErrorProps()}>{layout.error}</span>}
-    </div>
+      {children}
+    </select>
   );
 }
