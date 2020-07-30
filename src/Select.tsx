@@ -1,19 +1,16 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface SelectProps {
+export interface SelectProps extends FieldProps {
   field: FormField<string>;
   placeholder?: string;
-  label: React.ReactNode;
-  help?: React.ReactNode;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   children?: React.ReactNode;
   size?: Size;
   inline?: boolean;
   innerRef?: React.Ref<HTMLSelectElement>;
+  inputClassName?: string;
 }
 
 export function Select(props: SelectProps) {
@@ -37,7 +34,12 @@ export function Select(props: SelectProps) {
         onBlur={onBlur}
         onChange={onChange}
         aria-labelledby={getLabelledBy(field)}
-        className={getClassName(props, "field__input", "field__input--select")}
+        className={getClassName(
+          props,
+          "field__input",
+          "field__input--select",
+          props.inputClassName
+        )}
       >
         {placeholder && (
           <option disabled value="" key="placeholder">

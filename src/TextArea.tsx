@@ -1,17 +1,14 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface TextAreaProps {
+export interface TextAreaProps extends FieldProps {
   field: FormField<string>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   size?: Size;
   condensed?: boolean;
   innerRef?: React.Ref<HTMLTextAreaElement>;
+  inputClassName?: string;
 }
 
 export function TextArea(props: TextAreaProps) {
@@ -34,12 +31,13 @@ export function TextArea(props: TextAreaProps) {
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
+        aria-labelledby={getLabelledBy(field)}
         className={getClassName(
           props,
           "field__input",
-          "field__input--textarea"
+          "field__input--textarea",
+          props.inputClassName
         )}
-        aria-labelledby={getLabelledBy(field)}
       />
     </Field>
   );

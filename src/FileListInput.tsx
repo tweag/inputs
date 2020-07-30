@@ -1,18 +1,15 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface FileListInputProps {
+export interface FileListInputProps extends FieldProps {
   field: FormField<FileList | null>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   size?: Size;
   inline?: boolean;
   condensed?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
+  inputClassName?: string;
 }
 
 export function FileListInput(props: FileListInputProps) {
@@ -35,8 +32,13 @@ export function FileListInput(props: FileListInputProps) {
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input", "field__input--file")}
         aria-labelledby={getLabelledBy(field)}
+        className={getClassName(
+          props,
+          "field__input",
+          "field__input--file",
+          props.inputClassName
+        )}
       />
     </Field>
   );

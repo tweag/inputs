@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
@@ -19,17 +19,14 @@ export type InputType =
   | "url"
   | "week";
 
-export interface InputProps {
+export interface InputProps extends FieldProps {
   field: FormField<string>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
-  append?: React.ReactNode;
-  prepend?: React.ReactNode;
   size?: Size;
   type?: InputType;
   inline?: boolean;
   condensed?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
+  inputClassName?: string;
 }
 
 export function Input(props: InputProps) {
@@ -53,8 +50,13 @@ export function Input(props: InputProps) {
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input", `field__input--${type}`)}
         aria-labelledby={getLabelledBy(field)}
+        className={getClassName(
+          props,
+          "field__input",
+          `field__input--${type}`,
+          props.inputClassName
+        )}
       />
     </Field>
   );

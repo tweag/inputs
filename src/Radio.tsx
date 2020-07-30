@@ -1,6 +1,6 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import {
   Size,
@@ -11,14 +11,13 @@ import {
   useNestedId
 } from "./utilities";
 
-export interface RadioProps<T> {
+export interface RadioProps<T> extends FieldProps {
   value: T;
   field: FormField<T | null>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
   size?: Size;
   inline?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
+  inputClassName?: string;
 }
 
 export function Radio<T>(props: RadioProps<T>) {
@@ -47,7 +46,8 @@ export function Radio<T>(props: RadioProps<T>) {
           props,
           "field__input",
           "field__input--check",
-          "field__input--radio"
+          "field__input--radio",
+          props.inputClassName
         )}
       />
     </Field>

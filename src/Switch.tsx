@@ -1,15 +1,14 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface SwitchProps {
+export interface SwitchProps extends FieldProps {
   field: FormField<boolean>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
   children?: React.ReactNode;
   size?: Size;
   innerRef?: React.Ref<HTMLButtonElement>;
+  inputClassName?: string;
 }
 
 export function Switch(props: SwitchProps) {
@@ -37,7 +36,8 @@ export function Switch(props: SwitchProps) {
           props,
           "field__input",
           "field__input--check",
-          "field__input--switch"
+          "field__input--switch",
+          props.inputClassName
         )}
       >
         {children}

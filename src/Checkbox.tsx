@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName, Size } from "./utilities";
 
-export interface CheckboxProps {
+export interface CheckboxProps extends FieldProps {
   field: FormField<boolean>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
   size?: Size;
   innerRef?: React.Ref<HTMLInputElement>;
+  inputClassName?: string;
 }
 
 export function Checkbox(props: CheckboxProps) {
@@ -37,7 +36,8 @@ export function Checkbox(props: CheckboxProps) {
           props,
           "field__input",
           "field__input--check",
-          "field__input--checkbox"
+          "field__input--checkbox",
+          props.className
         )}
       />
     </Field>

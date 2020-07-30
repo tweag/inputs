@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field } from "./Field";
+import { Field, FieldProps } from "./Field";
 import { FormField } from "@stackup/form";
 import {
   Size,
@@ -12,14 +12,13 @@ import {
   useNestedId
 } from "./utilities";
 
-export interface CheckboxItemProps<T> {
+export interface CheckboxItemProps<T> extends FieldProps {
   value: T;
   field: FormField<T[]>;
-  label: React.ReactNode;
-  help?: React.ReactNode;
   size?: Size;
   inline?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
+  inputClassName?: string;
 }
 
 export function CheckboxItem<T>(props: CheckboxItemProps<T>) {
@@ -59,7 +58,8 @@ export function CheckboxItem<T>(props: CheckboxItemProps<T>) {
           props,
           "field__input",
           "field__input--check",
-          "field__input--checkbox"
+          "field__input--checkbox",
+          props.inputClassName
         )}
       />
     </Field>
