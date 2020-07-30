@@ -28,14 +28,14 @@ export function FileInput(props: FileInputProps) {
   );
 
   return (
-    <Field {...props}>
+    <Field variant="file" {...props}>
       <input
         type="file"
         id={id}
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input")}
+        className={getClassName(props, "field__input", "field__input--file")}
         aria-labelledby={getLabelledBy(field)}
       />
     </Field>

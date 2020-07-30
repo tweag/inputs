@@ -4,6 +4,7 @@ import { StyleProps, getClassName, getError, getRelatedId } from "./utilities";
 
 export interface FieldProps extends StyleProps {
   field: FormField<any>;
+  variant: string;
   label: React.ReactNode;
   help?: React.ReactNode;
   append?: React.ReactNode;

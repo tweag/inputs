@@ -6,6 +6,7 @@ export type Size = "small" | "large";
 export interface StyleProps {
   field: FormField<any>;
   size?: Size;
+  variant?: string;
   check?: boolean;
   inline?: boolean;
   condensed?: boolean;
@@ -69,6 +70,7 @@ export function getClassName(
     style.inline && `${prefix}--inline`,
     style.condensed && `${prefix}--condensed`,
     style.size && `${prefix}--${style.size}`,
+    style.variant && `${prefix}--${style.variant}`,
     style.field.touched && `${prefix}--touched`,
     isPopulated(style.field.value) && `${prefix}--populated`,
     ...otherClassNames

@@ -22,7 +22,7 @@ export function Switch(props: SwitchProps) {
   }, [setValue]);
 
   return (
-    <Field check {...props}>
+    <Field check variant="switch" {...props}>
       <button
         id={id}
         ref={innerRef}
@@ -33,7 +33,12 @@ export function Switch(props: SwitchProps) {
         aria-checked={value}
         aria-label={value ? "On" : "Off"}
         aria-labelledby={getLabelledBy(field)}
-        className={getClassName(props, "field__input")}
+        className={getClassName(
+          props,
+          "field__input",
+          "field__input--check",
+          "field__input--switch"
+        )}
       >
         {children}
       </button>

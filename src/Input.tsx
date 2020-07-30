@@ -45,7 +45,7 @@ export function Input(props: InputProps) {
   );
 
   return (
-    <Field {...props}>
+    <Field variant={type} {...props}>
       <input
         id={id}
         value={value}
@@ -53,7 +53,7 @@ export function Input(props: InputProps) {
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input")}
+        className={getClassName(props, "field__input", `field__input--${type}`)}
         aria-labelledby={getLabelledBy(field)}
       />
     </Field>

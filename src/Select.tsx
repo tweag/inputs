@@ -29,15 +29,15 @@ export function Select(props: SelectProps) {
   );
 
   return (
-    <Field {...props}>
+    <Field variant="select" {...props}>
       <select
         id={id}
         ref={innerRef}
         value={value}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input")}
         aria-labelledby={getLabelledBy(field)}
+        className={getClassName(props, "field__input", "field__input--select")}
       >
         {placeholder && (
           <option disabled value="" key="placeholder">

@@ -24,7 +24,7 @@ export function Checkbox(props: CheckboxProps) {
   );
 
   return (
-    <Field check {...props}>
+    <Field check variant="checkbox" {...props}>
       <input
         type="checkbox"
         id={id}
@@ -32,8 +32,13 @@ export function Checkbox(props: CheckboxProps) {
         checked={value}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input")}
         aria-labelledby={getLabelledBy(field)}
+        className={getClassName(
+          props,
+          "field__input",
+          "field__input--check",
+          "field__input--checkbox"
+        )}
       />
     </Field>
   );

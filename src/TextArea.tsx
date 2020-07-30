@@ -27,14 +27,18 @@ export function TextArea(props: TextAreaProps) {
   );
 
   return (
-    <Field {...props}>
+    <Field variant="textarea" {...props}>
       <textarea
         id={id}
         value={value}
         ref={innerRef}
         onBlur={onBlur}
         onChange={onChange}
-        className={getClassName(props, "field__input")}
+        className={getClassName(
+          props,
+          "field__input",
+          "field__input--textarea"
+        )}
         aria-labelledby={getLabelledBy(field)}
       />
     </Field>
