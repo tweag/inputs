@@ -2,17 +2,29 @@ import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useForm, useField, useNoValidate } from "@stackup/form";
-import { Field, Label, ErrorMessage, Input } from "../src";
-
-interface Values {
-  text: string;
-}
+import {
+  Input,
+  Checkbox,
+  FileInput,
+  FileListInput,
+  Select,
+  Switch,
+  TextArea
+} from "../src";
 
 const App = () => {
-  const form = useForm<Values>({
+  const form = useForm({
     submit: values => console.log(values),
     validate: useNoValidate(),
-    initialValue: { text: "" }
+    initialValue: {
+      text: "",
+      select: "",
+      checkbox: false,
+      file: null,
+      files: null,
+      toggle: false,
+      textarea: ""
+    }
   });
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -20,19 +32,20 @@ const App = () => {
     form.submit();
   };
 
-  const text = useField(form, "text");
-
   return (
-    <div>
-      <h1>React Baseline Inputs</h1>
-      <form onSubmit={onSubmit}>
-        <Field field={text}>
-          <Label>Text</Label>
-          <Input field={text} />
-          <ErrorMessage />
-        </Field>
-      </form>
-    </div>
+    <form onSubmit={onSubmit}>
+      <Input label="Text" field={useField(form, "text")} />
+      <Select label="Select" field={useField(form, "select")}>
+        <option value="corn">Corn</option>
+        <option value="potato">Potato</option>
+        <option value="carrot">Carrot</option>
+      </Select>
+      <FileInput label="File" field={useField(form, "file")} />
+      <FileListInput label="Files" field={useField(form, "files")} />
+      <TextArea label="Text Area" field={useField(form, "textarea")} />
+      <Switch label="Switch" field={useField(form, "toggle")} />
+      <Checkbox label="Checkbox" field={useField(form, "checkbox")} />
+    </form>
   );
 };
 
