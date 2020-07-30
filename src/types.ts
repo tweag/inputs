@@ -1,10 +1,10 @@
 import { FormField } from "@stackup/form";
 
-export type Size = "small" | "large";
+export type FieldSize = "small" | "large";
 
 export interface StyleProps {
   field: FormField<any>;
-  size?: Size;
+  size?: FieldSize;
   variant?: string;
   check?: boolean;
   inline?: boolean;

@@ -2,13 +2,13 @@ import * as React from "react";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName } from "./utilities";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 
 export interface SelectProps extends SharedFieldProps {
   field: FormField<string>;
   placeholder?: string;
   children?: React.ReactNode;
-  size?: Size;
+  size?: FieldSize;
   inline?: boolean;
   innerRef?: React.Ref<HTMLSelectElement>;
   inputClassName?: string;

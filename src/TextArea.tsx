@@ -2,11 +2,11 @@ import * as React from "react";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName } from "./utilities";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 
 export interface TextAreaProps extends SharedFieldProps {
   field: FormField<string>;
-  size?: Size;
+  size?: FieldSize;
   condensed?: boolean;
   innerRef?: React.Ref<HTMLTextAreaElement>;
   inputClassName?: string;

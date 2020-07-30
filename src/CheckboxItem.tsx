@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 import {
   contains,
   getClassName,
@@ -15,7 +15,7 @@ import {
 export interface CheckboxItemProps<T> extends SharedFieldProps {
   value: T;
   field: FormField<T[]>;
-  size?: Size;
+  size?: FieldSize;
   inline?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
   inputClassName?: string;

@@ -2,7 +2,7 @@ import * as React from "react";
 import equals from "fast-deep-equal";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 import {
   getClassName,
   getDOMValue,
@@ -14,7 +14,7 @@ import {
 export interface RadioProps<T> extends SharedFieldProps {
   value: T;
   field: FormField<T | null>;
-  size?: Size;
+  size?: FieldSize;
   inline?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
   inputClassName?: string;

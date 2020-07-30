@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 import { useBlur, getLabelledBy, getClassName } from "./utilities";
 
 export interface SwitchProps extends SharedFieldProps {
   field: FormField<boolean>;
   children?: React.ReactNode;
-  size?: Size;
+  size?: FieldSize;
   innerRef?: React.Ref<HTMLButtonElement>;
   inputClassName?: string;
 }

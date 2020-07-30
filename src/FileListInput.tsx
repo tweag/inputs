@@ -2,11 +2,11 @@ import * as React from "react";
 import { Field } from "./Field";
 import { FormField } from "@stackup/form";
 import { useBlur, getLabelledBy, getClassName } from "./utilities";
-import { SharedFieldProps, Size } from "./types";
+import { SharedFieldProps, FieldSize } from "./types";
 
 export interface FileListInputProps extends SharedFieldProps {
   field: FormField<FileList | null>;
-  size?: Size;
+  size?: FieldSize;
   inline?: boolean;
   condensed?: boolean;
   innerRef?: React.Ref<HTMLInputElement>;
