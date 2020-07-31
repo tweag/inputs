@@ -22,7 +22,7 @@ export function FieldSet(props: FieldSetProps) {
       {help && <p className="fieldset__help">{help}</p>}
       {children}
       {error && (
-        <span id={errorId} role="alert" className="fieldset__error">
+        <span id={errorId} role="alert" className="message message--problem">
           {error}
         </span>
       )}

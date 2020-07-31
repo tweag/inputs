@@ -49,6 +49,7 @@ export function useFieldProps<Value, Element, InputProps>(
       condensed && `${name}--condensed`,
       size && `${name}--${size}`,
       field.touched && `${name}--touched`,
+      error && `${name}--erroneous`,
       isPopulated(field.value) && `${name}--populated`,
       ...variants.map(v => `${name}--${v}`),
       ...names
@@ -79,7 +80,7 @@ export function useFieldProps<Value, Element, InputProps>(
     getErrorProps: () => ({
       id: `${field.id}--error`,
       role: "alert",
-      className: getClassName("field__error", props.errorClassName)
+      className: concat("message message--problem", props.errorClassName)
     }),
     getHelpProps: () => ({
       className: getClassName("field__help", props.helpClassName)
