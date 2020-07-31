@@ -1,23 +1,11 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
-import { Field } from "./Field";
-import { FormField } from "@stackup/form";
-import { SharedFieldProps, FieldSize } from "./types";
-import {
-  getClassName,
-  getDOMValue,
-  getLabelledBy,
-  useBlur,
-  useNestedId
-} from "./utilities";
+import { FieldProps } from "./types";
+import { getDOMValue, useNestedId } from "./utilities";
 
-export interface RadioProps<T> extends SharedFieldProps {
-  value: T;
-  field: FormField<T | null>;
-  size?: FieldSize;
-  inline?: boolean;
-  innerRef?: React.Ref<HTMLInputElement>;
-  inputClassName?: string;
+export interface RadioProps<Value>
+  extends FieldProps<Value | null, HTMLInputElement> {
+  value: Value;
 }
 
 export function Radio<T>(props: RadioProps<T>) {

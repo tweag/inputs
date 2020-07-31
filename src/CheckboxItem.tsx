@@ -1,27 +1,13 @@
 import * as React from "react";
-import { Field } from "./Field";
-import { FormField } from "@stackup/form";
-import { SharedFieldProps, FieldSize } from "./types";
-import {
-  contains,
-  getClassName,
-  getDOMValue,
-  getLabelledBy,
-  remove,
-  useBlur,
-  useNestedId
-} from "./utilities";
+import { FieldProps } from "./types";
+import { contains, getDOMValue, remove, useNestedId } from "./utilities";
 
-export interface CheckboxItemProps<T> extends SharedFieldProps {
-  value: T;
-  field: FormField<T[]>;
-  size?: FieldSize;
-  inline?: boolean;
-  innerRef?: React.Ref<HTMLInputElement>;
-  inputClassName?: string;
+export interface CheckboxItemProps<Value>
+  extends FieldProps<Value[], HTMLInputElement> {
+  value: Value;
 }
 
-export function CheckboxItem<T>(props: CheckboxItemProps<T>) {
+export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
   props = { ...props, field: useNestedId(props.field) };
 
   const { field, innerRef } = props;

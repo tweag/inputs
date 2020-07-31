@@ -1,16 +1,10 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
+import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
-import { SharedFieldProps, FieldSize } from "./types";
 
-export interface SelectProps extends SharedFieldProps {
-  field: FormField<string>;
+export interface SelectProps extends FieldProps<string, HTMLSelectElement> {
   placeholder?: string;
   children?: React.ReactNode;
-  size?: FieldSize;
-  inline?: boolean;
-  innerRef?: React.Ref<HTMLSelectElement>;
-  inputClassName?: string;
 }
 
 export function Select(props: SelectProps) {

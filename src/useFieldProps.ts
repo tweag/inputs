@@ -1,13 +1,7 @@
-import { FormField } from "@stackup/form";
-import { SharedFieldProps, StyleProps } from "./types";
-import { concat, isString, isPopulated } from "./utilities";
 import { useCallback } from "react";
-
-interface AnyProps extends SharedFieldProps, StyleProps {
-  field: FormField<any>;
-  innerRef?: React.Ref<any>;
-  inputClassName?: string;
-}
+import { FormField } from "@stackup/form";
+import { FieldProps } from "./types";
+import { concat, isString, isPopulated } from "./utilities";
 
 export function getRelatedId(id: string, suffix: string): string {
   return `${id}--${suffix}`;
@@ -21,8 +15,8 @@ export function useBlur({ setTouched }: FormField<any>) {
   return useCallback(() => setTouched(true), [setTouched]);
 }
 
-export function useFieldProps<T extends AnyProps>(
-  props: T,
+export function useFieldProps<Value, Element, InputProps>(
+  props: FieldProps<Value, Element> & InputProps,
   ...variants: string[]
 ) {
   const {

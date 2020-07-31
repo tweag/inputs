@@ -2,28 +2,19 @@ import { FormField } from "@stackup/form";
 
 export type FieldSize = "small" | "large";
 
-export interface StyleProps {
-  field: FormField<any>;
-  size?: FieldSize;
-  variant?: string;
-  check?: boolean;
-  inline?: boolean;
-  condensed?: boolean;
-}
-
-export interface SharedFieldProps {
+export interface FieldProps<Value, Element> {
+  field: FormField<Value>;
+  innerRef?: React.Ref<Element>;
   label: React.ReactNode;
   help?: React.ReactNode;
   append?: React.ReactNode;
   prepend?: React.ReactNode;
   className?: string;
+  inputClassName?: string;
   labelClassName?: string;
   helpClassName?: string;
   errorClassName?: string;
-}
-
-export interface FieldProps extends SharedFieldProps, StyleProps {
-  field: FormField<any>;
-  variant: string;
-  children?: React.ReactNode;
+  size?: FieldSize;
+  inline?: boolean;
+  condensed?: boolean;
 }

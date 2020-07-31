@@ -1,13 +1,8 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
+import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
-import { SharedFieldProps, FieldSize } from "./types";
 
-export interface CheckboxProps extends SharedFieldProps {
-  field: FormField<boolean>;
-  size?: FieldSize;
-  innerRef?: React.Ref<HTMLInputElement>;
-}
+export interface CheckboxProps extends FieldProps<boolean, HTMLInputElement> {}
 
 export function Checkbox(props: CheckboxProps) {
   const {

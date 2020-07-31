@@ -1,7 +1,6 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
+import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
-import { SharedFieldProps, FieldSize } from "./types";
 
 export type InputType =
   | "color"
@@ -19,14 +18,8 @@ export type InputType =
   | "url"
   | "week";
 
-export interface InputProps extends SharedFieldProps {
-  field: FormField<string>;
-  size?: FieldSize;
+export interface InputProps extends FieldProps<string, HTMLInputElement> {
   type?: InputType;
-  inline?: boolean;
-  condensed?: boolean;
-  innerRef?: React.Ref<HTMLInputElement>;
-  inputClassName?: string;
 }
 
 export function Input(props: InputProps) {

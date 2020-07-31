@@ -1,15 +1,8 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
-import { SharedFieldProps, FieldSize } from "./types";
+import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface TextAreaProps extends SharedFieldProps {
-  field: FormField<string>;
-  size?: FieldSize;
-  condensed?: boolean;
-  innerRef?: React.Ref<HTMLTextAreaElement>;
-  inputClassName?: string;
-}
+export interface TextAreaProps extends FieldProps<string, HTMLInputElement> {}
 
 export function TextArea(props: TextAreaProps) {
   const {

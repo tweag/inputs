@@ -1,16 +1,9 @@
 import * as React from "react";
-import { FormField } from "@stackup/form";
 import { useFieldProps } from "./useFieldProps";
-import { SharedFieldProps, FieldSize } from "./types";
+import { FieldProps } from "./types";
 
-export interface FileInputProps extends SharedFieldProps {
-  field: FormField<File | null>;
-  size?: FieldSize;
-  inline?: boolean;
-  condensed?: boolean;
-  innerRef?: React.Ref<HTMLInputElement>;
-  inputClassName?: string;
-}
+export interface FileInputProps
+  extends FieldProps<File | null, HTMLInputElement> {}
 
 export function FileInput(props: FileInputProps) {
   const {
