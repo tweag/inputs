@@ -2,10 +2,10 @@
 
 exports[`<Select /> error renders 1`] = `
 <div
-  class="field field--touched field--select"
+  class="field field--touched field--problem field--select"
 >
   <label
-    class="field__label field__label--touched field__label--select"
+    class="field__label field__label--touched field__label--problem field__label--select"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,7 +14,7 @@ exports[`<Select /> error renders 1`] = `
   <select
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--select"
+    class="field__input field__input--touched field__input--problem field__input--select"
     id="form-0_mock"
   >
     <option
@@ -24,7 +24,7 @@ exports[`<Select /> error renders 1`] = `
     </option>
   </select>
   <span
-    class="field__error field__error--touched field__error--select"
+    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >

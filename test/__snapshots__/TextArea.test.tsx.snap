@@ -2,10 +2,10 @@
 
 exports[`<TextArea /> error renders 1`] = `
 <div
-  class="field field--touched field--textarea"
+  class="field field--touched field--problem field--textarea"
 >
   <label
-    class="field__label field__label--touched field__label--textarea"
+    class="field__label field__label--touched field__label--problem field__label--textarea"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,11 +14,11 @@ exports[`<TextArea /> error renders 1`] = `
   <textarea
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--textarea"
+    class="field__input field__input--touched field__input--problem field__input--textarea"
     id="form-0_mock"
   />
   <span
-    class="field__error field__error--touched field__error--textarea"
+    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >

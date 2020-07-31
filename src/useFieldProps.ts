@@ -49,7 +49,7 @@ export function useFieldProps<Value, Element, InputProps>(
       condensed && `${name}--condensed`,
       size && `${name}--${size}`,
       field.touched && `${name}--touched`,
-      error && `${name}--erroneous`,
+      error && `${name}--problem`,
       isPopulated(field.value) && `${name}--populated`,
       ...variants.map(v => `${name}--${v}`),
       ...names

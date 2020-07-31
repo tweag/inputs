@@ -1,12 +1,17 @@
 import * as React from "react";
 import { FormField } from "@stackup/form";
 import { getRelatedId, getError } from "./useFieldProps";
+import { concat } from "./utilities";
 
 export interface FieldSetProps {
   field: FormField<any>;
   legend: React.ReactNode;
   help?: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
+  legendClassName?: string;
+  helpClassName?: string;
+  errorClassName?: string;
 }
 
 export function FieldSet(props: FieldSetProps) {
@@ -17,12 +22,23 @@ export function FieldSet(props: FieldSetProps) {
   const describedBy = error ? errorId : undefined;
 
   return (
-    <fieldset className="fieldset" aria-describedby={describedBy}>
-      <legend className="fieldset__legend">{legend}</legend>
-      {help && <p className="fieldset__help">{help}</p>}
+    <fieldset
+      className={concat("fieldset", props.className)}
+      aria-describedby={describedBy}
+    >
+      <legend className={concat("fieldset__legend", props.legendClassName)}>
+        {legend}
+      </legend>
+      {help && (
+        <p className={concat("fieldset__help", props.helpClassName)}>{help}</p>
+      )}
       {children}
       {error && (
-        <span id={errorId} role="alert" className="message message--problem">
+        <span
+          id={errorId}
+          role="alert"
+          className={concat("message message--problem", props.errorClassName)}
+        >
           {error}
         </span>
       )}

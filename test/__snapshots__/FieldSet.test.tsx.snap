@@ -41,7 +41,7 @@ exports[`<FieldSet /> renders error 1`] = `
       Example
     </legend>
     <span
-      class="fieldset__error"
+      class="message message--problem"
       id="form-0_mock--error"
       role="alert"
     >

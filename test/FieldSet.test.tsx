@@ -49,4 +49,28 @@ describe("<FieldSet />", () => {
     expect(container).not.toHaveTextContent("Error");
     expect(container.firstChild).not.toHaveAttribute("aria-describedby");
   });
+
+  it("appends `className`", () => {
+    const { container } = setup({ className: "testing" });
+    expect(container.firstChild).toHaveClass("fieldset testing");
+  });
+
+  it("appends `legendClassName`", () => {
+    const { getByText } = setup({
+      legend: "Legend",
+      legendClassName: "testing"
+    });
+    expect(getByText("Legend")).toHaveClass("fieldset__legend testing");
+  });
+
+  it("appends `helpClassName`", () => {
+    const { getByText } = setup({ help: "Help", helpClassName: "testing" });
+    expect(getByText("Help")).toHaveClass("fieldset__help testing");
+  });
+
+  it("appends `errorClassName`", () => {
+    const field = make<any>("", { error: "Error", touched: true });
+    const { getByText } = setup({ field, errorClassName: "testing" });
+    expect(getByText("Error")).toHaveClass("message message--problem testing");
+  });
 });
