@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Radio /> error renders 1`] = `
+<div
+  class="field field--touched field--populated field--check field--radio"
+>
+  <input
+    aria-describedby="form-0_mock_8--error"
+    aria-labelledby="form-0_mock_8--label"
+    class="field__input field__input--touched field__input--populated field__input--check field__input--radio"
+    id="form-0_mock_8"
+    type="radio"
+    value="100"
+  />
+  <label
+    class="field__label field__label--touched field__label--populated field__label--check field__label--radio"
+    for="form-0_mock_8"
+    id="form-0_mock_8--label"
+  >
+    Example
+  </label>
+  <span
+    class="field__error field__error--touched field__error--populated field__error--check field__error--radio"
+    id="form-0_mock_8--error"
+    role="alert"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`<Radio /> help renders 1`] = `
+<div
+  class="field field--populated field--check field--radio"
+>
+  <input
+    aria-labelledby="form-0_mock_5--label"
+    class="field__input field__input--populated field__input--check field__input--radio"
+    id="form-0_mock_5"
+    type="radio"
+    value="100"
+  />
+  <label
+    class="field__label field__label--populated field__label--check field__label--radio"
+    for="form-0_mock_5"
+    id="form-0_mock_5--label"
+  >
+    Example
+    <span
+      class="field__help field__help--populated field__help--check field__help--radio"
+    >
+      Help
+    </span>
+  </label>
+</div>
+`;
+
+exports[`<Radio /> label renders 1`] = `
+<div
+  class="field field--populated field--check field--radio"
+>
+  <input
+    aria-labelledby="form-0_mock_2--label"
+    class="field__input field__input--populated field__input--check field__input--radio"
+    id="form-0_mock_2"
+    type="radio"
+    value="100"
+  />
+  <label
+    class="field__label field__label--populated field__label--check field__label--radio"
+    for="form-0_mock_2"
+    id="form-0_mock_2--label"
+  >
+    Label
+  </label>
+</div>
+`;
+
+exports[`<Radio /> renders 1`] = `
+<div
+  class="field field--populated field--check field--radio"
+>
+  <input
+    aria-labelledby="form-0_mock_0--label"
+    class="field__input field__input--populated field__input--check field__input--radio"
+    id="form-0_mock_0"
+    type="radio"
+    value="100"
+  />
+  <label
+    class="field__label field__label--populated field__label--check field__label--radio"
+    for="form-0_mock_0"
+    id="form-0_mock_0--label"
+  >
+    Example
+  </label>
+</div>
+`;

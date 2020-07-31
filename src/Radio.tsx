@@ -4,8 +4,7 @@ import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
 import { getDOMValue, useNestedId } from "./utilities";
 
-export interface RadioProps<Value>
-  extends FieldProps<Value | null, HTMLInputElement> {
+export interface RadioProps<Value> extends FieldProps<Value, HTMLInputElement> {
   value: Value;
 }
 

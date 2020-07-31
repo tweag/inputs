@@ -2,10 +2,6 @@ import * as React from "react";
 import equals from "fast-deep-equal";
 import { FormField, useIdentifier } from "@stackup/form";
 
-export function isUndefined(value: any): value is undefined {
-  return typeof value === "undefined";
-}
-
 export function isString(value: any): value is string {
   return typeof value === "string";
 }
@@ -15,7 +11,7 @@ export function isNumber(value: any): value is number {
 }
 
 export function isPopulated(value: any) {
-  return !isUndefined(value) && value !== null && value !== "";
+  return value !== undefined && value !== null && value !== "";
 }
 
 export function concat(...names: any[]): string | undefined {

@@ -1483,13 +1483,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stackup/form@../form":
-  version "0.0.0"
-
-"@stackup/form@^0.1.0-alpha.1":
-  version "0.1.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.1.0-alpha.1.tgz#058ec42534ce8142298da0db472c559032ac1f11"
-  integrity sha512-Dd7oqK0ATH0WcCcQoJjNXZrqgZl/GgISezfm7vUmIvFxBnqTz9XoTJFzx82mAPui6uVTbqiCbGZmP4ppCRi+Mw==
+"@stackup/form@^0.1.0-alpha.3":
+  version "0.1.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.1.0-alpha.3.tgz#f03360082027cbe158bb69f4ab23f36ea5568654"
+  integrity sha512-cWom/l6nroBczffbNPOzA3V/tPb56PpotqeeLDySrJkonoRYdToHDCwTaJxXEWuxJrBy/xhJQ3saZKfxGmxj/Q==
 
 "@testing-library/dom@^7.17.1":
   version "7.20.0"
