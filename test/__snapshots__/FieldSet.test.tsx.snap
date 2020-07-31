@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FieldSet /> renders 1`] = `
+<div>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="fieldset__legend"
+    >
+      Legend
+    </legend>
+  </fieldset>
+</div>
+`;
+
+exports[`<FieldSet /> renders children 1`] = `
+<div>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="fieldset__legend"
+    >
+      Example
+    </legend>
+    Children
+  </fieldset>
+</div>
+`;
+
+exports[`<FieldSet /> renders error 1`] = `
+<div>
+  <fieldset
+    aria-describedby="form-0_mock--error"
+    class="fieldset"
+  >
+    <legend
+      class="fieldset__legend"
+    >
+      Example
+    </legend>
+    <span
+      class="fieldset__error"
+      id="form-0_mock--error"
+      role="alert"
+    >
+      Error
+    </span>
+  </fieldset>
+</div>
+`;
+
+exports[`<FieldSet /> renders help 1`] = `
+<div>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="fieldset__legend"
+    >
+      Example
+    </legend>
+    <p
+      class="fieldset__help"
+    >
+      Help
+    </p>
+  </fieldset>
+</div>
+`;
