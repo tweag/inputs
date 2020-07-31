@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
 
 export interface FileInputProps extends SharedFieldProps {
@@ -14,10 +13,22 @@ export interface FileInputProps extends SharedFieldProps {
 }
 
 export function FileInput(props: FileInputProps) {
-  const { field, innerRef } = props;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "file");
+
   const { id, setValue } = field;
 
-  const onBlur = useBlur(field);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.files?.[0] || null);
@@ -26,21 +37,15 @@ export function FileInput(props: FileInputProps) {
   );
 
   return (
-    <Field variant="file" {...props}>
-      <input
-        type="file"
-        id={id}
-        ref={innerRef}
-        onBlur={onBlur}
-        onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--file",
-          props.inputClassName
-        )}
-      />
-    </Field>
+    <div {...getFieldProps()}>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {prepend}
+      <input {...inputProps} id={id} type="file" onChange={onChange} />
+      {append}
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

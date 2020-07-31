@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
 
 export type InputType =
@@ -31,10 +30,22 @@ export interface InputProps extends SharedFieldProps {
 }
 
 export function Input(props: InputProps) {
-  const { field, innerRef, type = "text" } = props;
-  const { id, value, setValue } = field;
+  const { type = "text" } = props;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "input", type);
 
-  const onBlur = useBlur(field);
+  const { id, value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
@@ -43,22 +54,21 @@ export function Input(props: InputProps) {
   );
 
   return (
-    <Field variant={type} {...props}>
+    <div {...getFieldProps()}>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {prepend}
       <input
+        {...inputProps}
         id={id}
         value={value}
         type={type}
-        ref={innerRef}
-        onBlur={onBlur}
         onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          `field__input--${type}`,
-          props.inputClassName
-        )}
       />
-    </Field>
+      {append}
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

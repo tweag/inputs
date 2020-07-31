@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
 
 export interface SwitchProps extends SharedFieldProps {
   field: FormField<boolean>;
@@ -13,36 +12,44 @@ export interface SwitchProps extends SharedFieldProps {
 }
 
 export function Switch(props: SwitchProps) {
-  const { field, innerRef, children } = props;
-  const { id, value, setValue } = field;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    children,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "check", "switch");
 
-  const onBlur = useBlur(field);
+  const { id, value, setValue } = field;
   const onClick = React.useCallback(() => {
     setValue(value => !value);
   }, [setValue]);
 
   return (
-    <Field check variant="switch" {...props}>
+    <div {...getFieldProps()}>
+      {prepend}
       <button
+        {...inputProps}
         id={id}
-        ref={innerRef}
         type="button"
         role="switch"
-        onBlur={onBlur}
         onClick={onClick}
         aria-checked={value}
         aria-label={value ? "On" : "Off"}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--check",
-          "field__input--switch",
-          props.inputClassName
-        )}
       >
         {children}
       </button>
-    </Field>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+    </div>
   );
 }

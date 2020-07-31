@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
 import { SharedFieldProps, FieldSize } from "./types";
+import { useFieldProps } from "./useFieldProps";
 
 export interface TextAreaProps extends SharedFieldProps {
   field: FormField<string>;
@@ -13,10 +12,21 @@ export interface TextAreaProps extends SharedFieldProps {
 }
 
 export function TextArea(props: TextAreaProps) {
-  const { field, innerRef } = props;
-  const { id, value, setValue } = field;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "textarea");
 
-  const onBlur = useBlur(field);
+  const { id, value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setValue(event.target.value);
@@ -25,21 +35,15 @@ export function TextArea(props: TextAreaProps) {
   );
 
   return (
-    <Field variant="textarea" {...props}>
-      <textarea
-        id={id}
-        value={value}
-        ref={innerRef}
-        onBlur={onBlur}
-        onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--textarea",
-          props.inputClassName
-        )}
-      />
-    </Field>
+    <div {...getFieldProps()}>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {prepend}
+      <textarea {...inputProps} id={id} value={value} onChange={onChange} />
+      {append}
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

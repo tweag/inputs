@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
 
-export interface FileListInputProps extends SharedFieldProps {
+export interface FileInputProps extends SharedFieldProps {
   field: FormField<FileList | null>;
   size?: FieldSize;
   inline?: boolean;
@@ -13,34 +12,39 @@ export interface FileListInputProps extends SharedFieldProps {
   inputClassName?: string;
 }
 
-export function FileListInput(props: FileListInputProps) {
-  const { field, innerRef } = props;
-  const { id, setValue } = field;
+export function FileInput(props: FileInputProps) {
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "file");
 
-  const onBlur = useBlur(field);
+  const { id, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.files || null);
+      setValue(event.target.files);
     },
     [setValue]
   );
 
   return (
-    <Field variant="file" {...props}>
-      <input
-        type="file"
-        id={id}
-        ref={innerRef}
-        onBlur={onBlur}
-        onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--file",
-          props.inputClassName
-        )}
-      />
-    </Field>
+    <div {...getFieldProps()}>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {prepend}
+      <input {...inputProps} id={id} type="file" multiple onChange={onChange} />
+      {append}
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

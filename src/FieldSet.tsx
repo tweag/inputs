@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FormField } from "@stackup/form";
-import { getRelatedId, getError } from "./utilities";
+import { getRelatedId, getError } from "./useFieldProps";
 
 export interface FieldSetProps {
   field: FormField<any>;
@@ -13,7 +13,7 @@ export function FieldSet(props: FieldSetProps) {
   const { field, legend, help, children } = props;
 
   const error = getError(field);
-  const errorId = getRelatedId(field, "error");
+  const errorId = getRelatedId(field.id, "error");
   const describedBy = error ? errorId : undefined;
 
   return (

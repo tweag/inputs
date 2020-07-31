@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
 
 export interface SelectProps extends SharedFieldProps {
@@ -15,10 +14,24 @@ export interface SelectProps extends SharedFieldProps {
 }
 
 export function Select(props: SelectProps) {
-  const { field, innerRef, placeholder, children } = props;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    placeholder,
+    children,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "select");
+
   const { id, value, setValue } = field;
 
-  const onBlur = useBlur(field);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setValue(event.target.value);
@@ -27,29 +40,22 @@ export function Select(props: SelectProps) {
   );
 
   return (
-    <Field variant="select" {...props}>
-      <select
-        id={id}
-        ref={innerRef}
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--select",
-          props.inputClassName
-        )}
-      >
+    <div {...getFieldProps()}>
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {prepend}
+      <select {...inputProps} id={id} value={value} onChange={onChange}>
         {placeholder && (
           <option disabled value="" key="placeholder">
             {placeholder}
           </option>
         )}
-
         {children}
       </select>
-    </Field>
+      {append}
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

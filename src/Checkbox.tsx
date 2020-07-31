@@ -1,21 +1,30 @@
 import * as React from "react";
-import { Field } from "./Field";
 import { FormField } from "@stackup/form";
-import { useBlur, getLabelledBy, getClassName } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 import { SharedFieldProps, FieldSize } from "./types";
 
 export interface CheckboxProps extends SharedFieldProps {
   field: FormField<boolean>;
   size?: FieldSize;
   innerRef?: React.Ref<HTMLInputElement>;
-  inputClassName?: string;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const { field, innerRef } = props;
-  const { id, value, setValue } = field;
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(props, "check", "checkbox");
 
-  const onBlur = useBlur(field);
+  const { id, value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.checked);
@@ -24,23 +33,21 @@ export function Checkbox(props: CheckboxProps) {
   );
 
   return (
-    <Field check variant="checkbox" {...props}>
+    <div {...getFieldProps()}>
+      {prepend}
       <input
-        type="checkbox"
+        {...inputProps}
         id={id}
-        ref={innerRef}
+        type="checkbox"
         checked={value}
-        onBlur={onBlur}
         onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--check",
-          "field__input--checkbox",
-          props.className
-        )}
       />
-    </Field>
+      {append}
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }
