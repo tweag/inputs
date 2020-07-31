@@ -19,7 +19,7 @@ export function Checkbox(props: CheckboxProps) {
     ...inputProps
   } = useFieldProps(props, "check", "checkbox");
 
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.checked);
@@ -32,7 +32,6 @@ export function Checkbox(props: CheckboxProps) {
       {prepend}
       <input
         {...inputProps}
-        id={id}
         type="checkbox"
         checked={value}
         onChange={onChange}

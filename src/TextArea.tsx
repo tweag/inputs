@@ -19,7 +19,7 @@ export function TextArea(props: TextAreaProps) {
     ...inputProps
   } = useFieldProps(props, "textarea");
 
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setValue(event.target.value);
@@ -34,7 +34,7 @@ export function TextArea(props: TextAreaProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <textarea {...inputProps} id={id} value={value} onChange={onChange} />
+      <textarea {...inputProps} value={value} onChange={onChange} />
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

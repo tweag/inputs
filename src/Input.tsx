@@ -38,7 +38,7 @@ export function Input(props: InputProps) {
     ...inputProps
   } = useFieldProps(props, "input", type);
 
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
@@ -53,13 +53,7 @@ export function Input(props: InputProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <input
-        {...inputProps}
-        id={id}
-        value={value}
-        type={type}
-        onChange={onChange}
-      />
+      <input {...inputProps} value={value} type={type} onChange={onChange} />
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

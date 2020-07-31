@@ -63,6 +63,7 @@ export function useFieldProps<Value, Element, InputProps>(
     append,
     prepend,
     onBlur,
+    id: field.id,
     ref: innerRef,
     "aria-labelledby": labelId,
     "aria-describedby": error ? errorId : undefined,

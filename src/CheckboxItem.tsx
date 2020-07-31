@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FieldProps } from "./types";
 import { contains, getDOMValue, remove, useNestedId } from "./utilities";
+import { useFieldProps } from "./useFieldProps";
 
 export interface CheckboxItemProps<Value>
   extends FieldProps<Value[], HTMLInputElement> {
@@ -8,45 +9,48 @@ export interface CheckboxItemProps<Value>
 }
 
 export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
-  props = { ...props, field: useNestedId(props.field) };
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    value: item,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(
+    { ...props, field: useNestedId(props.field) },
+    "check",
+    "checkbox"
+  );
 
-  const { field, innerRef } = props;
-  const { id, value, setValue } = field;
-
-  const onBlur = useBlur(field);
+  const { value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { checked } = event.target;
 
       setValue(value => {
         if (checked) {
-          return [...value, props.value];
+          return [...value, item];
         } else {
-          return remove(value, props.value);
+          return remove(value, item);
         }
       });
     },
-    [props.value, setValue]
+    [item, setValue]
   );
 
   return (
     <Field check variant="checkbox" {...props}>
       <input
         type="checkbox"
-        id={id}
-        ref={innerRef}
-        checked={contains(value, props.value)}
-        value={getDOMValue(props.value)}
-        onBlur={onBlur}
+        checked={contains(value, item)}
+        value={getDOMValue(item)}
         onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--check",
-          "field__input--checkbox",
-          props.inputClassName
-        )}
       />
     </Field>
   );

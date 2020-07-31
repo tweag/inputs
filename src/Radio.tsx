@@ -12,7 +12,7 @@ export function Radio<T>(props: RadioProps<T>) {
   props = { ...props, field: useNestedId(props.field) };
 
   const { field, innerRef } = props;
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
 
   const onBlur = useBlur(field);
   const onChange = React.useCallback(() => {
@@ -23,7 +23,6 @@ export function Radio<T>(props: RadioProps<T>) {
     <Field check variant="radio" {...props}>
       <input
         type="radio"
-        id={id}
         ref={innerRef}
         checked={equals(value, props.value)}
         value={getDOMValue(props.value)}

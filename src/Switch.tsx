@@ -22,7 +22,7 @@ export function Switch(props: SwitchProps) {
     ...inputProps
   } = useFieldProps(props, "check", "switch");
 
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
   const onClick = React.useCallback(() => {
     setValue(value => !value);
   }, [setValue]);
@@ -32,7 +32,6 @@ export function Switch(props: SwitchProps) {
       {prepend}
       <button
         {...inputProps}
-        id={id}
         type="button"
         role="switch"
         onClick={onClick}

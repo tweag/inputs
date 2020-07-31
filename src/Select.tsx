@@ -24,7 +24,7 @@ export function Select(props: SelectProps) {
     ...inputProps
   } = useFieldProps(props, "select");
 
-  const { id, value, setValue } = field;
+  const { value, setValue } = field;
 
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,7 +40,7 @@ export function Select(props: SelectProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <select {...inputProps} id={id} value={value} onChange={onChange}>
+      <select {...inputProps} value={value} onChange={onChange}>
         {placeholder && (
           <option disabled value="" key="placeholder">
             {placeholder}

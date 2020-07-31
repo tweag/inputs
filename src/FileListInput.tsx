@@ -20,7 +20,7 @@ export function FileInput(props: FileInputProps) {
     ...inputProps
   } = useFieldProps(props, "file");
 
-  const { id, setValue } = field;
+  const { setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.files);
@@ -35,7 +35,7 @@ export function FileInput(props: FileInputProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <input {...inputProps} id={id} type="file" multiple onChange={onChange} />
+      <input {...inputProps} type="file" multiple onChange={onChange} />
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>
