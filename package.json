@@ -34,7 +34,7 @@
     ]
   },
   "peerDependencies": {
-    "@stackup/form": "^0.1.0-alpha.0",
+    "@stackup/form": "^0.1.0-alpha.3",
     "react": ">=16.8"
   },
   "dependencies": {
