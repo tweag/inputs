@@ -1483,6 +1483,9 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@stackup/form@../form":
+  version "0.0.0"
+
 "@stackup/form@^0.1.0-alpha.1":
   version "0.1.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.1.0-alpha.1.tgz#058ec42534ce8142298da0db472c559032ac1f11"

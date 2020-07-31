@@ -1,21 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Input /> error renders 1`] = `
-<div>
+<div
+  class="field field--touched field--input field--text"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--touched field__label--input field__label--text"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
-    Label
+    Example
   </label>
   <input
-    aria-labelledby="input-1-label input-1-error"
-    id="input-1"
+    aria-describedby="form-0_mock--error"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--touched field__input--input field__input--text"
+    id="form-0_mock"
     type="text"
     value=""
   />
   <span
-    id="input-1-error"
+    class="field__error field__error--touched field__error--input field__error--text"
+    id="form-0_mock--error"
     role="alert"
   >
     Error
@@ -24,19 +30,25 @@ exports[`<Input /> error renders 1`] = `
 `;
 
 exports[`<Input /> help renders 1`] = `
-<div>
+<div
+  class="field field--input field--text"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--input field__label--text"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
-    Label
-    <span>
+    Example
+    <span
+      class="field__help field__help--input field__help--text"
+    >
       Help
     </span>
   </label>
   <input
-    aria-labelledby="input-1-label"
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--input field__input--text"
+    id="form-0_mock"
     type="text"
     value=""
   />
@@ -44,16 +56,20 @@ exports[`<Input /> help renders 1`] = `
 `;
 
 exports[`<Input /> label renders 1`] = `
-<div>
+<div
+  class="field field--input field--text"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--input field__label--text"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
     Label
   </label>
   <input
-    aria-labelledby="input-1-label"
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--input field__input--text"
+    id="form-0_mock"
     type="text"
     value=""
   />
@@ -61,9 +77,20 @@ exports[`<Input /> label renders 1`] = `
 `;
 
 exports[`<Input /> renders 1`] = `
-<div>
+<div
+  class="field field--input field--text"
+>
+  <label
+    class="field__label field__label--input field__label--text"
+    for="form-0_mock"
+    id="form-0_mock--label"
+  >
+    Example
+  </label>
   <input
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--input field__input--text"
+    id="form-0_mock"
     type="text"
     value=""
   />

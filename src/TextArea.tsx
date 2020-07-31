@@ -2,7 +2,8 @@ import * as React from "react";
 import { FieldProps } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface TextAreaProps extends FieldProps<string, HTMLInputElement> {}
+export interface TextAreaProps
+  extends FieldProps<string, HTMLTextAreaElement> {}
 
 export function TextArea(props: TextAreaProps) {
   const {

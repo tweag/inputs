@@ -1,19 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TextArea /> error renders 1`] = `
-<div>
+<div
+  class="field field--touched field--textarea"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--touched field__label--textarea"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
-    Label
+    Example
   </label>
   <textarea
-    aria-labelledby="input-1-label input-1-error"
-    id="input-1"
+    aria-describedby="form-0_mock--error"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--touched field__input--textarea"
+    id="form-0_mock"
   />
   <span
-    id="input-1-error"
+    class="field__error field__error--touched field__error--textarea"
+    id="form-0_mock--error"
     role="alert"
   >
     Error
@@ -22,42 +28,63 @@ exports[`<TextArea /> error renders 1`] = `
 `;
 
 exports[`<TextArea /> help renders 1`] = `
-<div>
+<div
+  class="field field--textarea"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--textarea"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
-    Label
-    <span>
+    Example
+    <span
+      class="field__help field__help--textarea"
+    >
       Help
     </span>
   </label>
   <textarea
-    aria-labelledby="input-1-label"
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--textarea"
+    id="form-0_mock"
   />
 </div>
 `;
 
 exports[`<TextArea /> label renders 1`] = `
-<div>
+<div
+  class="field field--textarea"
+>
   <label
-    for="input-1"
-    id="input-1-label"
+    class="field__label field__label--textarea"
+    for="form-0_mock"
+    id="form-0_mock--label"
   >
     Label
   </label>
   <textarea
-    aria-labelledby="input-1-label"
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--textarea"
+    id="form-0_mock"
   />
 </div>
 `;
 
 exports[`<TextArea /> renders 1`] = `
-<div>
+<div
+  class="field field--textarea"
+>
+  <label
+    class="field__label field__label--textarea"
+    for="form-0_mock"
+    id="form-0_mock--label"
+  >
+    Example
+  </label>
   <textarea
-    id="input-1"
+    aria-labelledby="form-0_mock--label"
+    class="field__input field__input--textarea"
+    id="form-0_mock"
   />
 </div>
 `;

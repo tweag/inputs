@@ -1,53 +1,43 @@
 import * as React from "react";
-import { Select, SelectProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
+import { make } from "./helpers";
+import { Select, SelectProps } from "../src";
 import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<SelectProps> = {}) {
   return render(
-    <Select {...props}>
+    <Select label="Example" field={make<string>("")} {...props}>
       <option value="dog">Dog</option>
     </Select>
   );
 }
 
 describe("<Select />", () => {
-  includeAllFieldTests(setup);
+  includeAllFieldTests<string>("", setup);
 
   it("has a value", () => {
-    const field = setup({ value: "dog" });
-    const select = field.getByRole("combobox");
+    const field = make("dog");
+    const { getByRole } = setup({ field });
+    const select = getByRole("combobox");
     expect(select).toHaveValue("dog");
   });
 
-  it("emits `onChangeValue`", () => {
-    const onChange = jest.fn();
-    const field = setup({ onChange });
-    const select = field.getByRole("combobox");
+  it("changes the value", () => {
+    const field = make("");
+    const { getByRole } = setup({ field });
+    const select = getByRole("combobox");
 
     fireEvent.change(select, {
       target: { value: "dog" }
     });
 
-    expect(onChange).toHaveBeenCalled();
-  });
-
-  it("emits `onChangeValue`", () => {
-    const onChangeValue = jest.fn();
-    const field = setup({ onChangeValue });
-    const select = field.getByRole("combobox");
-
-    fireEvent.change(select, {
-      target: { value: "dog" }
-    });
-
-    expect(onChangeValue).toHaveBeenCalledWith("dog");
+    expect(field.setValue).toHaveBeenCalledWith("dog");
   });
 
   describe("placeholder", () => {
     it("renders", () => {
-      const field = setup({ placeholder: "placeholder" });
-      const [option] = field.getAllByRole("option");
+      const { getAllByRole } = setup({ placeholder: "placeholder" });
+      const [option] = getAllByRole("option");
 
       expect(option).toBeDisabled();
       expect(option).toHaveTextContent("placeholder");

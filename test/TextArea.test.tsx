@@ -1,42 +1,34 @@
 import * as React from "react";
+import { make } from "./helpers";
 import { TextArea, TextAreaProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
 import { includeAllFieldTests } from "./sharedExamples";
 
 function setup(props: Partial<TextAreaProps> = {}) {
-  return render(<TextArea {...props} />);
+  return render(
+    <TextArea label="Example" field={make<string>("")} {...props} />
+  );
 }
 
 describe("<TextArea />", () => {
-  includeAllFieldTests(setup);
+  includeAllFieldTests<string>("", setup);
 
   it("has a value", () => {
-    const field = setup({ value: "foo" });
-    const input = field.getByRole("textbox");
+    const field = make<string>("foo");
+    const { getByRole } = setup({ field });
+    const input = getByRole("textbox");
     expect(input).toHaveValue("foo");
   });
 
-  it("emits `onChangeValue`", () => {
-    const onChange = jest.fn();
-    const field = setup({ onChange });
-    const input = field.getByRole("textbox");
+  it("changes the value", () => {
+    const field = make<string>("");
+    const { getByRole } = setup({ field });
+    const input = getByRole("textbox");
 
     fireEvent.change(input, {
       target: { value: "hi" }
     });
 
-    expect(onChange).toHaveBeenCalled();
-  });
-
-  it("emits `onChangeValue`", () => {
-    const onChangeValue = jest.fn();
-    const field = setup({ onChangeValue });
-    const input = field.getByRole("textbox");
-
-    fireEvent.change(input, {
-      target: { value: "hi" }
-    });
-
-    expect(onChangeValue).toHaveBeenCalledWith("hi");
+    expect(field.setValue).toHaveBeenCalledWith("hi");
   });
 });

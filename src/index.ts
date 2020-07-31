@@ -1,6 +1,6 @@
+export * from "./types";
 export * from "./Checkbox";
 export * from "./CheckboxItem";
-export * from "./Field";
 export * from "./FieldSet";
 export * from "./FileInput";
 export * from "./FileListInput";

@@ -44,6 +44,7 @@ export function Switch(props: SwitchProps) {
         {label}
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
+      {error && <span {...getErrorProps()}>{error}</span>}
     </div>
   );
 }

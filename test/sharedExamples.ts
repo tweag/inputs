@@ -1,17 +1,18 @@
 import { RenderResult } from "@testing-library/react";
-import { FieldProps } from "../src";
 import { axe } from "jest-axe";
+import { make } from "./helpers";
+import { FieldProps } from "../src";
 
-type Render = (props?: Partial<FieldProps>) => RenderResult;
+type Render<T> = (props?: Partial<FieldProps<T, any>>) => RenderResult;
 
-export function includeAllFieldTests(render: Render) {
-  includeFieldTests(render);
-  includeLabelTests(render);
-  includeHelpTests(render);
-  includeErrorTests(render);
+export function includeAllFieldTests<T>(value: T, render: Render<T>) {
+  includeFieldTests(value, render);
+  includeLabelTests(value, render);
+  includeHelpTests(value, render);
+  includeErrorTests(value, render);
 }
 
-export function includeFieldTests(render: Render) {
+export function includeFieldTests<T>(_value: T, render: Render<T>) {
   it("renders", () => {
     const field = render();
     expect(field.container.firstChild).toMatchSnapshot();
@@ -24,7 +25,7 @@ export function includeFieldTests(render: Render) {
   });
 }
 
-export function includeLabelTests(render: Render) {
+export function includeLabelTests<T>(_value: T, render: Render<T>) {
   describe("label", () => {
     it("renders", () => {
       const field = render({ label: "Label" });
@@ -38,77 +39,64 @@ export function includeLabelTests(render: Render) {
       expect(input).toBeInTheDocument();
     });
 
-    it("respects `labelProps` and `labelClassName`", () => {
-      const field = render({
-        label: "Label",
-        labelProps: { "data-testid": "label", className: "a" },
-        labelClassName: "b"
-      });
-
-      const label = field.queryByTestId("label");
-      expect(label).toBeInTheDocument();
-      expect(label).toHaveClass("a b");
+    it("respects `labelClassName`", () => {
+      const field = render({ label: "Label", labelClassName: "test" });
+      const label = field.getByText("Label");
+      expect(label).toHaveClass("test");
     });
   });
 }
 
-export function includeHelpTests(render: Render) {
+export function includeHelpTests<T>(_value: T, render: Render<T>) {
   describe("help", () => {
     it("renders", () => {
-      const field = render({ label: "Label", help: "Help" });
+      const field = render({ help: "Help" });
       expect(field.container).toHaveTextContent("Help");
       expect(field.container.firstChild).toMatchSnapshot();
     });
 
     it("is accessible", async () => {
-      const field = render({ label: "Label", help: "Help" });
+      const field = render({ help: "Help" });
       expect(await axe(field.container)).toHaveNoViolations();
     });
 
-    it("respects `helpProps` and `helpClassName`", () => {
-      const field = render({
-        label: "Label",
-        help: "Help",
-        helpProps: { "data-testid": "help", className: "a" },
-        helpClassName: "b"
-      });
-
-      const help = field.queryByTestId("help");
-      expect(help).toBeInTheDocument();
-      expect(help).toHaveClass("a b");
+    it("respects `helpClassName`", () => {
+      const field = render({ help: "Help", helpClassName: "test" });
+      const help = field.getByText("Help");
+      expect(help).toHaveClass("test");
     });
   });
 }
 
-export function includeErrorTests(render: Render) {
+export function includeErrorTests<T>(value: T, render: Render<T>) {
   describe("error", () => {
     it("renders", () => {
-      const field = render({ label: "Label", error: "Error" });
-      expect(field.container).toHaveTextContent("Error");
-      expect(field.container.firstChild).toMatchSnapshot();
+      const field = make(value, { error: "Error", touched: true });
+      const { container } = render({ field });
+      expect(container).toHaveTextContent("Error");
+      expect(container.firstChild).toMatchSnapshot();
     });
 
-    it("has a corresponding input", () => {
-      const field = render({ label: "Label", error: "Error" });
-      const input = field.queryByLabelText("Error");
-      expect(input).toBeInTheDocument();
+    it("describes an input", () => {
+      const field = make(value, { error: "Error", touched: true });
+      const { getByLabelText, getByText } = render({ field, label: "Label" });
+      const input = getByLabelText("Label");
+      const error = getByText("Error");
+      expect(input).toHaveAttribute("aria-describedby", error.id);
     });
 
     it("is accessible", async () => {
-      const field = render({ label: "Label", error: "Error" });
-      expect(await axe(field.container)).toHaveNoViolations();
+      const field = make(value, { error: "Error", touched: true });
+      const { container } = render({ field });
+      expect(await axe(container)).toHaveNoViolations();
     });
 
-    it("respects `errorProps` and `errorClassName`", () => {
-      const field = render({
-        error: "Error",
-        errorProps: { "data-testid": "error", className: "a" },
-        errorClassName: "b"
-      });
+    it("respects  `errorClassName`", () => {
+      const field = make(value, { error: "Error", touched: true });
+      const { getByText } = render({ field, errorClassName: "test" });
 
-      const error = field.queryByTestId("error");
-      expect(error).toBeInTheDocument();
-      expect(error).toHaveClass("a b");
+      const error = getByText("Error");
+      expect(error).toHaveClass("test");
     });
   });
 }
