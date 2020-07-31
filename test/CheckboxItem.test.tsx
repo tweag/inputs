@@ -1,8 +1,12 @@
 import * as React from "react";
 import { CheckboxItem, CheckboxItemProps } from "../src";
 import { render, fireEvent } from "@testing-library/react";
-import { includeAllFieldTests } from "./sharedExamples";
 import { make } from "./helpers";
+import {
+  includeFieldTests,
+  includeLabelTests,
+  includeHelpTests
+} from "./sharedExamples";
 
 function setup(props: Partial<CheckboxItemProps<number>> = {}) {
   return render(
@@ -16,7 +20,9 @@ function setup(props: Partial<CheckboxItemProps<number>> = {}) {
 }
 
 describe("<CheckboxItem />", () => {
-  includeAllFieldTests<number[]>([], setup);
+  includeFieldTests<number[]>([], setup);
+  includeLabelTests<number[]>([], setup);
+  includeHelpTests<number[]>([], setup);
 
   it("is a checkbox", () => {
     const { getByRole } = setup();
@@ -46,5 +52,11 @@ describe("<CheckboxItem />", () => {
 
     fireEvent.click(input);
     expect(field.setValue).toHaveBeenCalled();
+  });
+
+  it("does not display errors", () => {
+    const field = make<number[]>([], { error: "Error", touched: true });
+    const { container } = setup({ field });
+    expect(container).not.toHaveTextContent("Error");
   });
 });

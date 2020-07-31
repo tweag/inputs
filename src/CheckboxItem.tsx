@@ -15,13 +15,13 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
     field,
     label,
     help,
-    error,
+    error: _error,
     append,
     prepend,
     value: item,
     getFieldProps,
     getLabelProps,
-    getErrorProps,
+    getErrorProps: _getErrorProps,
     getHelpProps,
     ...inputProps
   } = useFieldProps(nested, "check", "checkbox");
@@ -50,7 +50,6 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
         {label}
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
-      {error && <span {...getErrorProps()}>{error}</span>}
     </div>
   );
 }

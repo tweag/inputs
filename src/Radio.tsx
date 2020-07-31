@@ -16,13 +16,13 @@ export function Radio<T>(props: RadioProps<T>) {
     field,
     label,
     help,
-    error,
+    error: _error,
     append,
     prepend,
     value: item,
     getFieldProps,
     getLabelProps,
-    getErrorProps,
+    getErrorProps: _getErrorProps,
     getHelpProps,
     ...inputProps
   } = useFieldProps(nested, "check", "radio");
@@ -45,7 +45,6 @@ export function Radio<T>(props: RadioProps<T>) {
         {label}
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
-      {error && <span {...getErrorProps()}>{error}</span>}
     </div>
   );
 }
