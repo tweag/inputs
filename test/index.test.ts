@@ -20,6 +20,7 @@ test("exports", () => {
     "isValidTime",
     "parseDateTime",
     "parseNumber",
-    "parseTime"
+    "parseTime",
+    "useFieldProps"
   ]);
 });
