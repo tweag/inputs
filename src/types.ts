@@ -18,3 +18,20 @@ export interface FieldProps<Value, Element> {
   inline?: boolean;
   condensed?: boolean;
 }
+
+export type Attributes<Element extends keyof JSX.IntrinsicElements> = Omit<
+  JSX.IntrinsicElements[Element],
+  | "key"
+  | "ref"
+  | "type"
+  | "size"
+  | "label"
+  | "multiple"
+  | "checked"
+  | "defaultValue"
+  | "value"
+  | "defaultValue"
+  | "onBlur"
+  | "onChange"
+  | "children"
+>;

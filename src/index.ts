@@ -10,3 +10,4 @@ export * from "./Select";
 export * from "./Switch";
 export * from "./TextArea";
 export * from "./conversions";
+export * from "./useFieldProps";

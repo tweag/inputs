@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
 export type InputType =
@@ -18,7 +18,9 @@ export type InputType =
   | "url"
   | "week";
 
-export interface InputProps extends FieldProps<string, HTMLInputElement> {
+export interface InputProps
+  extends FieldProps<string, HTMLInputElement>,
+    Attributes<"input"> {
   type?: InputType;
 }
 

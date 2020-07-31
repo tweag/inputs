@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useFieldProps } from "./useFieldProps";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 
 export interface FileInputProps
-  extends FieldProps<File | null, HTMLInputElement> {}
+  extends FieldProps<File | null, HTMLInputElement>,
+    Attributes<"input"> {}
 
 export function FileInput(props: FileInputProps) {
   const {

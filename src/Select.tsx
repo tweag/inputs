@@ -1,8 +1,10 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface SelectProps extends FieldProps<string, HTMLSelectElement> {
+export interface SelectProps
+  extends FieldProps<string, HTMLSelectElement>,
+    Attributes<"select"> {
   placeholder?: string;
   children?: React.ReactNode;
 }

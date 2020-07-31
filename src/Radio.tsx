@@ -1,10 +1,12 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 import { getDOMValue, useNestedId } from "./utilities";
 
-export interface RadioProps<Value> extends FieldProps<Value, HTMLInputElement> {
+export interface RadioProps<Value>
+  extends FieldProps<Value, HTMLInputElement>,
+    Attributes<"input"> {
   value: Value;
 }
 

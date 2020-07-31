@@ -1,10 +1,11 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { contains, getDOMValue, remove, useNestedId } from "./utilities";
 import { useFieldProps } from "./useFieldProps";
 
 export interface CheckboxItemProps<Value>
-  extends FieldProps<Value[], HTMLInputElement> {
+  extends FieldProps<Value[], HTMLInputElement>,
+    Attributes<"input"> {
   value: Value;
 }
 

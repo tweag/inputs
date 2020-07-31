@@ -1,8 +1,10 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface CheckboxProps extends FieldProps<boolean, HTMLInputElement> {}
+export interface CheckboxProps
+  extends FieldProps<boolean, HTMLInputElement>,
+    Attributes<"input"> {}
 
 export function Checkbox(props: CheckboxProps) {
   const {

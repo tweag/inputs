@@ -1,8 +1,10 @@
 import * as React from "react";
-import { FieldProps } from "./types";
+import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface SwitchProps extends FieldProps<boolean, HTMLButtonElement> {
+export interface SwitchProps
+  extends FieldProps<boolean, HTMLButtonElement>,
+    Attributes<"button"> {
   children?: React.ReactNode;
 }
 
