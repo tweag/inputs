@@ -1,6 +1,7 @@
 import * as React from "react";
 import equals from "fast-deep-equal";
 import { FieldProps } from "./types";
+import { useFieldProps } from "./useFieldProps";
 import { getDOMValue, useNestedId } from "./utilities";
 
 export interface RadioProps<Value>
@@ -9,34 +10,41 @@ export interface RadioProps<Value>
 }
 
 export function Radio<T>(props: RadioProps<T>) {
-  props = { ...props, field: useNestedId(props.field) };
+  const nested = { ...props, field: useNestedId(props.field) };
+  const {
+    field,
+    label,
+    help,
+    error,
+    append,
+    prepend,
+    value: item,
+    getFieldProps,
+    getLabelProps,
+    getErrorProps,
+    getHelpProps,
+    ...inputProps
+  } = useFieldProps(nested, "check", "radio");
 
-  const { field, innerRef } = props;
   const { value, setValue } = field;
-
-  const onBlur = useBlur(field);
-  const onChange = React.useCallback(() => {
-    setValue(props.value);
-  }, [props.value, setValue]);
+  const onChange = React.useCallback(() => setValue(item), [item, setValue]);
 
   return (
-    <Field check variant="radio" {...props}>
+    <div {...getFieldProps()}>
+      {prepend}
       <input
+        {...inputProps}
         type="radio"
-        ref={innerRef}
-        checked={equals(value, props.value)}
-        value={getDOMValue(props.value)}
-        onBlur={onBlur}
         onChange={onChange}
-        aria-labelledby={getLabelledBy(field)}
-        className={getClassName(
-          props,
-          "field__input",
-          "field__input--check",
-          "field__input--radio",
-          props.inputClassName
-        )}
+        value={getDOMValue(props.value)}
+        checked={equals(value, props.value)}
       />
-    </Field>
+      {append}
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }

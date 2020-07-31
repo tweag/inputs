@@ -9,6 +9,7 @@ export interface CheckboxItemProps<Value>
 }
 
 export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
+  const nested = { ...props, field: useNestedId(props.field) };
   const {
     field,
     label,
@@ -22,36 +23,33 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(
-    { ...props, field: useNestedId(props.field) },
-    "check",
-    "checkbox"
-  );
+  } = useFieldProps(nested, "check", "checkbox");
 
   const { value, setValue } = field;
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const { checked } = event.target;
-
-      setValue(value => {
-        if (checked) {
-          return [...value, item];
-        } else {
-          return remove(value, item);
-        }
-      });
+      setValue(value => (checked ? [...value, item] : remove(value, item)));
     },
     [item, setValue]
   );
 
   return (
-    <Field check variant="checkbox" {...props}>
+    <div {...getFieldProps()}>
+      {prepend}
       <input
+        {...inputProps}
         type="checkbox"
-        checked={contains(value, item)}
-        value={getDOMValue(item)}
         onChange={onChange}
+        value={getDOMValue(item)}
+        checked={contains(value, item)}
       />
-    </Field>
+      {append}
+      <label {...getLabelProps()}>
+        {label}
+        {help && <span {...getHelpProps()}>{help}</span>}
+      </label>
+      {error && <span {...getErrorProps()}>{error}</span>}
+    </div>
   );
 }
