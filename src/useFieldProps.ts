@@ -48,7 +48,7 @@ export function useFieldProps<Value, Element, InputProps>(
       field.touched && `${name}--touched`,
       isPopulated(field.value) && `${name}--populated`,
       ...fieldVariants.map(v => `${name}--${v}`),
-      ...variants.concat(variant).map(v => v && `${name}--${v}`),
+      ...variants.map(v => v && `${name}--${v}`),
       ...names
     );
 
