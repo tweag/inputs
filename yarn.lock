@@ -1568,10 +1568,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stackup/form@^0.1.0-alpha.3":
-  version "0.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.1.0-alpha.3.tgz#f03360082027cbe158bb69f4ab23f36ea5568654"
-  integrity sha512-cWom/l6nroBczffbNPOzA3V/tPb56PpotqeeLDySrJkonoRYdToHDCwTaJxXEWuxJrBy/xhJQ3saZKfxGmxj/Q==
+"@stackup/form@^0.1.0-alpha.4":
+  version "0.1.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.1.0-alpha.4.tgz#852d9720d173b57114d77e3171ac89b0b5990d41"
+  integrity sha512-ZGUhsU/uGD6jnmYykZiE9nV+4doh99hBuN6fWtDoAtiC+Fn+rplyI7XtRZt6w6QEvhs+pv4pII1YPsH5villTA==
 
 "@testing-library/dom@^7.17.1":
   version "7.20.0"
