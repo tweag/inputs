@@ -9,6 +9,22 @@ export interface CheckboxItemProps<Value>
   value: Value;
 }
 
+/**
+ * Manages the state of a boolean value using a checkbox.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <Checkbox
+ *   label="I agree"
+ *   help="Did you read all 7,000 lines?"
+ *   field={useField(form, "confirmation")}
+ * />
+ * ```
+ */
 export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
   const nested = { ...props, field: useNestedId(props.field) };
   const {
