@@ -6201,6 +6201,11 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
+react-docgen-typescript@^1.20.1:
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.20.1.tgz#774ed8b4a7111acaaa536cad4cfd61c504a46f7e"
+  integrity sha512-vU6puLsSwfCS+nI/6skQ52sJIx/uW7+9aMI/V/zPHAXr6s8OQzD5LeL9rXx/Hdt2aNfm4yTX9oJ8ClH/5PKQNg==
+
 react-dom@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"

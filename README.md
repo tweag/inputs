@@ -34,22 +34,22 @@ all props for an HTML input.
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| field          | `FormField<boolean>`    | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| field          | FormField<boolean>    | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### CheckboxItem
 
@@ -70,186 +70,186 @@ all props for an HTML input.
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| value          | `Value`                 | ✓        |
-| field          | `FormField<Value[]>`    | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| value          | Value                 | ✓        |                                                        |
+| field          | FormField<Value[]>    | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### FieldSet
 
 #### Props
 
-| Name            | Type             | Required |
-| --------------- | ---------------- | -------- |
-| field           | `FormField<any>` | ✓        |
-| legend          | `ReactNode`      | ✓        |
-| help            | `ReactNode`      | ✗        |
-| className       | `string`         | ✗        |
-| legendClassName | `string`         | ✗        |
-| helpClassName   | `string`         | ✗        |
-| errorClassName  | `string`         | ✗        |
+| Name            | Type           | Required | Description |
+| --------------- | -------------- | -------- | ----------- |
+| field           | FormField<any> | ✓        |             |
+| legend          | ReactNode      | ✓        |             |
+| help            | ReactNode      | ✗        |             |
+| className       | string         | ✗        |             |
+| legendClassName | string         | ✗        |             |
+| helpClassName   | string         | ✗        |             |
+| errorClassName  | string         | ✗        |             |
 
 ### FileInput
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| field          | `FormField<File>`       | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| field          | FormField<File>       | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### FileListInput
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| field          | `FormField<FileList>`   | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| field          | FormField<FileList>   | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### Input
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| type           | `InputType`             | ✗        |
-| field          | `FormField<string>`     | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| type           | InputType             | ✗        |                                                        |
+| field          | FormField<string>     | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### Radio
 
 #### Props
 
-| Name           | Type                    | Required |
-| -------------- | ----------------------- | -------- |
-| value          | `T`                     | ✓        |
-| field          | `FormField<T>`          | ✓        |
-| innerRef       | `Ref<HTMLInputElement>` | ✗        |
-| label          | `ReactNode`             | ✓        |
-| help           | `ReactNode`             | ✗        |
-| append         | `ReactNode`             | ✗        |
-| prepend        | `ReactNode`             | ✗        |
-| className      | `string`                | ✗        |
-| inputClassName | `string`                | ✗        |
-| labelClassName | `string`                | ✗        |
-| helpClassName  | `string`                | ✗        |
-| errorClassName | `string`                | ✗        |
-| size           | `FieldSize`             | ✗        |
-| inline         | `boolean`               | ✗        |
-| condensed      | `boolean`               | ✗        |
+| Name           | Type                  | Required | Description                                            |
+| -------------- | --------------------- | -------- | ------------------------------------------------------ |
+| value          | T                     | ✓        |                                                        |
+| field          | FormField<T>          | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode             | ✓        | Content to appear in the label                         |
+| help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode             | ✗        | Content to render before the input                     |
+| append         | ReactNode             | ✗        | Content to render after the input                      |
+| className      | string                | ✗        | An additional class name for the field                 |
+| inputClassName | string                | ✗        | An additional class name for the input                 |
+| labelClassName | string                | ✗        | An additional class name for the label                 |
+| helpClassName  | string                | ✗        | An additional class name for the help                  |
+| errorClassName | string                | ✗        | An additional class name for the error                 |
+| size           | FieldSize             | ✗        | Appends a class name to all elements                   |
+| inline         | boolean               | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean               | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### Select
 
 #### Props
 
-| Name           | Type                     | Required |
-| -------------- | ------------------------ | -------- |
-| placeholder    | `string`                 | ✗        |
-| field          | `FormField<string>`      | ✓        |
-| innerRef       | `Ref<HTMLSelectElement>` | ✗        |
-| label          | `ReactNode`              | ✓        |
-| help           | `ReactNode`              | ✗        |
-| append         | `ReactNode`              | ✗        |
-| prepend        | `ReactNode`              | ✗        |
-| className      | `string`                 | ✗        |
-| inputClassName | `string`                 | ✗        |
-| labelClassName | `string`                 | ✗        |
-| helpClassName  | `string`                 | ✗        |
-| errorClassName | `string`                 | ✗        |
-| size           | `FieldSize`              | ✗        |
-| inline         | `boolean`                | ✗        |
-| condensed      | `boolean`                | ✗        |
+| Name           | Type                   | Required | Description                                            |
+| -------------- | ---------------------- | -------- | ------------------------------------------------------ |
+| placeholder    | string                 | ✗        |                                                        |
+| field          | FormField<string>      | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode              | ✓        | Content to appear in the label                         |
+| help           | ReactNode              | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode              | ✗        | Content to render before the input                     |
+| append         | ReactNode              | ✗        | Content to render after the input                      |
+| className      | string                 | ✗        | An additional class name for the field                 |
+| inputClassName | string                 | ✗        | An additional class name for the input                 |
+| labelClassName | string                 | ✗        | An additional class name for the label                 |
+| helpClassName  | string                 | ✗        | An additional class name for the help                  |
+| errorClassName | string                 | ✗        | An additional class name for the error                 |
+| size           | FieldSize              | ✗        | Appends a class name to all elements                   |
+| inline         | boolean                | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean                | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLSelectElement> | ✗        | A ref to the input element                             |
 
 ### Switch
 
 #### Props
 
-| Name           | Type                     | Required |
-| -------------- | ------------------------ | -------- |
-| field          | `FormField<boolean>`     | ✓        |
-| innerRef       | `Ref<HTMLButtonElement>` | ✗        |
-| label          | `ReactNode`              | ✓        |
-| help           | `ReactNode`              | ✗        |
-| append         | `ReactNode`              | ✗        |
-| prepend        | `ReactNode`              | ✗        |
-| className      | `string`                 | ✗        |
-| inputClassName | `string`                 | ✗        |
-| labelClassName | `string`                 | ✗        |
-| helpClassName  | `string`                 | ✗        |
-| errorClassName | `string`                 | ✗        |
-| size           | `FieldSize`              | ✗        |
-| inline         | `boolean`                | ✗        |
-| condensed      | `boolean`                | ✗        |
+| Name           | Type                   | Required | Description                                            |
+| -------------- | ---------------------- | -------- | ------------------------------------------------------ |
+| field          | FormField<boolean>     | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode              | ✓        | Content to appear in the label                         |
+| help           | ReactNode              | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode              | ✗        | Content to render before the input                     |
+| append         | ReactNode              | ✗        | Content to render after the input                      |
+| className      | string                 | ✗        | An additional class name for the field                 |
+| inputClassName | string                 | ✗        | An additional class name for the input                 |
+| labelClassName | string                 | ✗        | An additional class name for the label                 |
+| helpClassName  | string                 | ✗        | An additional class name for the help                  |
+| errorClassName | string                 | ✗        | An additional class name for the error                 |
+| size           | FieldSize              | ✗        | Appends a class name to all elements                   |
+| inline         | boolean                | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean                | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLButtonElement> | ✗        | A ref to the input element                             |
 
 ### TextArea
 
 #### Props
 
-| Name           | Type                       | Required |
-| -------------- | -------------------------- | -------- |
-| field          | `FormField<string>`        | ✓        |
-| innerRef       | `Ref<HTMLTextAreaElement>` | ✗        |
-| label          | `ReactNode`                | ✓        |
-| help           | `ReactNode`                | ✗        |
-| append         | `ReactNode`                | ✗        |
-| prepend        | `ReactNode`                | ✗        |
-| className      | `string`                   | ✗        |
-| inputClassName | `string`                   | ✗        |
-| labelClassName | `string`                   | ✗        |
-| helpClassName  | `string`                   | ✗        |
-| errorClassName | `string`                   | ✗        |
-| size           | `FieldSize`                | ✗        |
-| inline         | `boolean`                  | ✗        |
-| condensed      | `boolean`                  | ✗        |
+| Name           | Type                     | Required | Description                                            |
+| -------------- | ------------------------ | -------- | ------------------------------------------------------ |
+| field          | FormField<string>        | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| label          | ReactNode                | ✓        | Content to appear in the label                         |
+| help           | ReactNode                | ✗        | Extra help info that will be rendered within the label |
+| prepend        | ReactNode                | ✗        | Content to render before the input                     |
+| append         | ReactNode                | ✗        | Content to render after the input                      |
+| className      | string                   | ✗        | An additional class name for the field                 |
+| inputClassName | string                   | ✗        | An additional class name for the input                 |
+| labelClassName | string                   | ✗        | An additional class name for the label                 |
+| helpClassName  | string                   | ✗        | An additional class name for the help                  |
+| errorClassName | string                   | ✗        | An additional class name for the error                 |
+| size           | FieldSize                | ✗        | Appends a class name to all elements                   |
+| inline         | boolean                  | ✗        | Appends a class name to all elements                   |
+| condensed      | boolean                  | ✗        | Appends a class name to all elements                   |
+| innerRef       | Ref<HTMLTextAreaElement> | ✗        | A ref to the input element                             |
 
 <!-- end of components -->

@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const { format } = require("prettier");
+const { parse } = require("react-docgen-typescript");
+
+function isComponent(doc) {
+  return /^[A-Z]/.test(doc.displayName);
+}
+
+function isProp(prop) {
+  return prop.parent ? !prop.parent.fileName.includes("node_modules") : true;
+}
+
+function getComponents() {
+  return parse("src/index.ts", { propFilter: isProp }).filter(isComponent);
+}
+
+function render(component) {
+  let out = `### ${component.displayName}
+
+  ${component.description}
+
+  #### Props
+
+  | Name | Type | Required | Description |
+  |------|------|----------|-------------|
+  `;
+
+  for (const [name, prop] of Object.entries(component.props)) {
+    const row = [
+      name,
+      prop.type.name,
+      prop.required ? "✓" : "✗",
+      prop.description
+    ];
+
+    out += `| ${row.join(" | ")} |\n`;
+  }
+
+  return out;
+}
+
+const readme = fs.readFileSync("README.md", "utf-8").split("\n");
+const start = readme.indexOf("<!-- components -->") + 1;
+const count = readme.slice(start).indexOf("<!-- end of components -->");
+
+const sections = getComponents().map(render);
+readme.splice(start, count, ...sections);
+
+const output = format(readme.join("\n"), { parser: "markdown" });
+fs.writeFileSync("README.md", output);
