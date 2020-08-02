@@ -1,10 +1,6 @@
 import { FormField } from "@stackup/form";
 
-export type FieldVariant =
-  | undefined
-  | boolean
-  | string
-  | Array<undefined | boolean | string>;
+export type FieldVariant = undefined | boolean | string;
 
 export interface FieldProps<Value, Element> {
   /** See [@stackup/form](https://github.com/rzane/form) */
@@ -17,7 +13,7 @@ export interface FieldProps<Value, Element> {
   help?: React.ReactNode;
 
   /** Variant class name to append to all elements */
-  variant?: FieldVariant;
+  variant?: FieldVariant | FieldVariant[];
 
   /** Content to render before the input */
   prepend?: React.ReactNode;
