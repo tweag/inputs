@@ -9,6 +9,28 @@ export interface SelectProps
   children?: React.ReactNode;
 }
 
+/**
+ * Renders a `<select />` tag with whatever options you provide.
+ *
+ * You can provide a placeholder, which will render a disabled option
+ * with a blank value.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML select.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <Select
+ *   label="Sport"
+ *   placeholder="Choose a sport"
+ *   field={useField(form, "sport")}
+ * >
+ *   <option value="baseball">Baseball</option>
+ *   <option value="soccer">Soccer</option>
+ * </Select>
+ * ```
+ */
 export function Select(props: SelectProps) {
   const {
     field,

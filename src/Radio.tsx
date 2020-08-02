@@ -7,9 +7,36 @@ import { getDOMValue, useNestedId } from "./utilities";
 export interface RadioProps<Value>
   extends FieldProps<Value, HTMLInputElement>,
     Attributes<"input"> {
+  /** The value of the option to be selected */
   value: Value;
 }
 
+/**
+ * Renders an `<input type="radio" />` and manages the state of any type of value.
+ *
+ * Note that this component will not render error messages. For that, you'll
+ * want to wrap your radio options in a FieldSet.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <FieldSet legend="Sport" field={useField(form, "sport")}>
+ *   <Radio
+ *     label="Soccer"
+ *     value={{ name: "Soccer" }}
+ *     field={useField(form, "sport")}
+ *   />
+ *   <Radio
+ *     label="Baseball"
+ *     value={{ name: "Baseball" }}
+ *     field={useField(form, "sport")}
+ *   />
+ * </FieldSet>
+ * ```
+ */
 export function Radio<T>(props: RadioProps<T>) {
   const nested = { ...props, field: useNestedId(props.field) };
   const {

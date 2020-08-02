@@ -23,20 +23,28 @@ A set of helpful input components that take the burden out of building forms wit
   - [Example](#example-1)
   - [Props](#props-1)
 - [FieldSet](#fieldset)
+  - [Example](#example-2)
   - [Props](#props-2)
 - [FileInput](#fileinput)
+  - [Example](#example-3)
   - [Props](#props-3)
 - [FileListInput](#filelistinput)
+  - [Example](#example-4)
   - [Props](#props-4)
 - [Input](#input)
+  - [Example](#example-5)
   - [Props](#props-5)
 - [Radio](#radio)
+  - [Example](#example-6)
   - [Props](#props-6)
 - [Select](#select)
+  - [Example](#example-7)
   - [Props](#props-7)
 - [Switch](#switch)
+  - [Example](#example-8)
   - [Props](#props-8)
 - [TextArea](#textarea)
+  - [Example](#example-9)
   - [Props](#props-9)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -81,26 +89,36 @@ all props for an HTML input.
 
 ### CheckboxItem
 
-Manages the state of a boolean value using a checkbox.
+Manages an array of values, represented by checkboxes.
 
 In addition to the props listed below, this component accepts
 all props for an HTML input.
 
+Note that this component will not render error messages. For that, you'll
+want to wrap your checkboxes in a FieldSet.
+
 #### Example
 
 ```jsx
-<Checkbox
-  label="I agree"
-  help="Did you read all 7,000 lines?"
-  field={useField(form, "confirmation")}
-/>
+<FieldSet legend="Sport" field={useField(form, "sport")}>
+  <CheckboxItem
+    label="Soccer"
+    value={{ name: "Soccer" }}
+    field={useField(form, "sport")}
+  />
+  <CheckboxItem
+    label="Baseball"
+    value={{ name: "Baseball" }}
+    field={useField(form, "sport")}
+  />
+</FieldSet>
 ```
 
 #### Props
 
 | Name           | Type                  | Required | Description                                            |
 | -------------- | --------------------- | -------- | ------------------------------------------------------ |
-| value          | Value                 | ✓        |                                                        |
+| value          | Value                 | ✓        | Toggle the inclusion of this value in the array.       |
 | field          | FormField<Value[]>    | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
 | label          | ReactNode             | ✓        | Content to appear in the label                         |
 | help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
@@ -118,19 +136,54 @@ all props for an HTML input.
 
 ### FieldSet
 
+Fields that are composed of multiple components (e.g. Radio and CheckboxItem)
+should always be rendered within a fieldset.
+
+If an error is associated with the field, it will be rendered within the
+fieldset, rather than on a Radio or CheckboxItem.
+
+#### Example
+
+```jsx
+<FieldSet legend="Sport" field={useField(form, "sport")}>
+  <Radio
+    label="Soccer"
+    value={{ name: "Soccer" }}
+    field={useField(form, "sport")}
+  />
+  <Radio
+    label="Baseball"
+    value={{ name: "Baseball" }}
+    field={useField(form, "sport")}
+  />
+</FieldSet>
+```
+
 #### Props
 
-| Name            | Type           | Required | Description |
-| --------------- | -------------- | -------- | ----------- |
-| field           | FormField<any> | ✓        |             |
-| legend          | ReactNode      | ✓        |             |
-| help            | ReactNode      | ✗        |             |
-| className       | string         | ✗        |             |
-| legendClassName | string         | ✗        |             |
-| helpClassName   | string         | ✗        |             |
-| errorClassName  | string         | ✗        |             |
+| Name            | Type           | Required | Description                                        |
+| --------------- | -------------- | -------- | -------------------------------------------------- |
+| field           | FormField<any> | ✓        | See [@stackup/form](https://github.com/rzane/form) |
+| legend          | ReactNode      | ✓        | Content to appear in the legend                    |
+| help            | ReactNode      | ✗        | Extra help info                                    |
+| children        | ReactNode      | ✗        | Content that should appear inside the fieldset     |
+| className       | string         | ✗        | An additional class name for the fieldset          |
+| legendClassName | string         | ✗        | An additional class name for the legend            |
+| helpClassName   | string         | ✗        | An additional class name for the help              |
+| errorClassName  | string         | ✗        | An additional class name for the error             |
 
 ### FileInput
+
+Renders an `<input type="file" />`.
+
+In addition to the props listed below, this component accepts
+all props for an HTML input.
+
+#### Example
+
+```jsx
+<FileInput label="Image" field={useField(form, "image")} />
+```
 
 #### Props
 
@@ -153,6 +206,17 @@ all props for an HTML input.
 
 ### FileListInput
 
+Renders an `<input type="file" multiple />`.
+
+In addition to the props listed below, this component accepts
+all props for an HTML input.
+
+#### Example
+
+```jsx
+<FileListInput label="Images" field={useField(form, "images")} />
+```
+
 #### Props
 
 | Name           | Type                  | Required | Description                                            |
@@ -173,6 +237,21 @@ all props for an HTML input.
 | innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### Input
+
+Renders an `<input />`, which whatever type you provide.
+
+The value of this input will always be a string, but you should use a
+validation library such as [@stackup/validate](https://github.com/rzane/validate)
+to parse and validate the entry before submission.
+
+In addition to the props listed below, this component accepts
+all props for an HTML input.
+
+#### Example
+
+```jsx
+<Input type="email" label="Email" field={useField(form, "email")} />
+```
 
 #### Props
 
@@ -196,11 +275,36 @@ all props for an HTML input.
 
 ### Radio
 
+Renders an `<input type="radio" />` and manages the state of any type of value.
+
+Note that this component will not render error messages. For that, you'll
+want to wrap your radio options in a FieldSet.
+
+In addition to the props listed below, this component accepts
+all props for an HTML input.
+
+#### Example
+
+```jsx
+<FieldSet legend="Sport" field={useField(form, "sport")}>
+  <Radio
+    label="Soccer"
+    value={{ name: "Soccer" }}
+    field={useField(form, "sport")}
+  />
+  <Radio
+    label="Baseball"
+    value={{ name: "Baseball" }}
+    field={useField(form, "sport")}
+  />
+</FieldSet>
+```
+
 #### Props
 
 | Name           | Type                  | Required | Description                                            |
 | -------------- | --------------------- | -------- | ------------------------------------------------------ |
-| value          | T                     | ✓        |                                                        |
+| value          | T                     | ✓        | The value of the option to be selected                 |
 | field          | FormField<T>          | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
 | label          | ReactNode             | ✓        | Content to appear in the label                         |
 | help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
@@ -217,6 +321,27 @@ all props for an HTML input.
 | innerRef       | Ref<HTMLInputElement> | ✗        | A ref to the input element                             |
 
 ### Select
+
+Renders a `<select />` tag with whatever options you provide.
+
+You can provide a placeholder, which will render a disabled option
+with a blank value.
+
+In addition to the props listed below, this component accepts
+all props for an HTML select.
+
+#### Example
+
+```jsx
+<Select
+  label="Sport"
+  placeholder="Choose a sport"
+  field={useField(form, "sport")}
+>
+  <option value="baseball">Baseball</option>
+  <option value="soccer">Soccer</option>
+</Select>
+```
 
 #### Props
 
@@ -240,6 +365,20 @@ all props for an HTML input.
 
 ### Switch
 
+Renders a `<button />` to toggle the state of a boolean value.
+
+You can style this element with CSS by selecting the `[aria-checked]`
+value.
+
+In addition to the props listed below, this component accepts
+all props for an HTML button.
+
+#### Example
+
+```jsx
+<Switch type="enabled" label="Show preview" field={useField(form, "enabled")} />
+```
+
 #### Props
 
 | Name           | Type                   | Required | Description                                            |
@@ -260,6 +399,17 @@ all props for an HTML input.
 | innerRef       | Ref<HTMLButtonElement> | ✗        | A ref to the input element                             |
 
 ### TextArea
+
+Renders a `<textarea />`.
+
+In addition to the props listed below, this component accepts
+all props for an HTML input.
+
+#### Example
+
+```jsx
+<TextArea type="comment" label="Comment" field={useField(form, "comment")} />
+```
 
 #### Props
 

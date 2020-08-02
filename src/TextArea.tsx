@@ -6,6 +6,22 @@ export interface TextAreaProps
   extends FieldProps<string, HTMLTextAreaElement>,
     Attributes<"textarea"> {}
 
+/**
+ * Renders a `<textarea />`.
+
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <TextArea
+ *   type="comment"
+ *   label="Comment"
+ *   field={useField(form, "comment")}
+ * />
+ * ```
+ */
 export function TextArea(props: TextAreaProps) {
   const {
     field,
