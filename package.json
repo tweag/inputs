@@ -20,7 +20,7 @@
     "test": "TZ=America/New_York tsdx test",
     "lint": "tsdx lint src test",
     "prepare": "tsdx build",
-    "docs": "bin/generate-docs && doctoc README.md && prettier --write README.md"
+    "docs": "bin/generate-docs && doctoc --maxlevel 3 README.md && prettier --write README.md"
   },
   "prettier": {
     "arrowParens": "avoid",

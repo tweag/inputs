@@ -37,7 +37,7 @@ export interface RadioProps<Value>
  * </FieldSet>
  * ```
  */
-export function Radio<T>(props: RadioProps<T>) {
+export function Radio<Value>(props: RadioProps<Value>) {
   const nested = { ...props, field: useNestedId(props.field) };
   const {
     field,

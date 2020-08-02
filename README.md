@@ -11,43 +11,32 @@
 
 A set of helpful input components that take the burden out of building forms with React.
 
-## Components
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Checkbox](#checkbox)
-  - [Example](#example)
-  - [Props](#props)
-- [CheckboxItem](#checkboxitem)
-  - [Example](#example-1)
-  - [Props](#props-1)
-- [FieldSet](#fieldset)
-  - [Example](#example-2)
-  - [Props](#props-2)
-- [FileInput](#fileinput)
-  - [Example](#example-3)
-  - [Props](#props-3)
-- [FileListInput](#filelistinput)
-  - [Example](#example-4)
-  - [Props](#props-4)
-- [Input](#input)
-  - [Example](#example-5)
-  - [Props](#props-5)
-- [Radio](#radio)
-  - [Example](#example-6)
-  - [Props](#props-6)
-- [Select](#select)
-  - [Example](#example-7)
-  - [Props](#props-7)
-- [Switch](#switch)
-  - [Example](#example-8)
-  - [Props](#props-8)
-- [TextArea](#textarea)
-  - [Example](#example-9)
-  - [Props](#props-9)
+- [Components](#components)
+  - [Checkbox](#checkbox)
+  - [CheckboxItem](#checkboxitem)
+  - [FieldSet](#fieldset)
+  - [FileInput](#fileinput)
+  - [FileListInput](#filelistinput)
+  - [Input](#input)
+  - [Radio](#radio)
+  - [Select](#select)
+  - [Switch](#switch)
+  - [TextArea](#textarea)
+- [Utilities](#utilities)
+  - [useFieldProps](#usefieldprops)
+  - [formatDate](#formatdate)
+  - [formatTime](#formattime)
+  - [formatNumber](#formatnumber)
+  - [parseDate](#parsedate)
+  - [parseTime](#parsetime)
+  - [parseNumber](#parsenumber)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Components
 
 <!-- START components -->
 
@@ -304,8 +293,8 @@ all props for an HTML input.
 
 | Name           | Type                  | Required | Description                                            |
 | -------------- | --------------------- | -------- | ------------------------------------------------------ |
-| value          | T                     | ✓        | The value of the option to be selected                 |
-| field          | FormField<T>          | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
+| value          | Value                 | ✓        | The value of the option to be selected                 |
+| field          | FormField<Value>      | ✓        | See [@stackup/form](https://github.com/rzane/form)     |
 | label          | ReactNode             | ✓        | Content to appear in the label                         |
 | help           | ReactNode             | ✗        | Extra help info that will be rendered within the label |
 | prepend        | ReactNode             | ✗        | Content to render before the input                     |
@@ -431,3 +420,33 @@ all props for an HTML input.
 | innerRef       | Ref<HTMLTextAreaElement> | ✗        | A ref to the input element                             |
 
 <!-- END components -->
+
+## Utilities
+
+### useFieldProps
+
+This is pretty much the workhorse of this library.
+
+### formatDate
+
+Convert ISO-8601 to `input[type=datetime-local]`
+
+### formatTime
+
+Convert ISO-8601 to `input[type=time]`
+
+### formatNumber
+
+Convert a number to `input[type=number]`
+
+### parseDate
+
+Convert `input[type=datetime-local]` to ISO-8601
+
+### parseTime
+
+Convert `input[type=time]` to ISO-8601
+
+### parseNumber
+
+Convert `input[type=number]` to a number
