@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
-const { format } = require("prettier");
 const { parse } = require("react-docgen-typescript");
 
 function isComponent(doc) {
@@ -42,11 +41,10 @@ function render(component) {
 }
 
 const readme = fs.readFileSync("README.md", "utf-8").split("\n");
-const start = readme.indexOf("<!-- components -->") + 1;
-const count = readme.slice(start).indexOf("<!-- end of components -->");
+const start = readme.indexOf("<!-- START components -->") + 1;
+const count = readme.slice(start).indexOf("<!-- END components -->");
 
 const sections = getComponents().map(render);
 readme.splice(start, count, ...sections);
 
-const output = format(readme.join("\n"), { parser: "markdown" });
-fs.writeFileSync("README.md", output);
+fs.writeFileSync("README.md", readme.join("\n"));

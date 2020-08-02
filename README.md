@@ -13,7 +13,35 @@ A set of helpful input components that take the burden out of building forms wit
 
 ## Components
 
-<!-- components -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Checkbox](#checkbox)
+  - [Example](#example)
+  - [Props](#props)
+- [CheckboxItem](#checkboxitem)
+  - [Example](#example-1)
+  - [Props](#props-1)
+- [FieldSet](#fieldset)
+  - [Props](#props-2)
+- [FileInput](#fileinput)
+  - [Props](#props-3)
+- [FileListInput](#filelistinput)
+  - [Props](#props-4)
+- [Input](#input)
+  - [Props](#props-5)
+- [Radio](#radio)
+  - [Props](#props-6)
+- [Select](#select)
+  - [Props](#props-7)
+- [Switch](#switch)
+  - [Props](#props-8)
+- [TextArea](#textarea)
+  - [Props](#props-9)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- START components -->
 
 ### Checkbox
 
@@ -252,4 +280,4 @@ all props for an HTML input.
 | condensed      | boolean                  | ✗        | Appends a class name to all elements                   |
 | innerRef       | Ref<HTMLTextAreaElement> | ✗        | A ref to the input element                             |
 
-<!-- end of components -->
+<!-- END components -->
