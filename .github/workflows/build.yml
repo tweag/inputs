@@ -12,8 +12,19 @@ jobs:
         with:
           node-version: 12
 
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            nodeModules-
+
       - name: Dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Typecheck
+        run: yarn tsc --noEmit -p .
 
       - name: Lint
         run: yarn lint
