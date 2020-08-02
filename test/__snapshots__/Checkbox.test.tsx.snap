@@ -2,17 +2,17 @@
 
 exports[`<Checkbox /> error renders 1`] = `
 <div
-  class="field field--touched field--problem field--populated field--check field--checkbox"
+  class="field field--problem field--touched field--populated field--check field--checkbox"
 >
   <input
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--problem field__input--populated field__input--check field__input--checkbox"
+    class="field__input field__input--problem field__input--touched field__input--populated field__input--check field__input--checkbox"
     id="form-0_mock"
     type="checkbox"
   />
   <label
-    class="field__label field__label--touched field__label--problem field__label--populated field__label--check field__label--checkbox"
+    class="field__label field__label--problem field__label--touched field__label--populated field__label--check field__label--checkbox"
     for="form-0_mock"
     id="form-0_mock--label"
   >

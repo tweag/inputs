@@ -17,14 +17,12 @@ export function useBlur({ setTouched }: FormField<any>) {
 
 export function useFieldProps<Value, Element, InputProps>(
   props: FieldProps<Value, Element> & InputProps,
-  ...variants: string[]
+  ...fieldVariants: string[]
 ) {
   const {
     innerRef,
     field,
-    size,
-    inline,
-    condensed,
+    variant,
     label,
     help,
     append,
@@ -41,17 +39,16 @@ export function useFieldProps<Value, Element, InputProps>(
   const error = getError(field);
   const labelId = getRelatedId(field.id, "label");
   const errorId = getRelatedId(field.id, "error");
+  const variants = Array.isArray(variant) ? variant : [variant];
 
   const getClassName = (name: string, ...names: any[]) =>
     concat(
       name,
-      inline && `${name}--inline`,
-      condensed && `${name}--condensed`,
-      size && `${name}--${size}`,
-      field.touched && `${name}--touched`,
       error && `${name}--problem`,
+      field.touched && `${name}--touched`,
       isPopulated(field.value) && `${name}--populated`,
-      ...variants.map(v => `${name}--${v}`),
+      ...fieldVariants.map(v => `${name}--${v}`),
+      ...variants.concat(variant).map(v => v && `${name}--${v}`),
       ...names
     );
 

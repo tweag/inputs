@@ -2,20 +2,20 @@
 
 exports[`<Switch /> error renders 1`] = `
 <div
-  class="field field--touched field--problem field--populated field--check field--switch"
+  class="field field--problem field--touched field--populated field--check field--switch"
 >
   <button
     aria-checked="false"
     aria-describedby="form-0_mock--error"
     aria-label="Off"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--problem field__input--populated field__input--check field__input--switch"
+    class="field__input field__input--problem field__input--touched field__input--populated field__input--check field__input--switch"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
-    class="field__label field__label--touched field__label--problem field__label--populated field__label--check field__label--switch"
+    class="field__label field__label--problem field__label--touched field__label--populated field__label--check field__label--switch"
     for="form-0_mock"
     id="form-0_mock--label"
   >

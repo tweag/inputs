@@ -2,10 +2,10 @@
 
 exports[`<Input /> error renders 1`] = `
 <div
-  class="field field--touched field--problem field--input field--text"
+  class="field field--problem field--touched field--input field--text"
 >
   <label
-    class="field__label field__label--touched field__label--problem field__label--input field__label--text"
+    class="field__label field__label--problem field__label--touched field__label--input field__label--text"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,7 +14,7 @@ exports[`<Input /> error renders 1`] = `
   <input
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--problem field__input--input field__input--text"
+    class="field__input field__input--problem field__input--touched field__input--input field__input--text"
     id="form-0_mock"
     type="text"
     value=""

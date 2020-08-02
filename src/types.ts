@@ -1,6 +1,10 @@
 import { FormField } from "@stackup/form";
 
-export type FieldSize = "small" | "large";
+export type FieldVariant =
+  | undefined
+  | boolean
+  | string
+  | Array<undefined | boolean | string>;
 
 export interface FieldProps<Value, Element> {
   /** See [@stackup/form](https://github.com/rzane/form) */
@@ -11,6 +15,9 @@ export interface FieldProps<Value, Element> {
 
   /** Extra help info that will be rendered within the label */
   help?: React.ReactNode;
+
+  /** Variant class name to append to all elements */
+  variant?: FieldVariant;
 
   /** Content to render before the input */
   prepend?: React.ReactNode;
@@ -32,15 +39,6 @@ export interface FieldProps<Value, Element> {
 
   /** An additional class name for the error */
   errorClassName?: string;
-
-  /** Appends a class name to all elements */
-  size?: FieldSize;
-
-  /** Appends a class name to all elements */
-  inline?: boolean;
-
-  /** Appends a class name to all elements */
-  condensed?: boolean;
 
   /** A ref to the input element */
   innerRef?: React.Ref<Element>;

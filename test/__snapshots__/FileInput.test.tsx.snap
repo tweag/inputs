@@ -2,10 +2,10 @@
 
 exports[`<FileInput /> error renders 1`] = `
 <div
-  class="field field--touched field--problem field--file"
+  class="field field--problem field--touched field--file"
 >
   <label
-    class="field__label field__label--touched field__label--problem field__label--file"
+    class="field__label field__label--problem field__label--touched field__label--file"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,7 +14,7 @@ exports[`<FileInput /> error renders 1`] = `
   <input
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--touched field__input--problem field__input--file"
+    class="field__input field__input--problem field__input--touched field__input--file"
     id="form-0_mock"
     type="file"
   />

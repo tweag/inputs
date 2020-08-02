@@ -5,16 +5,16 @@ exports[`<CheckboxItem /> help renders 1`] = `
   class="field field--populated field--check field--checkbox"
 >
   <input
-    aria-labelledby="form-0_mock_5--label"
+    aria-labelledby="form-0_mock_7--label"
     class="field__input field__input--populated field__input--check field__input--checkbox"
-    id="form-0_mock_5"
+    id="form-0_mock_7"
     type="checkbox"
     value="100"
   />
   <label
     class="field__label field__label--populated field__label--check field__label--checkbox"
-    for="form-0_mock_5"
-    id="form-0_mock_5--label"
+    for="form-0_mock_7"
+    id="form-0_mock_7--label"
   >
     Example
     <span
@@ -31,16 +31,16 @@ exports[`<CheckboxItem /> label renders 1`] = `
   class="field field--populated field--check field--checkbox"
 >
   <input
-    aria-labelledby="form-0_mock_2--label"
+    aria-labelledby="form-0_mock_4--label"
     class="field__input field__input--populated field__input--check field__input--checkbox"
-    id="form-0_mock_2"
+    id="form-0_mock_4"
     type="checkbox"
     value="100"
   />
   <label
     class="field__label field__label--populated field__label--check field__label--checkbox"
-    for="form-0_mock_2"
-    id="form-0_mock_2--label"
+    for="form-0_mock_4"
+    id="form-0_mock_4--label"
   >
     Label
   </label>
