@@ -11,6 +11,9 @@
 
 A set of helpful input components that take the burden out of building forms with React.
 
+This library depends on [@stackup/form](https://github.com/rzane/form), to manage the state
+of form values.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
