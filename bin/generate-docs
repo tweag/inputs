@@ -29,7 +29,7 @@ function render(component) {
   for (const [name, prop] of Object.entries(component.props)) {
     const row = [
       name,
-      prop.type.name,
+      `\`${prop.type.name}\``,
       prop.required ? "✓" : "✗",
       prop.description
     ];
