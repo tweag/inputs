@@ -425,28 +425,47 @@ all props for an HTML input.
 
 ### useFieldProps
 
-This is pretty much the workhorse of this library.
+This is pretty much the workhorse of this library. It can be used to create your
+own inputs with similar props.
 
 ### formatDate
 
-Convert ISO-8601 to `input[type=datetime-local]`
+Convert ISO-8601 to `input[type=datetime-local]`. This can be used to populate
+the initial value for your inputs.
+
+When given an invalid value, this function will throw an error.
 
 ### formatTime
 
-Convert ISO-8601 to `input[type=time]`
+Convert ISO-8601 to `input[type=time]`. This can be used to populate
+the initial value for your inputs.
+
+When given an invalid value, this function will throw an error.
 
 ### formatNumber
 
-Convert a number to `input[type=number]`
+Convert a number to `input[type=number]`. This can be used to populate
+the initial value for your inputs.
+
+When given an invalid value, this function will throw an error.
 
 ### parseDate
 
-Convert `input[type=datetime-local]` to ISO-8601
+Convert `input[type=datetime-local]` to ISO-8601. This can be used to parse and validate
+information entered by the user.
+
+When given an invalid value, this function will return `undefined`.
 
 ### parseTime
 
-Convert `input[type=time]` to ISO-8601
+Convert `input[type=time]` to ISO-8601. This can be used to parse and validate
+information entered by the user.
+
+When given an invalid value, this function will return `undefined`.
 
 ### parseNumber
 
-Convert `input[type=number]` to a number
+Convert `input[type=number]` to a number. This can be used to parse and validate
+information entered by the user.
+
+When given an invalid value, this function will return `undefined`.
