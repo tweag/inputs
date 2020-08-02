@@ -1,11 +1,11 @@
-<h1 align="center">react-baseline-inputs</h1>
+<h1 align="center">@stackup/inputs</h1>
 
 <div align="center">
 
-![Build](https://github.com/rzane/react-baseline-inputs/workflows/Build/badge.svg)
-![Version](https://img.shields.io/npm/v/react-baseline-inputs)
-![Size](https://img.shields.io/bundlephobia/minzip/react-baseline-inputs)
-![License](https://img.shields.io/npm/l/react-baseline-inputs)
+![Build](https://github.com/promptworks/inputs/workflows/Build/badge.svg)
+![Version](https://img.shields.io/npm/v/@stackup/inputs)
+![Size](https://img.shields.io/bundlephobia/minzip/@stackup/inputs)
+![License](https://img.shields.io/npm/l/@stackup/inputs)
 
 </div>
 

@@ -1,11 +1,11 @@
 {
   "license": "MIT",
-  "name": "react-baseline-inputs",
+  "name": "@stackup/inputs",
   "version": "0.0.0",
-  "repository": "https://github.com/promptworks/react-baseline-inputs",
+  "repository": "https://github.com/promptworks/inputs",
   "description": "React components for creating data-driven forms.",
   "main": "dist/index.js",
-  "module": "dist/react-baseline-inputs.esm.js",
+  "module": "dist/inputs.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -35,7 +35,7 @@
     ]
   },
   "peerDependencies": {
-    "@stackup/form": "^0.1.0-alpha.3",
+    "@stackup/form": "^0.1.1",
     "react": ">=16.8"
   },
   "dependencies": {
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
-    "@stackup/form": "^0.1.0-alpha.4",
+    "@stackup/form": "^0.1.1",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.0.1",
     "@testing-library/react-hooks": "^3.3.0",
