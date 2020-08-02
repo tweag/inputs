@@ -19,7 +19,8 @@
     "build": "tsdx build",
     "test": "TZ=America/New_York tsdx test",
     "lint": "tsdx lint src test",
-    "prepare": "tsdx build"
+    "prepare": "tsdx build",
+    "docs": "bin/generate-docs && doctoc --maxlevel 3 README.md && prettier --write README.md"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -50,9 +51,11 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "babel-jest": "^26.1.0",
+    "doctoc": "^1.4.0",
     "jest": "^26.1.0",
     "jest-axe": "^3.4.0",
     "react": "^16.13.1",
+    "react-docgen-typescript": "^1.20.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "tsdx": "^0.13.2",

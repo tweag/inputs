@@ -6,6 +6,22 @@ export interface CheckboxProps
   extends FieldProps<boolean, HTMLInputElement>,
     Attributes<"input"> {}
 
+/**
+ * Manages the state of a boolean value using a checkbox.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <Checkbox
+ *   label="I agree"
+ *   help="Did you read all 7,000 lines?"
+ *   field={useField(form, "confirmation")}
+ * />
+ * ```
+ */
 export function Checkbox(props: CheckboxProps) {
   const {
     field,

@@ -24,6 +24,26 @@ export interface InputProps
   type?: InputType;
 }
 
+/**
+ * Renders an `<input />`, which whatever type you provide.
+ *
+ * The value of this input will always be a string, but you should use a
+ * validation library such as [@stackup/validate](https://github.com/rzane/validate)
+ * to parse and validate the entry before submission.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <Input
+ *   type="email"
+ *   label="Email"
+ *   field={useField(form, "email")}
+ * />
+ * ```
+ */
 export function Input(props: InputProps) {
   const { type = "text" } = props;
   const {

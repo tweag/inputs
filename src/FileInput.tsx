@@ -6,6 +6,18 @@ export interface FileInputProps
   extends FieldProps<File | null, HTMLInputElement>,
     Attributes<"input"> {}
 
+/**
+ * Renders an `<input type="file" />`.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <FileInput label="Image" field={useField(form, "image")} />
+ * ```
+ */
 export function FileInput(props: FileInputProps) {
   const {
     field,

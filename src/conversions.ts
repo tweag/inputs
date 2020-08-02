@@ -9,13 +9,6 @@ function assert(test: any, type: string, value: any): asserts test {
 }
 
 /**
- * Does the string contain a valid number?
- */
-export function isValidNumber(value: string): boolean {
-  return !isNaN(parseFloat(value));
-}
-
-/**
  * Convert a number to a string
  */
 export function formatNumber(value: number): string {
@@ -26,32 +19,27 @@ export function formatNumber(value: number): string {
 /**
  * Convert a string to number
  */
-export function parseNumber(value: string): number {
-  const parsed = parseFloat(value);
-  assert(!isNaN(parsed), "number", value);
-  return parsed;
-}
-
-/**
- * Does the string contain a valid time?
- */
-export function isValidTime(value: string): boolean {
-  const match = value.match(/^(\d{2}):(\d{2})$/);
-  return !!match && Number(match[1]) < 24 && Number(match[2]) < 60;
+export function parseNumber(value: string): number | undefined {
+  const number = parseFloat(value);
+  if (isNaN(number)) return;
+  return number;
 }
 
 /**
  * Convert the value from an `input[type=time]` to an ISO-8601 time (UTC).
  */
-export function parseTime(value: string, date: Date = new Date()): string {
+export function parseTime(
+  value: string,
+  date: Date = new Date()
+): string | undefined {
   const match = value.match(/^(\d{2}):(\d{2})$/);
-  assert(match, "time", value);
+  if (!match) return;
 
   const hours = Number(match[1]);
-  assert(hours < 24, "time", value);
+  if (hours > 23) return;
 
   const minutes = Number(match[2]);
-  assert(minutes < 60, "time", value);
+  if (minutes > 59) return;
 
   date.setHours(hours);
   date.setMinutes(minutes);
@@ -79,18 +67,11 @@ export function formatTime(value: string, date: Date = new Date()): string {
 }
 
 /**
- * Does the string contain a valid datetime?
- */
-export function isValidDateTime(value: string): boolean {
-  return !isNaN(new Date(value).valueOf());
-}
-
-/**
  * Convert the value from an `input[type=datetime-local]` to an ISO-8601 datetime (UTC).
  */
-export function parseDateTime(value: string): string {
+export function parseDateTime(value: string): string | undefined {
   const date = new Date(value);
-  assert(!isNaN(date.valueOf()), "datetime", value);
+  if (isNaN(date.valueOf())) return;
   return date.toISOString();
 }
 

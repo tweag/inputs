@@ -8,6 +8,25 @@ export interface SwitchProps
   children?: React.ReactNode;
 }
 
+/**
+ * Renders a `<button />` to toggle the state of a boolean value.
+ *
+ * You can style this element with CSS by selecting the `[aria-checked]`
+ * value.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML button.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <Switch
+ *   type="enabled"
+ *   label="Show preview"
+ *   field={useField(form, "enabled")}
+ * />
+ * ```
+ */
 export function Switch(props: SwitchProps) {
   const {
     field,

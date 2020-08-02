@@ -6,6 +6,18 @@ export interface FileListInputProps
   extends FieldProps<FileList | null, HTMLInputElement>,
     Attributes<"input"> {}
 
+/**
+ * Renders an `<input type="file" multiple />`.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <FileListInput label="Images" field={useField(form, "images")} />
+ * ```
+ */
 export function FileListInput(props: FileListInputProps) {
   const {
     field,

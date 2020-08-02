@@ -6,9 +6,36 @@ import { useFieldProps } from "./useFieldProps";
 export interface CheckboxItemProps<Value>
   extends FieldProps<Value[], HTMLInputElement>,
     Attributes<"input"> {
+  /** Toggle the inclusion of this value in the array. */
   value: Value;
 }
 
+/**
+ * Manages an array of values, represented by checkboxes.
+ *
+ * In addition to the props listed below, this component accepts
+ * all props for an HTML input.
+ *
+ * Note that this component will not render error messages. For that, you'll
+ * want to wrap your checkboxes in a FieldSet.
+ *
+ * #### Example
+ *
+ * ```jsx
+ * <FieldSet legend="Sport" field={useField(form, "sport")}>
+ *   <CheckboxItem
+ *     label="Soccer"
+ *     value={{ name: "Soccer" }}
+ *     field={useField(form, "sport")}
+ *   />
+ *   <CheckboxItem
+ *     label="Baseball"
+ *     value={{ name: "Baseball" }}
+ *     field={useField(form, "sport")}
+ *   />
+ * </FieldSet>
+ * ```
+ */
 export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
   const nested = { ...props, field: useNestedId(props.field) };
   const {
