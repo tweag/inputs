@@ -2,11 +2,13 @@
   "license": "MIT",
   "name": "@stackup/inputs",
   "version": "0.0.0",
-  "repository": "https://github.com/promptworks/inputs",
-  "description": "React components for creating data-driven forms.",
   "main": "dist/index.js",
   "module": "dist/inputs.esm.js",
   "typings": "dist/index.d.ts",
+  "description": "React components for creating data-driven forms.",
+  "homepage": "https://github.com/promptworks/inputs#readme",
+  "bugs": "https://github.com/promptworks/inputs/issues",
+  "repository": "github:promptworks/inputs",
   "files": [
     "dist",
     "src"
