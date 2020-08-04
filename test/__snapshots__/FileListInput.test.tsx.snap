@@ -1,11 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FileListInput /> error renders 1`] = `
-<div
-  class="field field--problem field--touched field--file"
->
+<div>
   <label
-    class="field__label field__label--problem field__label--touched field__label--file"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,13 +11,11 @@ exports[`<FileListInput /> error renders 1`] = `
   <input
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--problem field__input--touched field__input--file"
     id="form-0_mock"
     multiple=""
     type="file"
   />
   <span
-    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >
@@ -30,24 +25,18 @@ exports[`<FileListInput /> error renders 1`] = `
 `;
 
 exports[`<FileListInput /> help renders 1`] = `
-<div
-  class="field field--file"
->
+<div>
   <label
-    class="field__label field__label--file"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
-    <span
-      class="field__help field__help--file"
-    >
+    <span>
       Help
     </span>
   </label>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--file"
     id="form-0_mock"
     multiple=""
     type="file"
@@ -56,11 +45,8 @@ exports[`<FileListInput /> help renders 1`] = `
 `;
 
 exports[`<FileListInput /> label renders 1`] = `
-<div
-  class="field field--file"
->
+<div>
   <label
-    class="field__label field__label--file"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -68,7 +54,6 @@ exports[`<FileListInput /> label renders 1`] = `
   </label>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--file"
     id="form-0_mock"
     multiple=""
     type="file"
@@ -77,11 +62,8 @@ exports[`<FileListInput /> label renders 1`] = `
 `;
 
 exports[`<FileListInput /> renders 1`] = `
-<div
-  class="field field--file"
->
+<div>
   <label
-    class="field__label field__label--file"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -89,7 +71,6 @@ exports[`<FileListInput /> renders 1`] = `
   </label>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--file"
     id="form-0_mock"
     multiple=""
     type="file"

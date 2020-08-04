@@ -1,11 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TextArea /> error renders 1`] = `
-<div
-  class="field field--problem field--touched field--textarea"
->
+<div>
   <label
-    class="field__label field__label--problem field__label--touched field__label--textarea"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -14,11 +11,9 @@ exports[`<TextArea /> error renders 1`] = `
   <textarea
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--problem field__input--touched field__input--textarea"
     id="form-0_mock"
   />
   <span
-    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >
@@ -28,35 +23,26 @@ exports[`<TextArea /> error renders 1`] = `
 `;
 
 exports[`<TextArea /> help renders 1`] = `
-<div
-  class="field field--textarea"
->
+<div>
   <label
-    class="field__label field__label--textarea"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
-    <span
-      class="field__help field__help--textarea"
-    >
+    <span>
       Help
     </span>
   </label>
   <textarea
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--textarea"
     id="form-0_mock"
   />
 </div>
 `;
 
 exports[`<TextArea /> label renders 1`] = `
-<div
-  class="field field--textarea"
->
+<div>
   <label
-    class="field__label field__label--textarea"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -64,18 +50,14 @@ exports[`<TextArea /> label renders 1`] = `
   </label>
   <textarea
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--textarea"
     id="form-0_mock"
   />
 </div>
 `;
 
 exports[`<TextArea /> renders 1`] = `
-<div
-  class="field field--textarea"
->
+<div>
   <label
-    class="field__label field__label--textarea"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -83,7 +65,6 @@ exports[`<TextArea /> renders 1`] = `
   </label>
   <textarea
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--textarea"
     id="form-0_mock"
   />
 </div>

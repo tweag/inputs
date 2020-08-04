@@ -18,22 +18,6 @@ export function includeFieldTests<T>(_value: T, render: Render<T>) {
     expect(field.container.firstChild).toMatchSnapshot();
   });
 
-  it("appends a variant", () => {
-    const { container } = render({ help: "Help", variant: "foo" });
-    expect(container.querySelector(".field--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__input--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__label--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__help--foo")).toBeInTheDocument();
-  });
-
-  it("appends a list of variants", () => {
-    const { container } = render({ help: "Help", variant: ["foo"] });
-    expect(container.querySelector(".field--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__input--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__label--foo")).toBeInTheDocument();
-    expect(container.querySelector(".field__help--foo")).toBeInTheDocument();
-  });
-
   it("respects `innerRef`", () => {
     const innerRef = jest.fn();
     render({ innerRef });

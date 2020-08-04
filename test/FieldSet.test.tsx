@@ -52,7 +52,7 @@ describe("<FieldSet />", () => {
 
   it("appends `className`", () => {
     const { container } = setup({ className: "testing" });
-    expect(container.firstChild).toHaveClass("fieldset testing");
+    expect(container.firstChild).toHaveClass("testing");
   });
 
   it("appends `legendClassName`", () => {
@@ -60,17 +60,17 @@ describe("<FieldSet />", () => {
       legend: "Legend",
       legendClassName: "testing"
     });
-    expect(getByText("Legend")).toHaveClass("fieldset__legend testing");
+    expect(getByText("Legend")).toHaveClass("testing");
   });
 
   it("appends `helpClassName`", () => {
     const { getByText } = setup({ help: "Help", helpClassName: "testing" });
-    expect(getByText("Help")).toHaveClass("fieldset__help testing");
+    expect(getByText("Help")).toHaveClass("testing");
   });
 
   it("appends `errorClassName`", () => {
     const field = make<any>("", { error: "Error", touched: true });
     const { getByText } = setup({ field, errorClassName: "testing" });
-    expect(getByText("Error")).toHaveClass("message message--problem testing");
+    expect(getByText("Error")).toHaveClass("testing");
   });
 });
