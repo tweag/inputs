@@ -10,14 +10,6 @@ export function isNumber(value: any): value is number {
   return typeof value === "number";
 }
 
-export function concat(...names: any[]): string | undefined {
-  let out = "";
-  for (let i = 0; i < names.length; i++) {
-    if (names[i]) out += ` ${names[i]}`;
-  }
-  return out.trim() || undefined;
-}
-
 export function getDOMValue(value: any): string | number | undefined {
   return isString(value) || isNumber(value) ? value : undefined;
 }

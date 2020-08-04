@@ -11,5 +11,4 @@ export * from "./Switch";
 export * from "./TextArea";
 export * from "./conversions";
 export * from "./theme";
-export { concat } from "./utilities";
 export { useFieldProps } from "./useFieldProps";

@@ -1,8 +1,7 @@
 import * as React from "react";
 import { FormField } from "@stackup/form";
 import { getRelatedId, getError } from "./useFieldProps";
-import { concat } from "./utilities";
-import { ThemeProps, useTheme } from "./theme";
+import { ThemeProps, useTheme, concat } from "./theme";
 import { FieldVariant } from "./types";
 
 export interface FieldSetProps {

@@ -2,7 +2,8 @@ import { useTheme, ThemeProps } from "./theme";
 import { useCallback } from "react";
 import { FormField } from "@stackup/form";
 import { FieldProps } from "./types";
-import { concat, isString } from "./utilities";
+import { isString } from "./utilities";
+import { concat } from "./theme";
 
 export function getRelatedId(id: string, suffix: string): string {
   return `${id}--${suffix}`;
