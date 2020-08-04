@@ -31,7 +31,7 @@ export function FileListInput(props: FileListInputProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "file");
+  } = useFieldProps(props, ["input", "file"]);
 
   const { setValue } = field;
   const onChange = React.useCallback(

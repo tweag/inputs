@@ -35,7 +35,7 @@ export function TextArea(props: TextAreaProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "textarea");
+  } = useFieldProps(props, ["textarea"]);
 
   const { value, setValue } = field;
   const onChange = React.useCallback(

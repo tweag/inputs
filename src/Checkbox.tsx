@@ -35,7 +35,7 @@ export function Checkbox(props: CheckboxProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "check", "checkbox");
+  } = useFieldProps(props, ["check", "checkbox"]);
 
   const { value, setValue } = field;
   const onChange = React.useCallback(

@@ -51,7 +51,7 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
     getErrorProps: _getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(nested, "check", "checkbox");
+  } = useFieldProps(nested, ["check", "checkbox"]);
 
   const { value, setValue } = field;
   const onChange = React.useCallback(

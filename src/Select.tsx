@@ -46,7 +46,7 @@ export function Select(props: SelectProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "select");
+  } = useFieldProps(props, ["select"]);
 
   const { value, setValue } = field;
 

@@ -31,7 +31,7 @@ export function FileInput(props: FileInputProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "file");
+  } = useFieldProps(props, ["input", "file"]);
 
   const { setValue } = field;
 

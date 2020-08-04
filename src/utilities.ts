@@ -10,10 +10,6 @@ export function isNumber(value: any): value is number {
   return typeof value === "number";
 }
 
-export function isPopulated(value: any) {
-  return value !== undefined && value !== null && value !== "";
-}
-
 export function concat(...names: any[]): string | undefined {
   let out = "";
   for (let i = 0; i < names.length; i++) {

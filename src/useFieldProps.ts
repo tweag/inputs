@@ -1,7 +1,8 @@
+import { useTheme, ThemeProps } from "./theme";
 import { useCallback } from "react";
 import { FormField } from "@stackup/form";
 import { FieldProps } from "./types";
-import { concat, isString, isPopulated } from "./utilities";
+import { concat, isString } from "./utilities";
 
 export function getRelatedId(id: string, suffix: string): string {
   return `${id}--${suffix}`;
@@ -17,7 +18,7 @@ export function useBlur({ setTouched }: FormField<any>) {
 
 export function useFieldProps<Value, Element, InputProps>(
   props: FieldProps<Value, Element> & InputProps,
-  ...fieldVariants: string[]
+  types: string[]
 ) {
   const {
     innerRef,
@@ -35,22 +36,19 @@ export function useFieldProps<Value, Element, InputProps>(
     ...inputProps
   } = props;
 
+  const theme = useTheme();
   const onBlur = useBlur(field);
   const error = getError(field);
   const labelId = getRelatedId(field.id, "label");
   const errorId = getRelatedId(field.id, "error");
-  const variants = Array.isArray(variant) ? variant : [variant];
 
-  const getClassName = (name: string, ...names: any[]) =>
-    concat(
-      name,
-      error && `${name}--problem`,
-      field.touched && `${name}--touched`,
-      isPopulated(field.value) && `${name}--populated`,
-      ...fieldVariants.map(v => `${name}--${v}`),
-      ...variants.map(v => v && `${name}--${v}`),
-      ...names
-    );
+  const themeProps: ThemeProps = {
+    value: field.value,
+    error: field.error,
+    touched: field.touched,
+    types,
+    variants: Array.isArray(variant) ? variant : [variant]
+  };
 
   return {
     ...inputProps,
@@ -65,22 +63,22 @@ export function useFieldProps<Value, Element, InputProps>(
     ref: innerRef,
     "aria-labelledby": labelId,
     "aria-describedby": error ? errorId : undefined,
-    className: getClassName("field__input", props.inputClassName),
+    className: concat(theme.input(themeProps), props.inputClassName),
     getFieldProps: () => ({
-      className: getClassName("field", props.className)
+      className: concat(theme.field(themeProps), props.className)
     }),
     getLabelProps: () => ({
       id: `${field.id}--label`,
       htmlFor: field.id,
-      className: getClassName("field__label", props.labelClassName)
+      className: concat(theme.label(themeProps), props.labelClassName)
     }),
     getErrorProps: () => ({
       id: `${field.id}--error`,
       role: "alert",
-      className: concat("message message--problem", props.errorClassName)
+      className: concat(theme.error(themeProps), props.errorClassName)
     }),
     getHelpProps: () => ({
-      className: getClassName("field__help", props.helpClassName)
+      className: concat(theme.help(themeProps), props.helpClassName)
     })
   };
 }
