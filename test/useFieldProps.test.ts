@@ -1,26 +1,13 @@
-import * as React from "react";
 import { renderHook } from "@testing-library/react-hooks";
-import { make } from "./helpers";
-import { FieldProps, createTheme, ThemeProvider } from "../src";
+import { make, createThemeWrapper } from "./helpers";
+import { FieldProps } from "../src";
 import { useFieldProps } from "../src/useFieldProps";
-
-const theme = createTheme({
-  field: () => "field",
-  label: () => "label",
-  help: () => "help",
-  error: () => "error",
-  input: () => "input"
-});
-
-const wrapper: React.FC = ({ children }) => {
-  return React.createElement(ThemeProvider, { value: theme }, children);
-};
 
 function setup<T extends FieldProps<string, any>>(props: Partial<T> = {}) {
   const field = make("");
   const hook = renderHook(
     () => useFieldProps({ field, label: "Example", ...props }, ["example"]),
-    { wrapper }
+    { wrapper: createThemeWrapper() }
   );
 
   return hook.result.current;

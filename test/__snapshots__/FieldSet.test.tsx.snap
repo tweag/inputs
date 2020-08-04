@@ -2,8 +2,12 @@
 
 exports[`<FieldSet /> renders 1`] = `
 <div>
-  <fieldset>
-    <legend>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="legend"
+    >
       Legend
     </legend>
   </fieldset>
@@ -12,8 +16,12 @@ exports[`<FieldSet /> renders 1`] = `
 
 exports[`<FieldSet /> renders children 1`] = `
 <div>
-  <fieldset>
-    <legend>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="legend"
+    >
       Example
     </legend>
     Children
@@ -25,11 +33,15 @@ exports[`<FieldSet /> renders error 1`] = `
 <div>
   <fieldset
     aria-describedby="form-0_mock--error"
+    class="fieldset"
   >
-    <legend>
+    <legend
+      class="legend"
+    >
       Example
     </legend>
     <span
+      class="error"
       id="form-0_mock--error"
       role="alert"
     >
@@ -41,11 +53,17 @@ exports[`<FieldSet /> renders error 1`] = `
 
 exports[`<FieldSet /> renders help 1`] = `
 <div>
-  <fieldset>
-    <legend>
+  <fieldset
+    class="fieldset"
+  >
+    <legend
+      class="legend"
+    >
       Example
     </legend>
-    <p>
+    <p
+      class="help"
+    >
       Help
     </p>
   </fieldset>
