@@ -22,7 +22,6 @@ test("exports", () => {
       "parseDateTime",
       "parseNumber",
       "parseTime",
-      "useFieldProps",
       "useTheme",
     ]
   `);
