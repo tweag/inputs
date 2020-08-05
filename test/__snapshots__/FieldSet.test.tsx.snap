@@ -6,7 +6,7 @@ exports[`<FieldSet /> renders 1`] = `
     class="fieldset"
   >
     <legend
-      class="fieldset__legend"
+      class="legend"
     >
       Legend
     </legend>
@@ -20,7 +20,7 @@ exports[`<FieldSet /> renders children 1`] = `
     class="fieldset"
   >
     <legend
-      class="fieldset__legend"
+      class="legend"
     >
       Example
     </legend>
@@ -36,12 +36,12 @@ exports[`<FieldSet /> renders error 1`] = `
     class="fieldset"
   >
     <legend
-      class="fieldset__legend"
+      class="legend"
     >
       Example
     </legend>
     <span
-      class="message message--problem"
+      class="error"
       id="form-0_mock--error"
       role="alert"
     >
@@ -57,12 +57,12 @@ exports[`<FieldSet /> renders help 1`] = `
     class="fieldset"
   >
     <legend
-      class="fieldset__legend"
+      class="legend"
     >
       Example
     </legend>
     <p
-      class="fieldset__help"
+      class="help"
     >
       Help
     </p>

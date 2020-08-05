@@ -58,7 +58,7 @@ export function Input(props: InputProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "input", type);
+  } = useFieldProps(props, ["input", type]);
 
   const { value, setValue } = field;
   const onChange = React.useCallback(

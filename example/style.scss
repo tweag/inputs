@@ -1,9 +1,13 @@
 .field {
-  margin-bottom: 20px;
+  margin: 15px 0;
 }
 
 .fieldset .field {
-  margin-bottom: 0;
+  margin: 0;
+}
+
+.error-message {
+  color: red;
 }
 
 .field__input--select {

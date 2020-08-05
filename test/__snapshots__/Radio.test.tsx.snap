@@ -1,25 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Radio /> help renders 1`] = `
-<div
-  class="field field--populated field--check field--radio"
->
+<div>
   <input
-    aria-labelledby="form-0_mock_7--label"
-    class="field__input field__input--populated field__input--check field__input--radio"
-    id="form-0_mock_7"
+    aria-labelledby="form-0_mock_5--label"
+    id="form-0_mock_5"
     type="radio"
     value="100"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--radio"
-    for="form-0_mock_7"
-    id="form-0_mock_7--label"
+    for="form-0_mock_5"
+    id="form-0_mock_5--label"
   >
     Example
-    <span
-      class="field__help field__help--populated field__help--check field__help--radio"
-    >
+    <span>
       Help
     </span>
   </label>
@@ -27,20 +21,16 @@ exports[`<Radio /> help renders 1`] = `
 `;
 
 exports[`<Radio /> label renders 1`] = `
-<div
-  class="field field--populated field--check field--radio"
->
+<div>
   <input
-    aria-labelledby="form-0_mock_4--label"
-    class="field__input field__input--populated field__input--check field__input--radio"
-    id="form-0_mock_4"
+    aria-labelledby="form-0_mock_2--label"
+    id="form-0_mock_2"
     type="radio"
     value="100"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--radio"
-    for="form-0_mock_4"
-    id="form-0_mock_4--label"
+    for="form-0_mock_2"
+    id="form-0_mock_2--label"
   >
     Label
   </label>
@@ -48,18 +38,14 @@ exports[`<Radio /> label renders 1`] = `
 `;
 
 exports[`<Radio /> renders 1`] = `
-<div
-  class="field field--populated field--check field--radio"
->
+<div>
   <input
     aria-labelledby="form-0_mock_0--label"
-    class="field__input field__input--populated field__input--check field__input--radio"
     id="form-0_mock_0"
     type="radio"
     value="100"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--radio"
     for="form-0_mock_0"
     id="form-0_mock_0--label"
   >

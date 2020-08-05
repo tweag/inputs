@@ -1,28 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Switch /> error renders 1`] = `
-<div
-  class="field field--problem field--touched field--populated field--check field--switch"
->
+<div>
   <button
     aria-checked="false"
     aria-describedby="form-0_mock--error"
     aria-label="Off"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--problem field__input--touched field__input--populated field__input--check field__input--switch"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
-    class="field__label field__label--problem field__label--touched field__label--populated field__label--check field__label--switch"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
   </label>
   <span
-    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >
@@ -32,27 +27,21 @@ exports[`<Switch /> error renders 1`] = `
 `;
 
 exports[`<Switch /> help renders 1`] = `
-<div
-  class="field field--populated field--check field--switch"
->
+<div>
   <button
     aria-checked="false"
     aria-label="Off"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--switch"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--switch"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
-    <span
-      class="field__help field__help--populated field__help--check field__help--switch"
-    >
+    <span>
       Help
     </span>
   </label>
@@ -60,20 +49,16 @@ exports[`<Switch /> help renders 1`] = `
 `;
 
 exports[`<Switch /> label renders 1`] = `
-<div
-  class="field field--populated field--check field--switch"
->
+<div>
   <button
     aria-checked="false"
     aria-label="Off"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--switch"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--switch"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -83,20 +68,16 @@ exports[`<Switch /> label renders 1`] = `
 `;
 
 exports[`<Switch /> renders 1`] = `
-<div
-  class="field field--populated field--check field--switch"
->
+<div>
   <button
     aria-checked="false"
     aria-label="Off"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--switch"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--switch"
     for="form-0_mock"
     id="form-0_mock--label"
   >

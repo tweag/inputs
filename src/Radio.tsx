@@ -52,7 +52,7 @@ export function Radio<Value>(props: RadioProps<Value>) {
     getErrorProps: _getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(nested, "check", "radio");
+  } = useFieldProps(nested, ["check", "radio"]);
 
   const { value, setValue } = field;
   const onChange = React.useCallback(() => setValue(item), [item, setValue]);

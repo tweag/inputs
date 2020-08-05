@@ -1,25 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Checkbox /> error renders 1`] = `
-<div
-  class="field field--problem field--touched field--populated field--check field--checkbox"
->
+<div>
   <input
     aria-describedby="form-0_mock--error"
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--problem field__input--touched field__input--populated field__input--check field__input--checkbox"
     id="form-0_mock"
     type="checkbox"
   />
   <label
-    class="field__label field__label--problem field__label--touched field__label--populated field__label--check field__label--checkbox"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
   </label>
   <span
-    class="message message--problem"
     id="form-0_mock--error"
     role="alert"
   >
@@ -29,24 +24,18 @@ exports[`<Checkbox /> error renders 1`] = `
 `;
 
 exports[`<Checkbox /> help renders 1`] = `
-<div
-  class="field field--populated field--check field--checkbox"
->
+<div>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--checkbox"
     id="form-0_mock"
     type="checkbox"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--checkbox"
     for="form-0_mock"
     id="form-0_mock--label"
   >
     Example
-    <span
-      class="field__help field__help--populated field__help--check field__help--checkbox"
-    >
+    <span>
       Help
     </span>
   </label>
@@ -54,17 +43,13 @@ exports[`<Checkbox /> help renders 1`] = `
 `;
 
 exports[`<Checkbox /> label renders 1`] = `
-<div
-  class="field field--populated field--check field--checkbox"
->
+<div>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--checkbox"
     id="form-0_mock"
     type="checkbox"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--checkbox"
     for="form-0_mock"
     id="form-0_mock--label"
   >
@@ -74,17 +59,13 @@ exports[`<Checkbox /> label renders 1`] = `
 `;
 
 exports[`<Checkbox /> renders 1`] = `
-<div
-  class="field field--populated field--check field--checkbox"
->
+<div>
   <input
     aria-labelledby="form-0_mock--label"
-    class="field__input field__input--populated field__input--check field__input--checkbox"
     id="form-0_mock"
     type="checkbox"
   />
   <label
-    class="field__label field__label--populated field__label--check field__label--checkbox"
     for="form-0_mock"
     id="form-0_mock--label"
   >

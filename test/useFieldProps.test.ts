@@ -1,18 +1,14 @@
 import { renderHook } from "@testing-library/react-hooks";
-import { make } from "./helpers";
+import { make, createThemeWrapper } from "./helpers";
 import { FieldProps } from "../src";
 import { useFieldProps } from "../src/useFieldProps";
 
 function setup<T extends FieldProps<string, any>>(props: Partial<T> = {}) {
   const field = make("");
-
-  const hook = renderHook(() => {
-    return useFieldProps({
-      field,
-      label: "Example",
-      ...props
-    });
-  });
+  const hook = renderHook(
+    () => useFieldProps({ field, label: "Example", ...props }, ["example"]),
+    { wrapper: createThemeWrapper() }
+  );
 
   return hook.result.current;
 }
@@ -59,9 +55,9 @@ describe("useField", () => {
       expect(props["aria-describedby"]).toBeUndefined();
     });
 
-    it("appends the `inputClassName`", () => {
+    it("builds a `className`", () => {
       const props = setup({ inputClassName: "testing" });
-      expect(props.className).toContain("testing");
+      expect(props.className).toEqual("input testing");
     });
 
     it("passes along all other props", () => {
@@ -71,10 +67,10 @@ describe("useField", () => {
   });
 
   describe("getFieldProps", () => {
-    it("appends the `className`", () => {
+    it("builds a `className`", () => {
       const props = setup({ className: "testing" });
       const fieldProps = props.getFieldProps();
-      expect(fieldProps.className).toContain("testing");
+      expect(fieldProps.className).toEqual("field testing");
     });
   });
 
@@ -92,10 +88,10 @@ describe("useField", () => {
       expect(labelProps.htmlFor).toEqual(field.id);
     });
 
-    it("appends the `labelClassName`", () => {
+    it("builds a `className`", () => {
       const props = setup({ labelClassName: "testing" });
       const labelProps = props.getLabelProps();
-      expect(labelProps.className).toContain("testing");
+      expect(labelProps.className).toEqual("label testing");
     });
   });
 
@@ -104,21 +100,21 @@ describe("useField", () => {
       const field = make("", { error: "Error", touched: true });
       const props = setup({ field });
       const errorProps = props.getErrorProps();
-      expect(errorProps.role).toContain("alert");
+      expect(errorProps.role).toEqual("alert");
     });
 
-    it("appends the `errorClassName`", () => {
+    it("builds a `className`", () => {
       const props = setup({ errorClassName: "testing" });
       const errorProps = props.getErrorProps();
-      expect(errorProps.className).toContain("testing");
+      expect(errorProps.className).toContain("error testing");
     });
   });
 
   describe("getHelpProps", () => {
-    it("appends the `helpClassName`", () => {
+    it("builds a `className`", () => {
       const props = setup({ helpClassName: "testing" });
       const helpProps = props.getHelpProps();
-      expect(helpProps.className).toContain("testing");
+      expect(helpProps.className).toEqual("help testing");
     });
   });
 });

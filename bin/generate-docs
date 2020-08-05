@@ -16,24 +16,17 @@ function getComponents() {
 }
 
 function render(component) {
-  let out = `### ${component.displayName}
+  const props = Object.entries(component.props);
 
-  ${component.description}
-
-  #### Props
-
-  | Name | Type | Required | Description |
-  |------|------|----------|-------------|
-  `;
+  let out = `### ${component.displayName}\n\n${component.description}\n`;
+  if (props.length) {
+    out += `\n#### Props\n\n| Name | Type | Required | Description |\n|-|-|-|-|\n`;
+  }
 
   for (const [name, prop] of Object.entries(component.props)) {
-    const row = [
-      name,
-      `\`${prop.type.name.replace(/\|/g, "\\|")}\``,
-      prop.required ? "✓" : "✗",
-      prop.description
-    ];
-
+    const type = `\`${prop.type.name.replace(/\|/g, "\\|")}\``;
+    const required = prop.required ? "✓" : "✗";
+    const row = [name, type, required, prop.description];
     out += `| ${row.join(" | ")} |\n`;
   }
 

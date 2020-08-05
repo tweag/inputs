@@ -1,7 +1,8 @@
 import * as React from "react";
 import { FormField } from "@stackup/form";
 import { getRelatedId, getError } from "./useFieldProps";
-import { concat } from "./utilities";
+import { ThemeProps, useTheme, concat } from "./theme";
+import { FieldVariant } from "./types";
 
 export interface FieldSetProps {
   /** See [@stackup/form](https://github.com/rzane/form) */
@@ -15,6 +16,9 @@ export interface FieldSetProps {
 
   /** Content that should appear inside the fieldset */
   children?: React.ReactNode;
+
+  /** Variant class name to append to all elements */
+  variant?: FieldVariant | FieldVariant[];
 
   /** An additional class name for the fieldset */
   className?: string;
@@ -60,23 +64,36 @@ export function FieldSet(props: FieldSetProps) {
   const errorId = getRelatedId(field.id, "error");
   const describedBy = error ? errorId : undefined;
 
+  const theme = useTheme();
+  const themeProps: ThemeProps = {
+    value: field.value,
+    error: field.error,
+    touched: field.touched,
+    types: ["fieldset"],
+    variants: Array.isArray(props.variant) ? props.variant : [props.variant]
+  };
+
   return (
     <fieldset
-      className={concat("fieldset", props.className)}
+      className={concat(theme.fieldset(themeProps), props.className)}
       aria-describedby={describedBy}
     >
-      <legend className={concat("fieldset__legend", props.legendClassName)}>
+      <legend
+        className={concat(theme.legend(themeProps), props.legendClassName)}
+      >
         {legend}
       </legend>
       {help && (
-        <p className={concat("fieldset__help", props.helpClassName)}>{help}</p>
+        <p className={concat(theme.help(themeProps), props.helpClassName)}>
+          {help}
+        </p>
       )}
       {children}
       {error && (
         <span
           id={errorId}
           role="alert"
-          className={concat("message message--problem", props.errorClassName)}
+          className={concat(theme.error(themeProps), props.errorClassName)}
         >
           {error}
         </span>

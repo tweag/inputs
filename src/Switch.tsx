@@ -41,7 +41,7 @@ export function Switch(props: SwitchProps) {
     getErrorProps,
     getHelpProps,
     ...inputProps
-  } = useFieldProps(props, "check", "switch");
+  } = useFieldProps(props, ["check", "switch"]);
 
   const { value, setValue } = field;
   const onClick = React.useCallback(() => {

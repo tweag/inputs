@@ -1,4 +1,20 @@
+import * as React from "react";
 import { FormField } from "@stackup/form";
+import { ThemeProvider, createTheme } from "../src";
+
+const theme = createTheme({
+  fieldset: () => "fieldset",
+  legend: () => "legend",
+  field: () => "field",
+  label: () => "label",
+  help: () => "help",
+  error: () => "error",
+  input: () => "input"
+});
+
+export const createThemeWrapper = (): React.FC => ({ children }) => {
+  return React.createElement(ThemeProvider, { value: theme }, children);
+};
 
 export function make<T>(value: T, opts: Partial<FormField<T>> = {}) {
   return {
