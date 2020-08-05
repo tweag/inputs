@@ -436,8 +436,8 @@ concat("field", touched && error && "field--invalid");
 
 ### createTheme
 
-Create a new theme. This can be used in combination with the ThemeProvider
-to apply class names to fields.
+Create a new theme. This can be used in combination with the
+[ThemeProvider](#themeprovider) to apply class names to fields.
 
 ```javascript
 export const theme = createTheme({
