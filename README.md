@@ -28,12 +28,14 @@ of form values.
   - [Select](#select)
   - [Switch](#switch)
   - [TextArea](#textarea)
+  - [ThemeProvider](#themeprovider)
 - [Utilities](#utilities)
-  - [useFieldProps](#usefieldprops)
-  - [formatDate](#formatdate)
+  - [concat](#concat)
+  - [createTheme](#createtheme)
+  - [formatDateTime](#formatdatetime)
   - [formatTime](#formattime)
   - [formatNumber](#formatnumber)
-  - [parseDate](#parsedate)
+  - [parseDateTime](#parsedatetime)
   - [parseTime](#parsetime)
   - [parseNumber](#parsenumber)
 
@@ -149,16 +151,17 @@ fieldset, rather than on a Radio or CheckboxItem.
 
 #### Props
 
-| Name            | Type             | Required | Description                                        |
-| --------------- | ---------------- | -------- | -------------------------------------------------- |
-| field           | `FormField<any>` | ✓        | See [@stackup/form](https://github.com/rzane/form) |
-| legend          | `ReactNode`      | ✓        | Content to appear in the legend                    |
-| help            | `ReactNode`      | ✗        | Extra help info                                    |
-| children        | `ReactNode`      | ✗        | Content that should appear inside the fieldset     |
-| className       | `string`         | ✗        | An additional class name for the fieldset          |
-| legendClassName | `string`         | ✗        | An additional class name for the legend            |
-| helpClassName   | `string`         | ✗        | An additional class name for the help              |
-| errorClassName  | `string`         | ✗        | An additional class name for the error             |
+| Name            | Type                                  | Required | Description                                        |
+| --------------- | ------------------------------------- | -------- | -------------------------------------------------- |
+| field           | `FormField<any>`                      | ✓        | See [@stackup/form](https://github.com/rzane/form) |
+| legend          | `ReactNode`                           | ✓        | Content to appear in the legend                    |
+| help            | `ReactNode`                           | ✗        | Extra help info                                    |
+| children        | `ReactNode`                           | ✗        | Content that should appear inside the fieldset     |
+| variant         | `string \| boolean \| FieldVariant[]` | ✗        | Variant class name to append to all elements       |
+| className       | `string`                              | ✗        | An additional class name for the fieldset          |
+| legendClassName | `string`                              | ✗        | An additional class name for the legend            |
+| helpClassName   | `string`                              | ✗        | An additional class name for the help              |
+| errorClassName  | `string`                              | ✗        | An additional class name for the error             |
 
 ### FileInput
 
@@ -404,21 +407,61 @@ all props for an HTML input.
 | errorClassName | `string`                              | ✗        | An additional class name for the error                 |
 | innerRef       | `Ref<HTMLTextAreaElement>`            | ✗        | A ref to the input element                             |
 
+### ThemeProvider
+
+Render a `ThemeProvider` at the top of your component tree
+to provide a global theme.
+
+See `createTheme` for an example of how to define your theme.
+
+#### Example
+
+```jsx
+<ThemeProvider value={theme}>
+  <App />
+</ThemeProvider>
+```
+
 <!-- END components -->
 
 ## Utilities
 
-### useFieldProps
+### concat
 
-This is pretty much the workhorse of this library. It can be used to create your
-own inputs with similar props.
+Concatenate multiple class names.
 
-### formatDate
+```javascript
+concat("field", touched && error && "field--invalid");
+```
+
+### createTheme
+
+Create a new theme. This can be used in combination with the ThemeProvider
+to apply class names to fields.
+
+```javascript
+export const theme = createTheme({
+  field: props => {
+    return concat(
+      "field",
+      props.touched && props.error && "field--invalid",
+      ...props.types.map(type => `field--${type}`),
+      ...props.variants.map(variant => variant && `field--${variant}`)
+    );
+  }
+});
+```
+
+### formatDateTime
 
 Convert ISO-8601 to `input[type=datetime-local]`. This can be used to populate
 the initial value for your inputs.
 
 When given an invalid value, this function will throw an error.
+
+```javascript
+formatDateTime("2020-07-08T16:30:00.000Z");
+```
 
 ### formatTime
 
@@ -427,6 +470,10 @@ the initial value for your inputs.
 
 When given an invalid value, this function will throw an error.
 
+```javascript
+formatTime("08:28Z");
+```
+
 ### formatNumber
 
 Convert a number to `input[type=number]`. This can be used to populate
@@ -434,12 +481,20 @@ the initial value for your inputs.
 
 When given an invalid value, this function will throw an error.
 
-### parseDate
+```javascript
+formatNumber(0);
+```
+
+### parseDateTime
 
 Convert `input[type=datetime-local]` to ISO-8601. This can be used to parse and validate
 information entered by the user.
 
 When given an invalid value, this function will return `undefined`.
+
+```javascript
+parseDateTime("2020-07-08T12:30");
+```
 
 ### parseTime
 
@@ -448,9 +503,17 @@ information entered by the user.
 
 When given an invalid value, this function will return `undefined`.
 
+```javascript
+parseTime("04:28");
+```
+
 ### parseNumber
 
 Convert `input[type=number]` to a number. This can be used to parse and validate
 information entered by the user.
 
 When given an invalid value, this function will return `undefined`.
+
+```javascript
+parseNumber("1");
+```

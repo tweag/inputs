@@ -10,4 +10,4 @@ export * from "./Select";
 export * from "./Switch";
 export * from "./TextArea";
 export * from "./conversions";
-export { Theme, ThemeProps, concat, createTheme } from "./theme";
+export * from "./theme";

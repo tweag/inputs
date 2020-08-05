@@ -76,8 +76,11 @@ export const useTheme = () => useContext(ThemeContext);
  * See `createTheme` for an example of how to define your theme.
  *
  * #### Example
+ *
+ * ```jsx
  * <ThemeProvider value={theme}>
  *   <App />
  * </ThemeProvider>
+ * ```
  */
 export const ThemeProvider = ThemeContext.Provider;
