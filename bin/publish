@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: bin/publish [version]"
+fi
+
+yarn version --new-version "$1" --no-git-tag-version
+
+if [[ "$1" =~ alpha|beta ]]; then
+  yarn publish --access public --tag next
+else
+  yarn publish --access public
+fi

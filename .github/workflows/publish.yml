@@ -35,10 +35,7 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage
 
-      - name: Set version
-        run: yarn version --new-version "${GITHUB_REF:11}" --no-git-tag-version
-
       - name: Publish
-        run: yarn publish --access public
+        run: bin/publish "${GITHUB_REF:11}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
