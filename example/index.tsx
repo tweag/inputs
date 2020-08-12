@@ -2,7 +2,7 @@ import "react-app-polyfill/stable";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { theme } from "./theme";
-import { useForm, useField, useNoValidate } from "@stackup/form";
+import { useForm, useField, useSubmit } from "@stackup/form";
 import {
   Input,
   Checkbox,
@@ -19,14 +19,6 @@ import {
 
 const App = () => {
   const form = useForm({
-    submit: values => console.log(values),
-    validate: value => {
-      if (value.text) {
-        return { valid: true, value };
-      } else {
-        return { valid: false, error: { text: "can't be blank" } };
-      }
-    },
     initialValue: {
       text: "",
       select: "",
@@ -40,17 +32,16 @@ const App = () => {
     }
   });
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    form.submit();
-  };
+  const submit = useSubmit(form, value => {
+    console.log(value);
+  });
 
   const checkboxes = useField(form, "checkboxes");
   const radio = useField(form, "radio");
 
   return (
     <ThemeProvider value={theme}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={submit}>
         <Input label="Text" field={useField(form, "text")} />
         <Select label="Select" field={useField(form, "select")}>
           <option value="corn">Corn</option>
