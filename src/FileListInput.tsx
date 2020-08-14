@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useFieldProps } from "./useFieldProps";
 import { FieldProps, Attributes } from "./types";
+import { useFieldProps } from "./useFieldProps";
 
 export interface FileListInputProps
   extends FieldProps<FileList | null, HTMLInputElement>,
@@ -26,6 +26,7 @@ export function FileListInput(props: FileListInputProps) {
     error,
     append,
     prepend,
+    render,
     getFieldProps,
     getLabelProps,
     getErrorProps,
@@ -48,7 +49,12 @@ export function FileListInput(props: FileListInputProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <input {...inputProps} type="file" multiple onChange={onChange} />
+      {render("input", {
+        ...inputProps,
+        type: "file",
+        multiple: true,
+        onChange
+      })}
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

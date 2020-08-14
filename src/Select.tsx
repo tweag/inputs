@@ -39,6 +39,7 @@ export function Select(props: SelectProps) {
     error,
     append,
     prepend,
+    render,
     placeholder,
     children,
     getFieldProps,
@@ -64,14 +65,16 @@ export function Select(props: SelectProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <select {...inputProps} value={value} onChange={onChange}>
-        {placeholder && (
+      {render(
+        "select",
+        { ...inputProps, value, onChange },
+        placeholder && (
           <option disabled value="" key="placeholder">
             {placeholder}
           </option>
-        )}
-        {children}
-      </select>
+        ),
+        children
+      )}
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

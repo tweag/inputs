@@ -30,6 +30,7 @@ export function Checkbox(props: CheckboxProps) {
     error,
     append,
     prepend,
+    render,
     getFieldProps,
     getLabelProps,
     getErrorProps,
@@ -48,12 +49,12 @@ export function Checkbox(props: CheckboxProps) {
   return (
     <div {...getFieldProps()}>
       {prepend}
-      <input
-        {...inputProps}
-        type="checkbox"
-        checked={value}
-        onChange={onChange}
-      />
+      {render("input", {
+        ...inputProps,
+        type: "checkbox",
+        checked: value,
+        onChange
+      })}
       {append}
       <label {...getLabelProps()}>
         {label}

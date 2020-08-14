@@ -26,6 +26,7 @@ export function FileInput(props: FileInputProps) {
     error,
     append,
     prepend,
+    render,
     getFieldProps,
     getLabelProps,
     getErrorProps,
@@ -49,7 +50,7 @@ export function FileInput(props: FileInputProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <input {...inputProps} type="file" onChange={onChange} />
+      {render("input", { ...inputProps, type: "file", onChange })}
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>
