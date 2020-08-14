@@ -53,6 +53,7 @@ export function Input(props: InputProps) {
     error,
     append,
     prepend,
+    render,
     getFieldProps,
     getLabelProps,
     getErrorProps,
@@ -75,7 +76,7 @@ export function Input(props: InputProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <input {...inputProps} value={value} type={type} onChange={onChange} />
+      {render("input", { ...inputProps, value, type, onChange })}
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

@@ -46,6 +46,7 @@ export function Radio<Value>(props: RadioProps<Value>) {
     error: _error,
     append,
     prepend,
+    render,
     value: item,
     getFieldProps,
     getLabelProps,
@@ -60,13 +61,13 @@ export function Radio<Value>(props: RadioProps<Value>) {
   return (
     <div {...getFieldProps()}>
       {prepend}
-      <input
-        {...inputProps}
-        type="radio"
-        onChange={onChange}
-        value={getDOMValue(props.value)}
-        checked={equals(value, props.value)}
-      />
+      {render("input", {
+        ...inputProps,
+        onChange,
+        type: "radio",
+        value: getDOMValue(props.value),
+        checked: equals(value, props.value)
+      })}
       {append}
       <label {...getLabelProps()}>
         {label}

@@ -38,6 +38,13 @@ export interface FieldProps<Value, Element> {
 
   /** A ref to the input element */
   innerRef?: React.Ref<Element>;
+
+  /** Customize the rendering of the input */
+  render?: (
+    name: string,
+    props: React.HTMLProps<Element>,
+    ...children: React.ReactNode[]
+  ) => React.ReactNode;
 }
 
 export type Attributes<Element extends keyof JSX.IntrinsicElements> = Omit<

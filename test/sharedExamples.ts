@@ -1,5 +1,6 @@
-import { RenderResult } from "@testing-library/react";
+import { createElement } from "react";
 import { axe } from "jest-axe";
+import { RenderResult } from "@testing-library/react";
 import { make } from "./helpers";
 import { FieldProps } from "../src";
 
@@ -22,6 +23,16 @@ export function includeFieldTests<T>(_value: T, render: Render<T>) {
     const innerRef = jest.fn();
     render({ innerRef });
     expect(innerRef).toHaveBeenCalled();
+  });
+
+  it("respects `render`", () => {
+    const field = render({
+      render: (name, props, ...children) =>
+        createElement(name, { ...props, "data-testid": "custom" }, ...children)
+    });
+
+    const input = field.getByTestId("custom");
+    expect(input).toBeInTheDocument();
   });
 }
 

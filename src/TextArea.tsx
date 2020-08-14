@@ -30,6 +30,7 @@ export function TextArea(props: TextAreaProps) {
     error,
     append,
     prepend,
+    render,
     getFieldProps,
     getLabelProps,
     getErrorProps,
@@ -52,7 +53,7 @@ export function TextArea(props: TextAreaProps) {
         {help && <span {...getHelpProps()}>{help}</span>}
       </label>
       {prepend}
-      <textarea {...inputProps} value={value} onChange={onChange} />
+      {render("textarea", { ...inputProps, value, onChange })}
       {append}
       {error && <span {...getErrorProps()}>{error}</span>}
     </div>

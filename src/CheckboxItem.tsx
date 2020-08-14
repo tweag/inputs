@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FieldProps, Attributes } from "./types";
-import { contains, getDOMValue, remove, useNestedId } from "./utilities";
 import { useFieldProps } from "./useFieldProps";
+import { contains, getDOMValue, remove, useNestedId } from "./utilities";
 
 export interface CheckboxItemProps<Value>
   extends FieldProps<Value[], HTMLInputElement>,
@@ -45,6 +45,7 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
     error: _error,
     append,
     prepend,
+    render,
     value: item,
     getFieldProps,
     getLabelProps,
@@ -65,13 +66,13 @@ export function CheckboxItem<Value>(props: CheckboxItemProps<Value>) {
   return (
     <div {...getFieldProps()}>
       {prepend}
-      <input
-        {...inputProps}
-        type="checkbox"
-        onChange={onChange}
-        value={getDOMValue(item)}
-        checked={contains(value, item)}
-      />
+      {render("input", {
+        ...inputProps,
+        onChange,
+        type: "checkbox",
+        value: getDOMValue(item),
+        checked: contains(value, item)
+      })}
       {append}
       <label {...getLabelProps()}>
         {label}

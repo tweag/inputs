@@ -1,5 +1,5 @@
+import { createElement, useCallback } from "react";
 import { useTheme, ThemeProps } from "./theme";
-import { useCallback } from "react";
 import { FormField } from "@stackup/form";
 import { FieldProps } from "./types";
 import { isString } from "./utilities";
@@ -29,6 +29,7 @@ export function useFieldProps<Value, Element, InputProps>(
     help,
     append,
     prepend,
+    render = createElement,
     className,
     inputClassName,
     labelClassName,
@@ -61,6 +62,7 @@ export function useFieldProps<Value, Element, InputProps>(
     help,
     append,
     prepend,
+    render,
     onBlur,
     id: field.id,
     ref: innerRef,

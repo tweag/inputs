@@ -35,6 +35,7 @@ export function Switch(props: SwitchProps) {
     error,
     append,
     prepend,
+    render,
     children,
     getFieldProps,
     getLabelProps,
@@ -51,16 +52,18 @@ export function Switch(props: SwitchProps) {
   return (
     <div {...getFieldProps()}>
       {prepend}
-      <button
-        {...inputProps}
-        type="button"
-        role="switch"
-        onClick={onClick}
-        aria-checked={value}
-        aria-label={value ? "On" : "Off"}
-      >
-        {children}
-      </button>
+      {render(
+        "button",
+        {
+          ...inputProps,
+          type: "button",
+          role: "switch",
+          onClick,
+          "aria-checked": value,
+          "aria-label": value ? "On" : "Off"
+        },
+        children
+      )}
       <label {...getLabelProps()}>
         {label}
         {help && <span {...getHelpProps()}>{help}</span>}
