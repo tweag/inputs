@@ -70,7 +70,9 @@ export function FieldSet(props: FieldSetProps) {
     error: field.error,
     touched: field.touched,
     types: ["fieldset"],
-    variants: Array.isArray(props.variant) ? props.variant : [props.variant]
+    variants: Array.isArray(props.variant) ? props.variant : [props.variant],
+    prepend: false,
+    append: false
   };
 
   return (

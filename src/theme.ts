@@ -8,6 +8,8 @@ export interface ThemeProps {
   touched: FormTouched<any>;
   types: string[];
   variants: FieldVariant[];
+  prepend: boolean;
+  append: boolean;
 }
 
 type MaybeString = undefined | boolean | string;
