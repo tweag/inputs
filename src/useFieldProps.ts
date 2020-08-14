@@ -48,7 +48,9 @@ export function useFieldProps<Value, Element, InputProps>(
     error: field.error,
     touched: field.touched,
     types,
-    variants: Array.isArray(variant) ? variant : [variant]
+    variants: Array.isArray(variant) ? variant : [variant],
+    prepend: Boolean(prepend),
+    append: Boolean(append)
   };
 
   return {
