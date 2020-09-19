@@ -2,8 +2,11 @@ import * as React from "react";
 import { FieldProps, Attributes } from "./types";
 import { useFieldProps } from "./useFieldProps";
 
-export interface SelectProps
-  extends FieldProps<string, HTMLSelectElement>,
+type StringEnum = Record<string, string>;
+type SelectValue = string | StringEnum | null;
+
+export interface SelectProps<Value extends SelectValue>
+  extends FieldProps<Value, HTMLSelectElement>,
     Attributes<"select"> {
   placeholder?: string;
   children?: React.ReactNode;
@@ -31,7 +34,7 @@ export interface SelectProps
  * </Select>
  * ```
  */
-export function Select(props: SelectProps) {
+export function Select<Value extends SelectValue>(props: SelectProps<Value>) {
   const {
     field,
     label,
@@ -51,9 +54,10 @@ export function Select(props: SelectProps) {
 
   const { value, setValue } = field;
 
+  const htmlValue = value === null ? "" : (value as string);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setValue(event.target.value);
+      setValue(event.target.value as Value);
     },
     [setValue]
   );
@@ -67,7 +71,7 @@ export function Select(props: SelectProps) {
       {prepend}
       {render(
         "select",
-        { ...inputProps, value, onChange },
+        { ...inputProps, value: htmlValue, onChange },
         placeholder && (
           <option disabled value="" key="placeholder">
             {placeholder}

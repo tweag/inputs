@@ -4,7 +4,11 @@ import { make } from "./helpers";
 import { Select, SelectProps } from "../src";
 import { includeAllFieldTests } from "./sharedExamples";
 
-function setup(props: Partial<SelectProps> = {}) {
+enum Foo {
+  BAR = "bar"
+}
+
+function setup(props: Partial<SelectProps<string>> = {}) {
   return render(
     <Select label="Example" field={make<string>("")} {...props}>
       <option value="dog">Dog</option>
@@ -42,6 +46,22 @@ describe("<Select />", () => {
       expect(option).toBeDisabled();
       expect(option).toHaveTextContent("placeholder");
       expect(option).toHaveAttribute("value", "");
+    });
+  });
+
+  describe("when the value is a string enum", () => {
+    it("changes the value", () => {
+      const field = make<Foo | null>(null);
+      const { getByRole } = render(
+        <Select label="Example" field={field}>
+          <option value={Foo.BAR}>Bar</option>
+        </Select>
+      );
+
+      const select = getByRole("combobox");
+      fireEvent.change(select, { value: "bar" });
+
+      expect(field.setValue).toHaveBeenCalledWith(Foo.BAR);
     });
   });
 });
