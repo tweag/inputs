@@ -57,7 +57,7 @@ export function Select<Value extends SelectValue>(props: SelectProps<Value>) {
   const htmlValue = value === null ? "" : (value as string);
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setValue(event.target.value as Value);
+      setValue((event.target.value || null) as Value);
     },
     [setValue]
   );
