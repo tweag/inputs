@@ -44,14 +44,14 @@ export function parseTime(
   date.setHours(hours);
   date.setMinutes(minutes);
 
-  return `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}Z`;
+  return `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}:00Z`;
 }
 
 /**
  * Convert an ISO-8601 time (UTC) to the format expected by `input[type=time]`.
  */
 export function formatTime(value: string, date: Date = new Date()): string {
-  const match = value.match(/^(\d{2}):(\d{2})Z$/);
+  const match = value.match(/^(\d{2}):(\d{2}):\d{2}Z$/);
   assert(match, "time", value);
 
   const hours = Number(match[1]);

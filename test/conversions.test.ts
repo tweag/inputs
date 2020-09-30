@@ -34,7 +34,7 @@ describe("time", () => {
 
   describe("formatTime", () => {
     test("converts UTC to local", () => {
-      expect(formatTime("08:28Z", today)).toEqual("04:28");
+      expect(formatTime("08:28:00Z", today)).toEqual("04:28");
     });
 
     test("rejects invalid values", () => {
@@ -42,13 +42,13 @@ describe("time", () => {
     });
 
     test("rejects out of range", () => {
-      expect(() => formatTime("25:99Z", today)).toThrow(/Unable to convert/);
+      expect(() => formatTime("25:99:00Z", today)).toThrow(/Unable to convert/);
     });
   });
 
   describe("parseTime", () => {
     test("converts local to UTC", () => {
-      expect(parseTime("04:28", today)).toEqual("08:28Z");
+      expect(parseTime("04:28", today)).toEqual("08:28:00Z");
     });
 
     test("rejects invalid values", () => {
