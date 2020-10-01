@@ -471,7 +471,7 @@ the initial value for your inputs.
 When given an invalid value, this function will throw an error.
 
 ```javascript
-formatTime("08:28Z");
+formatTime("08:28:00Z");
 ```
 
 ### formatNumber
