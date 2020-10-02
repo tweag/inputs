@@ -1324,9 +1324,9 @@
     "@sinonjs/commons" "^1.7.0"
 
 "@stackup/form@^0.3.0":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.3.2.tgz#f02b64c8173542a6cc2731e207e974a1f3428543"
-  integrity sha512-H/TRpYvKoDvUmi/uMQWjqt62O42PXrqCYU1jK9DjQwXyNxKwMIzi2W3QIrtZI9FeF8fkILhXZks38ROighntWg==
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@stackup/form/-/form-0.3.5.tgz#f48af9c16235c33f3879afed7bb27a303aff3f9f"
+  integrity sha512-D8+11opSQ1wr+RYJ3FtNPFZTgCPkoIofZcVvG1Z5p0EDDBHUbAAPcCTVdxQrJS/wnul/mLo6oEAYFzbde7pQtQ==
 
 "@testing-library/dom@^7.24.2":
   version "7.24.2"
