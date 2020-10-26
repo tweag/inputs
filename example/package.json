@@ -13,7 +13,7 @@
     "@stackup/form": "../node_modules/@stackup/form"
   },
   "dependencies": {
-    "react-app-polyfill": "^1.0.1"
+    "react-app-polyfill": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.49",
