@@ -6158,9 +6158,9 @@ qs@~6.5.2:
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 react-docgen-typescript@^1.20.1:
-  version "1.20.4"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.20.4.tgz#9a5655986077ccfc58c1a447f92c3d19f7a875bf"
-  integrity sha512-gE2SeseJd6+o981qr9VQJRbvFJ5LjLSKQiwhHsuLN4flt+lheKtG1jp2BPzrv2MKR5gmbLwpmNtK4wbLCPSZAw==
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.21.0.tgz#3385dde81b63eb1d54f86a935bd4f65f96c821f6"
+  integrity sha512-E4y/OcXwHukgiVafCGlxwoNHr4BDmM70Ww7oimL/QkMo5dmGALhceewe/xmVjdMxxI7E5syOGOc9/tbHL742rg==
 
 react-dom@^16.13.1:
   version "16.13.1"
