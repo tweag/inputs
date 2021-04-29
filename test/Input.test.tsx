@@ -1,4 +1,5 @@
 import * as React from "react";
+import { axe } from "jest-axe";
 import { render, fireEvent } from "@testing-library/react";
 import { make } from "./helpers";
 import { Input, InputProps } from "../src";
@@ -10,6 +11,15 @@ function setup(props: Partial<InputProps> = {}) {
 
 describe("<Input />", () => {
   includeAllFieldTests<string>("", setup);
+
+  it("is accessible when `type=password`", async () => {
+    const { container, getByLabelText } = setup({ type: "password" });
+
+    const input = getByLabelText("Example");
+    expect(input).toHaveAttribute("aria-labelledby");
+
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
   it("defaults to `type=text`", () => {
     const { getByRole } = setup();
