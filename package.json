@@ -53,7 +53,7 @@
     "@types/react-dom": "^16.9.8",
     "babel-jest": "^26.3.0",
     "doctoc": "^1.4.0",
-    "jest": "^26.4.2",
+    "jest": "^27.0.6",
     "jest-axe": "^4.0.0",
     "react": "^16.13.1",
     "react-docgen-typescript": "^1.20.1",
