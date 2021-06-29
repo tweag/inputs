@@ -51,7 +51,7 @@
     "@testing-library/react-hooks": "^3.3.0",
     "@types/jest-axe": "^3.2.1",
     "@types/react-dom": "^16.9.8",
-    "babel-jest": "^26.3.0",
+    "babel-jest": "^27.0.6",
     "doctoc": "^1.4.0",
     "jest": "^26.4.2",
     "jest-axe": "^4.0.0",
