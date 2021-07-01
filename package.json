@@ -48,7 +48,7 @@
     "@stackup/form": "^0.3.0",
     "@testing-library/jest-dom": "^5.11.3",
     "@testing-library/react": "^11.0.4",
-    "@testing-library/react-hooks": "^3.3.0",
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/jest-axe": "^3.2.1",
     "@types/react-dom": "^16.9.8",
     "babel-jest": "^26.3.0",
