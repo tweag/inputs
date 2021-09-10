@@ -41,7 +41,6 @@ export function useFieldProps<Value, Element, InputProps>(
   const theme = useTheme();
   const onBlur = useBlur(field);
   const error = getError(field);
-  const labelId = getRelatedId(field.id, "label");
   const errorId = getRelatedId(field.id, "error");
 
   const themeProps: ThemeProps = {
@@ -66,14 +65,12 @@ export function useFieldProps<Value, Element, InputProps>(
     onBlur,
     id: field.id,
     ref: innerRef,
-    "aria-labelledby": labelId,
     "aria-describedby": error ? errorId : undefined,
     className: concat(theme.input(themeProps), props.inputClassName),
     getFieldProps: () => ({
       className: concat(theme.field(themeProps), props.className)
     }),
     getLabelProps: () => ({
-      id: `${field.id}--label`,
       htmlFor: field.id,
       className: concat(theme.label(themeProps), props.labelClassName)
     }),
