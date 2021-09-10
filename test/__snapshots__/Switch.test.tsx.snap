@@ -6,14 +6,12 @@ exports[`<Switch /> error renders 1`] = `
     aria-checked="false"
     aria-describedby="form-0_mock--error"
     aria-label="Off"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
@@ -31,14 +29,12 @@ exports[`<Switch /> help renders 1`] = `
   <button
     aria-checked="false"
     aria-label="Off"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
     <span>
@@ -53,14 +49,12 @@ exports[`<Switch /> label renders 1`] = `
   <button
     aria-checked="false"
     aria-label="Off"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Label
   </label>
@@ -72,14 +66,12 @@ exports[`<Switch /> renders 1`] = `
   <button
     aria-checked="false"
     aria-label="Off"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     role="switch"
     type="button"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>

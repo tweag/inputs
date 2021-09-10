@@ -4,13 +4,11 @@ exports[`<FileInput /> error renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
   <input
     aria-describedby="form-0_mock--error"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="file"
   />
@@ -27,7 +25,6 @@ exports[`<FileInput /> help renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
     <span>
@@ -35,7 +32,6 @@ exports[`<FileInput /> help renders 1`] = `
     </span>
   </label>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="file"
   />
@@ -46,12 +42,10 @@ exports[`<FileInput /> label renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Label
   </label>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="file"
   />
@@ -62,12 +56,10 @@ exports[`<FileInput /> renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="file"
   />

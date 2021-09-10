@@ -4,13 +4,11 @@ exports[`<Checkbox /> error renders 1`] = `
 <div>
   <input
     aria-describedby="form-0_mock--error"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="checkbox"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
@@ -26,13 +24,11 @@ exports[`<Checkbox /> error renders 1`] = `
 exports[`<Checkbox /> help renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="checkbox"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
     <span>
@@ -45,13 +41,11 @@ exports[`<Checkbox /> help renders 1`] = `
 exports[`<Checkbox /> label renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="checkbox"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Label
   </label>
@@ -61,13 +55,11 @@ exports[`<Checkbox /> label renders 1`] = `
 exports[`<Checkbox /> renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
     type="checkbox"
   />
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
