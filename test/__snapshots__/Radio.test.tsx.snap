@@ -3,14 +3,12 @@
 exports[`<Radio /> help renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock_6--label"
     id="form-0_mock_6"
     type="radio"
     value="100"
   />
   <label
     for="form-0_mock_6"
-    id="form-0_mock_6--label"
   >
     Example
     <span>
@@ -23,14 +21,12 @@ exports[`<Radio /> help renders 1`] = `
 exports[`<Radio /> label renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock_3--label"
     id="form-0_mock_3"
     type="radio"
     value="100"
   />
   <label
     for="form-0_mock_3"
-    id="form-0_mock_3--label"
   >
     Label
   </label>
@@ -40,14 +36,12 @@ exports[`<Radio /> label renders 1`] = `
 exports[`<Radio /> renders 1`] = `
 <div>
   <input
-    aria-labelledby="form-0_mock_0--label"
     id="form-0_mock_0"
     type="radio"
     value="100"
   />
   <label
     for="form-0_mock_0"
-    id="form-0_mock_0--label"
   >
     Example
   </label>

@@ -26,11 +26,6 @@ describe("useField", () => {
       expect(props.ref).toEqual(innerRef);
     });
 
-    it("is labeled by the `label`", () => {
-      const props = setup({ label: "Label" });
-      expect(props["aria-labelledby"]).toContain("--label");
-    });
-
     it("passes along the error", () => {
       const field = make("", { error: "Error", touched: true });
       const props = setup({ field });
@@ -75,12 +70,6 @@ describe("useField", () => {
   });
 
   describe("getLabelProps", () => {
-    it("has `id`", () => {
-      const props = setup();
-      const labelProps = props.getLabelProps();
-      expect(labelProps.id).toContain("--label");
-    });
-
     it("has a `htmlFor`", () => {
       const field = make("");
       const props = setup({ field });

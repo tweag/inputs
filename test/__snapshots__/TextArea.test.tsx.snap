@@ -4,13 +4,11 @@ exports[`<TextArea /> error renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
   <textarea
     aria-describedby="form-0_mock--error"
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
   />
   <span
@@ -26,7 +24,6 @@ exports[`<TextArea /> help renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
     <span>
@@ -34,7 +31,6 @@ exports[`<TextArea /> help renders 1`] = `
     </span>
   </label>
   <textarea
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
   />
 </div>
@@ -44,12 +40,10 @@ exports[`<TextArea /> label renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Label
   </label>
   <textarea
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
   />
 </div>
@@ -59,12 +53,10 @@ exports[`<TextArea /> renders 1`] = `
 <div>
   <label
     for="form-0_mock"
-    id="form-0_mock--label"
   >
     Example
   </label>
   <textarea
-    aria-labelledby="form-0_mock--label"
     id="form-0_mock"
   />
 </div>
